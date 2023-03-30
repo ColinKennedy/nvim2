@@ -1,4 +1,3 @@
-
 require("my_custom.remap")
 require("my_custom.setting")
 require("my_custom.mapping")
@@ -20,6 +19,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
+
+
 
 
 require("lazy").setup({
@@ -115,6 +117,15 @@ require("lazy").setup({
         dep = {
             "kyazdani42/nvim-web-devicons",
         },
+        config = function()
+            require('lualine').setup {
+              options = {
+                theme = 'onedark',
+                component_separators = '|',
+                section_separators = '',
+              },
+            }
+        end,
     },
     -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
     {
@@ -129,10 +140,236 @@ require("lazy").setup({
 
 
 
+
+    -- A tool which automatically backs up modified files to a git repository
+    {
+        "ColinKennedy/vim-git-backup",
+        cmd = "BackupCurrentFile",
+    },
+
+    -- Useful git commands. Such as :Gcd
     {
         "tpope/vim-fugitive",
         cmd = "Gcd",
     },
+
+
+
+
+
+
+
+
+    -- TODO: Use a better lazy-load than this
+    -- Use <leader>pd to get the Python dot-separated import path at the current cursor
+    {
+        "ColinKennedy/vim-python-dot-path",
+        ft = "python",
+    },
+
+
+
+
+
+
+
+
+    -- Quickfix helper functions
+    -- TODO: Check if this works well with location lists, still
+    {
+
+        "romainl/vim-qf",
+        ft = "qf",
+    },
+    
+    -- Quickfix auto-resize. Keeps the quickfix window small
+    {
+        "blueyed/vim-qf_resize",
+        ft = "qf",
+    },
+
+
+
+
+
+
+
+
+
+
+    -- Give vim some shell-like commands that it's missing
+    {
+        "tpope/vim-eunuch",
+        cmd = {
+            "Delete",
+            "Mkdir",
+            "Move",
+            "Rename",
+            "SudoEdit",
+            "SudoWrite",
+        }
+    },
+
+
+    -- TODO: Add better FZF support, later
+    -- Plug 'junegunn/fzf', { 'do': function('BuildFZF') }
+    "junegunn/fzf",
+    "junegunn/fzf.vim",
+
+
+    -- A more modern, faster grep engine.
+    -- Requires https://github.com/BurntSushi/ripgrep to be installed
+    --
+    {
+        "jremmen/vim-ripgrep",
+        cmd = "Rg",
+    },
+
+    -- Autojump but for Vim. Use `:J` to change directories
+    -- or `:Cd` as a replacement to `:cd`.
+    --
+    {
+        "padde/jump.vim",
+        cmd = {
+            "J",
+            "Jc",
+            "Jo",
+            "Jco",
+        },
+    },
+
+
+
+
+
+
+
+
+    -- TODO: Check if I can do a delay-load (and also see if it makes loading faster)
+    "tomtom/tcomment_vim",
+    -- {
+    --     "tomtom/tcomment_vim",
+    --     cmd = {
+    --         "<Plug>TComment_gc",
+    --         "<Plug>TComment_gcc",
+    --     },
+    -- }
+    
+    -- REPEAT LAST (USER) COMMAND and makes the '.' command even cooler
+    "tpope/vim-repeat",
+
+    -- Surround plugin. Lets you change stuff would words really easily
+    "tpope/vim-surround",
+
+    -- Targets - A great companion to vim-surround
+    "wellle/targets.vim",
+
+    -- TODO: Add this, later
+    -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
+    -- autocmd User targets#mappings#user call targets#mappings#extend({
+    --     \ '@': {'quote': [{'d': '@'}]},
+    --     \ })
+
+    -- Auto-insert pairs
+    {
+        "KaraMCC/vim-gemini",
+        enabled = function()
+            return vim.v.version >= 800
+        end,
+        config = function()
+            vim.cmd("let g:gemini#match_list = {'.*': [['(', ')'], ['{', '}'], ['[', ']'], ['`', '`']], '.usda': [['@', '@']]}")
+        end,
+    },
+
+    -- TODO: Figure out if this will work
+    -- {
+    --     "kana/vim-operator-replace",
+    --     dep = { "kana/vim-operator-user" },
+    --     config = function()
+    --         -- Change the p[ut] key to now be a text object, like yy!
+    --         vim.keymap.set("n", "p", "<Plug>(operator-replace)")
+    --         vim.keymap.set("n", "pp", "p")
+
+    --         -- Set P to <NOP> so that it's not possible to accidentally put text
+    --         -- twice, using the P key.
+    --         --
+    --         vim.keymap.set("n", "P", "<NOP>")
+    --         vim.keymap.set("n", "PP", "P")
+    --     end,
+    -- },
+    -- {
+    --     "kana/vim-operator-user",
+    --     dep = {
+    --         "kana/vim-textobj-user",
+    --     },
+    --     lazy = true,
+    -- },
+    -- {
+    --     "kana/vim-textobj-user",
+    --     lazy = true,
+    -- },
+
+    -- Gives vim a few tools to navigate through indented blocks more easily
+    "jeetsukumaran/vim-indentwise",
+
+    -- Advanced paragraph movement options - lets {}s skip folds with some
+    -- minor customization.
+    -- 
+    {
+        "justinmk/vim-ipmotion",
+        config = function()
+            vim.g.ip_skipfold = 1
+        end,
+    },
+
+    -- TODO: Add this, later
+    -- -- A text-object that helps you select Python source-code blocks
+    -- "ColinKennedy/vim-textobj-block-party",
+
+    -- Adds pair mappings (like ]l [l) to Vim
+    "tpope/vim-unimpaired",
+
+    -- TODO: Add this, later
+    -- -- A simple plugin that lets you grab inner parts of a variable
+    -- --
+    -- -- e.g. civqueez "foo_b|ar_fizz" -> foo_queez|_fizz
+    -- -- e.g. dav "foo_b|ar_fizz" -> foo_fizz
+    -- --
+    -- "Julian/vim-textobj-variable-segment",
+
+    -- Life-changing text object extension. It's hard to explain but ...
+    --
+    -- Use z[i} to move to the insert from the beginning of a paragraph.
+    -- Use z]i} to move to the insert from the end of a paragraph.
+    -- But you can do the do this with __any__ text object
+    -- Also, you can use d]/d[ and c]/c[ to delete / change from other text objects
+    --
+    "ColinKennedy/vim-ninja-feet",
+
+    -- TODO: Add this later. Figure out why it isn't working
+    -- -- Adds `al/il` text objects for the current line
+    -- "kana/vim-textobj-line",
+
+    -- Exchange any two text objects with a new text-motion, `cx`
+    "tommcdo/vim-exchange",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     -- TODO: Consider getting this stuff to work
     -- -- Treesitter stuff
@@ -144,3 +381,4 @@ require("lazy").setup({
     --     cmd = "TSPlaygroundToggle",
     -- },
 })
+

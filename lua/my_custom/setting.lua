@@ -1,3 +1,5 @@
+vim.g.mapleader = ","
+
 vim.opt.guicursor = ""  -- Keeps the "fat cursor" in INSERT Mode
 
 -- Note: Don't need to set these because I use the tpope/vim-sleuth plug-in
@@ -28,3 +30,11 @@ vim.opt.lazyredraw = true
 -- (useful for handling the permission-denied error)
 --
 -- vim.api.nvim_add_user_command("W", "w !sudo tee % > /dev/null", { nargs = 0 })
+
+
+-- Adding these lines makes Neovim load 110ms faster!
+--
+-- Reference: https://www.reddit.com/r/neovim/comments/r9acxp/neovim_is_slow_because_of_python_provider/
+--
+vim.g.python_host_prog = '/bin/python'
+vim.g.python3_host_prog = '/bin/python3'
