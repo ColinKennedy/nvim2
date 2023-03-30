@@ -1,0 +1,12 @@
+- Need to remap space to :
+- Make sure to add plugins as git submodules, later
+- What is impatient.nvim?
+    - https://github.com/lewis6991/impatient.nvim
+- How do I default all files to be smarttabs OR tabstop / shiftwidth 4?
+- Where do treesitter parses install to? Can I localize them to my single folder?
+- Add treesitter parsers for other languages
+- Go through checkhealth stuff
+- Move plugin sections to their own files
+
+- Make sure the cursor stays in the middle
+- Implement HLNext
