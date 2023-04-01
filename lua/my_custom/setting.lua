@@ -21,6 +21,14 @@ vim.opt.termguicolors = true
 
 -- TODO: Set this differently depending on if in Python or not
 vim.opt.colorcolumn = "88"
+-- Remove the column-highlight on QuickFix & LocationList buffers
+vim.api.nvim_create_autocmd(
+    "FileType",
+    {
+        pattern = "qf",
+        command = "setlocal nonumber colorcolumn=",
+    }
+)
 
 -- Don't redraw while executing macros (good performance config)
 vim.opt.lazyredraw = true

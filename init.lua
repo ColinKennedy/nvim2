@@ -1,6 +1,14 @@
+require("my_custom.initialization")
 require("my_custom.remap")
 require("my_custom.setting")
 require("my_custom.mapping")
+
+-- TODO: Make this a better file path, later
+vim.cmd[[source ~/personal/.config/nvim/plugin/syntax_fix.vim]]
+-- TODO: Make this a better file path, later
+vim.cmd[[source ~/personal/.config/nvim/plugin/global_confirm.vim]]
+-- TODO: Make this a better file path, later
+vim.cmd[[source ~/personal/.config/nvim/plugin/miscellaneous_commands.vim]]
 
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -28,7 +36,6 @@ require("lazy").setup({
     {
         "w0ng/vim-hybrid",
         -- TODO: Consider lazy-loading the colorscheme. If it improves start-time
-        lazy = false,
         priority = 1000,  -- Load this first
         config = function()
             vim.cmd.colorscheme("hybrid")
@@ -44,7 +51,10 @@ require("lazy").setup({
     },
 
     -- Whenever you highlight, there's a brief "blink" to show you what you highlighted
-    "machakann/vim-highlightedyank",
+    {
+        "machakann/vim-highlightedyank",
+        event = "TextYankPost",
+    },
 
     -- Removes whitespace only on the lines you've changed. Pretty cool!
     {
@@ -81,7 +91,9 @@ require("lazy").setup({
     -- Reference:
     --     https://github.com/unblevable/quick-scope/issues/38
     --
-    "bradford-smith94/quick-scope",
+    -- TODO: Check if lazy-loading can make this load faster
+    --
+    {"bradford-smith94/quick-scope", event = "BufFilePost"},
 
     -- A syntax highlighter for in-line comments.
     {
@@ -90,7 +102,7 @@ require("lazy").setup({
     },
 
     -- TODO: Check if lazy-loading can make this load faster
-    "romainl/vim-cool",
+    { "romainl/vim-cool", event = "BufFilePost"},
 
     -- TODO: Add this later
     -- " Syntax highlighting for USD Ascii files
@@ -126,6 +138,7 @@ require("lazy").setup({
               },
             }
         end,
+        event = "BufFilePost",  -- TODO: Not sure if this actually helps
     },
     -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
     {
@@ -164,7 +177,7 @@ require("lazy").setup({
     -- Use <leader>pd to get the Python dot-separated import path at the current cursor
     {
         "ColinKennedy/vim-python-dot-path",
-        ft = "python",
+        keys = "<leader>pd",
     },
 
 
@@ -213,9 +226,21 @@ require("lazy").setup({
 
     -- TODO: Add better FZF support, later
     -- Plug 'junegunn/fzf', { 'do': function('BuildFZF') }
-    "junegunn/fzf",
-    "junegunn/fzf.vim",
-
+    {
+        "junegunn/fzf",
+        lazy = true,
+    },
+    {
+        "junegunn/fzf.vim",
+        dep = { "junegunn/fzf" },
+        cmd = {
+            "Buffers",
+            "Files",
+            "GFiles",
+            "History",
+            "Lines",
+        },
+    },
 
     -- A more modern, faster grep engine.
     -- Requires https://github.com/BurntSushi/ripgrep to be installed
@@ -246,23 +271,25 @@ require("lazy").setup({
 
 
     -- TODO: Check if I can do a delay-load (and also see if it makes loading faster)
-    "tomtom/tcomment_vim",
-    -- {
-    --     "tomtom/tcomment_vim",
-    --     cmd = {
-    --         "<Plug>TComment_gc",
-    --         "<Plug>TComment_gcc",
-    --     },
-    -- }
+    {
+        "tomtom/tcomment_vim",
+        keys = {"gc"},
+    },
     
     -- REPEAT LAST (USER) COMMAND and makes the '.' command even cooler
-    "tpope/vim-repeat",
+    {
+        "tpope/vim-repeat",
+        keys = {"."},
+    },
 
     -- Surround plugin. Lets you change stuff would words really easily
-    "tpope/vim-surround",
+    {
+        "tpope/vim-surround",
+        keys = { "cs", "ds", "ys" },
+    },
 
     -- Targets - A great companion to vim-surround
-    "wellle/targets.vim",
+    {"wellle/targets.vim"},
 
     -- TODO: Add this, later
     -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
@@ -310,7 +337,21 @@ require("lazy").setup({
     -- },
 
     -- Gives vim a few tools to navigate through indented blocks more easily
-    "jeetsukumaran/vim-indentwise",
+    {
+        "jeetsukumaran/vim-indentwise",
+        keys = {
+            "[%",
+            "[+",
+            "[-",
+            "[=",
+            "[_",
+            "]%",
+            "]+",
+            "]-",
+            "]=",
+            "]_",
+        },
+    },
 
     -- Advanced paragraph movement options - lets {}s skip folds with some
     -- minor customization.
@@ -320,6 +361,7 @@ require("lazy").setup({
         config = function()
             vim.g.ip_skipfold = 1
         end,
+        keys = {"{", "}"},
     },
 
     -- TODO: Add this, later
@@ -344,14 +386,27 @@ require("lazy").setup({
     -- But you can do the do this with __any__ text object
     -- Also, you can use d]/d[ and c]/c[ to delete / change from other text objects
     --
-    "ColinKennedy/vim-ninja-feet",
+    -- {"ColinKennedy/vim-ninja-feet", keys = {"d[", "d]"}},
+    {
+        "ColinKennedy/vim-ninja-feet",
+        keys = {
+            "d[",
+            "d]",
+            "s[",
+            "s]",
+            "c[",
+            "c]",
+            "z[",
+            "z]",
+        },
+    },
 
     -- TODO: Add this later. Figure out why it isn't working
     -- -- Adds `al/il` text objects for the current line
     -- "kana/vim-textobj-line",
 
     -- Exchange any two text objects with a new text-motion, `cx`
-    "tommcdo/vim-exchange",
+    {"tommcdo/vim-exchange", keys = {"cx"}},
 
 
 
