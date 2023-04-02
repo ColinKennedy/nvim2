@@ -27,6 +27,7 @@ return {
                 vim.g.gitgutter_suppress_warnings = 1
                 vim.g.gitgutter_max_signs = 2000
             end,
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
         -- TODO: Add this later
@@ -63,7 +64,7 @@ return {
                   },
                 }
             end,
-            event = "BufFilePost",  -- TODO: Not sure if this actually helps
+            event = { "CursorMoved", "CursorMovedI" },
         },
         -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
         {

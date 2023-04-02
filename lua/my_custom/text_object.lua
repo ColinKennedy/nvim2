@@ -3,7 +3,8 @@ return {
         -- Adds `al/il` text objects for the current line
         {
             "kana/vim-textobj-line",
-            dependencies = { "kana/vim-textobj-user" }
+            dependencies = { "kana/vim-textobj-user" },
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
         -- Surround plugin. Lets you change stuff would words really easily
@@ -14,6 +15,7 @@ return {
         {
             "kana/vim-operator-replace",
             dependencies = { "kana/vim-operator-user" },
+            event = { "CursorMoved", "CursorMovedI" },
         },
         {
             "kana/vim-operator-user",
@@ -24,6 +26,7 @@ return {
         },
         {
             "tomtom/tcomment_vim",
+            event = { "CursorMoved", "CursorMovedI" },
         },
         {
             "kana/vim-textobj-user",
@@ -40,6 +43,7 @@ return {
                 --     \ '@': {'quote': [{'d': '@'}]},
                 --     \ })
             end,
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
 
@@ -59,6 +63,7 @@ return {
             config=function()
                 vim.g.indent_object_no_default_key_mappings = "1"
             end,
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
         {
@@ -67,6 +72,7 @@ return {
                 vim.g.textobj_indent_no_default_key_mappings = "1"
             end,
             dependencies = { "kana/vim-textobj-user" },
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
         -- Gives vim a few tools to navigate through indented blocks more easily
@@ -101,6 +107,7 @@ return {
         {
             "ColinKennedy/vim-textobj-block-party",
             dependencies = { "kana/vim-textobj-user" },
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
         -- Adds pair mappings (like ]l [l) to Vim
@@ -138,6 +145,7 @@ return {
         {
             "Julian/vim-textobj-variable-segment",
             dependencies = { "kana/vim-textobj-user" },
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
         -- Life-changing text object extension. It's hard to explain but ...

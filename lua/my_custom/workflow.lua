@@ -54,6 +54,14 @@ return {
         -- A tool which automatically backs up modified files to a git repository
         {
             "ColinKennedy/vim-git-backup",
+            cmd = {
+                "BackupCurrentFile",
+                "GHistory",
+                "OpenCurrentFileBackupHistory",
+                "RestoreFileUsingGitBackup",
+                "ToggleBackupFile",
+            },
+            event = { "BufWritePre", "FileWritePre" },
         },
 
         -- Useful git commands. Such as :Gcd
@@ -63,7 +71,10 @@ return {
         },
 
         -- Auto-sets Vim ``tabstop`` and ``shiftwidth``, based on the existing file's context
-        "tpope/vim-sleuth",
+        {
+            "tpope/vim-sleuth",
+            event = { "CursorMoved", "CursorMovedI" },
+        },
 
         -- Show all file edits as an tree
         {
