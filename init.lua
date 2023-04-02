@@ -1,3 +1,5 @@
+require("my_custom.speed_up")
+
 -- Important: According to lazy.nvim, the leader key must be set before lazy.nvim is
 -- called or else it will break various things.
 --

@@ -29,12 +29,6 @@ return {
             end,
         },
 
-        -- A syntax highlighter for in-line comments.
-        {
-            "ColinKennedy/vim-better-comments",
-            ft = "python",
-        },
-
         -- TODO: Add this later
         -- " Syntax highlighting for USD Ascii files
         -- " Plug 'superfunc/usda-syntax'

@@ -47,6 +47,7 @@ return {
         {
             "ColinKennedy/vim-textobj-comment",
             dependencies = { "kana/vim-textobj-user" },
+            keys = {"gc"},
         },
 
         -- Lets you select inside indented blocks, using "ii"or "ai"
@@ -103,7 +104,31 @@ return {
         },
 
         -- Adds pair mappings (like ]l [l) to Vim
-        "tpope/vim-unimpaired",
+        {
+            "tpope/vim-unimpaired",
+            keys = {
+                "[A",
+                "[B",
+                "[L",
+                "[Q",
+                "[T",
+                "[a",
+                "[b",
+                "[l",
+                "[q",
+                "[t",
+                "]A",
+                "]B",
+                "]L",
+                "]Q",
+                "]T",
+                "]a",
+                "]b",
+                "]l",
+                "]q",
+                "]t",
+            },
+        },
 
         -- A simple plugin that lets you grab inner parts of a variable
         --
