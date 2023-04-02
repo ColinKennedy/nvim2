@@ -1,5 +1,3 @@
-vim.g.mapleader = ","
-
 vim.opt.guicursor = ""  -- Keeps the "fat cursor" in INSERT Mode
 
 -- Note: Don't need to set these because I use the tpope/vim-sleuth plug-in

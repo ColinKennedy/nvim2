@@ -1,15 +1,7 @@
-require("my_custom.initialization")
-require("my_custom.remap")
-require("my_custom.setting")
-require("my_custom.mapping")
-
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/syntax_fix.vim]]
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/global_confirm.vim]]
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/miscellaneous_commands.vim]]
-
+-- Important: According to lazy.nvim, the leader key must be set before lazy.nvim is
+-- called or else it will break various things.
+--
+vim.g.mapleader = ","
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -53,6 +45,9 @@ require("lazy").setup({
     -- Whenever you highlight, there's a brief "blink" to show you what you highlighted
     {
         "machakann/vim-highlightedyank",
+        config = function()
+            vim.g.highlightedyank_highlight_duration = 100
+        end,
         event = "TextYankPost",
     },
 
@@ -79,7 +74,14 @@ require("lazy").setup({
     --     \ ]
 
     -- GitGutter - Shows commits/unmodified text/etc
-    "airblade/vim-gitgutter",
+
+    {
+        "airblade/vim-gitgutter",
+        config = function()
+            vim.g.gitgutter_suppress_warnings = 1
+            vim.g.gitgutter_max_signs = 2000
+        end,
+    },
 
     -- A plugin that highlights the character to move to a word or WORD with f/t
     --
@@ -93,7 +95,32 @@ require("lazy").setup({
     --
     -- TODO: Check if lazy-loading can make this load faster
     --
-    {"bradford-smith94/quick-scope", event = "BufFilePost"},
+    {
+        "bradford-smith94/quick-scope",
+        event = "BufFilePost",
+        config = function()
+            -- Stop quick-scope highlighting after 160 characters
+            vim.g.qs_max_chars = 160
+
+            vim.api.nvim_create_augroup("qs_colors", { clear = true })
+            vim.api.nvim_create_autocmd(
+                "ColorScheme",
+                {
+                    group = "qs_colors",
+                    pattern = "*",
+                    command = "highlight QuickScopePrimary guifg='#5fffff' gui=underline ctermfg=112 cterm=underline",
+                }
+            )
+            vim.api.nvim_create_autocmd(
+                "ColorScheme",
+                {
+                    group = "qs_colors",
+                    pattern = "*",
+                    command = "highlight QuickScopeSecondary guifg='#EAFF92' gui=underline ctermfg=140 cterm=underline",
+                }
+            )
+        end
+    },
 
     -- A syntax highlighter for in-line comments.
     {
@@ -222,9 +249,6 @@ require("lazy").setup({
         }
     },
 
-
-    -- TODO: Add better FZF support, later
-    -- Plug 'junegunn/fzf', { 'do': function('BuildFZF') }
     {
         "junegunn/fzf",
         build=function()
@@ -290,13 +314,16 @@ require("lazy").setup({
     },
 
     -- Targets - A great companion to vim-surround
-    {"wellle/targets.vim"},
-
-    -- TODO: Add this, later
-    -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
-    -- autocmd User targets#mappings#user call targets#mappings#extend({
-    --     \ '@': {'quote': [{'d': '@'}]},
-    --     \ })
+    {
+        "wellle/targets.vim",
+        config=function()
+            -- TODO: Add this, later
+            -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
+            -- autocmd User targets#mappings#user call targets#mappings#extend({
+            --     \ '@': {'quote': [{'d': '@'}]},
+            --     \ })
+        end,
+    },
 
     -- Auto-insert pairs
     {
@@ -309,33 +336,47 @@ require("lazy").setup({
         end,
     },
 
-    -- TODO: Figure out if this will work
-    -- {
-    --     "kana/vim-operator-replace",
-    --     dependencies = { "kana/vim-operator-user" },
-    --     config = function()
-    --         -- Change the p[ut] key to now be a text object, like yy!
-    --         vim.keymap.set("n", "p", "<Plug>(operator-replace)")
-    --         vim.keymap.set("n", "pp", "p")
+    {
+        "kana/vim-operator-replace",
+        dependencies = { "kana/vim-operator-user" },
+    },
+    {
+        "kana/vim-operator-user",
+        dependencies = {
+            "kana/vim-textobj-user",
+        },
+        lazy = true,
+    },
+    {
+        "kana/vim-textobj-user",
+        lazy = true,
+    },
 
-    --         -- Set P to <NOP> so that it's not possible to accidentally put text
-    --         -- twice, using the P key.
-    --         --
-    --         vim.keymap.set("n", "P", "<NOP>")
-    --         vim.keymap.set("n", "PP", "P")
-    --     end,
-    -- },
-    -- {
-    --     "kana/vim-operator-user",
-    --     dependencies = {
-    --         "kana/vim-textobj-user",
-    --     },
-    --     lazy = true,
-    -- },
-    -- {
-    --     "kana/vim-textobj-user",
-    --     lazy = true,
-    -- },
+    -- Adds "aC" and "iC" to delete comment blocks. Awesome!
+    {
+        "ColinKennedy/vim-textobj-comment",
+        dependencies = { "kana/vim-textobj-user" },
+    },
+
+    -- Lets you select inside indented blocks, using "ii"or "ai"
+    -- ii = "the indented paragraph (stops at newlines)"
+    -- ai = "the indented block (grabs the whole block)"
+    --
+    {
+        "ColinKennedy/vim-indent-object",
+        config=function()
+            vim.g.indent_object_no_default_key_mappings = "1"
+        end,
+    },
+
+    {
+        "kana/vim-textobj-indent",
+        config=function()
+            vim.g.textobj_indent_no_default_key_mappings = "1"
+        end,
+        dependencies = { "kana/vim-textobj-user" },
+    },
+
 
     -- Gives vim a few tools to navigate through indented blocks more easily
     {
@@ -365,20 +406,24 @@ require("lazy").setup({
         keys = {"{", "}"},
     },
 
-    -- TODO: Add this, later
     -- -- A text-object that helps you select Python source-code blocks
-    -- "ColinKennedy/vim-textobj-block-party",
+    {
+        "ColinKennedy/vim-textobj-block-party",
+        dependencies = { "kana/vim-textobj-user" },
+    },
 
     -- Adds pair mappings (like ]l [l) to Vim
     "tpope/vim-unimpaired",
 
-    -- TODO: Add this, later
-    -- -- A simple plugin that lets you grab inner parts of a variable
-    -- --
-    -- -- e.g. civqueez "foo_b|ar_fizz" -> foo_queez|_fizz
-    -- -- e.g. dav "foo_b|ar_fizz" -> foo_fizz
-    -- --
-    -- "Julian/vim-textobj-variable-segment",
+    -- A simple plugin that lets you grab inner parts of a variable
+    --
+    -- e.g. civqueez "foo_b|ar_fizz" -> foo_queez|_fizz
+    -- e.g. dav "foo_b|ar_fizz" -> foo_fizz
+    --
+    {
+        "Julian/vim-textobj-variable-segment",
+        dependencies = { "kana/vim-textobj-user" },
+    },
 
     -- Life-changing text object extension. It's hard to explain but ...
     --
@@ -391,20 +436,26 @@ require("lazy").setup({
     {
         "ColinKennedy/vim-ninja-feet",
         keys = {
-            "d[",
-            "d]",
-            "s[",
-            "s]",
             "c[",
             "c]",
+            "d[",
+            "d]",
+            "p[",
+            "p]",
+            "s[",
+            "s]",
             "z[",
             "z]",
         },
     },
 
-    -- TODO: Add this later. Figure out why it isn't working
-    -- -- Adds `al/il` text objects for the current line
-    -- "kana/vim-textobj-line",
+    -- Adds `al/il` text objects for the current line
+    {
+        "kana/vim-textobj-line",
+        dependencies = {
+            "kana/vim-textobj-user",
+        },
+    },
 
     -- Exchange any two text objects with a new text-motion, `cx`
     {"tommcdo/vim-exchange", keys = {"cx"}},
@@ -442,3 +493,13 @@ require("lazy").setup({
     }
 )
 
+require("my_custom.remap")
+require("my_custom.initialization")
+require("my_custom.setting")
+
+-- TODO: Make this a better file path, later
+vim.cmd[[source ~/personal/.config/nvim/plugin/syntax_fix.vim]]
+-- TODO: Make this a better file path, later
+vim.cmd[[source ~/personal/.config/nvim/plugin/global_confirm.vim]]
+-- TODO: Make this a better file path, later
+vim.cmd[[source ~/personal/.config/nvim/plugin/miscellaneous_commands.vim]]

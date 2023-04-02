@@ -89,13 +89,12 @@ vim.keymap.set("t", "<C-w>=", "<C-\\><C-n><C-w>=i")
 vim.keymap.set("n", "<leader>cd", ":lcd %:p:h<cr>:pwd<cr>")
 
 -- Make navigation easier.
+--
 -- Important:
 --     Requires:
---         - https://github.com/ColinKennedy/vim-git-backup
 --         - https://github.com/junegunn/fzf.vim
 --
 vim.keymap.set("n", "<space>B", ":Buffers<CR>")
-vim.keymap.set("n", "<space>C", ":close<CR>")
 
 -- Search from the project root
 vim.keymap.set("n", "<space>E", ":call searcher#search_project_files()<CR>")
@@ -103,10 +102,10 @@ vim.keymap.set("n", "<space>E", ":call searcher#search_project_files()<CR>")
 -- Search the current directory
 vim.keymap.set("n", "<space>e", ":Files<CR>")
 vim.keymap.set("n", "<space>L", ":Lines<CR>")
-vim.keymap.set("n", "<space>N", ":enew<CR>")
 vim.keymap.set("n", "<space>O", ":GHistory<CR>")
-vim.keymap.set("n", "<space>R", ":FrgNoName<CR>")
 vim.keymap.set("n", "<space>e", ":Files<CR>")
+
+vim.keymap.set("n", "<space>C", ":close<CR>")
 
 if vim.fn.has("nvim")
 then
@@ -145,3 +144,6 @@ vim.keymap.set("v", "<leader>pe", ":<C-U>call traceback_parser_python#parse_visu
 -- Replay the last run in the terminal
 -- TODO: Make this a function that auto-finds the last terminal
 vim.keymap.set("n", "<leader>rr", ":SendTop !!<CR>", {silent=true})
+
+-- Keep the cursor in the same position while pressing ``J``, in NORMAL mode
+vim.keymap.set("n", "J", "mzJ`z")
