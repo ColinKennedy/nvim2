@@ -1,4 +1,4 @@
-if vim.fn.exists("*win_getid") ~= 0
+if vim.fn.exists("*win_getid") == 0
 then
     vim.cmd('silent !echo "Cursor position logic cannot be ran. Vim is too old."')
 

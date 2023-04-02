@@ -12,8 +12,6 @@ visual space doesn't work
 
 
 
-- Make the Cedit command parse and use wildignore's data
-- Need to remap space to :
 - Make sure to add plugins as git submodules, later
 - What is impatient.nvim?
     - https://github.com/lewis6991/impatient.nvim

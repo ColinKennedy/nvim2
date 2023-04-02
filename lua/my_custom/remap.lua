@@ -1,6 +1,3 @@
--- Use Spacebar to execute commands
-vim.keymap.set("n", "<Space>", ":")
-
 -- Pressing Enter and Shift+Enter will add a new line below the bottom
 vim.keymap.set("n", "<S-Enter>", "O<Esc>j")
 
@@ -97,27 +94,27 @@ vim.keymap.set("n", "<leader>cd", ":lcd %:p:h<cr>:pwd<cr>")
 --         - https://github.com/ColinKennedy/vim-git-backup
 --         - https://github.com/junegunn/fzf.vim
 --
-vim.keymap.set("n", ":B", ":Buffers<CR>")
-vim.keymap.set("n", ":C", ":close<CR>")
+vim.keymap.set("n", "<space>B", ":Buffers<CR>")
+vim.keymap.set("n", "<space>C", ":close<CR>")
 
 -- Search from the project root
-vim.keymap.set("n", ":E", ":call searcher#search_project_files()<CR>")
+vim.keymap.set("n", "<space>E", ":call searcher#search_project_files()<CR>")
 
 -- Search the current directory
-vim.keymap.set("n", ":e", ":Files<CR>")
-vim.keymap.set("n", ":L", ":Lines<CR>")
-vim.keymap.set("n", ":N", ":enew<CR>")
-vim.keymap.set("n", ":O", ":GHistory<CR>")
-vim.keymap.set("n", ":R", ":FrgNoName<CR>")
-vim.keymap.set("n", ":e", ":Files<CR>")
+vim.keymap.set("n", "<space>e", ":Files<CR>")
+vim.keymap.set("n", "<space>L", ":Lines<CR>")
+vim.keymap.set("n", "<space>N", ":enew<CR>")
+vim.keymap.set("n", "<space>O", ":GHistory<CR>")
+vim.keymap.set("n", "<space>R", ":FrgNoName<CR>")
+vim.keymap.set("n", "<space>e", ":Files<CR>")
 
 if vim.fn.has("nvim")
 then
     -- Nvim creates a terminal in the same buffer. So we make a separate one, first
-    vim.keymap.set("n", ":T", ":split<BAR>terminal<CR>", {silent=true})
+    vim.keymap.set("n", "<space>T", ":split<BAR>terminal<CR>", {silent=true})
 else
     -- Vim creates a terminal in a new buffer and puts you into insert mode
-    vim.keymap.set("n", ":T", ":terminal<CR>", {silent=true})
+    vim.keymap.set("n", "<space>T", ":terminal<CR>", {silent=true})
 end
 
 -- TODO: Fix this

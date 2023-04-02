@@ -126,7 +126,7 @@ require("lazy").setup({
     -- Add a quick status bar plugin
     {
         "nvim-lualine/lualine.nvim",
-        dep = {
+        dependencies = {
             "kyazdani42/nvim-web-devicons",
         },
         config = function()
@@ -157,7 +157,6 @@ require("lazy").setup({
     -- A tool which automatically backs up modified files to a git repository
     {
         "ColinKennedy/vim-git-backup",
-        cmd = "BackupCurrentFile",
     },
 
     -- Useful git commands. Such as :Gcd
@@ -228,11 +227,13 @@ require("lazy").setup({
     -- Plug 'junegunn/fzf', { 'do': function('BuildFZF') }
     {
         "junegunn/fzf",
-        lazy = true,
+        build=function()
+            vim.cmd[[call fzf#install()]]
+        end,
     },
     {
         "junegunn/fzf.vim",
-        dep = { "junegunn/fzf" },
+        dependencies = { "junegunn/fzf" },
         cmd = {
             "Buffers",
             "Files",
@@ -311,7 +312,7 @@ require("lazy").setup({
     -- TODO: Figure out if this will work
     -- {
     --     "kana/vim-operator-replace",
-    --     dep = { "kana/vim-operator-user" },
+    --     dependencies = { "kana/vim-operator-user" },
     --     config = function()
     --         -- Change the p[ut] key to now be a text object, like yy!
     --         vim.keymap.set("n", "p", "<Plug>(operator-replace)")
@@ -326,7 +327,7 @@ require("lazy").setup({
     -- },
     -- {
     --     "kana/vim-operator-user",
-    --     dep = {
+    --     dependencies = {
     --         "kana/vim-textobj-user",
     --     },
     --     lazy = true,
@@ -435,5 +436,9 @@ require("lazy").setup({
     --     "nvim-treesitter/playground",
     --     cmd = "TSPlaygroundToggle",
     -- },
-})
+    },
+    {
+        root = "~/personal/.config/nvim/bundle",
+    }
+)
 
