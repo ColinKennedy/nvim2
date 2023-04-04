@@ -47,11 +47,19 @@ vim.opt.timeoutlen = 500
 vim.opt.ttimeoutlen = 10
 
 -- Return to last edit position when opening files (You want this!)
--- TODO: Finish this
--- autocmd BufReadPost *
---      \ if line("'\"") > 0 && line("'\"") <= line("$") |
---      \   exe "normal! g`\"" |
---      \ endif
+vim.api.nvim_create_autocmd(
+    "BufReadPost",
+    {
+        callback = function()
+            local line = vim.fn.line("'\"")
+
+            if line > 0 and line <= vim.fn.line("$")
+            then
+                vim.cmd[[execute "normal! g`\""]]
+            end
+        end,
+    }
+)
 
 -- Remember info about open buffers on close
 vim.cmd("set viminfo^=%")
@@ -122,7 +130,7 @@ vim.cmd[[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j']]
 --
 if vim.fn.executable("par")
 then
-    vim.opt.formatprg = "par s0"
+    vim.opt.formatprg = "par s0w88"
 end
 
 -- Disable tag completion (TAB)

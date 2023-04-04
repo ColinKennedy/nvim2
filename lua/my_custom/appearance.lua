@@ -53,7 +53,7 @@ return {
         {
             "nvim-lualine/lualine.nvim",
             dependencies = {
-                "kyazdani42/nvim-web-devicons",
+                "nvim-tree/nvim-web-devicons",
             },
             config = function()
                 require('lualine').setup {
@@ -68,7 +68,7 @@ return {
         },
         -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
         {
-            "kyazdani42/nvim-web-devicons",
+            "nvim-tree/nvim-web-devicons",
             lazy = true,
         },
 

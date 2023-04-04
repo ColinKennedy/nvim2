@@ -18,4 +18,3 @@ vim.api.nvim_create_autocmd(
         command = "highlight QuickScopeSecondary guifg='#EAFF92' gui=underline ctermfg=140 cterm=underline",
     }
 )
-

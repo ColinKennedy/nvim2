@@ -18,26 +18,14 @@
 
 
 - Make sure to add plugins as git submodules, later
-- What is impatient.nvim?
-    - https://github.com/lewis6991/impatient.nvim
 
 - Where do treesitter parses install to? Can I localize them to my single folder?
 - Add treesitter parsers for other languages
-- Go through checkhealth stuff
 - Move plugin sections to their own files
 
-- Make sure the cursor stays in the middle
 - Implement HLNext
 
 - Either get treesitter's text objects to work or add vim-pythonsense back
-
-- Check that autojumping works
-   - Might need to do the ``latest_autojump_folder`` stuff
-
-- Make sure mappings work as expected
-- Make sure the after-load works. e.g. cursor.vim
-
-- Python - where's the colorcolumn? It's missing
 
 
 https://alpha2phi.medium.com/neovim-for-beginners-lua-autocmd-and-keymap-functions-3bdfe0bebe42
@@ -51,3 +39,7 @@ https://www.youtube.com/watch?v=w7i4amO_zaE&t=1464s
 https://www.youtube.com/watch?v=kdP4ZHE4Bx4
 
 https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
+
+
+- Go through checkhealth stuff
+- Do the rest of the TODO notes

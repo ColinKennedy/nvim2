@@ -1,3 +1,4 @@
+" TODO: Move to autoload
 " This function changes the default Vim fold text
 " Vim will try to fold a docstring in Python like this, by default:
 " '''Example string.\n\nMore info.'''

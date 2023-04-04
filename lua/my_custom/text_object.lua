@@ -14,6 +14,15 @@ return {
         },
         {
             "kana/vim-operator-replace",
+            config = function()
+                vim.keymap.set("n", "p" , "<Plug>(operator-replace)")
+                vim.keymap.set("n", "pp", "p", {noremap=true})
+                -- Set P to <NOP> so that it's not possible to accidentally put text
+                -- twice, using the P key.
+                --
+                vim.keymap.set("n", "P", "<NOP>")
+                vim.keymap.set("n", "PP", "P", {noremap=true})
+            end,
             dependencies = { "kana/vim-operator-user" },
             event = { "CursorMoved", "CursorMovedI" },
         },

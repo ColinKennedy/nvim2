@@ -6,6 +6,8 @@
 "
 command! -nargs=+ -complete=command Confirm execute <SID>confirm(<q-args>) | match none
 command! -nargs=+ -complete=command C execute <SID>confirm(<q-args>) | match none
+
+" TODO: Change this into an autoload
 function! s:confirm(cmd)
   let abort = 'match none | throw "Confirm: Abort"'
   let options = [abort, a:cmd, '', abort]

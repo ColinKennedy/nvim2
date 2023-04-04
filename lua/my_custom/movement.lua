@@ -13,12 +13,28 @@ return {
             },
         },
 
+        -- TODO: Try this again
+        -- {
+        --     "nvim-telescope/telescope.nvim",
+        --     dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
+        --     tag = "0.1.1",
+        --     cmd = {
+        --     }
+        -- },
+        -- {
+        --     "nvim-lua/plenary.nvim",
+        --     lazy = true,
+        -- },
+        -- {
+        --     "nvim-tree/nvim-web-devicons",
+        --     lazy = true,
+        -- },
+
         {
             "junegunn/fzf",
             build=function()
                 vim.cmd[[call fzf#install()]]
             end,
-            lazy = true,
         },
         {
             "junegunn/fzf.vim",
