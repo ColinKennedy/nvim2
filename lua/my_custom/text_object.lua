@@ -123,6 +123,12 @@ return {
         {
             "tpope/vim-unimpaired",
             keys = {
+                "<P",
+                "<p",
+                "=P",
+                "=p",
+                ">P",
+                ">p",
                 "[A",
                 "[B",
                 "[L",

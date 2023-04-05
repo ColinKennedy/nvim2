@@ -70,7 +70,7 @@ return {
         --
         {
             "bradford-smith94/quick-scope",
-            event = "BufFilePost",
+            event = { "CursorMoved", "CursorMovedI" },
             config = function()
                 -- Stop quick-scope highlighting after 160 characters
                 vim.g.qs_max_chars = 160
