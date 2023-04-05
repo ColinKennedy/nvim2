@@ -16,10 +16,10 @@ endfunction
 command! CloseAllQFAndLL call CloseAllQFAndLL()
 
 " Search at the project root (CMake, rez, git) for some search term
-command! -nargs=1 Prg :call searcher#search_project_text(<q-args>)
+command! -nargs=1 Prg :silent call searcher#search_project_text(<q-args>)
 
 " Change the current directory to the project root (CMake, rez, git)
-command! -nargs=0 Pcd :call searcher#cd_to_project()
+command! -nargs=0 Pcd :silent call searcher#cd_to_project()
 
 " Create a new file from the point of view of the currently-opened file.
 function! s:edit_from_current_file_directory(name)

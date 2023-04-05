@@ -168,20 +168,22 @@ then
     vim.api.nvim_create_autocmd(
         "TermOpen",
         {
-            command = "tnoremap <buffer> <Esc><ESC> <C-\\><C-n>",
+            callback = function()
+                local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+                local ending = ";#FZF"
+
+                if (name:sub(-#ending) == ending)
+                then
+                    return
+                end
+
+                vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>", {noremap=true, buffer=true})
+            end,
             group = group,
             pattern = "*",
         }
     )
-    vim.api.nvim_create_autocmd(
-        "FileType",
-        {
-            command = "autocmd FileType fzf tunmap <buffer> <Esc><ESC>",
-            group = group,
-            pattern = "fzf",
-        }
-    )
-
+    
     -- Neovim doesn't close the terminal immediately - this autocmd forces the
     -- terminal to close (like it does in Vim)
     --

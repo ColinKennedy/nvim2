@@ -117,7 +117,7 @@ vim.keymap.set("n", "<leader>cd", ":lcd %:p:h<cr>:pwd<cr>")
 vim.keymap.set("n", "<space>B", ":Buffers<CR>")
 
 -- Search from the project root
-vim.keymap.set("n", "<space>E", ":call searcher#search_project_files()<CR>")
+vim.keymap.set("n", "<space>E", ":call searcher#search_project_files()<CR>", {silent=true})
 
 -- Search the current directory
 vim.keymap.set("n", "<space>e", ":Files<CR>")
@@ -128,7 +128,7 @@ vim.keymap.set("n", "<space>e", ":Files<CR>")
 vim.keymap.set("n", "<space>C", ":close<CR>")
 
 -- Nvim creates a terminal in the same buffer. So we make a separate one, first
-vim.keymap.set("n", "<space>T", ":split<BAR>terminal<CR>", {silent=true})
+vim.keymap.set("n", "<space>T", ":split<BAR>wincmd j<BAR>resize 10N<BAR>terminal<CR>", {silent=true})
 
 -- TODO: Fix this
 -- -- Get the Python dot-path from a Python unittest error / fail line
