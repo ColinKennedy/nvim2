@@ -219,9 +219,7 @@ return {
             enabled = function()
                 return vim.v.version >= 800
             end,
-            config = function()
-                vim.cmd("let g:gemini#match_list = {'.*': [['(', ')'], ['{', '}'], ['[', ']'], ['`', '`']], '.usda': [['@', '@']]}")
-            end,
+            event = { "CursorMoved", "CursorMovedI" },
         },
 
         -- Give vim some shell-like commands that it's missing
@@ -279,5 +277,58 @@ return {
             "ColinKennedy/vim-strip-trailing-whitespace",
             cmd = "StripTrailingWhitespace",
         },
+
+        -- Add a tree plug-in
+        {
+            "nvim-tree/nvim-tree.lua",
+            config = function()
+                -- Already was set elsewhere. Ignore it
+                -- set termguicolors to enable highlight groups
+                --
+                -- vim.opt.termguicolors = true
+
+                -- Empty setup using defaults
+                require("nvim-tree").setup()
+                -- Useful if you don't have the devicons set up
+                -- require("nvim-tree").setup(
+                --     {
+                --         renderer = {
+                --             icons = {
+                --                 glyphs = {
+                --                     bookmark = "B",
+                --                     default = "",
+                --                     folder = {
+                --                         arrow_closed = ">",
+                --                         arrow_open = "v",
+                --                         default = "",
+                --                         empty = ".",
+                --                         empty_open = ".",
+                --                         open = "",
+                --                         symlink = "->",
+                --                         symlink_open = "->",
+                --                     },
+                --                     git = {
+                --                         ignored = "i",
+                --                         deleted = "D",
+                --                         renamed = "R->",
+                --                     },
+                --                     modified = "M",
+                --                     symlink = "->",
+                --                 },
+                --             },
+                --         },
+                --     }
+                -- )
+            end,
+            cmd = {
+                "NvimTreeFocus",
+                "NvimTreeOpen",
+                "NvimTreeToggle",
+            },
+            dependencies = {
+                "nvim-tree/nvim-web-devicons",
+            }
+        },
+        "nvim-tree/nvim-web-devicons",
     }
 }

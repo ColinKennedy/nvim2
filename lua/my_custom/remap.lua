@@ -10,15 +10,15 @@ vim.keymap.set("n", "<S-Enter>", "O<Esc>j")
 -- these keymaps will also accept a range,
 -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
 --
-vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+vim.keymap.set("n", "<A-h>", 'lua require("smart-splits").resize_left')
+vim.keymap.set("n", "<A-j>", 'lua require("smart-splits").resize_down')
+vim.keymap.set("n", "<A-k>", 'lua require("smart-splits").resize_up')
+vim.keymap.set("n", "<A-l>", 'lua require("smart-splits").resize_right')
 -- moving between splits
-vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+vim.keymap.set("n", "<C-h>", 'lua require("smart-splits").move_cursor_left')
+vim.keymap.set("n", "<C-j>", 'lua require("smart-splits").move_cursor_down')
+vim.keymap.set("n", "<C-k>", 'lua require("smart-splits").move_cursor_up')
+vim.keymap.set("n", "<C-l>", 'lua require("smart-splits").move_cursor_right')
 
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", {noremap=true})
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", {noremap=true})
@@ -126,6 +126,7 @@ vim.keymap.set("n", "<space>O", ":GHistory<CR>")
 vim.keymap.set("n", "<space>e", ":Files<CR>")
 
 vim.keymap.set("n", "<space>C", ":close<CR>")
+vim.keymap.set("n", "<space>S", ":NvimTreeOpen<CR>")
 
 -- Nvim creates a terminal in the same buffer. So we make a separate one, first
 vim.keymap.set("n", "<space>T", ":split<BAR>wincmd j<BAR>resize 10N<BAR>terminal<CR>", {silent=true})

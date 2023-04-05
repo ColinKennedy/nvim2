@@ -183,12 +183,12 @@ then
             pattern = "*",
         }
     )
-    
+
     -- Neovim doesn't close the terminal immediately - this autocmd forces the
     -- terminal to close (like it does in Vim)
     --
     -- Reference: https://vi.stackexchange.com/a/17923
-    -- 
+    --
     vim.api.nvim_create_autocmd(
         "TermClose",
         {
@@ -200,11 +200,11 @@ then
 
     -- Neovim also doesn't enter insert mode immediately when a terminal is
     -- opened. So we add it as an explicit command, here.
-    -- 
+    --
     -- This is different from `autocmd WinEnter` because `TermOpen`
     -- executes when a Terminal is first created. And WinEnter executes
     -- when you leave a window and come back to it.
-    -- 
+    --
     vim.api.nvim_create_autocmd(
         "TermOpen",
         {
