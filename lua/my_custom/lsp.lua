@@ -31,30 +31,97 @@ return {
         {
             "hrsh7th/nvim-cmp",
             config = function()
+                -- vim-hybrid doesn't come with syntax rules for nvim-cmp's menu. So we
+                -- need to add them, here.
+                --
+                -- Reference: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
+                --
+                vim.cmd[[
+                    " white
+                    highlight! CmpItemAbbr guibg=NONE gui=strikethrough guifg=888888
+
+                    " gray
+                    highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+                    " blue
+                    highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+                    highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch
+                    " light blue
+                    highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+                    highlight! link CmpItemKindInterface CmpItemKindVariable
+                    highlight! link CmpItemKindText CmpItemKindVariable
+                    " pink
+                    highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+                    highlight! link CmpItemKindMethod CmpItemKindFunction
+                    " front
+                    highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+                    highlight! link CmpItemKindProperty CmpItemKindKeyword
+                    highlight! link CmpItemKindUnit CmpItemKindKeyword
+                ]]
                 local cmp = require("cmp")
 
                 cmp.setup(
                     {
+                        -- Reference: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#show-devicons-as-kind-field
+                        formatting = {
+                          format = function(entry, vim_item)
+                            if vim.tbl_contains({ "path" }, entry.source.name) then
+                              local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
+                              if icon then
+                                vim_item.kind = icon
+                                vim_item.kind_hl_group = hl_group
+                                return vim_item
+                              end
+                            end
+                            return require("lspkind").cmp_format({ with_text = true })(entry, vim_item)
+                          end
+                        },
                         snippet = {
                             expand = function(args)
-                                -- TODO: Consider adding luasnip or something here
-                                vim.fn["UltiSnips#Anon"](args.body)
+                                require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
                             end,
                         },
-                        mapping = cmp.mapping.preset.insert({
-                          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                        mapping = {
+                          ["<C-p>"] = cmp.mapping.select_prev_item(),
+                          ["<C-n>"] = cmp.mapping.select_next_item(),
+                          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                           ["<C-f>"] = cmp.mapping.scroll_docs(4),
                           ["<C-Space>"] = cmp.mapping.complete(),
-                          ["<C-e>"] = cmp.mapping.abort(),
-                          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                        }),
+                          ["<C-e>"] = cmp.mapping.close(),
+                          ["<CR>"] = cmp.mapping.confirm {
+                            behavior = cmp.ConfirmBehavior.Replace,
+                            select = false,
+                          },
+                          ["<Tab>"] = cmp.mapping(function(fallback)
+                            if cmp.visible() then
+                              cmp.select_next_item()
+                            elseif require("luasnip").expand_or_jumpable() then
+                              vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+                            else
+                              fallback()
+                            end
+                          end, {
+                            "i",
+                            "s",
+                          }),
+                          ["<S-Tab>"] = cmp.mapping(function(fallback)
+                            if cmp.visible() then
+                              cmp.select_prev_item()
+                            elseif require("luasnip").jumpable(-1) then
+                              vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+                            else
+                              fallback()
+                            end
+                          end, {
+                            "i",
+                            "s",
+                          }),
+                        },
                         sources = cmp.config.sources(
                             {
-                                -- TODO: Consider adding luasnip or something here
-                                { name = "ultisnips" },
-
-                                { name = "tmux" },
+                                { name = "luasnip" }, -- For luasnip users.
                                 { name = "buffer"  },
+                                { name = "tmux" },
+                                { name = "path" },  -- Complete from file paths
                             }
                         ),
                     }
@@ -89,17 +156,15 @@ return {
                 require("lspconfig")["jedi_language_server"].setup {
                     capabilities = capabilities
                 }
-                require("lspconfig")["pylsp"].setup {
-                    capabilities = capabilities
-                }
+                -- require("lspconfig")["pylsp"].setup {
+                --     capabilities = capabilities
+                -- }
             end,
             dependencies = {
-                -- TODO: Consider changing to LuaSnip
-                -- UltiSnips stuff
-                --
+                -- Snippet related
                 {
-                    "SirVer/ultisnips",
-                    "quangnguyen30192/cmp-nvim-ultisnips",
+                    "L3MON4D3/LuaSnip",
+                    "saadparwaiz1/cmp_luasnip",
                 },
 
                 -- Completion sources
@@ -120,16 +185,35 @@ return {
                     "hrsh7th/nvim-cmp",
                     "neovim/nvim-lspconfig",
                 },
+
+                -- For optional, fun icons in the completion menu
+                {
+                    "nvim-tree/nvim-web-devicons",
+                    "onsails/lspkind.nvim",
+                }
             },
         },
+
+        "saadparwaiz1/cmp_luasnip",
         {
-            "quangnguyen30192/cmp-nvim-ultisnips",
+            "L3MON4D3/LuaSnip",
             config = function()
-                -- optional call to setup (see customization section)
-                require("cmp_nvim_ultisnips").setup{}
+                -- -- require("luasnip.loaders.from_snipmate").lazy_load(
+                -- --     { paths = "./snippets" }
+                -- -- )
+                -- TODO: See if I can lazy_load here, later
+                require("luasnip.loaders.from_lua").load(
+                    { paths = "./snippets" }
+                )
+                local ls = require("luasnip").config.set_config(
+                    {
+                        updateevents = "TextChanged,TextChangedI",
+                        enable_autosnippets = true,
+                    }
+                )
             end,
-            -- If you want to enable filetype detection based on treesitter:
-            -- requires = { "nvim-treesitter/nvim-treesitter" },
+            -- follow latest release.
+            version = "1.*",
         },
 
         -- TODO: Consider removing / using this

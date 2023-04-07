@@ -47,6 +47,7 @@ return {
                 "Buffers",
                 "Files",
                 "GFiles",
+                "Help",
                 "History",
                 "Lines",
             },

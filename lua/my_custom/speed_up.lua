@@ -4,7 +4,7 @@ local plugins_to_disable = {
     "health",
     "man",
     "matchit",
-    "matchparen",
+    -- "matchparen",  -- I like being able to see matching parentheses
     "netrwPlugin",
     "remote_plugins",  -- This is a name for the runtime/plugin/rplugin.vim file
     "shada_plugin",
@@ -22,6 +22,7 @@ end
 
 
 -- Disable some default providers
-for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+-- for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+for _, provider in ipairs { "node", "perl", "ruby" } do
     vim.g["loaded_" .. provider .. "_provider"] = 0
 end
