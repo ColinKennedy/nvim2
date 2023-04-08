@@ -69,19 +69,23 @@ return {
         lazy = true,
     },
 
-    -- TODO: Add this, later
     -- " Enhanced markdown highlighting and syntax
-    -- Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-    -- let g:markdown_fenced_languages = [
-    --     \ 'bash=sh',
-    --     \ 'cpp',
-    --     \ 'js=javascript',
-    --     \ 'json',
-    --     \ 'php',
-    --     \ 'python',
-    --     \ 'sql',
-    --     \ 'usd=usda',
-    --     \ 'usda',
-    --     \ 'yaml',
-    --     \ ]
+    {
+        "tpope/vim-markdown",
+        ft = "markdown",
+        config = function()
+            vim.g.markdown_fenced_languages = {
+                "bash=sh",
+                "cpp",
+                "js=javascript",
+                "json",
+                "php",
+                "python",
+                "sql",
+                "usd=usda",
+                "usda",
+                "yaml",
+            }
+        end,
+    }
 }
