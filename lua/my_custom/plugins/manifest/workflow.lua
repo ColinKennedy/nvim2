@@ -130,12 +130,10 @@ return {
         "troydm/zoomwintab.vim",
     },
 
-    -- TODO: Not sure if this is still needed
-    -- -- Auto-read external file changes
-    -- {
-    --     "ColinKennedy/vim-file-system-watcher",
-    -- },
-    --
+    -- Auto-read external file changes
+    {
+        "ColinKennedy/vim-file-system-watcher",
+    },
 
     {
         "danymat/neogen",
