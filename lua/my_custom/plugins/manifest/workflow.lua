@@ -2,11 +2,7 @@ return {
     -- Lightweight CMake command - limited project structure knowledge
     {
         "ColinKennedy/vim-cmake",
-        cmd = {
-            "CMake",
-            "CMakeClean",
-            "CMakeFindBuildDir",
-        },
+        cmd = { "CMake", "CMakeClean", "CMakeFindBuildDir" },
         config = function()
             -- Always generate a compile_commands.json file
             vim.g.cmake_export_compile_commands = 1
@@ -17,10 +13,7 @@ return {
     {
         -- Async Make + awesome quick-fix window error reporting
         "ColinKennedy/vim-dispatch",
-        cmd = {
-            "Dispatch",
-            "Make",
-        },
+        cmd = { "Dispatch", "Make" },
         config = function()
             vim.g.dispatch_no_maps = 1
         end,
@@ -53,10 +46,7 @@ return {
     --
     {
         "MarcWeber/vim-addon-local-vimrc",
-        cmd = {
-            "SourceLocalVimrc",
-            "SourceLocalVimrcOnce",
-        },
+        cmd = { "SourceLocalVimrc", "SourceLocalVimrcOnce" },
     },
 
     -- Press * or # in Visual mode to start a search
@@ -115,39 +105,7 @@ return {
     {
         "mrjones2014/smart-splits.nvim",
         config = function()
-            require("smart-splits").setup(
-                {
-                    resize_mode = {
-                        hooks = {
-                            on_leave = require('bufresize').register,
-                        },
-                    },
-                }
-            )
-
-            -- Reference: https://www.reddit.com/r/neovim/comments/ohdptb/how_do_you_switch_terminal_buffers_but_keep_the/
-            -- Reference: https://github.com/mrjones2014/smart-splits.nvim
-            --
-            -- Allow movement between splits using Ctrl+h/j/k/l
-            -- recommended mappings
-            -- resizing splits
-            -- these keymaps will also accept a range,
-            -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
-            --
-            vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-            vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-            vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-            vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
-            -- moving between splits
-            vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-            vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-            vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-            vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
-
-            vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", {noremap=true})
-            vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", {noremap=true})
-            vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", {noremap=true})
-            vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", {noremap=true})
+            require("my_custom.plugins.data.smart_splits")
         end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
         keys = {
@@ -174,11 +132,7 @@ return {
     -- Press <C-w>o to full-screen the current buffer
     {
         "troydm/zoomwintab.vim",
-        cmd = {
-            "ZoomWinTabIn",
-            "ZoomWinTabOut",
-            "ZoomWinTabToggle",
-        },
+        cmd = { "ZoomWinTabIn", "ZoomWinTabOut", "ZoomWinTabToggle" },
     },
 
     -- TODO: Not sure if this is still needed
@@ -209,6 +163,7 @@ return {
         --
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        -- TODO: Inline the parsers, later!
         -- config = function()
         --     -- If you need to change the installation directory of the parsers (see
         --     -- "Advanced Setup" in the nvim-treesitter documentation).
@@ -223,18 +178,7 @@ return {
         cmd = "TSPlaygroundToggle",
     },
 
-    -- {
-    --     "kkoomen/vim-doge",
-    --     build = function()
-    --         vim.cmd[[call doge#install()]]
-    --     end,
-    --     config = function()
-    --         vim.g.doge_doc_standard_python = "google"
-    --         vim.cmd[[let g:doge_python_settings = { 'omit_redundant_param_types': 1 }]]
-    --     end,
-    --     tag = "v3.19.1",
-    -- },
-
+    -- TODO: Consider removing, later
     -- -- Debug basically any language
     -- --
     -- -- Reference: https://www.youtube.com/watch?v=AnTX2mtOl9Q
@@ -285,13 +229,9 @@ return {
         event = { "CursorMoved", "CursorMovedI" },
     },
 
-
-
-
     -- Quickfix helper functions
     -- TODO: Check if this works well with location lists, still
     {
-
         "romainl/vim-qf",
         ft = "qf",
     },
@@ -320,14 +260,7 @@ return {
     -- Give vim some shell-like commands that it's missing
     {
         "tpope/vim-eunuch",
-        cmd = {
-            "Delete",
-            "Mkdir",
-            "Move",
-            "Rename",
-            "SudoEdit",
-            "SudoWrite",
-        }
+        cmd = { "Delete", "Mkdir", "Move", "Rename", "SudoEdit", "SudoWrite" }
     },
 
     -- REPEAT LAST (USER) COMMAND and makes the '.' command even cooler
@@ -377,52 +310,18 @@ return {
     {
         "nvim-tree/nvim-tree.lua",
         config = function()
-            -- Already was set elsewhere. Ignore it
+            -- termguicolors was already set elsewhere. But I'll keep it commented here
+            -- just so that we remember to do it in case that changes in the future.
+            --
             -- set termguicolors to enable highlight groups
             --
             -- vim.opt.termguicolors = true
 
             -- Empty setup using defaults
             require("nvim-tree").setup()
-            -- Useful if you don't have the devicons set up
-            -- require("nvim-tree").setup(
-            --     {
-            --         renderer = {
-            --             icons = {
-            --                 glyphs = {
-            --                     bookmark = "B",
-            --                     default = "",
-            --                     folder = {
-            --                         arrow_closed = ">",
-            --                         arrow_open = "v",
-            --                         default = "",
-            --                         empty = ".",
-            --                         empty_open = ".",
-            --                         open = "",
-            --                         symlink = "->",
-            --                         symlink_open = "->",
-            --                     },
-            --                     git = {
-            --                         ignored = "i",
-            --                         deleted = "D",
-            --                         renamed = "R->",
-            --                     },
-            --                     modified = "M",
-            --                     symlink = "->",
-            --                 },
-            --             },
-            --         },
-            --     }
-            -- )
         end,
-        cmd = {
-            "NvimTreeFocus",
-            "NvimTreeOpen",
-            "NvimTreeToggle",
-        },
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        }
+        cmd = { "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
+        dependencies = { "nvim-tree/nvim-web-devicons" }
     },
     "nvim-tree/nvim-web-devicons",
 }

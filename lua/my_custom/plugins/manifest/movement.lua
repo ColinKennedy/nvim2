@@ -4,30 +4,8 @@ return {
     --
     {
         "padde/jump.vim",
-        cmd = {
-            "J",
-            "Jc",
-            "Jo",
-            "Jco",
-        },
+        cmd = { "J", "Jc", "Jo", "Jco" },
     },
-
-    -- TODO: Try this again
-    -- {
-    --     "nvim-telescope/telescope.nvim",
-    --     dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
-    --     tag = "0.1.1",
-    --     cmd = {
-    --     }
-    -- },
-    -- {
-    --     "nvim-lua/plenary.nvim",
-    --     lazy = true,
-    -- },
-    -- {
-    --     "nvim-tree/nvim-web-devicons",
-    --     lazy = true,
-    -- },
 
     {
         "junegunn/fzf",
@@ -42,14 +20,7 @@ return {
             vim.cmd[[let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }]]
         end,
         dependencies = { "junegunn/fzf" },
-        cmd = {
-            "Buffers",
-            "Files",
-            "GFiles",
-            "Help",
-            "History",
-            "Lines",
-        },
+        cmd = { "Buffers", "Files", "GFiles", "Help", "History", "Lines" },
     },
 
     -- A more modern, faster grep engine.
@@ -76,26 +47,7 @@ return {
         "bradford-smith94/quick-scope",
         event = { "CursorMoved", "CursorMovedI" },
         config = function()
-            -- Stop quick-scope highlighting after 160 characters
-            vim.g.qs_max_chars = 160
-
-            vim.api.nvim_create_augroup("qs_colors", { clear = true })
-            vim.api.nvim_create_autocmd(
-                "ColorScheme",
-                {
-                    group = "qs_colors",
-                    pattern = "*",
-                    command = "highlight QuickScopePrimary guifg='#5fffff' gui=underline ctermfg=112 cterm=underline",
-                }
-            )
-            vim.api.nvim_create_autocmd(
-                "ColorScheme",
-                {
-                    group = "qs_colors",
-                    pattern = "*",
-                    command = "highlight QuickScopeSecondary guifg='#EAFF92' gui=underline ctermfg=140 cterm=underline",
-                }
-            )
+            require("my_custom.plugins.data.quick_scope")
         end
     },
 }
