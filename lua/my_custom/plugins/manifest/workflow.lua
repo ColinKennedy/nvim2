@@ -131,8 +131,8 @@ return {
 
     -- Press <C-w>o to full-screen the current buffer
     {
+        -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
         "troydm/zoomwintab.vim",
-        cmd = { "ZoomWinTabIn", "ZoomWinTabOut", "ZoomWinTabToggle" },
     },
 
     -- TODO: Not sure if this is still needed
