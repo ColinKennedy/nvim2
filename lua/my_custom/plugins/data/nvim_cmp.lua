@@ -55,7 +55,7 @@ cmp.setup(
 	  ["<C-Space>"] = cmp.mapping.complete(),
 	  ["<C-e>"] = cmp.mapping.close(),
 	  ["<CR>"] = cmp.mapping.confirm {
-	    behavior = cmp.ConfirmBehavior.Replace,
+	    behavior = cmp.ConfirmBehavior.Insert,  -- Don't delete the word to the right
 	    select = false,
 	  },
 	  ["<Tab>"] = cmp.mapping(function(fallback)
@@ -110,12 +110,19 @@ cmp.setup.filetype(
 )
 
 -- Set up lspconfig.
+local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+lspconfig.jedi_language_server.setup { capabilities=capabilities }
 
--- Add your LSP servers here
-for _, name in pairs({ "jedi_language_server", "pylsp" })
-do
-    require("lspconfig")[name].setup {
-	capabilities = capabilities
-    }
-end
+-- Disable completion from pylsp because ``jedi_language_server``'s options are better.
+-- Everything else is good though and should be kept.
+--
+-- Reference: https://github.com/hrsh7th/nvim-cmp/issues/822
+--
+local configuration = require("cmp_nvim_lsp").default_capabilities()
+lspconfig.pylsp.setup {
+    capabilities=capabilities,
+    on_attach = function(client)
+	client.server_capabilities.completionProvider = false
+    end,
+}

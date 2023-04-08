@@ -555,236 +555,695 @@ return {
         ),
         { show_condition = is_dunder_prefix("invert") }
     ),
-}
 
--- TODO: FINISH THIS
--- snippet ior "Create a __ior__ method for a class" b
--- def __ior__(self, other):
---     ${1:pass}
--- endsnippet
---
--- snippet ipow "Create a __ipow__ method for a class" b
--- def __ipow__(self, other):
---     ${1:pass}
--- endsnippet
---
--- snippet irshift "Create a __irshift__ method for a class" b
--- def __irshift__(self, other):
---     ${1:pass}
--- endsnippet
---
--- snippet isub "Create a __isub__ method for a class" b
--- def __isub__(self, other):
---     ${1:pass}
--- endsnippet
---
--- snippet iter "Create a __iter__ method for a class" b
--- def __iter__(self):
---     yield $1
--- endsnippet
---
--- snippet itruediv "Create a __itruediv__ method for a class" b
--- def __itruediv__(self, other):
---     ${1:pass}
--- endsnippet
---
--- snippet ixor "Create a __ixor__ method for a class" b
--- def __ixor__(self, other):
---     ${1:pass}
--- endsnippet
---
--- snippet le "Create a __le__ method for a class" b
--- def __le__(self, other):
---     return ${1:False}
--- endsnippet
---
--- snippet len "Create a __len__ method for a class" b
--- def __len__(self):
---     return ${1:0}
--- endsnippet
---
--- snippet long "Create a __long__ method for a class" b
--- def __long__(self):
---     return $1
--- endsnippet
---
--- snippet lshift "Create a __lshift__ method for a class" b
--- def __lshift__(self, other):
---     return $1
--- endsnippet
---
--- snippet lt "Create a __lt__ method for a class" b
--- def __lt__(self, other):
---     return ${1:False}
--- endsnippet
---
--- snippet missing "Create a __missing__ method for a class" b
--- def __missing__(self, key):
---     ${1:pass}
--- endsnippet
---
--- snippet mod "Create a __mod__ method for a class" b
--- def __mod__(self, other):
---     return $1
--- endsnippet
---
--- snippet mul "Create a __mul__ method for a class" b
--- def __mul__(self, other):
---     return $1
--- endsnippet
---
--- snippet ne "Create a __ne__ method for a class" b
--- def __ne__(self, other):
---     return ${1:False}
--- endsnippet
---
--- snippet neg "Create a __neg__ method for a class" b
--- def __neg__(self):
---     return $1
--- endsnippet
---
--- snippet new "Create a __new__ method for a class" b
--- def __new__(self, mcs, clsname, bases, attrs):
---     return $1
--- endsnippet
---
--- snippet nonzero "Create a __nonzero__ method for a class" b
--- def __nonzero__(self):
---     return ${1:False}
--- endsnippet
---
--- snippet oct "Create a __oct__ method for a class" b
--- def __oct__(self):
---     return "$1"
--- endsnippet
---
--- snippet pos "Create a __pos__ method for a class" b
--- def __pos__(self):
---     return $1
--- endsnippet
---
--- snippet radd "Create a __radd__ method for a class" b
--- def __radd__(self, other):
---     return $1
--- endsnippet
---
--- snippet rcmp "Create a __rcmp__ method for a class" b
--- def __rcmp__(self, other):
---     return ${1:False}
--- endsnippet
---
--- snippet rdiv "Create a __rdiv__ method for a class" b
--- def __rdiv__(self, other):
---     return $1
--- endsnippet
---
--- snippet rdivmod "Create a __rdivmod__ method for a class" b
--- def __rdivmod__(self, other):
---     return $1
--- endsnippet
---
--- snippet repr "Create a __repr__ method for a class" b
--- def __repr__(self):
---     return "$1"
--- endsnippet
---
--- snippet reversed "Create a __reversed__ method for a class" b
--- def __reversed__(self):
---     for ${1:data} in reversed(self.$2):
---         yield ${1:data}
--- endsnippet
---
--- snippet rfloordiv "Create a __rfloordiv__ method for a class" b
--- def __rfloordiv__(self):
---     return $1
--- endsnippet
---
--- snippet rlshift "Create a __rlshift__ method for a class" b
--- def __rlshift__(self, other):
---     return $1
--- endsnippet
---
--- snippet rmod "Create a __rmod__ method for a class" b
--- def __rmod__(self, other):
---     return $1
--- endsnippet
---
--- snippet rmul "Create a __rmul__ method for a class" b
--- def __rmul__(self, other):
---     return $1
--- endsnippet
---
--- snippet ror "Create a __ror__ method for a class" b
--- def __ror__(self, other):
---     return $1
--- endsnippet
---
--- snippet rpow "Create a __rpow__ method for a class" b
--- def __rpow__(self, other):
---     return $1
--- endsnippet
---
--- snippet rrshift "Create a __rrshift__ method for a class" b
--- def __rrshift__(self, other):
---     return $1
--- endsnippet
---
--- snippet rshift "Create a __rshift__ method for a class" b
--- def __rshift__(self, other):
---     return $1
--- endsnippet
---
--- snippet rsub "Create a __rsub__ method for a class" b
--- def __rsub__(self, other):
---     return $1
--- endsnippet
---
--- snippet rtruediv "Create a __rtruediv__ method for a class" b
--- def __rtruediv__(self, other):
---     return $1
--- endsnippet
---
--- snippet rxor "Create a __rxor__ method for a class" b
--- def __rxor__(self, other):
---     return $1
--- endsnippet
---
--- snippet set "Create a __set__ method for a class" b
--- def __set__(self, instance, owner):
---     ${1:pass}
--- endsnippet
---
--- snippet setattr "Create a __setattr__ method for a class" b
--- def __setattr__(self, name, value):
---     ${1:pass}
--- endsnippet
---
--- snippet setitem "Create a __setitem__ method for a class" b
--- def __setitem__(self, key, value):
---     ${1:pass}
--- endsnippet
---
--- snippet str "Create a __str__ method for a class" b
--- def __str__(self):
---     return "$1"
--- endsnippet
---
--- snippet sub "Create a __sub__ method for a class" b
--- def __sub__(self, other):
---     return $1
--- endsnippet
---
--- snippet truediv "Create a __truediv__ method for a class" b
--- def __truediv__(self, other):
---     return $1
--- endsnippet
---
--- snippet unicode "Create a __unicode__ method for a class" b
--- def __unicode__(self):
---     return unicode($1)
--- endsnippet
---
--- snippet xor "Create a __xor__ method for a class" b
--- def __xor__(self, other):
---     return $1
--- endsnippet
+    snippet(
+        {
+            docstring="Create a __ior__ method for a class",
+            trig="ior",
+        },
+        format(
+            [[
+                def __ior__(self, other):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("ior") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __ipow__ method for a class",
+            trig="ipow",
+        },
+        format(
+            [[
+                def __ipow__(self, other):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("ipow") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __irshift__ method for a class",
+            trig="irshift",
+        },
+        format(
+            [[
+                def __irshift__(self, other):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("irshift") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __isub__ method for a class",
+            trig="isub",
+        },
+        format(
+            [[
+                def __isub__(self, other):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("isub") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __iter__ method for a class",
+            trig="iter",
+        },
+        format(
+            [[
+                def __iter__(self):
+                    yield {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("iter") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __itruediv__ method for a class",
+            trig="itruediv",
+        },
+        format(
+            [[
+                def __itruediv__(self, other):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("itruediv") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __ixor__ method for a class",
+            trig="ixor",
+        },
+        format(
+            [[
+                def __ixor__(self, other):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("ixor") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __le__ method for a class",
+            trig="le",
+        },
+        format(
+            [[
+                def __le__(self, other):
+                    return {}
+            ]],
+            { index(1, "False") }
+        ),
+        { show_condition = is_dunder_prefix("le") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __len__ method for a class",
+            trig="len",
+        },
+        format(
+            [[
+                def __len__(self):
+                    return {}
+            ]],
+            { index(1, "0") }
+        ),
+        { show_condition = is_dunder_prefix("len") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __long__ method for a class",
+            trig="long",
+        },
+        format(
+            [[
+                def __long__(self):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("long") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __lshift__ method for a class",
+            trig="lshift",
+        },
+        format(
+            [[
+                def __lshift__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("lshift") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __lt__ method for a class",
+            trig="lt",
+        },
+        format(
+            [[
+                def __lt__(self, other):
+                    return {}
+            ]],
+            { index(1, "False") }
+        ),
+        { show_condition = is_dunder_prefix("lt") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __missing__ method for a class",
+            trig="missing",
+        },
+        format(
+            [[
+                def __missing__(self, key):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("missing") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __mod__ method for a class",
+            trig="mod",
+        },
+        format(
+            [[
+                def __mod__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("mod") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __mul__ method for a class",
+            trig="mul",
+        },
+        format(
+            [[
+                def __mul__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("mul") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __ne__ method for a class",
+            trig="ne",
+        },
+        format(
+            [[
+                def __ne__(self, other):
+                    return {}
+            ]],
+            { index(1, "False") }
+        ),
+        { show_condition = is_dunder_prefix("ne") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __neg__ method for a class",
+            trig="neg",
+        },
+        format(
+            [[
+                def __neg__(self):
+                    return {}
+            ]],
+            { index(1, "False") }
+        ),
+        { show_condition = is_dunder_prefix("neg") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __new__ method for a class",
+            trig="new",
+        },
+        format(
+            [[
+                def __new__(self, mcs, clsname, bases, attrs):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("new") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __nonzero__ method for a class",
+            trig="nonzero",
+        },
+        format(
+            [[
+                def __nonzero__(self):
+                    return {}
+            ]],
+            { index(1, "False") }
+        ),
+        { show_condition = is_dunder_prefix("nonzero") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __oct__ method for a class",
+            trig="oct",
+        },
+        format(
+            [[
+                def __oct__(self):
+                    return "{}"
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("oct") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __pos__ method for a class",
+            trig="pos",
+        },
+        format(
+            [[
+                def __pos__(self):
+                    return "{}"
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("pos") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __radd__ method for a class",
+            trig="radd",
+        },
+        format(
+            [[
+                def __radd__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("radd") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rcmp__ method for a class",
+            trig="rcmp",
+        },
+        format(
+            [[
+                def __rcmp__(self, other):
+                    return {}
+            ]],
+            { index(1, "False") }
+        ),
+        { show_condition = is_dunder_prefix("rcmp") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rdiv__ method for a class",
+            trig="rdiv",
+        },
+        format(
+            [[
+                def __rdiv__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rdiv") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rdivmod__ method for a class",
+            trig="rdivmod",
+        },
+        format(
+            [[
+                def __rdivmod__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rdivmod") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __repr__ method for a class",
+            trig="repr",
+        },
+        format(
+            [[
+                def __repr__(self):
+                    return "{{self.__class__.__name__}}({})".format(self=self)
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("repr") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __reversed__ method for a class",
+            trig="reversed",
+        },
+        format(
+            [[
+                def __reversed__(self):
+                    for {} in reversed(self.{}):
+                        yield {}
+            ]],
+            { index(1, "data"), index(2, ""), rep(1) }
+        ),
+        { show_condition = is_dunder_prefix("reversed") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rfloordiv__ method for a class",
+            trig="rfloordiv",
+        },
+        format(
+            [[
+                def __rfloordiv__(self, other):
+                    {}
+            ]],
+            { index(1, "return 0") }
+        ),
+        { show_condition = is_dunder_prefix("rfloordiv") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rlshift__ method for a class",
+            trig="rlshift",
+        },
+        format(
+            [[
+                def __rlshift__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rlshift") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rmod__ method for a class",
+            trig="rmod",
+        },
+        format(
+            [[
+                def __rmod__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rmod") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rmul__ method for a class",
+            trig="rmul",
+        },
+        format(
+            [[
+                def __rmul__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rmul") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __ror__ method for a class",
+            trig="ror",
+        },
+        format(
+            [[
+                def __ror__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("ror") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rpow__ method for a class",
+            trig="rpow",
+        },
+        format(
+            [[
+                def __rpow__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rpow") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rrshift__ method for a class",
+            trig="rrshift",
+        },
+        format(
+            [[
+                def __rrshift__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rrshift") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rshift__ method for a class",
+            trig="rshift",
+        },
+        format(
+            [[
+                def __rshift__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rshift") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rsub__ method for a class",
+            trig="rsub",
+        },
+        format(
+            [[
+                def __rsub__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rsub") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rtruediv__ method for a class",
+            trig="rtruediv",
+        },
+        format(
+            [[
+                def __rtruediv__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rtruediv") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __rxor__ method for a class",
+            trig="rxor",
+        },
+        format(
+            [[
+                def __rxor__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("rxor") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __set__ method for a class",
+            trig="set",
+        },
+        format(
+            [[
+                def __set__(self, instance, owner):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("set") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __setattr__ method for a class",
+            trig="setattr",
+        },
+        format(
+            [[
+                def __setattr__(self, name, value):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("setattr") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __setitem__ method for a class",
+            trig="setitem",
+        },
+        format(
+            [[
+                def __setitem__(self, key, value):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("setitem") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __str__ method for a class",
+            trig="str",
+        },
+        format(
+            [[
+                def __str__(self):
+                    return "<{{self.__class__.__name__}} {}>".format(self=self)
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("str") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __sub__ method for a class",
+            trig="sub",
+        },
+        format(
+            [[
+                def __sub__(self, other):
+                    {}
+            ]],
+            { index(1, "return blah") }
+        ),
+        { show_condition = is_dunder_prefix("sub") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __truediv__ method for a class",
+            trig="truediv",
+        },
+        format(
+            [[
+                def __truediv__(self, other):
+                    return "{}"
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("truediv") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __unicode__ method for a class",
+            trig="unicode",
+        },
+        format(
+            [[
+                def __unicode__(self):
+                    return unicode({})
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("unicode") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __xor__ method for a class",
+            trig="xor",
+        },
+        format(
+            [[
+                def __xor__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("xor") }
+    )
+}

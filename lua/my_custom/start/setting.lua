@@ -9,8 +9,15 @@ vim.opt.guicursor = ""  -- Keeps the "fat cursor" in INSERT Mode
 -- Allow a large undo history. Don't use swap files. Those are so 80's
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undofile = false
+vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.api.nvim_create_autocmd(
+    "BufWritePost",
+    {
+        pattern = "*",
+        command = "execute 'wundo ' . escape(undofile(expand('%')),'% ')",
+    }
+)
 
 vim.opt.cmdheight = 2
 

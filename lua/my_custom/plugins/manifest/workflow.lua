@@ -136,9 +136,21 @@ return {
     },
 
     {
-        "danymat/neogen",
+        "ColinKennedy/neogen",
+        branch = "issues/137-add_google_docstring_raises",
         config = function()
-            require("neogen").setup({ snippet_engine = "luasnip" })
+            require("neogen").setup(
+                {
+                    languages = {
+                        python = {
+                            template = {
+                                annotation_convention = "google_docstrings"
+                            }
+                        },
+                    },
+                    snippet_engine = "luasnip",
+                }
+            )
             vim.keymap.set("n", "<space>d", ":Neogen<CR>")
         end,
         dependencies = {
