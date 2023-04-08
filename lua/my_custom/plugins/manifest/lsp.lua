@@ -20,6 +20,9 @@ return {
     -- A visual progress indicator for slow LSPs. Very useful for C++ & USD
     {
         "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup()
+        end,
         -- TODO: Add defer, later. Maybe
         -- event = { "CursorMoved", "CursorMovedI" },
     },
@@ -32,7 +35,12 @@ return {
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
     },
 
-    "saadparwaiz1/cmp_luasnip",
+    -- Allows (but does not link) LuaSnip snippets to nvim-cmp
+    {
+        "saadparwaiz1/cmp_luasnip",
+        lazy = true,
+    },
+
     {
         "L3MON4D3/LuaSnip",
         config = function()

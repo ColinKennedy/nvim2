@@ -114,6 +114,21 @@ return {
 	-- Set up lspconfig.
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+	local on_attach = function(client, buffer)
+	  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+	  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+	  -- Mappings.
+	  local opts = { noremap=true, silent=true }
+
+	  -- See `:help vim.lsp.*` for documentation on any of the below functions
+	  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	  vim.keymap.set("n", "[d", vim.lsp.diagnostic.goto_prev, opts)
+	  vim.keymap.set("n", "]d", vim.lsp.diagnostic.goto_next, opts)
+	  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	end
+
 	-- Add your LSP servers here
 	for _, name in pairs({ "jedi_language_server", "pylsp" })
 	do
