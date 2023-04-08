@@ -121,6 +121,7 @@ return {
                                 { name = "luasnip" },
 
                                 { name = "buffer"  },
+                                { name = "nvim_lsp" },  -- And auto-complete from LSPs
                                 { name = "tmux" },  -- Check text in other tmux panes
                                 { name = "path" },  -- Complete from file paths
                             }
