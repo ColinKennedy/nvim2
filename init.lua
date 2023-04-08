@@ -23,159 +23,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
+local filer = require("my_custom.utilities.filer")
+local tabler = require("my_custom.utilities.tabler")
+local extend = tabler.extend
+local plugins = {}
 
+extend(plugins, require("my_custom.plugins.manifest.appearance"))
+extend(plugins, require("my_custom.plugins.manifest.movement"))
+extend(plugins, require("my_custom.plugins.manifest.text_object"))
+extend(plugins, require("my_custom.plugins.manifest.workflow"))
+extend(plugins, require("my_custom.plugins.manifest.lsp"))
 
-
-local plugins = {
-    -- TODO: Consider getting this stuff to work
-    -- -- Treesitter stuff
-    -- {
-    --     "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
-    -- },
-    -- {
-    --     "nvim-treesitter/playground",
-    --     cmd = "TSPlaygroundToggle",
-    -- },
-}
-
-
-local packages = require("my_custom.plugins.appearance").packages
-
-for _, plugin in pairs(packages)
-do
-    table.insert(plugins, plugin)
-end
-
-local packages = require("my_custom.plugins.movement").packages
-
-for _, plugin in pairs(packages)
-do
-    table.insert(plugins, plugin)
-end
-
-local packages = require("my_custom.plugins.text_object").packages
-
-for _, plugin in pairs(packages)
-do
-    table.insert(plugins, plugin)
-end
-
-local packages = require("my_custom.plugins.workflow").packages
-
-for _, plugin in pairs(packages)
-do
-    table.insert(plugins, plugin)
-end
-
-local packages = require("my_custom.plugins.lsp").packages
-
-for _, plugin in pairs(packages)
-do
-    table.insert(plugins, plugin)
-end
-
-local configuration = {
-    root = "~/personal/.config/nvim/bundle",
-    performance = {
-        rtp = {
-	    disabled_plugins = {
-                "2html_plugin",
-                "tohtml",
-                "getscript",
-                "getscriptPlugin",
-                "gzip",
-                "logipat",
-                "netrw",
-                "netrwPlugin",
-                "netrwSettings",
-                "netrwFileHandlers",
-                "matchit",
-                "tar",
-                "tarPlugin",
-                "rrhelper",
-                "spellfile_plugin",
-                "vimball",
-                "vimballPlugin",
-                "zip",
-                "zipPlugin",
-                "tutor",
-                "rplugin",
-                "syntax",
-                "synmenu",
-                "optwin",
-                "compiler",
-                "bugreport",
-                "ftplugin",
-	    }
-	}
-    }
-}
-
--- plugins = {
---     {
---         "L3MON4D3/LuaSnip",
---         config = function()
---             -- -- require("luasnip.loaders.from_snipmate").lazy_load(
---             -- --     { paths = "./snippets" }
---             -- -- )
---             -- -- TODO: See if I can lazy_load here, later
---             -- require("luasnip.loaders.from_lua").load(
---             --     { paths = "./snippets" }
---             -- )
---             --
---             -- local ls = require("luasnip")
---             -- local s = ls.s
---             -- local t = ls.t
---             --
---
---             local ls = require("luasnip")
---             local s = ls.s
---             local types = require("luasnip.util.types")
---             local t =ls.t
---
---             ls.config.set_config(
---                 -- TODO: Revisit these settings later
---                 {
---                     history = true,
---                     updateevents = "TextChanged,TextChangedI",  -- Allow snippets to update as you type
---                     enable_autosnippets = true,
---                     ext_opts = {
---                         [types.choiceNode] = {
---                             active= {
---                                 virt_text = { { "<-", "Error"} }
---                             },
---                         },
---                     },
---                 }
---             )
---
---             ls.snippets = {
---                 all = {
---                     s("something", t("blah"))
---                 },
---                 python = {
---                     s("something", t("blah"))
---                 }
---             }
---
---             -- TODO: Remove later
---             vim.keymap.set(
---                 {"i", "s"},
---                 "<C-k>",
---                 function()
---                     if ls.expand_or_jumpable()
---                     then
---                         -- print("EXPANDING")
---                         ls.expand_or_jump()
---                     end
---                 end,
---                 {silent=true}
---             )
---         end,
---         -- follow latest release.
---         version = "1.*",
---     },
--- }
+-- ``root`` e.g. ~/personal/.config/nvim/bundle"
+local configuration = { root = filer.get_current_directory() .. "/bundle" }
 
 require("lazy").setup(plugins, configuration)
 

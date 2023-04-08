@@ -32,6 +32,15 @@ return {
     snippet(
         {
             docstring="Return True",
+            trig="r",
+        },
+        format("return {}", { index(1, "") }),
+        { show_condition = is_source_beginning("r") }
+    ),
+
+    snippet(
+        {
+            docstring="Return True",
             trig="rt",
         },
         text("return True"),
