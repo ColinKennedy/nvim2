@@ -89,7 +89,7 @@ vim.api.nvim_create_user_command(
 	end
 
         local _include_newline = function(text)
-            return vim.api.nvim_replace_termcodes("<CR>", 1, 1, 1)
+            return text .. vim.api.nvim_replace_termcodes("<CR>", 1, 1, 1)
         end
 
         local tab = vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage())
@@ -116,8 +116,8 @@ vim.api.nvim_create_user_command(
 
         if options["bang"]
         then
-            print("Sending to tmux")
             -- TODO: Need to add this
+            print("Sending to tmux")
 
 	    return
         end
@@ -126,8 +126,8 @@ vim.api.nvim_create_user_command(
 
 	if job_id == nil or _is_buffer_hidden(terminal_buffer)
 	then
-            print("Sending to tmux")
             -- TODO: Need to add this
+            print("Sending to tmux")
 
 	    return
 	end

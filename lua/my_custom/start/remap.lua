@@ -137,3 +137,8 @@ vim.keymap.set("n", "<leader>rr", ":SendTop !!<CR>", {silent=true})
 
 -- Keep the cursor in the same position while pressing ``J``, in NORMAL mode
 vim.keymap.set("n", "J", "mzJ`z")
+
+-- Send the copied text to the nearest, visible terminal
+vim.keymap.set("n", "<leader>st", ':execute "SendToRecentTerminal " . @+<CR>', {silent=true})
+-- Re-run the last terminal command (This is UNIX-specific)
+vim.keymap.set("n", "<leader>rr", ":SendToRecentTerminal !!<CR>", {silent=true})

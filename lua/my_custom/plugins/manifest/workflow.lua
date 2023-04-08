@@ -102,18 +102,13 @@ return {
         event = { "TabEnter", "TabLeave" },
     },
 
+    -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
     {
         "mrjones2014/smart-splits.nvim",
         config = function()
             require("my_custom.plugins.data.smart_splits")
         end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
-        keys = {
-            "<C-h>",
-            "<C-j>",
-            "<C-k>",
-            "<C-l>",
-        },
     },
     {
         "kwkarlwang/bufresize.nvim",
