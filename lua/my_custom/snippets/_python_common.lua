@@ -1,3 +1,8 @@
+local snippet_helper = require("my_custom.utilities.snippet_helper")
+local is_line_beginning = snippet_helper.is_line_beginning
+local is_source_beginning = snippet_helper.is_source_beginning
+local or_ = snippet_helper.or_
+local line_end = require("luasnip.extras.conditions.show").line_end
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local index = luasnip.i
@@ -6,11 +11,12 @@ local text = luasnip.t
 
 return {
     snippet(
-        "_CURRENT_DIRECTORY",
         {
             docstring="Get the current directory",
-            text("_CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))")
-        }
+            trig="_CURRENT_DIRECTORY",
+        },
+        text("_CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))"),
+        { show_condition = is_source_beginning("_CURRENT_DIRECTORY") }
     ),
 
     snippet(
@@ -18,16 +24,9 @@ return {
             docstring="Get a vanilla Python logger.",
             trig="_LOGGER",
         },
-        format("_LOGGER = logging.getLogger({})", { index(1, "__name__") })
+        format("_LOGGER = logging.getLogger({})", { index(1, "__name__") }),
+        { show_condition = is_source_beginning("_LOGGER") }
     ),
-
-    -- snippet(
-    --     {
-    --         trig="dirgrep",
-    --         dscr="dirgrep the currnt selection",
-    --     },
-    --     format("_LOGGER = logging.getLogger({})", { index(1, "__name__") })
-    -- )
 
     snippet(
         {
@@ -37,7 +36,8 @@ return {
         format(
             'print(sorted(item for item in dir({}) if "{}" in item.lower()))',
             { index(1, "sequence"), index(2, "") }
-        )
+        ),
+        { show_condition = is_source_beginning("dirgrep") }
     ),
 
     snippet(
@@ -45,7 +45,9 @@ return {
             docstring="Add a TODO note",
             trig="td",
         },
-        format('# TODO : {}', { index(1, "") })
+        format('# TODO : {}', { index(1, "") }),
+        { show_condition = or_(is_source_beginning("td"), line_end) }
+
     ),
 
     snippet(
@@ -53,7 +55,8 @@ return {
             docstring="Create a triple-quote docstring",
             trig='D"',
         },
-        format('"""{}."""', { index(1, "") })
+        format('"""{}."""', { index(1, "") }),
+        { show_condition = is_source_beginning('D"') }
     ),
 
     snippet(
@@ -61,7 +64,8 @@ return {
             docstring="Create a triple-quote docstring",
             trig="D'",
         },
-        format("'''{}.'''", { index(1, "") })
+        format("'''{}.'''", { index(1, "") }),
+        { show_condition = is_source_beginning("D'") }
     ),
 
     snippet(
@@ -80,29 +84,34 @@ return {
         format("os.path.join({})", { index(1, "") })
     ),
 
-    -- -- TODO: Possibly slow. Check if I can say "only beginning"
-    -- -- Fix this 
-    -- snippet(
-    --     {
-    --         docstring="def main()",
-    --         regTrig=true,
-    --         trig="^main",
-    --     },
-    --     -- format([[
-    --     --     def main():
-    --     --         """Run the main execution of the script."""
-    --     --         {}
-    --     --     ]],
-    --     --     { index(1, "pass") }
-    --     -- )
-    --     format("ASDL:KAJSD:LAKSJD", {})
-    -- ),
+    snippet(
+        {
+            docstring="def main()",
+            trig="main",
+        },
+        format([[
+            def main():
+                """Run the main execution of the script."""
+                {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_line_beginning }
+    ),
 
-    -- TODO: Fix this
-    -- snippet "^ifm" "if __name__ == '__main__'" rb
-    -- if __name__ == "__main__":
-    --     ${1:main()}
-    -- endsnippet
+    snippet(
+        {
+            docstring="def main()",
+            trig="ifm",
+        },
+        format([[
+            if __name__ == "__main__":
+                {}
+            ]],
+            { index(1, "main()") }
+        ),
+        { show_condition = is_line_beginning }
+    ),
 
     snippet(
         {
@@ -119,7 +128,8 @@ return {
                 _LOGGER.addHandler(_HANDLER)
                 _LOGGER.setLevel(logging.INFO)
             ]],
-            { index(1, "some_logger_name") }
-        )
+            { index(1, "__name__") }
+        ),
+        { show_condition = is_source_beginning("_LOGGER_STREAM") }
     ),
 }

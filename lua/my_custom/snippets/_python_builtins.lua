@@ -1,3 +1,4 @@
+local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
@@ -9,8 +10,7 @@ return {
     snippet(
         {
             docstring="Class definition",
-            trig="^c",
-            regTrig=True,
+            trig="c",
         },
         format(
             [[
@@ -25,7 +25,8 @@ return {
                 rep(1),
                 index(4, ""),
             }
-        )
+        ),
+        { show_condition = is_source_beginning("c") }
     ),
 
     snippet(
@@ -33,7 +34,8 @@ return {
             docstring="Return True",
             trig="rt",
         },
-        text("return True")
+        text("return True"),
+        { show_condition = is_source_beginning("rt") }
     ),
 
     snippet(
@@ -41,7 +43,8 @@ return {
             docstring="Return False",
             trig="rf",
         },
-        text("return False")
+        text("return False"),
+        { show_condition = is_source_beginning("rf") }
     ),
 
     snippet(
@@ -49,7 +52,8 @@ return {
             docstring="Return None",
             trig="rn",
         },
-        text("return None")
+        text("return None"),
+        { show_condition = is_source_beginning("rn") }
     ),
 
     snippet(
@@ -68,57 +72,57 @@ return {
         format('".format({})', { index(1, "") })
     ),
 
-    -- TODO: Beginning of the line, only
     snippet(
         {
             docstring="raise",
             trig="ra",
         },
-        format("raise {}", { index(1, "") })
+        format("raise {}", { index(1, "") }),
+        { show_condition = is_source_beginning("ra") }
     ),
 
-    -- TODO: Beginning of the line, only
     snippet(
         {
             docstring="yield",
             trig="y",
         },
-        format("yield {}", { index(1, "") })
+        format("yield {}", { index(1, "") }),
+        { show_condition = is_source_beginning("y") }
     ),
 
-    -- TODO: Beginning of the line, only
     snippet(
         {
             docstring="import",
             trig="ii",
         },
-        format("import {}", { index(1, "") })
+        format("import {}", { index(1, "") }),
+        { show_condition = is_source_beginning("ii") }
     ),
 
-    -- TODO: Beginning of the line, only
     snippet(
         {
             docstring="@classmethod",
             trig="@c",
         },
-        text("@classmethod")
+        text("@classmethod"),
+        { show_condition = is_source_beginning("@c") }
     ),
 
-    -- TODO: Beginning of the line, only
     snippet(
         {
             docstring="@staticmethod",
             trig="@s",
         },
-        text("@staticmethod")
+        text("@staticmethod"),
+        { show_condition = is_source_beginning("@s") }
     ),
 
-    -- TODO: Beginning of the line, only
     snippet(
         {
             docstring="@property",
             trig="@p",
         },
-        text("@property")
+        text("@property"),
+        { show_condition = is_source_beginning("@p") }
     ),
 }

@@ -1,3 +1,4 @@
+local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local index = luasnip.i
@@ -15,6 +16,7 @@ return {
                 print({}.GetRootLayer().ExportToString())
             ]],
             { index(1, "stage") }
-        )
+        ),
+        { show_condition = is_source_beginning("ExportToString_usd") }
     )
 }

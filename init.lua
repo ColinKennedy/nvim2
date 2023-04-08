@@ -1,4 +1,4 @@
-require("my_custom.speed_up")
+require("my_custom.start.speed_up")
 
 -- Important: According to lazy.nvim, the leader key must be set before lazy.nvim is
 -- called or else it will break various things.
@@ -39,28 +39,35 @@ local plugins = {
 }
 
 
-local packages = require("my_custom.appearance").packages
+local packages = require("my_custom.plugins.appearance").packages
 
 for _, plugin in pairs(packages)
 do
     table.insert(plugins, plugin)
 end
 
-local packages = require("my_custom.movement").packages
+local packages = require("my_custom.plugins.movement").packages
 
 for _, plugin in pairs(packages)
 do
     table.insert(plugins, plugin)
 end
 
-local packages = require("my_custom.text_object").packages
+local packages = require("my_custom.plugins.text_object").packages
 
 for _, plugin in pairs(packages)
 do
     table.insert(plugins, plugin)
 end
 
-local packages = require("my_custom.workflow").packages
+local packages = require("my_custom.plugins.workflow").packages
+
+for _, plugin in pairs(packages)
+do
+    table.insert(plugins, plugin)
+end
+
+local packages = require("my_custom.plugins.lsp").packages
 
 for _, plugin in pairs(packages)
 do
@@ -104,11 +111,77 @@ local configuration = {
     }
 }
 
+-- plugins = {
+--     {
+--         "L3MON4D3/LuaSnip",
+--         config = function()
+--             -- -- require("luasnip.loaders.from_snipmate").lazy_load(
+--             -- --     { paths = "./snippets" }
+--             -- -- )
+--             -- -- TODO: See if I can lazy_load here, later
+--             -- require("luasnip.loaders.from_lua").load(
+--             --     { paths = "./snippets" }
+--             -- )
+--             --
+--             -- local ls = require("luasnip")
+--             -- local s = ls.s
+--             -- local t = ls.t
+--             --
+--
+--             local ls = require("luasnip")
+--             local s = ls.s
+--             local types = require("luasnip.util.types")
+--             local t =ls.t
+--
+--             ls.config.set_config(
+--                 -- TODO: Revisit these settings later
+--                 {
+--                     history = true,
+--                     updateevents = "TextChanged,TextChangedI",  -- Allow snippets to update as you type
+--                     enable_autosnippets = true,
+--                     ext_opts = {
+--                         [types.choiceNode] = {
+--                             active= {
+--                                 virt_text = { { "<-", "Error"} }
+--                             },
+--                         },
+--                     },
+--                 }
+--             )
+--
+--             ls.snippets = {
+--                 all = {
+--                     s("something", t("blah"))
+--                 },
+--                 python = {
+--                     s("something", t("blah"))
+--                 }
+--             }
+--
+--             -- TODO: Remove later
+--             vim.keymap.set(
+--                 {"i", "s"},
+--                 "<C-k>",
+--                 function()
+--                     if ls.expand_or_jumpable()
+--                     then
+--                         -- print("EXPANDING")
+--                         ls.expand_or_jump()
+--                     end
+--                 end,
+--                 {silent=true}
+--             )
+--         end,
+--         -- follow latest release.
+--         version = "1.*",
+--     },
+-- }
+
 require("lazy").setup(plugins, configuration)
 
-require("my_custom.remap")
-require("my_custom.initialization")
-require("my_custom.setting")
+require("my_custom.start.remap")
+require("my_custom.start.initialization")
+require("my_custom.start.setting")
 
 -- TODO: Make this a better file path, later
 vim.cmd[[source ~/personal/.config/nvim/plugin/syntax_fix.vim]]

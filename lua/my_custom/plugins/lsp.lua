@@ -118,9 +118,10 @@ return {
                         },
                         sources = cmp.config.sources(
                             {
-                                { name = "luasnip" }, -- For luasnip users.
+                                { name = "luasnip" },
+
                                 { name = "buffer"  },
-                                { name = "tmux" },
+                                { name = "tmux" },  -- Check text in other tmux panes
                                 { name = "path" },  -- Complete from file paths
                             }
                         ),

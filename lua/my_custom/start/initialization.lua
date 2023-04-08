@@ -161,6 +161,13 @@ vim.opt.guicursor= "n-v-c:block-Cursor"
 
 if vim.fn.has("nvim")
 then
+    local is_fzf_terminal = function()
+        local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+        local ending = ";#FZF"
+
+        return name:sub(-#ending) == ending
+    end
+
     local group = vim.api.nvim_create_augroup("TerminalBehavior", { clear = true })
     -- Switch from the terminal window back to other buffers quickly
     -- Reference: https://github.com/junegunn/fzf.vim/issues/544#issuecomment-457456166
@@ -169,10 +176,7 @@ then
         "TermOpen",
         {
             callback = function()
-                local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-                local ending = ";#FZF"
-
-                if (name:sub(-#ending) == ending)
+                if (is_fzf_terminal())
                 then
                     return
                 end

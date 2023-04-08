@@ -1,3 +1,4 @@
+local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
@@ -5,8 +6,29 @@ local index = luasnip.i
 local snippet = luasnip.s
 local text = luasnip.t
 
+
+local has_leading_whitespace = function(text)
+    return text:sub(1, 1) == " "
+end
+
+
+-- TODO: When treesitter is working, add a check for "if inside of a class"
+local is_dunder_prefix = function(trigger)
+    local wrapper = function(line_to_cursor)
+        -- If there is no indent, it can't be a Python dunder method
+        if not has_leading_whitespace(line_to_cursor)
+        then
+            return false
+        end
+
+        return is_source_beginning(trigger)(line_to_cursor)
+    end
+
+    return wrapper
+end
+
+
 return {
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __abs__ method for a class",
@@ -18,10 +40,10 @@ return {
                     return {}
             ]],
             { index(1, "0") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("abs") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __add__ method for a class",
@@ -33,10 +55,10 @@ return {
                     {}
             ]],
             { index(1, "return 0") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("add") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __call__ method for a class",
@@ -48,10 +70,10 @@ return {
                     {}
             ]],
             { index(1, ""), index(2, "") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("call") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __cmp__ method for a class",
@@ -63,10 +85,10 @@ return {
                     {}
             ]],
             { index(1, "return False") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("cmp") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __complex__ method for a class",
@@ -78,10 +100,10 @@ return {
                     {}
             ]],
             { index(1, "return 1") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("complex") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __contains__ method for a class",
@@ -93,25 +115,10 @@ return {
                     {}
             ]],
             { index(1, "return False") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("contains") }
     ),
 
-    -- TODO: Set at beginning, only
-    snippet(
-        {
-            docstring="Create a __contains__ method for a class",
-            trig="contains",
-        },
-        format(
-            [[
-                def __contains__(self, item):
-                    {}
-            ]],
-            { index(1, "return False") }
-        )
-    ),
-
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __del__ method for a class",
@@ -123,10 +130,10 @@ return {
                     {}
             ]],
             { index(1, "pass") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("del") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __delattr__ method for a class",
@@ -138,10 +145,10 @@ return {
                     {}
             ]],
             { index(1, "pass") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("delattr") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __delete__ method for a class",
@@ -153,10 +160,10 @@ return {
                     del instance.{}
             ]],
             { index(1, "") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("delete") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __delitem__ method for a class",
@@ -168,10 +175,10 @@ return {
                     del self.{}[key]
             ]],
             { index(1, "") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("delitem") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __div__ method for a class",
@@ -183,10 +190,10 @@ return {
                     {}
             ]],
             { index(1, "") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("div") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __enter__ method for a class",
@@ -199,10 +206,10 @@ return {
                     return {}
             ]],
             { index(1, ""), index(2, "self") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("enter") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __eq__ method for a class",
@@ -214,10 +221,10 @@ return {
                     {}
             ]],
             { index(1, "return False") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("eq") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __exit__ method for a class",
@@ -229,10 +236,10 @@ return {
                     {}
             ]],
             { index(1, "pass") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("exit") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __float__ method for a class",
@@ -244,10 +251,10 @@ return {
                     {}
             ]],
             { index(1, "return 0.0") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("float") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __floordiv__ method for a class",
@@ -259,10 +266,10 @@ return {
                     {}
             ]],
             { index(1, "return 0") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("floordiv") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __ge__ method for a class",
@@ -274,10 +281,10 @@ return {
                     {}
             ]],
             { index(1, "return False") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("ge") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __get__ method for a class",
@@ -289,10 +296,10 @@ return {
                     return self.{}
             ]],
             { index(1, "") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("get") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __getattr__ method for a class",
@@ -304,10 +311,10 @@ return {
                     {}
             ]],
             { index(1, "return") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("getattr") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __getattribute__ method for a class",
@@ -319,10 +326,10 @@ return {
                     {}
             ]],
             { index(1, "return") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("getattribute") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __getitem__ method for a class",
@@ -334,10 +341,10 @@ return {
                     return self.{}[key]
             ]],
             { index(1, "") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("getitem") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __gt__ method for a class",
@@ -349,25 +356,10 @@ return {
                     {}
             ]],
             { index(1, "return False") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("gt") }
     ),
 
-    -- TODO: Set at beginning, only
-    snippet(
-        {
-            docstring="Create a __gt__ method for a class",
-            trig="gt",
-        },
-        format(
-            [[
-                def __gt__(self, other):
-                    {}
-            ]],
-            { index(1, "return False") }
-        )
-    ),
-
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __hash__ method for a class",
@@ -379,10 +371,10 @@ return {
                     {}
             ]],
             { index(1, "return") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("hash") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __hex__ method for a class",
@@ -394,10 +386,10 @@ return {
                     return "{}"
             ]],
             { index(1, "") }
-        )
+        ),
+        { show_condition = is_dunder_prefix("hex") }
     ),
 
-    -- TODO: Set at beginning, only
     snippet(
         {
             docstring="Create a __iadd__ method for a class",
@@ -409,62 +401,163 @@ return {
                     {}
                     return self
             ]],
-            { index(1, "return") }
-        )
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("iadd") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __iand__ method for a class",
+            trig="iand",
+        },
+        format(
+            [[
+                def __iand__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("iand") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __idiv__ method for a class",
+            trig="idiv",
+        },
+        format(
+            [[
+                def __idiv__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("idiv") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __ifloordiv__ method for a class",
+            trig="ifloordiv",
+        },
+        format(
+            [[
+                def __ifloordiv__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("ifloordiv") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __ilshift__ method for a class",
+            trig="ilshift",
+        },
+        format(
+            [[
+                def __ilshift__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("ilshift") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __imod__ method for a class",
+            trig="imod",
+        },
+        format(
+            [[
+                def __ilshift__(self, other):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("imod") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __imul__ method for a class",
+            trig="imul",
+        },
+        format(
+            [[
+                def __imul__(self, other):
+                    return {}
+            ]],
+            { index(1, "") }
+        ),
+        { show_condition = is_dunder_prefix("imul") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __index__ method for a class",
+            trig="index",
+        },
+        format(
+            [[
+                def __index__(self):
+                    return {}
+            ]],
+            { index(1, "0") }
+        ),
+        { show_condition = is_dunder_prefix("index") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __init__ method for a class",
+            trig="init",
+        },
+        format(
+            [[
+                def __init__(self{}):
+                    {}
+            ]],
+            { index(1, ""), index(2, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("init") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __int__ method for a class",
+            trig="int",
+        },
+        format(
+            [[
+                def __int__(self):
+                    return {}
+            ]],
+            { index(1, "0") }
+        ),
+        { show_condition = is_dunder_prefix("int") }
+    ),
+
+    snippet(
+        {
+            docstring="Create a __invert__ method for a class",
+            trig="invert",
+        },
+        format(
+            [[
+                def __invert__(self):
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_dunder_prefix("invert") }
     ),
 }
 
 -- TODO: FINISH THIS
--- snippet iand "Create a __iand__ method for a class" b
--- def __iand__(self, other):
---     return ${1:pass}
--- endsnippet
---
--- snippet idiv "Create a __idiv__ method for a class" b
--- def __idiv__(self, other):
---     return $1
--- endsnippet
---
--- snippet ifloordiv "Create a __ifloordiv__ method for a class" b
--- def __ifloordiv__(self, other):
---     return $1
--- endsnippet
---
--- snippet ilshift "Create a __ilshift__ method for a class" b
--- def __ilshift__(self, other):
---     return $1
--- endsnippet
---
--- snippet imod "Create a __imod__ method for a class" b
--- def __imod__(self, other):
---     ${1:pass}
--- endsnippet
---
--- snippet imul "Create a __imul__ method for a class" b
--- def __imul__(self, other):
---     return $1
--- endsnippet
---
--- snippet index "Create a __index__ method for a class" b
--- def __index__(self):
---     return ${1:0}
--- endsnippet
---
--- snippet init "Create a __init__ method for a class" b
--- def __init__(self$1):
---     ${2:pass}
--- endsnippet
---
--- snippet int "Create a __int__ method for a class" b
--- def __int__(self):
---     return ${1:0}
--- endsnippet
---
--- snippet invert "Create a __invert__ method for a class" b
--- def __invert__(self):
---     ${1:pass}
--- endsnippet
---
 -- snippet ior "Create a __ior__ method for a class" b
 -- def __ior__(self, other):
 --     ${1:pass}
