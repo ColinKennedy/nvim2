@@ -120,7 +120,7 @@ return {
         config = function()
             require("bufresize").setup()
         end,
-        event = { "CursorMoved", "CursorMovedI" },
+        event = { "BufWinEnter", "VimResized", "WinEnter" },
     },
 
     -- TODO: Consider adding this again
@@ -146,13 +146,13 @@ return {
         "danymat/neogen",
         config = function()
             require("neogen").setup({ snippet_engine = "luasnip" })
-            vim.keymap.set("n", "<leader><leader>d", ":Neogen<CR>")
+            vim.keymap.set("n", "<space>d", ":Neogen<CR>")
         end,
         dependencies = {
             "L3MON4D3/LuaSnip",
             "nvim-treesitter/nvim-treesitter"
         },
-        keys = { "<leader><leader>d" },
+        keys = { "<space>d" },
         version = "*",  -- Only follow the latest stable release
     },
     {

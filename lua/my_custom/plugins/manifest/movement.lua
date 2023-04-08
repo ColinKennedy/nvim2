@@ -12,6 +12,7 @@ return {
         build=function()
             vim.cmd[[call fzf#install()]]
         end,
+        lazy = true,
     },
     {
         "junegunn/fzf.vim",
