@@ -35,10 +35,17 @@ vim.api.nvim_create_autocmd(
 )
 
 
+-- The ctermfg colors are determined by your terminal (``echo $TERM``). Mine is
+-- ``screen-256color `` at the time of writing. Their chart is located here:
+--
+-- References:
+--     https://www.ditig.com/256-colors-cheat-sheet
+--     https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
+--
 vim.cmd[[highlight DiagnosticError ctermfg=DarkRed guifg=DarkRed]]
-vim.cmd[[highlight DiagnosticWarn ctermfg=DarkYellow guifg=DarkYellow]]
-vim.cmd[[highlight DiagnosticInfo ctermfg=DarkMagenta guifg=DarkMagenta]]
-vim.cmd[[highlight DiagnosticHint ctermfg=DarkGray guifg=DarkGray]]
+vim.cmd[[highlight DiagnosticWarn ctermfg=94 guifg=#875f00]]
+vim.cmd[[highlight DiagnosticInfo ctermfg=239 guifg=#4e4e4e]]
+vim.cmd[[highlight DiagnosticHint ctermfg=17 guifg=#00005f]]
 
 -- Reference: https://www.reddit.com/r/neovim/comments/l00zzb/improve_style_of_builtin_lsp_diagnostic_messages
 -- Errors in Red
