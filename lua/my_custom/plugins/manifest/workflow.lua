@@ -169,14 +169,15 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         -- TODO: Inline the parsers, later!
-        -- config = function()
-        --     -- If you need to change the installation directory of the parsers (see
-        --     -- "Advanced Setup" in the nvim-treesitter documentation).
-        --     --
-        --     require("nvim-treesitter.configs").setup {
-        --         -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-        --     }
-        -- end,
+        config = function()
+            -- If you need to change the installation directory of the parsers (see
+            -- "Advanced Setup" in the nvim-treesitter documentation).
+            --
+            require("nvim-treesitter.configs").setup {
+                -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+                highlight = { enable = true },
+            }
+        end,
     },
     {
         "nvim-treesitter/playground",
