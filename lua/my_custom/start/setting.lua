@@ -49,5 +49,5 @@ vim.opt.lazyredraw = true
 --
 -- Reference: https://www.reddit.com/r/neovim/comments/r9acxp/neovim_is_slow_because_of_python_provider/
 --
-vim.g.python_host_prog = '/bin/python'
-vim.g.python3_host_prog = '/bin/python3'
+vim.g.python_host_prog = "/bin/python"
+vim.g.python3_host_prog = "/usr/local/bin/python3.7"

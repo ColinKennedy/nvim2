@@ -35,20 +35,25 @@ vim.api.nvim_create_autocmd(
 )
 
 
+vim.cmd[[highlight DiagnosticError ctermfg=DarkRed guifg=DarkRed]]
+vim.cmd[[highlight DiagnosticWarn ctermfg=DarkYellow guifg=DarkYellow]]
+vim.cmd[[highlight DiagnosticInfo ctermfg=DarkMagenta guifg=DarkMagenta]]
+vim.cmd[[highlight DiagnosticHint ctermfg=DarkGray guifg=DarkGray]]
+
 -- Reference: https://www.reddit.com/r/neovim/comments/l00zzb/improve_style_of_builtin_lsp_diagnostic_messages
 -- Errors in Red
-vim.cmd[[hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red]]
+vim.cmd[[highlight LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red]]
 -- Warnings in Yellow
-vim.cmd[[hi LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow]]
+vim.cmd[[highlight LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow]]
 -- Info and Hints in White
-vim.cmd[[hi LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White]]
-vim.cmd[[hi LspDiagnosticsVirtualTextHint guifg=White ctermfg=White]]
+vim.cmd[[highlight LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White]]
+vim.cmd[[highlight LspDiagnosticsVirtualTextHint guifg=White ctermfg=White]]
 
 -- Underline the offending code
-vim.cmd[[hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
-vim.cmd[[hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
-vim.cmd[[hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
-vim.cmd[[hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
+vim.cmd[[highlight LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
+vim.cmd[[highlight LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
+vim.cmd[[highlight LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
+vim.cmd[[highlight LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
 
 
 -- Whenever you move the cursor, the status-line shows LSP warnings / errors

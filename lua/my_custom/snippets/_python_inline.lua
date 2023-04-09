@@ -55,28 +55,29 @@ end
 
 -- TODO: Get this working
 local post_expand_add_parenthesis_callback = function(trigger)
-    return {
-        -- index ``-1`` means the callback is on the snippet as a whole
-        -- callbacks = { [-1] = { [events.pre_expand] = add_ending_parenthesis } },
-        callbacks = { [-1] = { [events.leave] = function()
-            vim.api.nvim_create_autocmd(
-                "InsertCharPre",
-                {
-                    buffer = 0,
-                    once = true,
-                    callback = function()
-                        print("YO ASLDKJASD:LKJ")
-                        if string.find(vim.v.char, "%a") then
-                            vim.v.char = " " .. vim.v.char
-                        end
-                    end,
-                }
-            )
-        end,
-        }
-        },
-        show_condition = is_source_beginning("raise " .. trigger)
-    }
+    return {}
+    -- return {
+    --     -- index ``-1`` means the callback is on the snippet as a whole
+    --     -- callbacks = { [-1] = { [events.pre_expand] = add_ending_parenthesis } },
+    --     callbacks = { [-1] = { [events.leave] = function()
+    --         vim.api.nvim_create_autocmd(
+    --             "InsertCharPre",
+    --             {
+    --                 buffer = 0,
+    --                 once = true,
+    --                 callback = function()
+    --                     print("YO ASLDKJASD:LKJ")
+    --                     if string.find(vim.v.char, "%a") then
+    --                         vim.v.char = vim.v.char .. ")"
+    --                     end
+    --                 end,
+    --             }
+    --         )
+    --     end,
+    --     }
+    --     },
+    --     show_condition = is_source_beginning("raise " .. trigger)
+    -- }
 end
 
 

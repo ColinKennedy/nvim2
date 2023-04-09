@@ -52,8 +52,11 @@ cmp.setup(
 	  ["<C-n>"] = cmp.mapping.select_next_item(),
 	  ["<C-d>"] = cmp.mapping.scroll_docs(-4),
 	  ["<C-f>"] = cmp.mapping.scroll_docs(4),
-	  ["<C-Space>"] = cmp.mapping.complete(),
-	  ["<C-e>"] = cmp.mapping.close(),
+	  ["<C-j>"] = cmp.mapping.close(),
+	  ["<Space>"] = function(fallback)
+	    cmp.mapping.close()
+	    fallback()
+	  end,
 	  ["<CR>"] = cmp.mapping.confirm {
 	    behavior = cmp.ConfirmBehavior.Insert,  -- Don't delete the word to the right
 	    select = false,

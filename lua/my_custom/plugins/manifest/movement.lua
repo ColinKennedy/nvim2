@@ -17,11 +17,16 @@ return {
     {
         "junegunn/fzf.vim",
         config = function()
-            -- vim.cmd[[let g:fzf_layout = { 'down': '~80%' }]]
+            -- Define Zz to get around an error in lazy.nvim
+            -- This should be temporary, ideally. Delete, later
+            --
+            -- Reference: https://github.com/folke/lazy.nvim/issues/718
+            --
             vim.cmd[[let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }]]
+            vim.api.nvim_create_user_command("Zz", "Help", {nargs=0})
         end,
         dependencies = { "junegunn/fzf" },
-        cmd = { "Buffers", "Files", "GFiles", "Help", "History", "Lines" },
+        cmd = { "Buffers", "Files", "GFiles", "Zz", "History", "Lines" },
     },
 
     -- A more modern, faster grep engine.

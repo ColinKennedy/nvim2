@@ -7,8 +7,7 @@ return {
         end,
     },
 
-    -- TODO: Check if lazy-loading can make this load faster
-    { "romainl/vim-cool", event = "BufFilePost"},
+    { "romainl/vim-cool", event = {"CursorMoved", "CursorMovedI"}},
 
     -- Whenever you highlight, there's a brief "blink" to show you what you highlighted
     {
@@ -83,7 +82,7 @@ return {
                 "python",
                 "sql",
                 "usd=usda",
-                "usda",
+                -- "usda",  -- TODO: Add this, later
                 "yaml",
             }
         end,

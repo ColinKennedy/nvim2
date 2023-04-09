@@ -104,9 +104,12 @@ return {
         config = function()
             local null_ls = require("null-ls")
             local sources = {
+                null_ls.builtins.diagnostics.pydocstyle,
+                null_ls.builtins.diagnostics.pylint,
+                -- null_ls.builtins.diagnostics.ruff,
+                null_ls.builtins.formatting.isort,
+                null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.trim_whitespace,
-                null_ls.builtins.completion.spell,
-                null_ls.builtins.diagnostics.pydocstyle
             }
             null_ls.setup({ sources = sources })
         end,
