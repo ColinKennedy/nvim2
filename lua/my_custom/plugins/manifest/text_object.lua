@@ -3,7 +3,9 @@ return {
     {
         "kana/vim-textobj-line",
         dependencies = { "kana/vim-textobj-user" },
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-textobj-line")
+        end,
     },
 
     -- Surround plugin. Lets you change stuff would words really easily
@@ -23,7 +25,9 @@ return {
             vim.keymap.set("n", "PP", "P", {noremap=true})
         end,
         dependencies = { "kana/vim-operator-user" },
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-operator-replace")
+        end,
     },
     {
         "kana/vim-operator-user",
@@ -34,7 +38,9 @@ return {
     },
     {
         "tomtom/tcomment_vim",
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("tcomment_vim")
+        end,
     },
     {
         "kana/vim-textobj-user",
@@ -51,7 +57,9 @@ return {
             --     \ '@': {'quote': [{'d': '@'}]},
             --     \ })
         end,
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("targets.vim")
+        end,
     },
 
 
@@ -71,7 +79,9 @@ return {
         config=function()
             vim.g.indent_object_no_default_key_mappings = "1"
         end,
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-indent-object")
+        end,
     },
 
     {
@@ -80,7 +90,9 @@ return {
             vim.g.textobj_indent_no_default_key_mappings = "1"
         end,
         dependencies = { "kana/vim-textobj-user" },
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-textobj-indent")
+        end,
     },
 
     -- Gives vim a few tools to navigate through indented blocks more easily
@@ -104,7 +116,9 @@ return {
     {
         "ColinKennedy/vim-textobj-block-party",
         dependencies = { "kana/vim-textobj-user" },
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-textobj-block-party")
+        end,
     },
 
     -- Adds pair mappings (like ]l [l) to Vim
@@ -136,7 +150,9 @@ return {
     {
         "Julian/vim-textobj-variable-segment",
         dependencies = { "kana/vim-textobj-user" },
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-textobj-variable-segment")
+        end,
     },
 
     -- Life-changing text object extension. It's hard to explain but ...

@@ -7,7 +7,12 @@ return {
         end,
     },
 
-    { "romainl/vim-cool", event = {"CursorMoved", "CursorMovedI"}},
+    {
+        "romainl/vim-cool",
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-cool")
+        end,
+    },
 
     -- Whenever you highlight, there's a brief "blink" to show you what you highlighted
     {
@@ -23,7 +28,9 @@ return {
         config = function()
             require("my_custom.plugins.data.vim_gitgutter")
         end,
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-gitgutter")
+        end,
     },
 
     -- TODO: Add this later
@@ -60,7 +67,9 @@ return {
               },
             }
         end,
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("lualine.nvim")
+        end,
     },
     -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
     {

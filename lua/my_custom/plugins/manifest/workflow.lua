@@ -52,7 +52,9 @@ return {
     -- Press * or # in Visual mode to start a search
     {
         "bronson/vim-visual-star-search",
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-visual-star-search")
+        end,
     },
 
     -- Auto-completion tags for Houdini SideFX VEX commands
@@ -232,7 +234,9 @@ return {
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
     {
         "tpope/vim-projectionist",
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-projectionist")
+        end,
     },
 
     -- Quickfix helper functions
@@ -297,7 +301,9 @@ return {
     -- Auto-sets Vim ``tabstop`` and ``shiftwidth``, based on the existing file's context
     {
         "tpope/vim-sleuth",
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-sleuth")
+        end,
     },
 
     -- Show all file edits as an tree

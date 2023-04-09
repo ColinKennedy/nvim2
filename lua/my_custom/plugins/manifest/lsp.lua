@@ -1,6 +1,9 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("nvim-lspconfig")
+        end,
         config = function()
             require("my_custom.plugins.data.nvim_lsp_config")
 
@@ -31,7 +34,9 @@ return {
         config = function()
             require("fidget").setup()
         end,
-        event = { "CursorMoved", "CursorMovedI" },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("fidget.nvim")
+        end,
     },
 
     {
@@ -61,7 +66,9 @@ return {
                 }
             )
         end,
-        event = {"CursorMoved", "CursorMovedI"},
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("LuaSnip")
+        end,
         -- follow latest release.
         version = "1.*",
     },

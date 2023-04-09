@@ -51,9 +51,11 @@ return {
     --
     {
         "bradford-smith94/quick-scope",
-        event = { "CursorMoved", "CursorMovedI" },
         config = function()
             require("my_custom.plugins.data.quick_scope")
-        end
+        end,
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("quick-scope")
+        end,
     },
 }
