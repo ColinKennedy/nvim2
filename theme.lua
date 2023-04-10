@@ -154,7 +154,7 @@ vim.api.nvim_set_hl(0, "PmenuSel", _multi_2(_BG_AS_FG, _WHITE_BG))
 -- vim.api.nvim_set_hl(0, "PmenuThumb", _WHITE_50_BG)
 vim.api.nvim_set_hl(0, "Question", _YELLOW_FG)
 vim.api.nvim_set_hl(0, "QuickFixLine", _multi_2(_SEARCH_FG, _SEARCH_BG))
-vim.api.nvim_set_hl(0, "Search", _multi_2(_SEARCH_FG, _TITLE_BG))
+vim.api.nvim_set_hl(0, "Search", _multi_2(_SEARCH_FG, _TITLE_BG))  -- Matching search text
 vim.api.nvim_set_hl(0, "SignColumn", _BG)
 vim.api.nvim_set_hl(0, "SpecialKey", _SPECIAL_GRAY_FG)
 vim.api.nvim_set_hl(0, "SpellBad", _multi_3(_ERROR_FG, _ERROR_50_BG, _UNDERLINE))
@@ -173,6 +173,10 @@ vim.api.nvim_set_hl(0, "VisualNOS", _VISUAL_GRAY_FG)
 
 -- Quickfix
 vim.api.nvim_set_hl(0, "qfLineNr", _TITLE_FG)
+vim.api.nvim_set_hl(0, "QuickFixLine", {link="Search"})
+-- qfFileName
+-- qfLineNr
+-- qfError
 
 
 -- Plugin - nvim-treesitter/nvim-treesitter
