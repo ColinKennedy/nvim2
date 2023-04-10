@@ -92,11 +92,6 @@ local _VISUAL_GRAY_BG = {bg="#373b41", ctermbg=237}
 local _VISUAL_GRAY_FG = {fg="#373b41", ctermfg=237}
 local _WHITE_50_BG = {bg="#ffffff", ctermbg=231}
 
-local search_bg = "#f0c674"
-local statement = "#81a2be"
-local type = "#de935f"
-local vertsplit = "#303030"
-
 -- Controller Variables - Miscellaneous
 local _BOLD = {gui=bold, cterm=bold}
 local _REVERSE = {gui=reverse, cterm=reverse}
