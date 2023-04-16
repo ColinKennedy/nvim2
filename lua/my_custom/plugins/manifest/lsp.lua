@@ -122,7 +122,7 @@ return {
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",  -- :MasonUpdate updates registry contents
-        cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUpdate"}
+        cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUpdate"},
         config = function()
             require("mason").setup(
                 {
