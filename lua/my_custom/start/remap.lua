@@ -101,7 +101,6 @@ vim.keymap.set("n", "<space>O", ":GHistory<CR>")
 vim.keymap.set("n", "<space>e", ":Files<CR>")
 
 vim.keymap.set("n", "<space>C", ":close<CR>")
-vim.keymap.set("n", "<space>S", ":NvimTreeOpen<CR>")
 
 -- Nvim creates a terminal in the same buffer. So we make a separate one, first
 vim.keymap.set("n", "<space>T", ":split<BAR>wincmd j<BAR>resize 10N<BAR>terminal<CR>", {silent=true})

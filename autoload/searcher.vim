@@ -203,6 +203,27 @@ function! s:get_project_root(directory)
 endfunction
 
 
+function! s:execute_from_buffer(command, ...)
+    let l:current = getcwd()
+    let l:term = get(a:, '1', '')
+    let l:root = expand('%:p:h')
+    echo "ROOT"
+    echo l:root
+
+    " Change to the temporary root
+    execute ':cd ' . l:root
+
+    if !empty(l:term)
+        execute a:command . ' ' . l:term
+    else
+        execute a:command
+    endif
+
+    " Restore the previous working directory
+    execute ':cd ' . l:current
+endfunction
+
+
 " Run a command within a known project root, if any.
 "
 " The function searches, by default, in the following order
@@ -245,6 +266,11 @@ function! s:execute_from_project(command, ...)
 
     " Restore the previous working directory
     execute ':cd ' . l:current
+endfunction
+
+
+function! searcher#search_buffer_directory_files(text)
+    call s:execute_from_buffer(':Rg', a:text)
 endfunction
 
 

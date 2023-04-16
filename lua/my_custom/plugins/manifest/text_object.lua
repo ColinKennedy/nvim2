@@ -63,11 +63,15 @@ return {
     },
 
 
-    -- Adds "aC" and "iC" to delete comment blocks. Awesome!
+    -- Comment / uncomment with ``gcc`` and other ``gc`` text motion commands
     {
-        "ColinKennedy/vim-textobj-comment",
-        dependencies = { "kana/vim-textobj-user" },
-        keys = {"gc"},
+        "numToStr/Comment.nvim",
+        config = function()
+            require("Comment").setup()
+        end,
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("Comment.nvim")
+        end,
     },
 
     -- Lets you select inside indented blocks, using "ii"or "ai"
@@ -112,7 +116,7 @@ return {
         keys = {"{", "}"},
     },
 
-    -- -- A text-object that helps you select Python source-code blocks
+    -- A text-object that helps you select Python source-code blocks
     {
         "ColinKennedy/vim-textobj-block-party",
         dependencies = { "kana/vim-textobj-user" },

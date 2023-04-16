@@ -2,6 +2,7 @@ local is_source_beginning = require("my_custom.utilities.snippet_helper").is_sou
 local events = require("luasnip.util.events")
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
+local index = luasnip.i
 local snippet = luasnip.s
 local text = luasnip.t
 
@@ -82,6 +83,17 @@ end
 
 
 return {
+    snippet(
+        {
+            docstring="A print() call",
+            trig="p",
+        },
+        format(
+            [[print({})]],
+            { index(1, "") }
+        )
+    ),
+
     snippet(
         {
             docstring="raise AttributeError",

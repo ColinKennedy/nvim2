@@ -1,10 +1,11 @@
 return {
     {
-        "w0ng/vim-hybrid",
+        "ColinKennedy/hybrid2.nvim",
         priority = 1000,  -- Load this first
         config = function()
-            vim.cmd.colorscheme("hybrid")
+            vim.cmd.colorscheme("hybrid2")
         end,
+        version = "1.*"
     },
 
     {
@@ -22,15 +23,24 @@ return {
         end,
         event = "TextYankPost",
     },
-    -- GitGutter - Shows commits/unmodified text/etc
+
+    -- Shows added, removed, etc git hunks
     {
-        "airblade/vim-gitgutter",
+        "lewis6991/gitsigns.nvim",
         config = function()
-            require("my_custom.plugins.data.vim_gitgutter")
-        end,
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-gitgutter")
-        end,
+            require("gitsigns").setup(
+                {
+                    signs = {
+                        add = { text = "+" },
+                        change = { text = "~" },
+                        delete = { text = "_" },
+                        topdelete = { text = "‾" },
+                        changedelete = { text = "x" },
+                        untracked = { text = "" },
+                    },
+                }
+            )
+        end
     },
 
     -- TODO: Add this later
@@ -60,11 +70,25 @@ return {
         },
         config = function()
             require("lualine").setup {
-              options = {
-                theme = "onedark",
-                component_separators = "|",
-                section_separators = "",
-              },
+                options = {
+                    component_separators = { left = '', right = ''},
+                    icons_enabled = true,
+                    section_separators = { left = '', right = ''},
+                    theme = "onedark",
+                },
+                sections = {
+                  lualine_b = {
+                    {
+                      "diff",
+                      colored = true,
+                      diff_color = {
+                        added = "DiffAdd",
+                        modified = "DiffChange",
+                        removed = "DiffDelete",
+                      },
+                    }
+                  }
+                }
             }
         end,
         init = function()
@@ -87,6 +111,7 @@ return {
                 "cpp",
                 "js=javascript",
                 "json",
+                "lua",
                 "php",
                 "python",
                 "sql",

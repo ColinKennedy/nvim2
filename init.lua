@@ -49,8 +49,3 @@ vim.cmd[[source ~/personal/.config/nvim/plugin/syntax_fix.vim]]
 vim.cmd[[source ~/personal/.config/nvim/plugin/global_confirm.vim]]
 -- TODO: Make this a better file path, later
 vim.cmd[[source ~/personal/.config/nvim/plugin/miscellaneous_commands.vim]]
-
-
--- TODO: Remove this, later. Add as a plugin, probably
-vim.cmd[[so ~/personal/.config/nvim/theme.lua]]
--- vim.cmd[[so /tmp/generated_colors2.vim]]

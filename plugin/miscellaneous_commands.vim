@@ -18,6 +18,8 @@ command! CloseAllQFAndLL call CloseAllQFAndLL()
 " Search at the project root (CMake, rez, git) for some search term
 command! -nargs=1 Prg :silent call searcher#search_project_text(<q-args>)
 
+command! -nargs=1 Crg :silent call searcher#search_buffer_directory_files(<q-args>)
+
 " Change the current directory to the project root (CMake, rez, git)
 command! -nargs=0 Pcd :silent call searcher#cd_to_project()
 
@@ -50,9 +52,3 @@ if &rtp =~ 'vim-dispatch'
           \ execute dispatch#compile_command(<bang>0, <q-args>,
           \   <count> < 0 || <line1> == <line2> ? <count> : 0, '<mods>', 1)
 endif
-
-" Disable quick-scope on Terminal buffers because it tends to be distracting
-"
-" Reference: https://github.com/unblevable/quick-scope#toggle-highlighting
-"
-autocmd! TermOpen,TermEnter * :let b:qs_local_disable=1

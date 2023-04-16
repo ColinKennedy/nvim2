@@ -53,19 +53,10 @@ return {
     snippet(
         {
             docstring="Create a triple-quote docstring",
-            trig='D"',
+            trig="D",
         },
         format('"""{}."""', { index(1, "") }),
         { show_condition = is_source_beginning('D"') }
-    ),
-
-    snippet(
-        {
-            docstring="Create a triple-quote docstring",
-            trig="D'",
-        },
-        format("'''{}.'''", { index(1, "") }),
-        { show_condition = is_source_beginning("D'") }
     ),
 
     snippet(

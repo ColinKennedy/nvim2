@@ -182,8 +182,142 @@ return {
         end,
     },
     {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        config = function()
+            local value = "V"
+
+            require("nvim-treesitter.configs").setup {
+                textobjects = {
+                    -- TODO: Not working, fix
+                    move = {
+                      enable = true,
+                      set_jumps = true, -- whether to set jumps in the jumplist
+                      goto_next_start = {
+                        ["]k"] = "@class.outer",
+                        ["]m"] = "@function.outer",
+                      },
+                      goto_next_end = {
+                        ["]K"] = "@class.outer",
+                        ["]M"] = "@function.outer",
+                      },
+                      goto_previous_start = {
+                        ["[k"] = "@class.outer",
+                        ["[m"] = "@function.outer",
+                      },
+                      goto_previous_end = {
+                        ["[K"] = "@class.outer",
+                        ["[M"] = "@function.outer",
+                      },
+                    },
+
+                    select = {
+                        enable = true,
+
+                        -- Automatically jump forward to textobj, similar to targets.vim
+                        lookahead = true,
+
+                        keymaps = {
+                            ["ab"] = {
+                                desc = "Delete the current if / for / try / while block.",
+                                query = "@block.outer",
+                            },
+
+                            ["ad"] = {
+                                desc = "Select around an entire docstring",
+                                query = "@documentation.outer",
+                            },
+                            ["id"] = {
+                                desc = "Select the inside of a docstring",
+                                query = "@documentation.inner",
+                            },
+
+                            ["af"] = {
+                                desc = "Select function + whitespace to the next function / class",
+                                query = "@function.outer",
+                            },
+                            ["if"] = {
+                                desc = "Select function up to last source code line (no trailing whitespace)",
+                                query = "@function.inner",
+                            },
+
+                            ["ac"] = {
+                                desc = "Select class + whitespace to the next class / class",
+                                query = "@class.outer",
+                            },
+                            ["ic"] = {
+                                desc = "Select class up to last source code line (no trailing whitespace)",
+                                query = "@class.inner",
+                            },
+                          },
+                        -- You can choose the select mode (default is charwise 'v')
+                        --
+                        -- Can also be a function which gets passed a table with the keys
+                        -- * query_string: eg '@function.inner'
+                        -- * method: eg 'v' or 'o'
+                        -- and should return the mode ('v', 'V', or '<c-v>') or a table
+                        -- mapping query_strings to modes.
+                        selection_modes = {
+                            ["@class.inner"] = value,
+                            ["@class.outer"] = value,
+                            ["@function.inner"] = value,
+                            ["@function.outer"] = value,
+                        },
+                        -- If you set this to `true` (default is `false`) then any textobject is
+                        -- extended to include preceding or succeeding whitespace. Succeeding
+                        -- whitespace has priority in order to act similarly to eg the built-in
+                        -- `ap`.
+                        --
+                        -- Can also be a function which gets passed a table with the keys
+                        -- * query_string: eg '@function.inner'
+                        -- * selection_mode: eg 'v'
+                        -- and should return true of false
+                        include_surrounding_whitespace = function(data)
+                            local query = data["query_string"]
+                            local mode = data["selection_mode"]
+
+                            if query == "@function.outer" or query == "@class.outer" or query == "@documentation.outer"
+                            then
+                                return true
+                            end
+
+                            return false
+                        end
+                  },
+                },
+              }
+        end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        }
+    },
+    -- Kickass class / function viewer
+    {
+        "stevearc/aerial.nvim",
+        config = function()
+            require("aerial").setup(
+                {
+                    highlight_on_jump = 100,  -- Shorten the blink time to be fast
+                    nav = {
+                        keymaps = {
+                            ["q"] = "actions.close",
+                        },
+                    },
+                }
+            )
+
+            vim.keymap.set("n", "<space>SS", ":AerialToggle<CR>")
+            vim.keymap.set("n", "<space>SN", ":AerialNavToggle<CR>")
+        end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        cmd = { "AerialNavToggle", "AerialToggle"},
+        keys = { "<space>SN", "<space>SS" } -- S as in "Summary"
+    },
+    {
         "nvim-treesitter/playground",
         cmd = "TSPlaygroundToggle",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        }
     },
 
     -- TODO: Consider removing, later
@@ -316,12 +450,18 @@ return {
     {
         "ColinKennedy/vim-strip-trailing-whitespace",
         cmd = "StripTrailingWhitespace",
+        event = {"BufEnter", "BufWritePre"},  -- Don't remove these or the plugin won't work
     },
 
     -- Add a tree plug-in
     {
         "nvim-tree/nvim-tree.lua",
         config = function()
+            local toggle_current_directory = function()
+                local current_directory = vim.fn.getcwd()
+                vim.cmd(":NvimTreeToggle " .. current_directory)
+            end
+
             -- termguicolors was already set elsewhere. But I'll keep it commented here
             -- just so that we remember to do it in case that changes in the future.
             --
@@ -331,9 +471,56 @@ return {
 
             -- Empty setup using defaults
             require("nvim-tree").setup()
+
+            vim.api.nvim_create_user_command(
+                "PwdNvimTreeToggle",
+                toggle_current_directory,
+                {nargs=0}
+            )
+            vim.keymap.set("n", "<space>W", ":PwdNvimTreeToggle<CR>")
         end,
-        cmd = { "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
-        dependencies = { "nvim-tree/nvim-web-devicons" }
+        cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        keys = { "<space>W" } -- W as in "workspace view"
     },
-    "nvim-tree/nvim-web-devicons",
+
+    -- TODO: Consider adding this in the future
+    -- {
+    --     "Exafunction/codeium.vim",
+    --     config = function ()
+    --       -- Change "<C-g>" here to any keycode you like.
+    --       vim.keymap.set(
+    --           "i",
+    --           "<C-g>",
+    --           function()
+    --               return vim.fn["codeium#Accept"]()
+    --           end,
+    --           { expr = true }
+    --       )
+    --       vim.keymap.set(
+    --           "i",
+    --           "<c-;>",
+    --           function()
+    --               return vim.fn["codeium#CycleCompletions"](1)
+    --           end,
+    --           { expr = true }
+    --       )
+    --       vim.keymap.set(
+    --           "i",
+    --           "<c-,>",
+    --           function()
+    --               return vim.fn["codeium#CycleCompletions"](-1)
+    --           end,
+    --           { expr = true }
+    --       )
+    --       vim.keymap.set(
+    --           "i",
+    --           "<c-x>",
+    --           function()
+    --               return vim.fn["codeium#Clear"]()
+    --           end,
+    --           { expr = true }
+    --       )
+    --     end
+    -- }
 }

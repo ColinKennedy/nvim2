@@ -218,3 +218,23 @@ then
         }
     )
 end
+
+
+-- TODO: Consider defer-evaling this, since it runs off of ``TextYankPost``
+-- Reference: https://www.reddit.com/r/neovim/comments/gofplz/comment/hqa6xhc/?utm_source=share&utm_medium=web2x&context=3
+--
+vim.api.nvim_create_autocmd(
+    "TextYankPost",
+    {
+        callback = function()
+            local highlight_group = "IncSearch"
+            if vim.fn.hlexists("HighlightedyankRegion") > 0
+            then
+                highlight_group = HighlightedyankRegion
+            end
+
+            vim.highlight.on_yank{ higroup=highlight_group, timeout=100 }
+        end,
+        pattern = "*",
+    }
+)
