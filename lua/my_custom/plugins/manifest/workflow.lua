@@ -256,7 +256,7 @@ return {
                                 desc = "Select class up to last source code line (no trailing whitespace)",
                                 query = "@class.inner",
                             },
-                          },
+                        },
                         -- You can choose the select mode (default is charwise 'v')
                         --
                         -- Can also be a function which gets passed a table with the keys
@@ -296,7 +296,35 @@ return {
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
-        }
+        },
+        -- TODO: It's technically not correct to have this plug-in run
+        -- on-insert or key-press. Try to find a better way to lazy-load this
+        -- plug-in so it is available on start-up but doesn't impact
+        -- start-time.
+        --
+        -- event = {"InsertEnter"},
+        -- keys = {
+        --     "[k", "]k",
+        --     "[m", "]m",
+        --     "[K", "]K",
+        --     "[M", "]M",
+        --
+        --     "dab",
+        --     "dac",
+        --     "dad",
+        --     "daf",
+        --     "dic",
+        --     "did",
+        --     "dif",
+        --
+        --     "vab",
+        --     "vac",
+        --     "vad",
+        --     "vaf",
+        --     "vic",
+        --     "vid",
+        --     "vif",
+        -- },
     },
 
     -- Kickass class / function viewer
@@ -311,6 +339,22 @@ return {
                             ["q"] = "actions.close",
                         },
                     },
+                }
+            )
+
+            -- Note: Disable trailing whitespace highlighting in the aerial window
+            vim.api.nvim_create_autocmd(
+                {"BufRead", "BufNew", "FileType", "TermOpen"},
+                {
+                    pattern = "*",
+                    callback = function()
+                        if vim.bo.buftype == "nofile"
+                        then
+                            vim.cmd[[match ExtraWhitespace /^^/]]
+
+                            return
+                        end
+                    end
                 }
             )
 
@@ -378,7 +422,8 @@ return {
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
     {
         "tpope/vim-projectionist",
-        init = function()
+        config = function()
+            -- TODO: Double check if this works
             require("my_custom.utilities.utility").lazy_load("vim-projectionist")
         end,
         ft = "cpp",

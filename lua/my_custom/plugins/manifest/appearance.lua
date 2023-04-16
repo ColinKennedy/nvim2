@@ -15,15 +15,6 @@ return {
         end,
     },
 
-    -- Whenever you highlight, there's a brief "blink" to show you what you highlighted
-    {
-        "machakann/vim-highlightedyank",
-        config = function()
-            vim.g.highlightedyank_highlight_duration = 100
-        end,
-        event = "TextYankPost",
-    },
-
     -- TODO: Consider doing lazy-load (look at NvChad's stuff)
     -- Shows added, removed, etc git hunks
     {

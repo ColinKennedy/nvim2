@@ -10,7 +10,9 @@ return {
             vim.keymap.set(
                 "n",
                 "<leader>d",
-                'lua require("my_custom.utilities.diagnostic_status_display").show_line_diagnostics()'
+                function()
+                    vim.diagnostic.open_float({source="always"})
+                end
             )
         end,
     },
@@ -45,9 +47,7 @@ return {
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("nvim-cmp")
-        end,
+        event = "InsertEnter",
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
@@ -69,10 +69,7 @@ return {
                 }
             )
         end,
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("LuaSnip")
-        end,
-        -- follow latest release.
+        event = "InsertEnter",
         version = "1.*",
     },
 

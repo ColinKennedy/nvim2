@@ -221,6 +221,9 @@ end
 
 
 -- TODO: Consider defer-evaling this, since it runs off of ``TextYankPost``
+--
+-- Highlight the yanked text for a brief moment. Basically, blink the yanked region.
+--
 -- Reference: https://www.reddit.com/r/neovim/comments/gofplz/comment/hqa6xhc/?utm_source=share&utm_medium=web2x&context=3
 --
 vim.api.nvim_create_autocmd(
