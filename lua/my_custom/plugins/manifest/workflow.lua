@@ -137,6 +137,7 @@ return {
         "ColinKennedy/vim-file-system-watcher",
     },
 
+    -- Auto-generate docstrings, using ``<space>d``
     {
         "ColinKennedy/neogen",
         branch = "issues/137-add_google_docstring_raises",
@@ -150,6 +151,7 @@ return {
                             }
                         },
                     },
+                    placeholders_hl = "String",
                     snippet_engine = "luasnip",
                 }
             )

@@ -107,7 +107,7 @@ return {
 
     -- Advanced paragraph movement options - lets {}s skip folds with some
     -- minor customization.
-    -- 
+    --
     {
         "justinmk/vim-ipmotion",
         config = function()
@@ -129,8 +129,8 @@ return {
     {
         "tpope/vim-unimpaired",
         keys = {
-            "<P", ">P", 
-            "<p", ">p", 
+            "<P", ">P",
+            "<p", ">p",
             "=P", "=p",
             "[A", "]A",
             "[B", "]B",

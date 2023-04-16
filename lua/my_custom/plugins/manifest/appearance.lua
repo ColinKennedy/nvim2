@@ -24,24 +24,20 @@ return {
         event = "TextYankPost",
     },
 
-    -- Consider doing lazy-load (look at NvChad's stuff)
+    -- TODO: Consider doing lazy-load (look at NvChad's stuff)
     -- Shows added, removed, etc git hunks
     {
         "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup(
-                {
-                    signs = {
-                        add = { text = "+" },
-                        change = { text = "~" },
-                        delete = { text = "_" },
-                        topdelete = { text = "‾" },
-                        changedelete = { text = "x" },
-                        untracked = { text = "" },
-                    },
-                }
-            )
-        end
+        opts = {
+            signs = {
+                add = { text = "+" },
+                change = { text = "~" },
+                delete = { text = "_" },
+                topdelete = { text = "‾" },
+                changedelete = { text = "x" },
+                untracked = { text = "" },
+            },
+        }
     },
 
     -- TODO: Add this later
@@ -66,36 +62,33 @@ return {
     -- Add a quick status bar plugin
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("lualine").setup {
-                options = {
-                    component_separators = { left = '', right = ''},
-                    icons_enabled = true,
-                    section_separators = { left = '', right = ''},
-                    theme = "onedark",
-                },
-                sections = {
-                  lualine_b = {
-                    {
-                      "diff",
-                      colored = true,
-                      diff_color = {
-                        added = "DiffAdd",
-                        modified = "DiffChange",
-                        removed = "DiffDelete",
-                      },
-                    }
-                  }
-                }
-            }
-        end,
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         init = function()
             require("my_custom.utilities.utility").lazy_load("lualine.nvim")
         end,
+        opts = {
+            options = {
+                component_separators = { left = '', right = ''},
+                icons_enabled = true,
+                section_separators = { left = '', right = ''},
+                theme = "onedark",
+            },
+            sections = {
+                lualine_b = {
+                    {
+                        "diff",
+                        colored = true,
+                        diff_color = {
+                            added = "DiffAdd",
+                            removed = "DiffDelete",
+                            modified = "DiffChange",
+                        },
+                    }
+                }
+            }
+        }
     },
+
     -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
     {
         "nvim-tree/nvim-web-devicons",
