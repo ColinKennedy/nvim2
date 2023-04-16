@@ -52,8 +52,13 @@ cmp.setup(
 	    ["<C-n>"] = cmp.mapping.select_next_item(),
 	    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
 	    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+	    ["<C-Space>"] = function(fallback)
+		-- Reference: https://github.com/hrsh7th/nvim-cmp/issues/429#issuecomment-954121524
+		cmp.abort()
+	    end,
 	    ["<Space>"] = function(fallback)
-		cmp.mapping.close()
+		-- Reference: https://github.com/hrsh7th/nvim-cmp/issues/429#issuecomment-954121524
+		cmp.abort()
 
 		fallback()
 	    end,
