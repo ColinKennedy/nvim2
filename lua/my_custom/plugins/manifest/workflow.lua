@@ -270,26 +270,6 @@ return {
                             ["@function.inner"] = value,
                             ["@function.outer"] = value,
                         },
-                        -- If you set this to `true` (default is `false`) then any textobject is
-                        -- extended to include preceding or succeeding whitespace. Succeeding
-                        -- whitespace has priority in order to act similarly to eg the built-in
-                        -- `ap`.
-                        --
-                        -- Can also be a function which gets passed a table with the keys
-                        -- * query_string: eg '@function.inner'
-                        -- * selection_mode: eg 'v'
-                        -- and should return true of false
-                        include_surrounding_whitespace = function(data)
-                            local query = data["query_string"]
-                            local mode = data["selection_mode"]
-
-                            if query == "@function.outer" or query == "@class.outer" or query == "@documentation.outer"
-                            then
-                                return true
-                            end
-
-                            return false
-                        end
                   },
                 },
               }
