@@ -1,0 +1,234 @@
+[submodule "bundle/zoomwintab.vim"]
+	path = bundle/zoomwintab.vim
+	url = git@github.com:troydm/zoomwintab.vim.git
+[submodule "bundle/hybrid2.nvim"]
+	path = bundle/hybrid2.nvim
+	url = git@github.com:ColinKennedy/hybrid2.nvim.git
+[submodule "bundle/neogen"]
+	path = bundle/neogen
+	url = git@github.com:ColinKennedy/neogen.git
+[submodule "bundle/vim-cmake"]
+	path = bundle/vim-cmake
+	url = git@github.com:ColinKennedy/vim-cmake.git
+[submodule "bundle/vim-dispatch"]
+	path = bundle/vim-dispatch
+	url = git@github.com:ColinKennedy/vim-dispatch.git
+[submodule "bundle/vim-file-system-watcher"]
+	path = bundle/vim-file-system-watcher
+	url = git@github.com:ColinKennedy/vim-file-system-watcher.git
+[submodule "bundle/vim-git-backup"]
+	path = bundle/vim-git-backup
+	url = git@github.com:ColinKennedy/vim-git-backup.git
+[submodule "bundle/vim-indent-object"]
+	path = bundle/vim-indent-object
+	url = git@github.com:ColinKennedy/vim-indent-object.git
+[submodule "bundle/vim-ninja-feet"]
+	path = bundle/vim-ninja-feet
+	url = git@github.com:ColinKennedy/vim-ninja-feet.git
+[submodule "bundle/vim-python-dot-path"]
+	path = bundle/vim-python-dot-path
+	url = git@github.com:ColinKennedy/vim-python-dot-path.git
+[submodule "bundle/vim-strip-trailing-whitespace"]
+	path = bundle/vim-strip-trailing-whitespace
+	url = git@github.com:ColinKennedy/vim-strip-trailing-whitespace.git
+[submodule "bundle/vim-textobj-block-party"]
+	path = bundle/vim-textobj-block-party
+	url = git@github.com:ColinKennedy/vim-textobj-block-party.git
+[submodule "bundle/vim-usd-complete"]
+	path = bundle/vim-usd-complete
+	url = git@github.com:ColinKennedy/vim-usd-complete.git
+[submodule "bundle/vim-usd-crate-auto-convert"]
+	path = bundle/vim-usd-crate-auto-convert
+	url = git@github.com:ColinKennedy/vim-usd-crate-auto-convert.git
+[submodule "bundle/vim-usd-goto"]
+	path = bundle/vim-usd-goto
+	url = git@github.com:ColinKennedy/vim-usd-goto.git
+[submodule "bundle/vim-vex-complete"]
+	path = bundle/vim-vex-complete
+	url = git@github.com:ColinKennedy/vim-vex-complete.git
+[submodule "bundle/vim-argwrap"]
+	path = bundle/vim-argwrap
+	url = git@github.com:FooSoft/vim-argwrap.git
+[submodule "bundle/vim-textobj-variable-segment"]
+	path = bundle/vim-textobj-variable-segment
+	url = git@github.com:Julian/vim-textobj-variable-segment.git
+[submodule "bundle/vim-gemini"]
+	path = bundle/vim-gemini
+	url = git@github.com:KaraMCC/vim-gemini.git
+[submodule "bundle/LuaSnip"]
+	path = bundle/LuaSnip
+	url = git@github.com:L3MON4D3/LuaSnip.git
+[submodule "bundle/vim-addon-local-vimrc"]
+	path = bundle/vim-addon-local-vimrc
+	url = git@github.com:MarcWeber/vim-addon-local-vimrc.git
+[submodule "bundle/cmp-tmux"]
+	path = bundle/cmp-tmux
+	url = git@github.com:andersevenrud/cmp-tmux.git
+[submodule "bundle/vim-qf_resize"]
+	path = bundle/vim-qf_resize
+	url = git@github.com:blueyed/vim-qf_resize.git
+[submodule "bundle/quick-scope"]
+	path = bundle/quick-scope
+	url = git@github.com:bradford-smith94/quick-scope.git
+[submodule "bundle/vim-visual-star-search"]
+	path = bundle/vim-visual-star-search
+	url = git@github.com:bronson/vim-visual-star-search.git
+[submodule "bundle/cmp-buffer"]
+	path = bundle/cmp-buffer
+	url = git@github.com:hrsh7th/cmp-buffer.git
+[submodule "bundle/cmp-cmdline"]
+	path = bundle/cmp-cmdline
+	url = git@github.com:hrsh7th/cmp-cmdline.git
+[submodule "bundle/cmp-nvim-lsp"]
+	path = bundle/cmp-nvim-lsp
+	url = git@github.com:hrsh7th/cmp-nvim-lsp.git
+[submodule "bundle/cmp-path"]
+	path = bundle/cmp-path
+	url = git@github.com:hrsh7th/cmp-path.git
+[submodule "bundle/nvim-cmp"]
+	path = bundle/nvim-cmp
+	url = git@github.com:hrsh7th/nvim-cmp.git
+[submodule "bundle/fidget.nvim"]
+	path = bundle/fidget.nvim
+	url = git@github.com:j-hui/fidget.nvim.git
+[submodule "bundle/vim-indentwise"]
+	path = bundle/vim-indentwise
+	url = git@github.com:jeetsukumaran/vim-indentwise.git
+[submodule "bundle/null-ls.nvim"]
+	path = bundle/null-ls.nvim
+	url = git@github.com:jose-elias-alvarez/null-ls.nvim.git
+[submodule "bundle/vim-ripgrep"]
+	path = bundle/vim-ripgrep
+	url = git@github.com:jremmen/vim-ripgrep.git
+[submodule "bundle/fzf"]
+	path = bundle/fzf
+	url = git@github.com:junegunn/fzf.git
+[submodule "bundle/fzf.vim"]
+	path = bundle/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
+[submodule "bundle/vim-ipmotion"]
+	path = bundle/vim-ipmotion
+	url = git@github.com:justinmk/vim-ipmotion.git
+[submodule "bundle/vim-operator-replace"]
+	path = bundle/vim-operator-replace
+	url = git@github.com:kana/vim-operator-replace.git
+[submodule "bundle/vim-operator-user"]
+	path = bundle/vim-operator-user
+	url = git@github.com:kana/vim-operator-user.git
+[submodule "bundle/vim-tabpagecd"]
+	path = bundle/vim-tabpagecd
+	url = git@github.com:kana/vim-tabpagecd.git
+[submodule "bundle/vim-textobj-indent"]
+	path = bundle/vim-textobj-indent
+	url = git@github.com:kana/vim-textobj-indent.git
+[submodule "bundle/vim-textobj-line"]
+	path = bundle/vim-textobj-line
+	url = git@github.com:kana/vim-textobj-line.git
+[submodule "bundle/vim-textobj-user"]
+	path = bundle/vim-textobj-user
+	url = git@github.com:kana/vim-textobj-user.git
+[submodule "bundle/bufresize.nvim"]
+	path = bundle/bufresize.nvim
+	url = git@github.com:kwkarlwang/bufresize.nvim.git
+[submodule "bundle/gitsigns.nvim"]
+	path = bundle/gitsigns.nvim
+	url = git@github.com:lewis6991/gitsigns.nvim.git
+[submodule "bundle/vim-highlightedyank"]
+	path = bundle/vim-highlightedyank
+	url = git@github.com:machakann/vim-highlightedyank.git
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = git@github.com:mbbill/undotree.git
+[submodule "bundle/smart-splits.nvim"]
+	path = bundle/smart-splits.nvim
+	url = git@github.com:mrjones2014/smart-splits.nvim.git
+[submodule "bundle/nvim-lspconfig"]
+	path = bundle/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git
+[submodule "bundle/Comment.nvim"]
+	path = bundle/Comment.nvim
+	url = git@github.com:numToStr/Comment.nvim.git
+[submodule "bundle/plenary.nvim"]
+	path = bundle/plenary.nvim
+	url = git@github.com:nvim-lua/plenary.nvim.git
+[submodule "bundle/lualine.nvim"]
+	path = bundle/lualine.nvim
+	url = git@github.com:nvim-lualine/lualine.nvim.git
+[submodule "bundle/nvim-tree.lua"]
+	path = bundle/nvim-tree.lua
+	url = git@github.com:nvim-tree/nvim-tree.lua.git
+[submodule "bundle/nvim-web-devicons"]
+	path = bundle/nvim-web-devicons
+	url = git@github.com:nvim-tree/nvim-web-devicons.git
+[submodule "bundle/nvim-treesitter-textobjects"]
+	path = bundle/nvim-treesitter-textobjects
+	url = git@github.com:nvim-treesitter/nvim-treesitter-textobjects.git
+[submodule "bundle/nvim-treesitter"]
+	path = bundle/nvim-treesitter
+	url = git@github.com:nvim-treesitter/nvim-treesitter.git
+[submodule "bundle/playground"]
+	path = bundle/playground
+	url = git@github.com:nvim-treesitter/playground.git
+[submodule "bundle/lspkind.nvim"]
+	path = bundle/lspkind.nvim
+	url = git@github.com:onsails/lspkind.nvim.git
+[submodule "bundle/jump.vim"]
+	path = bundle/jump.vim
+	url = git@github.com:padde/jump.vim.git
+[submodule "bundle/jedi-language-server"]
+	path = bundle/jedi-language-server
+	url = git@github.com:pappasam/jedi-language-server.git
+[submodule "bundle/python-lsp-server"]
+	path = bundle/python-lsp-server
+	url = git@github.com:python-lsp/python-lsp-server.git
+[submodule "bundle/vim-cool"]
+	path = bundle/vim-cool
+	url = git@github.com:romainl/vim-cool.git
+[submodule "bundle/vim-qf"]
+	path = bundle/vim-qf
+	url = git@github.com:romainl/vim-qf.git
+[submodule "bundle/cmp_luasnip"]
+	path = bundle/cmp_luasnip
+	url = git@github.com:saadparwaiz1/cmp_luasnip.git
+[submodule "bundle/aerial.nvim"]
+	path = bundle/aerial.nvim
+	url = git@github.com:stevearc/aerial.nvim.git
+[submodule "bundle/tcomment_vim"]
+	path = bundle/tcomment_vim
+	url = git@github.com:tomtom/tcomment_vim.git
+[submodule "bundle/vim-abolish"]
+	path = bundle/vim-abolish
+	url = git@github.com:tpope/vim-abolish.git
+[submodule "bundle/vim-eunuch"]
+	path = bundle/vim-eunuch
+	url = git@github.com:tpope/vim-eunuch.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git@github.com:tpope/vim-markdown.git
+[submodule "bundle/vim-projectionist"]
+	path = bundle/vim-projectionist
+	url = git@github.com:tpope/vim-projectionist.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = git@github.com:tpope/vim-sleuth.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git@github.com:tpope/vim-surround.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = git@github.com:tpope/vim-unimpaired.git
+[submodule "bundle/targets.vim"]
+	path = bundle/targets.vim
+	url = git@github.com:wellle/targets.vim.git
+[submodule "bundle/mason.nvim"]
+	path = bundle/mason.nvim
+	url = git@github.com:williamboman/mason.nvim.git
+[submodule "bundle/vim-exchange"]
+	path = bundle/vim-exchange
+	url = git@github.com:tommcdo/vim-exchange.git
