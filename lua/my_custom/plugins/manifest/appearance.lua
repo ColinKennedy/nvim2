@@ -24,6 +24,7 @@ return {
         event = "TextYankPost",
     },
 
+    -- Consider doing lazy-load (look at NvChad's stuff)
     -- Shows added, removed, etc git hunks
     {
         "lewis6991/gitsigns.nvim",

@@ -90,6 +90,29 @@ return {
     --     --   end,
     --     -- },
 
+    -- A mason.nvim and null-ls are great tools but they don't know how to communicate
+    -- with one another. This plugin makes them cross-talk.
+    --
+    -- "Modern problems require modern solutions" - Dave Chappelle
+    --
+    {
+        "jay-babu/mason-null-ls.nvim",
+        config = function()
+            require("mason-null-ls").setup(
+                {
+                    ensure_installed = nil,
+                    automatic_installation = true,
+                    automatic_setup = false,
+                }
+            )
+        end,
+        dependencies = {
+            "jose-elias-alvarez/null-ls.nvim",
+            "williamboman/mason.nvim",
+        },
+    },
+
+    -- Linter package container / manager
     -- Important: CentOS 7 doesn't include an ensurepip/_bundled folder. It's
     -- incredibly annoying but you can fix it by manually installing the missing files.
     -- Reference: https://stackoverflow.com/a/33767179
@@ -99,10 +122,14 @@ return {
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",  -- :MasonUpdate updates registry contents
-        config = function()
-            require("mason").setup()
-        end,
         cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUpdate"}
+        config = function()
+            require("mason").setup(
+                {
+                    install_root_dir = vim.g.vim_home .. "/mason_packages/" .. vim.loop.os_uname().sysname
+                }
+            )
+        end,
     },
 
     -- Integrates linters, formatters, and other features into Neovim's own LSP. Cool!
