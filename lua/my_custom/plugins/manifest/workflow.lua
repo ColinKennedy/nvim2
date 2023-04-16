@@ -166,6 +166,7 @@ return {
         keys = { "<space>d" },
         version = "*",  -- Only follow the latest stable release
     },
+
     {
         -- Useful from the documentation:
         --
@@ -176,6 +177,7 @@ return {
         build = ":TSUpdate",
         lazy = true,
     },
+
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         config = function()
@@ -319,6 +321,7 @@ return {
         cmd = { "AerialNavToggle", "AerialToggle"},
         keys = { "<space>SN", "<space>SS" } -- S as in "Summary"
     },
+
     {
         "nvim-treesitter/playground",
         cmd = "TSPlaygroundToggle",

@@ -45,6 +45,9 @@ return {
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("nvim-cmp")
+        end,
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
@@ -110,6 +113,9 @@ return {
             "jose-elias-alvarez/null-ls.nvim",
             "williamboman/mason.nvim",
         },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("mason-null-ls.nvim")
+        end,
     },
 
     -- Linter package container / manager
@@ -150,6 +156,9 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim"
         },
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("null-ls.nvim")
+        end,
     },
     {
         "nvim-lua/plenary.nvim",
