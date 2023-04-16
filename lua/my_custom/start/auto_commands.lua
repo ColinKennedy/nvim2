@@ -89,3 +89,14 @@ vim.api.nvim_create_autocmd(
         pattern = "*",
     }
 )
+
+-- TODO: Consider lazy-loading this
+vim.cmd[[
+function! GetDocumentationFold(line)
+    return luaeval(printf('require("my_custom.utilities.fold").get_fold_level(%d)', a:line - 1))
+endfunction
+
+
+set foldmethod=expr
+set foldexpr=GetDocumentationFold(v:lnum)
+]]

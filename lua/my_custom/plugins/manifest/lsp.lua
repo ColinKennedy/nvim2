@@ -25,6 +25,7 @@ return {
     --     -- TODO: Add defer, later. Maybe
     --     -- lazy = true,
     -- },
+
     {
         "pappasam/jedi-language-server",
         lazy = true,
@@ -42,12 +43,15 @@ return {
     },
 
     {
+        -- TODO: It seems I can't lazy-load this without it breaking
+        -- auto-completion for Python. Not sure why. Maybe NvChad can improve
+        -- this set-up
+        --
         "hrsh7th/nvim-cmp",
         config = function()
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        event = "InsertEnter",
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp

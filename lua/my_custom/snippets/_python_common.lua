@@ -91,6 +91,7 @@ return {
     ),
 
     snippet(
+        -- TODO: This show_condition is not working. And probably neither is any of the others
         {
             docstring="def main()",
             trig="ifm",

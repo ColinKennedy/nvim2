@@ -231,9 +231,24 @@ return {
                             },
 
                             ["ad"] = {
+                                -- Reference: https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/439#issuecomment-1505411083
                                 desc = "Select around an entire docstring",
-                                query = "@documentation.outer",
+                                query = "@string.documentation",
+                                query_group = "highlights",
                             },
+                            -- TODO: Add ``did`` support
+                            -- Requires:
+                            --
+                            -- (
+                            --   (function_definition
+                            --     (block
+                            --       .
+                            --       (expression_statement
+                            --         (string (string_content) @documentation.inner)) @documentation.outer
+                            --     )
+                            --   )
+                            -- )
+                            --
                             ["id"] = {
                                 desc = "Select the inside of a docstring",
                                 query = "@documentation.inner",
