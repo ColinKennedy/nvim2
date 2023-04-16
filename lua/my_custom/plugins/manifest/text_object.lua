@@ -6,6 +6,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-textobj-line")
         end,
+        keys = { "cs", "ds", "ys" },
     },
 
     -- Surround plugin. Lets you change stuff would words really easily
@@ -37,12 +38,6 @@ return {
         lazy = true,
     },
     {
-        "tomtom/tcomment_vim",
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("tcomment_vim")
-        end,
-    },
-    {
         "kana/vim-textobj-user",
         lazy = true,
     },
@@ -72,6 +67,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("Comment.nvim")
         end,
+        keys = { "gcc" },
     },
 
     -- Lets you select inside indented blocks, using "ii"or "ai"
@@ -97,6 +93,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-textobj-indent")
         end,
+        keys = {"ai", "ii"},
     },
 
     -- Gives vim a few tools to navigate through indented blocks more easily
@@ -123,6 +120,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-textobj-block-party")
         end,
+        keys = {"ab", "ib"},
     },
 
     -- Adds pair mappings (like ]l [l) to Vim
@@ -157,6 +155,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-textobj-variable-segment")
         end,
+        keys = {"av", "iv"},
     },
 
     -- Life-changing text object extension. It's hard to explain but ...

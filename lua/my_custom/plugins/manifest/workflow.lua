@@ -55,6 +55,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-visual-star-search")
         end,
+        keys = {"*", "#"},
     },
 
     -- Auto-completion tags for Houdini SideFX VEX commands
@@ -111,6 +112,7 @@ return {
             require("my_custom.plugins.data.smart_splits")
         end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
+        keys = { "<C-h>", "<C-j>", "<C-k>", "<C-l>" },
     },
     {
         "kwkarlwang/bufresize.nvim",
@@ -172,6 +174,7 @@ return {
         --
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        lazy = true,
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -293,6 +296,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
         }
     },
+
     -- Kickass class / function viewer
     {
         "stevearc/aerial.nvim",
@@ -374,6 +378,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-projectionist")
         end,
+        ft = "cpp",
     },
 
     -- Quickfix helper functions
@@ -396,11 +401,15 @@ return {
         keys = "<leader>pd",
     },
 
+    -- TODO: Check if the lazy load works
     -- Auto-insert pairs
     {
         "KaraMCC/vim-gemini",
         enabled = function()
             return vim.v.version >= 800
+        end,
+        init = function()
+            require("my_custom.utilities.utility").lazy_load("vim-gemini")
         end,
     },
 
