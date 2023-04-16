@@ -465,7 +465,7 @@ return {
         event = {"BufEnter", "BufWritePre"},  -- Don't remove these or the plugin won't work
     },
 
-    -- Add a tree plug-in
+    -- A tree file/directory viewer plug-in
     {
         "nvim-tree/nvim-tree.lua",
         config = function()
