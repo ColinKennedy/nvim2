@@ -44,9 +44,8 @@ require("lazy").setup(plugins, configuration)
 require("my_custom.start.remap")
 require("my_custom.start.initialization")
 require("my_custom.start.setting")
+require("my_custom.start.auto_commands")
 
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/syntax_fix.vim]]
 -- TODO: Make this a better file path, later
 vim.cmd[[source ~/personal/.config/nvim/plugin/global_confirm.vim]]
 -- TODO: Make this a better file path, later
