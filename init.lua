@@ -28,6 +28,8 @@ local tabler = require("my_custom.utilities.tabler")
 local extend = tabler.extend
 local plugins = {}
 
+vim.g.vim_home = filer.get_current_directory()
+
 extend(plugins, require("my_custom.plugins.manifest.appearance"))
 extend(plugins, require("my_custom.plugins.manifest.movement"))
 extend(plugins, require("my_custom.plugins.manifest.text_object"))
@@ -35,7 +37,7 @@ extend(plugins, require("my_custom.plugins.manifest.workflow"))
 extend(plugins, require("my_custom.plugins.manifest.lsp"))
 
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
-local configuration = { root = filer.get_current_directory() .. "/bundle" }
+local configuration = { root = vim.g.vim_home .. "/bundle" }
 
 require("lazy").setup(plugins, configuration)
 
