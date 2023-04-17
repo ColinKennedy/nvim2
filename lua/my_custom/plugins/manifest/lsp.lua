@@ -66,7 +66,7 @@ return {
             require("luasnip.loaders.from_lua").lazy_load(
                 { paths = "./snippets" }
             )
-            local ls = require("luasnip").config.set_config(
+            require("luasnip").config.set_config(
                 {
                     updateevents = "TextChanged,TextChangedI",
                     enable_autosnippets = true,
