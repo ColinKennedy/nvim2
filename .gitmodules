@@ -31,9 +31,6 @@
 [submodule "bundle/vim-strip-trailing-whitespace"]
 	path = bundle/vim-strip-trailing-whitespace
 	url = git@github.com:ColinKennedy/vim-strip-trailing-whitespace.git
-[submodule "bundle/vim-textobj-block-party"]
-	path = bundle/vim-textobj-block-party
-	url = git@github.com:ColinKennedy/vim-textobj-block-party.git
 [submodule "bundle/vim-usd-complete"]
 	path = bundle/vim-usd-complete
 	url = git@github.com:ColinKennedy/vim-usd-complete.git
