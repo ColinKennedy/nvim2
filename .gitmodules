@@ -133,9 +133,6 @@
 [submodule "bundle/gitsigns.nvim"]
 	path = bundle/gitsigns.nvim
 	url = git@github.com:lewis6991/gitsigns.nvim.git
-[submodule "bundle/vim-highlightedyank"]
-	path = bundle/vim-highlightedyank
-	url = git@github.com:machakann/vim-highlightedyank.git
 [submodule "bundle/undotree"]
 	path = bundle/undotree
 	url = git@github.com:mbbill/undotree.git
