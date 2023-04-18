@@ -116,7 +116,7 @@ return {
         config = function()
             require("bufresize").setup()
         end,
-        event = { "BufWinEnter", "VimResized", "WinEnter" },
+        event = { "VeryLazy" },
     },
 
     -- TODO: Consider adding this again
@@ -135,6 +135,7 @@ return {
     -- Auto-read external file changes
     {
         "ColinKennedy/vim-file-system-watcher",
+        event = { "VeryLazy" },
     },
 
     -- Auto-generate docstrings, using ``<space>d``
@@ -190,28 +191,29 @@ return {
         -- start-time.
         --
         -- event = {"InsertEnter"},
-        keys = {
-            "[k", "]k",
-            "[m", "]m",
-            "[K", "]K",
-            "[M", "]M",
-
-            "dab",
-            "dac",
-            "dad",
-            "daf",
-            "dic",
-            "did",
-            "dif",
-
-            "vab",
-            "vac",
-            "vad",
-            "vaf",
-            "vic",
-            "vid",
-            "vif",
-        },
+        event = { "VeryLazy" },
+        -- keys = {
+        --     "[k", "]k",
+        --     "[m", "]m",
+        --     "[K", "]K",
+        --     "[M", "]M",
+        --
+        --     "dab",
+        --     "dac",
+        --     "dad",
+        --     "daf",
+        --     "dic",
+        --     "did",
+        --     "dif",
+        --
+        --     "vab",
+        --     "vac",
+        --     "vad",
+        --     "vaf",
+        --     "vic",
+        --     "vid",
+        --     "vif",
+        -- },
     },
 
     -- Kickass class / function viewer
@@ -336,15 +338,12 @@ return {
         keys = "<leader>pd",
     },
 
-    -- TODO: Check if the lazy load works
     -- Auto-insert pairs
     {
+        -- Lazy-loading this causes the plug-in to break. So probably you can't do it.
         "KaraMCC/vim-gemini",
         enabled = function()
             return vim.v.version >= 800
-        end,
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-gemini")
         end,
     },
 
@@ -357,7 +356,7 @@ return {
     -- REPEAT LAST (USER) COMMAND and makes the '.' command even cooler
     {
         "tpope/vim-repeat",
-        keys = {"."},
+        event = { "VeryLazy" },
     },
 
     -- A tool which automatically backs up modified files to a git repository
@@ -382,9 +381,7 @@ return {
     -- Auto-sets Vim ``tabstop`` and ``shiftwidth``, based on the existing file's context
     {
         "tpope/vim-sleuth",
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-sleuth")
-        end,
+        event = { "VeryLazy" },
     },
 
     -- Show all file edits as an tree
@@ -399,7 +396,7 @@ return {
         config = function()
             require("spaceless").setup()
         end,
-        event = { "InsertEnter", "InsertLeave", "TextChanged", "TextChangedI" },
+        event = { "VeryLazy" },
     },
 
     -- A tree file/directory viewer plug-in

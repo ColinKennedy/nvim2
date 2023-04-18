@@ -6,6 +6,7 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-textobj-line")
         end,
+        event = "VeryLazy",
     },
 
     -- Surround plugin. Lets you change stuff would words really easily
@@ -18,6 +19,7 @@ return {
     {
         "kana/vim-operator-replace",
         dependencies = { "kana/vim-operator-user" },
+        event = "VeryLazy",
     },
     {
         "kana/vim-operator-user",
@@ -41,6 +43,7 @@ return {
             --     \ '@': {'quote': [{'d': '@'}]},
             --     \ })
         end,
+        event = "VeryLazy",
     },
 
 
@@ -51,6 +54,7 @@ return {
         config = function()
             require("Comment").setup()
         end,
+        event = "VeryLazy",
     },
 
     -- Lets you select inside indented blocks, using "ii"or "ai"
@@ -62,6 +66,7 @@ return {
         config=function()
             vim.g.indent_object_no_default_key_mappings = "1"
         end,
+        event = "VeryLazy",
     },
 
     {
@@ -70,6 +75,7 @@ return {
             vim.g.textobj_indent_no_default_key_mappings = "1"
         end,
         dependencies = { "kana/vim-textobj-user" },
+        event = "VeryLazy",
     },
 
     -- Gives vim a few tools to navigate through indented blocks more easily

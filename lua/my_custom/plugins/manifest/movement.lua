@@ -57,5 +57,6 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("quick-scope")
         end,
+        event = "VeryLazy",
     },
 }

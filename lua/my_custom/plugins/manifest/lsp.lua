@@ -28,7 +28,7 @@ return {
         config = function()
             require("fidget").setup()
         end,
-        event = "InsertEnter"
+        event = { "InsertEnter", "VeryLazy" },
     },
 
     {
@@ -41,6 +41,7 @@ return {
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
+        event = { "VeryLazy" },
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
@@ -141,7 +142,7 @@ return {
             "jay-babu/mason-null-ls.nvim",  -- Bootstrap pydocstyle, pylint, etc
             "nvim-lua/plenary.nvim"
         },
-        event = "InsertEnter",
+        event = "VeryLazy",
     },
     {
         "nvim-lua/plenary.nvim",

@@ -10,6 +10,7 @@ return {
 
     {
         "romainl/vim-cool",
+        event = "VeryLazy",
     },
 
     -- TODO: Make this prettier. Like how NvChad works
@@ -70,6 +71,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        event = "VeryLazy",
         init = function()
             require("my_custom.utilities.utility").lazy_load("lualine.nvim")
         end,
