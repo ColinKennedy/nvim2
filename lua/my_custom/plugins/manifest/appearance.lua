@@ -10,9 +10,6 @@ return {
 
     {
         "romainl/vim-cool",
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-cool")
-        end,
     },
 
     -- TODO: Make this prettier. Like how NvChad works

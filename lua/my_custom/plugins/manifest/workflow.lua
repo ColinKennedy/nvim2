@@ -52,9 +52,6 @@ return {
     -- Press * or # in Visual mode to start a search
     {
         "bronson/vim-visual-star-search",
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-visual-star-search")
-        end,
         keys = {"*", "#"},
     },
 
@@ -132,6 +129,7 @@ return {
     {
         -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
         "troydm/zoomwintab.vim",
+        cmd = "ZoomWinTabToggle"
     },
 
     -- Auto-read external file changes
@@ -192,28 +190,28 @@ return {
         -- start-time.
         --
         -- event = {"InsertEnter"},
-        -- keys = {
-        --     "[k", "]k",
-        --     "[m", "]m",
-        --     "[K", "]K",
-        --     "[M", "]M",
-        --
-        --     "dab",
-        --     "dac",
-        --     "dad",
-        --     "daf",
-        --     "dic",
-        --     "did",
-        --     "dif",
-        --
-        --     "vab",
-        --     "vac",
-        --     "vad",
-        --     "vaf",
-        --     "vic",
-        --     "vid",
-        --     "vif",
-        -- },
+        keys = {
+            "[k", "]k",
+            "[m", "]m",
+            "[K", "]K",
+            "[M", "]M",
+
+            "dab",
+            "dac",
+            "dad",
+            "daf",
+            "dic",
+            "did",
+            "dif",
+
+            "vab",
+            "vac",
+            "vad",
+            "vaf",
+            "vic",
+            "vid",
+            "vif",
+        },
     },
 
     -- Kickass class / function viewer

@@ -17,15 +17,6 @@ return {
         end,
     },
 
-    -- {
-    --     "python-lsp/python-lsp-server",
-    --     config = function()
-    --         require("lspconfig").pylsp.setup{ }
-    --     end,
-    --     -- TODO: Add defer, later. Maybe
-    --     -- lazy = true,
-    -- },
-
     {
         "pappasam/jedi-language-server",
         lazy = true,
@@ -37,9 +28,7 @@ return {
         config = function()
             require("fidget").setup()
         end,
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("fidget.nvim")
-        end,
+        event = "InsertEnter"
     },
 
     {
@@ -110,13 +99,7 @@ return {
                 }
             )
         end,
-        dependencies = {
-            "jose-elias-alvarez/null-ls.nvim",
-            "williamboman/mason.nvim",
-        },
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("mason-null-ls.nvim")
-        end,
+        lazy = true,
     },
 
     -- Linter package container / manager
@@ -155,11 +138,10 @@ return {
             null_ls.setup({ sources = sources })
         end,
         dependencies = {
+            "jay-babu/mason-null-ls.nvim",  -- Bootstrap pydocstyle, pylint, etc
             "nvim-lua/plenary.nvim"
         },
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("null-ls.nvim")
-        end,
+        event = "InsertEnter",
     },
     {
         "nvim-lua/plenary.nvim",

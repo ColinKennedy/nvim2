@@ -6,7 +6,6 @@ return {
         init = function()
             require("my_custom.utilities.utility").lazy_load("vim-textobj-line")
         end,
-        keys = { "cs", "ds", "ys" },
     },
 
     -- Surround plugin. Lets you change stuff would words really easily
@@ -14,12 +13,11 @@ return {
         "tpope/vim-surround",
         keys = { "cs", "ds", "ys" },
     },
+
+    -- Enables ``piw`` and other awesome text objects
     {
         "kana/vim-operator-replace",
         dependencies = { "kana/vim-operator-user" },
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-operator-replace")
-        end,
     },
     {
         "kana/vim-operator-user",
@@ -43,22 +41,16 @@ return {
             --     \ '@': {'quote': [{'d': '@'}]},
             --     \ })
         end,
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("targets.vim")
-        end,
     },
 
 
+    -- TODO: Can I defer load this? Figure out how
     -- Comment / uncomment with ``gcc`` and other ``gc`` text motion commands
     {
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup()
         end,
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("Comment.nvim")
-        end,
-        keys = { "gcc" },
     },
 
     -- Lets you select inside indented blocks, using "ii"or "ai"
@@ -70,9 +62,6 @@ return {
         config=function()
             vim.g.indent_object_no_default_key_mappings = "1"
         end,
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-indent-object")
-        end,
     },
 
     {
@@ -81,10 +70,6 @@ return {
             vim.g.textobj_indent_no_default_key_mappings = "1"
         end,
         dependencies = { "kana/vim-textobj-user" },
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-textobj-indent")
-        end,
-        keys = {"ai", "ii"},
     },
 
     -- Gives vim a few tools to navigate through indented blocks more easily
@@ -104,15 +89,16 @@ return {
         keys = {"{", "}"},
     },
 
-    -- A text-object that helps you select Python source-code blocks
-    {
-        "ColinKennedy/vim-textobj-block-party",
-        dependencies = { "kana/vim-textobj-user" },
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-textobj-block-party")
-        end,
-        keys = {"ab", "ib"},
-    },
+    -- TODO: Replace this with treesitter, sometime in the future
+    -- -- A text-object that helps you select Python source-code blocks
+    -- {
+    --     "ColinKennedy/vim-textobj-block-party",
+    --     dependencies = { "kana/vim-textobj-user" },
+    --     -- init = function()
+    --     --     require("my_custom.utilities.utility").lazy_load("vim-textobj-block-party")
+    --     -- end,
+    --     keys = {"ab", "ib"},
+    -- },
 
     -- Adds pair mappings (like ]l [l) to Vim
     {
@@ -143,10 +129,7 @@ return {
     {
         "Julian/vim-textobj-variable-segment",
         dependencies = { "kana/vim-textobj-user" },
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("vim-textobj-variable-segment")
-        end,
-        keys = {"av", "iv"},
+        keys = {"dav", "div", "vav", "viv"},
     },
 
     -- Life-changing text object extension. It's hard to explain but ...
