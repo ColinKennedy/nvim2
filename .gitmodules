@@ -232,3 +232,6 @@
 [submodule "bundle/mason-null-ls.nvim"]
 	path = bundle/mason-null-ls.nvim
 	url = git@github.com:jay-babu/mason-null-ls.nvim.git
+[submodule "bundle/spaceless.nvim"]
+	path = bundle/spaceless.nvim
+	url = git@github.com:lewis6991/spaceless.nvim.git
