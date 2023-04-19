@@ -232,3 +232,6 @@
 [submodule "bundle/spaceless.nvim"]
 	path = bundle/spaceless.nvim
 	url = git@github.com:lewis6991/spaceless.nvim.git
+[submodule "bundle/lsp_signature.nvim"]
+	path = bundle/lsp_signature.nvim
+	url = git@github.com:ray-x/lsp_signature.nvim.git
