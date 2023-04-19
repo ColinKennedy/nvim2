@@ -162,7 +162,7 @@ return {
 
     -- Add comment text objects ``ac`` / ``ic``. e.g. ``dac`` (delete comment) or  ``gcac`` (requires ``numToStr/Comment.nvim``)
     {
-        "glts/vim-textobj-comment"
+        "glts/vim-textobj-comment",
         dependencies = { "kana/vim-textobj-user" },
     },
 }
