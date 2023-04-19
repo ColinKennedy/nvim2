@@ -38,8 +38,8 @@ return {
         end,
         opts = {
             signs = {
-                add = { text = "+" },
-                change = { text = "~" },
+                add = { text = "│" },
+                change = { text = "╵" },
                 delete = { text = "_" },
                 topdelete = { text = "‾" },
                 changedelete = { text = "x" },
@@ -72,30 +72,28 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         event = "VeryLazy",
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("lualine.nvim")
-        end,
-        opts = {
-            options = {
-                component_separators = { left = '', right = ''},
+        config = function()
+            require('lualine').setup {
+              options = {
                 icons_enabled = true,
-                section_separators = { left = '', right = ''},
                 theme = "onedark",
-            },
-            sections = {
+                section_separators = { left = "", right = ""},
+                component_separators = { left = "", right = ""},
+              },
+              sections = {
                 lualine_b = {
-                    {
-                        "diff",
-                        colored = true,
-                        diff_color = {
-                            added = "DiffAdd",
-                            removed = "DiffDelete",
-                            modified = "DiffChange",
-                        },
-                    }
-                }
+                    "branch",
+                },
+                lualine_c = {"filetype", "filename"},
+                lualine_x = {},
+                lualine_y = {
+                    "diagnostics",
+                    "progress",
+                },
+                lualine_z = {"location"}
+              },
             }
-        }
+        end,
     },
 
     -- Extra, optional icons for ``nvim-lualine/lualine.nvim``

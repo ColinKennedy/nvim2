@@ -381,7 +381,10 @@ return {
     -- Auto-sets Vim ``tabstop`` and ``shiftwidth``, based on the existing file's context
     {
         "tpope/vim-sleuth",
-        event = { "VeryLazy" },
+        -- TODO: I think I can't eval-defer this. Otherwise, it won't be
+        -- available when opening the first file. If so, remove this plug-in
+        --
+        -- event = { "VeryLazy" },
     },
 
     -- Show all file edits as an tree

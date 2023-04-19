@@ -80,11 +80,15 @@ require("nvim-treesitter.configs").setup {
 		    query = "@function.inner",
 		},
 
-		["ac"] = {
+		-- Note: I use aC / iC (capital C) so that I can use ac / ic
+		-- for ``glts/vim-textobj-comment``, which is a much more
+		-- common case.
+		--
+		["aC"] = {
 		    desc = "Select class + whitespace to the next class / class",
 		    query = "@class.outer",
 		},
-		["ic"] = {
+		["iC"] = {
 		    desc = "Select class up to last source code line (no trailing whitespace)",
 		    query = "@class.inner",
 		},

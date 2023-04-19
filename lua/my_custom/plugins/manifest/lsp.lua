@@ -15,20 +15,12 @@ return {
                 end
             )
         end,
+        lazy = true,
     },
 
     {
         "pappasam/jedi-language-server",
         lazy = true,
-    },
-
-    -- A visual progress indicator for slow LSPs. Very useful for C++ & USD
-    {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup()
-        end,
-        event = { "InsertEnter", "VeryLazy" },
     },
 
     {
@@ -41,7 +33,8 @@ return {
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        event = { "VeryLazy" },
+        -- TODO: Figure out how to lazy-load this. So that Vim can have a faster start
+        -- event = { "VeryLazy" },
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
@@ -129,8 +122,8 @@ return {
         config = function()
             local null_ls = require("null-ls")
             local sources = {
-                null_ls.builtins.diagnostics.pydocstyle,
-                null_ls.builtins.diagnostics.pylint,
+                null_ls.builtins.diagnostics.pydocstyle.with({diagnostic_config={signs=false}}),
+                null_ls.builtins.diagnostics.pylint.with({diagnostic_config={signs=false}}),
                 -- null_ls.builtins.diagnostics.ruff,
                 null_ls.builtins.formatting.isort,
                 null_ls.builtins.formatting.black,
@@ -148,4 +141,26 @@ return {
         "nvim-lua/plenary.nvim",
         lazy = true,
     },
+
+    -- A visual progress indicator for slow LSPs. Very useful for C++ & USD
+    {
+        "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup()
+        end,
+        event = { "InsertEnter", "VeryLazy" },
+    },
+
+    -- Iteratively show the next argument, in a pop-up window
+    {
+        "ray-x/lsp_signature.nvim",
+        config = function()
+            require("lsp_signature").setup(
+                {
+                    hint_enable = false,
+                    timer_interval = 500,  -- Wait longer before showing this pop-up
+                }
+            )
+        end,
+    }
 }
