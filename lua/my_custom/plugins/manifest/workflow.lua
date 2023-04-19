@@ -132,10 +132,11 @@ return {
         cmd = "ZoomWinTabToggle"
     },
 
+    -- TODO: If I lazy-load this plug-in, it forces the cursor to the top of the file. No idea why. Check that out, later
     -- Auto-read external file changes
     {
         "ColinKennedy/vim-file-system-watcher",
-        event = { "VeryLazy" },
+        -- event = { "VeryLazy" },
     },
 
     -- Auto-generate docstrings, using ``<space>d``

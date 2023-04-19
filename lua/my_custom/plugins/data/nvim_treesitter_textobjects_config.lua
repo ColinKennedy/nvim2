@@ -105,6 +105,7 @@ require("nvim-treesitter.configs").setup {
 		["@class.outer"] = value,
 		["@function.inner"] = value,
 		["@function.outer"] = value,
+		["@string.documentation"] = value,
 	    },
 	},
     },

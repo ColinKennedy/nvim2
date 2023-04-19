@@ -1,5 +1,6 @@
-- vim config clean-up
- - change manifest / data code to just "plugins" / "configs" - Use NvChad as an example
+- neogen has some issues
+ - when docstring is single-lined, it has as prefix space that it shouldn't
+ - raises is parsed incorrectly, in Python
 
 - yi` doesn't work. Fix!!!
 
@@ -36,14 +37,13 @@
 
 
 
-- Figure out a way to lazy-load nvim-cmp
-- lazy window stylesheet is gross. Fix
-- Disable trailing whitespace from lazy's pop-up window
-- What is NvChad's "base64" cache about?
+- vim config clean-up
+ - change manifest / data code to just "plugins" / "configs" - Use NvChad as an example
 
-- neogen has some issues
- - when docstring is single-lined, it has as prefix space that it shouldn't
- - raises is parsed incorrectly, in Python
+- How do I keep my cursor in the center?
+- Figure out a way to lazy-load nvim-cmp
+- lazy's window stylesheet is gross. Fix
+- Disable trailing whitespace from lazy's pop-up window
 
 - command line completion should have icons and other fun stuff
 
