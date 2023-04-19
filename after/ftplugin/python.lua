@@ -1,6 +1,11 @@
--- An advanced formatter that makes text look really pretty
-if vim.fn.executable("par")
-then
-    -- vim.opt.formatprg = 'par rTbqR B=.,\\?_A_a_0 Q=_s\\>\\|w88'
-    vim.opt.formatprg = 'par rTbqR s0w88'
-end
+-- TODO: This is super slow on big files. Fix?
+-- TODO: Consider lazy-loading this
+vim.cmd[[
+function! GetDocumentationFold(line)
+    return luaeval(printf('require("my_custom.utilities.fold").get_fold_level(%d)', a:line - 1))
+endfunction
+
+
+set foldmethod=expr
+set foldexpr=GetDocumentationFold(v:lnum)
+]]

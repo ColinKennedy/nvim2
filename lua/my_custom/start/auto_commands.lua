@@ -90,13 +90,64 @@ vim.api.nvim_create_autocmd(
     }
 )
 
--- TODO: Consider lazy-loading this
-vim.cmd[[
-function! GetDocumentationFold(line)
-    return luaeval(printf('require("my_custom.utilities.fold").get_fold_level(%d)', a:line - 1))
-endfunction
+-- Force Vim's cursor to stay in the center of the screen, always
+vim.api.nvim_create_autocmd(
+    {"BufEnter", "WinEnter", "WinNew", "VimResized"},
+    {
+        group = group,
+        pattern = {"*", "*.*"},
+        command = ":set scrolloff=999",
+    }
+)
 
+-- Whenever you edit a local .vimrc file, immediately re-source it
+-- See the ``vim-addon-local-vimrc`` plug-in for details.
+--
+vim.api.nvim_create_autocmd(
+    "BufWritePost",
+    {
+        pattern = ".vimrc",
+        callback = function()
+            local current_vimrc_path = vim.api.nvim_buf_get_name(0)
 
-set foldmethod=expr
-set foldexpr=GetDocumentationFold(v:lnum)
-]]
+            if current_vimrc_path == os.getenv("MYVIMRC")
+            then
+                -- Don't auto-reload a top-level .vimrc. We do this because
+                -- that .vimrc usually has plug-in specifics that can only be
+                -- reliably loaded once per Vim session.
+                --
+                -- All other .vimrc files are okay to reload though. e.g.
+                -- .vimrc files from the ``vim-addon-local-vimrc`` plug-in.
+                --
+                return
+            end
+
+            vim.cmd[[source %]]
+        end,
+    }
+)
+
+local adjust_window_height = function(minimum, maximum)
+    local smallest = math.min(vim.fn.line("$"), maximum)
+    local value = math.max(smallest, minimum)
+
+    vim.cmd('execute ":' .. value .. 'wincmd _"')
+end
+
+vim.api.nvim_create_autocmd(
+    "FileType",
+    {
+        callback = function()
+            adjust_window_height(0, 8)
+        end,
+        pattern = "qf",
+    }
+)
+
+vim.api.nvim_create_autocmd(
+    {"BufRead", "BufNewFile"},
+    {
+        command = ":set filetype=usd",
+        pattern = "*.usd*",
+    }
+)

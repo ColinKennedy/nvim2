@@ -144,7 +144,7 @@
 	url = git@github.com:numToStr/Comment.nvim.git
 [submodule "bundle/plenary.nvim"]
 	path = bundle/plenary.nvim
-	url = git@github.com:nvim-lua/plenary.nvim.git
+	url = git@github.com:ColinKennedy/plenary.nvim.git
 [submodule "bundle/lualine.nvim"]
 	path = bundle/lualine.nvim
 	url = git@github.com:nvim-lualine/lualine.nvim.git
@@ -156,19 +156,13 @@
 	url = git@github.com:nvim-tree/nvim-web-devicons.git
 [submodule "bundle/nvim-treesitter-textobjects"]
 	path = bundle/nvim-treesitter-textobjects
-	url = git@github.com:nvim-treesitter/nvim-treesitter-textobjects.git
+	url = git@github.com:ColinKennedy/nvim-treesitter-textobjects.git
 [submodule "bundle/nvim-treesitter"]
 	path = bundle/nvim-treesitter
 	url = git@github.com:nvim-treesitter/nvim-treesitter.git
-[submodule "bundle/playground"]
-	path = bundle/playground
-	url = git@github.com:nvim-treesitter/playground.git
 [submodule "bundle/lspkind.nvim"]
 	path = bundle/lspkind.nvim
 	url = git@github.com:onsails/lspkind.nvim.git
-[submodule "bundle/jump.vim"]
-	path = bundle/jump.vim
-	url = git@github.com:padde/jump.vim.git
 [submodule "bundle/jedi-language-server"]
 	path = bundle/jedi-language-server
 	url = git@github.com:pappasam/jedi-language-server.git
@@ -238,3 +232,72 @@
 [submodule "bundle/vim-textobj-comment"]
 	path = bundle/vim-textobj-comment
 	url = git@github.com:glts/vim-textobj-comment.git
+[submodule "bundle/hop.nvim"]
+	path = bundle/hop.nvim
+	url = git@github.com:phaazon/hop.nvim.git
+[submodule "bundle/nvim-gps"]
+	path = bundle/nvim-gps
+	url = git@github.com:Lazytangent/nvim-gps.git
+[submodule "bundle/winbar.nvim"]
+	path = bundle/winbar.nvim
+	url = git@github.com:ColinKennedy/winbar.nvim.git
+[submodule "bundle/persistent-breakpoints.nvim"]
+	path = bundle/persistent-breakpoints.nvim
+	url = git@github.com:Weissle/persistent-breakpoints.nvim.git
+[submodule "bundle/nvim-dap"]
+	path = bundle/nvim-dap
+	url = git@github.com:mfussenegger/nvim-dap.git
+[submodule "bundle/nvim-dap-ui"]
+	path = bundle/nvim-dap-ui
+	url = git@github.com:ColinKennedy/nvim-dap-ui.git
+[submodule "bundle/nvim-dap-python"]
+	path = bundle/nvim-dap-python
+	url = git@github.com:mfussenegger/nvim-dap-python.git
+[submodule "bundle/vim-python-pep8-indent"]
+	path = bundle/vim-python-pep8-indent
+	url = git@github.com:Vimjas/vim-python-pep8-indent.git
+[submodule "bundle/nvim-treesitter-usd"]
+	path = bundle/nvim-treesitter-usd
+	url = git@github.com:ColinKennedy/nvim-treesitter-usd.git
+[submodule "bundle/nvim-treesitter-context"]
+	path = bundle/nvim-treesitter-context
+	url = git@github.com:nvim-treesitter/nvim-treesitter-context.git
+[submodule "bundle/treesj"]
+	path = bundle/treesj
+	url = git@github.com:Wansmer/treesj.git
+[submodule "bundle/nvim-bqf"]
+	path = bundle/nvim-bqf
+	url = git@github.com:kevinhwang91/nvim-bqf.git
+[submodule "bundle/nvim-dap-virtual-text"]
+	path = bundle/nvim-dap-virtual-text
+	url = git@github.com:theHamsta/nvim-dap-virtual-text.git
+[submodule "bundle/zoxide.vim"]
+	path = bundle/zoxide.vim
+	url = git@github.com:nanotee/zoxide.vim.git
+[submodule "bundle/wilder.nvim"]
+	path = bundle/wilder.nvim
+	url = git@github.com:gelguy/wilder.nvim.git
+[submodule "bundle/fzy-lua-native"]
+	path = bundle/fzy-lua-native
+	url = git@github.com:romgrk/fzy-lua-native.git
+[submodule "bundle/hex.nvim"]
+	path = bundle/hex.nvim
+	url = git@github.com:RaafatTurki/hex.nvim.git
+[submodule "bundle/which-key.nvim"]
+	path = bundle/which-key.nvim
+	url = git@github.com:folke/which-key.nvim.git
+[submodule "bundle/hlargs.nvim"]
+	path = bundle/hlargs.nvim
+	url = git@github.com:m-demare/hlargs.nvim.git
+[submodule "bundle/toggleterm.nvim"]
+	path = bundle/toggleterm.nvim
+	url = git@github.com:akinsho/toggleterm.git
+[submodule "bundle/rust-tools.nvim"]
+	path = bundle/rust-tools.nvim
+	url = git@github.com:simrat39/rust-tools.nvim
+[submodule "bundle/grapple.nvim"]
+	path = bundle/grapple.nvim
+	url = git@github.com:cbochs/grapple.nvim.git
+[submodule "bundle/term-edit.nvim"]
+	path = bundle/term-edit.nvim
+	url = git@github.com:chomosuke/term-edit.nvim.git

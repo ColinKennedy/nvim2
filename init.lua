@@ -1,5 +1,14 @@
 require("my_custom.start.speed_up")
 
+vim.cmd[[
+" Note: This should be a temporary measure. Once I am on the latest Neovim
+" / Vim which natively discovers USD files, I shouldn't need this anymore.
+"
+" Reference: https://github.com/vim/vim/pull/12370
+"
+au BufNewFile,BufRead *.usda,*.usd setf usd
+]]
+
 -- Important: According to lazy.nvim, the leader key must be set before lazy.nvim is
 -- called or else it will break various things.
 --
@@ -28,7 +37,6 @@ local tabler = require("my_custom.utilities.tabler")
 local extend = tabler.extend
 local plugins = {}
 
-
 vim.g.vim_home = filer.get_current_directory()
 
 extend(plugins, require("my_custom.plugins.manifest.appearance"))
@@ -46,8 +54,5 @@ require("my_custom.start.remap")
 require("my_custom.start.initialization")
 require("my_custom.start.setting")
 require("my_custom.start.auto_commands")
-
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/global_confirm.vim]]
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/miscellaneous_commands.vim]]
+require("my_custom.start.global_confirm")
+vim.cmd("source " .. vim.g.vim_home .. "/plugin/miscellaneous_commands.vim")

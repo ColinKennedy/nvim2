@@ -33,8 +33,7 @@ return {
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        -- TODO: Figure out how to lazy-load this. So that Vim can have a faster start
-        -- event = { "VeryLazy" },
+        event = { "VeryLazy" },  -- Or "InsertEnter"
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
@@ -51,10 +50,13 @@ return {
             )
             require("luasnip").config.set_config(
                 {
-                    updateevents = "TextChanged,TextChangedI",
                     enable_autosnippets = true,
+                    history = false,
+                    updateevents = "TextChanged,TextChangedI",
                 }
             )
+
+            vim.g._snippet_super_prefer_keywords = true
         end,
         event = "InsertEnter",
         version = "1.*",
@@ -122,23 +124,30 @@ return {
         config = function()
             local null_ls = require("null-ls")
             local sources = {
+                null_ls.builtins.code_actions.gitsigns,
                 null_ls.builtins.diagnostics.pydocstyle.with({diagnostic_config={signs=false}}),
                 null_ls.builtins.diagnostics.pylint.with({diagnostic_config={signs=false}}),
-                -- null_ls.builtins.diagnostics.ruff,
-                null_ls.builtins.formatting.isort,
                 null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.isort,
                 null_ls.builtins.formatting.trim_whitespace,
+                -- null_ls.builtins.diagnostics.ruff,
             }
             null_ls.setup({ sources = sources })
         end,
         dependencies = {
             "jay-babu/mason-null-ls.nvim",  -- Bootstrap pydocstyle, pylint, etc
-            "nvim-lua/plenary.nvim"
+            "ColinKennedy/plenary.nvim"
         },
         event = "VeryLazy",
     },
+
+    -- Added my own fork of plenary.nvim because it doesn't work with older curl versions
+    --
+    -- Reference: https://github.com/nvim-lua/plenary.nvim/issues/495
+    --
     {
-        "nvim-lua/plenary.nvim",
+        "ColinKennedy/plenary.nvim",
+        branch = "fix_old_curl_version",
         lazy = true,
     },
 
@@ -146,9 +155,21 @@ return {
     {
         "j-hui/fidget.nvim",
         config = function()
-            require("fidget").setup()
+            require("fidget").setup{
+                text = {
+                    -- spinner = "dots_ellipsis"  -- I like this alternative
+                    spinner = "meter"
+                },
+                window = {
+                    blend = 10
+                }
+            }
+
+            vim.api.nvim_set_hl(0, "FidgetTask", {fg="#4b5156", ctermfg=65})
+            vim.api.nvim_set_hl(0, "FidgetTitle", {link="Identifier"})
         end,
         event = { "InsertEnter", "VeryLazy" },
+        tag = "legacy",  -- TODO: Remove this after the repository re-write, later
     },
 
     -- Iteratively show the next argument, in a pop-up window
@@ -162,5 +183,17 @@ return {
                 }
             )
         end,
+        event = "VeryLazy",  -- Or maybe InsertEnter
+    },
+
+    -- Rust LSP tools
+    {
+        "simrat39/rust-tools.nvim",
+        config = function()
+            local rust_tools = require("rust-tools")
+
+            rust_tools.setup({})
+        end,
+        ft = "rust",
     }
 }

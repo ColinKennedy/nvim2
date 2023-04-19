@@ -10,7 +10,8 @@ vim.opt.guicursor = ""  -- Keeps the "fat cursor" in INSERT Mode
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+local temporary_directory = os.getenv("HOME") or os.getenv("APPDATA")
+vim.opt.undodir = temporary_directory .. "/.vim/undodir"
 vim.api.nvim_create_autocmd(
     "BufWritePost",
     {
@@ -51,3 +52,56 @@ vim.opt.lazyredraw = true
 --
 vim.g.python_host_prog = "/bin/python"
 vim.g.python3_host_prog = "/usr/local/bin/python3.7"
+
+-- Force Neovim to have one statusline for all buffers (rather than one-per-buffer)
+--
+-- Reference: https://github.com/neovim/neovim/pull/17266
+--
+vim.opt.laststatus = 3
+
+-- Don't allow editor config files that I don't use for accidentally causing issues.
+--
+-- Reference: https://youtu.be/3TRouzuWOuQ?t=107
+--
+vim.g.editorconfig = false
+
+
+
+-- Add Qt.py auto-completion stubs to Vim
+--
+-- Reference: https://peps.python.org/pep-0561/
+--
+local separator = ""
+
+if vim.fn.has("win32") == 1
+then
+    separator = ";"
+else
+    separator = ":"
+end
+
+local existing = os.getenv("PYTHONPATH")
+
+if existing
+then
+    vim.cmd(
+        'let $PYTHONPATH = "'
+        .. vim.g.vim_home .. "/python_stubs"
+        .. separator
+        .. existing
+        .. '"'
+    )
+else
+    vim.cmd(
+        'let $PYTHONPATH = "' .. vim.g.vim_home .. "/python_stubs" .. '"'
+    )
+end
+
+
+vim.api.nvim_create_user_command(
+    "LspCapabilities",
+    function()
+        require("my_custom.utilities.lsp_helper").print_lsp_capabilities()
+    end,
+    { desc = "Print the features of each LSP" }
+)

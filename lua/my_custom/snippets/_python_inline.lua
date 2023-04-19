@@ -44,7 +44,7 @@ return {
             docstring="A print() call",
             trig="p",
         },
-        { text("print("), index(1), append_parentheses_onto_line() }
+        { text("print("), index(1)}  -- TODO: Re-add append_parentheses_onto_line
     ),
 
     snippet(

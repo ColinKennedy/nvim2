@@ -30,11 +30,31 @@ return {
     },
 
     -- Wrap and unwrap function arguments, lists, and dictionaries with one mapping
+    -- Note: This has a bug something_long_and_the_like.more_things_here("[q", "another", {"asdfsfd": [1, 3, 5]})
+    -- I think I'll just not use this for a while and see how it goes.
+    --
     {
         "FooSoft/vim-argwrap",
-        cmd = { "ArgWrap" },
+        cmd = {"ArgWrap"},
         config = function()
             vim.g.argwrap_tail_comma = 1
+        end,
+    },
+    -- A treesitter-based tool for splitting and joining lines. Pretty fast.
+    {
+        "Wansmer/treesj",
+        keys = {"<leader>sa"},
+        config = function()
+            require("my_custom.plugins.data.treesj")
+
+            vim.keymap.set(
+                "n",
+                "<leader>sa",
+                function()
+                    require("treesj").toggle()
+                end,
+                options
+            )
         end,
     },
 
@@ -46,7 +66,6 @@ return {
     --
     {
         "MarcWeber/vim-addon-local-vimrc",
-        cmd = { "SourceLocalVimrc", "SourceLocalVimrcOnce" },
     },
 
     -- Press * or # in Visual mode to start a search
@@ -83,6 +102,26 @@ return {
             vim.g.usdcat_command = 'rez_usdcat'
         end,
         ft = { "usda", "usd" },
+    },
+
+    -- Always show the current USD Prim context. Useful when navigating nested files
+    --
+    -- TODO: Figure out a way to defer-eval this plug-in
+    --
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+            local context = require("treesitter-context")
+            context.setup{
+                on_attach = function(bufnr)
+                    return vim.bo[bufnr].filetype == 'usd'
+                end,
+            }
+
+            -- Make the context background black
+            vim.api.nvim_set_hl(0, "TreesitterContext", {ctermbg=16, bg="#101010"})
+        end,
+        dependencies = {"nvim-treesitter/nvim-treesitter"},
     },
 
     -- TODO: Add later
@@ -129,40 +168,28 @@ return {
     {
         -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
         "troydm/zoomwintab.vim",
-        cmd = "ZoomWinTabToggle"
+        cmd = {"ZoomWinTabOut", "ZoomWinTabToggle"},
     },
 
+    -- TODO: If I lazy-load this plug-in, it forces the cursor to the top of the file. No idea why. Check that out, later
     -- Auto-read external file changes
     {
         "ColinKennedy/vim-file-system-watcher",
-        event = { "VeryLazy" },
+        -- event = { "VeryLazy" },
     },
 
-    -- Auto-generate docstrings, using ``<space>d``
+    -- Auto-generate docstrings, using ``<leader>id``
     {
         "ColinKennedy/neogen",
-        branch = "issues/137-add_google_docstring_raises",
+        branch = "combined_branch",
         config = function()
-            require("neogen").setup(
-                {
-                    languages = {
-                        python = {
-                            template = {
-                                annotation_convention = "google_docstrings"
-                            }
-                        },
-                    },
-                    placeholders_hl = "String",
-                    snippet_engine = "luasnip",
-                }
-            )
-            vim.keymap.set("n", "<space>d", ":Neogen<CR>")
+            require("my_custom.plugins.data.neogen")
         end,
         dependencies = {
             "L3MON4D3/LuaSnip",
             "nvim-treesitter/nvim-treesitter"
         },
-        keys = { "<space>d" },
+        keys = { "<leader>id" },
         version = "*",  -- Only follow the latest stable release
     },
 
@@ -174,24 +201,58 @@ return {
         --
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        config = function()
+            -- I was getting a "not a Win32 application" error on Windows so I added this workaround.
+            --
+            -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#troubleshooting
+            --
+            if vim.fn.has("win32") == 1
+            then
+                require('nvim-treesitter.install').compilers = { "clang" }
+            end
+        end,
         lazy = true,
     },
 
+    -- Very unfortunately needed because indentation via treesitter has bugs
+    --
+    -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
+    --
     {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        "Vimjas/vim-python-pep8-indent",
+        ft = "python",
+    },
+
+    -- Enables nvim-treesitter syntax highlighting groups for USD files.
+    --
+    -- Note: This does nothing unless you call
+    --
+    -- ```
+    -- require("nvim-treesitter.configs").setup {
+    --     parser_install_dir = installation_directory,
+    --     highlight = { enable = true },
+    -- }
+    -- ```
+    --
+    {
+        "ColinKennedy/nvim-treesitter-usd",
+        ft = "usd",
+    },
+
+    {
+        "ColinKennedy/nvim-treesitter-textobjects",
+        branch = "modified_include_surrounding_whitespace_behavior",
         config = function()
             require("my_custom.plugins.data.nvim_treesitter_textobjects_config")
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
-        -- TODO: It's technically not correct to have this plug-in run
-        -- on-insert or key-press. Try to find a better way to lazy-load this
-        -- plug-in so it is available on start-up but doesn't impact
-        -- start-time.
+        -- TODO: It seems that lazy-loading this sometimes causes the plug-in
+        -- to break. Though it would be nice if there was a way to consistently
+        -- lazy-load it.
         --
-        -- event = {"InsertEnter"},
-        event = { "VeryLazy" },
+        -- event = { "VeryLazy" },
         -- keys = {
         --     "[k", "]k",
         --     "[m", "]m",
@@ -222,91 +283,37 @@ return {
         config = function()
             require("aerial").setup(
                 {
+                    backends = { "lsp", "treesitter" },
                     highlight_on_jump = 100,  -- Shorten the blink time to be fast
                     nav = {
                         keymaps = {
+                            ["<CR>"] = "actions.jump",
                             ["q"] = "actions.close",
                         },
+                    },
+                    layout = {
+                        resize_to_content = false,
                     },
                 }
             )
 
-            -- Note: Disable trailing whitespace highlighting in the aerial window
-            vim.api.nvim_create_autocmd(
-                {"BufRead", "BufNew", "FileType", "TermOpen"},
-                {
-                    pattern = "*",
-                    callback = function()
-                        if vim.bo.buftype == "nofile"
-                        then
-                            vim.cmd[[match ExtraWhitespace /^^/]]
-
-                            return
-                        end
-                    end
-                }
+            vim.keymap.set(
+                "n",
+                "<space>SS",
+                ":AerialToggle<CR>",
+                {desc="[S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc."}
             )
-
-            vim.keymap.set("n", "<space>SS", ":AerialToggle<CR>")
-            vim.keymap.set("n", "<space>SN", ":AerialNavToggle<CR>")
+            vim.keymap.set(
+                "n",
+                "<space>SN",
+                ":AerialNavToggle<CR>",
+                {desc="[S]witch [N]avigation inside / outside of classes and functions."}
+            )
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         cmd = { "AerialNavToggle", "AerialToggle"},
         keys = { "<space>SN", "<space>SS" } -- S as in "Summary"
     },
-
-    {
-        "nvim-treesitter/playground",
-        cmd = "TSPlaygroundToggle",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        }
-    },
-
-    -- TODO: Consider removing, later
-    -- -- Debug basically any language
-    -- --
-    -- -- Reference: https://www.youtube.com/watch?v=AnTX2mtOl9Q
-    -- --
-    -- {
-    --     "puremourning/vimspector",
-    --     enabled = false,
-    --     -- enabled = function()
-    --     --     return vim.fn.has("python3") == 1
-    --     -- end,
-    --     config = function()
-    --         vim.cmd[[
-    --         function! GoToWindow(buffer_id)
-    --             call win_gotoid(a:buffer_id)
-    --
-    --             ZoomWinTabToggle
-    --         endfunction
-    --         ]]
-    --
-    --         vim.keymap.set("n", "<leader>dd", ":call vimspector#Launch()<CR>")
-    --         vim.keymap.set("n", "<leader>dc", ":call GoToWindow(g:vimspector_session_windows.code)<CR>")
-    --         vim.keymap.set("n", "<leader>dt", ":call GoToWindow(g:vimspector_session_windows.tagpage)<CR>")
-    --         -- nnoremap <leader>dtg :call GoToWindow(g:vimspector_session_windows.tagpage)<CR>
-    --         -- nnoremap <leader>dtr :call GoToWindow(g:vimspector_session_windows.terminal)<CR>
-    --         vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
-    --         vim.keymap.set("n", "<leader>dw", ":call GoToWindow(g:vimspector_session_windows.watches)<CR>")
-    --         vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
-    --         vim.keymap.set("n", "<leader>do", ":call GoToWindow(g:vimspector_session_windows.output)<CR>")
-    --         vim.keymap.set("n", "<leader>de", ":call vimspector#Reset()<CR>")
-    --         vim.keymap.set("n", "<leader>dtcb", ":call vimspector#CleanLineBreakpoint()<CR>")
-    --
-    --         vim.keymap.set("n", "<leader>dl", "<Plug>VimspectorStepInto")
-    --         vim.keymap.set("n", "<leader>dj", "<Plug>VimspectorStepOver")
-    --         vim.keymap.set("n", "<leader>dk", "<Plug>VimspectorStepOut")
-    --         vim.keymap.set("n", "<leader>d_", "<Plug>VimspectorRestart")
-    --
-    --         vim.keymap.set("n", "<leader>d<space>", ":call vimspector#Continue()<CR>")
-    --
-    --         vim.keymap.set("n", "<leader>drc", "<Plug>VimspectorRunToCursor")
-    --         vim.keymap.set("n", "<leader>dbp", "<Plug>VimspectorToggleBreakpoint")
-    --         vim.keymap.set("n", "<leader>dcbp", "<Plug>VimspectorToggleConditionalBreakpoint")
-    --     end
-    -- },
 
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
     {
@@ -319,23 +326,15 @@ return {
     },
 
     -- Quickfix helper functions
-    -- TODO: Check if this works well with location lists, still
     {
         "romainl/vim-qf",
         ft = "qf",
     },
-
-    -- Quickfix auto-resize. Keeps the quickfix window small
+    -- Quickfix auto previews and other fun features
     {
-        "blueyed/vim-qf_resize",
+        "kevinhwang91/nvim-bqf",
+        dependencies = {"junegunn/fzf", "nvim-treesitter/nvim-treesitter"},
         ft = "qf",
-    },
-
-    -- TODO: Use a better lazy-load than this
-    -- Use <leader>pd to get the Python dot-separated import path at the current cursor
-    {
-        "ColinKennedy/vim-python-dot-path",
-        keys = "<leader>pd",
     },
 
     -- Auto-insert pairs
@@ -345,6 +344,11 @@ return {
         enabled = function()
             return vim.v.version >= 800
         end,
+        config = function()
+            -- Force gemini to build its mappings
+            vim.cmd[[:doautoall create_gemini_mappings BufEnter]]
+        end,
+        event = "VeryLazy",  -- Or maybe InsertEnter
     },
 
     -- Give vim some shell-like commands that it's missing
@@ -426,50 +430,527 @@ return {
                 toggle_current_directory,
                 {nargs=0}
             )
-            vim.keymap.set("n", "<space>W", ":PwdNvimTreeToggle<CR>")
+            vim.keymap.set(
+                "n",
+                "<space>W",
+                ":PwdNvimTreeToggle<CR>",
+                {desc="Open NvimTree starting from the `:pwd`."}
+            )
         end,
         cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = { "<space>W" } -- W as in "workspace view"
     },
 
-    -- TODO: Consider adding this in the future
-    -- {
-    --     "Exafunction/codeium.vim",
-    --     config = function ()
-    --       -- Change "<C-g>" here to any keycode you like.
-    --       vim.keymap.set(
-    --           "i",
-    --           "<C-g>",
-    --           function()
-    --               return vim.fn["codeium#Accept"]()
-    --           end,
-    --           { expr = true }
-    --       )
-    --       vim.keymap.set(
-    --           "i",
-    --           "<c-;>",
-    --           function()
-    --               return vim.fn["codeium#CycleCompletions"](1)
-    --           end,
-    --           { expr = true }
-    --       )
-    --       vim.keymap.set(
-    --           "i",
-    --           "<c-,>",
-    --           function()
-    --               return vim.fn["codeium#CycleCompletions"](-1)
-    --           end,
-    --           { expr = true }
-    --       )
-    --       vim.keymap.set(
-    --           "i",
-    --           "<c-x>",
-    --           function()
-    --               return vim.fn["codeium#Clear"]()
-    --           end,
-    --           { expr = true }
-    --       )
-    --     end
-    -- }
+    -- Use any 2-3 key combo to jump anywhere in a file.
+    -- Basically Firefox's Vimium, but in Vim.
+    --
+    {
+        "phaazon/hop.nvim",
+        cmd = "HopWord",
+        config = function()
+            local hop = require('hop')
+            local directions = require('hop.hint').HintDirection
+
+            vim.keymap.set(
+                "n",
+                "<leader>f",
+                function()
+                    vim.cmd("HopWord")
+                end,
+                {desc="[f]ind text using hop-mode."}
+            )
+
+            require("hop").setup({keys= "asdfghjkl"})
+        end,
+        keys = "<leader>f",
+    },
+
+    -- Debug adapter plug-in. Debug anything in Neovim
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            -- Important: We must define ``require("dap")`` at least once.
+            -- Otherwise the ``DapBreakpoint`` sign won't be available for
+            -- another plug-in, ``Weissle/persistent-breakpoints.nvim``, to
+            -- refer to + use.
+            --
+            local dap = require("dap")
+
+            -- Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#ccrust-gdb-via--vscode-cpptools
+            dap.adapters.cppdbg = {
+                id = "cppdbg",
+                type = "executable",
+                command = "/home/selecaoone/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7"
+            }
+
+            vim.keymap.set(
+                "n",
+                "<leader>d<space>",
+                ":DapContinue<CR>",
+                {desc="Continue through the debugger to the next breakpoint."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dl",
+                ":DapStepInto<CR>",
+                {desc="Move into a function call."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dj",
+                ":DapStepOver<CR>",
+                {desc="Skip over the current line."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dh",
+                ":DapStepOut<CR>",
+                {desc="Move out of the current function call."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dz",
+                ":ZoomWinTabToggle<CR>",
+                {desc="[d]ebugger [z]oom toggle (full-screen or minimize the window)."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dgt",
+                ":lua require('dap').set_log_level('TRACE')<CR>",
+                {desc="Set [d]ebu[g] to [t]race level logging."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dge",
+                function()
+                    vim.cmd(":edit " .. vim.fn.stdpath('cache') .. "/dap.log")
+                end,
+                {desc="Open the [d]ebu[g] [e]dit file."}
+            )
+            vim.keymap.set(
+                "n",
+                "<F1>",
+                ":DapStepOut<CR>",
+                {desc="Move out of the current function call."}
+            )
+            vim.keymap.set(
+                "n",
+                "<F2>",
+                ":DapStepOver<CR>",
+                {desc="Skip over the current line."}
+            )
+            vim.keymap.set(
+                "n",
+                "<F3>",
+                ":DapStepInto<CR>",
+                {desc="Move into a function call."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>d-",
+                function()
+                    require("dap").restart({terminateDebugee=false})
+                end,
+                {desc="Restart the current debug session."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>d=",
+                function()
+                    require("dap").disconnect({terminateDebugee=false})
+                end,
+                {desc="Disconect from a remote DAP session."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>d_",
+                function()
+                    require("dap").terminate()
+                    require("dapui").close()
+                end,
+                {desc="Kill the current debug session."}
+            )
+            -- vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
+            -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
+        end,
+        lazy = true,
+    },
+
+    -- A default "GUI" front-end for nvim-dap
+    {
+        "ColinKennedy/nvim-dap-ui",
+        config = function()
+            require("dapui").setup()
+
+            vim.keymap.set(
+                "n",
+                "<F6>",
+                function()
+                    require("dap").terminate()
+                    require("dapui").close()
+                end,
+                {desc="Close the DAP and the GUI."}
+            )
+
+            local _get_window_by_type = function(type_name)
+                for _, data in pairs(vim.fn.getwininfo())
+                do
+                    if vim.api.nvim_buf_get_option(data.bufnr, "filetype") == type_name
+                    then
+                        return data
+                    end
+                end
+
+                return nil
+            end
+
+            local _zoom_by_type = function(type_name)
+                local data = _get_window_by_type(type_name)
+
+                if data == nil
+                then
+                    print("No buffer could be found.")
+
+                    return
+                end
+
+                if vim.fn.exists("t:zoomwintab") == 1
+                then
+                    -- The window is already zoomed in. Zoom out first
+                    vim.cmd[[ZoomWinTabOut]]
+
+                    if data.winnr == vim.fn.winnr()
+                    then
+                        -- Returning early effectively allows us to "toggle"
+                        -- the zoom mapping. e.g. Pressing ``<leader>dw`` zooms
+                        -- into the Watchers window. Pressing ``<leader>dw``
+                        -- again will "zoom out".
+                        --
+                        return
+                    end
+                end
+
+                vim.fn.win_gotoid(data.winid)
+
+                vim.cmd[[ZoomWinTabToggle]]
+            end
+
+            local add_zoom_keymap = function(mapping, type_name)
+                vim.keymap.set(
+                    "n",
+                    mapping,
+                    function()
+                        _zoom_by_type(type_name)
+                    end,
+                    {desc="Toggle-full-screen the " .. type_name .. " DAP window."}
+                )
+            end
+
+            add_zoom_keymap("<leader>dc", "dapui_console")
+            add_zoom_keymap("<leader>dw", "dapui_watches")
+            add_zoom_keymap("<leader>ds", "dapui_scopes")
+            add_zoom_keymap("<leader>dt", "dapui_stacks")  -- dt as in s[t]acks
+            add_zoom_keymap("<leader>dr", "dap-repl")
+        end,
+        keys = "<F5>",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+
+            "theHamsta/nvim-dap-virtual-text",  -- Optional dependency for virtual text
+
+            "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
+        },
+    },
+
+    -- Adds the current value(s) of variables as you step through the code. Super handy!
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+            require("nvim-dap-virtual-text").setup()
+        end,
+        dependencies = {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
+        lazy = true,
+    },
+
+    -- TODO: Defer-load this plug-in
+    -- TODO: Make sure that debugpy is installed. Otherwise, disable
+    -- Reference: https://github.com/mfussenegger/nvim-dap-python#installation
+    --
+    {
+        "mfussenegger/nvim-dap-python",
+        config = function()
+            require("dap-python").setup(
+                vim.g.vim_home
+                .. "/mason_packages/"
+                .. vim.loop.os_uname().sysname
+                .. "/packages/debugpy/venv/bin/python"
+            )
+            -- An example configuration to launch any Python file, via Houdini
+            -- table.insert(
+            --     require("dap").configurations.python,
+            --     {
+            --         type = "python",
+            --         request = "launch",
+            --         name = "Launch Via hython",
+            --         program = "${file}",
+            --         python = "/opt/hfs19.5.569/bin/hython"
+            --         -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+            --     }
+            -- )
+        end,
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        lazy = true,
+    },
+
+    -- Remember nvim-dap breakpoints between sessions, using ``:PBToggleBreakpoint``
+    {
+        "Weissle/persistent-breakpoints.nvim",
+        config = function()
+            require("persistent-breakpoints").setup{
+                load_breakpoints_event = { "BufReadPost" }
+            }
+
+            vim.keymap.set(
+                "n",
+                "<leader>db",
+                ":PBToggleBreakpoint<CR>",
+                {desc="Set a breakpoint (and remember it even when we re-open the file)."}
+            )
+
+            require('persistent-breakpoints.api').load_breakpoints()
+        end,
+        dependencies = {"mfussenegger/nvim-dap"},
+        event = "VeryLazy",
+    },
+
+    -- Seamlessly switch between a binary file view and a hexdump-ish view and back
+    -- It's a fancy plug-in that replaces ``:h hex-editing``
+    --
+    -- Reference: https://vi.stackexchange.com/a/2237/16073
+    --
+    {
+        "RaafatTurki/hex.nvim",
+        config = function()
+            require("hex").setup()
+        end,
+        cmd = "ToggleHexView"
+    },
+
+    -- A pop-up that shows you available Neovim keymaps. Only pops up if you're slow
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        config = function()
+            local which_key = require("which-key")
+
+            which_key.setup {
+                ignore_missing = true,
+                triggers_blacklist = {
+                    c = {"%", ">"},  -- Prevent mappings like %s/ from popping up
+                },
+                plugins = {
+                    presets = {
+                        motions = false,
+                        text_objects = false,
+                        operators = false,
+                    }
+                }
+            }
+
+            which_key.register(
+                {
+                    ["<leader>"] = {
+                        c = "+file-ish prefix",
+                        d = "+debug prefix",
+                        f = "[f]ind text using hop-mode",
+                        i = {
+                            name = "+insert prefix",
+                            d = "[i]nsert auto-[d]ocstring.",
+                        },
+                        r = "+run prefix",
+                        s = {
+                            name = "+misc prefix",
+                            a = { "[s]plit [a]rgument list" },
+                        },
+                    },
+                    ["<space>"] = {
+                        name = "Space Switching Mappings",
+                        A = "Show [A]rgs list",
+                        B = "Show [B]uffers list",
+                        E = "[E]dit a new project root file",
+                        L = "[L]ines searcher (current file)",
+                        S = {
+                            name = "[S]witcher aerial.nvim windows",
+                            A = "[S]witch [N]avigation",
+                            S = "[S]witch [S]idebar",
+                        },
+                        T = "Create a [T]erminal on the bottom of the current window.",
+                        W = "Open [W]orkspace (NvimTree)",
+                        Z = "[Z]oxide's interative pwd switcher",
+                        c = {
+                            name = "+LSP [c]ode prefix",
+                            a = "Run [c]ode [a]ction",
+                        },
+                        e = "[e]dit a `:pwd` file",
+                        q = "Switch to [q]uickfix window, if open",
+                        w = {
+                            name = "+workspace LSP prefix",
+                            a = "LSP [w]orkspace [a]dd",
+                            l = "LSP [w]orkspace [l]ist",
+                            r = "LSP [w]orkspace [r]remove",
+                        },
+                    },
+                }
+            )
+        end,
+    },
+
+    -- An async "parameter highlights" plugin that uses tree-sitter.
+    -- It works without LSP on any of its supported languages.
+    --
+    {
+        "m-demare/hlargs.nvim",
+        config = function()
+            require('hlargs').setup()
+
+            -- Reference: https://github.com/m-demare/hlargs.nvim/blob/07e33afafd9d32b304a8557bfc1772516c005d75/doc/hlargs.txt#L306
+            vim.api.nvim_create_augroup("LspAttach_hlargs", {clear = true})
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = "LspAttach_hlargs",
+                callback = function(args)
+                    if not (args.data and args.data.client_id) then
+                        return
+                    end
+
+                    for _, client in ipairs(vim.lsp.get_active_clients())
+                    do
+                        local caps = client.server_capabilities
+
+                        if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+                            require("hlargs").disable_buf(args.buf)
+
+                            break
+                        end
+                    end
+                end,
+            })
+        end,
+        event = { "VeryLazy" },
+    },
+
+    -- A plugin that quickly makes and deletes Terminal buffers.
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = function()
+            vim.keymap.set(
+                "n",
+                "<space>T",
+                ":ToggleTerm direction=horizontal<CR>",
+                {
+                    desc="Create a [T]erminal on the bottom of the current window.",
+                    silent=true,
+                }
+            )
+
+            require("toggleterm").setup()
+
+            -- Important: This allows terminals to stay in terminal mode even
+            -- as you move in and out of them
+            --
+            function _G.set_terminal_keymaps()
+              local opts = {buffer = 0}
+              vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+              vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+              vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+              vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+              vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+              vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+              vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+            end
+            -- Note: If you only want these mappings for toggle term use term://*toggleterm#* instead
+            vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+        end
+    },
+
+    -- Allow terminal buffers to be edited
+    {
+        "chomosuke/term-edit.nvim",
+        config = function()
+            if vim.fn.has("win32") == 1
+            then
+                prompt = ">"
+            else
+                prompt = "%$ "
+            end
+
+            require('term-edit').setup {
+                -- Mandatory option:
+                --
+                -- Set this to a lua pattern that would match the end of your prompt.
+                -- Or a table of multiple lua patterns where at least one would match the
+                -- end of your prompt at any given time.
+                --
+                -- How to write lua patterns: https://www.lua.org/pil/20.2.html
+                --
+                -- For most bash/zsh user this is '%$ '.
+                -- For most powershell/fish user this is '> '.
+                -- For most windows cmd user this is '>'.
+                --
+                prompt_end = prompt,
+            }
+        end,
+        ft = "toggleterm",
+        version = "1.*",
+    },
+
+    -- Allow quick and easy navigation to common project files
+    -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
+    --
+    {
+        "cbochs/grapple.nvim",
+        config = function()
+            vim.keymap.set(
+                "n",
+                "<M-S-j>",
+                function()
+                    require("grapple").cycle_forward()
+                end,
+                {desc = "Move to the next saved project path."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<M-S-k>",
+                function()
+                    require("grapple").cycle_backward()
+                end,
+                {desc = "Move to the previous saved project path."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<M-S-l>",
+                function()
+                    require("grapple").popup_tags("git")
+                end,
+                {desc = "Show all saved project paths."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<M-S-h>",
+                function()
+                    require("grapple").toggle({scope="git"})
+                end,
+                {desc = "Add / Remove the current file as a project path."}
+            )
+        end,
+        dependencies = {"ColinKennedy/plenary.nvim"},
+        event = "VeryLazy",
+    },
 }

@@ -33,6 +33,7 @@ return {
         lazy = true,
     },
 
+    -- XXX: Removed due to this issue: https://github.com/wellle/targets.vim/issues/268
     -- Targets - A great companion to vim-surround
     {
         "wellle/targets.vim",
@@ -57,7 +58,7 @@ return {
         event = "VeryLazy",
     },
 
-    -- Lets you select inside indented blocks, using "ii"or "ai"
+    -- Lets you select inside indented blocks, using "iI" or "aI"
     -- ii = "the indented paragraph (stops at newlines)"
     -- ai = "the indented block (grabs the whole block)"
     --
@@ -65,6 +66,44 @@ return {
         "ColinKennedy/vim-indent-object",
         config=function()
             vim.g.indent_object_no_default_key_mappings = "1"
+
+            vim.keymap.set(
+                "o",
+                "aI",
+                ':<C-u>cal HandleTextObjectMapping(0, 0, 0, [line("."), line("."), col("."), col(".")])<CR>',
+                {
+                    desc="Select [a]round lines of same + outer [I]ndentation, spanning whitespace.",
+                    silent=true,
+                }
+            )
+            vim.keymap.set(
+                "o",
+                "iI",
+                ':<C-u>cal HandleTextObjectMapping(1, 0, 0, [line("."), line("."), col("."), col(".")])<CR>',
+                {
+                    desc="Select [i]nside lines of same [I]ndentation, spanning whitespace.",
+                    silent=true,
+                }
+            )
+
+            vim.keymap.set(
+                "v",
+                "aI",
+                ':<C-u>cal HandleTextObjectMapping(0, 0, 1, [line("\'<"), line("\'>"), col("\'<"), col("\'>")])<CR><Esc>gv',
+                {
+                    desc="Select [a]round lines of same + outer [I]ndentation, spanning whitespace.",
+                    silent=true,
+                }
+            )
+            vim.keymap.set(
+                "v",
+                "iI",
+                ':<C-u>cal HandleTextObjectMapping(1, 0, 1, [line("\'<"), line("\'>"), col("\'<"), col("\'>")])<CR><Esc>gv',
+                {
+                    desc="Select [i]nside lines of same [I]ndentation, spanning whitespace.",
+                    silent=true,
+                }
+            )
         end,
         event = "VeryLazy",
     },
@@ -73,6 +112,31 @@ return {
         "kana/vim-textobj-indent",
         config=function()
             vim.g.textobj_indent_no_default_key_mappings = "1"
+
+            vim.keymap.set(
+                "o",
+                "ai",
+                "<Plug>(textobj-indent-i)",
+                {desc="Select [a]round [i]ndent + outer indent. Stop at whitespace."}
+            )
+            vim.keymap.set(
+                "x",
+                "ai",
+                "<Plug>(textobj-indent-i)",
+                {desc="Select [a]round [i]ndent + outer indent. Stop at whitespace."}
+            )
+            vim.keymap.set(
+                "o",
+                "ii",
+                "<Plug>(textobj-indent-i)",
+                {desc="Select [i]nside all [i]ndent lines. Stop at whitespace."}
+            )
+            vim.keymap.set(
+                "x",
+                "ii",
+                "<Plug>(textobj-indent-i)",
+                {desc="Select [i]nside all [i]ndent lines. Stop at whitespace."}
+            )
         end,
         dependencies = { "kana/vim-textobj-user" },
         event = "VeryLazy",
@@ -112,7 +176,7 @@ return {
         keys = {
             "<P", ">P",
             "<p", ">p",
-            "=P", "=p",
+            -- "=P", "=p",
             "[A", "]A",
             "[B", "]B",
             "[L", "]L",
@@ -135,7 +199,7 @@ return {
     {
         "Julian/vim-textobj-variable-segment",
         dependencies = { "kana/vim-textobj-user" },
-        keys = {"dav", "div", "vav", "viv"},
+        event = "VeryLazy",
     },
 
     -- Life-changing text object extension. It's hard to explain but ...
