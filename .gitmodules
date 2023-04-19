@@ -235,3 +235,6 @@
 [submodule "bundle/lsp_signature.nvim"]
 	path = bundle/lsp_signature.nvim
 	url = git@github.com:ray-x/lsp_signature.nvim.git
+[submodule "bundle/vim-textobj-comment"]
+	path = bundle/vim-textobj-comment
+	url = git@github.com:glts/vim-textobj-comment.git
