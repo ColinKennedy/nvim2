@@ -13,6 +13,10 @@ require("nvim-treesitter.configs").setup {
     highlight = { enable = true },
 
     textobjects = {
+	indent = {
+	  enable = true,
+	},
+
 	-- TODO: Not working, fix
 	move = {
 	  enable = true,
