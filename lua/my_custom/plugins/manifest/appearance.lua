@@ -128,6 +128,27 @@ return {
         "arnamak/stay-centered.nvim",
         config = function()
             require("stay-centered")
+
+            -- This autocmd is needed when swapping buffers. For example
+            --
+            -- load file A
+            -- `:e file.b`
+            -- Press <C-o>, to go back to the previous file
+            --
+            -- Without the block of code below, the cursor won't be in the centered.
+            --
+            -- Reference: http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
+            --
+            local group = vim.api.nvim_create_augroup("VCenterCursor", { clear = true })
+
+            vim.api.nvim_create_autocmd(
+                {"BufEnter", "WinEnter", "WinNew", "VimResized"},
+                {
+                    group = group,
+                    pattern = {"*", "*.*"},
+                    command = "let &scrolloff=(winheight(win_getid())/2) + 1",
+                }
+            )
         end,
-    }
+    },
 }
