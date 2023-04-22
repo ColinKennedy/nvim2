@@ -121,7 +121,7 @@ return {
                 "yaml",
             }
         end,
-    }
+    },
 
     -- Keeps the cursor in the center of the screen, always.
     {
