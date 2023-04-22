@@ -122,4 +122,12 @@ return {
             }
         end,
     }
+
+    -- Keeps the cursor in the center of the screen, always.
+    {
+        "arnamak/stay-centered.nvim",
+        config = function()
+            require("stay-centered")
+        end,
+    }
 }

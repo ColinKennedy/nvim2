@@ -241,3 +241,6 @@
 [submodule "bundle/hop.nvim"]
 	path = bundle/hop.nvim
 	url = git@github.com:phaazon/hop.nvim.git
+[submodule "bundle/stay-centered.nvim"]
+	path = bundle/stay-centered.nvim
+	url = git@github.com:arnamak/stay-centered.nvim.git
