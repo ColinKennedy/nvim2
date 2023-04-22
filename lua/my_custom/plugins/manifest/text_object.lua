@@ -135,7 +135,7 @@ return {
     {
         "Julian/vim-textobj-variable-segment",
         dependencies = { "kana/vim-textobj-user" },
-        keys = {"dav", "div", "vav", "viv"},
+        event = "VeryLazy",
     },
 
     -- Life-changing text object extension. It's hard to explain but ...
