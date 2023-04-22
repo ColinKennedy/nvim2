@@ -123,88 +123,88 @@ return {
         end,
     },
 
-    -- Keeps the cursor in the center of the screen, always.
-    {
-        "arnamak/stay-centered.nvim",
-        config = function()
-            require("stay-centered")
-
-            -- This autocmd is needed when swapping buffers. For example
-            --
-            -- load file A
-            -- `:e file.b`
-            -- Press <C-o>, to go back to the previous file
-            --
-            -- Without the block of code below, the cursor won't be in the centered.
-            --
-            -- Reference: http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
-            --
-            local group = vim.api.nvim_create_augroup("VCenterCursor", { clear = true })
-
-            vim.api.nvim_create_autocmd(
-                {"BufEnter", "WinEnter", "WinNew", "VimResized"},
-                {
-                    group = group,
-                    pattern = {"*", "*.*"},
-                    command = "let &scrolloff=(winheight(win_getid())/2) + 1",
-                }
-            )
-        end,
-    },
-
-    -- Overrides Vim's default Command mode and provides "wild card" results
-    -- + icons. Mostly cosmetic and isn't "necessary", but it is a fun little
-    -- plug-in as long as it's harmless.
+    -- -- Keeps the cursor in the center of the screen, always.
+    -- {
+    --     "arnamak/stay-centered.nvim",
+    --     config = function()
+    --         require("stay-centered")
     --
-    {
-        "gelguy/wilder.nvim",
-        config = function()
-            local wilder = require("wilder")
-            wilder.setup({modes = {":", "/", "?"}})
+    --         -- This autocmd is needed when swapping buffers. For example
+    --         --
+    --         -- load file A
+    --         -- `:e file.b`
+    --         -- Press <C-o>, to go back to the previous file
+    --         --
+    --         -- Without the block of code below, the cursor won't be in the centered.
+    --         --
+    --         -- Reference: http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
+    --         --
+    --         local group = vim.api.nvim_create_augroup("VCenterCursor", { clear = true })
+    --
+    --         vim.api.nvim_create_autocmd(
+    --             {"BufEnter", "WinEnter", "WinNew", "VimResized"},
+    --             {
+    --                 group = group,
+    --                 pattern = {"*", "*.*"},
+    --                 command = "let &scrolloff=(winheight(win_getid())/2) + 1",
+    --             }
+    --         )
+    --     end,
+    -- },
 
-            -- Disable Python remote plugin
-            wilder.set_option("use_python_remote_plugin", 0)
-
-            wilder.set_option(
-                "pipeline",
-                {
-                    wilder.branch(
-                        wilder.cmdline_pipeline(
-                            {
-                                fuzzy = 1,
-                                fuzzy_filter = wilder.lua_fzy_filter(),
-                            }
-                        ),
-                        wilder.vim_search_pipeline()
-                    )
-                }
-            )
-
-            wilder.set_option(
-                "renderer",
-                wilder.renderer_mux(
-                    {
-                        [":"] = wilder.popupmenu_renderer(
-                            {
-                                highlighter = wilder.lua_fzy_highlighter(),
-                                left = {
-                                    " ",
-                                    wilder.popupmenu_devicons()
-                                },
-                                right = {
-                                    " ",
-                                    wilder.popupmenu_scrollbar()
-                                },
-                            }
-                        ),
-                        ["/"] = wilder.wildmenu_renderer(
-                            { highlighter = wilder.lua_fzy_highlighter(), }
-                        ),
-                    }
-                )
-            )
-        end,
-        dependencies = {"romgrk/fzy-lua-native"},
-        event = "VeryLazy",
-    }
+    -- -- Overrides Vim's default Command mode and provides "wild card" results
+    -- -- + icons. Mostly cosmetic and isn't "necessary", but it is a fun little
+    -- -- plug-in as long as it's harmless.
+    -- --
+    -- {
+    --     "gelguy/wilder.nvim",
+    --     config = function()
+    --         local wilder = require("wilder")
+    --         wilder.setup({modes = {":", "/", "?"}})
+    --
+    --         -- Disable Python remote plugin
+    --         wilder.set_option("use_python_remote_plugin", 0)
+    --
+    --         wilder.set_option(
+    --             "pipeline",
+    --             {
+    --                 wilder.branch(
+    --                     wilder.cmdline_pipeline(
+    --                         {
+    --                             fuzzy = 1,
+    --                             fuzzy_filter = wilder.lua_fzy_filter(),
+    --                         }
+    --                     ),
+    --                     wilder.vim_search_pipeline()
+    --                 )
+    --             }
+    --         )
+    --
+    --         wilder.set_option(
+    --             "renderer",
+    --             wilder.renderer_mux(
+    --                 {
+    --                     [":"] = wilder.popupmenu_renderer(
+    --                         {
+    --                             highlighter = wilder.lua_fzy_highlighter(),
+    --                             left = {
+    --                                 " ",
+    --                                 wilder.popupmenu_devicons()
+    --                             },
+    --                             right = {
+    --                                 " ",
+    --                                 wilder.popupmenu_scrollbar()
+    --                             },
+    --                         }
+    --                     ),
+    --                     ["/"] = wilder.wildmenu_renderer(
+    --                         { highlighter = wilder.lua_fzy_highlighter(), }
+    --                     ),
+    --                 }
+    --             )
+    --         )
+    --     end,
+    --     dependencies = {"romgrk/fzy-lua-native"},
+    --     event = "VeryLazy",
+    -- }
 }

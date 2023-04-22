@@ -186,7 +186,7 @@
 	url = git@github.com:saadparwaiz1/cmp_luasnip.git
 [submodule "bundle/aerial.nvim"]
 	path = bundle/aerial.nvim
-	url = git@github.com:stevearc/aerial.nvim.git
+	url = git@github.com:ColinKennedy/aerial.nvim.git
 [submodule "bundle/tcomment_vim"]
 	path = bundle/tcomment_vim
 	url = git@github.com:tomtom/tcomment_vim.git

@@ -219,13 +219,16 @@ return {
 
     -- Kickass class / function viewer
     {
-        "stevearc/aerial.nvim",
+        "ColinKennedy/aerial.nvim",
+        branch = "fix_buffer_id",
         config = function()
             require("aerial").setup(
                 {
+                    backends = { "lsp", "treesitter" },
                     highlight_on_jump = 100,  -- Shorten the blink time to be fast
                     nav = {
                         keymaps = {
+                            ["<CR>"] = "actions.jump",
                             ["q"] = "actions.close",
                         },
                     },
