@@ -70,10 +70,16 @@ return {
     -- Add a quick status bar plugin
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "nvim-treesitter/nvim-treesitter",
+            "Lazytangent/nvim-gps",  -- Optional: Shows treesitter code contexts
+        },
         event = "VeryLazy",
         config = function()
-            require('lualine').setup {
+            local gps = require("nvim-gps")
+
+            require("lualine").setup {
               options = {
                 icons_enabled = true,
                 theme = "onedark",
@@ -81,15 +87,10 @@ return {
                 component_separators = { left = "", right = ""},
               },
               sections = {
-                lualine_b = {
-                    "branch",
-                },
+                lualine_b = {"branch"},
                 lualine_c = {"filetype", "filename"},
-                lualine_x = {},
-                lualine_y = {
-                    "diagnostics",
-                    "progress",
-                },
+                lualine_x = {gps.get_location},
+                lualine_y = {"diagnostics", "progress"},
                 lualine_z = {"location"}
               },
             }
@@ -123,34 +124,15 @@ return {
         end,
     },
 
-    -- -- Keeps the cursor in the center of the screen, always.
-    -- {
-    --     "arnamak/stay-centered.nvim",
-    --     config = function()
-    --         require("stay-centered")
-    --
-    --         -- This autocmd is needed when swapping buffers. For example
-    --         --
-    --         -- load file A
-    --         -- `:e file.b`
-    --         -- Press <C-o>, to go back to the previous file
-    --         --
-    --         -- Without the block of code below, the cursor won't be in the centered.
-    --         --
-    --         -- Reference: http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
-    --         --
-    --         local group = vim.api.nvim_create_augroup("VCenterCursor", { clear = true })
-    --
-    --         vim.api.nvim_create_autocmd(
-    --             {"BufEnter", "WinEnter", "WinNew", "VimResized"},
-    --             {
-    --                 group = group,
-    --                 pattern = {"*", "*.*"},
-    --                 command = "let &scrolloff=(winheight(win_getid())/2) + 1",
-    --             }
-    --         )
-    --     end,
-    -- },
+    -- Use treesitter to show your current cursor context (class > function > etc)
+    {
+        "Lazytangent/nvim-gps",
+        config = function()
+            require("nvim-gps").setup()
+        end,
+        dependencies = {"nvim-treesitter/nvim-treesitter"},
+        lazy = true,
+    },
 
     -- -- Overrides Vim's default Command mode and provides "wild card" results
     -- -- + icons. Mostly cosmetic and isn't "necessary", but it is a fun little
