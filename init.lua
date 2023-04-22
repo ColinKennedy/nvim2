@@ -46,8 +46,5 @@ require("my_custom.start.remap")
 require("my_custom.start.initialization")
 require("my_custom.start.setting")
 require("my_custom.start.auto_commands")
-
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/global_confirm.vim]]
--- TODO: Make this a better file path, later
-vim.cmd[[source ~/personal/.config/nvim/plugin/miscellaneous_commands.vim]]
+require("my_custom.start.global_confirm")
+vim.cmd("source " .. vim.g.vim_home .. "plugin/miscellaneous_commands.vim")
