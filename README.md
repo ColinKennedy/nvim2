@@ -1,5 +1,17 @@
+- https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
+
+- Try installing this onto another machine
+- https://github.com/folke/which-key.nvim
+
+- Pretty sure this stuff breaks but it'd be good to at least check it out again
+ - https://github.com/hrsh7th/cmp-cmdline
+
+https://github.com/ryanoasis/vim-devicons/issues/106
+https://coreyja.com/vim-fzf-with-devicons/
+
+
+- Pressing w should scroll up in the terminal(?)
 - neogen has some issues
- - when docstring is single-lined, it has as prefix space that it shouldn't
  - raises is parsed incorrectly, in Python
 
 - yi` doesn't work. Fix!!!
@@ -35,7 +47,7 @@
 
 
 
-
+- Check out circles.nvim
 
 - vim config clean-up
  - change manifest / data code to just "plugins" / "configs" - Use NvChad as an example
