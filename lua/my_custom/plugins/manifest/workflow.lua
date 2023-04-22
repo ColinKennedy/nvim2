@@ -232,6 +232,7 @@ return {
                 }
             )
 
+            -- TODO: Try to figure out a better way to remove this
             -- Note: Disable trailing whitespace highlighting in the aerial window
             vim.api.nvim_create_autocmd(
                 {"BufRead", "BufNew", "FileType", "TermOpen"},
@@ -473,4 +474,27 @@ return {
     --       )
     --     end
     -- }
+
+    -- Use any 2-3 key combo to jump anywhere in a file.
+    -- Basically Firefox's Vimium, but in Vim.
+    --
+    {
+        "phaazon/hop.nvim",
+        cmd = "HopWord",
+        config = function()
+            local hop = require('hop')
+            local directions = require('hop.hint').HintDirection
+
+            vim.keymap.set(
+                "n",
+                "<leader>f",
+                function()
+                    vim.cmd("HopWord")
+                end
+            )
+
+            require("hop").setup({keys= "asdfjkl"})
+        end,
+        keys = "<leader>f",
+    }
 }
