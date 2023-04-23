@@ -23,7 +23,6 @@ return {
             -- Reference: https://github.com/folke/lazy.nvim/issues/718
             --
             vim.cmd[[let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }]]
-            vim.api.nvim_create_user_command("Zz", "Help", {nargs=0})
             vim.api.nvim_create_user_command(
                 "Args",
                 ":call fzf#run(fzf#wrap({'source': sort(argv())}))",
@@ -31,7 +30,7 @@ return {
             )
         end,
         dependencies = { "junegunn/fzf" },
-        cmd = { "Args", "Buffers", "Files", "GFiles", "Zz", "History", "Lines" },
+        cmd = { "Args", "Buffers", "Files", "GFiles", "Helptags", "History", "Lines" },
     },
 
     -- A more modern, faster grep engine.

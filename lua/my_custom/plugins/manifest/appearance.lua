@@ -80,11 +80,14 @@ return {
                 icons_enabled = true,
                 theme = "onedark",
                 section_separators = { left = "", right = ""},
-                component_separators = { left = "", right = ""},
+                component_separators = { left = '', right = ''},
               },
               sections = {
                 lualine_b = {"branch"},
-                lualine_c = {"filetype", "filename"},
+                lualine_c = {
+                    {"filetype", colored = true, icon_only = true},
+                    "filename",
+                },
                 lualine_x = {},
                 lualine_y = {"diagnostics", "progress"},
                 lualine_z = {"location"}
@@ -97,10 +100,73 @@ return {
     -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
     {
         "nvim-tree/nvim-web-devicons",
+        config = function()
+            local _suggest_a_color = function(highlight_group)
+                local data = vim.api.nvim_get_hl_by_name(highlight_group, true)
+                local foreground = data["foreground"]
+
+                if foreground ~= nil
+                then
+                    return foreground
+                end
+
+                return data["background"] or ""
+            end
+
+            local get_best_hex = function(highlight_group)
+                local color = _suggest_a_color(highlight_group)
+
+                if color ~= ""
+                then
+                    return string.format("#%06x", color)
+                end
+
+                return "#428850"
+            end
+
+            require("nvim-web-devicons").set_icon {
+                dapui_breakpoints = {
+                    icon = "",
+                    color = get_best_hex("Question"),
+                    cterm_color = "65",
+                    name = "dapui_breakpoints"
+                },
+                dapui_console = {
+                    icon = "",
+                    color = get_best_hex("Comment"),
+                    cterm_color = "65",
+                    name = "dapui_console"
+                },
+                -- "dap-repl" = {
+                --     icon = "",
+                --     color = "#428850",
+                --     cterm_color = "65",
+                --     name = "dap-repl"
+                -- },
+                dapui_scopes = {
+                    icon = "󰓾",
+                    color = get_best_hex("Function"),
+                    cterm_color = "40",
+                    name = "dapui_scopes"
+                },
+                dapui_stacks = {
+                    icon = "",
+                    color = get_best_hex("Directory"),
+                    cterm_color = "65",
+                    name = "dapui_stacks"
+                },
+                dapui_watches = {
+                    icon = "󰂥",
+                    color = get_best_hex("Constant"),
+                    cterm_color = "65",
+                    name = "dapui_watches"
+                },
+            }
+        end,
         lazy = true,
     },
 
-    -- " Enhanced markdown highlighting and syntax
+    -- Enhanced markdown highlighting and syntax
     {
         "tpope/vim-markdown",
         ft = "markdown",
@@ -150,20 +216,25 @@ return {
                     },
 
                     exclude_filetype = {
+                        -- Built-in windows
+                        "qf",
+                        "help",
+
                         "",  -- Neovim terminals have no filetype. Disable terminals.
-                        "NvimTree",
+                        "NvimTree",  -- nvim-tree/nvim-tree.lua
+
+                        -- Extras
                         "Outline",
                         "Trouble",
                         "alpha",
                         "dashboard",
-                        "help",
                         "lir",
                         "neogitstatus",
                         "packer",
-                        "qf",
                         "spectre_panel",
                         "startify",
                         "toggleterm",
+
                     }
                 }
             )

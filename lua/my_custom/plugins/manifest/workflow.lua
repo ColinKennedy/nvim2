@@ -128,7 +128,7 @@ return {
     {
         -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
         "troydm/zoomwintab.vim",
-        cmd = "ZoomWinTabToggle"
+        cmd = {"ZoomWinTabOut", "ZoomWinTabToggle"},
     },
 
     -- TODO: If I lazy-load this plug-in, it forces the cursor to the top of the file. No idea why. Check that out, later
@@ -156,7 +156,8 @@ return {
                     snippet_engine = "luasnip",
                 }
             )
-            vim.keymap.set("n", "<space>d", ":Neogen<CR>")
+            -- TODO: Not sure how useful Neogen is, in practice. Seems to break too easily.
+            vim.keymap.set("n", "<leader><leader>d", ":Neogen<CR>")
         end,
         dependencies = {
             "L3MON4D3/LuaSnip",
@@ -267,7 +268,7 @@ return {
         }
     },
 
-    -- TODO: Consider removing, later
+    -- -- TODO: Consider removing, later
     -- -- Debug basically any language
     -- --
     -- -- Reference: https://www.youtube.com/watch?v=AnTX2mtOl9Q
@@ -504,6 +505,181 @@ return {
         end,
         keys = "<leader>f",
     },
+
+    -- Debug adapter plug-in. Debug anything in Neovim
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            vim.keymap.set("n", "<leader>d<space>", ":DapContinue<CR>")
+            vim.keymap.set("n", "<leader>dl", ":DapStepInto<CR>")
+            vim.keymap.set("n", "<leader>dj", ":DapStepOver<CR>")
+            vim.keymap.set("n", "<leader>dh", ":DapStepOut<CR>")
+            vim.keymap.set("n", "<leader>dz", ":ZoomWinTabToggle<CR>")
+            vim.keymap.set(
+                "n",
+                "<leader>dgt",  -- dg as in debu[g] [t]race
+                ":lua require('dap').set_log_level('TRACE')<CR>"
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dge",  -- dg as in debu[g] [e]dit
+                function()
+                    vim.cmd(":edit " .. vim.fn.stdpath('cache') .. "/dap.log")
+                end
+            )
+            vim.keymap.set("n", "<F1>", ":DapStepOut<CR>")
+            vim.keymap.set("n", "<F2>", ":DapStepOver<CR>")
+            vim.keymap.set("n", "<F3>", ":DapStepInto<CR>")
+            vim.keymap.set(
+                "n",
+                "<leader>d-",
+                function()
+                    require("dap").restart()
+                end
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>d_",
+                function()
+                    require("dap").terminate()
+                    require("dapui").close()
+                end
+            )
+            -- vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
+            -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
+        end,
+        lazy = true,
+    },
+
+    -- A default "GUI" front-end for nvim-dap
+    {
+        "rcarriga/nvim-dap-ui",
+        config = function()
+            require("dapui").setup()
+
+            vim.keymap.set(
+                "n",
+                "<F6>",
+                function()
+                    require("dapui").close()
+                end
+            )
+
+            local _get_window_by_type = function(type_name)
+                for _, data in pairs(vim.fn.getwininfo())
+                do
+                    if vim.api.nvim_buf_get_option(data.bufnr, "filetype") == type_name
+                    then
+                        return data
+                    end
+                end
+
+                return nil
+            end
+
+            local _zoom_by_type = function(type_name)
+                local data = _get_window_by_type(type_name)
+
+                if data == nil
+                then
+                    print("No buffer could be found.")
+
+                    return
+                end
+
+                if vim.fn.exists("t:zoomwintab") == 1
+                then
+                    -- The window is already zoomed in. Zoom out first
+                    vim.cmd[[ZoomWinTabOut]]
+
+                    if data.winnr == vim.fn.winnr()
+                    then
+                        -- Returning early effectively allows us to "toggle"
+                        -- the zoom mapping. e.g. Pressing ``<leader>dw`` zooms
+                        -- into the Watchers window. Pressing ``<leader>dw``
+                        -- again will "zoom out".
+                        --
+                        return
+                    end
+                end
+
+                vim.fn.win_gotoid(data.winid)
+
+                vim.cmd[[ZoomWinTabToggle]]
+            end
+
+            local add_zoom_keymap = function(mapping, type_name)
+                vim.keymap.set(
+                    "n",
+                    mapping,
+                    function()
+                        _zoom_by_type(type_name)
+                    end
+                )
+            end
+
+            add_zoom_keymap("<leader>dc", "dapui_console")
+            add_zoom_keymap("<leader>dw", "dapui_watches")
+            add_zoom_keymap("<leader>ds", "dapui_scopes")
+            add_zoom_keymap("<leader>dt", "dapui_stacks")  -- dt as in s[t]acks
+            add_zoom_keymap("<leader>dr", "dap-repl")
+        end,
+        keys = "<F5>",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+
+            "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
+        },
+    },
+
+    -- TODO: Defer-load this plug-in
+    -- TODO: Make sure that debugpy is installed. Otherwise, disable
+    -- Reference: https://github.com/mfussenegger/nvim-dap-python#installation
+    --
+    {
+        "mfussenegger/nvim-dap-python",
+        config = function()
+            -- require("dap-python").setup()
+            require("dap-python").setup("/opt/hfs19.5.569/bin/hython")
+            table.insert(
+                require("dap").configurations.python,
+                {
+                  type = "python",
+                  request = "launch",
+                  name = "Launch Via hython",
+                  program = "${file}",
+                  python = "/opt/hfs19.5.569/bin/hython"
+                  -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+                }
+            )
+            -- vim.g.python3_host_prog = "/opt/hfs19.5.569/bin/hython"
+            -- require("dap-python").setup(
+            --     vim.g.vim_home
+            --     .. "/mason_packages/"
+            --     .. vim.loop.os_uname().sysname
+            --     .. "/packages/debugpy/venv/bin/python"
+            -- )
+            -- require("dap-python").setup(
+            --     "python"
+            -- )
+        end,
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
+
+    -- Remember nvim-dap breakpoints between sessions, using ``:PBToggleBreakpoint``
+    {
+        "Weissle/persistent-breakpoints.nvim",
+        config = function()
+            require("persistent-breakpoints").setup{
+                load_breakpoints_event = { "BufReadPost" }
+            }
+
+            vim.keymap.set("n", "<leader>db", ":PBToggleBreakpoint<CR>")
+        end,
+    }
 
     -- -- A tool for looking up stuff. That said, it's not that useful
     -- {
