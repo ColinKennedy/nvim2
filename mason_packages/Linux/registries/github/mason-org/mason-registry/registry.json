@@ -7537,7 +7537,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:npm/stylelint@15.5.0"
+      "id": "pkg:npm/stylelint@15.6.0"
     },
     "bin": {
       "stylelint": "npm:stylelint"

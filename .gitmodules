@@ -247,3 +247,15 @@
 [submodule "bundle/winbar.nvim"]
 	path = bundle/winbar.nvim
 	url = git@github.com:fgheng/winbar.nvim.git
+[submodule "bundle/persistent-breakpoints.nvim"]
+	path = bundle/persistent-breakpoints.nvim
+	url = git@github.com:Weissle/persistent-breakpoints.nvim.git
+[submodule "bundle/nvim-dap"]
+	path = bundle/nvim-dap
+	url = git@github.com:mfussenegger/nvim-dap.git
+[submodule "bundle/nvim-dap-ui"]
+	path = bundle/nvim-dap-ui
+	url = git@github.com:rcarriga/nvim-dap-ui.git
+[submodule "bundle/nvim-dap-python"]
+	path = bundle/nvim-dap-python
+	url = git@github.com:mfussenegger/nvim-dap-python.git
