@@ -74,7 +74,6 @@ return {
             "nvim-tree/nvim-web-devicons",
             "nvim-treesitter/nvim-treesitter",
         },
-        event = "VeryLazy",
         config = function()
             require("lualine").setup {
               options = {
@@ -92,6 +91,7 @@ return {
               },
             }
         end,
+        event = "VeryLazy",
     },
 
     -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
