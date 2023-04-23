@@ -350,6 +350,11 @@ return {
         enabled = function()
             return vim.v.version >= 800
         end,
+        config = function()
+            -- Force gemini to build its mappings
+            vim.cmd[[:doautoall create_gemini_mappings BufEnter]]
+        end,
+        event = "VeryLazy",  -- Or maybe InsertEnter
     },
 
     -- Give vim some shell-like commands that it's missing

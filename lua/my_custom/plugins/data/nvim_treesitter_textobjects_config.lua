@@ -23,7 +23,7 @@ require("nvim-treesitter.configs").setup {
 	  set_jumps = true, -- whether to set jumps in the jumplist
 	  goto_next_start = {
 	    ["]k"] = "@class.outer",
-	    ["]m"] = "@function.outer",
+	    -- ["]m"] = "@function.outer",  -- TODO: Add again once speed improves
 	  },
 	  goto_next_end = {
 	    ["]K"] = "@class.outer",
@@ -31,7 +31,7 @@ require("nvim-treesitter.configs").setup {
 	  },
 	  goto_previous_start = {
 	    ["[k"] = "@class.outer",
-	    ["[m"] = "@function.outer",
+	    -- ["[m"] = "@function.outer",  -- TODO: Add again once speed improves
 	  },
 	  goto_previous_end = {
 	    ["[K"] = "@class.outer",
