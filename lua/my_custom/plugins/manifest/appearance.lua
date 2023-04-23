@@ -73,12 +73,9 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
             "nvim-treesitter/nvim-treesitter",
-            "Lazytangent/nvim-gps",  -- Optional: Shows treesitter code contexts
         },
         event = "VeryLazy",
         config = function()
-            local gps = require("nvim-gps")
-
             require("lualine").setup {
               options = {
                 icons_enabled = true,
@@ -89,7 +86,7 @@ return {
               sections = {
                 lualine_b = {"branch"},
                 lualine_c = {"filetype", "filename"},
-                lualine_x = {gps.get_location},
+                lualine_x = {},
                 lualine_y = {"diagnostics", "progress"},
                 lualine_z = {"location"}
               },
@@ -122,6 +119,52 @@ return {
                 "yaml",
             }
         end,
+    },
+
+    -- Show the current context at the top of the Vim window
+    {
+        "fgheng/winbar.nvim",
+        config = function()
+            require("winbar").setup(
+                {
+                    enabled = true,
+
+                    show_file_path = true,
+                    show_symbols = true,
+
+                    colors = {
+                        path = "", -- You can customize colors like #c946fd
+                        file_name = "",
+                        symbols = "",
+                    },
+
+                    icons = {
+                        file_icon_default = "",
+                        seperator = ">",
+                        editor_state = "●",
+                        lock_icon = "",
+                    },
+
+                    exclude_filetype = {
+                        "NvimTree",
+                        "Outline",
+                        "Trouble",
+                        "alpha",
+                        "dashboard",
+                        "help",
+                        "lir",
+                        "neogitstatus",
+                        "packer",
+                        "qf",
+                        "spectre_panel",
+                        "startify",
+                        "toggleterm",
+                    }
+                }
+            )
+        end,
+        dependencies = {"Lazytangent/nvim-gps", "nvim-tree/nvim-web-devicons"},
+        event = "VeryLazy",
     },
 
     -- Use treesitter to show your current cursor context (class > function > etc)

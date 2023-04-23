@@ -1,5 +1,8 @@
 - https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
 
+- new tabs in Vim have a bad syntax highlight. Fix
+
+
 - Try installing this onto another machine
 - https://github.com/folke/which-key.nvim
 

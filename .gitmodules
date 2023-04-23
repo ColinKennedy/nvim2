@@ -241,3 +241,9 @@
 [submodule "bundle/hop.nvim"]
 	path = bundle/hop.nvim
 	url = git@github.com:phaazon/hop.nvim.git
+[submodule "bundle/nvim-gps"]
+	path = bundle/nvim-gps
+	url = git@github.com:Lazytangent/nvim-gps.git
+[submodule "bundle/winbar.nvim"]
+	path = bundle/winbar.nvim
+	url = git@github.com:fgheng/winbar.nvim.git
