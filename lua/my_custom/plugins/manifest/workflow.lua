@@ -268,51 +268,6 @@ return {
         }
     },
 
-    -- -- TODO: Consider removing, later
-    -- -- Debug basically any language
-    -- --
-    -- -- Reference: https://www.youtube.com/watch?v=AnTX2mtOl9Q
-    -- --
-    -- {
-    --     "puremourning/vimspector",
-    --     enabled = false,
-    --     -- enabled = function()
-    --     --     return vim.fn.has("python3") == 1
-    --     -- end,
-    --     config = function()
-    --         vim.cmd[[
-    --         function! GoToWindow(buffer_id)
-    --             call win_gotoid(a:buffer_id)
-    --
-    --             ZoomWinTabToggle
-    --         endfunction
-    --         ]]
-    --
-    --         vim.keymap.set("n", "<leader>dd", ":call vimspector#Launch()<CR>")
-    --         vim.keymap.set("n", "<leader>dc", ":call GoToWindow(g:vimspector_session_windows.code)<CR>")
-    --         vim.keymap.set("n", "<leader>dt", ":call GoToWindow(g:vimspector_session_windows.tagpage)<CR>")
-    --         -- nnoremap <leader>dtg :call GoToWindow(g:vimspector_session_windows.tagpage)<CR>
-    --         -- nnoremap <leader>dtr :call GoToWindow(g:vimspector_session_windows.terminal)<CR>
-    --         vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
-    --         vim.keymap.set("n", "<leader>dw", ":call GoToWindow(g:vimspector_session_windows.watches)<CR>")
-    --         vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
-    --         vim.keymap.set("n", "<leader>do", ":call GoToWindow(g:vimspector_session_windows.output)<CR>")
-    --         vim.keymap.set("n", "<leader>de", ":call vimspector#Reset()<CR>")
-    --         vim.keymap.set("n", "<leader>dtcb", ":call vimspector#CleanLineBreakpoint()<CR>")
-    --
-    --         vim.keymap.set("n", "<leader>dl", "<Plug>VimspectorStepInto")
-    --         vim.keymap.set("n", "<leader>dj", "<Plug>VimspectorStepOver")
-    --         vim.keymap.set("n", "<leader>dk", "<Plug>VimspectorStepOut")
-    --         vim.keymap.set("n", "<leader>d_", "<Plug>VimspectorRestart")
-    --
-    --         vim.keymap.set("n", "<leader>d<space>", ":call vimspector#Continue()<CR>")
-    --
-    --         vim.keymap.set("n", "<leader>drc", "<Plug>VimspectorRunToCursor")
-    --         vim.keymap.set("n", "<leader>dbp", "<Plug>VimspectorToggleBreakpoint")
-    --         vim.keymap.set("n", "<leader>dcbp", "<Plug>VimspectorToggleConditionalBreakpoint")
-    --     end
-    -- },
-
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
     {
         "tpope/vim-projectionist",
