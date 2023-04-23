@@ -246,7 +246,7 @@
 	url = git@github.com:Lazytangent/nvim-gps.git
 [submodule "bundle/winbar.nvim"]
 	path = bundle/winbar.nvim
-	url = git@github.com:fgheng/winbar.nvim.git
+	url = git@github.com:ColinKennedy/winbar.nvim.git
 [submodule "bundle/persistent-breakpoints.nvim"]
 	path = bundle/persistent-breakpoints.nvim
 	url = git@github.com:Weissle/persistent-breakpoints.nvim.git
