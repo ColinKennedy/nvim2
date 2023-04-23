@@ -51,3 +51,9 @@ vim.opt.lazyredraw = true
 --
 vim.g.python_host_prog = "/bin/python"
 vim.g.python3_host_prog = "/usr/local/bin/python3.7"
+
+-- Force Neovim to have one statusline for all buffers (rather than one-per-buffer)
+--
+-- Reference: https://github.com/neovim/neovim/pull/17266
+--
+vim.opt.laststatus = 3
