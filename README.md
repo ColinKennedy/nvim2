@@ -1,3 +1,20 @@
+- indentation gets messed up sometimes. Not sure why. Was it due to lspconfig
+  when I enabled indentation?
+
+- null-ls's pylint isn't taking into account PYTHONPATH, even though it acutally is importable
+ - See sphinx-code-include
+
+https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
+
+https://github.com/axkirillov/easypick.nvim
+
+https://github.com/nvim-telescope/telescope-vimspector.nvim
+
+https://github.com/nvim-telescope/telescope-fzf-writer.nvim
+
+https://github.com/LinArcX/telescope-command-palette.nvim
+
+
 - https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
 
 - new tabs in Vim have a bad syntax highlight. Fix
@@ -55,8 +72,6 @@ https://coreyja.com/vim-fzf-with-devicons/
 - vim config clean-up
  - change manifest / data code to just "plugins" / "configs" - Use NvChad as an example
 
-- How do I keep my cursor in the center?
-- Figure out a way to lazy-load nvim-cmp
 - lazy's window stylesheet is gross. Fix
 - Disable trailing whitespace from lazy's pop-up window
 
