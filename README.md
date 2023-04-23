@@ -1,5 +1,3 @@
-:help dap.set_log_level
-
 - Figure out how to do remote debugging
  - /opt/hfs19.5.569/bin/houdini
 
@@ -9,7 +7,7 @@
  - Same with the command menu
  - white trim, slightly darker background?
 
-- Figure out how to do nvim-dap-python, within Rez
+- Moving between splits and tmux no longer works. FIX
 
 - indentation gets messed up sometimes. Not sure why. Was it due to lspconfig
   when I enabled indentation?
@@ -624,6 +622,8 @@ astroid.exceptions.TooManyLevelsError: Relative import with too many levels (1) 
 ```
 
 ## Debugging
+:help dap.set_log_level
+
 ```
 lua require("dap").set_log_level("TRACE")
 lua print(vim.fn.stdpath('cache') .. "/dap.log")  -- ~/.cache/nvim/dap.log

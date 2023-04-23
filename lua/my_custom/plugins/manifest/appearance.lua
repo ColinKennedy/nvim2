@@ -193,7 +193,7 @@ return {
     --     https://github.com/ray-x/nvim/blob/c501ff52438d77652f529d13bea55b799850d8a7/lua/modules/ui/winbar.lua
     --
     {
-        "fgheng/winbar.nvim",
+        "ColinKennedy/winbar.nvim",
         config = function()
             require("winbar").setup(
                 {
