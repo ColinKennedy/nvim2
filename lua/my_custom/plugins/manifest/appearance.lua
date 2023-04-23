@@ -122,6 +122,10 @@ return {
     },
 
     -- Show the current context at the top of the Vim window
+    --
+    -- Somewhat unrelated but a useful reference:
+    --     https://github.com/ray-x/nvim/blob/c501ff52438d77652f529d13bea55b799850d8a7/lua/modules/ui/winbar.lua
+    --
     {
         "fgheng/winbar.nvim",
         config = function()
@@ -146,6 +150,7 @@ return {
                     },
 
                     exclude_filetype = {
+                        "",  -- Neovim terminals have no filetype. Disable terminals.
                         "NvimTree",
                         "Outline",
                         "Trouble",
