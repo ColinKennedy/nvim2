@@ -46,7 +46,6 @@ return {
     --
     {
         "MarcWeber/vim-addon-local-vimrc",
-        cmd = { "SourceLocalVimrc", "SourceLocalVimrcOnce" },
     },
 
     -- Press * or # in Visual mode to start a search
@@ -504,5 +503,52 @@ return {
             require("hop").setup({keys= "asdfjkl"})
         end,
         keys = "<leader>f",
-    }
+    },
+
+    -- -- A tool for looking up stuff. That said, it's not that useful
+    -- {
+    --     "nvim-telescope/telescope.nvim",
+    --     cmd = "Telescope",
+    --     config = function()
+    --         -- vim.api.nvim_create_autocmd(
+    --         --     "FileType",
+    --         --     {
+    --         --         callback = function()
+    --         --             vim.keymap.set(
+    --         --                 "i",
+    --         --                 "<ESC>",
+    --         --                 "<ESC><ESC>",
+    --         --                 {noremap=true}
+    --         --             )
+    --         --         end,
+    --         --         pattern = "TelescopePrompt",
+    --         --     }
+    --         -- )
+    --
+    --         require('telescope').setup {
+    --           extensions = {
+    --             fzf = {
+    --               fuzzy = true,                    -- false will only do exact matching
+    --               override_generic_sorter = true,  -- override the generic sorter
+    --               override_file_sorter = true,     -- override the file sorter
+    --               case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+    --                                                -- the default case_mode is "smart_case"
+    --             }
+    --           }
+    --         }
+    --         -- Reference: https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-setup-and-configuration
+    --         require("telescope").load_extension("fzf")
+    --     end,
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-tree/nvim-web-devicons",
+    --         -- "nvim-telescope/telescope-fzf-writer.nvim",
+    --     },
+    --     release = "0.1.*",
+    -- },
+    -- {
+    --     "nvim-telescope/telescope-fzf-native.nvim",
+    --     build = "make",
+    --     lazy = true,
+    -- },
 }

@@ -98,8 +98,8 @@ vim.keymap.set("n", "<space>E", ":call searcher#search_project_files()<CR>", {si
 vim.keymap.set("n", "<space>e", ":Files<CR>")
 vim.keymap.set("n", "<space>L", ":Lines<CR>")
 vim.keymap.set("n", "<space>O", ":GHistory<CR>")
-vim.keymap.set("n", "<space>e", ":Files<CR>")
 
+vim.keymap.set("n", "<space>A", ":Args<CR>")
 vim.keymap.set("n", "<space>C", ":close<CR>")
 
 -- Nvim creates a terminal in the same buffer. So we make a separate one, first

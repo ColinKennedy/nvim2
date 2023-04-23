@@ -24,9 +24,14 @@ return {
             --
             vim.cmd[[let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }]]
             vim.api.nvim_create_user_command("Zz", "Help", {nargs=0})
+            vim.api.nvim_create_user_command(
+                "Args",
+                ":call fzf#run(fzf#wrap({'source': sort(argv())}))",
+                {}
+            )
         end,
         dependencies = { "junegunn/fzf" },
-        cmd = { "Buffers", "Files", "GFiles", "Zz", "History", "Lines" },
+        cmd = { "Args", "Buffers", "Files", "GFiles", "Zz", "History", "Lines" },
     },
 
     -- A more modern, faster grep engine.

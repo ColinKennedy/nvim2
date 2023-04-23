@@ -110,3 +110,30 @@ vim.api.nvim_create_autocmd(
         command = ":set scrolloff=999",
     }
 )
+
+-- Whenever you edit a local .vimrc file, immediately re-source it
+-- See the ``vim-addon-local-vimrc`` plug-in for details.
+--
+vim.api.nvim_create_autocmd(
+    "BufWritePost",
+    {
+        pattern = ".vimrc",
+        callback = function()
+            local current_vimrc_path = vim.api.nvim_buf_get_name(0)
+
+            if current_vimrc_path == os.getenv("MYVIMRC")
+            then
+                -- Don't auto-reload a top-level .vimrc. We do this because
+                -- that .vimrc usually has plug-in specifics that can only be
+                -- reliably loaded once per Vim session.
+                --
+                -- All other .vimrc files are okay to reload though. e.g.
+                -- .vimrc files from the ``vim-addon-local-vimrc`` plug-in.
+                --
+                return
+            end
+
+            vim.cmd[[source %]]
+        end,
+    }
+)

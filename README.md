@@ -1,24 +1,10 @@
+- new tabs in Vim have a bad syntax highlight. Fix
+- fix trailing whitespace syntax color
 - indentation gets messed up sometimes. Not sure why. Was it due to lspconfig
   when I enabled indentation?
 
 - null-ls's pylint isn't taking into account PYTHONPATH, even though it acutally is importable
  - See sphinx-code-include
-
-https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
-
-https://github.com/axkirillov/easypick.nvim
-
-https://github.com/nvim-telescope/telescope-vimspector.nvim
-
-https://github.com/nvim-telescope/telescope-fzf-writer.nvim
-
-https://github.com/LinArcX/telescope-command-palette.nvim
-
-
-- https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
-
-- new tabs in Vim have a bad syntax highlight. Fix
-
 
 - Try installing this onto another machine
 - https://github.com/folke/which-key.nvim
