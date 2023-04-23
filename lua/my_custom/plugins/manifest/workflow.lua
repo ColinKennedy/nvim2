@@ -594,28 +594,23 @@ return {
     {
         "mfussenegger/nvim-dap-python",
         config = function()
-            -- require("dap-python").setup()
-            require("dap-python").setup("/opt/hfs19.5.569/bin/hython")
-            table.insert(
-                require("dap").configurations.python,
-                {
-                  type = "python",
-                  request = "launch",
-                  name = "Launch Via hython",
-                  program = "${file}",
-                  python = "/opt/hfs19.5.569/bin/hython"
-                  -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-                }
+            require("dap-python").setup(
+                vim.g.vim_home
+                .. "/mason_packages/"
+                .. vim.loop.os_uname().sysname
+                .. "/packages/debugpy/venv/bin/python"
             )
-            -- vim.g.python3_host_prog = "/opt/hfs19.5.569/bin/hython"
-            -- require("dap-python").setup(
-            --     vim.g.vim_home
-            --     .. "/mason_packages/"
-            --     .. vim.loop.os_uname().sysname
-            --     .. "/packages/debugpy/venv/bin/python"
-            -- )
-            -- require("dap-python").setup(
-            --     "python"
+            -- An example configuration to launch any Python file, via Houdini
+            -- table.insert(
+            --     require("dap").configurations.python,
+            --     {
+            --         type = "python",
+            --         request = "launch",
+            --         name = "Launch Via hython",
+            --         program = "${file}",
+            --         python = "/opt/hfs19.5.569/bin/hython"
+            --         -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+            --     }
             -- )
         end,
         dependencies = {
