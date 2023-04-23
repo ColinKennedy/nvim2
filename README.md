@@ -1,7 +1,72 @@
+:help dap.set_log_level
+
+- Figure out how to do remote debugging
+ - /opt/hfs19.5.569/bin/houdini
+
 - new tabs in Vim have a bad syntax highlight. Fix
 - fix trailing whitespace syntax color
+- completion menu should have a white trim, to make it look nicer
+ - Same with the command menu
+ - white trim, slightly darker background?
+
+- Figure out how to do nvim-dap-python, within Rez
+
 - indentation gets messed up sometimes. Not sure why. Was it due to lspconfig
   when I enabled indentation?
+
+- nvim-dap-ui icons would be nice
+- For some reason when I leave dap, the <F5> mapping gets unset. Why? Fix.
+
+- https://www.youtube.com/watch?v=lEMZnrC-ST4
+ - https://github.com/ldelossa/nvim-ide
+
+
+
+let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+silent! argdelete *  " Clear existing args so we can create them, anew
+
+execute ":argadd "
+\ . g:_project_home . "/.vimrc"
+\ . " " . g:_project_home . "/grammar.js"
+\ . " " . g:_project_home . "/test/corpus/metadata.txt"
+\ . " " . g:_project_home . "/test/corpus/prim.txt"
+
+
+
+
+
+
+
+
+
+snippet simple_cpp_project "Set up mappings for a simple C++ project"
+" Reference: https://stackoverflow.com/a/18734557
+let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+function! FakeMake(override)
+    execute 'DispatchSilentSuccess -compiler=cpp ' . a:override
+endfunction
+
+" Compile the project silently
+execute 'nnoremap <leader>mm :call FakeMake("cd ' . g:_project_home . '/build && cmake --build .")<CR>'
+" Compile the project and show the output
+execute 'nnoremap <leader>mv :call FakeMake("cd ' . g:_project_home . '/build && cmake --build . --target install")<CR>'
+
+execute 'nnoremap <leader>tt :call FakeMake("' . g:_project_home . '/build/tests/run_tests")<CR>'
+
+" Note: Requires tpope/vim-projectionist in order to work
+function s:go_to_test(file_name)
+    execute ':Etest ' . a:file_name
+endfunction
+nnoremap <leader>gt :execute ':Etest ' . expand('%:t:r')<CR>
+endsnippet
+
+
+
+
+
+
 
 - null-ls's pylint isn't taking into account PYTHONPATH, even though it acutally is importable
  - See sphinx-code-include
@@ -53,7 +118,20 @@ https://coreyja.com/vim-fzf-with-devicons/
 
 
 
+
+
+
+
+
+- wilder bug
+ - print a lot of stuff
+ - load telescope
+  - go :message
+  - it fills the screen, weirdly
+
+
 - Check out circles.nvim
+- https://github.com/folke/neodev.nvim
 
 - vim config clean-up
  - change manifest / data code to just "plugins" / "configs" - Use NvChad as an example
@@ -544,3 +622,11 @@ File "/home/selecaoone/.local/lib/python3.6/site-packages/astroid/scoped_nodes.p
 raise TooManyLevelsError(level=level, name=self.name)
 astroid.exceptions.TooManyLevelsError: Relative import with too many levels (1) for module 'complex_file'
 ```
+
+## Debugging
+```
+lua require("dap").set_log_level("TRACE")
+lua print(vim.fn.stdpath('cache') .. "/dap.log")  -- ~/.cache/nvim/dap.log
+```
+
+Use this to show verbose messages on why the debugger doesn't start.
