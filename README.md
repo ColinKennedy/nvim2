@@ -620,6 +620,13 @@ raise TooManyLevelsError(level=level, name=self.name)
 astroid.exceptions.TooManyLevelsError: Relative import with too many levels (1) for module 'complex_file'
 ```
 
+## Requires
+- lazy.nvim requires git 2.27+ so that it can used the --filter=blob:none
+    - Reference: https://stackoverflow.com/a/51411174
+    - Install on CentOS 7 with: https://computingforgeeks.com/install-git-2-on-centos-7/
+- Requires jedi-language-server to be installed (for null-ls)
+- For debugging [debugpy](https://pypi.org/project/debugpy)
+
 
 ## Debugging
 :help dap.set_log_level
