@@ -4,7 +4,6 @@
  - Same with the command menu
  - white trim, slightly darker background?
 
-- nvim-dap-ui - Show the hotkey needed to jump between windows, in the winbar!
 - Moving between splits and tmux no longer works. FIX
 
 - indentation gets messed up sometimes. Not sure why. Was it due to lspconfig
@@ -37,6 +36,7 @@ execute ":argadd "
 
 
 
+- nvim-dap-ui - Show the hotkey needed to jump between windows, in the winbar!
 snippet simple_cpp_project "Set up mappings for a simple C++ project"
 " Reference: https://stackoverflow.com/a/18734557
 let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
