@@ -84,10 +84,7 @@ return {
               },
               sections = {
                 lualine_b = {"branch"},
-                lualine_c = {
-                    {"filetype", colored = true, icon_only = true},
-                    "filename",
-                },
+                lualine_c = {},
                 lualine_x = {},
                 lualine_y = {"diagnostics", "progress"},
                 lualine_z = {"location"}
