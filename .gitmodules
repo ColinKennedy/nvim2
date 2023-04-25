@@ -259,3 +259,9 @@
 [submodule "bundle/nvim-dap-python"]
 	path = bundle/nvim-dap-python
 	url = git@github.com:mfussenegger/nvim-dap-python.git
+[submodule "bundle/mini.ai"]
+	path = bundle/mini.ai
+	url = git@github.com:echasnovski/mini.ai.git
+[submodule "bundle/vim-python-pep8-indent"]
+	path = bundle/vim-python-pep8-indent
+	url = git@github.com:Vimjas/vim-python-pep8-indent.git
