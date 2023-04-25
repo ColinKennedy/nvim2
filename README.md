@@ -4,7 +4,7 @@
  - Same with the command menu
  - white trim, slightly darker background?
 
-- nvim-dap-up - Show the hotkey needed to jump between windows, in the winbar!
+- nvim-dap-ui - Show the hotkey needed to jump between windows, in the winbar!
 - Moving between splits and tmux no longer works. FIX
 
 - indentation gets messed up sometimes. Not sure why. Was it due to lspconfig
