@@ -4,12 +4,6 @@
  - Same with the command menu
  - white trim, slightly darker background?
 
-- Moving between splits and tmux no longer works. FIX
-
-- indentation gets messed up sometimes. Not sure why. Was it due to lspconfig
-  when I enabled indentation?
-
-- nvim-dap-ui icons would be nice
 - For some reason when I leave dap, the <F5> mapping gets unset. Why? Fix.
 
 - https://www.youtube.com/watch?v=lEMZnrC-ST4
