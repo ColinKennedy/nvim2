@@ -937,7 +937,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/cfn-lint@0.77.2"
+      "id": "pkg:pypi/cfn-lint@0.77.3"
     },
     "bin": {
       "cfn-lint": "pypi:cfn-lint"
@@ -1655,7 +1655,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/vscode-langservers-extracted@4.6.0"
+      "id": "pkg:npm/vscode-langservers-extracted@4.7.0"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/microsoft/vscode/main/extensions/css-language-features/package.json"
@@ -1766,6 +1766,29 @@
     },
     "bin": {
       "curlylint": "pypi:curlylint"
+    }
+  },
+  {
+    "name": "custom-elements-languageserver",
+    "description": "The best way to utilize the Custom Elements Language Server is to enable the Custom Elements Manifest (CEM) in your\nproject by installing a CEM generator like one provided by The Open WC Team.\n\nGenerating a CEM in watch mode will provide you with the best user experience. If your dependencies ship with a Custom\nElements Manifest, those will be utilized also.\n",
+    "homepage": "https://github.com/Matsuuu/custom-elements-language-server",
+    "licenses": [
+      "BSD-3-Clause"
+    ],
+    "languages": [
+      "HTML",
+      "JavaScript",
+      "TypeScript",
+      "JSX"
+    ],
+    "categories": [
+      "LSP"
+    ],
+    "source": {
+      "id": "pkg:npm/custom-elements-languageserver@0.0.3"
+    },
+    "bin": {
+      "custom-elements-languageserver": "npm:custom-elements-languageserver"
     }
   },
   {
@@ -1958,7 +1981,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/djlint@1.23.3"
+      "id": "pkg:pypi/djlint@1.24.0"
     },
     "bin": {
       "djlint": "pypi:djlint"
@@ -2477,7 +2500,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/vscode-langservers-extracted@4.6.0"
+      "id": "pkg:npm/vscode-langservers-extracted@4.7.0"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/microsoft/vscode-eslint/main/package.json"
@@ -3683,7 +3706,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/vscode-langservers-extracted@4.6.0"
+      "id": "pkg:npm/vscode-langservers-extracted@4.7.0"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/microsoft/vscode/main/extensions/html-language-features/package.json"
@@ -4109,7 +4132,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/vscode-langservers-extracted@4.6.0"
+      "id": "pkg:npm/vscode-langservers-extracted@4.7.0"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/microsoft/vscode/master/extensions/json-language-features/package.json"
@@ -4913,7 +4936,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:cargo/neocmakelsp@0.5.14"
+      "id": "pkg:cargo/neocmakelsp@0.5.15"
     },
     "bin": {
       "neocmakelsp": "cargo:neocmakelsp"
@@ -5091,6 +5114,26 @@
     },
     "bin": {
       "node-debug2-adapter": "node:out/src/nodeDebug.js"
+    }
+  },
+  {
+    "name": "nomicfoundation-solidity-language-server",
+    "description": "Solidity language server by NomicFoundation",
+    "homepage": "https://github.com/NomicFoundation/hardhat-vscode",
+    "licenses": [
+      "MIT"
+    ],
+    "languages": [
+      "Solidity"
+    ],
+    "categories": [
+      "LSP"
+    ],
+    "source": {
+      "id": "pkg:npm/%40nomicfoundation/solidity-language-server@0.6.16"
+    },
+    "bin": {
+      "nomicfoundation-solidity-language-server": "npm:nomicfoundation-solidity-language-server"
     }
   },
   {
@@ -5635,7 +5678,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:npm/prettier@2.8.7"
+      "id": "pkg:npm/prettier@2.8.8"
     },
     "bin": {
       "prettier": "npm:prettier"
@@ -5688,7 +5731,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40prisma/language-server@31.0.2077"
+      "id": "pkg:npm/%40prisma/language-server@31.0.2084"
     },
     "bin": {
       "prisma-language-server": "npm:prisma-language-server"
@@ -5981,7 +6024,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/pylint@2.17.2"
+      "id": "pkg:pypi/pylint@2.17.3"
     },
     "bin": {
       "pylint": "pypi:pylint"
@@ -6577,7 +6620,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/rust-lang/rust-analyzer@2023-04-17",
+      "id": "pkg:github/rust-lang/rust-analyzer@2023-04-24",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -7283,7 +7326,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:gem/sorbet@0.5.10792",
+      "id": "pkg:gem/sorbet@0.5.10793",
       "supported_platforms": [
         "darwin_x64",
         "darwin_arm64",
