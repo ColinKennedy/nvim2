@@ -20,5 +20,7 @@ vim.keymap.set(
 
         vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
     end,
-    {desc="Start a debugging session."}
+    {
+        desc="[d]o [d]ebugger. Start a debugging session.",
+    }
 )

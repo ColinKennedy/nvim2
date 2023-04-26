@@ -181,7 +181,16 @@ then
                     return
                 end
 
-                vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>", {noremap=true, buffer=true})
+                vim.keymap.set(
+                    "t",
+                    "<ESC><ESC>",
+                    "<C-\\><C-n>",
+                    {
+                        buffer=true,
+                        desc="Exit the terminal by pressing <ESC> twice in a row.",
+                        noremap=true,
+                    }
+                )
             end,
             group = group,
             pattern = "*",

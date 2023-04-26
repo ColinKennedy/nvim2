@@ -1,65 +1,121 @@
--- Pressing Enter and Shift+Enter will add a new line below the bottom
-vim.keymap.set("n", "<S-Enter>", "O<Esc>j")
+vim.keymap.set(
+    "n",
+    "<S-Enter>",
+    "O<Esc>j",
+    {
+        desc="Pressing Shift+Enter will add a new line below the bottom.",
+    }
+)
 
--- Totally useless ROT13 encyption (for fun!)
-vim.keymap.set("n", "<F12>", "ggg?G``")
+vim.keymap.set(
+    "n",
+    "<F12>",
+    "ggg?G``",
+    {
+        desc="Totally useless ROT13 encyption (for fun!)",
+    }
+)
 
--- Select text you just pasted - Useful for snippets
-vim.keymap.set("n", "gV", "`[v`]")
-
--- Quick toggle undercase and UPPERCASE words
-vim.keymap.set("n", "gUiw", "mpgUiw`p")
-vim.keymap.set("n", "guiw", "mpguiw`p")
+vim.keymap.set("n", "gUiw", "mpgUiw`p", {desc="[g]o [U]PPERCASE the current word."})
+vim.keymap.set("n", "guiw", "mpguiw`p", {desc="[g]o [u]nder_case the current word."})
 
 -- Reference:http://vim.wikia.com/wiki/Capitalize_words_and_regions_easily
 -- gciw       - capitalize inner word (from start to end)
 --
-vim.keymap.set("n", "gcw", "guw~h")
-vim.keymap.set("n", "gcW", "guW~h")
-vim.keymap.set("n", "gciw", "guiw~h")
-vim.keymap.set("n", "gciW", "guiW~h")
-vim.keymap.set("n", "gc", " gu$~h")
-vim.keymap.set("n", "gcgc", "guu~h")
+vim.keymap.set(
+    "n",
+    "gcw",
+    "guw~h",
+    {desc="Capitalize the current letter."}
+)
+vim.keymap.set(
+    "n",
+    "gcW",
+    "guW~h",
+    {desc="Capitalize the current letter."}
+)
+vim.keymap.set(
+    "n",
+    "gciw",
+    "guiw~h",
+    {desc="under_case the current WORD."}
+)
+vim.keymap.set(
+    "n",
+    "gciW",
+    "guiW~h",
+    {desc="Capitalize the current WORD."}
+)
 
--- Select the most recent text change you've made
-vim.cmd[[nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]']]
+vim.keymap.set(
+    "n",
+    "gp",
+    "`[v`]",
+    {
+        desc="Select the most recent text change you've made",
+        expr=true,
+    }
+)
 
--- make . work with visually selected lines
-vim.keymap.set("v", ".", ":norm.<CR>")
+vim.keymap.set(
+    "v",
+    ".",
+    ":norm.<CR>",
+    {
+        desc="Make `.` work with visually selected lines."
+    }
+)
 
--- Substitute (in-file search/replace)
-vim.cmd[[nnoremap <leader>ss :%s/\<<C-r><C-w>\>/<C-r><C-w>/<Right>]]
+vim.keymap.set(
+    "n",
+    "<leader>ss",
+    ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/<Right>",
+    {
+        desc="[s]ubstitute [s]election (in-file search/replace) for the word under your cursor.",
+    }
+)
 
--- Cross file search/replace
--- Read about argdo before using (Spoiler, it's epic!)
---
-vim.cmd[[nnoremap <leader>cs :argdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gce \\| update<Left><Left><Left><Left><Left><Left><Left><Left><BS><Left><Left><Left>]]
-
--- Pass through : when typing
+-- When typing in INSERT mode, pass through : if the cursor is to the left of it.
 vim.cmd("inoremap <expr> : search('\\%#:', 'n') ? '<Right>' : ':'")
 
--- "Make capital-y work like capital-d and other commands. See :help Y
-vim.cmd("map Y y$")
+vim.keymap.set(
+    "n",
+    "Y",
+    "y$",
+    {desc="Make capital-y work like capital-d and other commands. See :help Y"}
+)
 
--- Join without adding an extra space
-vim.keymap.set("n", "<leader>j", "gJx")
+vim.keymap.set(
+    "n",
+    "<leader>j",
+    "gJx",
+    {desc="[j]oin the line below without adding an extra space"}
+)
 
--- A mapping that lets you move up and down a QuickFix window
-vim.keymap.set("n", "[q", ":cprevious<CR>")
-vim.keymap.set("n", "]q", ":cnext<CR>")
+vim.keymap.set("n", "[q", ":cprevious<CR>", {desc="Move up the QuickFix window."})
+vim.keymap.set("n", "]q", ":cnext<CR>", {desc="Move down the QuickFix window."})
 
 -- Basic mappings that can be used to make Vim "magic" by default
 -- Reference: https://stackoverflow.com/q/3760444
 -- Reference: http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
 --
-vim.keymap.set("n", "/", "/\\v")
-vim.keymap.set("v", "/", "/\\v")
-vim.keymap.set("c", "%s/", "%smagic/")
-vim.keymap.set("c", ">s/",">smagic/")
+local description = {desc='Make Vim\'s search more "magic", by default.'}
+vim.keymap.set("n", "/", "/\\v", description)
+vim.keymap.set("v", "/", "/\\v", description)
+vim.keymap.set("c", "%s/", "%smagic/", description)
+vim.keymap.set("c", ">s/",">smagic/", description)
 
 -- Copies the current file to the clipboard
 vim.cmd('command! CopyCurrentFile :let @+=expand("%:p")<bar>echo "Copied " . expand("%:p") . " to the clipboard"')
-vim.keymap.set("n", "<leader>cc", ":CopyCurrentFile<CR>", {silent=true})
+vim.keymap.set(
+    "n",
+    "<leader>cc",
+    ":CopyCurrentFile<CR>",
+    {
+        desc="[c]opy the [c]urrent file in the current window to the system clipboard. Assuming +clipboard.",
+        silent=true,
+    }
+)
 
 -- Delete the current line, without the ending newline character, but
 -- still delete the line. This is useful for when you want to delete a
@@ -67,43 +123,66 @@ vim.keymap.set("n", "<leader>cc", ":CopyCurrentFile<CR>", {silent=true})
 -- e.g. <leader>dilpi( will delete the current line and then paste it
 -- within the next pair of parentheses.
 --
-vim.keymap.set("n", "<leader>dil", '^v$hd"_dd')
+vim.keymap.set(
+    "n",
+    "<leader>dil",
+    '^v$hd"_dd',
+    {desc="[d]elete [i]nside the current [l]ine, without the ending newline character."}
+)
 
 -- A mapping that quickly expands to the current file's folder. Much
 -- easier than cd'ing to the current folder just to edit a single file.
--- 
-vim.keymap.set("n", "<leader>e", ":e <C-R>=expand('%:p:h') . '/'<CR>")
+--
+vim.keymap.set(
+    "n",
+    "<leader>e",
+    ":e <C-R>=expand('%:p:h') . '/'<CR>",
+    {desc="[e]xpand to the current file's folder."}
+)
 
 -- Reference: https://gist.github.com/habamax/0a6c1d2013ea68adcf2a52024468752e
-vim.keymap.set("n", "gx", ":call command_extensions#better_gx()<CR>", {silent=true})
+vim.keymap.set(
+    "n",
+    "gx",
+    ":call command_extensions#better_gx()<CR>",
+    {
+        desc="Change `gx` to be more useful.",
+        silent=true,
+    }
+)
 
--- Center the buffers, even in terminal mode
-vim.keymap.set("t", "<C-w>=", "<C-\\><C-n><C-w>=i")
+vim.keymap.set(
+    "t",
+    "<C-w>=",
+    "<C-\\><C-n><C-w>=i",
+    {
+        desc="Equalize all visible windows. Only useful when 2+ windows visible at once.",
+    }
+)
 
--- Switch CWD to the directory of the open buffer
-vim.keymap.set("n", "<leader>cd", ":lcd %:p:h<cr>:pwd<cr>")
+vim.keymap.set(
+    "n",
+    "<leader>cd",
+    ":lcd %:p:h<cr>:pwd<cr>",
+    {desc="[c]hange the [d]irectory (`:pwd`) to the directory of the current open window."}
+)
 
--- Make navigation easier.
---
--- Important:
---     Requires:
---         - https://github.com/junegunn/fzf.vim
---
-vim.keymap.set("n", "<space>B", ":Buffers<CR>")
+vim.keymap.set(
+    "n",
+    "<space>C",
+    ":close<CR>",
+    {desc="[C]lose the current window."}
+)
 
--- Search from the project root
-vim.keymap.set("n", "<space>E", ":call searcher#search_project_files()<CR>", {silent=true})
-
--- Search the current directory
-vim.keymap.set("n", "<space>e", ":Files<CR>")
-vim.keymap.set("n", "<space>L", ":Lines<CR>")
-vim.keymap.set("n", "<space>O", ":GHistory<CR>")
-
-vim.keymap.set("n", "<space>A", ":Args<CR>")
-vim.keymap.set("n", "<space>C", ":close<CR>")
-
--- Nvim creates a terminal in the same buffer. So we make a separate one, first
-vim.keymap.set("n", "<space>T", ":split<BAR>wincmd j<BAR>resize 10N<BAR>terminal<CR>", {silent=true})
+vim.keymap.set(
+    "n",
+    "<space>T",
+    ":split<BAR>wincmd j<BAR>resize 10N<BAR>terminal<CR>",
+    {
+        desc="Create a [T]erminal on the bottom of the current window.",
+        silent=true,
+    }
+)
 
 -- TODO: Fix this
 -- -- Get the Python dot-path from a Python unittest error / fail line
@@ -114,33 +193,78 @@ vim.keymap.set("n", "<space>T", ":split<BAR>wincmd j<BAR>resize 10N<BAR>terminal
 --     let @+=l:text
 --     echo l:text
 -- endfunction
--- 
+--
 -- function! AddCurrentDotPathToTheClipboard()
 --     let l:text = "python -m unittest " . unittest_error_parser#get_current_line()
 --     let @+=l:text
 --     echo l:text
 -- endfunction
--- 
+--
 -- vnoremap <silent> <leader>pt :<C-U>call AddVisualDotPathToTheClipboard()<CR>
 -- nnoremap <silent> <leader>pt :<C-U>call AddCurrentDotPathToTheClipboard()<CR>
+--
+-- vim.keymap.set(
+--     "n",
+--     "<leader>st",
+--     ':execute "SendTop " . @+<CR>',
+--     {
+--         desc="Send copied system clipboard to the last-visited terminal (for the current tab).",
+--         silent=true,
+--     }
+-- )
+--
+-- vim.keymap.set(
+--     "n",
+--     "<leader>rr",
+--     ":SendTop !!<CR>",
+--     {
+--         desc="Replay the last-run in the terminal from the most recent terminal.",
+--         silent=true,
+--     }
+-- )
 
--- Send the current clipboard selection to the top terminal (within the current tab)
-vim.keymap.set("n", "<leader>st", ':execute "SendTop " . @+<CR>', {silent=true})
+vim.keymap.set(
+    "v",
+    "<leader>pe",
+    ":<C-U>call traceback_parser_python#parse_visual_traceback()<CR>",
+    {
+        desc="Load the selected [p]ython [e]rror as a quickfix window.",
+        silent=true,
+    }
+)
 
--- Load the user's visually-selected Python traceback as a quickfix window
-vim.keymap.set("v", "<leader>pe", ":<C-U>call traceback_parser_python#parse_visual_traceback()<CR>", {silent=true})
+vim.keymap.set(
+    "n",
+    "J",
+    "mzJ`z",
+    {
+        desc="Keep the cursor in the same position while pressing ``J``.",
+    }
+)
 
--- Replay the last run in the terminal
--- TODO: Make this a function that auto-finds the last terminal
-vim.keymap.set("n", "<leader>rr", ":SendTop !!<CR>", {silent=true})
+vim.keymap.set(
+    "n",
+    "<leader>st",
+    ':execute "SendToRecentTerminal " . @+<CR>',
+    {
+        desc="[s]end to the nearest [t]erminal your system clipboard text.",
+        silent=true,
+    }
+)
 
--- Keep the cursor in the same position while pressing ``J``, in NORMAL mode
-vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set(
+    "n",
+    "<leader>rr",
+    ":SendToRecentTerminal !!<CR>",
+    {
+        desc="[r]e-[r]un the last terminal command (The !! syntax is UNIX-specific)",
+        silent=true,
+    }
+)
 
--- Send the copied text to the nearest, visible terminal
-vim.keymap.set("n", "<leader>st", ':execute "SendToRecentTerminal " . @+<CR>', {silent=true})
--- Re-run the last terminal command (This is UNIX-specific)
-vim.keymap.set("n", "<leader>rr", ":SendToRecentTerminal !!<CR>", {silent=true})
-
--- Exit without saving
-vim.keymap.set("n", "QQ", ":qall!<CR>")
+vim.keymap.set(
+    "n",
+    "QQ",
+    ":qall!<CR>",
+    {desc="Exit Vim without saving."}
+)

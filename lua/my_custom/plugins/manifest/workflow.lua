@@ -157,7 +157,12 @@ return {
                 }
             )
             -- TODO: Not sure how useful Neogen is, in practice. Seems to break too easily.
-            vim.keymap.set("n", "<leader><leader>d", ":Neogen<CR>")
+            vim.keymap.set(
+                "n",
+                "<leader><leader>d",
+                ":Neogen<CR>",
+                {desc="Generate a [d]ocstring for the function under the cursor."}
+            )
         end,
         dependencies = {
             "L3MON4D3/LuaSnip",
@@ -261,8 +266,18 @@ return {
                 }
             )
 
-            vim.keymap.set("n", "<space>SS", ":AerialToggle<CR>")
-            vim.keymap.set("n", "<space>SN", ":AerialNavToggle<CR>")
+            vim.keymap.set(
+                "n",
+                "<space>SS",
+                ":AerialToggle<CR>",
+                {desc="[S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc."}
+            )
+            vim.keymap.set(
+                "n",
+                "<space>SN",
+                ":AerialNavToggle<CR>",
+                {desc="[S]witch [N]avigation inside / outside of classes and functions."}
+            )
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         cmd = { "AerialNavToggle", "AerialToggle"},
@@ -400,7 +415,12 @@ return {
                 toggle_current_directory,
                 {nargs=0}
             )
-            vim.keymap.set("n", "<space>W", ":PwdNvimTreeToggle<CR>")
+            vim.keymap.set(
+                "n",
+                "<space>W",
+                ":PwdNvimTreeToggle<CR>",
+                {desc="Open NvimTree starting from the `:pwd`."}
+            )
         end,
         cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -462,10 +482,11 @@ return {
                 "<leader>f",
                 function()
                     vim.cmd("HopWord")
-                end
+                end,
+                {desc="[f]ind text using hop-mode."}
             )
 
-            require("hop").setup({keys= "asdfjkl"})
+            require("hop").setup({keys= "asdfghjkl"})
         end,
         keys = "<leader>f",
     },
@@ -474,32 +495,75 @@ return {
     {
         "mfussenegger/nvim-dap",
         config = function()
-            vim.keymap.set("n", "<leader>d<space>", ":DapContinue<CR>")
-            vim.keymap.set("n", "<leader>dl", ":DapStepInto<CR>")
-            vim.keymap.set("n", "<leader>dj", ":DapStepOver<CR>")
-            vim.keymap.set("n", "<leader>dh", ":DapStepOut<CR>")
-            vim.keymap.set("n", "<leader>dz", ":ZoomWinTabToggle<CR>")
             vim.keymap.set(
                 "n",
-                "<leader>dgt",  -- dg as in debu[g] [t]race
-                ":lua require('dap').set_log_level('TRACE')<CR>"
+                "<leader>d<space>",
+                ":DapContinue<CR>",
+                {desc="Continue through the debugger to the next breakpoint."}
             )
             vim.keymap.set(
                 "n",
-                "<leader>dge",  -- dg as in debu[g] [e]dit
+                "<leader>dl",
+                ":DapStepInto<CR>",
+                {desc="Move into a function call."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dj",
+                ":DapStepOver<CR>",
+                {desc="Skip over the current line."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dh",
+                ":DapStepOut<CR>",
+                {desc="Move out of the current function call."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dz",
+                ":ZoomWinTabToggle<CR>",
+                {desc="[d]ebugger [z]oom toggle (full-screen or minimize the window)."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dgt",
+                ":lua require('dap').set_log_level('TRACE')<CR>",
+                {desc="Set [d]ebu[g] to [t]race level logging."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>dge",
                 function()
                     vim.cmd(":edit " .. vim.fn.stdpath('cache') .. "/dap.log")
-                end
+                end,
+                {desc="Open the [d]ebu[g] [e]dit file."}
             )
-            vim.keymap.set("n", "<F1>", ":DapStepOut<CR>")
-            vim.keymap.set("n", "<F2>", ":DapStepOver<CR>")
-            vim.keymap.set("n", "<F3>", ":DapStepInto<CR>")
+            vim.keymap.set(
+                "n",
+                "<F1>",
+                ":DapStepOut<CR>",
+                {desc="Move out of the current function call."}
+            )
+            vim.keymap.set(
+                "n",
+                "<F2>",
+                ":DapStepOver<CR>",
+                {desc="Skip over the current line."}
+            )
+            vim.keymap.set(
+                "n",
+                "<F3>",
+                ":DapStepInto<CR>",
+                {desc="Move into a function call."}
+            )
             vim.keymap.set(
                 "n",
                 "<leader>d-",
                 function()
                     require("dap").restart()
-                end
+                end,
+                {desc="Restart the current debug session."}
             )
             vim.keymap.set(
                 "n",
@@ -507,7 +571,8 @@ return {
                 function()
                     require("dap").terminate()
                     require("dapui").close()
-                end
+                end,
+                {desc="Kill the current debug session."}
             )
             -- vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
             -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
@@ -525,8 +590,10 @@ return {
                 "n",
                 "<F6>",
                 function()
+                    require("dap").terminate()
                     require("dapui").close()
-                end
+                end,
+                {desc="Close the DAP and the GUI."}
             )
 
             local _get_window_by_type = function(type_name)
@@ -578,7 +645,8 @@ return {
                     mapping,
                     function()
                         _zoom_by_type(type_name)
-                    end
+                    end,
+                    {desc="Toggle-full-screen the " .. type_name .. " DAP window."}
                 )
             end
 
@@ -636,7 +704,12 @@ return {
                 load_breakpoints_event = { "BufReadPost" }
             }
 
-            vim.keymap.set("n", "<leader>db", ":PBToggleBreakpoint<CR>")
+            vim.keymap.set(
+                "n",
+                "<leader>db",
+                ":PBToggleBreakpoint<CR>",
+                {desc="Set a breakpoint (and remember it even when we re-open the file)."}
+            )
         end,
     }
 

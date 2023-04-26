@@ -4,44 +4,138 @@ vim.keymap.set(
     "n",
     "[d",
     function()
-	vim.diagnostic.goto_prev({float={source="always"}})
-    end
+        vim.diagnostic.goto_prev({float={source="always"}})
+    end,
+    {desc="Search upwards for diagnostic messages and go to it, if one is found."}
 )
 vim.keymap.set(
     "n",
     "]d",
     function()
-	vim.diagnostic.goto_next({float={source="always"}})
-    end
+        vim.diagnostic.goto_next({float={source="always"}})
+    end,
+    {desc="Search downwards for diagnostic messages and go to it, if one is found."}
 )
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+-- vim.keymap.set(
+--     "n",
+--     "<space>q",
+--     vim.diagnostic.setloclist,
+--     {desc="Show the [d]iagnostics for the current file, in a location list window."}
+-- )
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd(
     "LspAttach",
     {
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = function(ev)
-	    -- Buffer local mappings.
-	    -- See `:help vim.lsp.*` for documentation on any of the below functions
-	    local opts = { buffer = ev.buf }
-	    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-	    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-	    vim.keymap.set("n", "<space>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	    end, opts)
-	    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-	    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-	    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	    vim.keymap.set("n", "<space>f", function()
-		vim.lsp.buf.format { async = true }
-	    end, opts)
-	end,
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+        callback = function(event)
+            -- Buffer local mappings.
+            -- See `:help vim.lsp.*` for documentation on any of the below functions
+            vim.keymap.set(
+                "n",
+                "gD",
+                vim.lsp.buf.declaration,
+                {
+                    buffer=event.buf,
+                    desc="[g]o to all [D]eclarations of the current function, class, whatever.",
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "gd",
+                vim.lsp.buf.definition,
+                {
+                    buffer=event.buf,
+                    desc="[g]o to wherever the function / class was [d]efined.",
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "K",
+                vim.lsp.buf.hover,
+                {
+                    buffer=event.buf,
+                    desc="Open the documentation for the word under the cursor, if any.",
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "gi",
+                vim.lsp.buf.implementation,
+                {
+                    buffer=event.buf,
+                    desc="Find and [g]o to the [i]mplementation of some header / declaration."
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "<space>wa",
+                vim.lsp.buf.add_workspace_folder,
+                {
+                    buffer=event.buf,
+                    desc="[w]orkspace [a]dd - Include a folder for your session.",
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "<space>wr",
+                vim.lsp.buf.remove_workspace_folder,
+                {
+                    buffer=event.buf,
+                    desc="[w]orkspace [r]emove - Remove a folder from your session.",
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "<space>wl",
+                function()
+                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                end,
+                {
+                    buffer=event.buf,
+                    desc="[w]orkspace [l]ist - Show the folders for your current session.",
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "<space>D",
+                vim.lsp.buf.type_definition,
+                {
+                    buffer=event.buf,
+                    desc="Show the [D]efinition of some function / instance.",
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "<space>ca",
+                vim.lsp.buf.code_action,
+                {
+                    buffer=event.buf,
+                    desc="[c]ode [a]ction - Show available commands for what's under your cursor."
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "gr",
+                vim.lsp.buf.references,
+                {
+                    buffer=event.buf,
+                    desc="[g]o to [r]eferences - Show all locations where a variable is used."
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "<space>f",
+                function()
+                    vim.lsp.buf.format { async = true }
+                end,
+                {
+                    buffer=event.buf,
+                    desc="auto-[f]ormat the current file.",
+                }
+            )
+        end,
     }
 )
 
@@ -106,9 +200,9 @@ vim.api.nvim_create_autocmd(
 -- Place virtual text really far away from the source code (so I don't see it often)
 vim.diagnostic.config(
     {
-	virtual_text = {
-	    severity_sort = true,
-	    spacing = 40,
-	}
+        virtual_text = {
+            severity_sort = true,
+            spacing = 40,
+        }
     }
 )
