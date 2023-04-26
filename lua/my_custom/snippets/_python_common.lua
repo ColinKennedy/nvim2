@@ -124,4 +124,30 @@ return {
         ),
         { show_condition = is_source_beginning("_LOGGER_STREAM") }
     ),
+
+    snippet(
+        {
+            docstring="Delete a file but only after Python exits.",
+            trig="atexit_file",
+        },
+        format(
+            [[
+                atexit.register(functools.partial(os.remove, {}))
+            ]],
+            { index(1, "path") }
+        )
+    ),
+
+    snippet(
+        {
+            docstring="Delete a folder but only after Python exits.",
+            trig="atexit_folder",
+        },
+        format(
+            [[
+                atexit.register(functools.partial(shutil.rmtree, {}))
+            ]],
+            { index(1, "directory") }
+        )
+    ),
 }
