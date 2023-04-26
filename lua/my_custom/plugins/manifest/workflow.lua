@@ -315,13 +315,6 @@ return {
         ft = "qf",
     },
 
-    -- TODO: Use a better lazy-load than this
-    -- Use <leader>pd to get the Python dot-separated import path at the current cursor
-    {
-        "ColinKennedy/vim-python-dot-path",
-        keys = "<leader>pd",
-    },
-
     -- Auto-insert pairs
     {
         -- Lazy-loading this causes the plug-in to break. So probably you can't do it.
@@ -561,9 +554,17 @@ return {
                 "n",
                 "<leader>d-",
                 function()
-                    require("dap").restart()
+                    require("dap").restart({terminateDebugee=false})
                 end,
                 {desc="Restart the current debug session."}
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>d=",
+                function()
+                    require("dap").disconnect({terminateDebugee=false})
+                end,
+                {desc="Disconect from a remote DAP session."}
             )
             vim.keymap.set(
                 "n",

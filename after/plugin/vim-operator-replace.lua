@@ -11,4 +11,9 @@ vim.keymap.set("n", "pp", "p", {desc="Change `p` to act more like `y`."})
 -- twice, using the P key.
 --
 vim.keymap.set("n", "P", "<NOP>", {desc="Prevent text from being put, twice."})
-vim.keymap.set("n", "PP", "P", {desc="Put text, like you normally would in Vim."})
+vim.keymap.set(
+    "n",
+    "PP",
+    "P",
+    {desc="Put text, like you normally would in Vim, but how [Y]ank does it."}
+)
