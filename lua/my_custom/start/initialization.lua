@@ -71,6 +71,10 @@ vim.opt.laststatus = 2
 vim.opt.relativenumber = true
 vim.opt.number = true
 
+-- Show weird characters (tabs, trailing whitespaces, etc)
+vim.opt.list = true
+vim.opt.listchars = 'tab:> ,trail: ,nbsp:+'
+
 -- Auto-save whenever you switch buffers - potentially dangerous
 vim.opt.autowrite = true
 vim.opt.autowriteall = true

@@ -4,6 +4,9 @@ return {
         priority = 1000,  -- Load this first
         config = function()
             vim.cmd.colorscheme("hybrid2")
+
+            -- Show trailing whitespace as red text
+            vim.api.nvim_set_hl(0, "NonText", {bg="#5f0000", ctermbg=52})
         end,
         version = "1.*"
     },

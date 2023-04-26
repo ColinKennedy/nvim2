@@ -4,7 +4,6 @@ initialize_timeout_sec?: number  -- How many seconds the client waits for a
 
 
 - new tabs in Vim have a bad syntax highlight. Fix
-- fix trailing whitespace syntax color
 - completion menu should have a white trim, to make it look nicer
  - Same with the command menu
  - white trim, slightly darker background?
