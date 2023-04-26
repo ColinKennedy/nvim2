@@ -614,6 +614,9 @@ raise TooManyLevelsError(level=level, name=self.name)
 astroid.exceptions.TooManyLevelsError: Relative import with too many levels (1) for module 'complex_file'
 ```
 
+## Mappings
+
+
 ## Requires
 - lazy.nvim requires git 2.27+ so that it can used the --filter=blob:none
     - Reference: https://stackoverflow.com/a/51411174

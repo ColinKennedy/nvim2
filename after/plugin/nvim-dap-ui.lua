@@ -5,7 +5,8 @@ vim.keymap.set(
         require("dapui").open()
 
         vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
-    end
+    end,
+    {desc="Start a debugging session."}
 )
 
 -- Note: Added this <leader>dd duplicate of <F5> because somehow the <F5>
@@ -18,5 +19,6 @@ vim.keymap.set(
         require("dapui").open()  -- Requires nvim-dap-ui
 
         vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
-    end
+    end,
+    {desc="Start a debugging session."}
 )
