@@ -292,12 +292,6 @@ return {
         ft = "qf",
     },
 
-    -- Quickfix auto-resize. Keeps the quickfix window small
-    {
-        "blueyed/vim-qf_resize",
-        ft = "qf",
-    },
-
     -- Auto-insert pairs
     {
         -- Lazy-loading this causes the plug-in to break. So probably you can't do it.
