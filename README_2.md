@@ -1,0 +1,35 @@
+- null-ls's pylint isn't taking into account PYTHONPATH, even though it acutally is importable
+ - See sphinx-code-include
+
+- Try installing this onto another machine
+- https://github.com/folke/which-key.nvim
+
+- Pretty sure this stuff breaks but it'd be good to at least check it out again
+ - https://github.com/hrsh7th/cmp-cmdline
+
+https://github.com/ryanoasis/vim-devicons/issues/106
+https://coreyja.com/vim-fzf-with-devicons/
+
+
+- Pressing w should scroll up in the terminal(?)
+- neogen has some issues
+ - raises is parsed incorrectly, in Python
+
+- yi` doesn't work. Fix!!!
+
+- Auto completion work
+ --- Python LSPs
+ - C++ LSPs
+  --- Jumpy (CMake enabled projects)
+  --- General
+  - USD
+   - Maybe clangd is better? ccls keeps reporting incorrect information
+    - it's better if I use explicit types. But ``auto`` is great. Need it.
+    - maybe I can compile clangd with mason, but with an older version so that GLIBC works
+
+- See if I can adapt NvChad for my purposes
+ - Objectives
+  --- auto complete tab behavior is good. Use their config
+   --- Make tab complete based on tab. And snippets auto-expand with tab. But still allow ctrl+n / ctrl+p to cycle through snippets
+    --- like NvChad
+  --- Auto complete cycling is fast. Emulate it
