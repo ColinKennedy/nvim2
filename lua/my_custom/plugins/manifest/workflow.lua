@@ -249,23 +249,6 @@ return {
                 }
             )
 
-            -- TODO: Try to figure out a better way to remove this
-            -- Note: Disable trailing whitespace highlighting in the aerial window
-            vim.api.nvim_create_autocmd(
-                {"BufRead", "BufNew", "FileType", "TermOpen"},
-                {
-                    pattern = "*",
-                    callback = function()
-                        if vim.bo.buftype == "nofile"
-                        then
-                            vim.cmd[[match ExtraWhitespace /^^/]]
-
-                            return
-                        end
-                    end
-                }
-            )
-
             vim.keymap.set(
                 "n",
                 "<space>SS",
