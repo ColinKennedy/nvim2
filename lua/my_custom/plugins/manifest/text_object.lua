@@ -33,25 +33,25 @@ return {
         lazy = true,
     },
 
-    -- A minimal alternative to targets.vim
-    {
-        "echasnovski/mini.ai",
-        version = "*",
-        event = "VeryLazy",
-    },
-    -- -- XXX: Removed due to this issue: https://github.com/wellle/targets.vim/issues/268
-    -- -- Targets - A great companion to vim-surround
+    -- -- A minimal alternative to targets.vim
     -- {
-    --     "wellle/targets.vim",
-    --     config=function()
-    --         -- TODO: Add this, later
-    --         -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
-    --         -- autocmd User targets#mappings#user call targets#mappings#extend({
-    --         --     \ '@': {'quote': [{'d': '@'}]},
-    --         --     \ })
-    --     end,
+    --     "echasnovski/mini.ai",
+    --     version = "*",
     --     event = "VeryLazy",
     -- },
+    -- XXX: Removed due to this issue: https://github.com/wellle/targets.vim/issues/268
+    -- Targets - A great companion to vim-surround
+    {
+        "wellle/targets.vim",
+        config=function()
+            -- TODO: Add this, later
+            -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
+            -- autocmd User targets#mappings#user call targets#mappings#extend({
+            --     \ '@': {'quote': [{'d': '@'}]},
+            --     \ })
+        end,
+        event = "VeryLazy",
+    },
 
 
     -- TODO: Can I defer load this? Figure out how

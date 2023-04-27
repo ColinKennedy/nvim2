@@ -1,11 +1,31 @@
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
+local index = luasnip.i
 local snippet = luasnip.s
 
 
 luasnip.add_snippets(
     "vim",
     {
+        snippet(
+            {
+                docstring="Add project files.",
+                trig="argadd_project",
+            },
+            format(
+                [[
+                    let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+                    silent! argdelete *  " Clear existing args so we can create them, anew
+
+                    execute ":argadd "
+                    \ . g:_project_home . "{}"
+                    \ . " " . g:_project_home . "{}"
+                ]],
+                { index(1), index(2) }
+            )
+        ),
+
         snippet(
             {
                 docstring="Set up mappings for a simple C++ project",

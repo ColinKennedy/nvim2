@@ -255,7 +255,7 @@
 	url = git@github.com:mfussenegger/nvim-dap.git
 [submodule "bundle/nvim-dap-ui"]
 	path = bundle/nvim-dap-ui
-	url = git@github.com:rcarriga/nvim-dap-ui.git
+	url = git@github.com:ColinKennedy/nvim-dap-ui.git
 [submodule "bundle/nvim-dap-python"]
 	path = bundle/nvim-dap-python
 	url = git@github.com:mfussenegger/nvim-dap-python.git

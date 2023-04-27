@@ -10,6 +10,8 @@ https://www.youtube.com/watch?v=kdP4ZHE4Bx4
 
 https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
 
+- For some reason when I leave dap, the <F5> mapping gets unset. Why? Fix.
+
 
 - Go through checkhealth stuff
 - Do the rest of the TODO notes

@@ -2,30 +2,17 @@
 options?: {
 initialize_timeout_sec?: number  -- How many seconds the client waits for a
 
-- Get C-hjkl when in the TERMINAL mode
-
-- new tabs in Vim have a bad syntax highlight. Fix
-- completion menu should have a white trim, to make it look nicer
- - Same with the command menu
- - white trim, slightly darker background?
-
-- For some reason when I leave dap, the <F5> mapping gets unset. Why? Fix.
-
-- https://www.youtube.com/watch?v=lEMZnrC-ST4
- - https://github.com/ldelossa/nvim-ide
-
-- Figure out how to prevent debugpy / dap from closing Houdini after the breakpoint finishes
 
 
-let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
-silent! argdelete *  " Clear existing args so we can create them, anew
+[null-ls] failed to run generator: ...1/colin-k/nvim2/bundle/null-ls.nvim/lua/null-ls/loop.lua:237: failed to create temp file: EROFS: read-only file system: /path/to/read/only/site-packages/pyblish_lite/.null-ls_559820_window.py
 
-execute ":argadd "
-\ . g:_project_home . "/.vimrc"
-\ . " " . g:_project_home . "/grammar.js"
-\ . " " . g:_project_home . "/test/corpus/metadata.txt"
-\ . " " . g:_project_home . "/test/corpus/prim.txt"
+
+Big diff (1.7 Mb) unloadable?
+
+
+
+
 
 
 

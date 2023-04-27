@@ -127,3 +127,7 @@ Apparently it can also do remote debugging??
 https://github.com/rcarriga/nvim-dap-ui
 https://www.youtube.com/watch?v=5KQK2id3JtI
 https://www.youtube.com/watch?v=ga3Cas7vNCk
+
+This doesn't split into newlines, properly
+- vim.keymap.set("n", "[q", ":cprevious<CR>")
+- vim.keymap.set("n", "<leader>dil", '^v$hd"_dd', {desc="Delete the current line, without the ending newline character, but still delete the line."})

@@ -560,7 +560,7 @@ return {
 
     -- A default "GUI" front-end for nvim-dap
     {
-        "rcarriga/nvim-dap-ui",
+        "ColinKennedy/nvim-dap-ui",
         config = function()
             require("dapui").setup()
 
