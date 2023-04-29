@@ -672,6 +672,7 @@ return {
             "mfussenegger/nvim-dap",
             "nvim-treesitter/nvim-treesitter",
         },
+        lazy = true,
     },
 
     -- Remember nvim-dap breakpoints between sessions, using ``:PBToggleBreakpoint``
@@ -689,6 +690,7 @@ return {
                 {desc="Set a breakpoint (and remember it even when we re-open the file)."}
             )
         end,
+        event = "VeryLazy",
     }
 
     -- -- A tool for looking up stuff. That said, it's not that useful
