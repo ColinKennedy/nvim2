@@ -6,6 +6,7 @@ https://github.com/jackguo380/vim-lsp-cxx-highlight
  - https://github.com/RRethy/nvim-treesitter-textsubjects
   - Maybe someone else already did it?
 
+- Customize fold text to ignore leading whitespace
 
 Apparently my stylesheet is able to have a colored number AND cursorline at the same time. How? Find out.
 cursorline does not need to be set
