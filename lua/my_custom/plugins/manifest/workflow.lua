@@ -204,6 +204,24 @@ return {
         ft = "python",
     },
 
+    -- Enables nvim-treesitter syntax highlighting groups for USD files
+    --
+    -- Note: This does nothing unless you call
+    --
+    -- ```
+    -- require("nvim-treesitter.configs").setup {
+    --     parser_install_dir = installation_directory,
+    --     highlight = { enable = true },
+    -- }
+    -- ```
+    --
+    -- During Neovim's start-up
+    --
+    {
+        "ColinKennedy/nvim-treesitter-highlights-usd",
+        ft = "usd",
+    },
+
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         config = function()

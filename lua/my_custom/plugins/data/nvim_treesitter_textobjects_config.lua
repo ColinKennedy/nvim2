@@ -9,6 +9,13 @@ vim.opt.runtimepath:append(installation_directory)
 local value = "V"
 
 require("nvim-treesitter.configs").setup {
+    ensure_installed = {
+        "usd",
+        "python",
+        -- "vim",  -- Note: This currently errors on-install during compiling. Not sure why.
+        "vimdoc",
+        "query",
+    },
     parser_install_dir = installation_directory,
     highlight = { enable = true },
 

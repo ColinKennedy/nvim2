@@ -28,7 +28,6 @@ local tabler = require("my_custom.utilities.tabler")
 local extend = tabler.extend
 local plugins = {}
 
-
 vim.g.vim_home = filer.get_current_directory()
 
 extend(plugins, require("my_custom.plugins.manifest.appearance"))
