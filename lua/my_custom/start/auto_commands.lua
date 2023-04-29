@@ -155,3 +155,11 @@ vim.api.nvim_create_autocmd(
         pattern = "qf",
     }
 )
+
+vim.api.nvim_create_autocmd(
+    {"BufRead", "BufNewFile"},
+    {
+        command = ":set filetype=usd",
+        pattern = "*.usd*",
+    }
+)

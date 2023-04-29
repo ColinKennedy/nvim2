@@ -52,20 +52,9 @@ return {
     },
 
     -- TODO: Add this later
-    -- " Syntax highlighting for USD Ascii files
-    -- " Plug 'superfunc/usda-syntax'
     --
-    -- autocmd! FileType usda execute 'source ' . g:vim_home . '/bundle/usda-syntax/vim/usda.vim'
-    --
-    -- " A plugin that adds Prim type names to USD auto-complete results
+    -- A plugin that adds Prim type names to USD auto-complete results
     -- Plug 'https://korinkite@bitbucket.org/korinkite/vim-usd-complete-schemas.git'
-    --
-    -- " Note: It's technically wrong to load *.usdc with usda syntax. But if
-    -- " the buffer was converted to ASCII then it's fine (which in my case, it is)
-    -- "
-    -- autocmd! BufRead,BufNewFile *.usd set filetype=usd
-    -- autocmd! BufRead,BufNewFile *.usda set filetype=usda
-    -- autocmd! BufRead,BufNewFile *.usdc set filetype=usd
 
     -- " A plugin that enables USD autocmd and syntax files
     -- Plug 'superfunc/usda-syntax', { 'for': ['usd', 'usda'] }
