@@ -1,3 +1,6 @@
+- gp is broken. FIX
+- The %s/foo/bar/g has some weird updating issues
+
 - Add initialize_timeout_sec as a Houdini configuration example setting
 options?: {
 initialize_timeout_sec?: number  -- How many seconds the client waits for a
