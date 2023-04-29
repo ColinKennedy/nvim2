@@ -136,7 +136,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>e",
-    ":e <C-R>=expand('%:p:h') . '/'<CR>",
+    ":Cedit ",
     {desc="[e]xpand to the current file's folder."}
 )
 

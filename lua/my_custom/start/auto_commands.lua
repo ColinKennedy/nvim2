@@ -90,6 +90,7 @@ vim.api.nvim_create_autocmd(
     }
 )
 
+-- TODO: This is super slow on big files. Fix?
 -- TODO: Consider lazy-loading this
 vim.cmd[[
 function! GetDocumentationFold(line)
