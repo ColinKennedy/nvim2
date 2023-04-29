@@ -264,7 +264,7 @@ return {
     -- Kickass class / function viewer
     {
         "ColinKennedy/aerial.nvim",
-        branch = "fix_buffer_id",
+        branch = "add_usd_support",
         config = function()
             require("aerial").setup(
                 {
