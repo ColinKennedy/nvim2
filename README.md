@@ -1,11 +1,6 @@
-- Fix this README's markdown table in GitHub
-- gp is broken. FIX
 - The %s/foo/bar/g has some weird updating issues
 - Terminal is really slow at typing, sometimes
 - Big diff (1.7 Mb) unloadable?
-- Add initialize_timeout_sec as a Houdini configuration example setting
-options?: {
-initialize_timeout_sec?: number  -- How many seconds the client waits for a
 
 
 - LSP stuff
