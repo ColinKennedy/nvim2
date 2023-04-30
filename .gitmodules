@@ -268,3 +268,6 @@
 [submodule "bundle/nvim-treesitter-highlights-usd"]
 	path = bundle/nvim-treesitter-highlights-usd
 	url = git@github.com:ColinKennedy/nvim-treesitter-highlights-usd.git
+[submodule "bundle/nvim-treesitter-context"]
+	path = bundle/nvim-treesitter-context
+	url = git@github.com:nvim-treesitter/nvim-treesitter-context.git

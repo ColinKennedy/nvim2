@@ -3,11 +3,6 @@
 - Big diff (1.7 Mb) unloadable?
 
 
-- LSP stuff
- - Make sure USD can be parsed via treesitter quickly
- - Consider making the LSP
-
-
 ## Requires
 - lazy.nvim requires git 2.27+ so that it can used the --filter=blob:none
     - Reference: https://stackoverflow.com/a/51411174

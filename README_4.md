@@ -70,6 +70,8 @@ fixes and stuff now? I probably will need to add the mappings.
 
 - Where do treesitter parsers install to? Can I bundle it / control their path?
 
+https://github.com/nvim-treesitter/completion-treesitter
+ - Is it possible to get treesitter keywords in auto-completion, as a completion source?
 
 - autocomplete
  - Keep an eye out for my current mappings. Do they feel good? Do they need adjusting?

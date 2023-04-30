@@ -276,3 +276,25 @@ Ideally, a configuration which mimics the shown the functionality and if not, an
 **Describe alternatives you've considered**
 As mentioned earlier, I made my own fork of `nvim-treesitter-textobjects` kind of works but still has some flaws.
 ``
+
+
+
+
+
+```
+If I have a file buffer, a terminal buffer, and a quickfix buffer all open at once with this layout
+
+    +------------+
+    |            |
+    |    file    |
+    |            |
+    +------------+
+    |            |
+    |  terminal  |
+    |            |
+    +------------+
+    |  quickfix  |
+    +------------+
+
+Usually not but sometimes when I press use \`:.cc\` to go do the selected QuickFix line, (n)vim switches the terminal buffer to that QuickFix line, not the file buffer. This is never what I want to have happen. Is there a way to have (n)vim choose the file buffer, instead?
+```

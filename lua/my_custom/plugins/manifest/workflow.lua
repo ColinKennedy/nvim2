@@ -84,6 +84,38 @@ return {
         ft = { "usda", "usd" },
     },
 
+    -- Always show the current USD Prim context. Useful when navigating nested files
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+            require("treesitter-context").setup{
+                enable = true,
+            }
+
+            -- Make the context background black
+            vim.api.nvim_set_hl(0, "TreesitterContext", {ctermbg=16, bg="#101010"})
+
+            -- Note: Terrible (hopefully temporary) hack to prevent this
+            -- plug-in from being used outside of USD files
+            --
+            -- References:
+            --    - https://github.com/nvim-treesitter/nvim-treesitter-context/issues/172
+            --    - https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
+            --
+            local parsers = require("nvim-treesitter.parsers")
+
+            for _, name in ipairs(parsers.available_parsers())
+            do
+                if parsers.has_parser(name) and name ~= "usd"
+                then
+                    vim.treesitter.query.set(name, "context", "")
+                end
+            end
+        end,
+        dependencies = {"nvim-treesitter/nvim-treesitter"},
+        ft = "usd",
+    },
+
     -- TODO: Add later
     -- A linter for USD files
     -- {
@@ -204,7 +236,7 @@ return {
         ft = "python",
     },
 
-    -- Enables nvim-treesitter syntax highlighting groups for USD files
+    -- Enables nvim-treesitter syntax highlighting groups for USD files.
     --
     -- Note: This does nothing unless you call
     --
@@ -214,8 +246,6 @@ return {
     --     highlight = { enable = true },
     -- }
     -- ```
-    --
-    -- During Neovim's start-up
     --
     {
         "ColinKennedy/nvim-treesitter-highlights-usd",

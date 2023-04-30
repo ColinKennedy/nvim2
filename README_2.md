@@ -1,3 +1,8 @@
+- Set the terminal buffer color to be black, to differentiate it from other buffers
+- https://www.reddit.com/r/neovim/comments/133hbb3/how_do_you_prevent_the_quickfix_from_choosing_a/
+
+[null-ls] failed to run generator: ...1/colin-k/nvim2/bundle/null-ls.nvim/lua/null-ls/loop.lua:237: failed to create temp file: EROFS: read-only file system: /path/to/read/only/site-packages/pyblish_lite/.null-ls_559820_window.py
+
 - null-ls's pylint isn't taking into account PYTHONPATH, even though it acutally is importable
  - See sphinx-code-include
 
@@ -9,6 +14,9 @@
 
 https://github.com/ryanoasis/vim-devicons/issues/106
 https://coreyja.com/vim-fzf-with-devicons/
+
+- Add USD filetype icon
+
 
 
 - Pressing w should scroll up in the terminal(?)
