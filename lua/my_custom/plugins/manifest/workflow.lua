@@ -248,7 +248,7 @@ return {
     -- ```
     --
     {
-        "ColinKennedy/nvim-treesitter-highlights-usd",
+        "ColinKennedy/nvim-treesitter-usd",
         ft = "usd",
     },
 
