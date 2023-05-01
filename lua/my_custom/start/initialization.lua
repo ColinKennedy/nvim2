@@ -161,7 +161,7 @@ vim.api.nvim_create_autocmd(
 -- terminal capabilities. Instead Nvim treats the terminal as any other UI,
 -- e.g. 'guicursor' sets the terminal cursor style if possible.
 --
-vim.opt.guicursor= "n-v-c:block-Cursor"
+vim.opt.guicursor = "n-v-c:block-Cursor"
 
 if vim.fn.has("nvim")
 then

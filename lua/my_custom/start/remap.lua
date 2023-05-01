@@ -47,15 +47,18 @@ vim.keymap.set(
     {desc="Capitalize the current WORD."}
 )
 
-vim.keymap.set(
-    "n",
-    "gp",
-    "`[v`]",
-    {
-        desc="Select the most recent text change you've made",
-        expr=true,
-    }
-)
+-- Select the most recent text change you've made
+vim.cmd("noremap gp `[v`]")
+-- Note: I couldn't figure out how to get this to work with the above command, in lua
+-- vim.keymap.set(
+--     "n",
+--     "gp",
+--     "`[v`]",
+--     {
+--         desc="Select the most recent text change you've made",
+--         expr=true,
+--     }
+-- )
 
 vim.keymap.set(
     "v",
