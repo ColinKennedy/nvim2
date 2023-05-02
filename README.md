@@ -1,4 +1,5 @@
 - The %s/foo/bar/g has some weird updating issues
+ - https://github.com/RRethy/vim-tranquille
 - Terminal is really slow at typing, sometimes
 - Big diff (1.7 Mb) unloadable?
 

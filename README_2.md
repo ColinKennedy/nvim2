@@ -1,5 +1,6 @@
 - Set the terminal buffer color to be black, to differentiate it from other buffers
 - https://www.reddit.com/r/neovim/comments/133hbb3/how_do_you_prevent_the_quickfix_from_choosing_a/
+- Fix luasnip issues
 
 [null-ls] failed to run generator: ...1/colin-k/nvim2/bundle/null-ls.nvim/lua/null-ls/loop.lua:237: failed to create temp file: EROFS: read-only file system: /path/to/read/only/site-packages/pyblish_lite/.null-ls_559820_window.py
 
