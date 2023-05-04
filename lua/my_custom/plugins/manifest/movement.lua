@@ -31,6 +31,12 @@ return {
 
             vim.keymap.set(
                 "n",
+                "<space>B",
+                ":Buffers<CR>",
+                {desc="Search existing [B]uffers and select + view it."}
+            )
+            vim.keymap.set(
+                "n",
                 "<space>e",
                 ":Files<CR>",
                 {desc="[e]dit a new file from the `:pwd` for the current window."}
