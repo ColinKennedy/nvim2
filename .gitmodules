@@ -277,12 +277,3 @@
 [submodule "bundle/nvim-bqf"]
 	path = bundle/nvim-bqf
 	url = git@github.com:kevinhwang91/nvim-bqf.git
-[submodule "bundle/ripgrep"]
-	path = bundle/ripgrep
-	url = git@github.com:BurntSushi/ripgrep.git
-[submodule "bundle/telescope.nvim"]
-	path = bundle/telescope.nvim
-	url = git@github.com:nvim-telescope/telescope.nvim.git
-[submodule "bundle/telescope-fzf-native.nvim"]
-	path = bundle/telescope-fzf-native.nvim
-	url = git@github.com:nvim-telescope/telescope-fzf-native.nvim.git
