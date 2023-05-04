@@ -16,12 +16,12 @@
 
 - Add ``did`` support. See ``require("nvim-treesitter.configs").setup``
 
-- neogen raises docstring stuff doesn't work as expected
- - https://github.com/danymat/neogen/issues/139
-
 - Change af / if to match preceding comment lines. For God's sake
 
 - Remove after/ files, maybe. They probably aren't needed
 
 - Ask treesitter people about module highlighting
+ - Can Python highlight based on modules?
 - Is it possible to add devicons / LSP information into Command mode?
+
+- Add more snippets (e.g. a super snippet, for Python)
