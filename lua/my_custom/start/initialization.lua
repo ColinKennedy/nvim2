@@ -371,3 +371,35 @@ vim.api.nvim_create_user_command(
         nargs="*",
     }
 )
+
+vim.keymap.set(
+    "t",
+    "kk",
+    "<C-\\><C-n>:lua require('my_custom.utilities.terminal').move_if_in_pager()<CR>"
+)
+vim.keymap.set("t", "<space>C", "<C-\\><C-n>:close<CR>")
+vim.keymap.set("t", "<C-w>o", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
+vim.keymap.set("t", "<C-w><C-o>", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
+vim.cmd[[
+let g:_pager_bottom_texts = [":", "?", "/", "Pattern not found  (press RETURN)", "(END)"]
+
+
+" If the user is in a pager, re-enter the terminal buffer and scroll up
+function! MoveIfInPager()
+    let l:current_line = getline(".")
+
+    " re-enter the terminal buffer and press "k" to scroll up in the pager
+    if index(g:_pager_bottom_texts, l:current_line) >= 0
+        normal i
+
+        " We send 2 "k" keys, so it scrolls at double-speed
+        call timer_start(0, {-> feedkeys("k")})
+        call timer_start(10, {-> feedkeys("k")})  " 10 happened to be a decent number
+    endif
+endfunction
+]]
+vim.keymap.set(
+    "t",
+    "kk",
+    "<C-\\><C-n>:call MoveIfInPager()<CR>"
+)

@@ -1,3 +1,5 @@
+- Sometimes BackupCurrentFile is slow. Consider rewriting in Lua
+
 - wilder bug
  - print a lot of stuff
  - load telescope
