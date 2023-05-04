@@ -175,13 +175,3 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 | 1 |  2  |                        3                        |
 | - | --- | ----------------------------------------------- |
 | n |  o  | Closes the quickfix and opens the file          |
-
-
-#### Telescope
-1 - mode
-2 - mapping
-3 - description
-
-| 1 |   2   |                        3                         |
-| - | ----- | ------------------------------------------------ |
-| n | <C-q> | Send the current selection to a QuickFix window  |
