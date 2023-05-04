@@ -776,7 +776,7 @@ return {
             )
         end,
         event = "VeryLazy",
-    }
+    },
 
     -- A tool for looking up stuff. Has lots of misc sources, including git.
     {
@@ -829,7 +829,7 @@ return {
         },
         event = "VeryLazy",
         release = '0.1.*',
-    }
+    },
     {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",

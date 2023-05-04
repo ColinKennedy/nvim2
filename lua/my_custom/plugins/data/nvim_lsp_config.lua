@@ -155,7 +155,7 @@ vim.cmd[[highlight DiagnosticVirtualTextHint ctermfg=17 guifg=#00005f]]
 vim.cmd[[highlight DiagnosticError ctermfg=Red guifg=Red]]
 vim.cmd[[highlight DiagnosticWarn ctermfg=94 guifg=Orange]]
 vim.cmd[[highlight DiagnosticInfo ctermfg=239 guifg=LightGrey]]
-vim.cmd[[highlight DiagnosticHint ctermfg=17 guifg=#00005f]]
+vim.cmd[[highlight DiagnosticSignHint ctermfg=17 guifg=#00005f]]
 
 -- Reference: https://www.reddit.com/r/neovim/comments/l00zzb/improve_style_of_builtin_lsp_diagnostic_messages
 -- Errors in Red
@@ -206,3 +206,25 @@ vim.diagnostic.config(
         }
     }
 )
+
+-- Add icons for the left-hand sign gutter
+vim.fn.sign_define('DiagnosticSignError', {
+    text='',
+    numhl='DiagnosticSignError',
+    texthl="DiagnosticSignError",
+})
+vim.fn.sign_define('DiagnosticSignWarn', {
+    text='⚠',
+    numhl='DiagnosticSignWarn',
+    texthl="DiagnosticSignWarn"
+})
+vim.fn.sign_define('DiagnosticSignInfo', {
+    text='',
+    numhl='DiagnosticSignInfo',
+    texthl="DiagnosticSignInfo"
+})
+vim.fn.sign_define('DiagnosticSignHint', {
+    text='',
+    numhl='DiagnosticSignHint',
+    texthl="DiagnosticSignHint"
+})

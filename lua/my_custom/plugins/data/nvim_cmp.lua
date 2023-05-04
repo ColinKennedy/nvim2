@@ -9,18 +9,21 @@ vim.cmd[[
     highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
 
     highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch
-    highlight! link CmpItemKindClass Statement
+    highlight! link CmpItemKindClass Type
     highlight! link CmpItemKindFunction Function
-    highlight! link CmpItemKindInterface Statement
+    highlight! link CmpItemKindInterface Type
     highlight! link CmpItemKindKeyword Keyword
     highlight! link CmpItemKindMethod CmpItemKindFunction
     highlight! link CmpItemKindProperty CmpItemKindKeyword
-    highlight! link CmpItemKindText CmpItemKindVariable
+    highlight! link CmpItemKindText String
     highlight! link CmpItemKindUnit CmpItemKindKeyword
     highlight! link CmpItemKindVariable Identifier
 ]]
 
 local cmp = require("cmp")
+local bordered = cmp.config.window.bordered(
+    { winhighlight="Normal:Normal,CursorLine:Visual,Search:None" }
+)
 
 cmp.setup(
     {
@@ -108,6 +111,11 @@ cmp.setup(
                 require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
             end,
         },
+
+        window = {
+            completion = bordered,
+            documentation = bordered,
+        }
     }
 )
 

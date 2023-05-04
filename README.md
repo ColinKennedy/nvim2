@@ -162,3 +162,24 @@
 | x | ii   | Select [i]nside all [i]ndent lines. Stop at whitespace.                    |
 | x | il   | Select [i]nside a [l]ine (but not the `$` character).                      |
 | x | iv   | Select [i]nside of a [v]ariable e.g. `foo`_bar                             |
+
+
+### Plug-in Specific
+#### vim-bqf
+1 - mode
+2 - mapping
+3 - description
+
+| 1 |  2  |                        3                        |
+| - | --- | ----------------------------------------------- |
+| n |  o  | Closes the quickfix and opens the file          |
+
+
+#### Telescope
+1 - mode
+2 - mapping
+3 - description
+
+| 1 |   2   |                        3                         |
+| - | ----- | ------------------------------------------------ |
+| n | <C-q> | Send the current selection to a QuickFix window  |
