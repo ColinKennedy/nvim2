@@ -30,11 +30,31 @@ return {
     },
 
     -- Wrap and unwrap function arguments, lists, and dictionaries with one mapping
+    -- Note: This has a bug something_long_and_the_like.more_things_here("[q", "another", {"asdfsfd": [1, 3, 5]})
+    -- I think I'll just not use this for a while and see how it goes.
+    --
     {
         "FooSoft/vim-argwrap",
-        cmd = { "ArgWrap" },
+        cmd = {"ArgWrap"},
         config = function()
             vim.g.argwrap_tail_comma = 1
+        end,
+    },
+    -- A treesitter-based tool for splitting and joining lines. Pretty fast.
+    {
+        "Wansmer/treesj",
+        keys = {"<leader>sa"},
+        config = function()
+            require("my_custom.plugins.data.treesj")
+
+            vim.keymap.set(
+                "n",
+                "<leader>sa",
+                function()
+                    require("treesj").toggle()
+                end,
+                options
+            )
         end,
     },
 
@@ -346,9 +366,14 @@ return {
     },
 
     -- Quickfix helper functions
-    -- TODO: Check if this works well with location lists, still
     {
         "romainl/vim-qf",
+        ft = "qf",
+    },
+    -- Quickfix auto previews and other fun features
+    {
+        "kevinhwang91/nvim-bqf",
+        dependencies = {"junegunn/fzf", "nvim-treesitter/nvim-treesitter"},
         ft = "qf",
     },
 
@@ -753,50 +778,61 @@ return {
         event = "VeryLazy",
     }
 
-    -- -- A tool for looking up stuff. That said, it's not that useful
-    -- {
-    --     "nvim-telescope/telescope.nvim",
-    --     cmd = "Telescope",
-    --     config = function()
-    --         -- vim.api.nvim_create_autocmd(
-    --         --     "FileType",
-    --         --     {
-    --         --         callback = function()
-    --         --             vim.keymap.set(
-    --         --                 "i",
-    --         --                 "<ESC>",
-    --         --                 "<ESC><ESC>",
-    --         --                 {noremap=true}
-    --         --             )
-    --         --         end,
-    --         --         pattern = "TelescopePrompt",
-    --         --     }
-    --         -- )
-    --
-    --         require('telescope').setup {
-    --           extensions = {
-    --             fzf = {
-    --               fuzzy = true,                    -- false will only do exact matching
-    --               override_generic_sorter = true,  -- override the generic sorter
-    --               override_file_sorter = true,     -- override the file sorter
-    --               case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-    --                                                -- the default case_mode is "smart_case"
-    --             }
-    --           }
-    --         }
-    --         -- Reference: https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-setup-and-configuration
-    --         require("telescope").load_extension("fzf")
-    --     end,
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-tree/nvim-web-devicons",
-    --         -- "nvim-telescope/telescope-fzf-writer.nvim",
-    --     },
-    --     release = "0.1.*",
-    -- },
-    -- {
-    --     "nvim-telescope/telescope-fzf-native.nvim",
-    --     build = "make",
-    --     lazy = true,
-    -- },
+    -- A tool for looking up stuff. Has lots of misc sources, including git.
+    {
+        "nvim-telescope/telescope.nvim",
+        config = function()
+            local actions = require("telescope.actions")
+
+            vim.keymap.set(
+                "n",
+                "<space>e",
+                ":Files<CR>",
+                {desc="[e]dit a new file from the `:pwd` for the current window."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<space>B",
+                ":Telescope buffers<CR>",
+                {desc="Search existing [B]uffers and select + view it."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<space>L",
+                ":Telescope live_grep<CR>",
+                {desc="Search [l]ines in the current window for text."}
+            )
+
+            vim.api.nvim_create_user_command("Helptags", ":Telescope help_tags", { })
+
+            require("telescope").setup{
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<ESC>"] = actions.close,
+                        },
+                    },
+                },
+            }
+
+            -- Reference: https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-setup-and-configuration
+            require("telescope").load_extension("fzf")
+        end,
+        dependencies = {
+            "BurntSushi/ripgrep",  -- optional: for live_grep and grep_string
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-fzf-native.nvim",
+            "nvim-tree/nvim-web-devicons",  -- optional: Icons
+            "nvim-treesitter/nvim-treesitter",  -- optional: Live preview highlighting
+        },
+        event = "VeryLazy",
+        release = '0.1.*',
+    }
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        lazy = true,
+    },
 }

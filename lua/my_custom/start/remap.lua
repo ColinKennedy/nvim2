@@ -271,3 +271,29 @@ vim.keymap.set(
     ":qall!<CR>",
     {desc="Exit Vim without saving."}
 )
+
+-- Allow quick and easy movement out of a terminal buffer using just <C-hjkl>
+vim.keymap.set(
+    "t",
+    "<C-h>",
+    "<C-\\><C-n><C-w>h",
+    {silent = true}
+)
+vim.keymap.set(
+    "t",
+    "<C-j>",
+    "<C-\\><C-n><C-w>j",
+    {silent = true}
+)
+vim.keymap.set(
+    "t",
+    "<C-k>",
+    "<C-\\><C-n><C-w>k",
+    {silent = true}
+)
+vim.keymap.set(
+    "t",
+    "<C-l>",
+    "<C-\\><C-n><C-w>l",
+    {silent = true}
+)

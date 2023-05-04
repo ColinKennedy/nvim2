@@ -77,6 +77,20 @@ https://github.com/nvim-treesitter/completion-treesitter
  - Keep an eye out for my current mappings. Do they feel good? Do they need adjusting?
 
 
+
+
+
+
+
+- Do this + set conceallevel=1 to conceal stuff
+; (
+;    (
+;       (list) @capture
+;       (#offset! @capture 0 1 0 -1)
+;    )
+;    (#set! conceal "…")
+; )
+
 - add LSP for C++, Python, and C++ USD, and C++ Qt
  - LSP auto-complete
  - Python

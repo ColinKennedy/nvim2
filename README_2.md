@@ -1,3 +1,5 @@
+- Add USD filetype icon
+
 - Set the terminal buffer color to be black, to differentiate it from other buffers
 - https://www.reddit.com/r/neovim/comments/133hbb3/how_do_you_prevent_the_quickfix_from_choosing_a/
 - Fix luasnip issues
@@ -16,15 +18,12 @@
 https://github.com/ryanoasis/vim-devicons/issues/106
 https://coreyja.com/vim-fzf-with-devicons/
 
-- Add USD filetype icon
-
 
 
 - Pressing w should scroll up in the terminal(?)
 - neogen has some issues
  - raises is parsed incorrectly, in Python
 
-- yi` doesn't work. Fix!!!
 
 - Auto completion work
  --- Python LSPs
@@ -35,10 +34,3 @@ https://coreyja.com/vim-fzf-with-devicons/
    - Maybe clangd is better? ccls keeps reporting incorrect information
     - it's better if I use explicit types. But ``auto`` is great. Need it.
     - maybe I can compile clangd with mason, but with an older version so that GLIBC works
-
-- See if I can adapt NvChad for my purposes
- - Objectives
-  --- auto complete tab behavior is good. Use their config
-   --- Make tab complete based on tab. And snippets auto-expand with tab. But still allow ctrl+n / ctrl+p to cycle through snippets
-    --- like NvChad
-  --- Auto complete cycling is fast. Emulate it
