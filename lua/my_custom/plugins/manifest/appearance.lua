@@ -61,9 +61,6 @@ return {
     -- A plugin that adds Prim type names to USD auto-complete results
     -- Plug 'https://korinkite@bitbucket.org/korinkite/vim-usd-complete-schemas.git'
 
-    -- " A plugin that enables USD autocmd and syntax files
-    -- Plug 'superfunc/usda-syntax', { 'for': ['usd', 'usda'] }
-
     -- Add a quick status bar plugin
     {
         "nvim-lualine/lualine.nvim",
