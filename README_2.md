@@ -10,14 +10,3 @@
 
 - neogen has some issues
  - raises is parsed incorrectly, in Python
-
-
-- Auto completion work
- --- Python LSPs
- - C++ LSPs
-  --- Jumpy (CMake enabled projects)
-  --- General
-  - USD
-   - Maybe clangd is better? ccls keeps reporting incorrect information
-    - it's better if I use explicit types. But ``auto`` is great. Need it.
-    - maybe I can compile clangd with mason, but with an older version so that GLIBC works

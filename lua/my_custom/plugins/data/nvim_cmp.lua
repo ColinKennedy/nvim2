@@ -91,7 +91,6 @@ cmp.setup(
                 {
                     -- And auto-complete from LSPs
                     name = "nvim_lsp",
-                    keyword_length = 3,
                 },
                 {
                     -- Check text in other tmux panes
@@ -149,3 +148,8 @@ lspconfig.pylsp.setup {
         client.server_capabilities.completionProvider = false
     end,
 }
+
+-- Set up lspconfig.
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+lspconfig.ccls.setup { capabilities=capabilities }

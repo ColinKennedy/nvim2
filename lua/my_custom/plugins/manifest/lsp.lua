@@ -48,6 +48,11 @@ return {
                     client.server_capabilities.completionProvider = false
                 end,
             }
+
+            -- Set up lspconfig.
+            local lspconfig = require("lspconfig")
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            lspconfig.ccls.setup { capabilities=capabilities }
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
         event = { "VeryLazy" },  -- Or "InsertEnter"
