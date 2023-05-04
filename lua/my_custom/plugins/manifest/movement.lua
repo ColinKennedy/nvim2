@@ -31,6 +31,20 @@ return {
 
             vim.keymap.set(
                 "n",
+                "<space>e",
+                ":Files<CR>",
+                {desc="[e]dit a new file from the `:pwd` for the current window."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<space>L",
+                ":Lines<CR>",
+                {desc="Search [l]ines in the current window for text."}
+            )
+
+            vim.keymap.set(
+                "n",
                 "<space>A",
                 ":Args<CR>",
                 {desc="Select a new [A]rgs file from the `:args` list."}
@@ -47,8 +61,8 @@ return {
             )
         end,
         dependencies = { "junegunn/fzf" },
-        cmd = { "Args", "Buffers", "Files", "GFiles", "History", "Lines" },
-        keys = {"<space>A", "<space>E"},
+        cmd = { "Args", "Buffers", "Files", "GFiles", "Helptags", "History", "Lines" },
+        keys = {"<space>A", "<space>B", "<space>E", "<space>L", "<space>e"},
     },
 
     -- A more modern, faster grep engine.

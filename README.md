@@ -1,4 +1,5 @@
 - Terminal is really slow at typing, sometimes
+https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
 ## Requires
@@ -15,17 +16,18 @@
 2 - mapping
 3 - description
 
-| 1 |     2       |                                         3                                                 |
+| 1 |      2      |                                            3                                              |
 | - | ----------- | ----------------------------------------------------------------------------------------- |
-| n | `<space>`T  | Create a [T]erminal on the bottom of the current window.                                  |
-| n | `<space>`W  | Open NvimTree starting from the `:pwd`.                                                   |
-| n | `<space>`SS | [S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc.   |
-| n | `<space>`SN | [S]witch [N]avigation inside / outside of classes and functions.                          |
-| n | `<space>`E  | [E]dit a new file, searching first from the project's root directory.                     |
-| n | `<space>`e  | [e]dit a new file from the `:pwd` for the current window.                                 |
 | n | `<space>`A  | Select a new [A]rgs file from the `:args` list.                                           |
 | n | `<space>`B  | Search existing [B]uffers and select + view it.                                           |
+| n | `<space>`E  | [E]dit a new file, searching first from the project's root directory.                     |
 | n | `<space>`L  | Search [l]ines in the current window for text.                                            |
+| n | `<space>`SN | [S]witch [N]avigation inside / outside of classes and functions.                          |
+| n | `<space>`SS | [S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc.   |
+| n | `<space>`T  | Create a [T]erminal on the bottom of the current window.                                  |
+| n | `<space>`W  | Open NvimTree starting from the `:pwd`.                                                   |
+| n | `<space>`e  | [e]dit a new file from the `:pwd` for the current window.                                 |
+| n | `<space>`q  | Select a [q]uickfix buffer, if one exists                                                 |
 
 
 ### Utility / Movement Related

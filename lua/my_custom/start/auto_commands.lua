@@ -151,3 +151,16 @@ vim.api.nvim_create_autocmd(
         pattern = "*.usd*",
     }
 )
+
+
+-- Set terminal buffers to be slightly darker than the regular BG
+vim.api.nvim_create_autocmd(
+    "TermOpen",
+    {
+        command = "set winhighlight=Normal:TerminalNormal,NormalNC:TerminalNormal",
+        group = group,
+        pattern = "*",
+    }
+)
+-- vim.api.nvim_set_hl(0, "TerminalNormal", {bg="#1D1E21"})
+vim.api.nvim_set_hl(0, "TerminalNormal", {bg="#161616"})

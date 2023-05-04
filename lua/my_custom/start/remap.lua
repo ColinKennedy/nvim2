@@ -187,6 +187,14 @@ vim.keymap.set(
     }
 )
 
+vim.keymap.set(
+    "n",
+    "<space>q",
+    function()
+        require("my_custom.utilities.choose_window").select_quick_fix_window()
+    end
+)
+
 -- TODO: Fix this
 -- -- Get the Python dot-path from a Python unittest error / fail line
 -- -- e.g. "tests.test_foo.TestClass.test_do_something"

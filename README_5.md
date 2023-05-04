@@ -19,6 +19,11 @@ https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
 
 
 
+- null-ls's pylint isn't taking into account PYTHONPATH, even though it acutally is importable
+ - See sphinx-code-include
+
+
+
 - Dependencies, maybe
  - A patched nerd font (for icons)
   - https://www.nerdfonts.com/font-downloads
