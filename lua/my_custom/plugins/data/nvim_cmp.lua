@@ -93,25 +93,32 @@ cmp.setup(
         sources = cmp.config.sources(
             {
                 -- Complete snippet engine results
-                { name = "luasnip" },
+                {
+                    name = "luasnip",
+                    priority = 99,
+                },
                 {
                     -- Complete text from buffers other than the current one
                     name = "buffer",
                     keyword_length = 3,
+                    priority = 20,
                 },
                 {
                     -- And auto-complete from LSPs
                     name = "nvim_lsp",
+                    priority = 90,
                 },
                 {
                     -- Check text in other tmux panes
                     name = "tmux",
                     keyword_length = 3,
+                    priority = 80,
                 },
                 {
                     -- Complete from file paths
                     name = "path",
                     keyword_length = 3,  -- Most paths will be at least 4 characters long.
+                    priority = 10,
                 },
             }
         ),
