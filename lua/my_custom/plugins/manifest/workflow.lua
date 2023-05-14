@@ -211,7 +211,7 @@ return {
             -- TODO: Not sure how useful Neogen is, in practice. Seems to break too easily.
             vim.keymap.set(
                 "n",
-                "<leader><leader>d",
+                "<leader>ic",
                 ":Neogen<CR>",
                 {desc="Generate a [d]ocstring for the function under the cursor."}
             )
@@ -220,7 +220,7 @@ return {
             "L3MON4D3/LuaSnip",
             "nvim-treesitter/nvim-treesitter"
         },
-        keys = { "<space>d" },
+        keys = { "<leader>ic" },
         version = "*",  -- Only follow the latest stable release
     },
 
