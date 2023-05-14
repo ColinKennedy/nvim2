@@ -17,19 +17,34 @@ require("nvim-treesitter.configs").setup {
         "query",
     },
     parser_install_dir = installation_directory,
-    highlight = { enable = true },
+    highlight = {
+        -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/pull/3570
+        --
+        -- Disable slow highlights for large files. Not sure if this truly needed.
+        --
+        disable = function(lang, buf)
+            local max_filesize = 100 * 1024 -- 100 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+
+            if ok and stats and stats.size > max_filesize then
+                return true
+            end
+        end,
+
+        enable = true,
+    },
+    indent = {
+        enable = true,
+        -- I'm preferring to use the ``Vimjas/vim-python-pep8-indent``
+        -- plug-in until the treesitter plugin is fixed.
+        --
+        -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
+        --
+        disable = {"python"},
+    },
+
 
     textobjects = {
-        indent = {
-          enable = true,
-          -- I'm preferring to use the ``Vimjas/vim-python-pep8-indent``
-          -- plug-in until the treesitter plugin is fixed.
-          --
-          -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
-          --
-          disable = {"python"},
-        },
-
         -- TODO: Not working, fix
         move = {
           enable = true,
