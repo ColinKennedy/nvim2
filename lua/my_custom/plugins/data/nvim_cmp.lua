@@ -56,7 +56,18 @@ cmp.setup(
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
-                elseif require("luasnip").expand_or_jumpable() then
+                -- expand_or_locally_jumpable prevents the snippet from being re-entered.
+                --
+                -- Reference: https://github.com/L3MON4D3/LuaSnip/issues/799
+                --
+                -- elseif require("luasnip").expand_or_jumpable() then
+                --
+                -- There's apparently other approaches that do the same thing which I haven't tried.
+                --
+                -- e.g. ``region_check_events`` from https://github.com/L3MON4D3/LuaSnip/issues/770
+                -- e.g. ``leave_snippet`` from https://github.com/L3MON4D3/LuaSnip/issues/258#issuecomment-1011938524
+                --
+                elseif require("luasnip").expand_or_locally_jumpable() then
                     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
                 else
                     fallback()
