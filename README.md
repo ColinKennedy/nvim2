@@ -1,6 +1,10 @@
 - Terminal is really slow at typing, sometimes
 https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
+https://github.com/theHamsta/nvim-dap-virtual-text
+
+https://github.com/ajeetdsouza/zoxide
+
 
 ## Requires
 - lazy.nvim requires git 2.27+ so that it can used the --filter=blob:none
@@ -74,11 +78,12 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 | 1 |     2         |                                         3                                          |
 | - | ------------- | ---------------------------------------------------------------------------------- |
-| n | `<leader>`sa  | [s]plit [a]rgs - Split a line with arguments into multiple lines.                  |
-| n | `<leader>`dil | [d]elete [i]nside the current [l]ine, without the ending newline character.        |
-| n | `<leader>`j   | [j]oin the line below without adding an extra space                                |
-| n | `<leader>`ss  | [s]ubstitute [s]election (in-file search/replace) for the word under your cursor.  |
 | n | J             | Keep the cursor in the same position while pressing ``J``.                         |
+| n | `<leader>`dil | [d]elete [i]nside the current [l]ine, without the ending newline character.        |
+| n | `<leader>`id  | [i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.      |
+| n | `<leader>`j   | [j]oin the line below without adding an extra space                                |
+| n | `<leader>`sa  | [s]plit [a]rgs - Split a line with arguments into multiple lines.                  |
+| n | `<leader>`ss  | [s]ubstitute [s]election (in-file search/replace) for the word under your cursor.  |
 
 
 
