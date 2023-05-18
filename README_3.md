@@ -1,3 +1,4 @@
+- Add ``super`` Lua snippet (use treesitter)
 - Sometimes BackupCurrentFile is slow. Consider rewriting in Lua
 
 - wilder bug
