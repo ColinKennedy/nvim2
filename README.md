@@ -1,8 +1,6 @@
 - Terminal is really slow at typing, sometimes
 https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
-https://github.com/ajeetdsouza/zoxide
-
 
 ## Requires
 - lazy.nvim requires git 2.27+ so that it can used the --filter=blob:none

@@ -181,7 +181,7 @@ return {
     -- Auto-generate docstrings, using ``<space>d``
     {
         "ColinKennedy/neogen",
-        branch = "issues/137-add_google_docstring_raises",
+        branch = "combined_branch",
         config = function()
             require("neogen").setup(
                 {
@@ -199,7 +199,7 @@ return {
             -- TODO: Not sure how useful Neogen is, in practice. Seems to break too easily.
             vim.keymap.set(
                 "n",
-                "<leader>ic",
+                "<leader>id",
                 ":Neogen<CR>",
                 {desc="Generate a [d]ocstring for the function under the cursor."}
             )
@@ -208,7 +208,7 @@ return {
             "L3MON4D3/LuaSnip",
             "nvim-treesitter/nvim-treesitter"
         },
-        keys = { "<leader>ic" },
+        keys = { "<leader>id" },
         version = "*",  -- Only follow the latest stable release
     },
 
@@ -268,13 +268,11 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
-        -- TODO: It's technically not correct to have this plug-in run
-        -- on-insert or key-press. Try to find a better way to lazy-load this
-        -- plug-in so it is available on start-up but doesn't impact
-        -- start-time.
+        -- TODO: It seems that lazy-loading this sometimes causes the plug-in
+        -- to break. Though it would be nice if there was a way to consistently
+        -- lazy-load it.
         --
-        -- event = {"InsertEnter"},
-        event = { "VeryLazy" },
+        -- event = { "VeryLazy" },
         -- keys = {
         --     "[k", "]k",
         --     "[m", "]m",
