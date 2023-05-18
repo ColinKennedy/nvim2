@@ -40,7 +40,7 @@ function M.get_summary(start_line, end_line)
 
     local stripped = string.gsub(summary_line, "%s+$", "")
     local line_count_text = "[" .. (end_line - start_line) .. " lines]"
-    local formatted = string.format("%-68s %s", stripped, line_count_text)
+    local formatted = stripped .. string.rep("·", 68) .. line_count_text
 
     return indent .. "<" .. formatted .. ">"
 end
