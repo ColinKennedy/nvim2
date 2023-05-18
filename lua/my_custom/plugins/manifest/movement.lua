@@ -1,10 +1,20 @@
 return {
-    -- Autojump but for Vim. Use `:J` to change directories
-    -- or `:Cd` as a replacement to `:cd`.
-    --
+    -- Zoxide auto-jump, but for Vim
     {
-        "padde/jump.vim",
-        cmd = { "J", "Jc", "Jo", "Jco" },
+        "nanotee/zoxide.vim",
+        command = "Zi",
+        config = function()
+            vim.keymap.set(
+                "n",
+                "<Space>Z",
+                ":Zi<CR>",
+                {desc="[Z]oxide's interative pwd switcher."}
+            )
+        end,
+        dependencies = {
+            "junegunn/fzf.vim",  -- Needed for ``:Zi``
+        },
+        keys = "<Space>Z",
     },
 
     {
