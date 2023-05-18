@@ -3,8 +3,6 @@
 - Terminal is really slow at typing, sometimes
 https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
-https://github.com/theHamsta/nvim-dap-virtual-text
-
 https://github.com/ajeetdsouza/zoxide
 
 

@@ -277,3 +277,6 @@
 [submodule "bundle/nvim-bqf"]
 	path = bundle/nvim-bqf
 	url = git@github.com:kevinhwang91/nvim-bqf.git
+[submodule "bundle/nvim-dap-virtual-text"]
+	path = bundle/nvim-dap-virtual-text
+	url = git@github.com:theHamsta/nvim-dap-virtual-text.git

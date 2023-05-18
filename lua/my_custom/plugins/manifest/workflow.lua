@@ -711,8 +711,19 @@ return {
         dependencies = {
             "mfussenegger/nvim-dap",
 
+            "theHamsta/nvim-dap-virtual-text",  -- Optional dependency for virtual text
+
             "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
         },
+    },
+
+    -- Adds the current value(s) of variables as you step through the code. Super handy!
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+            require("nvim-dap-virtual-text").setup()
+        end,
+        dependencies = {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
     },
 
     -- TODO: Defer-load this plug-in
@@ -762,6 +773,8 @@ return {
                 ":PBToggleBreakpoint<CR>",
                 {desc="Set a breakpoint (and remember it even when we re-open the file)."}
             )
+
+            require('persistent-breakpoints.api').load_breakpoints()
         end,
         event = "VeryLazy",
     },

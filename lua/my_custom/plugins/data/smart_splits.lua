@@ -1,10 +1,10 @@
 require("smart-splits").setup(
     {
-	resize_mode = {
-	    hooks = {
-		on_leave = require('bufresize').register,
-	    },
-	},
+        resize_mode = {
+            hooks = {
+                on_leave = require('bufresize').register,
+            },
+        },
     }
 )
 
@@ -72,8 +72,8 @@ vim.keymap.set(
     "<C-h>",
     "<C-\\><C-n><C-w>h",
     {
-	desc="Jump to the window (or tmux pane) to the left.",
-	noremap=true,
+        desc="Jump to the window (or tmux pane) to the left.",
+        noremap=true,
     }
 )
 vim.keymap.set(
@@ -81,8 +81,8 @@ vim.keymap.set(
     "<C-j>",
     "<C-\\><C-n><C-w>j",
     {
-	desc="Jump to the window (or tmux pane) below.",
-	noremap=true,
+        desc="Jump to the window (or tmux pane) below.",
+        noremap=true,
     }
 )
 vim.keymap.set(
@@ -90,8 +90,8 @@ vim.keymap.set(
     "<C-k>",
     "<C-\\><C-n><C-w>k",
     {
-	desc="Jump to the window (or tmux pane) above.",
-	noremap=true,
+        desc="Jump to the window (or tmux pane) above.",
+        noremap=true,
     }
 )
 vim.keymap.set(
@@ -99,7 +99,7 @@ vim.keymap.set(
     "<C-l>",
     "<C-\\><C-n><C-w>l",
     {
-	desc="Jump to the window (or tmux pane) to the right.",
-	noremap=true,
+        desc="Jump to the window (or tmux pane) to the right.",
+        noremap=true,
     }
 )
