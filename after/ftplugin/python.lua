@@ -9,4 +9,3 @@ endfunction
 set foldmethod=expr
 set foldexpr=GetDocumentationFold(v:lnum)
 ]]
-

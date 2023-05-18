@@ -40,7 +40,9 @@ function M.get_summary(start_line, end_line)
 
     local stripped = string.gsub(summary_line, "%s+$", "")
     local line_count_text = "[" .. (end_line - start_line) .. " lines]"
-    local formatted = stripped .. string.rep("·", 68) .. line_count_text
+    -- ``padding_count`` looks good with 88-limit lines
+    local padding_count = 80 - (stripped:len() + line_count_text:len())
+    local formatted = stripped .. string.rep("·", padding_count) .. line_count_text
 
     return indent .. "<" .. formatted .. ">"
 end
