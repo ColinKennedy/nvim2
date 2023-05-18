@@ -1,3 +1,5 @@
+- Swapping between tmux and non doesn't work anymore
+
 - Terminal is really slow at typing, sometimes
 https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
