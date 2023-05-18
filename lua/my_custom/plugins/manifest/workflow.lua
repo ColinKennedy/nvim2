@@ -105,35 +105,23 @@ return {
     },
 
     -- Always show the current USD Prim context. Useful when navigating nested files
+    --
+    -- TODO: Figure out a way to defer-eval this plug-in
+    --
     {
         "nvim-treesitter/nvim-treesitter-context",
         config = function()
-            require("treesitter-context").setup{
-                enable = true,
+            local context = require("treesitter-context")
+            context.setup{
+                on_attach = function(bufnr)
+                    return vim.bo[bufnr].filetype == 'usd'
+                end,
             }
 
             -- Make the context background black
             vim.api.nvim_set_hl(0, "TreesitterContext", {ctermbg=16, bg="#101010"})
-
-            -- Note: Terrible (hopefully temporary) hack to prevent this
-            -- plug-in from being used outside of USD files
-            --
-            -- References:
-            --    - https://github.com/nvim-treesitter/nvim-treesitter-context/issues/172
-            --    - https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
-            --
-            local parsers = require("nvim-treesitter.parsers")
-
-            for _, name in ipairs(parsers.available_parsers())
-            do
-                if parsers.has_parser(name) and name ~= "usd"
-                then
-                    vim.treesitter.query.set(name, "context", "")
-                end
-            end
         end,
         dependencies = {"nvim-treesitter/nvim-treesitter"},
-        ft = "usd",
     },
 
     -- TODO: Add later
