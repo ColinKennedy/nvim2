@@ -22,7 +22,15 @@ end
 
 
 -- Disable some default providers
--- for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-for _, provider in ipairs { "node", "perl", "ruby" } do
+--
+-- Note:
+--     The python provider is needed for the
+--     https://github.com/gelguy/wilder.nvim plug-in.
+--
+--     But I hope this provider can be removed in the future because loading it
+--     is quite slow.
+--
+for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+-- for _, provider in ipairs { "node", "perl", "ruby" } do
     vim.g["loaded_" .. provider .. "_provider"] = 0
 end

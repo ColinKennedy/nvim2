@@ -722,6 +722,7 @@ return {
             require("nvim-dap-virtual-text").setup()
         end,
         dependencies = {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
+        lazy = true,
     },
 
     -- TODO: Defer-load this plug-in

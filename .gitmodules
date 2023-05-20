@@ -280,3 +280,9 @@
 [submodule "bundle/zoxide.vim"]
 	path = bundle/zoxide.vim
 	url = git@github.com:nanotee/zoxide.vim.git
+[submodule "bundle/wilder.nvim"]
+	path = bundle/wilder.nvim
+	url = git@github.com:gelguy/wilder.nvim.git
+[submodule "bundle/fzy-lua-native"]
+	path = bundle/fzy-lua-native
+	url = git@github.com:romgrk/fzy-lua-native.git
