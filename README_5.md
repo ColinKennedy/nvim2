@@ -25,6 +25,10 @@ https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
 
 
 
+- Add lua auto-complete?
+
+
+
 - Dependencies, maybe
  - A patched nerd font (for icons)
   - https://www.nerdfonts.com/font-downloads

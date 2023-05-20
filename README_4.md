@@ -1,6 +1,13 @@
-- Add lua auto-complete?
+- Ask treesitter people about module highlighting
+ - Can Python highlight based on modules?
+- Is it possible to add devicons / LSP information into Command mode?
 
-https://github.com/jackguo380/vim-lsp-cxx-highlight
+- Sometimes BackupCurrentFile is slow. Consider rewriting in Lua
+
+
+Add USD to Comment.nvim
+https://github.com/numToStr/Comment.nvim#treesitter
+
 
 - Port block-party to treesitter
  - https://github.com/RRethy/nvim-treesitter-textsubjects

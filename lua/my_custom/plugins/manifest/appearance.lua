@@ -309,6 +309,7 @@ return {
             )
         end,
         dependencies = {"romgrk/fzy-lua-native"},
-        event = "VeryLazy",
+        -- Reference: https://github.com/gelguy/wilder.nvim#faster-startup-time
+        event = "CmdlineEnter",
     }
 }
