@@ -12,9 +12,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 ## Mappings
 ### Workspace switching
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |      2      |                                            3                                              |
 | - | ----------- | ----------------------------------------------------------------------------------------- |
@@ -31,9 +31,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
 ### Utility / Movement Related
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |     2        |                                         3                                                     |
 | - | ------------ | --------------------------------------------------------------------------------------------- |
@@ -56,9 +56,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
 ### Terminal / Tmux Communication
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |     2        |                                         3                               |
 | - | ------------ | ----------------------------------------------------------------------- |
@@ -68,9 +68,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
 ### Formatting And Editting
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |     2         |                                         3                                          |
 | - | ------------- | ---------------------------------------------------------------------------------- |
@@ -84,9 +84,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
 ### Debugging
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |      2        |                                 3                                  |
 | - | -----------   | ------------------------------------------------------------------ |
@@ -109,9 +109,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
 ### Miscellaneous
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |      2       |                           3                               |
 | - | -----------  | --------------------------------------------------------- |
@@ -127,9 +127,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
 ### Text-Object / Text-Object-like
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |  2   |                                            3                               |
 | - | ---- | -------------------------------------------------------------------------- |
@@ -169,9 +169,9 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 ### Plug-in Specific
 #### vim-bqf
-1 - mode
-2 - mapping
-3 - description
+1. mode
+2. mapping
+3. description
 
 | 1 |  2  |                        3                        |
 | - | --- | ----------------------------------------------- |
