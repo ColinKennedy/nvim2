@@ -160,9 +160,6 @@
 [submodule "bundle/nvim-treesitter"]
 	path = bundle/nvim-treesitter
 	url = git@github.com:nvim-treesitter/nvim-treesitter.git
-[submodule "bundle/playground"]
-	path = bundle/playground
-	url = git@github.com:nvim-treesitter/playground.git
 [submodule "bundle/lspkind.nvim"]
 	path = bundle/lspkind.nvim
 	url = git@github.com:onsails/lspkind.nvim.git
@@ -183,7 +180,7 @@
 	url = git@github.com:saadparwaiz1/cmp_luasnip.git
 [submodule "bundle/aerial.nvim"]
 	path = bundle/aerial.nvim
-	url = git@github.com:ColinKennedy/aerial.nvim.git
+	url = git@github.com:stevearc/aerial.nvim.git
 [submodule "bundle/tcomment_vim"]
 	path = bundle/tcomment_vim
 	url = git@github.com:tomtom/tcomment_vim.git
@@ -256,9 +253,6 @@
 [submodule "bundle/nvim-dap-python"]
 	path = bundle/nvim-dap-python
 	url = git@github.com:mfussenegger/nvim-dap-python.git
-[submodule "bundle/mini.ai"]
-	path = bundle/mini.ai
-	url = git@github.com:echasnovski/mini.ai.git
 [submodule "bundle/vim-python-pep8-indent"]
 	path = bundle/vim-python-pep8-indent
 	url = git@github.com:Vimjas/vim-python-pep8-indent.git

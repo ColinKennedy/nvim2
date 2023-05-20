@@ -33,12 +33,6 @@ return {
         lazy = true,
     },
 
-    -- -- A minimal alternative to targets.vim
-    -- {
-    --     "echasnovski/mini.ai",
-    --     version = "*",
-    --     event = "VeryLazy",
-    -- },
     -- XXX: Removed due to this issue: https://github.com/wellle/targets.vim/issues/268
     -- Targets - A great companion to vim-surround
     {

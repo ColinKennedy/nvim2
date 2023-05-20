@@ -333,14 +333,6 @@ return {
         keys = { "<space>SN", "<space>SS" } -- S as in "Summary"
     },
 
-    {
-        "nvim-treesitter/playground",
-        cmd = "TSPlaygroundToggle",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        }
-    },
-
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
     {
         "tpope/vim-projectionist",
