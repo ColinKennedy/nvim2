@@ -200,8 +200,16 @@ return {
             vim.keymap.set(
                 "n",
                 "<leader>id",
-                ":Neogen<CR>",
-                {desc="Generate a [d]ocstring for the function under the cursor."}
+                -- Note:
+                --     Recompute folds with ``normal zx`` because (neo)vim
+                --     never seems to generate folds properly whenever you make
+                --     a command that makes folds from scratch.
+                --
+                ':Neogen<BAR>execute "normal zx"<CR>',
+                {
+                    desc="[i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.",
+                    silent = true,
+                }
             )
         end,
         dependencies = {
