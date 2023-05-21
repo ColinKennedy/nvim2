@@ -183,34 +183,7 @@ return {
         "ColinKennedy/neogen",
         branch = "combined_branch",
         config = function()
-            require("neogen").setup(
-                {
-                    languages = {
-                        python = {
-                            template = {
-                                annotation_convention = "google_docstrings"
-                            }
-                        },
-                    },
-                    placeholders_hl = "String",
-                    snippet_engine = "luasnip",
-                }
-            )
-            -- TODO: Not sure how useful Neogen is, in practice. Seems to break too easily.
-            vim.keymap.set(
-                "n",
-                "<leader>id",
-                -- Note:
-                --     Recompute folds with ``normal zx`` because (neo)vim
-                --     never seems to generate folds properly whenever you make
-                --     a command that makes folds from scratch.
-                --
-                ':Neogen<BAR>execute "normal zx"<CR>',
-                {
-                    desc="[i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.",
-                    silent = true,
-                }
-            )
+            require("my_custom.plugins.data.neogen")
         end,
         dependencies = {
             "L3MON4D3/LuaSnip",
