@@ -1,3 +1,8 @@
+- Change af / if to match preceding comment lines. For God's sake
+ - https://github.com/nvim-treesitter/nvim-treesitter-textobjects/discussions/452
+- `if` doesn't work? Why?
+- Add ``super`` Lua snippet (use treesitter)
+
 - Add ``did`` support. See ``require("nvim-treesitter.configs").setup``
 
 - aerial.nvim - don't resize when you move your cursor left / right
