@@ -124,6 +124,7 @@ https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 | n | QQ           | Exit Vim without saving.                                  |
 | v | /            | Make Vim's search more "magic", by default.               |
 | v | `<leader>`pe | Load the selected [p]ython [e]rror as a quickfix window.  |
+| v | `<leader>`tx | [t]oggle [x]-marks display.                               |
 
 
 ### Text-Object / Text-Object-like
