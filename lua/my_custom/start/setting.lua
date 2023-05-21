@@ -57,3 +57,9 @@ vim.g.python3_host_prog = "/usr/local/bin/python3.7"
 -- Reference: https://github.com/neovim/neovim/pull/17266
 --
 vim.opt.laststatus = 3
+
+-- Don't allow editor config files that I don't use for accidentally causing issues.
+--
+-- Reference: https://youtu.be/3TRouzuWOuQ?t=107
+--
+vim.g.editorconfig = false
