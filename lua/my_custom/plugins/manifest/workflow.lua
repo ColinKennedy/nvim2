@@ -201,18 +201,6 @@ return {
         --
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function()
-            -- TODO: Remove this WIP code, later
-            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-            parser_config.usd = {
-                install_info = {
-                    files = {"src/parser.c"},
-                    generate_requires_npm = false,
-                    requires_generate_from_grammar = true,
-                    url = "~/repositories/tree-sitter-usd",
-                },
-            }
-        end,
         lazy = true,
     },
 
