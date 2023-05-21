@@ -1,3 +1,6 @@
+- Consider nvim-ufo again
+https://github.com/nvim-treesitter/nvim-treesitter/issues/3326#issuecomment-1221135650
+
 - Port block-party to treesitter
  - https://github.com/RRethy/nvim-treesitter-textsubjects
   - Maybe someone else already did it?
