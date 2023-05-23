@@ -1,6 +1,3 @@
-- Consider nvim-ufo again
-https://github.com/nvim-treesitter/nvim-treesitter/issues/3326#issuecomment-1221135650
-
 - Port block-party to treesitter
  - https://github.com/RRethy/nvim-treesitter-textsubjects
   - Maybe someone else already did it?
@@ -116,6 +113,8 @@ https://github.com/nvim-treesitter/completion-treesitter
 - Add treesitter parsers for other languages
 
 - Implement HLNext?
+
+- Add ``did`` support. See ``require("nvim-treesitter.configs").setup``
 
 
 https://github.com/williamboman/mason.nvim/blob/b54d4e3171cc9735de915dbb97e987fb1f05dad9/lua/mason/mappings/language.lua#L22

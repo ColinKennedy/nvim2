@@ -497,6 +497,13 @@ return {
     {
         "mfussenegger/nvim-dap",
         config = function()
+            -- Important: We must define ``require("dap")`` at least once.
+            -- Otherwise the ``DapBreakpoint`` sign won't be available for
+            -- another plug-in, ``Weissle/persistent-breakpoints.nvim``, to
+            -- refer to + use.
+            --
+            require("dap")
+
             vim.keymap.set(
                 "n",
                 "<leader>d<space>",
@@ -736,6 +743,7 @@ return {
 
             require('persistent-breakpoints.api').load_breakpoints()
         end,
+        dependencies = {"mfussenegger/nvim-dap"},
         event = "VeryLazy",
     },
 }

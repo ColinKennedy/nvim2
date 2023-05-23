@@ -73,6 +73,8 @@ Here's a screenshot of what I see
 Without treesitter (normal Python syntax highlighting)
 With treesitter
 
+- Change af / if to match preceding comment lines. For God's sake
+ - https://github.com/nvim-treesitter/nvim-treesitter-textobjects/discussions/452
 
 
 
