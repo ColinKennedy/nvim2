@@ -169,6 +169,7 @@ return {
                 "lua",
                 "php",
                 "python",
+                "sh",
                 "sql",
                 -- "usd=usda",  -- TODO: Add this, later
                 -- "usda",  -- TODO: Add this, later
