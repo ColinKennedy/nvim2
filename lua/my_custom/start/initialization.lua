@@ -402,3 +402,13 @@ vim.keymap.set(
     "kk",
     "<C-\\><C-n>:call MoveIfInPager()<CR>"
 )
+
+
+vim.api.nvim_create_user_command(
+    "StripTrailingWhitespace",
+    "%s/\\s\\+$//e",
+    {
+        desc="Strip whitespace from the end of each lines in the current file.",
+        nargs=0,
+    }
+)
