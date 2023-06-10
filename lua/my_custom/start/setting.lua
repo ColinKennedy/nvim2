@@ -63,3 +63,26 @@ vim.opt.laststatus = 3
 -- Reference: https://youtu.be/3TRouzuWOuQ?t=107
 --
 vim.g.editorconfig = false
+
+
+
+-- Add Qt.py auto-completion stubs to Vim
+--
+-- Reference: https://peps.python.org/pep-0561/
+--
+local separator = ""
+
+if vim.fn.has("win32") == 1
+then
+    separator = ";"
+else
+    separator = ":"
+end
+
+vim.cmd(
+    'let $PYTHONPATH = "'
+    .. vim.g.vim_home .. "/python_stubs"
+    .. separator
+    .. os.getenv("PYTHONPATH")
+    .. '"'
+)
