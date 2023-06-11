@@ -27,8 +27,14 @@ end
 vim.api.nvim_create_autocmd({"FileType"}, {pattern="*", callback=callback})
 
 -- Set up the treesitter nodes for the Python language.
+--
+-- Reference: https://github.com/Wansmer/treesj/issues/108
+--
 local lang_utils = require("treesj.langs.utils")
-local options = { both = { last_separator = true }}
+local options = {
+    join = { space_in_brackets = false },
+    split = { last_separator = true },
+}
 
 require("treesj").setup(
     {
