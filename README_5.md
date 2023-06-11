@@ -1,9 +1,16 @@
+- Follow-up
+ - Typing "D" for a docstring in a real file is frustrating because cmp takes control away when new  LSP entries are added
+  - https://github.com/hrsh7th/nvim-cmp/issues/1597
+ - aerial.nvim - don't resize when you move your cursor left / right
+  - https://github.com/stevearc/aerial.nvim/issues/267
+
+
+- return snippet - try to use treesitter to delete the left-hand assignment (if one exists)
+
+
 - Port block-party to treesitter
  - https://github.com/RRethy/nvim-treesitter-textsubjects
   - Maybe someone else already did it?
-
-- return snippet - try to use treesitter to delete the left-hand assignment (if one exists)
-Try NvChad again
 
 
 • Added preliminary support for the `workspace/didChangeWatchedFiles` capability
