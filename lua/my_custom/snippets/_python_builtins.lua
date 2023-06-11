@@ -134,4 +134,50 @@ return {
         text("@property"),
         { show_condition = is_source_beginning("@p") }
     ),
+
+    snippet(
+        {
+            docstring="self.$1",
+            trig="s",
+        },
+        format([[self.{}]], {index(1, "blah")})
+    ),
+
+
+    -- Blocks
+    snippet(
+        {
+            docstring="for item in items:",
+            trig="for",
+        },
+        format(
+            [[
+                for {} in {}:
+                    {}
+            ]],
+            {
+                index(1, "item"),
+                index(2, "items"),
+                index(3, "pass"),
+            }
+        )
+    ),
+
+    snippet(
+        {
+            docstring="with foo as handler:",
+            trig="with",
+        },
+        format(
+            [[
+                with {} as {}:
+                    {}
+            ]],
+            {
+                index(1, "open()"),
+                index(2, "handler"),
+                index(3, "pass"),
+            }
+        )
+    ),
 }
