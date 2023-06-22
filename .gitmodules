@@ -280,3 +280,6 @@
 [submodule "bundle/fzy-lua-native"]
 	path = bundle/fzy-lua-native
 	url = git@github.com:romgrk/fzy-lua-native.git
+[submodule "bundle/hex.nvim"]
+	path = bundle/hex.nvim
+	url = git@github.com:RaafatTurki/hex.nvim.git

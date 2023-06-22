@@ -412,3 +412,14 @@ vim.api.nvim_create_user_command(
         nargs=0,
     }
 )
+
+vim.api.nvim_create_user_command(
+    "ToggleHexView",
+    function()
+        -- Requires https://github.com/RaafatTurki/hex.nvim
+        require("hex").toggle()
+    end,
+    {
+        desc = "Switch a binary file to a hexdump-ish view and back."
+    }
+)

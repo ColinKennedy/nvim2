@@ -746,4 +746,13 @@ return {
         dependencies = {"mfussenegger/nvim-dap"},
         event = "VeryLazy",
     },
+
+    -- Seamlessly switch between a binary file view and a hexdump-ish view and back
+    {
+        "RaafatTurki/hex.nvim",
+        config = function()
+            require("hex").setup()
+        end,
+        cmd = "ToggleHexView"
+    },
 }
