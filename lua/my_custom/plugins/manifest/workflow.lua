@@ -268,8 +268,8 @@ return {
 
     -- Kickass class / function viewer
     {
-        "ColinKennedy/aerial.nvim",
-        branch = "add_usd_support",
+        "stevearc/aerial.nvim",
+        branch = "stevearc-win-width",  -- Remove after https://github.com/stevearc/aerial.nvim/pull/269 merges
         config = function()
             require("aerial").setup(
                 {
@@ -280,6 +280,9 @@ return {
                             ["<CR>"] = "actions.jump",
                             ["q"] = "actions.close",
                         },
+                    },
+                    layout = {
+                        resize_to_content = false,
                     },
                 }
             )
