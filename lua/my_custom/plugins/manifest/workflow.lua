@@ -269,7 +269,6 @@ return {
     -- Kickass class / function viewer
     {
         "stevearc/aerial.nvim",
-        branch = "stevearc-win-width",  -- Remove after https://github.com/stevearc/aerial.nvim/pull/269 merges
         config = function()
             require("aerial").setup(
                 {
