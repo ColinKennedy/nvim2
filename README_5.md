@@ -1,3 +1,30 @@
+- need terminal send / etc code
+  - Add tmux support
+  - SendRecent! - sends to tmux if both are there
+   - config to switch the priority
+
+- https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-cht.sh
+- https://youtu.be/hJzqEAf2U4I?t=392
+- https://www.reddit.com/r/neovim/comments/ug2s4s/disable_diagnostic_while_expanding_luasnip/
+- jedi_language_server's autocomplete is way better than pylsp. Remove pylsp from completion sources
+
+- Consider
+ - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#gitsigns
+ - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#refactoring
+ - https://github.com/DanielNoord/pydocstringformatter
+ - https://github.com/jendrikseipp/vulture
+ - https://github.com/ThePrimeagen/refactoring.nvim
+
+- Maybe consider this. I'm mostly happy with my mappings but could be something there - https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#super-tab-like-mapping
+
+- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-completion-in-certain-contexts-such-as-comments
+- I think I already do this. So I could close this - https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#add-parentheses-after-selecting-function-or-method-item
+
+
+- autocomplete
+ - Keep an eye out for my current mappings. Do they feel good? Do they need adjusting?
+
+
 - Terminal is really slow at typing, sometimes
 - https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
@@ -25,47 +52,17 @@
 https://www.reddit.com/r/neovim/comments/12h6fc7/am_i_doing_wrong_with_lazynvim/
 
 
-- need terminal send / etc code
- - Change my terminal set-up to have the terminal below, not above
-  - SendRecent! - sends to tmux if both are there
-   - config to switch the priority
-
-
 https://www.reddit.com/r/neovim/comments/10zgrn1/hightlight_treesitter_node_under_cursor_thing/
 https://github.com/dharmx/nvim/blob/e79ac39e3c9aff7e4e99ce889caea45c5fc65bc4/lua/scratch/node.lua
 
 - Consider
- - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#gitsigns
- - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#refactoring
  - https://github.com/pylint-dev/pylint#advised-linters-alongside-pylint
- - https://github.com/DanielNoord/pydocstringformatter
- - https://github.com/jendrikseipp/vulture
- - https://github.com/ThePrimeagen/refactoring.nvim
-
-https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-cht.sh
-
-https://youtu.be/hJzqEAf2U4I?t=392
-
-https://www.reddit.com/r/neovim/comments/ug2s4s/disable_diagnostic_while_expanding_luasnip/
-
-- jedi_language_server's autocomplete is way better than pylsp. Remove pylsp from completion sources
-
-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-completion-in-certain-contexts-such-as-comments
-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#add-parentheses-after-selecting-function-or-method-item
-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#super-tab-like-mapping
 
 - Configure settings for pydocstyle / pylint (they seem to not report every issue)
 
 - Look into what LSP / linter / formatter stuff can be done. Can I do refactoring / auto
 fixes and stuff now? I probably will need to add the mappings.
 
-- Where do treesitter parsers install to? Can I bundle it / control their path?
-
-https://github.com/nvim-treesitter/completion-treesitter
- - Is it possible to get treesitter keywords in auto-completion, as a completion source?
-
-- autocomplete
- - Keep an eye out for my current mappings. Do they feel good? Do they need adjusting?
 
 
 
@@ -99,7 +96,6 @@ https://github.com/nvim-treesitter/completion-treesitter
  - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
 
 
-- holding w in the terminal should scroll up
 - On-load speed-up?
 - Check out
  - after/plugin/more_keymaps.vim:vnoremap <silent> <leader>pe :<C-U>call traceback_parser_python#parse_visual_traceback()<CR>
@@ -115,6 +111,13 @@ https://github.com/nvim-treesitter/completion-treesitter
 
 - Consider these completion sources
  - https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources#miscellaneous
+  - https://github.com/rcarriga/cmp-dap
+  - https://github.com/JMarkin/cmp-diag-codes
+  - https://github.com/paopaol/cmp-doxygen
+  - https://github.com/hrsh7th/cmp-nvim-lua
+  - https://github.com/KadoBOT/cmp-pluginsA - Maybe???
+  - https://github.com/ray-x/cmp-treesitter
+  - https://github.com/uga-rosa/cmp-dynamic
  - https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
  - https://github.com/lukas-reineke/cmp-rg
 

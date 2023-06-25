@@ -27,6 +27,10 @@ https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
  - See sphinx-code-include
 
 
+- https://github.com/nvim-treesitter/completion-treesitter
+ - Is it possible to get treesitter keywords in auto-completion, as a completion source?
+
+
 
 - Add lua auto-complete?
 

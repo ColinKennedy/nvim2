@@ -1,1 +1,0 @@
-- Add ``super`` Lua snippet (use treesitter)
