@@ -156,7 +156,7 @@
 	url = git@github.com:nvim-tree/nvim-web-devicons.git
 [submodule "bundle/nvim-treesitter-textobjects"]
 	path = bundle/nvim-treesitter-textobjects
-	url = git@github.com:nvim-treesitter/nvim-treesitter-textobjects.git
+	url = git@github.com:ColinKennedy/nvim-treesitter-textobjects.git
 [submodule "bundle/nvim-treesitter"]
 	path = bundle/nvim-treesitter
 	url = git@github.com:nvim-treesitter/nvim-treesitter.git

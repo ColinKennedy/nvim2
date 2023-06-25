@@ -230,7 +230,8 @@ return {
     },
 
     {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        "ColinKennedy/nvim-treesitter-textobjects",
+        branch = "modified_include_surrounding_whitespace_behavior",
         config = function()
             require("my_custom.plugins.data.nvim_treesitter_textobjects_config")
         end,

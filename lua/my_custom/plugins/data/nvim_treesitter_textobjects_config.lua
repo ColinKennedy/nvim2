@@ -68,6 +68,12 @@ require("nvim-treesitter.configs").setup {
         },
 
         select = {
+            -- Important: This option has been changed so whitespace is retrieved more sensibly
+            --
+            -- Reference: https://github.com/ColinKennedy/nvim-treesitter-textobjects/tree/modified_include_surrounding_whitespace_behavior
+            --
+            include_surrounding_whitespace = true,
+
             enable = true,
 
             -- Automatically jump forward to textobj, similar to targets.vim
