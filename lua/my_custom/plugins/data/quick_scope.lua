@@ -1,24 +1,8 @@
 -- Stop quick-scope highlighting after 160 characters
 vim.g.qs_max_chars = 160
 
-local color_group = vim.api.nvim_create_augroup("quick_scope_highlight_colors", { clear = true })
-
-vim.api.nvim_create_autocmd(
-    "ColorScheme",
-    {
-	command = "highlight QuickScopePrimary guifg='#5fffff' gui=underline ctermfg=112 cterm=underline",
-	group = color_group,
-	pattern = "*",
-    }
-)
-vim.api.nvim_create_autocmd(
-    "ColorScheme",
-    {
-	command = "highlight QuickScopeSecondary guifg='#EAFF92' gui=underline ctermfg=140 cterm=underline",
-	group = color_group,
-	pattern = "*",
-    }
-)
+vim.api.nvim_set_hl(0, "QuickScopePrimary", {fg='#D7FFAF', ctermfg=193, gui=underline, cterm=underline})
+vim.api.nvim_set_hl(0, "QuickScopeSecondary", {fg="#5FFFFF", ctermfg=189, gui=underline, cterm=underline})
 
 local display_group = vim.api.nvim_create_augroup("quick_scope_display_group", { clear = true })
 
