@@ -750,6 +750,10 @@ return {
     },
 
     -- Seamlessly switch between a binary file view and a hexdump-ish view and back
+    -- It's a fancy plug-in that replaces ``:h hex-editing``
+    --
+    -- Reference: https://vi.stackexchange.com/a/2237/16073
+    --
     {
         "RaafatTurki/hex.nvim",
         config = function()
