@@ -155,12 +155,18 @@ return {
         end,
         dependencies = {
             "jay-babu/mason-null-ls.nvim",  -- Bootstrap pydocstyle, pylint, etc
-            "nvim-lua/plenary.nvim"
+            "ColinKennedy/plenary.nvim"
         },
         event = "VeryLazy",
     },
+
+    -- Added my own fork of plenary.nvim because it doesn't work with older curl versions
+    --
+    -- Reference: https://github.com/nvim-lua/plenary.nvim/issues/495
+    --
     {
-        "nvim-lua/plenary.nvim",
+        "ColinKennedy/plenary.nvim",
+        branch = "fix_old_curl_version",
         lazy = true,
     },
 
