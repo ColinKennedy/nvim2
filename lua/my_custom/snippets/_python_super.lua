@@ -1,3 +1,5 @@
+-- Define a snippet for Python's `super()` command. Auto-fills out all of its parameters.
+
 local luasnip = require("luasnip")
 local snippet = luasnip.s
 local dynamicNode = require("luasnip.nodes.dynamicNode").D

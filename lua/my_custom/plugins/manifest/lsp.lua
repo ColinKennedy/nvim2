@@ -77,6 +77,8 @@ return {
                     updateevents = "TextChanged,TextChangedI",
                 }
             )
+
+            vim.g._snippet_super_prefer_keywords = true
         end,
         event = "InsertEnter",
         version = "1.*",
