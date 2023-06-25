@@ -174,7 +174,18 @@ return {
     {
         "j-hui/fidget.nvim",
         config = function()
-            require("fidget").setup()
+            require("fidget").setup{
+                text = {
+                    -- spinner = "dots_ellipsis"  -- I like this alternative
+                    spinner = "meter"
+                },
+                window = {
+                    blend = 10
+                }
+            }
+
+            vim.api.nvim_set_hl(0, "FidgetTask", {fg="#4b5156", ctermfg=65})
+            vim.api.nvim_set_hl(0, "FidgetTitle", {link="Identifier"})
         end,
         event = { "InsertEnter", "VeryLazy" },
     },
