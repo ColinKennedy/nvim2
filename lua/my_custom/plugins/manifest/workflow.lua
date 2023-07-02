@@ -762,4 +762,57 @@ return {
         end,
         cmd = "ToggleHexView"
     },
+
+    -- A pop-up that shows you available Neovim keymaps. Only pops up if you're slow
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        config = function()
+            local which_key = require("which-key")
+
+            which_key.register(
+                {
+                    ["<leader>"] = {
+                        c = "+file-ish prefix",
+                        d = "+debug prefix",
+                        f = "[f]ind text using hop-mode",
+                        i = {
+                            name = "+insert prefix",
+                            d = "[i]nsert auto-[d]ocstring.",
+                        },
+                        r = "+run prefix",
+                        s = {
+                            name = "+misc prefix",
+                            a = { "[s]plit [a]rgument list" },
+                        },
+                    },
+                    ["<space>"] = {
+                        A = "Show [A]rgs list",
+                        B = "Show [B]uffers list",
+                        E = "[E]dit a new project root file",
+                        L = "[L]ines searcher (current file)",
+                        S = {
+                            name = "[S]witcher aerial.nvim windows",
+                            A = "[S]witch [N]avigation",
+                            S = "[S]witch [S]idebar",
+                        },
+                        W = "Open [W]orkspace (NvimTree)",
+                        Z = "[Z]oxide's interative pwd switcher",
+                        c = {
+                            name = "+LSP [c]ode prefix",
+                            a = "Run [c]ode [a]ction",
+                        },
+                        e = "[e]dit a `:pwd` file",
+                        q = "Switch to [q]uickfix window, if open",
+                        w = {
+                            name = "+workspace LSP prefix",
+                            a = "LSP [w]orkspace [a]dd",
+                            l = "LSP [w]orkspace [l]ist",
+                            r = "LSP [w]orkspace [r]remove",
+                        },
+                    },
+                }
+            )
+        end,
+    }
 }

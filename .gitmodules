@@ -283,3 +283,6 @@
 [submodule "bundle/hex.nvim"]
 	path = bundle/hex.nvim
 	url = git@github.com:RaafatTurki/hex.nvim.git
+[submodule "bundle/which-key.nvim"]
+	path = bundle/which-key.nvim
+	url = git@github.com:folke/which-key.nvim.git

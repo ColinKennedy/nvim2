@@ -192,7 +192,8 @@ vim.keymap.set(
     "<space>q",
     function()
         require("my_custom.utilities.choose_window").select_quick_fix_window()
-    end
+    end,
+    {desc="Switch to [q]uickfix window, if open"}
 )
 
 -- TODO: Fix this

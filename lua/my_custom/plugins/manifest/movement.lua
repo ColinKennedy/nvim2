@@ -49,14 +49,14 @@ return {
                 "n",
                 "<space>e",
                 ":Files<CR>",
-                {desc="[e]dit a new file from the `:pwd` for the current window."}
+                {desc="[e]dit a `:pwd` file."}
             )
 
             vim.keymap.set(
                 "n",
                 "<space>L",
                 ":Lines<CR>",
-                {desc="Search [l]ines in the current window for text."}
+                {desc="[L]ines searcher (current file)"}
             )
 
             vim.keymap.set(
@@ -71,7 +71,7 @@ return {
                 "<space>E",
                 ":call searcher#search_project_files()<CR>",
                 {
-                    desc="[E]dit a new file, searching first from the project's root directory.",
+                    desc="[E]dit a new project root file.",
                     silent=true,
                 }
             )

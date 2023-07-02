@@ -41,8 +41,8 @@ vim.opt.mat = 2
 -- Add a bit extra margin to the gutter
 vim.opt.foldcolumn = '1'
 
--- Only let Vim wait for user input (characters) for 0.5 seconds. Gotta go fast!
-vim.opt.timeoutlen = 500
+-- Only let Vim wait for user input (characters) for 0.3 seconds. Gotta go fast!
+vim.opt.timeoutlen = 300
 -- Wait very little for key sequences
 vim.opt.ttimeoutlen = 10
 

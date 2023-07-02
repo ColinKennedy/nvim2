@@ -5,7 +5,10 @@
 local langs = require("treesj.langs")["presets"]
 
 local callback = function()
-    local options = { buffer = true }
+    local options = {
+        desc = "[s]plit [a]rgument list",
+        buffer = true,
+    }
     if langs[vim.bo.filetype] then
         vim.keymap.set(
             "n",

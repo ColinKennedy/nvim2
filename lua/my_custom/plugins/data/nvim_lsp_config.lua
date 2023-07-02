@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd(
                 vim.lsp.buf.add_workspace_folder,
                 {
                     buffer=event.buf,
-                    desc="[w]orkspace [a]dd - Include a folder for your session.",
+                    desc="[w]orkspace LSP [a]dd - Include a folder for your session.",
                 }
             )
             vim.keymap.set(
