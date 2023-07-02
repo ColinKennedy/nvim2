@@ -10,6 +10,7 @@ local value = "V"
 
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
+        "diff",
         "usd",
         "python",
         -- "vim",  -- Note: This currently errors on-install during compiling. Not sure why.
