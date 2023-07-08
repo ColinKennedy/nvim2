@@ -306,37 +306,3 @@ vim.keymap.set(
     "<C-\\><C-n><C-w>l",
     {silent = true}
 )
-
--- Toggle showing lines as x / X characters
-vim.keymap.set(
-    "n",
-    "<leader>tx",
-    function()
-        if vim.b._x_marks_the_spot_enabled ~= nil
-        then
-            require("my_custom.utilities.virtual_text").remove_all_marks()
-
-            vim.b._x_marks_the_spot_enabled = nil
-
-            return
-        end
-
-        vim.cmd[[set nofoldenable]]
-
-        -- local all_namespaces = -1  -- Technically not needed to clear all namespaces
-        -- local current_window = 0
-        -- local line_start = 0
-        -- local line_end = -1
-        -- vim.api.nvim_buf_clear_namespace(
-        --     current_window,
-        --     all_namespaces,
-        --     line_start,
-        --     line_end
-        -- )
-
-        require("my_custom.utilities.virtual_text").add_all_marks()
-
-        vim.b._x_marks_the_spot_enabled = 1
-    end,
-    { desc = "[t]oggle [x]-marks display." }
-)

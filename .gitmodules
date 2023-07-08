@@ -286,3 +286,6 @@
 [submodule "bundle/which-key.nvim"]
 	path = bundle/which-key.nvim
 	url = git@github.com:folke/which-key.nvim.git
+[submodule "bundle/hlargs.nvim"]
+	path = bundle/hlargs.nvim
+	url = git@github.com:m-demare/hlargs.nvim.git
