@@ -31,28 +31,6 @@ return {
         "hrsh7th/nvim-cmp",
         config = function()
             require("my_custom.plugins.data.nvim_cmp")
-
-            local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            lspconfig.jedi_language_server.setup { capabilities=capabilities }
-
-            -- Disable completion from pylsp because ``jedi_language_server``'s options are better.
-            -- Everything else is good though and should be kept.
-            --
-            -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/822
-            --
-            local configuration = require("cmp_nvim_lsp").default_capabilities()
-            lspconfig.pylsp.setup {
-                capabilities=capabilities,
-                on_attach = function(client)
-                    client.server_capabilities.completionProvider = false
-                end,
-            }
-
-            -- Set up lspconfig.
-            local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            lspconfig.ccls.setup { capabilities=capabilities }
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
         event = { "VeryLazy" },  -- Or "InsertEnter"
