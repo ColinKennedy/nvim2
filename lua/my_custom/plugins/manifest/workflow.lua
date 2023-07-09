@@ -770,6 +770,14 @@ return {
         config = function()
             local which_key = require("which-key")
 
+            which_key.setup {
+                plugins = {
+                    presets = {
+                        operators = false,
+                    }
+                }
+            }
+
             which_key.register(
                 {
                     ["<leader>"] = {
