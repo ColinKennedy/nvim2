@@ -86,3 +86,11 @@ vim.cmd(
     .. os.getenv("PYTHONPATH")
     .. '"'
 )
+
+vim.api.nvim_create_user_command(
+    "LspCapabilities",
+    function()
+        require("my_custom.utilities.lsp_helper").print_lsp_capabilities()
+    end,
+    { desc = "Print the features of each LSP" }
+)

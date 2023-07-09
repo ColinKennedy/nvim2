@@ -835,18 +835,23 @@ return {
             -- Reference: https://github.com/m-demare/hlargs.nvim/blob/07e33afafd9d32b304a8557bfc1772516c005d75/doc/hlargs.txt#L306
             vim.api.nvim_create_augroup("LspAttach_hlargs", {clear = true})
             vim.api.nvim_create_autocmd("LspAttach", {
-              group = "LspAttach_hlargs",
-              callback = function(args)
-                if not (args.data and args.data.client_id) then
-                  return
-                end
+                group = "LspAttach_hlargs",
+                callback = function(args)
+                    if not (args.data and args.data.client_id) then
+                        return
+                    end
 
-                local client = vim.lsp.get_client_by_id(args.data.client_id)
-                local caps = client.server_capabilities
-                if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-                  require("hlargs").disable_buf(args.buf)
-                end
-              end,
+                    for _, client in ipairs(vim.lsp.get_active_clients())
+                    do
+                        local caps = client.server_capabilities
+
+                        if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+                            require("hlargs").disable_buf(args.buf)
+
+                            break
+                        end
+                    end
+                end,
             })
         end,
         event = { "VeryLazy" },

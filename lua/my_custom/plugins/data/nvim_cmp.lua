@@ -151,46 +151,23 @@ cmp.setup.filetype(
 
 -- Set up lspconfig.
 local lspconfig = require("lspconfig")
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local disable_completion = function(client)
+    -- Disable completion from pylsp because ``jedi_language_server``'s options are better.
+    -- Everything else is good though and should be kept.
+    --
+    -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/822
+    --
+    client.server_capabilities.completionProvider = false
+end
+
 lspconfig.pyright.setup { capabilities=capabilities }
-
--- Set up lspconfig.
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.jedi_language_server.setup { capabilities=capabilities }
+lspconfig.pylsp.setup { capabilities=capabilities, on_attach = disable_completion }
 
--- Disable completion from pylsp because ``jedi_language_server``'s options are better.
--- Everything else is good though and should be kept.
---
--- Reference: https://github.com/hrsh7th/nvim-cmp/issues/822
---
-local configuration = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.pylsp.setup {
-    capabilities=capabilities,
-    on_attach = function(client)
-        client.server_capabilities.completionProvider = false
-    end,
-}
 
--- Set up lspconfig.
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.pyright.setup { capabilities=capabilities }
-
--- Set up lspconfig.
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.jedi_language_server.setup { capabilities=capabilities }
-
--- Disable completion from pylsp because ``jedi_language_server``'s options are better.
--- Everything else is good though and should be kept.
---
--- Reference: https://github.com/hrsh7th/nvim-cmp/issues/822
---
-local configuration = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.pylsp.setup {
-    capabilities=capabilities,
-    on_attach = function(client)
-        client.server_capabilities.completionProvider = false
-    end,
-}
+lspconfig.pylsp.setup { capabilities=capabilities, on_attach = disable_completion }
