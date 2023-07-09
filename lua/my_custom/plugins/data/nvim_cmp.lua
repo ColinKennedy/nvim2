@@ -171,3 +171,13 @@ lspconfig.pylsp.setup { capabilities=capabilities, on_attach = disable_completio
 lspconfig.pyright.setup { capabilities=capabilities }
 lspconfig.jedi_language_server.setup { capabilities=capabilities }
 lspconfig.pylsp.setup { capabilities=capabilities, on_attach = disable_completion }
+
+-- Added "offsetEncoding" to avoid an annoying, spammy Neovim warning
+--
+-- Reference: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
+--
+-- Note: The reference is for null-ls.nvim but the same applies for this LSP.
+--
+capabilities.offsetEncoding = "utf-8"
+lspconfig.ccls.setup { capabilities=capabilities }
+lspconfig.ccls.setup { capabilities=capabilities }
