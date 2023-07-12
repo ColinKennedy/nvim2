@@ -14,7 +14,8 @@ return {
             -- Installed via ``:TSInstall comment``
             --
             vim.api.nvim_set_hl(0, "@text.danger", {link="SpellBad"})
-            vim.api.nvim_set_hl(0, "@text.note.rare", {link="SpellRare"})
+            vim.api.nvim_set_hl(0, "@text.question", {link="SpellLocal"})
+            vim.api.nvim_set_hl(0, "@text.note", {link="SpellCap"})
 
             -- Show trailing whitespace as red text
             -- TODO: Get this color automatically

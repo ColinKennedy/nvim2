@@ -3,5 +3,5 @@
 
 ((comment) @text.danger
  (#lua-match? @text.danger "^.+%!$"))
-((comment) @text.note.rare
- (#lua-match? @text.note.rare "^.+%?$"))
+((comment) @text.question
+ (#lua-match? @text.question "^.+%?$"))
