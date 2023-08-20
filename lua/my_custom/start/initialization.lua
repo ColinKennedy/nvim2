@@ -148,6 +148,15 @@ vim.cmd[[abbreviate hte the]]
 vim.cmd[[abbreviate het the]]
 vim.cmd[[abbreviate chnage change]]
 
+
+-- Enable "programmer" spellchecking
+vim.opt.spellfile = "en-strict.utf-8.add"
+vim.opt.spelllang = "en-strict,cjk"
+vim.opt.spelloptions:append("camel")
+vim.opt.spelloptions:append("noplainbuffer")
+-- vim.opt.spell = true  -- Uncomment to enable
+
+
 -- Add a new filetype for VEX (SideFX Houdini) files
 vim.api.nvim_create_autocmd(
     {"BufNewFile", "BufRead"},

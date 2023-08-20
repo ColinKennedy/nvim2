@@ -178,7 +178,7 @@ return {
         -- event = { "VeryLazy" },
     },
 
-    -- Auto-generate docstrings, using ``<space>d``
+    -- Auto-generate docstrings, using ``<leader>id``
     {
         "ColinKennedy/neogen",
         branch = "combined_branch",
@@ -800,6 +800,7 @@ return {
                         },
                     },
                     ["<space>"] = {
+                        name = "Space Switching Mappings",
                         A = "Show [A]rgs list",
                         B = "Show [B]uffers list",
                         E = "[E]dit a new project root file",
