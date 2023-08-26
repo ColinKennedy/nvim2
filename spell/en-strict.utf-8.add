@@ -25,6 +25,31 @@ third-party
 thread
 www
 
+# Programming/Computer generic (Hard English words that are common in programming documentation)
+GUI
+configuration
+database
+data
+disk
+display
+ensure
+environment
+execution
+exist
+flag
+iteration
+log
+namespace
+node
+raw
+script
+setting
+shell
+symlink
+terminal
+JSON
+verbose
+
 # Programming commands
 sudo
 
@@ -47,6 +72,8 @@ python
 vim
 
 # Generic words
+# Reference: https://raw.githubusercontent.com/powerlanguage/word-lists/master/1000-most-common-words.txt
+#
 I
 a
 able
@@ -61,6 +88,8 @@ affects
 after
 again
 against
+age
+ago
 all
 allowed
 almost
@@ -73,20 +102,28 @@ and
 angle
 answer
 any
+anything
 are
+arm
+art
 as
+ask
 at
 author
 avoid
 back
 bad
+bar
 base
+bat
 be
 because
+bed
 before
 behavior
 better
 between
+big
 bit
 block
 body
@@ -100,10 +137,12 @@ building
 built
 but
 button
+buy
 by
 camera
 can
 cannot
+car
 card
 care
 cause
@@ -114,6 +153,7 @@ change
 changes
 characters
 cheap
+children
 class
 clean
 clear
@@ -132,6 +172,7 @@ connection
 const
 control
 copy
+could
 cover
 create
 created
@@ -141,12 +182,16 @@ curve
 custom
 cut
 danger
+day
 decision
 deep
 default
 describe
 design
+destination
 detail
+did
+die
 different
 direction
 distance
@@ -154,6 +199,7 @@ divide
 divided
 do
 does
+dog
 done
 doubt
 down
@@ -163,6 +209,7 @@ easy
 edge
 effect
 either
+empty
 enable
 end
 enough
@@ -177,7 +224,9 @@ example
 fact
 fall
 false
+far
 feature
+few
 field
 file
 files
@@ -185,11 +234,13 @@ filtered
 find
 fine
 first
+fit
 fix
 fixed
 flag
 flat
 floor
+fly
 fold
 follow
 for
@@ -202,6 +253,7 @@ free
 from
 front
 full
+fun
 function
 future
 general
@@ -210,23 +262,30 @@ give
 given
 go
 good
+got
 graph
 group
 growth
 guide
+had
 hard
 has
 have
+he
 head
 height
 help
+her
 here
 hidden
 high
+him
 his
 history
+hit
 hole
 hook
+hot
 hour
 how
 idea
@@ -243,7 +302,9 @@ into
 is
 it
 item
+job
 join
+joy
 jump
 just
 keep
@@ -254,13 +315,16 @@ last
 late
 later
 latest
+lay
 least
+led
 left
 let
 lets
 letter
 level
 library
+lie
 lift
 light
 like
@@ -269,6 +333,7 @@ line
 list
 little
 lock
+log
 long
 look
 looking
@@ -280,6 +345,7 @@ make
 makes
 manager
 many
+map
 margin
 mark
 mass
@@ -287,14 +353,17 @@ match
 matching
 material
 may
+me
 means
 measure
+men
 merge
 method
 middle
 minimum
 minus
 minute
+mix
 mixed
 mode
 month
@@ -306,6 +375,7 @@ move
 much
 multiple
 must
+my
 name
 near
 necessary
@@ -315,6 +385,7 @@ new
 next
 no
 node
+nor
 normal
 not
 note
@@ -324,6 +395,7 @@ object
 objects
 of
 off
+oh
 okay
 old
 on
@@ -385,6 +457,7 @@ quality
 question
 quick
 rail
+ran
 range
 rate
 read
@@ -392,6 +465,7 @@ reading
 ready
 reason
 record
+red
 regular
 remove
 render
@@ -409,10 +483,14 @@ root
 rough
 round
 row
+rub
 rule
 run
 safe
 same
+sat
+saw
+say
 scale
 search
 second
@@ -425,6 +503,7 @@ self
 send
 separate
 set
+she
 shelf
 ship
 short
@@ -433,7 +512,11 @@ shut
 side
 sign
 simple
+sit
+six
 size
+skip
+skipping
 sleep
 slow
 small
@@ -466,6 +549,7 @@ tail
 take
 talk
 tall
+ten
 test
 tests
 text
@@ -475,16 +559,19 @@ the
 them
 then
 there
+these
 they
 this
 though
 three
 through
+tie
 time
 times
 tired
 to
 together
+too
 top
 touch
 tree
@@ -500,6 +587,7 @@ unfiltered
 unit
 up
 update
+us
 use
 used
 user
@@ -511,11 +599,14 @@ view
 wait
 waiting
 walk
+was
 watch
 way
+we
 week
 weight
 well
+whatever
 when
 where
 which
@@ -525,6 +616,7 @@ why
 will
 window
 with
+within
 word
 words
 work
@@ -532,6 +624,7 @@ works
 wrong
 year
 yes
+yet
 you
 your
 
@@ -593,6 +686,13 @@ try
 while
 with
 yield
+
+# Python standard libraries
+argparse
+
+# Python Sphinx keywords
+sphinx
+ref
 
 # Python built-in words
 ArithmeticError
