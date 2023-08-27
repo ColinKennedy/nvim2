@@ -292,3 +292,6 @@
 [submodule "bundle/toggleterm.nvim"]
 	path = bundle/toggleterm.nvim
 	url = git@github.com:akinsho/toggleterm.git
+[submodule "bundle/rust-tools.nvim"]
+	path = bundle/rust-tools.nvim
+	url = git@github.com:simrat39/rust-tools.nvim

@@ -179,16 +179,6 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<space>T",
-    ":split<BAR>wincmd j<BAR>resize 10N<BAR>terminal<CR>",
-    {
-        desc="Create a [T]erminal on the bottom of the current window.",
-        silent=true,
-    }
-)
-
-vim.keymap.set(
-    "n",
     "<space>q",
     function()
         require("my_custom.utilities.choose_window").select_quick_fix_window()

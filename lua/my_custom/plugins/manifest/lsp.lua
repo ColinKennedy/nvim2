@@ -182,5 +182,16 @@ return {
             )
         end,
         event = "VeryLazy",  -- Or maybe InsertEnter
+    },
+
+    -- Rust LSP tools
+    {
+        "simrat39/rust-tools.nvim",
+        config = function()
+            local rust_tools = require("rust-tools")
+
+            rust_tools.setup({})
+        end,
+        ft = "rust",
     }
 }
