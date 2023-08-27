@@ -154,6 +154,8 @@ local lspconfig = require("lspconfig")
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+lspconfig.rust_analyzer.setup { capabilities=capabilities }
+
 local disable_completion = function(client)
     -- Disable completion from pylsp because ``jedi_language_server``'s options are better.
     -- Everything else is good though and should be kept.
