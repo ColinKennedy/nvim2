@@ -289,3 +289,6 @@
 [submodule "bundle/hlargs.nvim"]
 	path = bundle/hlargs.nvim
 	url = git@github.com:m-demare/hlargs.nvim.git
+[submodule "bundle/toggleterm.nvim"]
+	path = bundle/toggleterm.nvim
+	url = git@github.com:akinsho/toggleterm.git
