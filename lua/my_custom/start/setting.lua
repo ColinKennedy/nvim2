@@ -10,7 +10,8 @@ vim.opt.guicursor = ""  -- Keeps the "fat cursor" in INSERT Mode
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+local temporary_directory = os.getenv("HOME") or os.getenv("APPDATA")
+vim.opt.undodir = temporary_directory .. "/.vim/undodir"
 vim.api.nvim_create_autocmd(
     "BufWritePost",
     {
@@ -79,13 +80,23 @@ else
     separator = ":"
 end
 
-vim.cmd(
-    'let $PYTHONPATH = "'
-    .. vim.g.vim_home .. "/python_stubs"
-    .. separator
-    .. os.getenv("PYTHONPATH")
-    .. '"'
-)
+local existing = os.getenv("PYTHONPATH")
+
+if existing
+then
+    vim.cmd(
+        'let $PYTHONPATH = "'
+        .. vim.g.vim_home .. "/python_stubs"
+        .. separator
+        .. existing
+        .. '"'
+    )
+else
+    vim.cmd(
+        'let $PYTHONPATH = "' .. vim.g.vim_home .. "/python_stubs" .. '"'
+    )
+end
+
 
 vim.api.nvim_create_user_command(
     "LspCapabilities",
