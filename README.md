@@ -62,7 +62,6 @@
 | n | `<leader>`st | [s]end to the nearest [t]erminal your system clipboard text.            |
 
 
-
 ### Formatting And Editting
 1. mode
 2. mapping
@@ -76,7 +75,6 @@
 | n | `<leader>`j   | [j]oin the line below without adding an extra space                                |
 | n | `<leader>`sa  | [s]plit [a]rgs - Split a line with arguments into multiple lines.                  |
 | n | `<leader>`ss  | [s]ubstitute [s]election (in-file search/replace) for the word under your cursor.  |
-
 
 
 ### Debugging
@@ -102,6 +100,16 @@
 | n | `<leader>`dj  | Skip over the current line.                                        |
 | n | `<leader>`dl  | Move into a function call.                                         |
 | n | `<leader>`dz  | [d]ebugger [z]oom toggle (full-screen or minimize the window).     |
+
+
+### LSP
+| 1 |      2       |                           3                               |
+| - | -----------  | --------------------------------------------------------- |
+| n | K            | Show documentation.                                       |
+| n | gD           | [g]o to [d]eclarations.                                   |
+| n | gd           | [g]o to [d]efinition.                                     |
+| n | gi           | [g]o to [i]mplementations.                                |
+| n | gr           | [g]o to [r]eferences (where a variable is used)           |
 
 
 ### Miscellaneous
