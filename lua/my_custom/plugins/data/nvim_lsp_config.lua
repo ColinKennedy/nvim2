@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd(
                 vim.lsp.buf.definition,
                 {
                     buffer=event.buf,
-                    desc="[g]o to wherever the function / class was [d]efined.",
+                    desc="[g]o to [d]efinition of the function / class.",
                 }
             )
             vim.keymap.set(
@@ -68,53 +68,53 @@ vim.api.nvim_create_autocmd(
                     desc="Find and [g]o to the [i]mplementation of some header / declaration."
                 }
             )
-            vim.keymap.set(
-                "n",
-                "<space>wa",
-                vim.lsp.buf.add_workspace_folder,
-                {
-                    buffer=event.buf,
-                    desc="[w]orkspace LSP [a]dd - Include a folder for your session.",
-                }
-            )
-            vim.keymap.set(
-                "n",
-                "<space>wr",
-                vim.lsp.buf.remove_workspace_folder,
-                {
-                    buffer=event.buf,
-                    desc="[w]orkspace [r]emove - Remove a folder from your session.",
-                }
-            )
-            vim.keymap.set(
-                "n",
-                "<space>wl",
-                function()
-                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                end,
-                {
-                    buffer=event.buf,
-                    desc="[w]orkspace [l]ist - Show the folders for your current session.",
-                }
-            )
-            vim.keymap.set(
-                "n",
-                "<space>D",
-                vim.lsp.buf.type_definition,
-                {
-                    buffer=event.buf,
-                    desc="Show the [D]efinition of some function / instance.",
-                }
-            )
-            vim.keymap.set(
-                "n",
-                "<space>ca",
-                vim.lsp.buf.code_action,
-                {
-                    buffer=event.buf,
-                    desc="[c]ode [a]ction - Show available commands for what's under your cursor."
-                }
-            )
+            -- vim.keymap.set(
+            --     "n",
+            --     "<space>wa",
+            --     vim.lsp.buf.add_workspace_folder,
+            --     {
+            --         buffer=event.buf,
+            --         desc="[w]orkspace LSP [a]dd - Include a folder for your session.",
+            --     }
+            -- )
+            -- vim.keymap.set(
+            --     "n",
+            --     "<space>wr",
+            --     vim.lsp.buf.remove_workspace_folder,
+            --     {
+            --         buffer=event.buf,
+            --         desc="[w]orkspace [r]emove - Remove a folder from your session.",
+            --     }
+            -- )
+            -- vim.keymap.set(
+            --     "n",
+            --     "<space>wl",
+            --     function()
+            --         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            --     end,
+            --     {
+            --         buffer=event.buf,
+            --         desc="[w]orkspace [l]ist - Show the folders for your current session.",
+            --     }
+            -- )
+            -- vim.keymap.set(
+            --     "n",
+            --     "<space>D",
+            --     vim.lsp.buf.type_definition,
+            --     {
+            --         buffer=event.buf,
+            --         desc="Show the [D]efinition of some function / instance.",
+            --     }
+            -- )
+            -- vim.keymap.set(
+            --     "n",
+            --     "<space>ca",
+            --     vim.lsp.buf.code_action,
+            --     {
+            --         buffer=event.buf,
+            --         desc="[c]ode [a]ction - Show available commands for what's under your cursor."
+            --     }
+            -- )
             vim.keymap.set(
                 "n",
                 "gr",
@@ -124,17 +124,17 @@ vim.api.nvim_create_autocmd(
                     desc="[g]o to [r]eferences - Show all locations where a variable is used."
                 }
             )
-            vim.keymap.set(
-                "n",
-                "<space>f",
-                function()
-                    vim.lsp.buf.format { async = true }
-                end,
-                {
-                    buffer=event.buf,
-                    desc="auto-[f]ormat the current file.",
-                }
-            )
+            -- vim.keymap.set(
+            --     "n",
+            --     "<space>f",
+            --     function()
+            --         vim.lsp.buf.format { async = true }
+            --     end,
+            --     {
+            --         buffer=event.buf,
+            --         desc="auto-[f]ormat the current file.",
+            --     }
+            -- )
         end,
     }
 )

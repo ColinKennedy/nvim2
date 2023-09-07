@@ -505,7 +505,14 @@ return {
             -- another plug-in, ``Weissle/persistent-breakpoints.nvim``, to
             -- refer to + use.
             --
-            require("dap")
+            local dap = require("dap")
+
+            -- Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#ccrust-gdb-via--vscode-cpptools
+            dap.adapters.cppdbg = {
+                id = "cppdbg",
+                type = "executable",
+                command = "/home/selecaoone/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7"
+            }
 
             vim.keymap.set(
                 "n",

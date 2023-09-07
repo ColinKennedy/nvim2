@@ -323,9 +323,9 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
     "SendToRecentTerminal",
     function(options)
-	local _is_buffer_hidden = function(buffer)
-	    return vim.fn.getbufinfo(buffer)[1].hidden == 1
-	end
+        local _is_buffer_hidden = function(buffer)
+            return vim.fn.getbufinfo(buffer)[1].hidden == 1
+        end
 
         local _include_newline = function(text)
             return text .. vim.api.nvim_replace_termcodes("<CR>", 1, 1, 1)
@@ -333,7 +333,7 @@ vim.api.nvim_create_user_command(
 
         local tab = vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage())
         local found = false
-	local terminal_buffer = -1
+        local terminal_buffer = -1
 
         for existing_tab, existing_terminal_buffer in pairs(TAB_TERMINALS)
         do
@@ -358,22 +358,22 @@ vim.api.nvim_create_user_command(
             -- TODO: Need to add this
             print("Sending to tmux")
 
-	    return
+            return
         end
 
-	local job_id = vim.fn.getbufvar(terminal_buffer, "terminal_job_id")
+        local job_id = vim.fn.getbufvar(terminal_buffer, "terminal_job_id")
 
-	if job_id == nil or _is_buffer_hidden(terminal_buffer)
-	then
+        if job_id == nil or _is_buffer_hidden(terminal_buffer)
+        then
             -- TODO: Need to add this
             print("Sending to tmux")
 
-	    return
-	end
+            return
+        end
 
         local command = _include_newline(options.args)
 
-	vim.api.nvim_chan_send(job_id, command)
+        vim.api.nvim_chan_send(job_id, command)
     end,
     {
         bang=true,
