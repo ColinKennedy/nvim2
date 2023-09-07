@@ -56,5 +56,87 @@ luasnip.add_snippets(
                 {}
             )
         ),
+
+        snippet(
+            {
+                docstring="Add a debug configuration for a C++ project.",
+                trig="debug_cpp_executable",
+            },
+            format(
+                [[
+                    " Reference: https://stackoverflow.com/a/18734557
+                    let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+                    " Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#configuration
+                    lua << EOF
+                    local dap = require("dap")
+                    dap.configurations.cpp = {
+                            name = "Launch file",
+                            type = "cppdbg",
+                            request = "launch",
+                            program = function()
+                                return vim.g._project_home .. "/@|"
+                            end,
+                            cwd = "$workspaceFolder",
+                            stopAtEntry = true,
+                    }
+                    EOF
+                ]],
+                { index(1) },
+                {
+                    delimiters = "@|"
+                }
+            )
+        ),
+
+        snippet(
+            {
+                docstring="Set up project-level quick-commands for developing in Rust.",
+                trig="rust_terminal_commands",
+            },
+            format(
+                [[
+                    " Reference: https://stackoverflow.com/a/18734557
+                    let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+                    function! RunCommandInTerminal(command)
+                        ToggleTerm direction=tab
+
+                        tnoremap <buffer> <silent> <leader>x <C-\>\<C-n>:close<CR>
+                        nnoremap <buffer> <silent> <leader>x :close<CR>
+
+                        execute "TermExec cmd='" . a:command . "' dir='" . g:_project_home . "'"
+                        " ToggleTerm [toggleterm.nvim plugin] starts in Terminal mode by default. Exit Terminal mode
+                        call feedkeys("\<C-\>\<C-n>")
+                    endfunction
+
+
+                    execute 'nnoremap <silent> <leader>mc :call RunCommandInTerminal("cargo check")<CR>'
+                    execute 'nnoremap <silent> <leader>mx :call RunCommandInTerminal("cargo run")<CR>'
+                ]],
+                {}
+            )
+        ),
+
+        snippet(
+            {
+                docstring='A quick way to make "per-project" toggleable files Using [a and ]a.',
+                trig="add_workspace_argslist",
+            },
+            format(
+                [[
+                    let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+                    silent! argdelete *  " Clear existing args so we can create them, anew
+
+                    execute ":argadd "
+                    \ . g:_project_home . "/.vimrc"
+                    \ . " " . g:_project_home . "/grammar.js"
+                    \ . " " . g:_project_home . "/test/corpus/metadata.txt"
+                    \ . " " . g:_project_home . "/test/corpus/prim.txt"
+                ]],
+                {}
+            )
+        ),
     }
 )
