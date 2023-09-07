@@ -134,6 +134,10 @@ luasnip.add_snippets(
                     \ . " " . g:_project_home . "/grammar.js"
                     \ . " " . g:_project_home . "/test/corpus/metadata.txt"
                     \ . " " . g:_project_home . "/test/corpus/prim.txt"
+
+                    nnoremap <M-j> :normal ]a<CR>
+                    nnoremap <M-k> :normal [a<CR>
+                    nnoremap <M-l> :args<CR>
                 ]],
                 {}
             )
