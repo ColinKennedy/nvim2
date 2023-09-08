@@ -936,5 +936,49 @@ return {
         end,
         ft = "toggleterm",
         version = "1.*",
-    }
+    },
+
+    -- Allow quick and easy navigation to common project files
+    {
+        "cbochs/grapple.nvim",
+        config = function()
+            vim.keymap.set(
+                "n",
+                "<M-S-j>",
+                function()
+                    require("grapple").cycle_forward()
+                end,
+                {desc = "Move to the next saved project path."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<M-S-k>",
+                function()
+                    require("grapple").cycle_backward()
+                end,
+                {desc = "Move to the previous saved project path."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<M-S-l>",
+                function()
+                    require("grapple").popup_tags("git")
+                end,
+                {desc = "Show all saved project paths."}
+            )
+
+            vim.keymap.set(
+                "n",
+                "<M-S-h>",
+                function()
+                    require("grapple").toggle({scope="git"})
+                end,
+                {desc = "Add / Remove the current file as a project path."}
+            )
+        end,
+        dependencies = {"ColinKennedy/plenary.nvim"},
+        event = "VeryLazy",
+    },
 }
