@@ -778,13 +778,14 @@ return {
             local which_key = require("which-key")
 
             which_key.setup {
+                ignore_missing = true,
                 triggers_blacklist = {
                     c = {"%", ">"},  -- Prevent mappings like %s/ from popping up
                 },
                 plugins = {
                     presets = {
-                        -- motions = false,
-                        -- text_objects = false,
+                        motions = false,
+                        text_objects = false,
                         operators = false,
                     }
                 }
