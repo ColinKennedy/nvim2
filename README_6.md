@@ -1,4 +1,4 @@
-Complete my “auto-add = sign” plugin for Python
+Complete my "auto-add = sign" plugin for Python
 
 Check if `dad` still accidentally deletes the line below it. E.g. `__init__` functions
 
