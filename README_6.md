@@ -1,6 +1,10 @@
-Complete my "auto-add = sign" plugin for Python
+- Add versioning to my neovim plugins
+- Why does Rg resize my buffer windows? FIX
+- Complete my "auto-add = sign" plugin for Python
+- Vim cutlass plugin
 
 Check if `dad` still accidentally deletes the line below it. E.g. `__init__` functions
+
 
 Python super() snippet is somehow missing on my laptop?
 
