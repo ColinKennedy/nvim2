@@ -1,3 +1,60 @@
+# Fonts
+https://webinstall.dev/nerdfont
+
+Make sure to add nerd fonts to the list of installation stuff
+
+```sh
+curl -sS https://webi.sh/nerdfont | sh
+```
+
+Install "Droid Sans Mono" for Powerline Nerd Font
+
+
+## Lazy.nvim
+Requires a git that allows the `"--filter=blob:none"` option. Which means roughly git 2+
+
+### CentOS 7
+Reference: https://computingforgeeks.com/install-git-2-on-centos-7/#google_vignette
+```sh
+sudo yum -y remove git
+sudo yum -y remove git-*
+sudo yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+sudo yum install git
+git --version
+# git version 2.41.0
+```
+
+
+## Tmux
+Tmux 2 - https://gist.github.com/pokev25/4b9516d32f4021d945a140df09bf1fde
+
+
+## Ripgrep
+Ripgrep install - https://github.com/BurntSushi/ripgrep#installation
+
+
+### CentOS 7
+```sh
+sudo yum install dnf
+sudo dnf install ripgrep
+```
+
+
+## fzf
+```sh
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
+
+## Autojump
+```sh
+git clone git://github.com/wting/autojump.git
+cd autojump
+./install.py or ./uninstall.py
+```
+
+
 ## Tree-sitter
 Requires g++ for compiling tree-sitter parsers. Ideally g++ version 8+
 

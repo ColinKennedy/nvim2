@@ -174,6 +174,19 @@
 
 
 ### Plug-in Specific
+#### grapple.nvim
+Super quickly register "important" files in a project and swap between them. So helpful!
+
+This plug-in is basically https://github.com/ThePrimeagen/harpoon but actually good.
+
+| 1 |      2       |                                  3                                 |
+| - | ------------ | ------------------------------------------------------------------ |
+| n | `<M-S-j>`    | Change buffer to the next saved file.                              |
+| n | `<M-S-k>`    | Change buffer to the previous saved file.                          |
+| n | `<M-S-h>`    | Add/Remove the current buffer to the saved files.                  |
+| n | `<M-S-l>`    | [l]ist all saved files.                                            |
+
+
 #### vim-bqf
 1. mode
 2. mapping
