@@ -103,13 +103,14 @@
 
 
 ### LSP
-| 1 |      2       |                           3                               |
-| - | -----------  | --------------------------------------------------------- |
-| n | K            | Show documentation.                                       |
-| n | gD           | [g]o to [d]eclarations.                                   |
-| n | gd           | [g]o to [d]efinition.                                     |
-| n | gi           | [g]o to [i]mplementations.                                |
-| n | gr           | [g]o to [r]eferences (where a variable is used)           |
+| 1 |      2       |                           3                                |
+| - | -----------  | ---------------------------------------------------------- |
+| n | K            | Show documentation.                                        |
+| n | gD           | [g]o to [d]eclarations.                                    |
+| n | gd           | [g]o to [d]efinition.                                      |
+| n | gi           | [g]o to [i]mplementations.                                 |
+| n | gr           | [g]o to [r]eferences (where a variable is used)            |
+| n | <leader>gca  | [c]ode [a]ction - Show available commands under the cursor.|
 
 
 ### Miscellaneous

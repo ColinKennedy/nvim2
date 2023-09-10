@@ -106,15 +106,15 @@ vim.api.nvim_create_autocmd(
             --         desc="Show the [D]efinition of some function / instance.",
             --     }
             -- )
-            -- vim.keymap.set(
-            --     "n",
-            --     "<space>ca",
-            --     vim.lsp.buf.code_action,
-            --     {
-            --         buffer=event.buf,
-            --         desc="[c]ode [a]ction - Show available commands for what's under your cursor."
-            --     }
-            -- )
+            vim.keymap.set(
+                "n",
+                "<leader>gca",
+                vim.lsp.buf.code_action,
+                {
+                    buffer=event.buf,
+                    desc="[c]ode [a]ction - Show available commands for what's under your cursor."
+                }
+            )
             vim.keymap.set(
                 "n",
                 "gr",

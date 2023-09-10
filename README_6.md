@@ -2,6 +2,13 @@
 - https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
 
 
+- Add Hunspell - To improve spell checking word variants
+
+- need terminal send / etc code
+  - Add tmux support
+  - SendRecent! - sends to tmux if both are there
+   - config to switch the priority
+
 
 
 - Follow-up

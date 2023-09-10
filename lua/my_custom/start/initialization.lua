@@ -151,7 +151,7 @@ vim.cmd[[abbreviate chnage change]]
 
 -- Enable "programmer" spellchecking
 vim.opt.spellfile = "en-strict.utf-8.add"
-vim.opt.spelllang = "en-strict,cjk"
+vim.opt.spelllang = "en-strict,cjk"  -- cjk means unicode, I think
 vim.opt.spelloptions:append("camel")
 vim.opt.spelloptions:append("noplainbuffer")
 -- vim.opt.spell = true  -- Uncomment to enable

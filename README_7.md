@@ -16,6 +16,10 @@ https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
 - For some reason when I leave dap, the <F5> mapping gets unset. Why? Fix.
 
 
+
+https://www.reddit.com/r/neovim/comments/ug2s4s/disable_diagnostic_while_expanding_luasnip/
+
+
 - Go through checkhealth stuff
 - Do the rest of the TODO notes
 - Make sure to defer load as much as possible
