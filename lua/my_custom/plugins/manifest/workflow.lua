@@ -909,6 +909,8 @@ return {
     },
 
     -- Allow quick and easy navigation to common project files
+    -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
+    --
     {
         "cbochs/grapple.nvim",
         config = function()
