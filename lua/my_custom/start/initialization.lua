@@ -432,3 +432,29 @@ vim.api.nvim_create_user_command(
         desc = "Switch a binary file to a hexdump-ish view and back."
     }
 )
+
+
+vim.cmd[[
+function ArgsListNext()
+    try
+        normal ]a
+    catch /.*/
+        first
+    finally
+        args
+    endtry
+endfunction
+
+function ArgsListPrevious()
+    try
+        normal [a
+    catch /.*/
+        last
+    finally
+        args
+    endtry
+endfunction
+
+command -nargs=0 ArgsListNext call ArgsListNext()
+command -nargs=0 ArgsListPrevious call ArgsListPrevious()
+]]
