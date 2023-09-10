@@ -224,14 +224,16 @@ return {
         version = "0.*",
     },
 
-    -- Very unfortunately needed because indentation via treesitter has bugs
+    -- TODO: Possibly remove this submodule
     --
-    -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
-    --
-    {
-        "Vimjas/vim-python-pep8-indent",
-        ft = "python",
-    },
+    -- -- Very unfortunately needed because indentation via treesitter has bugs
+    -- --
+    -- -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
+    -- --
+    -- {
+    --     "Vimjas/vim-python-pep8-indent",
+    --     ft = "python",
+    -- },
 
     -- Enables nvim-treesitter syntax highlighting groups for USD files.
     --
@@ -341,9 +343,13 @@ return {
     -- Quickfix helper functions
     {
         "romainl/vim-qf",
+        config = function()
+            vim.g.qf_auto_resize = 0
+        end,
         ft = "qf",
         version = "0.*",
     },
+
     -- Quickfix auto previews and other fun features
     {
         "kevinhwang91/nvim-bqf",
@@ -532,6 +538,14 @@ return {
             )
             vim.keymap.set(
                 "n",
+                "<leader>dx",
+                function()
+                    require("dap").run_to_cursor()
+                end,
+                {desc="Run to [d]ebug cursor to [x] marks the spot."}
+            )
+            vim.keymap.set(
+                "n",
                 "<leader>dz",
                 ":ZoomWinTabToggle<CR>",
                 {desc="[d]ebugger [z]oom toggle (full-screen or minimize the window)."}
@@ -582,7 +596,7 @@ return {
                 function()
                     require("dap").disconnect({terminateDebugee=false})
                 end,
-                {desc="Disconect from a remote DAP session."}
+                {desc="Disconnect from a remote DAP session."}
             )
             vim.keymap.set(
                 "n",
@@ -887,14 +901,13 @@ return {
             -- as you move in and out of them
             --
             function _G.set_terminal_keymaps()
-              local opts = {buffer = 0}
-              vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-              vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-              vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-              vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-              vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-              vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-              vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+                local opts = {buffer = 0}
+                vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+                vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+                vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+                vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+                vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+                vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
             end
             -- Note: If you only want these mappings for toggle term use term://*toggleterm#* instead
             vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
@@ -902,36 +915,44 @@ return {
         version = "v2.*",
     },
 
-    -- Allow terminal buffers to be edited
-    {
-        "chomosuke/term-edit.nvim",
-        config = function()
-            if vim.fn.has("win32") == 1
-            then
-                prompt = ">"
-            else
-                prompt = "%$ "
-            end
-
-            require('term-edit').setup {
-                -- Mandatory option:
-                --
-                -- Set this to a lua pattern that would match the end of your prompt.
-                -- Or a table of multiple lua patterns where at least one would match the
-                -- end of your prompt at any given time.
-                --
-                -- How to write lua patterns: https://www.lua.org/pil/20.2.html
-                --
-                -- For most bash/zsh user this is '%$ '.
-                -- For most powershell/fish user this is '> '.
-                -- For most windows cmd user this is '>'.
-                --
-                prompt_end = prompt,
-            }
-        end,
-        ft = "toggleterm",
-        version = "v1.*",
-    },
+    -- -- Allow terminal buffers to be edited
+    -- --
+    -- -- TODO: Re-add after this is fixed - https://github.com/chomosuke/term-edit.nvim/issues/56
+    -- --
+    -- {
+    --     "chomosuke/term-edit.nvim",
+    --     config = function()
+    --         if vim.fn.has("win32") == 1
+    --         then
+    --             prompt = ">"
+    --         else
+    --             prompt = "%$ "
+    --         end
+    --
+    --         require('term-edit').setup {
+    --             -- Mandatory option:
+    --             --
+    --             -- Set this to a lua pattern that would match the end of your prompt.
+    --             -- Or a table of multiple lua patterns where at least one would match the
+    --             -- end of your prompt at any given time.
+    --             --
+    --             -- How to write lua patterns: https://www.lua.org/pil/20.2.html
+    --             --
+    --             -- For most bash/zsh user this is '%$ '.
+    --             -- For most powershell/fish user this is '> '.
+    --             -- For most windows cmd user this is '>'.
+    --             --
+    --             prompt_end = prompt,
+    --             -- mapping = {
+    --             --     t = {
+    --             --         kk = k
+    --             --     }
+    --             -- },
+    --         }
+    --     end,
+    --     ft = "toggleterm",
+    --     version = "v1.*",
+    -- },
 
     -- Allow quick and easy navigation to common project files
     -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
@@ -978,5 +999,13 @@ return {
         dependencies = {"ColinKennedy/plenary.nvim"},
         event = "VeryLazy",
         version = "v0.*",
+    },
+
+    -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
+    {
+        "max397574/better-escape.nvim",
+        config = function()
+          require("better_escape").setup()
+        end,
     },
 }

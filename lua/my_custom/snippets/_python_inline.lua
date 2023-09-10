@@ -1,4 +1,7 @@
+local is_line_beginning = require("my_custom.utilities.snippet_helper").is_line_beginning
 local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
+local line_begin = require("luasnip.extras.expand_conditions").line_begin
+
 local events = require("luasnip.util.events")
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
@@ -38,21 +41,74 @@ local append_parentheses_onto_line = function()
 end
 
 
+local lstrip = function(text)
+    return text:match("^%s*(.*)")
+end
+
+
+-- TODO: This snippet sucks but I cannot figure out how to get
+-- `remove_leading_equal_sign` to work as a "pre-expand" snippet without it
+-- breaking things.
+--
+-- Reference: https://github.com/L3MON4D3/LuaSnip/discussions/383
+--
+local remove_leading_equal_sign = function(text)
+    return function_(
+        function(_, _)
+            local current_row = vim.fn.line(".")  -- This is "1-or-greater"
+            local current_line = vim.fn.getline(current_row)
+
+            _, end_index = current_line:find("=")
+
+            if end_index == nil
+            then
+                return ""
+            end
+
+            local current_buffer = 0
+
+            line_without_equals = current_line:sub(end_index + 1, #current_line)
+            stripped = text .. lstrip(line_without_equals)
+
+            vim.schedule(
+                function()
+                    vim.api.nvim_buf_set_lines(
+                        current_buffer,
+                        current_row - 1,
+                        current_row,
+                        true,
+                        { stripped }
+                    )
+                end
+            )
+        end
+    )
+end
+
+
 return {
     snippet(
         {
             docstring="A print() call",
             trig="p",
         },
-        { text("print("), index(1)}  -- TODO: Re-add append_parentheses_onto_line
+        { text("print("), index(1), append_parentheses_onto_line() },
+        { show_condition = is_source_beginning("p") }
     ),
 
+    -- TODO: This snippet sucks but I cannot figure out how to get
+    -- `remove_leading_equal_sign` to work as a "pre-expand" snippet without it
+    -- breaking things.
+    --
+    -- Reference: https://github.com/L3MON4D3/LuaSnip/discussions/383
+    --
     snippet(
         {
             docstring="return statement",
             trig="r",
         },
-        { text("return "), index(1) }
+        { text("return "), index(1), remove_leading_equal_sign("return ") },
+        { show_condition = is_source_beginning("p") }
     ),
 
     snippet(

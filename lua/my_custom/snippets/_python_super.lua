@@ -1,5 +1,8 @@
 -- Define a snippet for Python's `super()` command. Auto-fills out all of its parameters.
 
+local snippet_helper = require("my_custom.utilities.snippet_helper")
+local is_source_beginning = snippet_helper.is_source_beginning
+
 local luasnip = require("luasnip")
 local snippet = luasnip.s
 local dynamicNode = require("luasnip.nodes.dynamicNode").D
@@ -21,6 +24,7 @@ return {
                     return snippetNode(nil, nodes)
                 end
             )
-        }
+        },
+        { show_condition = is_source_beginning("super") }
     )
 }

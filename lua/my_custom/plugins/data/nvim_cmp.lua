@@ -40,16 +40,33 @@ cmp.setup(
             ["<C-d>"] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
             ["<C-Space>"] = function(fallback)
+                -- Don't choose any completion item and use raw input text, instead
+                --
                 -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/429#issuecomment-954121524
+                --
                 cmp.abort()
             end,
             ["<Space>"] = function(fallback)
-                -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/429#issuecomment-954121524
-                cmp.abort()
+                -- Use whatever current text (completed or not) exists and stop completing
+                local visible = cmp.visible()
+                local has_entry = cmp.get_selected_entry() ~= nil
 
-                fallback()
+                cmp.close()
+
+                -- If the completion menu pops up as you're typing but you're
+                -- ignoring the completion menu, interpret <Space> just as
+                -- space. But if the completion menu is up and an entry is
+                -- selected then assume that the user was attempting to do
+                -- auto-completion and DON'T insert a <Space> to keep it
+                -- consistent with the <C-Space> mapping
+                --
+                if not visible or (visible and not has_entry)
+                then
+                    fallback()
+                end
             end,
             ["<CR>"] = cmp.mapping.confirm {
+                -- Choose the currently selected completion item
                 behavior = cmp.ConfirmBehavior.Insert,  -- Don't delete the word to the right
                 select = false,
             },
@@ -183,3 +200,20 @@ lspconfig.pylsp.setup { capabilities=capabilities, on_attach = disable_completio
 capabilities.offsetEncoding = "utf-8"
 lspconfig.ccls.setup { capabilities=capabilities }
 lspconfig.ccls.setup { capabilities=capabilities }
+
+
+-- Stop snippet expansion after leaving -- INSERT -- mode
+--
+-- Reference: https://github.com/L3MON4D3/LuaSnip/issues/258#issuecomment-1429989436
+--
+vim.api.nvim_create_autocmd('ModeChanged', {
+    pattern = '*',
+    callback = function()
+        if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+            and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+            and not require('luasnip').session.jump_active
+        then
+            require('luasnip').unlink_current()
+        end
+    end
+})

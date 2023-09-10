@@ -167,7 +167,7 @@ return {
             vim.g.ip_skipfold = 1
         end,
         keys = {"{", "}"},
-        version = "1.*",
+        -- version = "1.*",  TODO There is a tag but it's broken so we get the latest commits
     },
 
     -- TODO: Replace this with treesitter, sometime in the future

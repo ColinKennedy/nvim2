@@ -77,6 +77,11 @@ return {
                 }
             )
         end,
+        -- TODO: Remove this pinned commit once this is solved
+        --
+        -- Reference: https://github.com/junegunn/fzf.vim/issues/1506
+        --
+        commit = "5d87ac1fe8d729f116bda2f90a7211ad309ddf5a",
         dependencies = { "junegunn/fzf" },
         cmd = { "Args", "Buffers", "Files", "GFiles", "Helptags", "History", "Lines" },
         keys = {"<space>A", "<space>B", "<space>E", "<space>L", "<space>e"},

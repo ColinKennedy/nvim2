@@ -135,16 +135,6 @@ local adjust_window_height = function(minimum, maximum)
 end
 
 vim.api.nvim_create_autocmd(
-    "FileType",
-    {
-        callback = function()
-            adjust_window_height(0, 8)
-        end,
-        pattern = "qf",
-    }
-)
-
-vim.api.nvim_create_autocmd(
     {"BufRead", "BufNewFile"},
     {
         command = ":set filetype=usd",

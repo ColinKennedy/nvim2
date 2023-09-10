@@ -41,7 +41,7 @@ require("nvim-treesitter.configs").setup {
         --
         -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
         --
-        disable = {"cpp", "python"},
+        disable = {"cpp"},
     },
 
 
