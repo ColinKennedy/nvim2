@@ -27,28 +27,80 @@ www
 
 # Programming/Computer generic (Hard English words that are common in programming documentation)
 GUI
+JSON
+attribute
+attributes
+auto
+auto
+background
+batch
+child
+color
+color
 configuration
-database
 data
+database
+defer
+dialog
 disk
 display
 ensure
 environment
+exception
 execution
 exist
+fault
+filter
 flag
+flag
+flags
+font
+frame
+index
+index
+inherit
+instance
+invalid
 iteration
 log
+log
+logs
+memory
 namespace
+negative
 node
+node
+nodes
+positive
+query
 raw
+recursive
+recursively
+reset
+rgb
+role
+save
 script
+segmentation
+select
+selected
 setting
+setting
+settings
 shell
+signal
+slot
+slots
 symlink
+sync
 terminal
-JSON
+unique
+validate
+validated
 verbose
+view
+viewer
+visibility
 
 # Programming commands
 sudo
@@ -91,6 +143,7 @@ against
 age
 ago
 all
+allow
 allowed
 almost
 also
@@ -139,6 +192,7 @@ but
 button
 buy
 by
+call
 camera
 can
 cannot
@@ -153,6 +207,7 @@ change
 changes
 characters
 cheap
+check
 children
 class
 clean
@@ -182,10 +237,12 @@ curve
 custom
 cut
 danger
+date
 day
 decision
 deep
 default
+delete
 describe
 design
 destination
@@ -193,7 +250,9 @@ detail
 did
 die
 different
+direct
 direction
+disable
 distance
 divide
 divided
@@ -203,12 +262,15 @@ dog
 done
 doubt
 down
+drag
 drop
+each
 early
 easy
 edge
 effect
 either
+emit
 empty
 enable
 end
@@ -216,20 +278,25 @@ enough
 equal
 equals
 error
+etc
 even
 event
 ever
 every
+everything
 example
+extra
 fact
 fall
 false
 far
+fast
 feature
 few
 field
 file
 files
+fill
 filtered
 find
 fine
@@ -242,6 +309,7 @@ flat
 floor
 fly
 fold
+folder
 follow
 for
 force
@@ -283,6 +351,8 @@ him
 his
 history
 hit
+hold
+holds
 hole
 hook
 hot
@@ -298,10 +368,12 @@ increase
 information
 inside
 install
+instead
 into
 is
 it
 item
+its
 job
 join
 joy
@@ -310,7 +382,10 @@ just
 keep
 key
 kick
+know
+label
 language
+large
 last
 late
 later
@@ -377,6 +452,7 @@ multiple
 must
 my
 name
+names
 near
 necessary
 need
@@ -425,6 +501,7 @@ past
 paste
 path
 people
+per
 person
 picture
 pin
@@ -532,6 +609,7 @@ space
 special
 stage
 start
+starting
 starts
 statement
 station
@@ -547,8 +625,10 @@ sure
 table
 tail
 take
+takes
 talk
 tall
+tell
 ten
 test
 tests
@@ -556,6 +636,7 @@ text
 than
 that
 the
+their
 them
 then
 there
@@ -591,6 +672,7 @@ us
 use
 used
 user
+usually
 value
 variable
 variables
@@ -621,6 +703,8 @@ word
 words
 work
 works
+wrap
+write
 wrong
 year
 yes
@@ -850,11 +934,16 @@ yields
 # Python standard library words
 subprocess
 
+
 # Popular third-party Python packages
 requests
 jedi
 parso
 rez
+
+# File formats
+json
+HTML
 
 # Qt words
 Qt
