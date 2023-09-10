@@ -117,30 +117,5 @@ luasnip.add_snippets(
                 {}
             )
         ),
-
-        snippet(
-            {
-                docstring='A quick way to make "per-project" toggleable files Using [a and ]a.',
-                trig="add_workspace_argslist",
-            },
-            format(
-                [[
-                    let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-
-                    silent! argdelete *  " Clear existing args so we can create them, anew
-
-                    execute ":argadd "
-                    \ . g:_project_home . "/.vimrc"
-                    \ . " " . g:_project_home . "/grammar.js"
-                    \ . " " . g:_project_home . "/test/corpus/metadata.txt"
-                    \ . " " . g:_project_home . "/test/corpus/prim.txt"
-
-                    nnoremap <M-S-j> :ArgsListNext<CR>
-                    nnoremap <M-S-k> :ArgsListPrevious<CR>
-                    nnoremap <M-S-l> :args<CR>
-                ]],
-                {}
-            )
-        ),
     }
 )
