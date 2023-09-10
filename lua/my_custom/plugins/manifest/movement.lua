@@ -23,6 +23,7 @@ return {
             vim.cmd[[call fzf#install()]]
         end,
         lazy = true,
+        version = "0.*",
     },
     {
         "junegunn/fzf.vim",
@@ -87,6 +88,7 @@ return {
     {
         "jremmen/vim-ripgrep",
         cmd = "Rg",
+        version = "1.*",
     },
 
     -- A plugin that highlights the character to move to a word or WORD with f/t
@@ -110,5 +112,6 @@ return {
             require("my_custom.utilities.utility").lazy_load("quick-scope")
         end,
         event = "VeryLazy",
+        version = "2.*",
     },
 }

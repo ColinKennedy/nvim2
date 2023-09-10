@@ -1,4 +1,3 @@
-- Add versioning to my neovim plugins
 - Why does Rg resize my buffer windows? FIX
 - Complete my "auto-add = sign" plugin for Python
 - Vim cutlass plugin

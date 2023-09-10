@@ -21,6 +21,7 @@ return {
     {
         "pappasam/jedi-language-server",
         lazy = true,
+        version = "0.*",
     },
 
     {
@@ -34,6 +35,7 @@ return {
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
         event = { "VeryLazy" },  -- Or "InsertEnter"
+        version = "0.*",
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
@@ -59,7 +61,7 @@ return {
             vim.g._snippet_super_prefer_keywords = true
         end,
         event = "InsertEnter",
-        version = "1.*",
+        version = "1.*",  -- TODO: There's a 2+. Add?
     },
 
     --     -- TODO: Consider deprecating my current auto-pairs for this?
@@ -96,6 +98,7 @@ return {
             )
         end,
         lazy = true,
+        version = "2.*",
     },
 
     -- Linter package container / manager
@@ -116,6 +119,7 @@ return {
                 }
             )
         end,
+        version = "1.*",
     },
 
     -- Integrates linters, formatters, and other features into Neovim's own LSP. Cool!
@@ -184,6 +188,7 @@ return {
             )
         end,
         event = "VeryLazy",  -- Or maybe InsertEnter
+        version = "0.*",
     },
 
     -- Rust LSP tools

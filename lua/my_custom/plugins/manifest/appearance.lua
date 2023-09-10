@@ -61,7 +61,8 @@ return {
                 changedelete = { text = "x" },
                 untracked = { text = "" },
             },
-        }
+        },
+        version = "0.*"
     },
 
     -- TODO: Add this later

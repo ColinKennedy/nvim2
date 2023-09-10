@@ -17,6 +17,7 @@ return {
         config = function()
             vim.g.dispatch_no_maps = 1
         end,
+        version = "1.*",
     },
 
     -- A cool plugin that makes it easier to search/replace variations of words
@@ -27,6 +28,7 @@ return {
     {
         "tpope/vim-abolish",
         cmd = { "S", "Subvert" },
+        version = "1.*",
     },
 
     -- Wrap and unwrap function arguments, lists, and dictionaries with one mapping
@@ -72,18 +74,21 @@ return {
     {
         "bronson/vim-visual-star-search",
         keys = {"*", "#"},
+        version = "0.*",
     },
 
     -- Auto-completion tags for Houdini SideFX VEX commands
     {
         "ColinKennedy/vim-vex-complete",
         ft = { "vex" },
+        version = "1.*",
     },
 
     -- Auto-completion tags for Pixar USD keywords
     {
         "ColinKennedy/vim-usd-complete",
         ft = { "usda", "usd" },
+        version = "1.*",
     },
 
     -- A plugin that makes Vim's "gf" command work with USD URIs
@@ -93,6 +98,7 @@ return {
             vim.g.usdresolve_command = 'rez-env USD -- usdresolve "{path}"'
         end,
         ft = { "usda", "usd" },
+        version = "1.*",
     },
 
     -- Read and write USD crate files
@@ -102,6 +108,7 @@ return {
             vim.g.usdcat_command = 'rez_usdcat'
         end,
         ft = { "usda", "usd" },
+        version = "1.*",
     },
 
     -- Always show the current USD Prim context. Useful when navigating nested files
@@ -139,6 +146,7 @@ return {
     {
         "kana/vim-tabpagecd",
         event = { "TabEnter", "TabLeave" },
+        version = "0.*",
     },
 
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
@@ -149,6 +157,7 @@ return {
         end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
         keys = { "<C-h>", "<C-j>", "<C-k>", "<C-l>" },
+        version = "1.*",
     },
     {
         "kwkarlwang/bufresize.nvim",
@@ -212,6 +221,7 @@ return {
             end
         end,
         lazy = true,
+        version = "0.*",
     },
 
     -- Very unfortunately needed because indentation via treesitter has bugs
@@ -237,6 +247,7 @@ return {
     {
         "ColinKennedy/nvim-treesitter-usd",
         ft = "usd",
+        version = "0.*",
     },
 
     {
@@ -312,7 +323,8 @@ return {
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         cmd = { "AerialNavToggle", "AerialToggle"},
-        keys = { "<space>SN", "<space>SS" } -- S as in "Summary"
+        keys = { "<space>SN", "<space>SS" }, -- S as in "Summary"
+        version = "stable",
     },
 
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
@@ -323,18 +335,21 @@ return {
             require("my_custom.utilities.utility").lazy_load("vim-projectionist")
         end,
         ft = "cpp",
+        version = "1.*",
     },
 
     -- Quickfix helper functions
     {
         "romainl/vim-qf",
         ft = "qf",
+        version = "0.*",
     },
     -- Quickfix auto previews and other fun features
     {
         "kevinhwang91/nvim-bqf",
         dependencies = {"junegunn/fzf", "nvim-treesitter/nvim-treesitter"},
         ft = "qf",
+        version = "0.*",
     },
 
     -- Auto-insert pairs
@@ -354,13 +369,15 @@ return {
     -- Give vim some shell-like commands that it's missing
     {
         "tpope/vim-eunuch",
-        cmd = { "Delete", "Mkdir", "Move", "Rename", "SudoEdit", "SudoWrite" }
+        cmd = { "Delete", "Mkdir", "Move", "Rename", "SudoEdit", "SudoWrite" },
+        version = "1.*",
     },
 
     -- REPEAT LAST (USER) COMMAND and makes the '.' command even cooler
     {
         "tpope/vim-repeat",
         event = { "VeryLazy" },
+        version = "1.*",
     },
 
     -- A tool which automatically backs up modified files to a git repository
@@ -374,12 +391,14 @@ return {
             "ToggleBackupFile",
         },
         event = { "BufWritePre", "FileWritePre" },
+        version = "2.*",
     },
 
     -- Useful git commands. Such as :Gcd
     {
         "tpope/vim-fugitive",
         cmd = "Gcd",
+        version = "3.*",
     },
 
     -- Auto-sets Vim ``tabstop`` and ``shiftwidth``, based on the existing file's context
@@ -389,12 +408,14 @@ return {
         -- available when opening the first file. If so, remove this plug-in
         --
         -- event = { "VeryLazy" },
+        version = "2.*",
     },
 
     -- Show all file edits as an tree
     {
         "mbbill/undotree",
         cmd = "UndotreeToggle",
+        -- Note: No explicit `version = ` here but there could be one
     },
 
     -- Removes whitespace only on the lines you've changed. Pretty cool!
@@ -464,6 +485,7 @@ return {
             require("hop").setup({keys= "asdfghjkl"})
         end,
         keys = "<leader>f",
+        version = "2.*",
     },
 
     -- Debug adapter plug-in. Debug anything in Neovim
@@ -575,6 +597,7 @@ return {
             -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
         end,
         lazy = true,
+        version = "0.*",
     },
 
     -- A default "GUI" front-end for nvim-dap
@@ -807,6 +830,7 @@ return {
                 }
             )
         end,
+        version = "stable",
     },
 
     -- An async "parameter highlights" plugin that uses tree-sitter.
@@ -874,7 +898,8 @@ return {
             end
             -- Note: If you only want these mappings for toggle term use term://*toggleterm#* instead
             vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-        end
+        end,
+        version = "v2.*",
     },
 
     -- Allow terminal buffers to be edited
@@ -905,7 +930,7 @@ return {
             }
         end,
         ft = "toggleterm",
-        version = "1.*",
+        version = "v1.*",
     },
 
     -- Allow quick and easy navigation to common project files
@@ -952,5 +977,6 @@ return {
         end,
         dependencies = {"ColinKennedy/plenary.nvim"},
         event = "VeryLazy",
+        version = "v0.*",
     },
 }

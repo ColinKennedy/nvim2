@@ -7,12 +7,14 @@ return {
             require("my_custom.utilities.utility").lazy_load("vim-textobj-line")
         end,
         event = "VeryLazy",
+        version = "0.*",
     },
 
     -- Surround plugin. Lets you change stuff would words really easily
     {
         "tpope/vim-surround",
         keys = { "cs", "ds", "ys" },
+        version = "2.*",
     },
 
     -- Enables ``piw`` and other awesome text objects
@@ -20,6 +22,7 @@ return {
         "kana/vim-operator-replace",
         dependencies = { "kana/vim-operator-user" },
         event = "VeryLazy",
+        version = "0.*",
     },
     {
         "kana/vim-operator-user",
@@ -27,10 +30,12 @@ return {
             "kana/vim-textobj-user",
         },
         lazy = true,
+        version = "0.*",
     },
     {
         "kana/vim-textobj-user",
         lazy = true,
+        version = "0.*",
     },
 
     -- XXX: Removed due to this issue: https://github.com/wellle/targets.vim/issues/268
@@ -45,6 +50,7 @@ return {
             --     \ })
         end,
         event = "VeryLazy",
+        version = "0.*",
     },
 
 
@@ -56,6 +62,7 @@ return {
             require("Comment").setup()
         end,
         event = "VeryLazy",
+        version = "0.*",
     },
 
     -- Lets you select inside indented blocks, using "iI" or "aI"
@@ -106,6 +113,7 @@ return {
             )
         end,
         event = "VeryLazy",
+        version = "1.*",
     },
 
     {
@@ -140,12 +148,14 @@ return {
         end,
         dependencies = { "kana/vim-textobj-user" },
         event = "VeryLazy",
+        version = "0.*",
     },
 
     -- Gives vim a few tools to navigate through indented blocks more easily
     {
         "jeetsukumaran/vim-indentwise",
         keys = { "[%", "[+", "[-", "[=", "[_", "]%", "]+", "]-", "]=", "]_" },
+        version = "1.*",
     },
 
     -- Advanced paragraph movement options - lets {}s skip folds with some
@@ -157,6 +167,7 @@ return {
             vim.g.ip_skipfold = 1
         end,
         keys = {"{", "}"},
+        version = "1.*",
     },
 
     -- TODO: Replace this with treesitter, sometime in the future
@@ -189,6 +200,7 @@ return {
             "[q", "]q",
             "[t", "]t",
         },
+        version = "2.*",
     },
 
     -- A simple plugin that lets you grab inner parts of a variable
@@ -228,5 +240,6 @@ return {
     {
         "glts/vim-textobj-comment",
         dependencies = { "kana/vim-textobj-user" },
+        version = "1.*",
     },
 }
