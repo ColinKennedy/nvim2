@@ -1,9 +1,6 @@
 Fix - Critical
 - While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
 
-Add
-- Vim cutlass plugin - Test it out first though
-
 
 
 
