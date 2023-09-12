@@ -910,36 +910,44 @@ return {
         version = "v2.*",
     },
 
-    -- Allow terminal buffers to be edited
-    {
-        "chomosuke/term-edit.nvim",
-        config = function()
-            if vim.fn.has("win32") == 1
-            then
-                prompt = ">"
-            else
-                prompt = "%$ "
-            end
-
-            require('term-edit').setup {
-                -- Mandatory option:
-                --
-                -- Set this to a lua pattern that would match the end of your prompt.
-                -- Or a table of multiple lua patterns where at least one would match the
-                -- end of your prompt at any given time.
-                --
-                -- How to write lua patterns: https://www.lua.org/pil/20.2.html
-                --
-                -- For most bash/zsh user this is '%$ '.
-                -- For most powershell/fish user this is '> '.
-                -- For most windows cmd user this is '>'.
-                --
-                prompt_end = prompt,
-            }
-        end,
-        ft = "toggleterm",
-        version = "v1.*",
-    },
+    -- -- Allow terminal buffers to be edited
+    -- --
+    -- -- TODO: Re-add after this is fixed - https://github.com/chomosuke/term-edit.nvim/issues/56
+    -- --
+    -- {
+    --     "chomosuke/term-edit.nvim",
+    --     config = function()
+    --         if vim.fn.has("win32") == 1
+    --         then
+    --             prompt = ">"
+    --         else
+    --             prompt = "%$ "
+    --         end
+    --
+    --         require('term-edit').setup {
+    --             -- Mandatory option:
+    --             --
+    --             -- Set this to a lua pattern that would match the end of your prompt.
+    --             -- Or a table of multiple lua patterns where at least one would match the
+    --             -- end of your prompt at any given time.
+    --             --
+    --             -- How to write lua patterns: https://www.lua.org/pil/20.2.html
+    --             --
+    --             -- For most bash/zsh user this is '%$ '.
+    --             -- For most powershell/fish user this is '> '.
+    --             -- For most windows cmd user this is '>'.
+    --             --
+    --             prompt_end = prompt,
+    --             -- mapping = {
+    --             --     t = {
+    --             --         kk = k
+    --             --     }
+    --             -- },
+    --         }
+    --     end,
+    --     ft = "toggleterm",
+    --     version = "v1.*",
+    -- },
 
     -- Allow quick and easy navigation to common project files
     -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
