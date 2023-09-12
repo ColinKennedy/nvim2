@@ -381,11 +381,6 @@ vim.api.nvim_create_user_command(
     }
 )
 
-vim.keymap.set(
-    "t",
-    "kk",
-    "<C-\\><C-n>:lua require('my_custom.utilities.terminal').move_if_in_pager()<CR>"
-)
 vim.keymap.set("t", "<C-w>o", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
 vim.keymap.set("t", "<C-w><C-o>", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
 vim.cmd[[
