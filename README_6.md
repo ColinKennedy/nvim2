@@ -2,7 +2,6 @@ Fix - Critical
 - While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
 
 Add
-- Complete my "auto-add = sign" plugin for Python
 - Vim cutlass plugin - Test it out first though
 
 
