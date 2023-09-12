@@ -532,6 +532,14 @@ return {
             )
             vim.keymap.set(
                 "n",
+                "<leader>dx",
+                function()
+                    require("dap").run_to_cursor()
+                end,
+                {desc="Run to [d]ebug cursor to [x] marks the spot."}
+            )
+            vim.keymap.set(
+                "n",
                 "<leader>dz",
                 ":ZoomWinTabToggle<CR>",
                 {desc="[d]ebugger [z]oom toggle (full-screen or minimize the window)."}
