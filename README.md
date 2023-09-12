@@ -90,7 +90,7 @@
 | n | `<F5>`        | Start a debugging session.                                         |
 | n | `<leader>`d   | Continue through the debugger to the next breakpoint.              |
 | n | `<leader>`d-  | Restart the current debug session.                                 |
-| n | `<leader>`d=  | Disconect from a remote DAP session.                               |
+| n | `<leader>`d=  | Disconnect from a remote DAP session.                              |
 | n | `<leader>`d_  | Kill the current debug session.                                    |
 | n | `<leader>`db  | Set a breakpoint (and remember it even when we re-open the file).  |
 | n | `<leader>`dd  | [d]o [d]ebugger. Start a debugging session.                        |

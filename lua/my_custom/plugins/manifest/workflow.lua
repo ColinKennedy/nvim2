@@ -582,7 +582,7 @@ return {
                 function()
                     require("dap").disconnect({terminateDebugee=false})
                 end,
-                {desc="Disconect from a remote DAP session."}
+                {desc="Disconnect from a remote DAP session."}
             )
             vim.keymap.set(
                 "n",

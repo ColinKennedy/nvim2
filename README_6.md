@@ -1,6 +1,15 @@
+Fix - Critical
+- While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
+
+Fix - Nice to have
 - Why does Rg resize my buffer windows? FIX
+
+Add
 - Complete my "auto-add = sign" plugin for Python
-- Vim cutlass plugin
+- Vim cutlass plugin - Test it out first though
+
+
+
 
 Check if `dad` still accidentally deletes the line below it. E.g. `__init__` functions
 
