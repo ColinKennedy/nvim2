@@ -341,9 +341,13 @@ return {
     -- Quickfix helper functions
     {
         "romainl/vim-qf",
+        config = function()
+            vim.g.qf_auto_resize = 0
+        end,
         ft = "qf",
         version = "0.*",
     },
+
     -- Quickfix auto previews and other fun features
     {
         "kevinhwang91/nvim-bqf",
