@@ -1,6 +1,15 @@
 Fix - Critical
 - While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
 
+- Allow auto-space when typing
+ - CAPITAL_VALUES
+ - _FOO_BAR_PRIVATE
+ - self._thing_more
+ - self._thing_more0
+ - self._thing_more__
+ - self._FOO_BAR_PRIVATE
+ - thing["asdfsd", "asfdasfd"]
+ - thing{"asdfsd", "asfdasfd"}
 
 
 
