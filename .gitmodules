@@ -301,3 +301,6 @@
 [submodule "bundle/term-edit.nvim"]
 	path = bundle/term-edit.nvim
 	url = git@github.com:chomosuke/term-edit.nvim.git
+[submodule "bundle/cutlass.nvim"]
+	path = bundle/cutlass.nvim
+	url = git@github.com:gbprod/cutlass.nvim.git

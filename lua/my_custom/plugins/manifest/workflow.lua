@@ -999,4 +999,13 @@ return {
         event = "VeryLazy",
         version = "v0.*",
     },
+
+    -- Stop overriding the yank register whenever I do `d`, `x`, etc operators.
+    {
+        "gbprod/cutlass.nvim",
+        config = function()
+            require("cutlass").setup({})
+        end,
+        version = "v1.*",
+    }
 }
