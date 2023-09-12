@@ -47,34 +47,18 @@ function _strip_characters(text)
 end
 
 
--- function M.add_equal_sign_if_needed()
---     return "%<Space>"
---     -- -- _, cursor_row, cursor_column, _ = unpack(vim.fn.getpos("."))
---     -- _, cursor_row, cursor_column, _ = unpack(vim.fn.getpos("."))
---     -- current_line = vim.fn.getline(cursor_row)
---     --
---     -- current_line_up_until_cursor = current_line:sub(1, cursor_column)
---     -- stripped = _strip_characters(current_line_up_until_cursor)
---     --
---     -- if not _is_assignable(stripped)
---     -- then
---     --     vim.cmd[[execute "normal A\<Space>"]]
---     --     return
---     -- end
---     --
---     -- new_text = current_line .. " = "
---     -- vim.fn.setline(cursor_row, new_text)
---     -- current_buffer = 0
---     -- current_cursor = "."  -- See `:help setpos()`
---     -- new_column = new_text:len()
---     -- vim.fn.setpos(current_cursor, {current_buffer, cursor_row, new_column, 0})
---     -- vim.cmd[[execute "normal! A\<Space>"]]
--- end
-
-
 function M.add_equal_sign_if_needed()
     _, cursor_row, cursor_column, _ = unpack(vim.fn.getpos("."))
     current_line = vim.fn.getline(cursor_row)
+
+    if cursor_column <= #current_line
+    then
+        -- If the cursor isn't at the end of the line, stop. There's no
+        -- container data-type in Python where `=` are expected so this is
+        -- always supposed to be a space.
+        --
+        return " "
+    end
 
     current_line_up_until_cursor = current_line:sub(1, cursor_column)
     stripped = _strip_characters(current_line_up_until_cursor)
@@ -92,10 +76,7 @@ function M.setup()
         "i",
         "<Space>",
         M.add_equal_sign_if_needed,
-        {
-            desc = "Add = signs when needed.",
-            expr = true,
-        }
+        { desc = "Add = signs when needed.", expr = true }
     )
 end
 
