@@ -48,7 +48,22 @@ cmp.setup(
             end,
             ["<Space>"] = function(fallback)
                 -- Use whatever current text (completed or not) exists and stop completing
+                local visible = cmp.visible()
+                local has_entry = cmp.get_selected_entry() ~= nil
+
                 cmp.close()
+
+                -- If the completion menu pops up as you're typing but you're
+                -- ignoring the completion menu, interpret <Space> just as
+                -- space. But if the completion menu is up and an entry is
+                -- selected then assume that the user was attempting to do
+                -- auto-completion and DON'T insert a <Space> to keep it
+                -- consistent with the <C-Space> mapping
+                --
+                if not visible or (visible and not has_entry)
+                then
+                    fallback()
+                end
             end,
             ["<CR>"] = cmp.mapping.confirm {
                 -- Choose the currently selected completion item
