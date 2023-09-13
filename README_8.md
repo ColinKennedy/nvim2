@@ -1,3 +1,6 @@
+- Check if this is fixed, finally - https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
+ - treesitter Python having bad indentation
+
 Add USD to Comment.nvim
 https://github.com/numToStr/Comment.nvim#treesitter
 

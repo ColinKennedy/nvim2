@@ -224,14 +224,16 @@ return {
         version = "0.*",
     },
 
-    -- Very unfortunately needed because indentation via treesitter has bugs
+    -- TODO: Possibly remove this submodule
     --
-    -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
-    --
-    {
-        "Vimjas/vim-python-pep8-indent",
-        ft = "python",
-    },
+    -- -- Very unfortunately needed because indentation via treesitter has bugs
+    -- --
+    -- -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
+    -- --
+    -- {
+    --     "Vimjas/vim-python-pep8-indent",
+    --     ft = "python",
+    -- },
 
     -- Enables nvim-treesitter syntax highlighting groups for USD files.
     --

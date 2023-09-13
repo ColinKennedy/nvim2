@@ -13,13 +13,9 @@ Fix - Critical
 
 
 
-Check if `dad` still accidentally deletes the line below it. E.g. `__init__` functions
-
-
 Python super() snippet is somehow missing on my laptop?
 
-- Terminal is really slow at typing, sometimes
-- https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
+- Possibly not needed anymore? - Terminal is really slow at typing, sometimes
 
 
 - Add Hunspell - To improve spell checking word variants
