@@ -1009,5 +1009,13 @@ return {
             require("cutlass").setup({})
         end,
         version = "v1.*",
-    }
+    },
+
+    -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
+    {
+        "max397574/better-escape.nvim",
+        config = function()
+          require("better_escape").setup()
+        end,
+    },
 }

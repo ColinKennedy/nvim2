@@ -304,3 +304,6 @@
 [submodule "bundle/cutlass.nvim"]
 	path = bundle/cutlass.nvim
 	url = git@github.com:gbprod/cutlass.nvim.git
+[submodule "bundle/better-escape.nvim"]
+	path = bundle/better-escape.nvim
+	url = git@github.com:max397574/better-escape.nvim.git
