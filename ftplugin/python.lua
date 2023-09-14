@@ -18,9 +18,15 @@ endif
 vim.o.makeprg = "python -m unittest discover"
 
 
+local group = vim.api.nvim_create_augroup("python_auto_space", { clear = true })
+
 vim.keymap.set(
     "i",
     "<Space>",
     require("my_custom.utilities.auto_space").add_equal_sign_if_needed,
-    { desc = "Add = signs when needed.", expr = true }
+    {
+        buffer = true,
+        desc = "Add = signs when needed.",
+        expr = true,
+    }
 )

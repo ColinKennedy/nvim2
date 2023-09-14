@@ -375,10 +375,7 @@ vim.api.nvim_create_user_command(
 
         vim.api.nvim_chan_send(job_id, command)
     end,
-    {
-        bang=true,
-        nargs="*",
-    }
+    { bang=true, nargs="*" }
 )
 
 vim.keymap.set("t", "<C-w>o", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})

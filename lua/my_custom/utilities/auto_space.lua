@@ -57,19 +57,9 @@ end
 
 
 function _is_assignable(text)
-    count = 0
+    _, count = string.gsub(text, "%s+", "")
 
-    for word in text:gmatch("%s+")
-    do
-        if count > 1
-        then
-            return false
-        end
-
-        count = count + 1
-    end
-
-    if count ~= 1
+    if count ~= 0
     then
         return false
     end
@@ -85,12 +75,27 @@ function _is_assignable(text)
         return false
     end
 
+    if _is_blacklisted_context()
+    then
+        return false
+    end
+
     return true
+end
+
+
+function _is_blacklisted_context()
+    return vim.treesitter.get_node({buffer=0}):type() == "string_content"
 end
 
 
 function _is_builtin_keyword(text)
     return _BUILTINS[text] ~= nil
+end
+
+
+local _lstrip = function(text)
+    return text:match("^%s*(.*)")
 end
 
 
@@ -118,7 +123,7 @@ function M.add_equal_sign_if_needed()
     current_line_up_until_cursor = current_line:sub(1, cursor_column)
     stripped = _strip_characters(current_line_up_until_cursor)
 
-    if not _is_assignable(stripped)
+    if not _is_assignable(_lstrip(stripped))
     then
         return " "
     end
