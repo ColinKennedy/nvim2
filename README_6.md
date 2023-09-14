@@ -1,7 +1,4 @@
-Fix - Critical
-- While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
-
-
+- The :Rg command is window sizes are still fucked.
 
 Python super() snippet is somehow missing on my laptop?
 
@@ -32,6 +29,3 @@ https://www.reddit.com/r/neovim/comments/12h6fc7/am_i_doing_wrong_with_lazynvim/
 
 
 https://github.com/dharmx/nvim/blob/e79ac39e3c9aff7e4e99ce889caea45c5fc65bc4/lua/scratch/node.lua
-
-- Look into what LSP / linter / formatter stuff can be done. Can I do refactoring / auto
-fixes and stuff now? I probably will need to add the mappings.
