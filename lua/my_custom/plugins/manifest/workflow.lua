@@ -1002,15 +1002,6 @@ return {
         version = "v0.*",
     },
 
-    -- Stop overriding the yank register whenever I do `d`, `x`, etc operators.
-    {
-        "gbprod/cutlass.nvim",
-        config = function()
-            require("cutlass").setup({})
-        end,
-        version = "v1.*",
-    },
-
     -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
     {
         "max397574/better-escape.nvim",
