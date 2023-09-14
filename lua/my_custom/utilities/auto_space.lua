@@ -37,7 +37,7 @@ local _BUILTINS = {
 }
 
 function _has_expected_last_character(character)
-    if character:match("%w")  -- Reference: https://stackoverflow.com/a/12118024/3626104
+    if character:match("[%w_]")  -- Reference: https://stackoverflow.com/a/12118024/3626104
     then
         return true
     end

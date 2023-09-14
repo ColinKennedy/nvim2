@@ -135,7 +135,8 @@ return {
                 atexit.register(functools.partial(os.remove, {}))
             ]],
             { index(1, "path") }
-        )
+        ),
+        { show_condition = is_source_beginning("atexit_file") }
     ),
 
     snippet(
@@ -148,6 +149,7 @@ return {
                 atexit.register(functools.partial(shutil.rmtree, {}))
             ]],
             { index(1, "directory") }
-        )
+        ),
+        { show_condition = is_source_beginning("atexit_folder") }
     ),
 }
