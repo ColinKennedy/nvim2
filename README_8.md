@@ -1,6 +1,3 @@
-- Check if this is fixed, finally - https://www.reddit.com/r/neovim/comments/1373fzz/weird_indentation_on_python/
- - treesitter Python having bad indentation
-
 Add USD to Comment.nvim
 https://github.com/numToStr/Comment.nvim#treesitter
 
@@ -344,3 +341,13 @@ If I have a file buffer, a terminal buffer, and a quickfix buffer all open at on
 
 Usually not but sometimes when I press use \`:.cc\` to go do the selected QuickFix line, (n)vim switches the terminal buffer to that QuickFix line, not the file buffer. This is never what I want to have happen. Is there a way to have (n)vim choose the file buffer, instead?
 ```
+
+
+
+Make toggleterm work per-tab - https://github.com/akinsho/toggleterm.nvim/issues/452
+
+
+• Added preliminary support for the `workspace/didChangeWatchedFiles` capability
+  to the LSP client to notify servers of file changes on disk. The feature is
+  disabled by default and can be enabled by setting the
+  `workspace.didChangeWatchedFiles.dynamicRegistration=true` capability.

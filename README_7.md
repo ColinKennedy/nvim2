@@ -18,10 +18,11 @@
  - add deferred event call so that the plugins aren't loaded by default
   - NvChad uses ``event = "InsertEnter"``
 
-- wtf is this thing?
- - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#code-actions
- - https://github.com/streetsidesoftware/cspell
- - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
+- Add Hunspell - To improve spell checking word variants
+
+- Follow-up
+ - Typing "D" for a docstring in a real file is frustrating because cmp takes control away when new  LSP entries are added
+  - https://github.com/hrsh7th/nvim-cmp/issues/1597
 
 
 - On-load speed-up?
