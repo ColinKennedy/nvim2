@@ -58,6 +58,26 @@ cd autojump
 ## Tree-sitter
 Requires g++ for compiling tree-sitter parsers. Ideally g++ version 8+
 
+### C++
+If you call `:TSInstall cpp` you may get this error:
+
+```
+nvim-treesitter[cpp]: Error during compilation
+src/scanner.c: In function ‘scan_raw_string_delimiter’:
+src/scanner.c:27:9: error: ‘for’ loop initial declarations are only allowed in C99 mode
+         for (int i = 0; i < scanner->delimiter_length; ++i) {
+         ^
+src/scanner.c:27:9: note: use option -std=c99 or -std=gnu99 to compile your code
+```
+
+To fix:
+- Install gcc-8+ / g++-8+
+- Call this
+
+```sh
+CC=`which gcc` CXX=`which g++` nvim -c ":TSInstall cpp"
+```
+
 
 ## Python LSPs and linters
 ```sh
