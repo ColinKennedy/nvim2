@@ -2,15 +2,20 @@ Fix - Critical
 - While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
 
 
+- Fix gciI broken mapping - HandleTextObjectMapping error
+
+- Disable pycodestyle / pyflakes / anything else (it's coming from pylsp. Remove it.)
+
 - Add print() snippets for each languages
 
-Python super() snippet is somehow missing on my laptop?
+
+- Look into Neovim development
+
+
+
 
 
 - Possibly not needed anymore? - Terminal is really slow at typing, sometimes
-
-
-
 
 
 
