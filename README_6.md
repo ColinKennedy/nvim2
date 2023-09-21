@@ -2,8 +2,10 @@ Fix - Critical
 - While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
 
 
+- Add print() snippets for each languages
 
 Python super() snippet is somehow missing on my laptop?
+
 
 - Possibly not needed anymore? - Terminal is really slow at typing, sometimes
 
