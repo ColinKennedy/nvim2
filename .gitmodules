@@ -304,3 +304,6 @@
 [submodule "bundle/better-escape.nvim"]
 	path = bundle/better-escape.nvim
 	url = git@github.com:max397574/better-escape.nvim.git
+[submodule "bundle/nvim-lint"]
+	path = bundle/nvim-lint
+	url = git@github.com:mfussenegger/nvim-lint.git

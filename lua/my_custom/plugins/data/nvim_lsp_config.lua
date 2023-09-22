@@ -148,14 +148,14 @@ vim.api.nvim_create_autocmd(
 --     https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
 --
 vim.cmd[[highlight DiagnosticVirtualTextError ctermfg=DarkRed guifg=DarkRed]]
-vim.cmd[[highlight DiagnosticVirtualTextWarn ctermfg=94 guifg=#875f00]]
-vim.cmd[[highlight DiagnosticVirtualTextInfo ctermfg=239 guifg=#4e4e4e]]
-vim.cmd[[highlight DiagnosticVirtualTextHint ctermfg=17 guifg=#00005f]]
+vim.cmd[[highlight DiagnosticVirtualTextWarn ctermfg=94 guifg=#875f00]]  -- Mustard-y
+vim.cmd[[highlight DiagnosticVirtualTextInfo ctermfg=25 guifg=DeepSkyBlue4]]  -- Dark, desaturated blue
+vim.cmd[[highlight link DiagnosticVirtualTextHint Comment]]  -- Dark gray
 
 vim.cmd[[highlight DiagnosticError ctermfg=Red guifg=Red]]
 vim.cmd[[highlight DiagnosticWarn ctermfg=94 guifg=Orange]]
-vim.cmd[[highlight DiagnosticInfo ctermfg=239 guifg=LightGrey]]
-vim.cmd[[highlight DiagnosticSignHint ctermfg=17 guifg=#00005f]]
+vim.cmd[[highlight DiagnosticInfo ctermfg=26 guifg=DeepSkyBlue2]]  -- Lighter-ish blue
+vim.cmd[[highlight DiagnosticSignHint ctermfg=7 guifg=#c0c0c0]]  -- Silver (gray)
 
 -- Reference: https://www.reddit.com/r/neovim/comments/l00zzb/improve_style_of_builtin_lsp_diagnostic_messages
 -- Errors in Red
