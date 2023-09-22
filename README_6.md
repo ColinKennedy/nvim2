@@ -1,12 +1,17 @@
 Fix - Critical
 - While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
 
+- Try vim submodes again, one more time. Probably won't work but it's worth a try
 
 - Fix gciI broken mapping - HandleTextObjectMapping error
 
 - Disable pycodestyle / pyflakes / anything else (it's coming from pylsp. Remove it.)
 
 - Add print() snippets for each languages
+ - c
+ - c++
+ - lua
+ - print
 
 
 - Look into Neovim development

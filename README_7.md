@@ -28,8 +28,6 @@
 - On-load speed-up?
 
 - language server stuff
- - auto-refactors
- - renames
  - project cd
  - auto-completion
  - other settings?
