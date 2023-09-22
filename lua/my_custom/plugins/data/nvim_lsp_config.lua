@@ -209,22 +209,22 @@ vim.diagnostic.config(
 
 -- Add icons for the left-hand sign gutter
 vim.fn.sign_define('DiagnosticSignError', {
-    text='',
+    text='',  -- Reference: www.nerdfonts.com/cheat-sheet
     numhl='DiagnosticSignError',
     texthl="DiagnosticSignError",
 })
 vim.fn.sign_define('DiagnosticSignWarn', {
-    text='⚠',
+    text='⚠',  -- Reference: www.nerdfonts.com/cheat-sheet
     numhl='DiagnosticSignWarn',
     texthl="DiagnosticSignWarn"
 })
 vim.fn.sign_define('DiagnosticSignInfo', {
-    text='',
+    text='',  -- Reference: www.nerdfonts.com/cheat-sheet
     numhl='DiagnosticSignInfo',
     texthl="DiagnosticSignInfo"
 })
 vim.fn.sign_define('DiagnosticSignHint', {
-    text='',
+    text='',  -- Reference: www.nerdfonts.com/cheat-sheet
     numhl='DiagnosticSignHint',
     texthl="DiagnosticSignHint"
 })

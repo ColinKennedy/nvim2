@@ -89,7 +89,19 @@ return {
                 lualine_b = {"branch"},
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = {"diagnostics", "progress"},
+                lualine_y = {
+                    {
+                        "diagnostics",
+                        symbols = {
+                            -- Reference: www.nerdfonts.com/cheat-sheet
+                            error = " ",
+                            warn = "⚠ ",
+                            info = " ",
+                            hint = " ",
+                        },
+                    },
+                    "progress",
+                },
                 lualine_z = {"location"}
               },
             }
@@ -97,7 +109,7 @@ return {
         event = "VeryLazy",
     },
 
-    -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
+    -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
     {
         "nvim-tree/nvim-web-devicons",
         config = function()
