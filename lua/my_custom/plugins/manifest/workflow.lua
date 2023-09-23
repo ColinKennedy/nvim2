@@ -235,22 +235,22 @@ return {
     --     ft = "python",
     -- },
 
-    -- Enables nvim-treesitter syntax highlighting groups for USD files.
-    --
-    -- Note: This does nothing unless you call
-    --
-    -- ```
-    -- require("nvim-treesitter.configs").setup {
-    --     parser_install_dir = installation_directory,
-    --     highlight = { enable = true },
-    -- }
-    -- ```
-    --
-    {
-        "ColinKennedy/nvim-treesitter-usd",
-        ft = "usd",
-        version = "0.*",
-    },
+    -- -- Enables nvim-treesitter syntax highlighting groups for USD files.
+    -- --
+    -- -- Note: This does nothing unless you call
+    -- --
+    -- -- ```
+    -- -- require("nvim-treesitter.configs").setup {
+    -- --     parser_install_dir = installation_directory,
+    -- --     highlight = { enable = true },
+    -- -- }
+    -- -- ```
+    -- --
+    -- {
+    --     "ColinKennedy/nvim-treesitter-usd",
+    --     ft = "usd",
+    --     version = "0.*",
+    -- },
 
     {
         "ColinKennedy/nvim-treesitter-textobjects",
@@ -509,7 +509,7 @@ return {
             dap.adapters.cppdbg = {
                 id = "cppdbg",
                 type = "executable",
-                command = "/home/selecaoone/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7"
+                command = "~/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7"
             }
 
             vim.keymap.set(
@@ -819,6 +819,7 @@ return {
                         A = "Show [A]rgs list",
                         B = "Show [B]uffers list",
                         E = "[E]dit a new project root file",
+                        G = "[G]it interactive mode",
                         L = "[L]ines searcher (current file)",
                         S = {
                             name = "[S]witcher aerial.nvim windows",
@@ -1008,5 +1009,14 @@ return {
         config = function()
           require("better_escape").setup()
         end,
+    },
+
+    -- Add "submodes" to Neovim. e.g. <Space>G for "git mode"
+    {
+        "anuvyklack/hydra.nvim",
+        config = function()
+            require("my_custom.plugins.manifest.hydra")
+        end,
+        keys = {"<Space>G"},
     },
 }
