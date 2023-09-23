@@ -24,7 +24,6 @@ Hydra({
       on_enter = function()
          vim.cmd 'mkview'
          vim.cmd 'silent! %foldopen!'
-         -- vim.bo.modifiable = false
          gitsigns.toggle_signs(true)
          gitsigns.toggle_linehl(true)
       end,

@@ -219,7 +219,6 @@ M.next_hunk = function()
     opts.forwards = true
     opts.wraps = false
     next_hunk_or_file(opts)
-    -- vim.schedule(function() next_hunk_or_file(opts) end)
 end
 
 
@@ -228,7 +227,6 @@ M.previous_hunk = function()
     opts.forwards = false
     opts.wraps = false
     next_hunk_or_file(opts)
-    -- vim.schedule(function() next_hunk_or_file(opts) end)
 end
 
 
