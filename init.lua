@@ -39,6 +39,83 @@ local plugins = {}
 
 vim.g.vim_home = filer.get_current_directory()
 
+-- table.insert(
+--     plugins,
+--     {
+--         "pogyomo/submode.nvim"
+--     }
+-- )
+
+-- table.insert(
+--    plugins,
+--    {
+--       'Dkendal/nvim-minor-mode',
+--       config = function()
+--          local gitsigns = require("gitsigns")
+--          local gitsigns_utility = require("my_custom.plugins.data.gitsigns")
+--          local minor_mode = require("minor-mode")
+--
+--          minor_mode.define_minor_mode(
+--             "git",
+--             [[
+--             Control git with simple mappings
+--             ]],
+--             {
+--                 command = "GitMode",
+--                 keymap = {
+--                   { 'n',
+--                      'J',
+--                      function()
+--                         -- vim.schedule(function() gitsigns.next_hunk() end)
+--                         vim.schedule(function() gitsigns_utility.next_hunk() end)
+--                         if vim.wo.diff then return ']c' end
+--                         -- vim.schedule(function() gitsigns.next_hunk() end)
+--                         vim.schedule(function() gitsigns_utility.next_hunk() end)
+--                         return '<Ignore>'
+--                      end,
+--                      { silent = true },
+--                      -- { expr = true, desc = 'next hunk' },
+--                   },
+--                   { 'n',
+--                     'K',
+--                      function()
+--                         if vim.wo.diff then return '[c' end
+--                         vim.schedule(function() gitsigns.prev_hunk() end)
+--                         return '<Ignore>'
+--                      end,
+--                      { silent = true },
+--                   },
+--                      -- { expr = true, desc = 'prev hunk' },
+--                   {
+--                      'n',
+--                       'u',
+--                       ':Gitsigns reset_hunk<CR>',
+--                      { silent = true },
+--                       -- { silent = true, desc = 'reset hunk' },
+--                   },
+--                   {
+--                      'n',
+--                      's',
+--                      ':Gitsigns stage_hunk<CR>',
+--                      { silent = true },
+--                   },
+--                {
+--                   'n',
+--                   'r',
+--                   gitsigns.undo_stage_hunk,
+--                   { desc = 'undo last stage' },
+--                },
+--                { 'n',
+--                   'q',
+--                   'GitMode',
+--                }
+--              }
+--             }
+--          )
+--       end,
+--    }
+-- )
+
 extend(plugins, require("my_custom.plugins.manifest.appearance"))
 extend(plugins, require("my_custom.plugins.manifest.movement"))
 extend(plugins, require("my_custom.plugins.manifest.text_object"))
