@@ -698,6 +698,7 @@ return {
 
             "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
         },
+        keys = { "<F5>", "<Space>D", "<leader>d<Space>" },
     },
 
     -- Adds the current value(s) of variables as you step through the code. Super handy!
@@ -818,6 +819,7 @@ return {
                         name = "Space Switching Mappings",
                         A = "Show [A]rgs list",
                         B = "Show [B]uffers list",
+                        D = "[D]ebugging interactive mode",
                         E = "[E]dit a new project root file",
                         G = "[G]it interactive mode",
                         L = "[L]ines searcher (current file)",
@@ -1017,6 +1019,6 @@ return {
         config = function()
             require("my_custom.plugins.manifest.hydra")
         end,
-        keys = {"<Space>G"},
+        keys = { "<Space>D", "<Space>G" },
     },
 }
