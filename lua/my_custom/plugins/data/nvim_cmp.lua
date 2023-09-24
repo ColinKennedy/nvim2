@@ -186,6 +186,8 @@ lspconfig.pyright.setup { capabilities=capabilities }
 pylsp_settings = {
     pylsp = {
         plugins = {
+            flake8 = { enabled = false },
+            mccabe = { enabled = false },
             pycodestyle = { enabled = false },
             pyflakes = { enabled = false },
         },
