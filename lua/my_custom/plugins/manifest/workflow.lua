@@ -690,7 +690,6 @@ return {
             add_zoom_keymap("<leader>dt", "dapui_stacks")  -- dt as in s[t]acks
             add_zoom_keymap("<leader>dr", "dap-repl")
         end,
-        keys = "<F5>",
         dependencies = {
             "mfussenegger/nvim-dap",
 
@@ -698,7 +697,7 @@ return {
 
             "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
         },
-        keys = { "<F5>", "<Space>D", "<leader>d<Space>" },
+        keys = { "<F5>" },
     },
 
     -- Adds the current value(s) of variables as you step through the code. Super handy!
@@ -1019,6 +1018,6 @@ return {
         config = function()
             require("my_custom.plugins.manifest.hydra")
         end,
-        keys = { "<Space>D", "<Space>G" },
+        keys = { "<Space>G" },
     },
 }
