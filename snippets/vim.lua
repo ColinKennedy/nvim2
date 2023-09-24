@@ -71,14 +71,16 @@ luasnip.add_snippets(
                     lua << EOF
                     local dap = require("dap")
                     dap.configurations.cpp = {
-                            name = "Launch file",
-                            type = "cppdbg",
-                            request = "launch",
-                            program = function()
-                                return vim.g._project_home .. "/@|"
-                            end,
-                            cwd = "$workspaceFolder",
-                            stopAtEntry = true,
+                        {
+                                name = "Launch file",
+                                type = "cppdbg",
+                                request = "launch",
+                                program = function()
+                                    return vim.g._project_home .. "/@|"
+                                end,
+                                cwd = "${workspaceFolder}",
+                                stopAtEntry = true,
+                        }
                     }
                     EOF
                 ]],
