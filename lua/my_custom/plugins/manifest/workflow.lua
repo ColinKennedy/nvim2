@@ -330,16 +330,6 @@ return {
     },
 
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
-    {
-        "tpope/vim-projectionist",
-        config = function()
-            -- TODO: Double check if this works
-            require("my_custom.utilities.utility").lazy_load("vim-projectionist")
-        end,
-        ft = "cpp",
-        version = "1.*",
-    },
-
     -- Quickfix helper functions
     {
         "romainl/vim-qf",
