@@ -1,9 +1,6 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        init = function()
-            require("my_custom.utilities.utility").lazy_load("nvim-lspconfig")
-        end,
         config = function()
             require("my_custom.plugins.data.nvim_lsp_config")
 
@@ -25,16 +22,12 @@ return {
     },
 
     {
-        -- TODO: It seems I can't lazy-load this without it breaking
-        -- auto-completion for Python. Not sure why. Maybe NvChad can improve
-        -- this set-up
-        --
         "hrsh7th/nvim-cmp",
         config = function()
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        event = { "VeryLazy" },  -- Or "InsertEnter"
+        event = { "InsertEnter" },
         version = "0.*",
     },
 

@@ -420,7 +420,7 @@ return {
         config = function()
             require("spaceless").setup()
         end,
-        event = { "VeryLazy" },
+        event = { "InsertEnter" },
     },
 
     -- A tree file/directory viewer plug-in
@@ -751,7 +751,7 @@ return {
             require('persistent-breakpoints.api').load_breakpoints()
         end,
         dependencies = {"mfussenegger/nvim-dap"},
-        event = "VeryLazy",
+        keys = { "<leader>db" },
     },
 
     -- Seamlessly switch between a binary file view and a hexdump-ish view and back
@@ -770,7 +770,6 @@ return {
     -- A pop-up that shows you available Neovim keymaps. Only pops up if you're slow
     {
         "folke/which-key.nvim",
-        event = "VeryLazy",
         config = function()
             local which_key = require("which-key")
 
@@ -836,6 +835,7 @@ return {
                 }
             )
         end,
+        keys = {"<Space>", "<leader>"},
         version = "stable",
     },
 
@@ -906,6 +906,7 @@ return {
             vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
         end,
         version = "v2.*",
+        keys = "<Space>T",
     },
 
     -- -- Allow terminal buffers to be edited
@@ -990,7 +991,7 @@ return {
             )
         end,
         dependencies = {"ColinKennedy/plenary.nvim"},
-        event = "VeryLazy",
+        keys = { "<M-S-h>", "<M-S-j>", "<M-S-k>", "<M-S-l>" },
         version = "v0.*",
     },
 
@@ -1000,6 +1001,7 @@ return {
         config = function()
           require("better_escape").setup()
         end,
+        event = "InsertEnter",
     },
 
     -- Add "submodes" to Neovim. e.g. <Space>G for "git mode"

@@ -43,7 +43,6 @@
   - https://github.com/uga-rosa/cmp-dynamic
  - https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
  - https://github.com/lukas-reineke/cmp-rg
-- Add ``did`` support. See ``require("nvim-treesitter.configs").setup``
 
 
 https://github.com/williamboman/mason.nvim/blob/b54d4e3171cc9735de915dbb97e987fb1f05dad9/lua/mason/mappings/language.lua#L22
