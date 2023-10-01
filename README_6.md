@@ -1,6 +1,5 @@
 - Change snippets to not exit whenever I go into Normal mode
 
-
 - vim-git-backup - make into lua, maybe
 - searcher / navigation mode ( project, c = class, f = function, m = method, etc)
 
@@ -8,16 +7,16 @@
 Fix - Critical
 - While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
 
-- Add print() snippets for each languages
- - c
- - c++
- - lua
- - print
-
 
 - Look into Neovim development
 
 
+```
+Failed to source `/home/selecaotwo/repositories/personal/.config/nvim/bundle/vim-ipmotion/plugin/ipmotion.vim`
+vim/_editor.lua:0: nvim_exec2()../home/selecaotwo/repositories/personal/.config/nvim/bundle/vim-ipmotion/plugin/ipmotion.vim, line 50: Vim:E492:
+Not an editor command: ^M
+#
+```
 
 
 
