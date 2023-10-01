@@ -4,6 +4,7 @@ local gitsigns_utility = require("my_custom.plugins.data.gitsigns")
 
 
 local git_hint = [[
+ Movement         Control                  Display               Diagnose
  _J_: next hunk   _t_: s[t]age hunk        _d_: show [d]eleted   _b_: blame line
  ^ ^              _r_: [r]eset hunk        ^ ^                   ^ ^
  _K_: prev hunk   _c_: [c]heckout hunk     _p_: [p]review hunk   _B_: blame show full
