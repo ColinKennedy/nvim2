@@ -139,6 +139,17 @@ end
 local _populate_repository = function(directory)
     local repositories = {}
 
+    if vim.tbl_isempty(cache)
+    then
+        vim.api.nvim_err_writeln(
+            'Directory "'
+            .. directory
+            .. '" is not in a git repository.'
+        )
+
+        return nil
+    end
+
     for _, buffer_cache in pairs(cache)
     do
         local repository = buffer_cache.git_obj.repo
@@ -163,6 +174,12 @@ local next_hunk_or_file = void(
     function(opts)
         local current_directory = vim.loop.cwd()
         local repository = _populate_repository(current_directory)
+
+        if not repository
+        then
+            return
+        end
+
         local path_hunks = _get_path_hunks(repository)
 
         local current_path = vim.api.nvim_buf_get_name(0)  -- 0 == current buffer
@@ -178,7 +195,6 @@ local next_hunk_or_file = void(
         if path_hunks[current_path] ~= nil
         then
             local current_line = vim.api.nvim_win_get_cursor(0)[1]
-            -- local hunk = gitsigns_hunks.find_hunk(current_line, path_hunks[current_path])
 
             local hunk, index = gitsigns_hunks.find_nearest_hunk(
                 current_line,
