@@ -264,6 +264,8 @@ return {
         lazy = true,
     },
 
+    -- TODO: Figure out how to lazy-load this plug-in
+    --
     -- Overrides Vim's default Command mode and provides "wild card" results
     -- + icons. Mostly cosmetic and isn't "necessary", but it is a fun little
     -- plug-in as long as it's harmless.
