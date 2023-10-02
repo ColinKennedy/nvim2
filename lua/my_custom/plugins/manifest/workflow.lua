@@ -1012,4 +1012,22 @@ return {
         end,
         keys = { "<Space>G" },
     },
+
+    -- Use the s/S key to hop quickly from one place to another.
+    --
+    -- Usage:
+    --     - Press s
+    --     - Type a letter
+    --     - Type another letter
+    --     - If your text that you want to jump to **doesn't** light up then press <Enter>
+    --         - You're done
+    --     - If it has a lit-up letter next to it, press it
+    --         - You're done
+    {
+        "ggandor/leap.nvim",
+        config = function()
+            require("leap").add_default_mappings(true)
+            require("leap").init_highlight()
+        end,
+    }
 }

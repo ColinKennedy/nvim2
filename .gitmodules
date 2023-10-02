@@ -307,3 +307,6 @@
 [submodule "bundle/hydra.nvim"]
 	path = bundle/hydra.nvim
 	url = git@github.com:anuvyklack/hydra.nvim.git
+[submodule "bundle/leap.nvim"]
+	path = bundle/leap.nvim
+	url = git@github.com:ggandor/leap.nvim.git
