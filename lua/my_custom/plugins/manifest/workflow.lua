@@ -459,31 +459,6 @@ return {
         keys = { "<space>W" } -- W as in "workspace view"
     },
 
-    -- Use any 2-3 key combo to jump anywhere in a file.
-    -- Basically Firefox's Vimium, but in Vim.
-    --
-    {
-        "phaazon/hop.nvim",
-        cmd = "HopWord",
-        config = function()
-            local hop = require('hop')
-            local directions = require('hop.hint').HintDirection
-
-            vim.keymap.set(
-                "n",
-                "<leader>f",
-                function()
-                    vim.cmd("HopWord")
-                end,
-                {desc="[f]ind text using hop-mode."}
-            )
-
-            require("hop").setup({keys= "asdfghjkl"})
-        end,
-        keys = "<leader>f",
-        version = "2.*",
-    },
-
     -- Debug adapter plug-in. Debug anything in Neovim
     {
         "mfussenegger/nvim-dap",

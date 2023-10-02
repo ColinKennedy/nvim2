@@ -229,9 +229,6 @@
 [submodule "bundle/vim-textobj-comment"]
 	path = bundle/vim-textobj-comment
 	url = git@github.com:glts/vim-textobj-comment.git
-[submodule "bundle/hop.nvim"]
-	path = bundle/hop.nvim
-	url = git@github.com:phaazon/hop.nvim.git
 [submodule "bundle/nvim-gps"]
 	path = bundle/nvim-gps
 	url = git@github.com:Lazytangent/nvim-gps.git
