@@ -2,15 +2,23 @@ local filer = require("my_custom.utilities.filer")
 
 local M = {}
 
-local _enable_par = function(path)
-    vim.cmd("let $PATH=" .. path .. ":" .. os.getenv("PATH"))
+local _prepend_to_path = function(path)
+    vim.cmd("let $PATH='" .. path .. ":" .. os.getenv("PATH") .. "'")
+end
+
+-- Reference: http://www.nicemice.net/par/
+--
+-- s0 - disables suffixes
+-- Reference: https://stackoverflow.com/q/6735996
+--
+local _enable_par = function()
     vim.opt.formatprg = "par s0w88"
 end
 
 
 local _run_shell_command = function(command, options)
     local job = vim.fn.jobstart(command, options)
-    local result = vim.fn.jobwait({job})
+    local result = vim.fn.jobwait({job})[1]
 
     if result == 0
     then
@@ -36,44 +44,41 @@ local _run_shell_command = function(command, options)
         vim.api.nvim_err_writeln('Job ID is invalid "' .. tostring(job) .. '"')
 
         return false
-    else
-        vim.api.nvim_err_writeln(
-            'Command "'
-            .. vim.inspect(command)
-            .. '" created unknown error "'
-            .. tostring(result)
-            .. '".'
-        )
-
-        return false
+    -- TODO: Figure out if I need this, later
+    -- else
+    --     vim.api.nvim_err_writeln(
+    --         'Command "'
+    --         .. vim.inspect(command)
+    --         .. '" created unknown error "'
+    --         .. tostring(result)
+    --         .. '".'
+    --     )
+    --
+    --     return false
     end
+
+    -- TODO: Possible remove this
+    return true
 end
 
 
 function M.load_or_install()
-    -- TODO: Make this OS-agnostic (for Windows, too)
-    local bin = vim.g.vim_home .. filer.os_separator .. "bin"
+    if vim.fn.executable("par") == 1
+    then
+        -- If `par` is installed, add it here
+        _enable_par()
+
+        return
+    end
+
+    local bin = filer.join_path({vim.g.vim_home, "bin"})
 
     if vim.fn.isdirectory(bin) == 0
     then
         vim.fn.mkdir(bin, "p")  -- Recursively create directories
     end
 
-    -- If `par` is installed, add it here
-    -- Reference: http://www.nicemice.net/par/
-    --
-    -- s0 - disables suffixes
-    -- Reference: https://stackoverflow.com/q/6735996
-    --
-    if vim.fn.executable("par") == 1
-    then
-        _enable_par(bin)
-
-        return
-    end
-
-    -- TODO: Make this OS-agnostic (for Windows, too)
-    local source = vim.g.vim_home .. filer.os_separator .. "sources" .. filer.os_separator .. "par"
+    local source = filer.join_path({vim.g.vim_home, "sources", "par"})
 
     if vim.fn.isdirectory(source) == 0
     then
@@ -95,7 +100,8 @@ function M.load_or_install()
         end
     end
 
-    _enable_par(bin)
+    _prepend_to_path(bin)
+    _enable_par()
 end
 
 
