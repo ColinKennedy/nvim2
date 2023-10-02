@@ -25,8 +25,6 @@
   - https://github.com/hrsh7th/nvim-cmp/issues/1597
 
 
-- On-load speed-up?
-
 - language server stuff
  - project cd
  - auto-completion
