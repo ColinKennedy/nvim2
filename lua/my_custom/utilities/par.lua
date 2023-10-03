@@ -1,6 +1,38 @@
 local filer = require("my_custom.utilities.filer")
 
+local _COMMAND_NAME = "par"
+
 local M = {}
+
+
+local _get_commands = function(source)
+    local extraction_directory = "par-master" -- TODO: Auto-get this directory name
+
+    local output = {}
+
+    if vim.fn.filereadable({source, "master.tar.gz"}) == 0
+    then
+        table.insert(
+            output,
+            {"wget", "https://github.com/sergi/par/archive/refs/heads/master.tar.gz"}
+        )
+    end
+
+    local commands = {
+        {"tar", "-xzvf", "master.tar.gz"},  -- This creates `extraction_directory`
+        {"make", "-C", extraction_directory, "-f", "protoMakefile"},
+        {
+            "cp",
+            filer.join_path({source, extraction_directory, command}),
+            filer.join_path({bin, command}),
+        },
+    }
+
+    vim.fn.tbl_extend(output, commands)
+
+    return output
+end
+
 
 local _prepend_to_path = function(path)
     vim.cmd("let $PATH='" .. path .. ":" .. os.getenv("PATH") .. "'")
@@ -63,7 +95,9 @@ end
 
 
 function M.load_or_install()
-    if vim.fn.executable("par") == 1
+    local executable = vim.fn.executable("par") == 1
+
+    if executable
     then
         -- If `par` is installed, add it here
         _enable_par()
@@ -73,9 +107,13 @@ function M.load_or_install()
 
     local bin = filer.join_path({vim.g.vim_home, "bin"})
 
-    if vim.fn.isdirectory(bin) == 0
+    if vim.fn.filereadable(filer.join_path({bin, _COMMAND_NAME}))
     then
-        vim.fn.mkdir(bin, "p")  -- Recursively create directories
+        -- If `par` exists on-disk, add it to (Neo)vim
+        _prepend_to_path(bin)
+        _enable_par()
+
+        return
     end
 
     local source = filer.join_path({vim.g.vim_home, "sources", "par"})
@@ -85,19 +123,34 @@ function M.load_or_install()
         vim.fn.mkdir(source, "p")  -- Recursively create directories
     end
 
-    local commands = {
-        {"wget", "https://github.com/sergi/par/archive/refs/heads/master.tar.gz"},
-        {"tar", "-xzvf", "master.tar.gz", "source"},
-        {"make", "-C", "./source", "install"}
-    }
+    local commands = _get_commands(source)
+
     for _, command in ipairs(commands)
     do
-        if not _run_shell_command(command, {cwd=source})
+        stderr = {}
+
+        if not _run_shell_command(
+            command,
+            {
+                cwd=source,
+                on_stderr=function(job_id, data, event)
+                    for line in ipairs(data)
+                    do
+                        table.insert(stderr, data)
+                    end
+                end,
+            }
+        )
         then
             vim.api.nvim_err_writeln('Cannot install par')
 
             return
         end
+    end
+
+    if vim.fn.isdirectory(bin) == 0
+    then
+        vim.fn.mkdir(bin, "p")  -- Recursively create directories
     end
 
     _prepend_to_path(bin)
