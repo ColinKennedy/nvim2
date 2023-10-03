@@ -17,6 +17,7 @@
 | n | `<space>`A  | Select a new [A]rgs file from the `:args` list.                                           |
 | n | `<space>`B  | Search existing [B]uffers and select + view it.                                           |
 | n | `<space>`E  | [E]dit a new file, searching first from the project's root directory.                     |
+| n | `<space>`G  | Enter [G]it mode for committing to repositories.                                          |
 | n | `<space>`L  | Search [l]ines in the current window for text.                                            |
 | n | `<space>`SN | [S]witch [N]avigation inside / outside of classes and functions.                          |
 | n | `<space>`SS | [S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc.   |
@@ -36,7 +37,7 @@
 | n | `<leader>`cc | [c]opy the [c]urrent file in the current window to the system clipboard. Assuming +clipboard. |
 | n | `<leader>`cd | [c]hange the [d]irectory (`:pwd`) to the directory of the current open window.                |
 | n | `<leader>`e  | [e]xpand to the current file's folder.                                                        |
-| n | `<leader>`f  | [f]ind text using hop-mode.                                                                   |
+| n | s`<char>`... | Leap.nvim to basically anywhere on-screen                                                     |
 | n | [+           | Go to the previous line of greater indentation.                                               |
 | n | [-           | Go to the previous line of lesser indentation.                                                |
 | n | [=           | Go to the previous line of equal indentation.                                                 |

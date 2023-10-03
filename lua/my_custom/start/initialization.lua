@@ -126,17 +126,6 @@ end
 vim.cmd[[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k']]
 vim.cmd[[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j']]
 
--- If `par` is installed, add it here
--- Reference: http://www.nicemice.net/par/
---
--- s0 - disables suffixes
--- Reference: https://stackoverflow.com/q/6735996
---
-if vim.fn.executable("par")
-then
-    vim.opt.formatprg = "par s0w88"
-end
-
 -- Disable tag completion (TAB)
 --
 -- Reference: https://stackoverflow.com/a/13232327/3626104
@@ -355,10 +344,23 @@ vim.api.nvim_create_user_command(
 
         if options["bang"]
         then
-            -- TODO: Need to add this
             print("Sending to tmux")
 
             return
+
+            -- local mux = require("smart-splits.mux")
+            -- local multiplexer = mux.get()
+            --
+            -- if not multiplexer or not multiplexer.is_in_session()
+            -- then
+            --     vim.api.nvim_err_writeln("Could not find a (t)mux session to send to.")
+            --
+            --     return
+            -- end
+            --
+            -- local pane = _get_nearest_tmux_pane()
+            -- local tmux_expr = string.format('#{pane_id}:#{pane_%s}:#{?pane_active,_active_,_no_}', edge)
+            -- panes = tmux_exec({ 'list-panes', '-F', tmux_expr }, true)
         end
 
         local job_id = vim.fn.getbufvar(terminal_buffer, "terminal_job_id")

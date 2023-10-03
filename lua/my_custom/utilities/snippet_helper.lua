@@ -3,7 +3,14 @@ local line_begin = require("luasnip.extras.expand_conditions").line_begin
 local module = {}
 
 local in_docstring = function()
-    local type_name = vim.treesitter.get_node({buffer=0}):type()
+    local current_node = vim.treesitter.get_node({buffer=0})
+
+    if not current_node
+    then
+        return false
+    end
+
+    local type_name = current_node:type()
 
     if vim.bo.filetype == "python"
     then
@@ -12,7 +19,7 @@ local in_docstring = function()
 
     vim.api.nvim_err_writeln('Type name"' .. type_name .. '" is unknown. Cannot check if we\'re in a docstring.')
 
-    return ""
+    return false
 end
 
 -- Reference: https://snippets.bentasker.co.uk/page-1706031025-Trim-whitespace-from-beginning-of-string-LUA.html

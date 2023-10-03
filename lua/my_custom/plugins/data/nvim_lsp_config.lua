@@ -140,39 +140,6 @@ vim.api.nvim_create_autocmd(
 )
 
 
--- The ctermfg colors are determined by your terminal (``echo $TERM``). Mine is
--- ``screen-256color `` at the time of writing. Their chart is located here:
---
--- References:
---     https://www.ditig.com/256-colors-cheat-sheet
---     https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
---
-vim.cmd[[highlight DiagnosticVirtualTextError ctermfg=DarkRed guifg=DarkRed]]
-vim.cmd[[highlight DiagnosticVirtualTextWarn ctermfg=94 guifg=#875f00]]
-vim.cmd[[highlight DiagnosticVirtualTextInfo ctermfg=239 guifg=#4e4e4e]]
-vim.cmd[[highlight DiagnosticVirtualTextHint ctermfg=17 guifg=#00005f]]
-
-vim.cmd[[highlight DiagnosticError ctermfg=Red guifg=Red]]
-vim.cmd[[highlight DiagnosticWarn ctermfg=94 guifg=Orange]]
-vim.cmd[[highlight DiagnosticInfo ctermfg=239 guifg=LightGrey]]
-vim.cmd[[highlight DiagnosticSignHint ctermfg=17 guifg=#00005f]]
-
--- Reference: https://www.reddit.com/r/neovim/comments/l00zzb/improve_style_of_builtin_lsp_diagnostic_messages
--- Errors in Red
-vim.cmd[[highlight LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red]]
--- Warnings in Yellow
-vim.cmd[[highlight LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow]]
--- Info and Hints in White
-vim.cmd[[highlight LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White]]
-vim.cmd[[highlight LspDiagnosticsVirtualTextHint guifg=White ctermfg=White]]
-
--- Underline the offending code
-vim.cmd[[highlight LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
-vim.cmd[[highlight LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
-vim.cmd[[highlight LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
-vim.cmd[[highlight LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
-
-
 -- Whenever you move the cursor, the status-line shows LSP warnings / errors
 local group = vim.api.nvim_create_augroup("lsp_extensions", { clear = true })
 
@@ -186,45 +153,3 @@ vim.api.nvim_create_autocmd(
         pattern = "*",
     }
 )
-
--- TODO: Figure out how to right-align the virtual text
---
--- Reference: https://github.com/neovim/neovim/issues/16545
---
--- Maybe useful?
---     https://github.com/neovim/neovim/issues/11634
---     https://github.com/neovim/neovim/issues/16634
---     https://jdhao.github.io/2021/09/09/nvim_use_virtual_text/
---     https://github.com/neovim/neovim/issues/11634
---
--- Place virtual text really far away from the source code (so I don't see it often)
-vim.diagnostic.config(
-    {
-        virtual_text = {
-            severity_sort = true,
-            spacing = 40,
-        }
-    }
-)
-
--- Add icons for the left-hand sign gutter
-vim.fn.sign_define('DiagnosticSignError', {
-    text='',
-    numhl='DiagnosticSignError',
-    texthl="DiagnosticSignError",
-})
-vim.fn.sign_define('DiagnosticSignWarn', {
-    text='⚠',
-    numhl='DiagnosticSignWarn',
-    texthl="DiagnosticSignWarn"
-})
-vim.fn.sign_define('DiagnosticSignInfo', {
-    text='',
-    numhl='DiagnosticSignInfo',
-    texthl="DiagnosticSignInfo"
-})
-vim.fn.sign_define('DiagnosticSignHint', {
-    text='',
-    numhl='DiagnosticSignHint',
-    texthl="DiagnosticSignHint"
-})
