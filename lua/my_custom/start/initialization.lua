@@ -126,10 +126,6 @@ end
 vim.cmd[[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k']]
 vim.cmd[[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j']]
 
--- Add `par`, the auto-formmatter
-local par = require("my_custom.utilities.par")
-par.load_or_install()
-
 -- Disable tag completion (TAB)
 --
 -- Reference: https://stackoverflow.com/a/13232327/3626104
