@@ -10,7 +10,7 @@ local _get_commands = function(source)
 
     local output = {}
 
-    if vim.fn.filereadable({source, "master.tar.gz"}) == 0
+    if vim.fn.filereadable(filer.join_path({source, "master.tar.gz"})) == 0
     then
         table.insert(
             output,
@@ -28,7 +28,7 @@ local _get_commands = function(source)
         },
     }
 
-    vim.fn.tbl_extend(output, commands)
+    vim.tbl_extend("error", output, commands)
 
     return output
 end
@@ -107,7 +107,7 @@ function M.load_or_install()
 
     local bin = filer.join_path({vim.g.vim_home, "bin"})
 
-    if vim.fn.filereadable(filer.join_path({bin, _COMMAND_NAME}))
+    if vim.fn.filereadable(filer.join_path({bin, _COMMAND_NAME})) == 1
     then
         -- If `par` exists on-disk, add it to (Neo)vim
         _prepend_to_path(bin)
@@ -124,6 +124,7 @@ function M.load_or_install()
     end
 
     local commands = _get_commands(source)
+    print(vim.inspect(commands))
 
     for _, command in ipairs(commands)
     do
@@ -143,6 +144,8 @@ function M.load_or_install()
         )
         then
             vim.api.nvim_err_writeln('Cannot install par')
+            print("STDERR")
+            print(sterr)
 
             return
         end

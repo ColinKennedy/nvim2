@@ -1,5 +1,7 @@
 - Change snippets to not exit whenever I go into Normal mode
-
+- Figure out how to do real persistent undo
+- persistent-breakpoints doesn't load as expected. Fix
+/bin/bash: par: command not found
 - vim-git-backup - make into lua, maybe
 - searcher / navigation mode ( project, c = class, f = function, m = method, etc)
 
