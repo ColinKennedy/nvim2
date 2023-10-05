@@ -27,7 +27,11 @@ return {
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        event = { "InsertEnter" },
+        -- TODO: Figure out how to defer this plug-in
+        -- You can uncomment the line below but then cmp's completion list will
+        -- have duplicate entries.
+        --
+        -- event = { "InsertEnter" },
         version = "0.*",
     },
 
