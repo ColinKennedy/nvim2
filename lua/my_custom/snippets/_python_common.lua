@@ -152,4 +152,31 @@ return {
         ),
         { show_condition = is_source_beginning("atexit_folder") }
     ),
+
+    snippet(
+        {
+            docstring='Add a "profile this code and print it" Python context.',
+            trig="profile_and_print",
+        },
+        format(
+            [[
+                @contextlib.contextmanager
+                def profile_and_print():
+                    profiler = profile.Profile()
+                    profiler.enable()
+
+                    try:
+                        yield
+                    finally:
+                        profiler.disable()
+                        stats = pstats.Stats(profiler)
+                        stats.sort_stats("cumulative").print_stats(20)
+
+                with profile_and_print():
+                    {}
+            ]],
+            { index(1, "pass") }
+        ),
+        { show_condition = is_source_beginning("profile_and_print") }
+    )
 }

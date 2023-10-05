@@ -1,8 +1,10 @@
+- Change snippets to not exit whenever I go into Normal mode
+
 - <Space>G doesn't work if the current file isn't in a reasonable hunk (the fallback logic isn't working)
 - Might possibly also not be able to handle submodules as expected
 
 - The :Rg command is window sizes are still fucked.
-- Change snippets to not exit whenever I go into Normal mode
+
 - Figure out how to do real persistent undo
 - persistent-breakpoints doesn't load as expected. Fix
 - /bin/bash: par: command not found - Add an "auto-install par" script
