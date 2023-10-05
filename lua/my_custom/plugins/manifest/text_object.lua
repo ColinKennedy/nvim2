@@ -188,6 +188,7 @@ return {
             "<P", ">P",
             "<p", ">p",
             -- "=P", "=p",
+            "[<Space>", "]<Space>",  -- Add newlines above / below the cursor
             "[A", "]A",
             "[B", "]B",
             "[L", "]L",
