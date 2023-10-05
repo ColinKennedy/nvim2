@@ -1,3 +1,6 @@
+https://github.com/malbertzard/inline-fold.nvim
+ - Try to see if this works with a big USD file
+
 Add USD to Comment.nvim
 https://github.com/numToStr/Comment.nvim#treesitter
 
