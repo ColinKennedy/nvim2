@@ -1,3 +1,5 @@
+- /bin/bash: par: command not found - Add an "auto-install par" script
+- Figure out how to do real persistent undo
 - Change snippets to not exit whenever I go into Normal mode
 
 - <Space>G doesn't work if the current file isn't in a reasonable hunk (the fallback logic isn't working)
@@ -5,9 +7,7 @@
 
 - The :Rg command is window sizes are still fucked.
 
-- Figure out how to do real persistent undo
 - persistent-breakpoints doesn't load as expected. Fix
-- /bin/bash: par: command not found - Add an "auto-install par" script
 - vim-git-backup - make into lua, maybe
 - searcher / navigation mode ( project, c = class, f = function, m = method, etc)
 
