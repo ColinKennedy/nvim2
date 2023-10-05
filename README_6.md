@@ -1,6 +1,3 @@
-- Check if nvim-lint or null-ls has better tooling
- - If nvim-lint is better, consider manually adding its stuff into $PATH
-
 - <Space>G doesn't work if the current file isn't in a reasonable hunk (the fallback logic isn't working)
 - Might possibly also not be able to handle submodules as expected
 

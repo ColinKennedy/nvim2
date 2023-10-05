@@ -417,12 +417,14 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command(
-    "ToggleHexView",
+    "LspClients",
     function()
-        -- Requires https://github.com/RaafatTurki/hex.nvim
-        require("hex").toggle()
+        local lsp_helper = require("my_custom.utilities.lsp_helper")
+
+        lsp_helper.print_attached_clients()
     end,
     {
-        desc = "Switch a binary file to a hexdump-ish view and back."
+        desc="Print the active, buffer LSP clients (including nvim-lint / null-ls / etc)",
+        nargs=0,
     }
 )
