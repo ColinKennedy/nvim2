@@ -1003,5 +1003,34 @@ return {
             require("leap").add_default_mappings(true)
             require("leap").init_highlight()
         end,
-    }
+    },
+
+    -- Show classes / functions / variables in an outliner
+    {
+        "simrat39/symbols-outline.nvim",
+        config = function()
+            -- Note:
+            --     The SymbolsOutline assumes that the current file has been
+            --     processed by the user's LSP. If the LSP is missing, broken, or
+            --     hasn't run on the file yet, the outliner may not show. So we add
+            --     a small disclaimer to let people know to try again, if needed.
+            --
+            print("Note: If symbol outliner doesn't open, wait for LSPs and try again.")
+
+            require("symbols-outline").setup()
+
+            vim.keymap.set(
+                "n",
+                "<Space>SO",
+                ":SymbolsOutline<CR>",
+                {
+                    desc = "Open [S]ymbols [O]utliner",
+                    silent = true,
+                }
+            )
+        end,
+        dependencies = { "neovim/nvim-lspconfig" },
+        cmd = "SymbolsOutline",
+        keys = {"<Space>SO"}
+    },
 }

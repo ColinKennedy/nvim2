@@ -153,3 +153,45 @@ vim.api.nvim_create_autocmd(
         pattern = "*",
     }
 )
+
+-- Set up lspconfig.
+local lspconfig = require("lspconfig")
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+lspconfig.rust_analyzer.setup { capabilities=capabilities }
+
+local disable_completion = function(client)
+    -- Disable completion from pylsp because ``jedi_language_server``'s options are better.
+    -- Everything else is good though and should be kept.
+    --
+    -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/822
+    --
+    client.server_capabilities.completionProvider = false
+end
+
+pylsp_settings = {
+    pylsp = {
+        plugins = {
+            flake8 = { enabled = false },
+            pycodestyle = { enabled = false },
+            pyflakes = { enabled = false },
+        },
+    },
+}
+
+lspconfig.jedi_language_server.setup {
+    capabilities = capabilities,
+    on_attach = disable_completion,
+}
+lspconfig.jedi_language_server.setup { capabilities=capabilities }
+
+-- Added "offsetEncoding" to avoid an annoying, spammy Neovim warning
+--
+-- Reference: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
+--
+-- Note: The reference is for null-ls.nvim but the same applies for this LSP.
+--
+capabilities.offsetEncoding = "utf-8"
+lspconfig.ccls.setup { capabilities=capabilities }
+lspconfig.ccls.setup { capabilities=capabilities }
