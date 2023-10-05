@@ -1,4 +1,5 @@
 return {
+    -- The plug-in that adds LSPs of all languages to Neovim
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -21,6 +22,7 @@ return {
         version = "0.*",
     },
 
+    -- Enable auto-completion in Neovim
     {
         "hrsh7th/nvim-cmp",
         config = function()
@@ -41,6 +43,7 @@ return {
         lazy = true,
     },
 
+    -- Neovim snippet engine (which also displays in nvim-cmp)
     {
         "L3MON4D3/LuaSnip",
         config = function()
