@@ -13,6 +13,7 @@ return {
                 end
             )
         end,
+        keys = { "[d", "]d" },
         lazy = true,
     },
 
