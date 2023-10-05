@@ -790,6 +790,7 @@ return {
                             name = "[S]witcher aerial.nvim windows",
                             A = "[S]witch [N]avigation",
                             S = "[S]witch [S]idebar",
+                            O = "[S]ymbols [O]utliner (LSP)",
                         },
                         T = "Create a [T]erminal on the bottom of the current window.",
                         W = "Open [W]orkspace (NvimTree)",
