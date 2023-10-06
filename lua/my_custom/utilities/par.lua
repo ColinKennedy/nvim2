@@ -5,7 +5,7 @@ local _COMMAND_NAME = "par"
 local M = {}
 
 
-local _get_commands = function(source)
+local _get_commands = function(source, bin)
     local extraction_directory = "par-master" -- TODO: Auto-get this directory name
 
     local output = {}
@@ -23,12 +23,20 @@ local _get_commands = function(source)
         {"make", "-C", extraction_directory, "-f", "protoMakefile"},
         {
             "cp",
-            filer.join_path({source, extraction_directory, command}),
-            filer.join_path({bin, command}),
+            filer.join_path({source, extraction_directory, _COMMAND_NAME}),
+            filer.join_path({bin, _COMMAND_NAME}),
         },
     }
 
-    vim.tbl_extend("error", output, commands)
+    if vim.fn.isdirectory(bin) == 0
+    then
+        vim.fn.mkdir(bin, "p")  -- Recursively create directories
+    end
+
+    for _, command in ipairs(commands)
+    do
+        table.insert(output, command)
+    end
 
     return output
 end
@@ -105,7 +113,7 @@ function M.load_or_install()
         return
     end
 
-    local bin = filer.join_path({vim.g.vim_home, "bin"})
+    local bin = filer.join_path({vim.g.vim_home, "bin", vim.loop.os_uname().sysname})
 
     if vim.fn.filereadable(filer.join_path({bin, _COMMAND_NAME})) == 1
     then
@@ -123,8 +131,7 @@ function M.load_or_install()
         vim.fn.mkdir(source, "p")  -- Recursively create directories
     end
 
-    local commands = _get_commands(source)
-    print(vim.inspect(commands))
+    local commands = _get_commands(source, bin)
 
     for _, command in ipairs(commands)
     do
