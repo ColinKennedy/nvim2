@@ -1,4 +1,6 @@
-- /bin/bash: par: command not found - Add an "auto-install par" script
+- Assembly viewer - https://github.com/neovim/neovim/issues/19708
+    - Implement a “VisualChanged” event
+
 - Figure out how to do real persistent undo
 - Change snippets to not exit whenever I go into Normal mode
 
