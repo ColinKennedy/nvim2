@@ -1012,8 +1012,27 @@ return {
     {
         "ggandor/leap.nvim",
         config = function()
-            require("leap").add_default_mappings(true)
+            vim.keymap.set(
+                "n",
+                "s",
+                "<Plug>(leap-forward-to)",
+                {
+                    desc = "Leap forward to",
+                    silent = true,
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "S",
+                "<Plug>(leap-backward-to)",
+                {
+                    desc = "Leap backward to",
+                    silent = true,
+                }
+            )
+
             require("leap").init_highlight()
+
             require('leap').opts.safe_labels = {
                 "a", "s", "d", "f", "j", "k", "l", ";",
                 "g", "h",
