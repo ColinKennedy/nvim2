@@ -122,6 +122,12 @@ then
     vim.opt.formatoptions:append{"j"}
 end
 
+-- Search for text within some visual selection
+--
+-- Reference: https://www.reddit.com/r/neovim/comments/16ztjvl/comment/k3hd4i1/?utm_source=share&utm_medium=web2x&context=3
+--
+vim.keymap.set("x", "/", "<Esc>/\\%V", { desc = "Search within a visual selection" })
+
 -- Change Vim to add numbered j/k  movement to the jumplist
 vim.cmd[[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k']]
 vim.cmd[[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j']]
