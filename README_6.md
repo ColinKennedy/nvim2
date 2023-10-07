@@ -1,7 +1,6 @@
 - Assembly viewer - https://github.com/neovim/neovim/issues/19708
-    - Implement a “VisualChanged” event
+    - Implement a "VisualChanged" event
 
-- Figure out how to do real persistent undo
 - Change snippets to not exit whenever I go into Normal mode
 
 - <Space>G doesn't work if the current file isn't in a reasonable hunk (the fallback logic isn't working)
