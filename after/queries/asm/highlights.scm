@@ -1,6 +1,3 @@
-;; extends
-;; https://www.reddit.com/r/neovim/comments/1255tw1/comment/je3t93u/?utm_source=share&utm_medium=web2x&context=3
-
 (comment) @comment
 (hexadecimal) @number
 (identifier) @variable
@@ -13,10 +10,21 @@
 (string) @string
 (width) @attribute
 (label) @label
+(macro) @function.macro
 
 ":" @punctuation.delimiter
 "[" @punctuation.bracket
 "]" @punctuation.bracket
+
+"!=" @operator
+"*" @operator
+"+" @operator
+"-" @operator
+"/" @operator
+"<=" @operator
+"==" @operator
+">=" @operator
+
 ; TODO: Add these, later
 ; "@" @punctuation.special
 ; "<" @punctuation.bracket
