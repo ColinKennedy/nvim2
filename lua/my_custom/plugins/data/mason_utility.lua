@@ -22,8 +22,6 @@ function M.add_bin_folder_to_path()
             -- The `bin_directory` already exists. It would be redundant to add
             -- it to $PATH twice so we just end this function early.
             --
-            print("STOP")
-
             return
         end
     end
