@@ -183,13 +183,31 @@ local disable_completion = function(client)
 end
 
 lspconfig.pyright.setup { capabilities=capabilities }
+pylsp_settings = {
+    pylsp = {
+        plugins = {
+            flake8 = { enabled = false },
+            pycodestyle = { enabled = false },
+            pyflakes = { enabled = false },
+        },
+    },
+}
+
 lspconfig.jedi_language_server.setup { capabilities=capabilities }
-lspconfig.pylsp.setup { capabilities=capabilities, on_attach = disable_completion }
+lspconfig.pylsp.setup {
+    capabilities=capabilities,
+    on_attach = disable_completion,
+    settings = pylsp_settings,
+}
 
 
 lspconfig.pyright.setup { capabilities=capabilities }
 lspconfig.jedi_language_server.setup { capabilities=capabilities }
-lspconfig.pylsp.setup { capabilities=capabilities, on_attach = disable_completion }
+lspconfig.pylsp.setup {
+    capabilities=capabilities,
+    settings = pylsp_settings,
+    on_attach = disable_completion,
+}
 
 -- Added "offsetEncoding" to avoid an annoying, spammy Neovim warning
 --

@@ -196,9 +196,6 @@
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
 	url = git@github.com:tpope/vim-markdown.git
-[submodule "bundle/vim-projectionist"]
-	path = bundle/vim-projectionist
-	url = git@github.com:tpope/vim-projectionist.git
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
@@ -232,9 +229,6 @@
 [submodule "bundle/vim-textobj-comment"]
 	path = bundle/vim-textobj-comment
 	url = git@github.com:glts/vim-textobj-comment.git
-[submodule "bundle/hop.nvim"]
-	path = bundle/hop.nvim
-	url = git@github.com:phaazon/hop.nvim.git
 [submodule "bundle/nvim-gps"]
 	path = bundle/nvim-gps
 	url = git@github.com:Lazytangent/nvim-gps.git
@@ -304,3 +298,12 @@
 [submodule "bundle/better-escape.nvim"]
 	path = bundle/better-escape.nvim
 	url = git@github.com:max397574/better-escape.nvim.git
+[submodule "bundle/nvim-lint"]
+	path = bundle/nvim-lint
+	url = git@github.com:mfussenegger/nvim-lint.git
+[submodule "bundle/hydra.nvim"]
+	path = bundle/hydra.nvim
+	url = git@github.com:anuvyklack/hydra.nvim.git
+[submodule "bundle/leap.nvim"]
+	path = bundle/leap.nvim
+	url = git@github.com:ggandor/leap.nvim.git

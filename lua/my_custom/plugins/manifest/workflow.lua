@@ -235,22 +235,22 @@ return {
     --     ft = "python",
     -- },
 
-    -- Enables nvim-treesitter syntax highlighting groups for USD files.
-    --
-    -- Note: This does nothing unless you call
-    --
-    -- ```
-    -- require("nvim-treesitter.configs").setup {
-    --     parser_install_dir = installation_directory,
-    --     highlight = { enable = true },
-    -- }
-    -- ```
-    --
-    {
-        "ColinKennedy/nvim-treesitter-usd",
-        ft = "usd",
-        version = "0.*",
-    },
+    -- -- Enables nvim-treesitter syntax highlighting groups for USD files.
+    -- --
+    -- -- Note: This does nothing unless you call
+    -- --
+    -- -- ```
+    -- -- require("nvim-treesitter.configs").setup {
+    -- --     parser_install_dir = installation_directory,
+    -- --     highlight = { enable = true },
+    -- -- }
+    -- -- ```
+    -- --
+    -- {
+    --     "ColinKennedy/nvim-treesitter-usd",
+    --     ft = "usd",
+    --     version = "0.*",
+    -- },
 
     {
         "ColinKennedy/nvim-treesitter-textobjects",
@@ -330,16 +330,6 @@ return {
     },
 
     -- Create simple templates for Vim projects using a '.projections.json' sidecar file
-    {
-        "tpope/vim-projectionist",
-        config = function()
-            -- TODO: Double check if this works
-            require("my_custom.utilities.utility").lazy_load("vim-projectionist")
-        end,
-        ft = "cpp",
-        version = "1.*",
-    },
-
     -- Quickfix helper functions
     {
         "romainl/vim-qf",
@@ -430,7 +420,7 @@ return {
         config = function()
             require("spaceless").setup()
         end,
-        event = { "VeryLazy" },
+        event = { "InsertEnter" },
     },
 
     -- A tree file/directory viewer plug-in
@@ -469,31 +459,6 @@ return {
         keys = { "<space>W" } -- W as in "workspace view"
     },
 
-    -- Use any 2-3 key combo to jump anywhere in a file.
-    -- Basically Firefox's Vimium, but in Vim.
-    --
-    {
-        "phaazon/hop.nvim",
-        cmd = "HopWord",
-        config = function()
-            local hop = require('hop')
-            local directions = require('hop.hint').HintDirection
-
-            vim.keymap.set(
-                "n",
-                "<leader>f",
-                function()
-                    vim.cmd("HopWord")
-                end,
-                {desc="[f]ind text using hop-mode."}
-            )
-
-            require("hop").setup({keys= "asdfghjkl"})
-        end,
-        keys = "<leader>f",
-        version = "2.*",
-    },
-
     -- Debug adapter plug-in. Debug anything in Neovim
     {
         "mfussenegger/nvim-dap",
@@ -509,7 +474,7 @@ return {
             dap.adapters.cppdbg = {
                 id = "cppdbg",
                 type = "executable",
-                command = "/home/selecaoone/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7"
+                command = "~/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7"
             }
 
             vim.keymap.set(
@@ -690,7 +655,6 @@ return {
             add_zoom_keymap("<leader>dt", "dapui_stacks")  -- dt as in s[t]acks
             add_zoom_keymap("<leader>dr", "dap-repl")
         end,
-        keys = "<F5>",
         dependencies = {
             "mfussenegger/nvim-dap",
 
@@ -698,6 +662,7 @@ return {
 
             "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
         },
+        keys = { "<F5>" },
     },
 
     -- Adds the current value(s) of variables as you step through the code. Super handy!
@@ -761,7 +726,7 @@ return {
             require('persistent-breakpoints.api').load_breakpoints()
         end,
         dependencies = {"mfussenegger/nvim-dap"},
-        event = "VeryLazy",
+        keys = { "<leader>db" },
     },
 
     -- Seamlessly switch between a binary file view and a hexdump-ish view and back
@@ -780,7 +745,6 @@ return {
     -- A pop-up that shows you available Neovim keymaps. Only pops up if you're slow
     {
         "folke/which-key.nvim",
-        event = "VeryLazy",
         config = function()
             local which_key = require("which-key")
 
@@ -818,7 +782,9 @@ return {
                         name = "Space Switching Mappings",
                         A = "Show [A]rgs list",
                         B = "Show [B]uffers list",
+                        D = "[D]ebugging interactive mode",
                         E = "[E]dit a new project root file",
+                        G = "[G]it interactive mode",
                         L = "[L]ines searcher (current file)",
                         S = {
                             name = "[S]witcher aerial.nvim windows",
@@ -844,6 +810,7 @@ return {
                 }
             )
         end,
+        keys = {"<Space>", "<leader>"},
         version = "stable",
     },
 
@@ -913,6 +880,7 @@ return {
             vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
         end,
         version = "v2.*",
+        keys = "<Space>T",
     },
 
     -- -- Allow terminal buffers to be edited
@@ -997,7 +965,7 @@ return {
             )
         end,
         dependencies = {"ColinKennedy/plenary.nvim"},
-        event = "VeryLazy",
+        keys = { "<M-S-h>", "<M-S-j>", "<M-S-k>", "<M-S-l>" },
         version = "v0.*",
     },
 
@@ -1007,5 +975,33 @@ return {
         config = function()
           require("better_escape").setup()
         end,
+        event = "InsertEnter",
     },
+
+    -- Add "submodes" to Neovim. e.g. <Space>G for "git mode"
+    {
+        "anuvyklack/hydra.nvim",
+        config = function()
+            require("my_custom.plugins.manifest.hydra")
+        end,
+        keys = { "<Space>G" },
+    },
+
+    -- Use the s/S key to hop quickly from one place to another.
+    --
+    -- Usage:
+    --     - Press s
+    --     - Type a letter
+    --     - Type another letter
+    --     - If your text that you want to jump to **doesn't** light up then press <Enter>
+    --         - You're done
+    --     - If it has a lit-up letter next to it, press it
+    --         - You're done
+    {
+        "ggandor/leap.nvim",
+        config = function()
+            require("leap").add_default_mappings(true)
+            require("leap").init_highlight()
+        end,
+    }
 }

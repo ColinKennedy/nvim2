@@ -75,7 +75,6 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
-            "nvim-treesitter/nvim-treesitter",
         },
         config = function()
             require("lualine").setup {
@@ -89,7 +88,19 @@ return {
                 lualine_b = {"branch"},
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = {"diagnostics", "progress"},
+                lualine_y = {
+                    {
+                        "diagnostics",
+                        symbols = {
+                            -- Reference: www.nerdfonts.com/cheat-sheet
+                            error = " ",
+                            warn = "⚠ ",
+                            info = " ",
+                            hint = " ",
+                        },
+                    },
+                    "progress",
+                },
                 lualine_z = {"location"}
               },
             }
@@ -97,7 +108,7 @@ return {
         event = "VeryLazy",
     },
 
-    -- Extra, optional icons for ``nvim-lualine/lualine.nvim``
+    -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
     {
         "nvim-tree/nvim-web-devicons",
         config = function()
@@ -253,6 +264,8 @@ return {
         lazy = true,
     },
 
+    -- TODO: Figure out how to lazy-load this plug-in
+    --
     -- Overrides Vim's default Command mode and provides "wild card" results
     -- + icons. Mostly cosmetic and isn't "necessary", but it is a fun little
     -- plug-in as long as it's harmless.
