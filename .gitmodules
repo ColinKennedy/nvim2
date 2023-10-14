@@ -307,3 +307,6 @@
 [submodule "bundle/leap.nvim"]
 	path = bundle/leap.nvim
 	url = git@github.com:ggandor/leap.nvim.git
+[submodule "bundle/symbols-outline.nvim"]
+	path = bundle/symbols-outline.nvim
+	url = git@github.com:simrat39/symbols-outline.nvim.git

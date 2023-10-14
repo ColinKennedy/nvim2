@@ -1,3 +1,8 @@
+https://github.com/malbertzard/inline-fold.nvim
+ - Try to see if this works with a big USD file
+
+- Add directory browser for Neovim
+
 Add USD to Comment.nvim
 https://github.com/numToStr/Comment.nvim#treesitter
 
@@ -35,8 +40,14 @@ https://www.reddit.com/r/neovim/comments/ug2s4s/disable_diagnostic_while_expandi
  - Is it possible to get treesitter keywords in auto-completion, as a completion source?
 
 
+- Fix H / M / L keys. Probably broken because of the cursor auto-centering code
+
 
 - Add lua auto-complete?
+
+
+- See if I can fix that annoying macro bug using - https://github.com/neovim/neovim/issues/24475
+ - reg_executing()
 
 
 

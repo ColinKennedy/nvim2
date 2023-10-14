@@ -738,6 +738,17 @@ return {
         "RaafatTurki/hex.nvim",
         config = function()
             require("hex").setup()
+
+            vim.api.nvim_create_user_command(
+                "ToggleHexView",
+                function()
+                    -- Requires https://github.com/RaafatTurki/hex.nvim
+                    require("hex").toggle()
+                end,
+                {
+                    desc = "Switch a binary file to a hexdump-ish view and back."
+                }
+            )
         end,
         cmd = "ToggleHexView"
     },
@@ -790,6 +801,7 @@ return {
                             name = "[S]witcher aerial.nvim windows",
                             A = "[S]witch [N]avigation",
                             S = "[S]witch [S]idebar",
+                            O = "[S]ymbols [O]utliner (LSP)",
                         },
                         T = "Create a [T]erminal on the bottom of the current window.",
                         W = "Open [W]orkspace (NvimTree)",
@@ -1000,8 +1012,61 @@ return {
     {
         "ggandor/leap.nvim",
         config = function()
-            require("leap").add_default_mappings(true)
+            vim.keymap.set(
+                "n",
+                "s",
+                "<Plug>(leap-forward-to)",
+                {
+                    desc = "Leap forward to",
+                    silent = true,
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "S",
+                "<Plug>(leap-backward-to)",
+                {
+                    desc = "Leap backward to",
+                    silent = true,
+                }
+            )
+
             require("leap").init_highlight()
+
+            require('leap').opts.safe_labels = {
+                "a", "s", "d", "f", "j", "k", "l", ";",
+                "g", "h",
+                "A", "S", "D", "F", "J", "K", "L",
+            }
         end,
-    }
+    },
+
+    -- Show classes / functions / variables in an outliner
+    {
+        "simrat39/symbols-outline.nvim",
+        config = function()
+            -- Note:
+            --     The SymbolsOutline assumes that the current file has been
+            --     processed by the user's LSP. If the LSP is missing, broken, or
+            --     hasn't run on the file yet, the outliner may not show. So we add
+            --     a small disclaimer to let people know to try again, if needed.
+            --
+            print("Note: If symbol outliner doesn't open, wait for LSPs and try again.")
+
+            require("symbols-outline").setup()
+
+            vim.keymap.set(
+                "n",
+                "<Space>SO",
+                ":SymbolsOutline<CR>",
+                {
+                    desc = "Open [S]ymbols [O]utliner",
+                    silent = true,
+                }
+            )
+        end,
+        dependencies = { "neovim/nvim-lspconfig" },
+        cmd = "SymbolsOutline",
+        keys = {"<Space>SO"}
+    },
 }

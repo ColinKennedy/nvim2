@@ -1,10 +1,21 @@
+- Assembly viewer - https://github.com/neovim/neovim/issues/19708
+    - Implement a "VisualChanged" event
+
+- Auto-install any dependencies (like servers and such)
+    - https://www.reddit.com/r/neovim/comments/171erkj/python3_provider_when_pep_668_is_adopted_by_your/k3qu6zz/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+        - https://github.com/wookayin/dotfiles/blob/master/nvim/lua/config/pynvim.lua#L73-L110
+
+
+- Add back the directory browser in Neovim
+
+- Change snippets to not exit whenever I go into Normal mode
+
 - <Space>G doesn't work if the current file isn't in a reasonable hunk (the fallback logic isn't working)
+- Might possibly also not be able to handle submodules as expected
 
 - The :Rg command is window sizes are still fucked.
-- Change snippets to not exit whenever I go into Normal mode
-- Figure out how to do real persistent undo
+
 - persistent-breakpoints doesn't load as expected. Fix
-- /bin/bash: par: command not found - Add an "auto-install par" script
 - vim-git-backup - make into lua, maybe
 - searcher / navigation mode ( project, c = class, f = function, m = method, etc)
 

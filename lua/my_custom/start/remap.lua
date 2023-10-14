@@ -276,23 +276,35 @@ vim.keymap.set(
     "t",
     "<C-h>",
     "<C-\\><C-n><C-w>h",
-    {silent = true}
+    {
+        desc = "Move to the left of the terminal buffer.",
+        silent = true,
+    }
 )
 vim.keymap.set(
     "t",
     "<C-j>",
     "<C-\\><C-n><C-w>j",
-    {silent = true}
+    {
+        desc = "Move down to the buffer below the terminal buffer.",
+        silent = true,
+    }
 )
 vim.keymap.set(
     "t",
     "<C-k>",
     "<C-\\><C-n><C-w>k",
-    {silent = true}
+    {
+        desc = "Move up to the buffer above the terminal buffer.",
+        silent = true,
+    }
 )
 vim.keymap.set(
     "t",
     "<C-l>",
     "<C-\\><C-n><C-w>l",
-    {silent = true}
+    {
+        desc = "Move to the right of the terminal buffer.",
+        silent = true,
+    }
 )

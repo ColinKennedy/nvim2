@@ -96,7 +96,14 @@ vim.api.nvim_create_autocmd(
     {
         group = group,
         pattern = {"*", "*.*"},
-        command = ":set scrolloff=999",
+        callback = function()
+            if vim.bo.filetype == "assembly_explorer"
+            then
+                vim.wo.scrolloff = 0
+            else
+                vim.wo.scrolloff = 999
+            end
+        end,
     }
 )
 

@@ -1,4 +1,5 @@
 return {
+    -- The plug-in that adds LSPs of all languages to Neovim
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -12,6 +13,7 @@ return {
                 end
             )
         end,
+        keys = { "[d", "]d" },
         lazy = true,
     },
 
@@ -21,6 +23,7 @@ return {
         version = "0.*",
     },
 
+    -- Enable auto-completion in Neovim
     {
         "hrsh7th/nvim-cmp",
         config = function()
@@ -37,6 +40,7 @@ return {
         lazy = true,
     },
 
+    -- Neovim snippet engine (which also displays in nvim-cmp)
     {
         "L3MON4D3/LuaSnip",
         config = function()
@@ -74,26 +78,26 @@ return {
     --     --   end,
     --     -- },
 
-    -- TODO: Consider removing
-    -- A mason.nvim and null-ls are great tools but they don't know how to communicate
-    -- with one another. This plugin makes them cross-talk.
-    --
-    -- "Modern problems require modern solutions" - Dave Chappelle
-    --
-    {
-        "jay-babu/mason-null-ls.nvim",
-        config = function()
-            require("mason-null-ls").setup(
-                {
-                    ensure_installed = nil,
-                    automatic_installation = true,
-                    automatic_setup = false,
-                }
-            )
-        end,
-        lazy = true,
-        version = "2.*",
-    },
+    -- -- TODO: Consider removing
+    -- -- A mason.nvim and null-ls are great tools but they don't know how to communicate
+    -- -- with one another. This plugin makes them cross-talk.
+    -- --
+    -- -- "Modern problems require modern solutions" - Dave Chappelle
+    -- --
+    -- {
+    --     "jay-babu/mason-null-ls.nvim",
+    --     config = function()
+    --         require("mason-null-ls").setup(
+    --             {
+    --                 ensure_installed = nil,
+    --                 automatic_installation = true,
+    --                 automatic_setup = false,
+    --             }
+    --         )
+    --     end,
+    --     lazy = true,
+    --     version = "2.*",
+    -- },
 
     -- Linter package container / manager
     -- Important: CentOS 7 doesn't include an ensurepip/_bundled folder. It's
@@ -107,43 +111,49 @@ return {
         build = ":MasonUpdate",  -- :MasonUpdate updates registry contents
         cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUpdate"},
         config = function()
-            require("mason").setup(
+            local filer = require("my_custom.utilities.filer")
+
+            local install_root = filer.join_path(
                 {
-                    install_root_dir = vim.g.vim_home .. "/mason_packages/" .. vim.loop.os_uname().sysname
+                    vim.g.vim_home,
+                    "mason_packages",
+                    vim.loop.os_uname().sysname,
                 }
             )
+
+            require("mason").setup({ install_root_dir = install_root })
         end,
         version = "1.*",
     },
 
-    -- TODO: Consider removing
-    -- Integrates linters, formatters, and other features into Neovim's own LSP. Cool!
-    {
-        "nvimtools/none-ls.nvim",
-        config = function()
-            local null_ls = require("null-ls")
-            local sources = {
-                null_ls.builtins.code_actions.gitsigns,
-                null_ls.builtins.diagnostics.pydocstyle.with(
-                    {
-                        diagnostic_config = { signs = false },
-                        extra_args = { "--convention=google" }
-                    }
-                ),
-                null_ls.builtins.diagnostics.pylint.with({diagnostic_config={signs=false}}),
-                null_ls.builtins.formatting.black,
-                null_ls.builtins.formatting.isort,
-                null_ls.builtins.formatting.trim_whitespace,
-                -- null_ls.builtins.diagnostics.ruff,
-            }
-            null_ls.setup({ sources = sources })
-        end,
-        dependencies = {
-            "jay-babu/mason-null-ls.nvim",  -- Bootstrap pydocstyle, pylint, etc
-            "ColinKennedy/plenary.nvim"
-        },
-        event = "VeryLazy",
-    },
+    -- -- TODO: Consider removing
+    -- -- Integrates linters, formatters, and other features into Neovim's own LSP. Cool!
+    -- {
+    --     "nvimtools/none-ls.nvim",
+    --     config = function()
+    --         local null_ls = require("null-ls")
+    --         local sources = {
+    --             null_ls.builtins.code_actions.gitsigns,
+    --             null_ls.builtins.diagnostics.pydocstyle.with(
+    --                 {
+    --                     diagnostic_config = { signs = false },
+    --                     extra_args = { "--convention=google" }
+    --                 }
+    --             ),
+    --             null_ls.builtins.diagnostics.pylint.with({diagnostic_config={signs=false}}),
+    --             null_ls.builtins.formatting.black,
+    --             null_ls.builtins.formatting.isort,
+    --             null_ls.builtins.formatting.trim_whitespace,
+    --             -- null_ls.builtins.diagnostics.ruff,
+    --         }
+    --         null_ls.setup({ sources = sources })
+    --     end,
+    --     dependencies = {
+    --         "jay-babu/mason-null-ls.nvim",  -- Bootstrap pydocstyle, pylint, etc
+    --         "ColinKennedy/plenary.nvim"
+    --     },
+    --     event = "VeryLazy",
+    -- },
 
     -- Added my own fork of plenary.nvim because it doesn't work with older curl versions
     --
@@ -203,28 +213,31 @@ return {
     },
 
     -- TODO: Possibly remove
-    -- -- A simple linter that integrates with LSPs automatically
-    -- {
-    --     "mfussenegger/nvim-lint",
-    --     config = function()
-    --         require("lint").linters_by_ft = {
-    --             python = {"pydocstyle", "pylint"}
-    --         }
-    --
-    --         lint = require("lint")
-    --         lint.linters.pydocstyle.args = { "--convention=google" }
-    --
-    --         lint.try_lint()
-    --         vim.api.nvim_create_autocmd(
-    --             { "BufWritePost" },
-    --             {
-    --                 callback = function()
-    --                     lint = require("lint")
-    --                     lint.try_lint()
-    --                 end
-    --             }
-    --         )
-    --     end,
-    --     event = "VeryLazy",
-    -- },
+    -- A simple linter that integrates with LSPs automatically
+    {
+        "mfussenegger/nvim-lint",
+        config = function()
+            local mason_utility = require("my_custom.plugins.data.mason_utility")
+            mason_utility.add_bin_folder_to_path()
+
+            require("lint").linters_by_ft = {
+                python = {"pydocstyle", "pylint"}
+            }
+
+            lint = require("lint")
+            lint.linters.pydocstyle.args = { "--convention=google" }
+
+            lint.try_lint()
+            vim.api.nvim_create_autocmd(
+                { "BufWritePost" },
+                {
+                    callback = function()
+                        lint = require("lint")
+                        lint.try_lint()
+                    end
+                }
+            )
+        end,
+        event = "VeryLazy",
+    },
 }

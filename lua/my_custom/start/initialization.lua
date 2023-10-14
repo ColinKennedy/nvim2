@@ -122,9 +122,19 @@ then
     vim.opt.formatoptions:append{"j"}
 end
 
+-- Search for text within some visual selection
+--
+-- Reference: https://www.reddit.com/r/neovim/comments/16ztjvl/comment/k3hd4i1/?utm_source=share&utm_medium=web2x&context=3
+--
+vim.keymap.set("x", "/", "<Esc>/\\%V", { desc = "Search within a visual selection" })
+
 -- Change Vim to add numbered j/k  movement to the jumplist
 vim.cmd[[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k']]
 vim.cmd[[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j']]
+
+-- Enable (or download `par`)
+local par = require("my_custom.utilities.par")
+par.load_or_install()
 
 -- Disable tag completion (TAB)
 --
@@ -417,12 +427,14 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command(
-    "ToggleHexView",
+    "LspClients",
     function()
-        -- Requires https://github.com/RaafatTurki/hex.nvim
-        require("hex").toggle()
+        local lsp_helper = require("my_custom.utilities.lsp_helper")
+
+        lsp_helper.print_attached_clients()
     end,
     {
-        desc = "Switch a binary file to a hexdump-ish view and back."
+        desc="Print the active, buffer LSP clients (including nvim-lint / null-ls / etc)",
+        nargs=0,
     }
 )

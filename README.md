@@ -20,6 +20,7 @@
 | n | `<space>`G  | Enter [G]it mode for committing to repositories.                                          |
 | n | `<space>`L  | Search [l]ines in the current window for text.                                            |
 | n | `<space>`SN | [S]witch [N]avigation inside / outside of classes and functions.                          |
+| n | `<space>`SO | Open [S]ymbols [O]utliner                                                                 |
 | n | `<space>`SS | [S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc.   |
 | n | `<space>`T  | Create a [T]erminal on the bottom of the current window.                                  |
 | n | `<space>`W  | Open NvimTree starting from the `:pwd`.                                                   |

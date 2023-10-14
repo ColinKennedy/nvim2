@@ -66,4 +66,20 @@ function M.join_path(parts)
     return output
 end
 
+function M.join_os_paths(paths)
+    output = ""
+
+    for _, path in ipairs(paths)
+    do
+        if output == ""
+        then
+            output = path
+        else
+            output = output .. M.path_separator .. path
+        end
+    end
+
+    return output
+end
+
 return M
