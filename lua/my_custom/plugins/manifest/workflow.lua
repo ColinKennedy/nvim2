@@ -49,13 +49,17 @@ return {
         config = function()
             require("my_custom.plugins.data.treesj")
 
+            local treesj = require("treesj")
+
+            treesj.setup({ max_join_length = 150 })
+
             vim.keymap.set(
                 "n",
                 "<leader>sa",
                 function()
-                    require("treesj").toggle()
+                    treesj.toggle()
                 end,
-                options
+                {}
             )
         end,
     },
@@ -121,7 +125,8 @@ return {
             local context = require("treesitter-context")
             context.setup{
                 on_attach = function(bufnr)
-                    return vim.bo[bufnr].filetype == 'usd'
+                    type_ = vim.bo[bufnr].filetype
+                    return type_ == "usd" or type_ == "objdump"
                 end,
             }
 

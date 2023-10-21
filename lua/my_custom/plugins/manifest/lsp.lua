@@ -221,7 +221,8 @@ return {
             mason_utility.add_bin_folder_to_path()
 
             require("lint").linters_by_ft = {
-                python = {"pydocstyle", "pylint"}
+                python = {"pydocstyle", "pylint"},
+                lua = {"luacheck"},
             }
 
             lint = require("lint")
