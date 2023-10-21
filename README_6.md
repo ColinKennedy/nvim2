@@ -6,11 +6,24 @@
         - https://github.com/wookayin/dotfiles/blob/master/nvim/lua/config/pynvim.lua#L73-L110
 
 
+-- math.randomseed(os.clock()*100000000000)
+-- local number = math.random(10000, 65000)
+-- local path_ = "/tmp/thing" .. tostring(number) .. ".asm"
+-- local file = io.open(path_, "w")
+--
+-- for _, line in ipairs(raw_assembly) do
+--     file:write(line .. "\n")
+-- end
+--
+-- -- Close the file
+-- file:close()
+
 - Add back the directory browser in Neovim
 
 - Change snippets to not exit whenever I go into Normal mode
 
 - <Space>G doesn't work if the current file isn't in a reasonable hunk (the fallback logic isn't working)
+- <Space>G doesn't work cross-files all of the time. Probably replace that whole logic
 - Might possibly also not be able to handle submodules as expected
 
 - The :Rg command is window sizes are still fucked.

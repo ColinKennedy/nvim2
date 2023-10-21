@@ -1,0 +1,1 @@
+{"metrics":{"start_time":1697320599760,"completion_time":1697320607387},"primary_source":{"type":"registry+v1","id":"pkg:luarocks\/luacheck@1.1.0"},"links":{"bin":{"luacheck":"bin\/luacheck"},"opt":{},"share":{}},"secondary_sources":[],"schema_version":"1.1","name":"luacheck"}

@@ -55,6 +55,15 @@ cd autojump
 ```
 
 
+## Lua
+Install luarocks (Needed in order to `:MasonInstall luacheck`, for example)
+
+### CentOS
+```sh
+sudo yum install -y luarocks
+```
+
+
 ## Tree-sitter
 Requires g++ for compiling tree-sitter parsers. Ideally g++ version 8+
 
