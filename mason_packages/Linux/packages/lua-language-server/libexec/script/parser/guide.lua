@@ -10,7 +10,7 @@ local type         = type
 ---@field type                  string
 ---@field special               string
 ---@field tag                   string
----@field args                  { [integer]: parser.object, start: integer, finish: integer }
+---@field args                  { [integer]: parser.object, start: integer, finish: integer, type: string }
 ---@field locals                parser.object[]
 ---@field returns?              parser.object[]
 ---@field breaks?               parser.object[]
@@ -22,6 +22,7 @@ local type         = type
 ---@field range                 integer
 ---@field effect                integer
 ---@field bstart                integer
+---@field bfinish               integer
 ---@field attrs                 string[]
 ---@field specials              parser.object[]
 ---@field labels                parser.object[]
@@ -74,9 +75,12 @@ local type         = type
 ---@field hasBreak?             true
 ---@field hasExit?              true
 ---@field [integer]             parser.object|any
+---@field dot                   { type: string, start: integer, finish: integer }
+---@field colon                 { type: string, start: integer, finish: integer }
 ---@field package _root         parser.object
 ---@field package _eachCache?   parser.object[]
 ---@field package _isGlobal?    boolean
+---@field package _typeCache?   parser.object[][]
 
 ---@class guide
 ---@field debugMode boolean
@@ -101,6 +105,8 @@ local blockTypes = {
     ['elseifblock'] = true,
     ['main']        = true,
 }
+
+m.blockTypes = blockTypes
 
 local topBlockTypes = {
     ['while']       = true,
@@ -158,7 +164,7 @@ local childMap = {
     ['doc']                = {'#'},
     ['doc.class']          = {'class', '#extends', '#signs', 'docAttr', 'comment'},
     ['doc.type']           = {'#types', 'name', 'comment'},
-    ['doc.alias']          = {'alias', 'extends', 'comment'},
+    ['doc.alias']          = {'alias', 'docAttr', 'extends', 'comment'},
     ['doc.enum']           = {'enum', 'extends', 'comment', 'docAttr'},
     ['doc.param']          = {'param', 'extends', 'comment'},
     ['doc.return']         = {'#returns', 'comment'},
@@ -422,6 +428,22 @@ function m.getParentType(obj, want)
     error('guide.getParentType overstack')
 end
 
+--- 寻找所在父类型
+---@param obj parser.object
+---@return parser.object?
+function m.getParentTypes(obj, wants)
+    for _ = 1, 10000 do
+        obj = obj.parent
+        if not obj then
+            return nil
+        end
+        if wants[obj.type] then
+            return obj
+        end
+    end
+    error('guide.getParentTypes overstack')
+end
+
 --- 寻找根区块
 ---@param obj parser.object
 ---@return parser.object
@@ -568,6 +590,9 @@ end
 function m.getStartFinish(source)
     local start  = source.start
     local finish = source.finish
+    if source.bfinish and source.bfinish > finish then
+        finish = source.bfinish
+    end
     if not start then
         local first = source[1]
         if not first then
@@ -583,6 +608,9 @@ end
 function m.getRange(source)
     local start  = source.vstart or source.start
     local finish = source.range  or source.finish
+    if source.bfinish and source.bfinish > finish then
+        finish = source.bfinish
+    end
     if not start then
         local first = source[1]
         if not first then
@@ -722,12 +750,12 @@ end
 
 --- 遍历所有指定类型的source
 ---@param ast parser.object
----@param type string
+---@param ty string
 ---@param callback fun(src: parser.object): any
 ---@return any
-function m.eachSourceType(ast, type, callback)
+function m.eachSourceType(ast, ty, callback)
     local cache = getSourceTypeCache(ast)
-    local myCache = cache[type]
+    local myCache = cache[ty]
     if not myCache then
         return
     end
@@ -912,6 +940,7 @@ local assignTypeMap = {
     ['setindex']          = true,
     ['tablefield']        = true,
     ['tableindex']        = true,
+    ['tableexp']          = true,
     ['label']             = true,
     ['doc.class']         = true,
     ['doc.alias']         = true,
@@ -1290,6 +1319,37 @@ function m.isParam(source)
         return false
     end
     return true
+end
+
+---@param source parser.object
+---@return parser.object[]?
+function m.getParams(source)
+    if source.type == 'call' then
+        local args = source.args
+        if not args then
+            return
+        end
+        assert(args.type == 'callargs', 'call.args type is\'t callargs')
+        return args
+    elseif source.type == 'callargs' then
+        return source
+    elseif source.type == 'function' then
+        local args = source.args
+        if not args then
+            return
+        end
+        assert(args.type == 'funcargs', 'function.args type is\'t callargs')
+        return args
+    end
+    return nil
+end
+
+---@param source parser.object
+---@param index integer
+---@return parser.object?
+function m.getParam(source, index)
+    local args = m.getParams(source)
+    return args and args[index] or nil
 end
 
 return m

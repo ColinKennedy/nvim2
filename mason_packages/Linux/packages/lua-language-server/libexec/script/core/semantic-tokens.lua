@@ -655,7 +655,7 @@ local Care = util.switch()
         }
     end)
     : case 'nonstandardSymbol.comment'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start  = source.start,
             finish = source.finish,
@@ -663,7 +663,7 @@ local Care = util.switch()
         }
     end)
     : case 'nonstandardSymbol.continue'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start  = source.start,
             finish = source.finish,
@@ -671,7 +671,7 @@ local Care = util.switch()
         }
     end)
     : case 'doc.cast.block'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start      = source.start,
             finish     = source.finish,
@@ -679,7 +679,7 @@ local Care = util.switch()
         }
     end)
     : case 'doc.cast.name'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start      = source.start,
             finish     = source.finish,
@@ -687,7 +687,7 @@ local Care = util.switch()
         }
     end)
     : case 'doc.type.code'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start      = source.start,
             finish     = source.finish,
@@ -696,7 +696,7 @@ local Care = util.switch()
         }
     end)
     : case 'doc.operator.name'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start      = source.start,
             finish     = source.finish,
@@ -704,7 +704,7 @@ local Care = util.switch()
         }
     end)
     : case 'doc.meta.name'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start      = source.start,
             finish     = source.finish,
@@ -712,7 +712,7 @@ local Care = util.switch()
         }
     end)
     : case 'doc.attr'
-    : call(function (source, options, results)
+    : call(function (source, _options, results)
         results[#results+1] = {
             start      = source.start,
             finish     = source.finish,
@@ -720,9 +720,8 @@ local Care = util.switch()
         }
     end)
 
----@param state table
 ---@param results table
-local function buildTokens(state, results)
+local function buildTokens(results)
     local tokens = {}
     local lastLine = 0
     local lastStartChar = 0
@@ -830,6 +829,10 @@ local function solveMultilineAndOverlapping(state, results)
                 modifieres = token.modifieres,
             }
         else
+            --LSP规范说客户端不支持token跨行的话，
+            --token长度可以超出行的范围，客户端应该
+            --将其视为在行的末尾结束。
+            --正好可以测试（拷打）一下客户端的实现。
             new[#new+1] = {
                 start      = startPos,
                 finish     = converter.position(startPos.line, 9999),
@@ -882,6 +885,10 @@ return function (uri, start, finish)
 
     local n = 0
     guide.eachSourceBetween(state.ast, start, finish, function (source) ---@async
+        -- skip virtual source
+        if source.virtual then
+            return
+        end
         Care(source.type, source, options, results)
         n = n + 1
         if n % 100 == 0 then
@@ -890,24 +897,28 @@ return function (uri, start, finish)
     end)
 
     for _, comm in ipairs(state.comms) do
+        -- skip virtual comment
+        if comm.virtual then
+            return
+        end
         if start <= comm.start and comm.finish <= finish then
+            -- the same logic as in buildLuaDoc
             local headPos = (comm.type == 'comment.short' and comm.text:match '^%-%s*[@|]()')
-                         or (comm.type == 'comment.long'  and comm.text:match '^@()')
+                         or (comm.type == 'comment.long'  and comm.text:match '^%s*@()')
             if headPos then
-                local atPos
-                if comm.type == 'comment.short' then
-                    atPos = headPos + 2
-                else
-                    atPos = headPos + #comm.mark
+                -- absolute position of `@` symbol
+                local startOffset = comm.start + headPos
+                if comm.type == 'comment.long' then
+                    startOffset = comm.start + headPos + #comm.mark - 2
                 end
                 results[#results+1] = {
                     start  = comm.start,
-                    finish = comm.start + atPos - 2,
+                    finish = startOffset,
                     type   = define.TokenTypes.comment,
                 }
                 results[#results+1] = {
-                    start      = comm.start + atPos - 2,
-                    finish     = comm.start + atPos - 1 + #comm.text:match('%S*', headPos),
+                    start      = startOffset,
+                    finish     = startOffset + #comm.text:match('%S*', headPos) + 1,
                     type       = define.TokenTypes.keyword,
                     modifieres = define.TokenModifiers.documentation,
                 }
@@ -927,7 +938,7 @@ return function (uri, start, finish)
 
     results = solveMultilineAndOverlapping(state, results)
 
-    local tokens = buildTokens(state, results)
+    local tokens = buildTokens(results)
 
     return tokens
 end

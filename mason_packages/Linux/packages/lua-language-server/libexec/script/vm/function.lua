@@ -1,6 +1,7 @@
 ---@class vm
 local vm    = require 'vm.vm'
 local guide = require 'parser.guide'
+local util  = require 'utility'
 
 ---@param arg parser.object
 ---@return parser.object?
@@ -267,6 +268,9 @@ end
 ---@return integer def
 function vm.countReturnsOfCall(func, args, mark)
     local funcs = vm.getMatchedFunctions(func, args, mark)
+    if not funcs then
+        return 0, math.huge, 0
+    end
     ---@type integer?, number?, integer?
     local min, max, def
     for _, f in ipairs(funcs) do
@@ -329,21 +333,108 @@ function vm.countList(list, mark)
     return min, max, def
 end
 
+---@param uri uri
+---@param args parser.object[]
+---@return boolean
+local function isAllParamMatched(uri, args, params)
+    if not params then
+        return false
+    end
+    for i = 1, #args do
+        if not params[i] then
+            break
+        end
+        local argNode = vm.compileNode(args[i])
+        local defNode = vm.compileNode(params[i])
+        if not vm.canCastType(uri, defNode, argNode) then
+            return false
+        end
+    end
+    return true
+end
+
+---@param uri uri
+---@param args parser.object[]
 ---@param func parser.object
----@param args parser.object[]?
+---@return number
+local function calcFunctionMatchScore(uri, args, func)
+    if vm.isVarargFunctionWithOverloads(func)
+    or vm.isFunctionWithOnlyOverloads(func)
+    or not isAllParamMatched(uri, args, func.args)
+    then
+        return -1
+    end
+    local matchScore = 0
+    for i = 1, math.min(#args, #func.args) do
+        local arg, param = args[i], func.args[i]
+        local defLiterals, literalsCount = vm.getLiterals(param)
+        if defLiterals then
+            for n in vm.compileNode(arg):eachObject() do
+                -- if param's literals map contains arg's literal, this is narrower than a subtype match
+                if defLiterals[guide.getLiteral(n)] then
+                    -- the more the literals defined in the param, the less bonus score will be added
+                    -- this favors matching overload param with exact literal value, over alias/enum that has many literal values
+                    matchScore = matchScore + 1/literalsCount
+                    break
+                end
+            end
+        end
+    end
+    return matchScore
+end
+
+---@param func parser.object
+---@param args? parser.object[]
+---@return parser.object[]?
+function vm.getExactMatchedFunctions(func, args)
+    local funcs = vm.getMatchedFunctions(func, args)
+    if not args or not funcs then
+        return funcs
+    end
+    if #funcs == 1 then
+        return funcs
+    end
+    local uri = guide.getUri(func)
+    local matchScores = {}
+    for i, n in ipairs(funcs) do
+        matchScores[i] = calcFunctionMatchScore(uri, args, n)
+    end
+
+    local maxMatchScore = math.max(table.unpack(matchScores))
+    if maxMatchScore == -1 then
+        -- all should be removed
+        return nil
+    end
+
+    local minMatchScore = math.min(table.unpack(matchScores))
+    if minMatchScore == maxMatchScore then
+        -- all should be kept
+        return funcs
+    end
+
+    -- remove functions that have matchScore < maxMatchScore
+    local needRemove = {}
+    for i, matchScore in ipairs(matchScores) do
+        if matchScore < maxMatchScore then
+            needRemove[#needRemove + 1] = i
+        end
+    end
+    util.tableMultiRemove(funcs, needRemove)
+    return funcs
+end
+
+---@param func parser.object
+---@param args? parser.object[]
 ---@param mark? table
----@return parser.object[]
+---@return parser.object[]?
 function vm.getMatchedFunctions(func, args, mark)
     local funcs = {}
     local node = vm.compileNode(func)
     for n in node:eachObject() do
-        if (n.type == 'function' and not vm.isVarargFunctionWithOverloads(n))
+        if n.type == 'function'
         or n.type == 'doc.type.function' then
             funcs[#funcs+1] = n
         end
-    end
-    if #funcs <= 1 then
-        return funcs
     end
 
     local amin, amax = vm.countList(args, mark)
@@ -357,7 +448,7 @@ function vm.getMatchedFunctions(func, args, mark)
     end
 
     if #matched == 0 then
-        return funcs
+        return nil
     else
         return matched
     end
@@ -372,24 +463,62 @@ function vm.isVarargFunctionWithOverloads(func)
     if not func.args then
         return false
     end
+    if func._varargFunction ~= nil then
+        return func._varargFunction
+    end
     if func.args[1] and func.args[1].type == 'self' then
         if not func.args[2] or func.args[2].type ~= '...' then
+            func._varargFunction = false
             return false
         end
     else
         if not func.args[1] or func.args[1].type ~= '...' then
+            func._varargFunction = false
             return false
         end
     end
     if not func.bindDocs then
+        func._varargFunction = false
         return false
     end
     for _, doc in ipairs(func.bindDocs) do
         if doc.type == 'doc.overload' then
+            func._varargFunction = true
             return true
         end
     end
+    func._varargFunction = false
     return false
+end
+
+---@param func table
+---@return boolean
+function vm.isFunctionWithOnlyOverloads(func)
+    if func.type ~= 'function' then
+        return false
+    end
+    if func._onlyOverloadFunction ~= nil then
+        return func._onlyOverloadFunction
+    end
+
+    if not func.bindDocs then
+        func._onlyOverloadFunction = false
+        return false
+    end
+    local hasOverload = false
+    for _, doc in ipairs(func.bindDocs) do
+        if doc.type == 'doc.overload' then
+            hasOverload = true
+        elseif doc.type == 'doc.param'
+        or doc.type == 'doc.return'
+        then
+            -- has specified @param or @return, thus not only @overload
+            func._onlyOverloadFunction = false
+            return false
+        end
+    end
+    func._onlyOverloadFunction = hasOverload
+    return true
 end
 
 ---@param func parser.object

@@ -42,20 +42,27 @@ local viewNodeSwitch;viewNodeSwitch = util.switch()
     : case 'boolean'
     : case 'string'
     : case 'integer'
-    : call(function (source, infer)
+    : call(function (source, _infer)
         return source.type
     end)
     : case 'number'
-    : call(function (source, infer)
+    : call(function (source, _infer)
         return source.type
     end)
     : case 'table'
     : call(function (source, infer, uri)
-        if source.type == 'table' then
-            if #source == 1 and source[1].type == 'varargs' then
-                local node = vm.getInfer(source[1]):view(uri)
-                return ('%s[]'):format(node)
+        local docs = source.bindDocs
+        if docs then
+            for _, doc in ipairs(docs) do
+                if doc.type == 'doc.enum' then
+                    return 'enum ' .. doc.enum[1]
+                end
             end
+        end
+
+        if #source == 1 and source[1].type == 'varargs' then
+            local node = vm.getInfer(source[1]):view(uri)
+            return ('%s[]'):format(node)
         end
 
         infer._hasTable = true
@@ -94,7 +101,7 @@ local viewNodeSwitch;viewNodeSwitch = util.switch()
         return table.concat(buf, '|')
     end)
     : case 'doc.type.name'
-    : call(function (source, infer, uri)
+    : call(function (source, _infer, uri)
         if source.signs then
             local buf = {}
             for i, sign in ipairs(source.signs) do
@@ -106,11 +113,11 @@ local viewNodeSwitch;viewNodeSwitch = util.switch()
         end
     end)
     : case 'generic'
-    : call(function (source, infer, uri)
+    : call(function (source, _infer, uri)
         return vm.getInfer(source.proto):view(uri)
     end)
     : case 'doc.generic.name'
-    : call(function (source, infer, uri)
+    : call(function (source, _infer, uri)
         local resolved = vm.getGenericResolved(source)
         if resolved then
             return vm.getInfer(resolved):view(uri)
@@ -157,35 +164,37 @@ local viewNodeSwitch;viewNodeSwitch = util.switch()
         end
         infer._hasClass = true
         local buf = {}
-        buf[#buf+1] = '{ '
+        buf[#buf+1] = source.isTuple and '[' or '{ '
         for i, field in ipairs(source.fields) do
             if i > 1 then
                 buf[#buf+1] = ', '
             end
-            local key = field.name
-            if key.type == 'doc.type' then
-                buf[#buf+1] = ('[%s]: '):format(vm.getInfer(key):view(uri))
-            elseif type(key[1]) == 'string' then
-                buf[#buf+1] = key[1] .. ': '
-            else
-                buf[#buf+1] = ('[%q]: '):format(key[1])
+            if not source.isTuple then
+                local key = field.name
+                if key.type == 'doc.type' then
+                    buf[#buf+1] = ('[%s]: '):format(vm.getInfer(key):view(uri))
+                elseif type(key[1]) == 'string' then
+                    buf[#buf+1] = key[1] .. ': '
+                else
+                    buf[#buf+1] = ('[%q]: '):format(key[1])
+                end
             end
             buf[#buf+1] = vm.getInfer(field.extends):view(uri)
         end
-        buf[#buf+1] = ' }'
+        buf[#buf+1] = source.isTuple and ']' or ' }'
         return table.concat(buf)
     end)
     : case 'doc.type.string'
-    : call(function (source, infer)
+    : call(function (source, _infer)
         return util.viewString(source[1], source[2])
     end)
     : case 'doc.type.integer'
     : case 'doc.type.boolean'
-    : call(function (source, infer)
+    : call(function (source, _infer)
         return ('%q'):format(source[1])
     end)
     : case 'doc.type.code'
-    : call(function (source, infer)
+    : call(function (source, _infer)
         return ('`%s`'):format(source[1])
     end)
     : case 'doc.type.function'
@@ -236,12 +245,9 @@ local viewNodeSwitch;viewNodeSwitch = util.switch()
         return ('fun(%s)%s'):format(argView, regView)
     end)
     : case 'doc.field.name'
-    : call(function (source, infer, uri)
+    : call(function (source, _infer, uri)
         return vm.viewKey(source, uri)
     end)
-
----@class vm.node
----@field lastInfer? vm.infer
 
 ---@param node? vm.node
 ---@return vm.infer
@@ -467,7 +473,8 @@ function mt:view(uri, default)
         end
     end
 
-    if #view > 200 then
+    -- do not truncate if exporting doc
+    if not DOC and #view > 200 then
         view = view:sub(1, 180) .. '...(too long)...' .. view:sub(-10)
     end
 

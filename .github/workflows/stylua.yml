@@ -1,0 +1,26 @@
+name: StyLua
+
+on:
+  pull_request:
+    branches:
+    - main
+  push:
+    branches:
+      - main
+
+jobs:
+  stylua:
+    name: StyLua
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Prepare
+        run: cargo install stylua
+
+      - name: Test
+        run: |
+          make check-stylua

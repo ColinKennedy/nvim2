@@ -7,9 +7,6 @@
 [submodule "bundle/neogen"]
 	path = bundle/neogen
 	url = git@github.com:ColinKennedy/neogen.git
-[submodule "bundle/vim-cmake"]
-	path = bundle/vim-cmake
-	url = git@github.com:ColinKennedy/vim-cmake.git
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = git@github.com:ColinKennedy/vim-dispatch.git
@@ -22,9 +19,6 @@
 [submodule "bundle/vim-indent-object"]
 	path = bundle/vim-indent-object
 	url = git@github.com:ColinKennedy/vim-indent-object.git
-[submodule "bundle/vim-ninja-feet"]
-	path = bundle/vim-ninja-feet
-	url = git@github.com:ColinKennedy/vim-ninja-feet.git
 [submodule "bundle/vim-python-dot-path"]
 	path = bundle/vim-python-dot-path
 	url = git@github.com:ColinKennedy/vim-python-dot-path.git
@@ -57,25 +51,19 @@
 	url = git@github.com:L3MON4D3/LuaSnip.git
 [submodule "bundle/vim-addon-local-vimrc"]
 	path = bundle/vim-addon-local-vimrc
-	url = git@github.com:MarcWeber/vim-addon-local-vimrc.git
+	url = git@github.com:ColinKennedy/vim-addon-local-vimrc.git
 [submodule "bundle/cmp-tmux"]
 	path = bundle/cmp-tmux
 	url = git@github.com:andersevenrud/cmp-tmux.git
-[submodule "bundle/vim-qf_resize"]
-	path = bundle/vim-qf_resize
-	url = git@github.com:blueyed/vim-qf_resize.git
 [submodule "bundle/quick-scope"]
 	path = bundle/quick-scope
 	url = git@github.com:bradford-smith94/quick-scope.git
-[submodule "bundle/vim-visual-star-search"]
-	path = bundle/vim-visual-star-search
-	url = git@github.com:bronson/vim-visual-star-search.git
 [submodule "bundle/cmp-buffer"]
 	path = bundle/cmp-buffer
 	url = git@github.com:hrsh7th/cmp-buffer.git
 [submodule "bundle/cmp-cmdline"]
 	path = bundle/cmp-cmdline
-	url = git@github.com:hrsh7th/cmp-cmdline.git
+	url = git@github.com:ColinKennedy/cmp-cmdline.git
 [submodule "bundle/cmp-nvim-lsp"]
 	path = bundle/cmp-nvim-lsp
 	url = git@github.com:hrsh7th/cmp-nvim-lsp.git
@@ -84,25 +72,16 @@
 	url = git@github.com:hrsh7th/cmp-path.git
 [submodule "bundle/nvim-cmp"]
 	path = bundle/nvim-cmp
-	url = git@github.com:hrsh7th/nvim-cmp.git
+	url = git@github.com:iguanacucumber/magazine.git
 [submodule "bundle/fidget.nvim"]
 	path = bundle/fidget.nvim
 	url = git@github.com:j-hui/fidget.nvim.git
 [submodule "bundle/vim-indentwise"]
 	path = bundle/vim-indentwise
 	url = git@github.com:jeetsukumaran/vim-indentwise.git
-[submodule "bundle/null-ls.nvim"]
-	path = bundle/null-ls.nvim
-	url = git@github.com:jose-elias-alvarez/null-ls.nvim.git
-[submodule "bundle/vim-ripgrep"]
-	path = bundle/vim-ripgrep
-	url = git@github.com:jremmen/vim-ripgrep.git
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
-[submodule "bundle/fzf.vim"]
-	path = bundle/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
 [submodule "bundle/vim-ipmotion"]
 	path = bundle/vim-ipmotion
 	url = git@github.com:justinmk/vim-ipmotion.git
@@ -112,9 +91,6 @@
 [submodule "bundle/vim-operator-user"]
 	path = bundle/vim-operator-user
 	url = git@github.com:kana/vim-operator-user.git
-[submodule "bundle/vim-tabpagecd"]
-	path = bundle/vim-tabpagecd
-	url = git@github.com:kana/vim-tabpagecd.git
 [submodule "bundle/vim-textobj-indent"]
 	path = bundle/vim-textobj-indent
 	url = git@github.com:kana/vim-textobj-indent.git
@@ -129,7 +105,7 @@
 	url = git@github.com:kwkarlwang/bufresize.nvim.git
 [submodule "bundle/gitsigns.nvim"]
 	path = bundle/gitsigns.nvim
-	url = git@github.com:lewis6991/gitsigns.nvim.git
+	url = git@github.com:ColinKennedy/gitsigns.nvim.git
 [submodule "bundle/undotree"]
 	path = bundle/undotree
 	url = git@github.com:mbbill/undotree.git
@@ -148,9 +124,6 @@
 [submodule "bundle/lualine.nvim"]
 	path = bundle/lualine.nvim
 	url = git@github.com:nvim-lualine/lualine.nvim.git
-[submodule "bundle/nvim-tree.lua"]
-	path = bundle/nvim-tree.lua
-	url = git@github.com:nvim-tree/nvim-tree.lua.git
 [submodule "bundle/nvim-web-devicons"]
 	path = bundle/nvim-web-devicons
 	url = git@github.com:nvim-tree/nvim-web-devicons.git
@@ -172,9 +145,6 @@
 [submodule "bundle/vim-cool"]
 	path = bundle/vim-cool
 	url = git@github.com:romainl/vim-cool.git
-[submodule "bundle/vim-qf"]
-	path = bundle/vim-qf
-	url = git@github.com:romainl/vim-qf.git
 [submodule "bundle/cmp_luasnip"]
 	path = bundle/cmp_luasnip
 	url = git@github.com:saadparwaiz1/cmp_luasnip.git
@@ -208,18 +178,9 @@
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = git@github.com:tpope/vim-unimpaired.git
-[submodule "bundle/targets.vim"]
-	path = bundle/targets.vim
-	url = git@github.com:wellle/targets.vim.git
 [submodule "bundle/mason.nvim"]
 	path = bundle/mason.nvim
 	url = git@github.com:williamboman/mason.nvim.git
-[submodule "bundle/vim-exchange"]
-	path = bundle/vim-exchange
-	url = git@github.com:tommcdo/vim-exchange.git
-[submodule "bundle/mason-null-ls.nvim"]
-	path = bundle/mason-null-ls.nvim
-	url = git@github.com:jay-babu/mason-null-ls.nvim.git
 [submodule "bundle/spaceless.nvim"]
 	path = bundle/spaceless.nvim
 	url = git@github.com:lewis6991/spaceless.nvim.git
@@ -231,13 +192,10 @@
 	url = git@github.com:glts/vim-textobj-comment.git
 [submodule "bundle/nvim-gps"]
 	path = bundle/nvim-gps
-	url = git@github.com:Lazytangent/nvim-gps.git
+	url = git@github.com:ColinKennedy/nvim-gps.git
 [submodule "bundle/winbar.nvim"]
 	path = bundle/winbar.nvim
 	url = git@github.com:ColinKennedy/winbar.nvim.git
-[submodule "bundle/persistent-breakpoints.nvim"]
-	path = bundle/persistent-breakpoints.nvim
-	url = git@github.com:Weissle/persistent-breakpoints.nvim.git
 [submodule "bundle/nvim-dap"]
 	path = bundle/nvim-dap
 	url = git@github.com:mfussenegger/nvim-dap.git
@@ -247,15 +205,6 @@
 [submodule "bundle/nvim-dap-python"]
 	path = bundle/nvim-dap-python
 	url = git@github.com:mfussenegger/nvim-dap-python.git
-[submodule "bundle/vim-python-pep8-indent"]
-	path = bundle/vim-python-pep8-indent
-	url = git@github.com:Vimjas/vim-python-pep8-indent.git
-[submodule "bundle/nvim-treesitter-usd"]
-	path = bundle/nvim-treesitter-usd
-	url = git@github.com:ColinKennedy/nvim-treesitter-usd.git
-[submodule "bundle/nvim-treesitter-context"]
-	path = bundle/nvim-treesitter-context
-	url = git@github.com:nvim-treesitter/nvim-treesitter-context.git
 [submodule "bundle/treesj"]
 	path = bundle/treesj
 	url = git@github.com:Wansmer/treesj.git
@@ -270,7 +219,7 @@
 	url = git@github.com:nanotee/zoxide.vim.git
 [submodule "bundle/wilder.nvim"]
 	path = bundle/wilder.nvim
-	url = git@github.com:gelguy/wilder.nvim.git
+	url = git@github.com:Gelio/wilder.nvim.git
 [submodule "bundle/fzy-lua-native"]
 	path = bundle/fzy-lua-native
 	url = git@github.com:romgrk/fzy-lua-native.git
@@ -280,21 +229,12 @@
 [submodule "bundle/which-key.nvim"]
 	path = bundle/which-key.nvim
 	url = git@github.com:folke/which-key.nvim.git
-[submodule "bundle/hlargs.nvim"]
-	path = bundle/hlargs.nvim
-	url = git@github.com:m-demare/hlargs.nvim.git
-[submodule "bundle/toggleterm.nvim"]
-	path = bundle/toggleterm.nvim
-	url = git@github.com:akinsho/toggleterm.git
 [submodule "bundle/rust-tools.nvim"]
 	path = bundle/rust-tools.nvim
-	url = git@github.com:simrat39/rust-tools.nvim
+	url = git@github.com:ColinKennedy/rust-tools.nvim
 [submodule "bundle/grapple.nvim"]
 	path = bundle/grapple.nvim
 	url = git@github.com:cbochs/grapple.nvim.git
-[submodule "bundle/term-edit.nvim"]
-	path = bundle/term-edit.nvim
-	url = git@github.com:chomosuke/term-edit.nvim.git
 [submodule "bundle/better-escape.nvim"]
 	path = bundle/better-escape.nvim
 	url = git@github.com:max397574/better-escape.nvim.git
@@ -303,10 +243,154 @@
 	url = git@github.com:mfussenegger/nvim-lint.git
 [submodule "bundle/hydra.nvim"]
 	path = bundle/hydra.nvim
-	url = git@github.com:anuvyklack/hydra.nvim.git
+	url = git@github.com:nvimtools/hydra.nvim.git
 [submodule "bundle/leap.nvim"]
 	path = bundle/leap.nvim
 	url = git@github.com:ggandor/leap.nvim.git
 [submodule "bundle/symbols-outline.nvim"]
 	path = bundle/symbols-outline.nvim
 	url = git@github.com:simrat39/symbols-outline.nvim.git
+[submodule "bundle/vim-qfedit"]
+	path = bundle/vim-qfedit
+	url = git@github.com:itchyny/vim-qfedit.git
+[submodule "bundle/nvim-rg"]
+	path = bundle/nvim-rg
+	url = git@github.com:duane9/nvim-rg.git
+[submodule "bundle/marks.nvim"]
+	path = bundle/marks.nvim
+	url = git@github.com:chentoast/marks.nvim
+[submodule "bundle/vim-gh-line"]
+	path = bundle/vim-gh-line
+	url = git@github.com:chentoast/vim-gh-line
+[submodule "bundle/hlargs.nvim"]
+	path = bundle/hlargs.nvim
+	url = git@github.com:m-demare/hlargs.nvim.git
+[submodule "bundle/nvim-tree.lua"]
+	path = bundle/nvim-tree.lua
+	url = git@github.com:nvim-tree/nvim-tree.lua.git
+[submodule "bundle/debugprint.nvim"]
+	path = bundle/debugprint.nvim
+	url = git@github.com:andrewferrier/debugprint.nvim.git
+[submodule "bundle/telescope.nvim"]
+	path = bundle/telescope.nvim
+	url = git@github.com:nvim-telescope/telescope.nvim.git
+[submodule "bundle/telescope-file-history.nvim"]
+	path = bundle/telescope-file-history.nvim
+	url = git@github.com:ColinKennedy/telescope-file-history.nvim.git
+[submodule "bundle/vim-qf"]
+	path = bundle/vim-qf
+	url = git@github.com:ColinKennedy/vim-qf.git
+[submodule "bundle/dial.nvim"]
+	path = bundle/dial.nvim
+	url = git@github.com:monaqa/dial.nvim.git
+[submodule "bundle/smart-tab.nvim"]
+	path = bundle/smart-tab.nvim
+	url = git@github.com:boltlessengineer/smart-tab.nvim.git
+[submodule "bundle/timeline.nvim"]
+	path = bundle/timeline.nvim
+	url = git@github.com:ColinKennedy/timeline.nvim.git
+[submodule "bundle/opsort.vim"]
+	path = bundle/opsort.vim
+	url = git@github.com:ralismark/opsort.vim.git
+[submodule "bundle/diffview.nvim"]
+	path = bundle/diffview.nvim
+	url = git@github.com:sindrets/diffview.nvim.git
+[submodule "bundle/stay-centered.nvim"]
+	path = bundle/stay-centered.nvim
+	url = git@github.com:arnamak/stay-centered.nvim.git
+[submodule "bundle/full_visual_line.nvim"]
+	path = bundle/full_visual_line.nvim
+	url = git@github.com:ColinKennedy/full_visual_line.nvim.git
+[submodule "bundle/vim-python-pep8-indent"]
+	path = bundle/vim-python-pep8-indent
+	url = git@github.com:Vimjas/vim-python-pep8-indent.git
+[submodule "bundle/vim-gf-user"]
+	path = bundle/vim-gf-user
+	url = git@github.com:kana/vim-gf-user.git
+[submodule "bundle/sphinx.nvim"]
+	path = bundle/sphinx.nvim
+	url = git@github.com:stsewd/sphinx.nvim.git
+[submodule "bundle/fzf-lua"]
+	path = bundle/fzf-lua
+	url = git@github.com:ibhagwan/fzf-lua.git
+[submodule "bundle/vim-gf-diff"]
+	path = bundle/vim-gf-diff
+	url = git@github.com:ColinKennedy/vim-gf-diff.git
+[submodule "bundle/neotest"]
+	path = bundle/neotest
+	url = git@github.com:nvim-neotest/neotest.git
+[submodule "bundle/FixCursorHold.nvim"]
+	path = bundle/FixCursorHold.nvim
+	url = git@github.com:antoinemadec/FixCursorHold.nvim.git
+[submodule "bundle/neotest-plenary"]
+	path = bundle/neotest-plenary
+	url = git@github.com:nvim-neotest/neotest-plenary.git
+[submodule "bundle/neotest-python"]
+	path = bundle/neotest-python
+	url = git@github.com:nvim-neotest/neotest-python.git
+[submodule "bundle/todo-comments.nvim"]
+	path = bundle/todo-comments.nvim
+	url = git@github.com:folke/todo-comments.nvim.git
+[submodule "bundle/mini.ai"]
+	path = bundle/mini.ai
+	url = git@github.com:echasnovski/mini.ai.git
+[submodule "bundle/nvim-nio"]
+	path = bundle/nvim-nio
+	url = git@github.com:nvim-neotest/nvim-nio.git
+[submodule "bundle/telescope-session-viewer"]
+	path = bundle/telescope-session-viewer
+	url = git@github.com:ColinKennedy/telescope-session-viewer.git
+[submodule "bundle/toggleterminal.nvim"]
+	path = bundle/toggleterminal.nvim
+	url = git@github.com:ColinKennedy/toggleterminal.nvim.git
+[submodule "bundle/substitute.nvim"]
+	path = bundle/substitute.nvim
+	url = git@github.com:gbprod/substitute.nvim.git
+[submodule "bundle/spellbound.nvim"]
+	path = bundle/spellbound.nvim
+	url = git@github.com:ColinKennedy/spellbound.nvim.git
+[submodule "bundle/refactoring.nvim"]
+	path = bundle/refactoring.nvim
+	url = git@github.com:ThePrimeagen/refactoring.nvim.git
+[submodule "bundle/tiny-devicons-auto-colors.nvim"]
+	path = bundle/tiny-devicons-auto-colors.nvim
+	url = git@github.com:rachartier/tiny-devicons-auto-colors.nvim.git
+[submodule "bundle/grapple-line.nvim"]
+	path = bundle/grapple-line.nvim
+	url = git@github.com:ColinKennedy/grapple-line.nvim.git
+[submodule "bundle/cmp-nvim-lsp-signature-help"]
+	path = bundle/cmp-nvim-lsp-signature-help
+	url = git@github.com:ColinKennedy/cmp-nvim-lsp-signature-help.git
+[submodule "bundle/render-markdown.nvim"]
+	path = bundle/render-markdown.nvim
+	url = git@github.com:MeanderingProgrammer/render-markdown.nvim.git
+[submodule "bundle/nvim-scrollbar"]
+	path = bundle/nvim-scrollbar
+	url = git@github.com:petertriho/nvim-scrollbar.git
+[submodule "bundle/cursor-text-objects.nvim"]
+	path = bundle/cursor-text-objects.nvim
+	url = git@github.com:ColinKennedy/cursor-text-objects.nvim.git
+[submodule "bundle/smear-cursor.nvim"]
+	path = bundle/smear-cursor.nvim
+	url = git@github.com:sphamba/smear-cursor.nvim.git
+[submodule "bundle/lazydev.nvim"]
+	path = bundle/lazydev.nvim
+	url = git@github.com:folke/lazydev.nvim.git
+[submodule "bundle/noice.nvim"]
+	path = bundle/noice.nvim
+	url = git@github.com:folke/noice.nvim.git
+[submodule "bundle/nui.nvim"]
+	path = bundle/nui.nvim
+	url = git@github.com:MunifTanjim/nui.nvim.git
+[submodule "bundle/treewalker.nvim"]
+	path = bundle/treewalker.nvim
+	url = git@github.com:aaronik/treewalker.nvim.git
+[submodule "bundle/neotest-busted"]
+	path = bundle/neotest-busted
+	url = git@gitlab.com:HiPhish/neotest-busted.git
+[submodule "bundle/demicolon.nvim"]
+	path = bundle/demicolon.nvim
+	url = git@github.com:mawkler/demicolon.nvim.git
+[submodule "bundle/nvim-gitstatus"]
+	path = bundle/nvim-gitstatus
+	url = git@github.com:abccsss/nvim-gitstatus.git

@@ -1,5 +1,5 @@
 -- I can't be bothered to translate this to lua
-vim.cmd[[
+vim.cmd [[
 " This command / function-set adds a confirmation dialog to Vim's :g command
 " Example: :g/foo/Confirm d will delete all lines matching foo but it lets you
 " confirm the deletion for each match. The `C` command is just a short-hand.

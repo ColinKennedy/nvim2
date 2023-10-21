@@ -1,0 +1,16 @@
+{
+    "diagnostics.libraryFiles": "Disable",
+    "runtime.version": "LuaJIT",
+    "workspace.checkThirdParty": "Disable",
+    "workspace.ignoreDir": [
+        ".dependencies",
+        ".lua",
+        ".luarocks",
+        "bundle",
+        "mason_packages"
+    ],
+    "workspace.library": [
+        "$PWD/.dependencies/luvit-meta/library",
+        "$VIMRUNTIME/lua"
+    ]
+}

@@ -1,0 +1,1 @@
+{"name":"misspell","metrics":{"completion_time":1706259190903,"start_time":1706259188909},"links":{"bin":{"misspell":"misspell"},"opt":{},"share":{}},"secondary_sources":[],"schema_version":"1.1","primary_source":{"id":"pkg:golang\/github.com\/client9\/misspell@v0.3.4#cmd\/misspell","type":"registry+v1"}}

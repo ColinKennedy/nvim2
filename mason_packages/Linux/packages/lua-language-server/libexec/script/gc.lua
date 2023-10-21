@@ -1,12 +1,13 @@
 local util = require 'utility'
 
 ---@class gc
----@field _list table
+---@field package _list table
 local mt = {}
 mt.__index = mt
 mt.type = 'gc'
 mt._removed = false
 
+---@package
 mt._max = 10
 
 local function destroyGCObject(obj)
@@ -50,7 +51,7 @@ end
 local function zip(self)
     local list = self._list
     local index = 1
-    for i = 1, #list do
+    for _ = 1, #list do
         local obj = list[index]
         if not obj then
             break

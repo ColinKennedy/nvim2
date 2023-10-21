@@ -1,0 +1,13 @@
+# TODO: Figure out a way to proceduralize these settings
+$HOME
+$LD_LIBRARY_PATH
+$LIBRARY_PATH
+$PATH
+$PWD
+$PYTHONPATH
+%HOME%
+%LD_LIBRARY_PATH%
+%LIBRARY_PATH%
+%PATH%
+%PWD%
+%PYTHONPATH%

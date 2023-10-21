@@ -15,7 +15,6 @@ lovr.physics = {}
 ---
 ---It tries to keep the distance between the colliders and the anchor position the same, but does not constrain the angle between them.
 ---
----@overload fun(colliderA: lovr.Collider, colliderB: lovr.Collider, anchor: lovr.Vec3):lovr.BallJoint
 ---@param colliderA lovr.Collider # The first collider to attach the Joint to.
 ---@param colliderB lovr.Collider # The second collider to attach the Joint to.
 ---@param x number # The x position of the joint anchor point, in world coordinates.
@@ -74,7 +73,6 @@ function lovr.physics.newCylinderShape(radius, length) end
 ---
 ---The joint allows for rotation on the anchor points.
 ---
----@overload fun(colliderA: lovr.Collider, colliderB: lovr.Collider, first: lovr.Vec3, second: lovr.Vec3):lovr.DistanceJoint
 ---@param colliderA lovr.Collider # The first collider to attach the Joint to.
 ---@param colliderB lovr.Collider # The second collider to attach the Joint to.
 ---@param x1 number # The x position of the first anchor point, in world coordinates.
@@ -93,15 +91,14 @@ function lovr.physics.newDistanceJoint(colliderA, colliderB, x1, y1, z1, x2, y2,
 ---### NOTE:
 ---A hinge joint constrains two colliders to allow rotation only around the hinge's axis.
 ---
----@overload fun(colliderA: lovr.Collider, colliderB: lovr.Collider, anchor: lovr.Vec3, axis: lovr.Vec3):lovr.HingeJoint
 ---@param colliderA lovr.Collider # The first collider to attach the Joint to.
 ---@param colliderB lovr.Collider # The second collider to attach the Joint to.
 ---@param x number # The x position of the hinge anchor, in world coordinates.
 ---@param y number # The y position of the hinge anchor, in world coordinates.
 ---@param z number # The z position of the hinge anchor, in world coordinates.
----@param ax number # The x component of the hinge axis direction.
----@param ay number # The y component of the hinge axis direction.
----@param az number # The z component of the hinge axis direction.
+---@param ax number # The x component of the hinge axis.
+---@param ay number # The y component of the hinge axis.
+---@param az number # The z component of the hinge axis.
 ---@return lovr.HingeJoint hinge # The new HingeJoint.
 function lovr.physics.newHingeJoint(colliderA, colliderB, x, y, z, ax, ay, az) end
 
@@ -125,7 +122,6 @@ function lovr.physics.newMeshShape(vertices, indices) end
 ---### NOTE:
 ---A slider joint constrains two colliders to only allow movement along the slider's axis.
 ---
----@overload fun(colliderA: lovr.Collider, colliderB: lovr.Collider, axis: lovr.Vec3):lovr.SliderJoint
 ---@param colliderA lovr.Collider # The first collider to attach the Joint to.
 ---@param colliderB lovr.Collider # The second collider to attach the Joint to.
 ---@param ax number # The x component of the slider axis.
@@ -215,7 +211,6 @@ function BallJoint:getTightness() end
 ---
 ---Sets a new anchor point for the BallJoint.
 ---
----@overload fun(self: lovr.BallJoint, anchor: lovr.Vec3)
 ---@param x number # The x coordinate of the anchor point, in world coordinates.
 ---@param y number # The y coordinate of the anchor point, in world coordinates.
 ---@param z number # The z coordinate of the anchor point, in world coordinates.
@@ -313,8 +308,6 @@ function Collider:addShape(shape) end
 ---If the Collider is asleep, it will need to be woken up with `Collider:setAwake` for this function to have any affect.
 ---
 ---@overload fun(self: lovr.Collider, x: number, y: number, z: number, px: number, py: number, pz: number)
----@overload fun(self: lovr.Collider, force: lovr.Vec3)
----@overload fun(self: lovr.Collider, force: lovr.Vec3, position: lovr.Vec3)
 ---@param x number # The x component of the force to apply.
 ---@param y number # The y component of the force to apply.
 ---@param z number # The z component of the force to apply.
@@ -327,7 +320,6 @@ function Collider:applyForce(x, y, z) end
 ---### NOTE:
 ---If the Collider is asleep, it will need to be woken up with `Collider:setAwake` for this function to have any effect.
 ---
----@overload fun(self: lovr.Collider, torque: lovr.Vec3)
 ---@param x number # The x component of the torque.
 ---@param y number # The y component of the torque.
 ---@param z number # The z component of the torque.
@@ -422,7 +414,6 @@ function Collider:getLinearVelocity() end
 ---
 ---Returns the linear velocity of a point relative to the Collider.
 ---
----@overload fun(self: lovr.Collider, point: number):number, number, number
 ---@param x number # The x coordinate.
 ---@param y number # The y coordinate.
 ---@param z number # The z coordinate.
@@ -434,7 +425,6 @@ function Collider:getLinearVelocityFromLocalPoint(x, y, z) end
 ---
 ---Returns the linear velocity of a point on the Collider specified in world space.
 ---
----@overload fun(self: lovr.Collider, point: lovr.Vec3):number, number, number
 ---@param x number # The x coordinate in world space.
 ---@param y number # The y coordinate in world space.
 ---@param z number # The z coordinate in world space.
@@ -454,7 +444,6 @@ function Collider:getLocalCenter() end
 ---
 ---Converts a point from world coordinates into local coordinates relative to the Collider.
 ---
----@overload fun(self: lovr.Collider, point: lovr.Vec3):number, number, number
 ---@param wx number # The x coordinate of the world point.
 ---@param wy number # The y coordinate of the world point.
 ---@param wz number # The z coordinate of the world point.
@@ -466,7 +455,6 @@ function Collider:getLocalPoint(wx, wy, wz) end
 ---
 ---Converts a direction vector from world space to local space.
 ---
----@overload fun(self: lovr.Collider, vector: lovr.Vec3):number, number, number
 ---@param wx number # The x component of the world vector.
 ---@param wy number # The y component of the world vector.
 ---@param wz number # The z component of the world vector.
@@ -571,7 +559,6 @@ function Collider:getWorld() end
 ---
 ---Convert a point relative to the collider to a point in world coordinates.
 ---
----@overload fun(self: lovr.Collider, point: lovr.Vec3):number, number, number
 ---@param x number # The x position of the point.
 ---@param y number # The y position of the point.
 ---@param z number # The z position of the point.
@@ -583,7 +570,6 @@ function Collider:getWorldPoint(x, y, z) end
 ---
 ---Converts a direction vector from local space to world space.
 ---
----@overload fun(self: lovr.Collider, vector: lovr.Vec3):number, number, number
 ---@param x number # The x coordinate of the local vector.
 ---@param y number # The y coordinate of the local vector.
 ---@param z number # The z coordinate of the local vector.
@@ -656,7 +642,6 @@ function Collider:setAngularDamping(damping, threshold) end
 ---
 ---Sets the angular velocity of the Collider.
 ---
----@overload fun(self: lovr.Collider, velocity: lovr.Vec3)
 ---@param vx number # The x component of the angular velocity.
 ---@param vy number # The y component of the angular velocity.
 ---@param vz number # The z component of the angular velocity.
@@ -718,7 +703,6 @@ function Collider:setLinearDamping(damping, threshold) end
 ---
 ---Usually it's preferred to use `Collider:applyForce` to change velocity since instantaneous velocity changes can lead to weird glitches.
 ---
----@overload fun(self: lovr.Collider, velocity: lovr.Vec3)
 ---@param vx number # The x velocity of the Collider, in meters per second.
 ---@param vy number # The y velocity of the Collider, in meters per second.
 ---@param vz number # The z velocity of the Collider, in meters per second.
@@ -743,7 +727,6 @@ function Collider:setMassData(cx, cy, cz, mass, inertia) end
 ---
 ---Sets the orientation of the Collider in angle/axis representation.
 ---
----@overload fun(self: lovr.Collider, orientation: lovr.Quat)
 ---@param angle number # The number of radians the Collider is rotated around its axis of rotation.
 ---@param ax number # The x component of the axis of rotation.
 ---@param ay number # The y component of the axis of rotation.
@@ -753,7 +736,6 @@ function Collider:setOrientation(angle, ax, ay, az) end
 ---
 ---Sets the position and orientation of the Collider.
 ---
----@overload fun(self: lovr.Collider, position: lovr.Vec3, orientation: lovr.Quat)
 ---@param x number # The x position of the Collider, in meters.
 ---@param y number # The y position of the Collider, in meters.
 ---@param z number # The z position of the Collider, in meters.
@@ -766,7 +748,6 @@ function Collider:setPose(x, y, z, angle, ax, ay, az) end
 ---
 ---Sets the position of the Collider.
 ---
----@overload fun(self: lovr.Collider, position: lovr.Vec3)
 ---@param x number # The x position of the Collider, in meters.
 ---@param y number # The y position of the Collider, in meters.
 ---@param z number # The z position of the Collider, in meters.
@@ -892,7 +873,6 @@ function DistanceJoint:getTightness() end
 ---
 ---Sets the anchor points of the DistanceJoint.
 ---
----@overload fun(self: lovr.DistanceJoint, first: lovr.Vec3, second: lovr.Vec3)
 ---@param x1 number # The x coordinate of the first anchor point, in world coordinates.
 ---@param y1 number # The y coordinate of the first anchor point, in world coordinates.
 ---@param z1 number # The z coordinate of the first anchor point, in world coordinates.
@@ -986,7 +966,6 @@ function HingeJoint:getUpperLimit() end
 ---
 ---Sets a new anchor point for the HingeJoint.
 ---
----@overload fun(self: lovr.HingeJoint, anchor: lovr.Vec3)
 ---@param x number # The x coordinate of the anchor point, in world coordinates.
 ---@param y number # The y coordinate of the anchor point, in world coordinates.
 ---@param z number # The z coordinate of the anchor point, in world coordinates.
@@ -995,7 +974,6 @@ function HingeJoint:setAnchor(x, y, z) end
 ---
 ---Sets the axis of the hinge.
 ---
----@overload fun(self: lovr.HingeJoint, axis: lovr.Vec3)
 ---@param x number # The x component of the axis.
 ---@param y number # The y component of the axis.
 ---@param z number # The z component of the axis.
@@ -1201,7 +1179,6 @@ function Shape:setEnabled(enabled) end
 ---### NOTE:
 ---If the Shape isn't attached to a Collider, this will error.
 ---
----@overload fun(self: lovr.Shape, orientation: lovr.Quat)
 ---@param angle number # The number of radians the Shape is rotated.
 ---@param ax number # The x component of the rotation axis.
 ---@param ay number # The y component of the rotation axis.
@@ -1215,7 +1192,6 @@ function Shape:setOrientation(angle, ax, ay, az) end
 ---### NOTE:
 ---If the Shape isn't attached to a Collider, this will error.
 ---
----@overload fun(self: lovr.Shape, position: lovr.Vec3)
 ---@param x number # The x offset.
 ---@param y number # The y offset.
 ---@param z number # The z offset.
@@ -1224,7 +1200,7 @@ function Shape:setPosition(x, y, z) end
 ---
 ---Sets whether this Shape is a sensor.
 ---
----When a Shape is a sensor, it will not generate any collision response when it collides with things, but collisions can still be detected with `World:collide` and `World:getContacts`.
+---Sensors do not trigger any collision response, but they still report collisions in `World:collide`.
 ---
 ---@param sensor boolean # Whether the Shape should be a sensor.
 function Shape:setSensor(sensor) end
@@ -1281,7 +1257,6 @@ function SliderJoint:getUpperLimit() end
 ---
 ---Sets the axis of the slider.
 ---
----@overload fun(self: lovr.SliderJoint, axis: lovr.Vec3)
 ---@param x number # The x component of the axis.
 ---@param y number # The y component of the axis.
 ---@param z number # The z component of the axis.
@@ -1343,15 +1318,11 @@ local World = {}
 ---
 ---Attempt to collide two shapes.
 ---
----Internally this sets up constraint forces to move the shapes' colliders apart if they are touching.
+---Internally this uses joints and forces to ensure the colliders attached to the shapes do not pass through each other.
 ---
----The colliders won't actually move until `World:update` is called again to advance the physics simulation.
+---Collisions can be customized using friction and restitution (bounciness) parameters, and default to using a mix of the colliders' friction and restitution parameters.
 ---
----Collision responses can be customized using friction and restitution (bounciness) parameters, and default to using a mix between the parameters of the two colliders.
----
----Usually this is called internally by `World:update`, or in a custom collision resolver passed to `World:update`.
----
----If you want to detect if objects are touching without colliding them, use `World:getContacts` or make one or both of the shapes sensors using `Shape:setSensor`.
+---Usually this is called automatically by `World:update`.
 ---
 ---
 ---### NOTE:
@@ -1372,10 +1343,6 @@ function World:collide(shapeA, shapeB, friction, restitution) end
 ---Detects which pairs of shapes in the world are near each other and could be colliding.
 ---
 ---After calling this function, the `World:overlaps` iterator can be used to iterate over the overlaps, and `World:collide` can be used to resolve a collision for the shapes (if any). Usually this is called automatically by `World:update`.
----
----
----### NOTE:
----This performs the "broad phase" culling of objects in the World, usually using a spatial hash or other acceleration structure like a quad tree or octree.
 ---
 function World:computeOverlaps() end
 
@@ -1435,24 +1402,6 @@ function World:getAngularDamping() end
 function World:getColliders() end
 
 ---
----Computes collision information between two shapes and returns a list of contacts where the shapes intersect.
----
----Each contact point consists of a position, a normal vector, and a penetration depth.
----
----
----### NOTE:
----This only detects collision information, it does not cause the shapes to collide with each other.
----
----Use `World:collide` for that.
----
----This function ignores collision tags.
----
----@param shapeA lovr.Shape # The first shape.
----@param shapeB lovr.Shape # The second shape.
----@return table contacts # A list of contacts.  Each contact consists of 7 numbers: the contact position, the normal vector, and a depth value indicating how far the shapes intersect each other at the contact point (`{ x, y, z, nx, ny, nz, depth }`).
-function World:getContacts(shapeA, shapeB) end
-
----
 ---Returns the gravity of the World.
 ---
 ---@return number xg # The x component of the gravity force.
@@ -1502,12 +1451,6 @@ function World:getResponseTime() end
 ---
 ---@return number steps # The step count.
 function World:getStepCount() end
-
----
----Returns the list of collision tags used when creating the World.
----
----@return table tags # A table of collision tags (strings).
-function World:getTags() end
 
 ---
 ---Returns the tightness of joints in the World.
@@ -1560,7 +1503,6 @@ function World:isSleepingAllowed() end
 ---
 ---Adds a new Collider to the World with a BoxShape already attached.
 ---
----@overload fun(self: lovr.World, position: lovr.Vec3, size: lovr.Vec3):lovr.Collider
 ---@param x? number # The x coordinate of the center of the box.
 ---@param y? number # The y coordinate of the center of the box.
 ---@param z? number # The z coordinate of the center of the box.
@@ -1573,10 +1515,9 @@ function World:newBoxCollider(x, y, z, width, height, depth) end
 ---
 ---Adds a new Collider to the World with a CapsuleShape already attached.
 ---
----@overload fun(self: lovr.World, position: lovr.Vec3, radius?: number, length?: number):lovr.Collider
----@param x? number # The x coordinate of the center of the capsule, in meters.
----@param y? number # The y coordinate of the center of the capsule, in meters.
----@param z? number # The z coordinate of the center of the capsule, in meters.
+---@param x? number # The x coordinate of the center of the capsule.
+---@param y? number # The y coordinate of the center of the capsule.
+---@param z? number # The z coordinate of the center of the capsule.
 ---@param radius? number # The radius of the capsule, in meters.
 ---@param length? number # The length of the capsule, not including the caps, in meters.
 ---@return lovr.Collider collider # The new Collider.
@@ -1596,7 +1537,6 @@ function World:newCapsuleCollider(x, y, z, radius, length) end
 ---- `World:newCylinderCollider`
 ---- `World:newSphereCollider`
 ---
----@overload fun(self: lovr.World, position: lovr.Vec3):lovr.Collider
 ---@param x? number # The x position of the Collider.
 ---@param y? number # The y position of the Collider.
 ---@param z? number # The z position of the Collider.
@@ -1606,10 +1546,9 @@ function World:newCollider(x, y, z) end
 ---
 ---Adds a new Collider to the World with a CylinderShape already attached.
 ---
----@overload fun(self: lovr.World, position: lovr.Vec3, radius?: number, length?: number):lovr.Collider
----@param x? number # The x coordinate of the center of the cylinder, in meters.
----@param y? number # The y coordinate of the center of the cylinder, in meters.
----@param z? number # The z coordinate of the center of the cylinder, in meters.
+---@param x? number # The x coordinate of the center of the cylinder.
+---@param y? number # The y coordinate of the center of the cylinder.
+---@param z? number # The z coordinate of the center of the cylinder.
 ---@param radius? number # The radius of the cylinder, in meters.
 ---@param length? number # The length of the cylinder, in meters.
 ---@return lovr.Collider collider # The new Collider.
@@ -1627,10 +1566,9 @@ function World:newMeshCollider(vertices, indices) end
 ---
 ---Adds a new Collider to the World with a SphereShape already attached.
 ---
----@overload fun(self: lovr.World, position: lovr.Vec3, radius?: number):lovr.Collider
----@param x? number # The x coordinate of the center of the sphere, in meters.
----@param y? number # The y coordinate of the center of the sphere, in meters.
----@param z? number # The z coordinate of the center of the sphere, in meters.
+---@param x? number # The x coordinate of the center of the sphere.
+---@param y? number # The y coordinate of the center of the sphere.
+---@param z? number # The z coordinate of the center of the sphere.
 ---@param radius? number # The radius of the sphere, in meters.
 ---@return lovr.Collider collider # The new Collider.
 function World:newSphereCollider(x, y, z, radius) end
@@ -1665,7 +1603,6 @@ function World:overlaps() end
 ---### NOTE:
 ---The callback is passed the shape that was hit, the hit position (in world coordinates), and the normal vector of the hit.
 ---
----@overload fun(self: lovr.World, start: lovr.Vec3, end: lovr.Vec3, callback: function)
 ---@param x1 number # The x coordinate of the starting position of the ray.
 ---@param y1 number # The y coordinate of the starting position of the ray.
 ---@param z1 number # The z coordinate of the starting position of the ray.
@@ -1691,7 +1628,6 @@ function World:setAngularDamping(damping, threshold) end
 ---
 ---Sets the gravity of the World.
 ---
----@overload fun(self: lovr.World, gravity: lovr.Vec3)
 ---@param xg number # The x component of the gravity force.
 ---@param yg number # The y component of the gravity force.
 ---@param zg number # The z component of the gravity force.

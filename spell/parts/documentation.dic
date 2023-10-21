@@ -1,0 +1,6 @@
+# "extra" is usually better than "optional" but we need to keep it for docstrings
+optional/Y
+
+# Example documentation typically uses these fake words
+bar
+foo

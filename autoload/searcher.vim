@@ -1,5 +1,25 @@
 let g:project_search_order = ['searcher#get_cmake_root', 'searcher#get_rez_root', 'searcher#get_git_root']
 
+
+" Make a "fuzzy-findable string" out of `text`.
+"
+" Args:
+"     text (str): The input string to build from. e.g. `asdf`.
+"
+" Returns:
+"     str: The generated output. e.g. `a.*s.*.d.*f.*`.
+"
+function s:get_fuzz_regex(text)
+    let l:output = ""
+
+    for l:character in a:text
+        let l:output .= l:character . ".*"
+    endfor
+
+    return l:output
+endfunction
+
+
 " bool: Check if `text` is a file or directory.
 function! s:exists(text)
     return filereadable(a:text) || isdirectory(a:text)
@@ -113,10 +133,13 @@ function! searcher#get_current_directory_options(base, ...)
 
     let l:output = []
 
+    let l:user_input = a:1
+    let l:fuzzy_text = s:get_fuzz_regex(l:text)
+
     for l:full_path in glob(l:helper_directory . '/*', 0, 1)
         let l:file_name = fnamemodify(l:full_path, ':t')
 
-        if l:file_name =~ '^' . l:text
+        if l:fuzzy_text == "" || matchstr(l:file_name, "^" . l:fuzzy_text . "$") != ""
             let l:partial_path = substitute(l:full_path, l:current_file_directory . '[/\\]', '', '')
 
             " This makes directories auto-complete with a trailing '/', which
@@ -335,4 +358,5 @@ function! searcher#cd_to_project()
     endif
 
     execute ':cd ' . l:root
+    echomsg "cd'ed to \"" . l:root . "\""
 endfunction

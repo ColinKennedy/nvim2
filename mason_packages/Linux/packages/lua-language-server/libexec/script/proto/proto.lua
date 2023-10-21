@@ -1,5 +1,3 @@
-local subprocess = require 'bee.subprocess'
-local socket     = require 'bee.socket'
 local util       = require 'utility'
 local await      = require 'await'
 local pub        = require 'pub'
@@ -7,7 +5,10 @@ local jsonrpc    = require 'jsonrpc'
 local define     = require 'proto.define'
 local json       = require 'json'
 local inspect    = require 'inspect'
-local thread     = require 'bee.thread'
+local platform   = require 'bee.platform'
+local fs         = require 'bee.filesystem'
+local net        = require 'service.net'
+local timer      = require 'timer'
 
 local reqCounter = util.counter()
 
@@ -32,8 +33,7 @@ m.ability = {}
 m.waiting = {}
 m.holdon  = {}
 m.mode    = 'stdio'
----@type bee.socket.fd
-m.fd      = nil
+m.client  = nil
 
 function m.getMethodName(proto)
     if proto.method:sub(1, 2) == '$/' then
@@ -54,7 +54,7 @@ function m.send(data)
     if m.mode == 'stdio' then
         io.write(buf)
     elseif m.mode == 'socket' then
-        m.fd:send(buf)
+        m.client:write(buf)
     end
 end
 
@@ -156,7 +156,9 @@ local secretOption = {
     end
 }
 
-function m.doMethod(proto)
+m.methodQueue = {}
+
+function m.applyMethod(proto)
     logRecieve(proto)
     local method, optional = m.getMethodName(proto)
     local abil = m.ability[method]
@@ -202,6 +204,30 @@ function m.doMethod(proto)
     end)
 end
 
+function m.applyMethodQueue()
+    local queue = m.methodQueue
+    m.methodQueue = {}
+    local canceled = {}
+    for _, proto in ipairs(queue) do
+        if proto.method == '$/cancelRequest' then
+            canceled[proto.params.id] = true
+        end
+    end
+    for _, proto in ipairs(queue) do
+        if not canceled[proto.id] then
+            m.applyMethod(proto)
+        end
+    end
+end
+
+function m.doMethod(proto)
+    m.methodQueue[#m.methodQueue+1] = proto
+    if #m.methodQueue > 1 then
+        return
+    end
+    timer.wait(0, m.applyMethodQueue)
+end
+
 function m.close(id, reason, message)
     local proto = m.holdon[id]
     if not proto then
@@ -231,19 +257,50 @@ end
 function m.listen(mode, socketPort)
     m.mode = mode
     if mode == 'stdio' then
-        subprocess.filemode(io.stdin,  'b')
-        subprocess.filemode(io.stdout, 'b')
+        log.info('Listen Mode: stdio')
+        if platform.os == 'windows' then
+            local windows = require 'bee.windows'
+            windows.filemode(io.stdin,  'b')
+            windows.filemode(io.stdout, 'b')
+        end
         io.stdin:setvbuf  'no'
         io.stdout:setvbuf 'no'
         pub.task('loadProtoByStdio')
     elseif mode == 'socket' then
-        local rfd = assert(socket('tcp'))
-        rfd:connect('127.0.0.1', socketPort)
-        local wfd1, wfd2 = socket.pair()
-        m.fd = wfd1
+        local unixFolder = LOGPATH .. '/unix'
+        fs.create_directories(fs.path(unixFolder))
+        local unixPath = unixFolder .. '/' .. tostring(socketPort)
+
+        local server = net.listen('unix', unixPath)
+
+        log.info('Listen Mode: socket')
+        log.info('Listen Port:', socketPort)
+        log.info('Listen Path:', unixPath)
+
+        assert(server)
+
+        local dummyClient = {
+            buf = '',
+            write = function (self, data)
+                self.buf = self.buf.. data
+            end,
+            update = function () end,
+        }
+        m.client = dummyClient
+
+        function server:on_accepted(client)
+            m.client = client
+            client:write(dummyClient.buf)
+            return true
+        end
+
+        function server:on_error(...)
+            log.error(...)
+        end
+
         pub.task('loadProtoBySocket', {
-            wfd = wfd2:detach(),
-            rfd = rfd:detach(),
+            port = socketPort,
+            unixPath = unixPath,
         })
     end
 end

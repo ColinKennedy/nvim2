@@ -25,7 +25,7 @@ local m = {}
 ---@return uri uri
 function m.encode(path)
     local authority = ''
-    if platform.OS == 'Windows' then
+    if platform.os == 'windows' then
         path = path:gsub('\\', '/')
     end
 
@@ -82,7 +82,7 @@ function m.decode(uri)
     else
         value = path
     end
-    if platform.OS == 'Windows' then
+    if platform.os == 'windows' then
         value = value:gsub('/', '\\')
     end
     return value
@@ -95,7 +95,7 @@ end
 ---@param uri string
 ---@return boolean
 function m.isValid(uri)
-    local scheme, authority, path = m.split(uri)
+    local scheme, _authority, path = m.split(uri)
     if not scheme or scheme == '' then
         return false
     end

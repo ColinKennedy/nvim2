@@ -7,26 +7,20 @@ local file = {}
 
 ---@param mode bee.file.readmode
 ---@return string
-function file:read(mode)
-end
+function file:read(mode) end
 
 ---@param buf number|integer|string
-function file:write(buf)
-end
+function file:write(buf) end
 
 ---@return fun():string
-function file:lines()
-end
+function file:lines() end
 
-function file:flush()
-end
+function file:flush() end
 
-function file:close()
-end
+function file:close() end
 
 ---@param mode "'no'"|"'full'"|"'line'"
-function file:setvbuf(mode)
-end
+function file:setvbuf(mode) end
 
 ---@class bee.process
 ---@field stderr bee.file?
@@ -35,28 +29,22 @@ end
 local process = {}
 
 ---@return integer exit_code
-function process:wait()
-end
+function process:wait() end
 
 ---@return boolean success
-function process:kill()
-end
+function process:kill() end
 
 ---@return integer process_id
-function process:get_id()
-end
+function process:get_id() end
 
 ---@return boolean is_running
-function process:is_running()
-end
+function process:is_running() end
 
 ---@return boolean success
-function process:resume()
-end
+function process:resume() end
 
 ---@return any native_handle
-function process:native_handle()
-end
+function process:native_handle() end
 
 ---@class bee.subprocess
 local m = {}
@@ -73,27 +61,22 @@ local m = {}
 
 ---@param options bee.subprocess.spawn.options
 ---@return bee.process process
-function m.spawn(options)
-end
+function m.spawn(options) end
 
 ---@param file file*|bee.file
 ---@return integer offset
 ---@return string? error_message
-function m.peek(file)
-end
+function m.peek(file) end
 
-function m.filemode()
-end
+function m.filemode() end
 
 ---@param name string
 ---@param value string
 ---@return boolean success
 ---@return string? error_message
-function m.setenv(name, value)
-end
+function m.setenv(name, value) end
 
 ---@return integer current_process_id
-function m.get_id()
-end
+function m.get_id() end
 
 return m

@@ -25,7 +25,7 @@ local function eachLocal(source, callback)
 end
 
 ---@async
-local function find(source, uri, callback)
+local function find(source, callback)
     if     source.type == 'local' then
         eachLocal(source, callback)
     elseif source.type == 'getlocal'
@@ -63,7 +63,7 @@ local function checkInIf(state, source, text, position)
     local endA = endB - #'end' + 1
     if  position >= source.finish - #'end'
     and position <= source.finish
-    and text:sub(endA, endB) == 'end' then
+    and text and text:sub(endA, endB) == 'end' then
         return true
     end
     -- 检查每个子模块
@@ -83,7 +83,7 @@ local function makeIf(state, source, text, callback)
     -- end
     local endB = guide.positionToOffset(state, source.finish)
     local endA = endB - #'end' + 1
-    if text:sub(endA, endB) == 'end' then
+    if text and text:sub(endA, endB) == 'end' then
         callback(source.finish - #'end', source.finish)
     end
     -- 每个子模块
@@ -254,7 +254,7 @@ return function (uri, offset)
     if source then
         local isGlobal  = guide.isGlobal(source)
         local isLiteral = isLiteralValue(source)
-        find(source, uri, function (target)
+        find(source, function (target)
             if not target then
                 return
             end

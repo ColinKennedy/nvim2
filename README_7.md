@@ -1,3 +1,10 @@
+- Fix - https://github.com/stevearc/qf_helper.nvim/issues/10
+
+
+https://github.com/chris-montero/LateForLunch-nvim
+
+https://dtinth.github.io/comic-mono-font/
+
 - Do this + set conceallevel=1 to conceal stuff
 ; (
 ;    (
@@ -6,6 +13,7 @@
 ;    )
 ;    (#set! conceal "…")
 ; )
+
 
 - add LSP for C++, Python, and C++ USD, and C++ Qt
  - LSP auto-complete
@@ -18,12 +26,23 @@
  - add deferred event call so that the plugins aren't loaded by default
   - NvChad uses ``event = "InsertEnter"``
 
-- Add Hunspell - To improve spell checking word variants
+https://www.reddit.com/r/neovim/comments/1frlhwu/aqfnvim_store_edit_like_a_buffer_swap_filter_and/
+
 
 - Follow-up
  - Typing "D" for a docstring in a real file is frustrating because cmp takes control away when new  LSP entries are added
   - https://github.com/hrsh7th/nvim-cmp/issues/1597
 
+- https://github.com/MagicDuck/grug-far.nvim
+
+https://www.reddit.com/r/neovim/comments/1gikghr/keyanalyzernvim_easily_find_unmapped_keys/
+https://github.com/meznaric/key-analyzer.nvim?tab=readme-ov-file
+
+
+https://www.reddit.com/r/neovim/comments/1gfe673/is_there_any_way_to_make_a_custom_sorter_for/
+
+
+- https://www.reddit.com/r/neovim/comments/1fmoxvw/oilnvim_appreciation/
 
 - language server stuff
  - project cd
@@ -33,12 +52,6 @@
 - Consider these completion sources
  - https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources#miscellaneous
   - https://github.com/rcarriga/cmp-dap
-  - https://github.com/JMarkin/cmp-diag-codes
-  - https://github.com/paopaol/cmp-doxygen
-  - https://github.com/hrsh7th/cmp-nvim-lua
-  - https://github.com/KadoBOT/cmp-pluginsA - Maybe???
-  - https://github.com/ray-x/cmp-treesitter
-  - https://github.com/uga-rosa/cmp-dynamic
  - https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
  - https://github.com/lukas-reineke/cmp-rg
 

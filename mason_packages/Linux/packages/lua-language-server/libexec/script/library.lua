@@ -22,7 +22,7 @@ m.metaPaths = {}
 
 local function getDocFormater(uri)
     local version = config.get(uri, 'Lua.runtime.version')
-    if client.isVSCode() then
+    if client.getOption('viewDocument') then
         if version == 'Lua 5.1' then
             return 'HOVER_NATIVE_DOCUMENT_LUA51'
         elseif version == 'Lua 5.2' then
@@ -343,7 +343,7 @@ local function loadSingle3rdConfig(libraryDir)
         local jsonbuf = jsonb.beautify(cfg)
         client.requestMessage('Info', lang.script.WINDOW_CONFIG_LUA_DEPRECATED, {
             lang.script.WINDOW_CONVERT_CONFIG_LUA,
-        }, function (action, index)
+        }, function (_action, index)
             if index == 1 and jsonbuf then
                 fsu.saveFile(libraryDir / 'config.json', jsonbuf)
                 fsu.fileRemove(libraryDir / 'config.lua')
@@ -360,17 +360,17 @@ local function loadSingle3rdConfig(libraryDir)
 
     if cfg.words then
         for i, word in ipairs(cfg.words) do
-            cfg.words[i] = '()' .. word .. '()'
+            cfg.words[i] = '([%w_]?)' .. word .. '([%w_]?)'
         end
     end
     if cfg.files then
         for i, filename in ipairs(cfg.files) do
-            if plat.OS == 'Windows' then
+            if plat.os == 'windows' then
                 filename = filename:gsub('/', '\\')
             else
                 filename = filename:gsub('\\', '/')
             end
-            cfg.files[i] = '()' .. filename .. '()'
+            cfg.files[i] = '([%w_]?)' .. filename .. '([%w_]?)'
         end
     end
 
@@ -469,34 +469,45 @@ end
 
 local hasAsked = {}
 ---@async
-local function askFor3rd(uri, cfg)
+local function askFor3rd(uri, cfg, checkThirdParty)
     if hasAsked[cfg.name] then
         return nil
     end
-    hasAsked[cfg.name] = true
-    local yes1 = lang.script.WINDOW_APPLY_WHIT_SETTING
-    local yes2 = lang.script.WINDOW_APPLY_WHITOUT_SETTING
-    local no   = lang.script.WINDOW_DONT_SHOW_AGAIN
-    local result = client.awaitRequestMessage('Info'
-        , lang.script('WINDOW_ASK_APPLY_LIBRARY', cfg.name)
-        , {yes1, yes2, no}
-    )
-    if not result then
-        return nil
-    end
-    if result == yes1 then
+
+    if checkThirdParty == 'Apply' then
         apply3rd(uri, cfg, false)
-    elseif result == yes2 then
+    elseif checkThirdParty == 'ApplyInMemory' then
         apply3rd(uri, cfg, true)
-    else
-        client.setConfig({
-            {
-                key    = 'Lua.workspace.checkThirdParty',
-                action = 'set',
-                value  = false,
-                uri    = uri,
-            },
-        }, false)
+    elseif checkThirdParty == 'Disable' then
+        return nil
+    elseif checkThirdParty == 'Ask' then
+        hasAsked[cfg.name] = true
+        local applyAndSetConfig = lang.script.WINDOW_APPLY_WHIT_SETTING
+        local applyInMemory = lang.script.WINDOW_APPLY_WHITOUT_SETTING
+        local dontShowAgain   = lang.script.WINDOW_DONT_SHOW_AGAIN
+        local result = client.awaitRequestMessage('Info'
+            , lang.script('WINDOW_ASK_APPLY_LIBRARY', cfg.name)
+            , {applyAndSetConfig, applyInMemory, dontShowAgain}
+        )
+        if not result then
+            -- "If none got selected"
+            -- See: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_showMessageRequest
+            return nil
+        end
+        if result == applyAndSetConfig then
+            apply3rd(uri, cfg, false)
+        elseif result == applyInMemory then
+            apply3rd(uri, cfg, true)
+        else
+            client.setConfig({
+                {
+                    key    = 'Lua.workspace.checkThirdParty',
+                    action = 'set',
+                    value  = 'Disable',
+                    uri    = uri,
+                },
+            }, false)
+        end
     end
 end
 
@@ -504,20 +515,13 @@ end
 ---@param b string
 ---@return boolean
 local function wholeMatch(a, b)
-    local pos1, pos2 = a:match(b)
-    if not pos1 then
-        return false
-    end
-    local left  = a:sub(pos1 - 1, pos1 - 1)
-    local right = a:sub(pos2, pos2)
-    if left:match '[%w_]'
-    or right:match '[%w_]' then
-        return false
-    end
-    return true
+    local captures = {
+        a:match(b),
+    }
+    return captures[1] == '' and captures[#captures] == ''
 end
 
-local function check3rdByWords(uri, configs)
+local function check3rdByWords(uri, configs, checkThirdParty)
     if not files.isLua(uri) then
         return
     end
@@ -546,7 +550,7 @@ local function check3rdByWords(uri, configs)
                     log.info('Found 3rd library by word: ', word, uri, library, inspect(config.get(uri, 'Lua.workspace.library')))
                     ---@async
                     await.call(function ()
-                        askFor3rd(uri, cfg)
+                        askFor3rd(uri, cfg, checkThirdParty)
                     end)
                     return
                 end
@@ -556,7 +560,7 @@ local function check3rdByWords(uri, configs)
     end, id)
 end
 
-local function check3rdByFileName(uri, configs)
+local function check3rdByFileName(uri, configs, checkThirdParty)
     local path = ws.getRelativePath(uri)
     if not path then
         return
@@ -582,7 +586,7 @@ local function check3rdByFileName(uri, configs)
                     log.info('Found 3rd library by filename: ', filename, uri, library, inspect(config.get(uri, 'Lua.workspace.library')))
                     ---@async
                     await.call(function ()
-                        askFor3rd(uri, cfg)
+                        askFor3rd(uri, cfg, checkThirdParty)
                     end)
                     return
                 end
@@ -597,8 +601,12 @@ local function check3rd(uri)
     if ws.isIgnored(uri) then
         return
     end
-    if not config.get(uri, 'Lua.workspace.checkThirdParty') then
+    local checkThirdParty = config.get(uri, 'Lua.workspace.checkThirdParty')
+    -- Backwards compatability: `checkThirdParty` used to be a boolean.
+    if not checkThirdParty or checkThirdParty == 'Disable' then
         return
+    elseif checkThirdParty == true then
+        checkThirdParty = 'Ask'
     end
     local scp = scope.getScope(uri)
     if not scp:get 'canCheckThirdParty' then
@@ -608,8 +616,8 @@ local function check3rd(uri)
     if not thirdConfigs then
         return
     end
-    check3rdByWords(uri, thirdConfigs)
-    check3rdByFileName(uri, thirdConfigs)
+    check3rdByWords(uri, thirdConfigs, checkThirdParty)
+    check3rdByFileName(uri, thirdConfigs, checkThirdParty)
 end
 
 local function check3rdOfWorkspace(suri)
@@ -630,7 +638,7 @@ local function check3rdOfWorkspace(suri)
     end, id)
 end
 
-config.watch(function (uri, key, value, oldValue)
+config.watch(function (uri, key, _value, _oldValue)
     if key:find '^Lua.runtime' then
         initBuiltIn(uri)
     end

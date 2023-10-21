@@ -2,10 +2,9 @@ local files    = require 'files'
 local guide    = require 'parser.guide'
 local matchKey = require 'core.matchkey'
 local define   = require 'proto.define'
-local await    = require 'await'
 local vm       = require 'vm'
 
-local function buildSource(uri, source, key, results)
+local function buildSource(source, key, results)
     if     source.type == 'local'
     or     source.type == 'setlocal'
     or     source.type == 'setglobal' then
@@ -51,11 +50,10 @@ local function searchFile(uri, key, results)
     end
 
     guide.eachSource(ast.ast, function (source)
-        buildSource(uri, source, key, results)
+        buildSource(source, key, results)
     end)
 end
 
----@async
 ---@param key string
 ---@param suri? uri
 ---@param results table[]
@@ -88,12 +86,10 @@ local function searchGlobalAndClass(key, suri, results)
                     source = set,
                 }
             end
-            await.delay()
         end
     end
 end
 
----@async
 ---@param key string
 ---@param suri? uri
 ---@param results table[]
@@ -137,7 +133,6 @@ local function searchClassField(key, suri, results)
     end)
 end
 
----@async
 ---@param key string
 ---@param suri? uri
 ---@param results table[]
@@ -147,11 +142,9 @@ local function searchWords(key, suri, results)
         if #results > 1000 then
             break
         end
-        await.delay()
     end
 end
 
----@async
 ---@param key string
 ---@param suri? uri
 ---@param includeWords? boolean

@@ -1,122 +1,102 @@
-local filer = require("my_custom.utilities.filer")
+--- A module for finding and applying `par` to Neovim (or compiling it, if neededed).
+---
+---@module 'my_custom.utilities.par'
+---
+
+local shell = require("my_custom.utilities.git_stash.shell")
 
 local _COMMAND_NAME = "par"
 
 local M = {}
 
+--- Create a command-line call to copy `source` to `destination`.
+---
+---@param source string The absolute path to some file on-disk to copy.
+---@param destination string The absolute path to some path to copy to.
+---@return string[] # The command to run via the command-line
+---
+local _get_copy_command = function(source, destination)
+    if vim.fn.has("win32") == 1 then
+        return { "Xcopy", source, destination }
+    end
 
-local _get_commands = function(source, bin)
+    return { "cp", source, destination }
+end
+
+--- Get the commands needed in order to compile `par` from scratch.
+---
+---@param source string The absolute path to `"$XDG_CONFIG_PATH/nvim/sources/par"`.
+---@param bin string The absolute path where the `par` executable goes when it's compiled.
+---@return string[] # The commands to run.
+---
+local _get_par_compile_commands = function(source, bin)
     local extraction_directory = "par-master" -- TODO: Auto-get this directory name
 
+    ---@type string[][]
     local output = {}
 
-    if vim.fn.filereadable(filer.join_path({source, "master.tar.gz"})) == 0
-    then
-        table.insert(
-            output,
-            {"wget", "https://github.com/sergi/par/archive/refs/heads/master.tar.gz"}
-        )
+    if vim.fn.filereadable(vim.fs.joinpath(source, "master.tar.gz")) == 0 then
+        table.insert(output, { "wget", "https://github.com/sergi/par/archive/refs/heads/master.tar.gz" })
     end
 
     local commands = {
-        {"tar", "-xzvf", "master.tar.gz"},  -- This creates `extraction_directory`
-        {"make", "-C", extraction_directory, "-f", "protoMakefile"},
-        {
-            "cp",
-            filer.join_path({source, extraction_directory, _COMMAND_NAME}),
-            filer.join_path({bin, _COMMAND_NAME}),
-        },
+        { "tar", "-xzvf", "master.tar.gz" }, -- This creates `extraction_directory`
+        { "make", "-C", extraction_directory, "-f", "protoMakefile" },
     }
 
-    if vim.fn.isdirectory(bin) == 0
-    then
-        vim.fn.mkdir(bin, "p")  -- Recursively create directories
+    -- TODO: Make this code simpler. Just dispatch separate jobs for tar / make
+    -- and then rely on the Lua / Vimscript APIs as much as possible.
+    --
+    table.insert(
+        commands,
+        _get_copy_command(
+            vim.fs.joinpath(source, extraction_directory, _COMMAND_NAME),
+            vim.fs.joinpath(bin, _COMMAND_NAME)
+        )
+    )
+
+    if vim.fn.isdirectory(bin) == 0 then
+        vim.fn.mkdir(bin, "p") -- Recursively create directories
     end
 
-    for _, command in ipairs(commands)
-    do
+    for _, command in ipairs(commands) do
         table.insert(output, command)
     end
 
     return output
 end
 
-
+--- Add `path` to the `$PATH` environment variable.
+---
+---@param path string An absolute or relative directory on-disk.
+---
 local _prepend_to_path = function(path)
     vim.cmd("let $PATH='" .. path .. ":" .. os.getenv("PATH") .. "'")
 end
 
--- Reference: http://www.nicemice.net/par/
---
--- s0 - disables suffixes
--- Reference: https://stackoverflow.com/q/6735996
---
+---@source http://www.nicemice.net/par
+---@source https://stackoverflow.com/q/6735996
+---
+--- s0 - disables suffixes
+---
 local _enable_par = function()
     vim.opt.formatprg = "par s0w88"
 end
 
-
-local _run_shell_command = function(command, options)
-    local job = vim.fn.jobstart(command, options)
-    local result = vim.fn.jobwait({job})[1]
-
-    if result == 0
-    then
-        return true
-    end
-
-    if result == -1
-    then
-        vim.api.nvim_err_writeln('The requested command "' .. command .. '" timed out.')
-
-        return
-    elseif result == -2
-    then
-        vim.api.nvim_err_writeln(
-            'The requested command "'
-            .. vim.inspect(command)
-            .. '" was interrupted.'
-        )
-
-        return false
-    elseif result == -3
-    then
-        vim.api.nvim_err_writeln('Job ID is invalid "' .. tostring(job) .. '"')
-
-        return false
-    -- TODO: Figure out if I need this, later
-    -- else
-    --     vim.api.nvim_err_writeln(
-    --         'Command "'
-    --         .. vim.inspect(command)
-    --         .. '" created unknown error "'
-    --         .. tostring(result)
-    --         .. '".'
-    --     )
-    --
-    --     return false
-    end
-
-    -- TODO: Possible remove this
-    return true
-end
-
-
+--- Find a valid `par` executable and load it, if able.
 function M.load_or_install()
     local executable = vim.fn.executable("par") == 1
 
-    if executable
-    then
+    if executable then
         -- If `par` is installed, add it here
         _enable_par()
 
         return
     end
 
-    local bin = filer.join_path({vim.g.vim_home, "bin", vim.loop.os_uname().sysname})
+    local bin = vim.fs.joinpath(vim.g.vim_home, "bin", vim.uv.os_uname().sysname)
 
-    if vim.fn.filereadable(filer.join_path({bin, _COMMAND_NAME})) == 1
-    then
+    if vim.fn.filereadable(vim.fs.joinpath(bin, _COMMAND_NAME)) == 1 then
         -- If `par` exists on-disk, add it to (Neo)vim
         _prepend_to_path(bin)
         _enable_par()
@@ -124,48 +104,40 @@ function M.load_or_install()
         return
     end
 
-    local source = filer.join_path({vim.g.vim_home, "sources", "par"})
+    local source = vim.fs.joinpath(vim.g.vim_home, "sources", "par")
 
-    if vim.fn.isdirectory(source) == 0
-    then
-        vim.fn.mkdir(source, "p")  -- Recursively create directories
+    if vim.fn.isdirectory(source) == 0 then
+        vim.fn.mkdir(source, "p") -- Recursively create directories
     end
 
-    local commands = _get_commands(source, bin)
+    local commands = _get_par_compile_commands(source, bin)
 
-    for _, command in ipairs(commands)
-    do
-        stderr = {}
+    for _, command in ipairs(commands) do
+        ---@type string[]
+        local stderr = {}
 
-        if not _run_shell_command(
-            command,
-            {
-                cwd=source,
-                on_stderr=function(job_id, data, event)
-                    for line in ipairs(data)
-                    do
-                        table.insert(stderr, data)
+        if
+            not shell.run_command(command, {
+                cwd = source,
+                on_stderr = function(_, data, _)
+                    for line in ipairs(data) do
+                        table.insert(stderr, line)
                     end
                 end,
-            }
-        )
+            })
         then
-            vim.api.nvim_err_writeln('Cannot install par')
-            print("STDERR")
-            print(sterr)
+            vim.notify("Cannot install par.", vim.log.levels.ERROR)
 
             return
         end
     end
 
-    if vim.fn.isdirectory(bin) == 0
-    then
-        vim.fn.mkdir(bin, "p")  -- Recursively create directories
+    if vim.fn.isdirectory(bin) == 0 then
+        vim.fn.mkdir(bin, "p") -- Recursively create directories
     end
 
     _prepend_to_path(bin)
     _enable_par()
 end
-
 
 return M

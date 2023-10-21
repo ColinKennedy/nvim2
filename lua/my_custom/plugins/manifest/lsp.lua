@@ -1,20 +1,16 @@
+-- NOTE: This adds mason-installed binaries to the $PATH
+local mason_utility = require("my_custom.plugins.mason.utility")
+mason_utility.add_bin_folder_to_path()
+
 return {
     -- The plug-in that adds LSPs of all languages to Neovim
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require("my_custom.plugins.data.nvim_lsp_config")
-
-            vim.keymap.set(
-                "n",
-                "<leader>d",
-                function()
-                    vim.diagnostic.open_float({source="always"})
-                end
-            )
+            require("my_custom.plugins.nvim_lspconfig.configuration")
         end,
-        keys = { "[d", "]d" },
-        lazy = true,
+        dependencies = { "williamboman/mason.nvim" },
+        event = { "BufReadPre", "BufNewFile" },
     },
 
     {
@@ -23,42 +19,14 @@ return {
         version = "0.*",
     },
 
-    -- Enable auto-completion in Neovim
-    {
-        "hrsh7th/nvim-cmp",
-        config = function()
-            require("my_custom.plugins.data.nvim_cmp")
-        end,
-        dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        event = { "InsertEnter" },
-        version = "0.*",
-    },
-
-    -- Allows (but does not link) LuaSnip snippets to nvim-cmp
-    {
-        "saadparwaiz1/cmp_luasnip",
-        lazy = true,
-    },
-
     -- Neovim snippet engine (which also displays in nvim-cmp)
     {
         "L3MON4D3/LuaSnip",
         config = function()
-            require("luasnip.loaders.from_lua").lazy_load(
-                { paths = "./snippets" }
-            )
-            require("luasnip").config.set_config(
-                {
-                    enable_autosnippets = true,
-                    history = false,
-                    updateevents = "TextChanged,TextChangedI",
-                }
-            )
-
-            vim.g._snippet_super_prefer_keywords = true
+            require("my_custom.plugins.luasnip.configuration")
         end,
         event = "InsertEnter",
-        version = "1.*",  -- TODO: There's a 2+. Add?
+        version = "2.*",
     },
 
     --     -- TODO: Consider deprecating my current auto-pairs for this?
@@ -108,20 +76,10 @@ return {
     -- Reference: https://github.com/williamboman/mason.nvim/discussions/1024
     {
         "williamboman/mason.nvim",
-        build = ":MasonUpdate",  -- :MasonUpdate updates registry contents
-        cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUpdate"},
+        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate" },
         config = function()
-            local filer = require("my_custom.utilities.filer")
-
-            local install_root = filer.join_path(
-                {
-                    vim.g.vim_home,
-                    "mason_packages",
-                    vim.loop.os_uname().sysname,
-                }
-            )
-
-            require("mason").setup({ install_root_dir = install_root })
+            require("my_custom.plugins.mason.configuration")
         end,
         version = "1.*",
     },
@@ -169,41 +127,14 @@ return {
     {
         "j-hui/fidget.nvim",
         config = function()
-            require("fidget").setup{
-                text = {
-                    -- spinner = "dots_ellipsis"  -- I like this alternative
-                    spinner = "meter"
-                },
-                window = {
-                    blend = 10
-                }
-            }
-
-            vim.api.nvim_set_hl(0, "FidgetTask", {fg="#4b5156", ctermfg=65})
-            vim.api.nvim_set_hl(0, "FidgetTitle", {link="Identifier"})
+            require("my_custom.plugins.fidget.configuration")
         end,
-        event = { "InsertEnter", "VeryLazy" },
-        tag = "legacy",  -- TODO: Remove this after the repository re-write, later
-    },
-
-    -- Iteratively show the next argument, in a pop-up window
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-            require("lsp_signature").setup(
-                {
-                    hint_enable = false,
-                    timer_interval = 500,  -- Wait longer before showing this pop-up
-                }
-            )
-        end,
-        event = "VeryLazy",  -- Or maybe InsertEnter
-        version = "0.*",
+        event = { "LspAttach" },
     },
 
     -- Rust LSP tools
     {
-        "simrat39/rust-tools.nvim",
+        "ColinKennedy/rust-tools.nvim",
         config = function()
             local rust_tools = require("rust-tools")
 
@@ -217,26 +148,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         config = function()
-            local mason_utility = require("my_custom.plugins.data.mason_utility")
-            mason_utility.add_bin_folder_to_path()
-
-            require("lint").linters_by_ft = {
-                python = {"pydocstyle", "pylint"}
-            }
-
-            lint = require("lint")
-            lint.linters.pydocstyle.args = { "--convention=google" }
-
-            lint.try_lint()
-            vim.api.nvim_create_autocmd(
-                { "BufWritePost" },
-                {
-                    callback = function()
-                        lint = require("lint")
-                        lint.try_lint()
-                    end
-                }
-            )
+            require("my_custom.plugins.nvim_lint.configuration")
         end,
         event = "VeryLazy",
     },

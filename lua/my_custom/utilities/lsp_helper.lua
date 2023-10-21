@@ -1,21 +1,25 @@
+--- Miscellaneous functions to make dealing with LSPs easier.
+---
+---@module 'my_custom.utilities.lsp_helper'
+---
+
 local M = {}
 
--- Print every LSP's capabilities as a quick list.
---
--- Reference: https://www.reddit.com/r/neovim/comments/13r7yzw/comment/jljyiar/?utm_source=share&utm_medium=web2x&context=3
---
+--- Print every LSP's capabilities as a quick list.
+---
+--- Reference:
+---     https://www.reddit.com/r/neovim/comments/13r7yzw/comment/jljyiar/?utm_source=share&utm_medium=web2x&context=3
+---
 function M.print_lsp_capabilities()
     local buffer = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_active_clients { bufnr = buffer }
+    local clients = vim.lsp.get_clients { bufnr = buffer }
 
-    for _, client in pairs(clients)
-    do
-        if client.name ~= "null-ls"
-        then
+    for _, client in pairs(clients) do
+        if client.name ~= "null-ls" then
+            ---@type string[]
             local capabilities = {}
 
-            for key, value in pairs(client.server_capabilities)
-            do
+            for key, value in pairs(client.server_capabilities) do
                 if value and key:find("Provider") then
                     local capability = key:gsub("Provider$", "")
                     table.insert(capabilities, "- " .. capability)
@@ -25,36 +29,34 @@ function M.print_lsp_capabilities()
             table.sort(capabilities) -- sorts alphabetically
             local message = "# " .. client.name .. "\n" .. table.concat(capabilities, "\n")
 
-            vim.notify(
-                message,
-                "trace",
-                {
-                    on_open = function(win)
-                        local buf = vim.api.nvim_win_get_buf(win)
-                        vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-                    end,
-                    timeout = 14000,
-                }
-            )
+            vim.notify(message, vim.log.levels.TRACE, {
+                on_open = function(win)
+                    local buffer_ = vim.api.nvim_win_get_buf(win)
+                    vim.bo[buffer_].filetype = "markdown"
+                end,
+                timeout = 14000,
+            })
             vim.fn.setreg("+", "Capabilities = " .. vim.inspect(client.server_capabilities))
         end
     end
 end
 
-
--- Returns a string with a list of attached LSP clients, including
--- formatters and linters from null-ls, nvim-lint and formatter.nvim
---
--- Reference: https://gist.github.com/Lamarcke/36e086dd3bb2cebc593d505e2f838e07
---
-local function get_attached_clients()
-    local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+--- Returns a string with a list of attached LSP clients, including
+--- formatters and linters from null-ls, nvim-lint and formatter.nvim
+---
+--- Reference: https://gist.github.com/Lamarcke/36e086dd3bb2cebc593d505e2f838e07
+---
+---@return string # A summary of the Neovim clients that are currently attached to LSPs.
+---
+function M.get_attached_clients()
+    local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 
     if #buf_clients == 0 then
         return "LSP Inactive"
     end
 
     local buf_ft = vim.bo.filetype
+    ---@type string[]
     local buf_client_names = {}
 
     -- add client
@@ -115,6 +117,7 @@ local function get_attached_clients()
     end
 
     -- This needs to be a string only table so we can use concat below
+    ---@type string[]
     local unique_client_names = {}
 
     for _, client_name_target in ipairs(buf_client_names) do
@@ -135,10 +138,9 @@ local function get_attached_clients()
     return language_servers
 end
 
-
+--- Show all Neovim clients that are currently connected to LSPs.
 function M.print_attached_clients()
-    print(get_attached_clients())
+    print(M.get_attached_clients())
 end
-
 
 return M

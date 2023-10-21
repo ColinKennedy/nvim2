@@ -1,99 +1,42 @@
+-- NOTE: Needed or zoomwintab will define keymaps
+vim.g.zoomwintab_remap = 0
+
 return {
     -- Zoxide auto-jump, but for Vim
     {
         "nanotee/zoxide.vim",
-        command = "Zi",
-        config = function()
-            vim.keymap.set(
-                "n",
-                "<Space>Z",
-                ":Zi<CR>",
-                {desc="[Z]oxide's interative pwd switcher."}
-            )
-        end,
         dependencies = {
-            "junegunn/fzf.vim",  -- Needed for ``:Zi``
+            -- TODO: Try to remove this fzf dependency
+            "junegunn/fzf", -- Needed for Zi
         },
-        keys = "<Space>Z",
+        cmd = { "Z", "Zi" },
     },
-
     {
         "junegunn/fzf",
-        build=function()
-            vim.cmd[[call fzf#install()]]
+        build = function()
+            -- vim.cmd[[call fzf#install()]]
+            vim.fn["fzf#install"]()
         end,
         lazy = true,
         version = "0.*",
     },
+
+    -- Integrate FZF into Neovim
     {
-        "junegunn/fzf.vim",
+        "ibhagwan/fzf-lua",
+        cmd = {
+            "Commands",
+            "FzfLua",
+            "GFiles",
+            "Helptags",
+            "History",
+            "Keymaps",
+        },
         config = function()
-            -- Define Zz to get around an error in lazy.nvim
-            -- This should be temporary, ideally. Delete, later
-            --
-            -- Reference: https://github.com/folke/lazy.nvim/issues/718
-            --
-            vim.cmd[[let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }]]
-            vim.api.nvim_create_user_command(
-                "Args",
-                ":call fzf#run(fzf#wrap({'source': sort(argv())}))",
-                {}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<space>B",
-                ":Buffers<CR>",
-                {desc="Search existing [B]uffers and select + view it."}
-            )
-            vim.keymap.set(
-                "n",
-                "<space>e",
-                ":Files<CR>",
-                {desc="[e]dit a `:pwd` file."}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<space>L",
-                ":Lines<CR>",
-                {desc="[L]ines searcher (current file)"}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<space>A",
-                ":Args<CR>",
-                {desc="Select a new [A]rgs file from the `:args` list."}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<space>E",
-                ":call searcher#search_project_files()<CR>",
-                {
-                    desc="[E]dit a new project root file.",
-                    silent=true,
-                }
-            )
+            require("my_custom.plugins.fzf_lua.configuration")
         end,
-        -- TODO: Remove this pinned commit once this is solved
-        --
-        -- Reference: https://github.com/junegunn/fzf.vim/issues/1506
-        --
-        commit = "5d87ac1fe8d729f116bda2f90a7211ad309ddf5a",
-        dependencies = { "junegunn/fzf" },
-        cmd = { "Args", "Buffers", "Files", "GFiles", "Helptags", "History", "Lines" },
-        keys = {"<space>A", "<space>B", "<space>E", "<space>L", "<space>e"},
-    },
-
-    -- A more modern, faster grep engine.
-    -- Requires https://github.com/BurntSushi/ripgrep to be installed
-    --
-    {
-        "jremmen/vim-ripgrep",
-        cmd = "Rg",
-        version = "1.*",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        keys = require("my_custom.plugins.fzf_lua.keys"),
     },
 
     -- A plugin that highlights the character to move to a word or WORD with f/t
@@ -111,12 +54,150 @@ return {
     {
         "bradford-smith94/quick-scope",
         config = function()
-            require("my_custom.plugins.data.quick_scope")
+            require("my_custom.plugins.quick_scope.configuration")
         end,
         init = function()
             require("my_custom.utilities.utility").lazy_load("quick-scope")
         end,
         event = "VeryLazy",
         version = "2.*",
+    },
+
+    -- Use the s/S key to hop quickly from one place to another.
+    --
+    -- Usage:
+    --     - Press s
+    --     - Type a letter
+    --     - Type another letter
+    --     - If your text that you want to jump to **doesn't** light up then press <Enter>
+    --         - You're done
+    --     - If it has a lit-up letter next to it, press it
+    --         - You're done
+    {
+        "ggandor/leap.nvim",
+        config = function()
+            require("my_custom.plugins.leap.configuration")
+        end,
+        keys = {
+            { "S", "<Plug>(leap-backward-to)", desc = "Leap backward to", silent = true },
+            { "s", "<Plug>(leap-forward-to)", desc = "Leap forward to", silent = true },
+        },
+    },
+
+    -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
+    {
+        "max397574/better-escape.nvim",
+        config = function()
+            require("better_escape").setup {
+                mappings = {
+                    -- NOTE: This prevents jk from leaving VISUAL mode
+                    v = { j = { k = "k" } },
+                    t = {
+                        j = {
+                            k = [[<C-\><C-n>]],
+                            j = "j",
+                        },
+                    },
+                },
+            }
+        end,
+    },
+
+    -- Allow quick and easy navigation to common project files
+    -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
+    --
+    {
+        "cbochs/grapple.nvim",
+        dependencies = { "ColinKennedy/plenary.nvim" },
+        config = function()
+            require("grapple").setup({ scope = "git_branch" })
+        end,
+        keys = require("my_custom.plugins.grapple.keys"),
+        version = "v0.*",
+    },
+
+    {
+        -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
+        "troydm/zoomwintab.vim",
+        cmd = { "ZoomWinTabOut", "ZoomWinTabToggle" },
+        keys = {
+            {
+                "<C-w>o",
+                "<cmd>ZoomWinTabToggle<CR>",
+                desc = "Toggle full-screen or minimize a window.",
+            },
+        },
+    },
+
+    --- Use ctrl + alt + {h,j,k,l} to move quickly around a buffer
+    {
+        "aaronik/treewalker.nvim",
+        keys = {
+            {
+                "<C-A-h>",
+                "<cmd>Treewalker Left<CR>",
+                noremap = true,
+                silent = true,
+            },
+            {
+                "<C-A-j>",
+                "<cmd>Treewalker Down<CR>",
+                noremap = true,
+                silent = true,
+            },
+            {
+                "<C-A-k>",
+                "<cmd>Treewalker Up<CR>",
+                noremap = true,
+                silent = true,
+            },
+            {
+                "<C-A-l>",
+                "<cmd>Treewalker Right<CR>",
+                noremap = true,
+                silent = true,
+            },
+        },
+    },
+
+    -- This lets you repeat motions. e.g. [q / ]q can be repeated with just
+    -- ; (forwards) or , (backwards). It's super useful!
+    --
+    {
+        "mawkler/demicolon.nvim",
+        keys = { ",", ";", "F", "T", "f", "t" },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+        config = function()
+            -- NOTE: The default behavior of demicolon goes against Vim's
+            -- default ; / , bevavior so we need to customize it to set it back again.
+            --
+            -- Reference: https://github.com/mawkler/demicolon.nvim
+            --
+            require("demicolon").setup({
+                integrations = {
+                    gitsigns = {
+                        enabled = true,
+                        keymaps = {
+                            -- NOTE: The default mappings for gitsigns.nvim is [c and ]c but
+                            -- I use [g and ]g.
+                            --
+                            next = "]g",
+                            prev = "[g",
+                        },
+                    },
+                },
+                keymaps = {
+                    repeat_motions = false,
+                },
+            })
+
+            local nxo = { "n", "x", "o" }
+
+            vim.keymap.set(nxo, ";", require("demicolon.repeat_jump").next)
+            vim.keymap.set(nxo, ",", require("demicolon.repeat_jump").prev)
+        end,
     },
 }
