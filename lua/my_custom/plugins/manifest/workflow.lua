@@ -782,7 +782,24 @@ return {
                 {
                     ["<leader>"] = {
                         c = "+file-ish prefix",
-                        d = "+debug prefix",
+                        d = {
+                            name = "+debug prefix",
+                            ["<Space>"] = "Continue through the debugger to the next breakpoint.",
+                            ["-"] = "Restart the current debug session.",
+                            ["="] = "Disconnect from a remote DAP session.",
+                            ["_"] = "Kill the current debug session.",
+                            b = "Set a breakpoint (and remember it even when we re-open the file).",
+                            d = "[d]o [d]ebugger.",
+                            g = {
+                                name = "+debu[g] lo[g] prefix",
+                                e = "Open the [d]ebu[g] [e]dit file.",
+                                t = "Set [d]ebu[g] to [t]race level logging.",
+                            },
+                            h = "Move out of the current function call.",
+                            j = "Skip over the current line.",
+                            l = "Move into a function call.",
+                            z = "[d]ebugger [z]oom toggle (full-screen or minimize the window).",
+                        },
                         f = "[f]ind text using hop-mode",
                         i = {
                             name = "+insert prefix",
