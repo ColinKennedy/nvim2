@@ -884,7 +884,6 @@ return {
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
         "akinsho/toggleterm.nvim",
-        version = "*",
         config = function()
             vim.keymap.set(
                 "n",
