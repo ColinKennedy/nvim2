@@ -986,6 +986,15 @@ return {
         version = "v0.*",
     },
 
+    -- Allow the quickfix buffer to be directly editted. Finally!
+    -- I hear this plug-in might be a bit buggy. Keep an eye out for it.
+    --
+    -- Reference: https://www.reddit.com/r/neovim/comments/16k6spq/best_quickfixlist_plugin/
+    --
+    {
+        "itchyny/vim-qfedit",
+    },
+
     -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
     {
         "max397574/better-escape.nvim",

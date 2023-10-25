@@ -310,3 +310,6 @@
 [submodule "bundle/symbols-outline.nvim"]
 	path = bundle/symbols-outline.nvim
 	url = git@github.com:simrat39/symbols-outline.nvim.git
+[submodule "bundle/vim-qfedit"]
+	path = bundle/vim-qfedit
+	url = git@github.com:itchyny/vim-qfedit.git
