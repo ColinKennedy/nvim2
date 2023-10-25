@@ -476,11 +476,24 @@ return {
             local dap = require("dap")
 
             -- Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#ccrust-gdb-via--vscode-cpptools
-            dap.adapters.cppdbg = {
-                id = "cppdbg",
-                type = "executable",
-                command = "~/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7"
-            }
+            if vim.fn.has("win32") == 1
+            then
+                -- Note: Not tested. Just copied from the guide above
+                dap.adapters.cppdbg = {
+                    id = "cppdbg",
+                    type = "executable",
+                    command = os.getenv("HOME") .. "/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
+                    options = {
+                        detached = false,
+                    },
+                }
+            else
+                dap.adapters.cppdbg = {
+                    id = "cppdbg",
+                    type = "executable",
+                    command = os.getenv("HOME") .. "/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
+                }
+            end
 
             vim.keymap.set(
                 "n",
