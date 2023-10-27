@@ -464,6 +464,8 @@ return {
             --
             local dap = require("dap")
 
+            command = os.getenv("HOME") .. "/sources/cpptools-linux-1.13.9/extension/debugAdapters/bin/OpenDebugAD7"
+
             -- Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#ccrust-gdb-via--vscode-cpptools
             if vim.fn.has("win32") == 1
             then
@@ -471,7 +473,7 @@ return {
                 dap.adapters.cppdbg = {
                     id = "cppdbg",
                     type = "executable",
-                    command = os.getenv("HOME") .. "/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
+                    command = command,
                     options = {
                         detached = false,
                     },
@@ -480,7 +482,7 @@ return {
                 dap.adapters.cppdbg = {
                     id = "cppdbg",
                     type = "executable",
-                    command = os.getenv("HOME") .. "/sources/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
+                    command = command,
                 }
             end
 
@@ -582,6 +584,7 @@ return {
             -- vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
             -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
         end,
+        cmd = "DapContinue",
         lazy = true,
         version = "0.*",
     },
@@ -661,6 +664,33 @@ return {
             add_zoom_keymap("<leader>ds", "dapui_scopes")
             add_zoom_keymap("<leader>dt", "dapui_stacks")  -- dt as in s[t]acks
             add_zoom_keymap("<leader>dr", "dap-repl")
+
+            vim.keymap.set(
+                "n",
+                "<F5>",
+                function()
+                    require("dapui").open()
+
+                    vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
+                end,
+                {desc="Start a debugging session."}
+            )
+
+            -- Note: Added this <leader>dd duplicate of <F5> because somehow the <F5>
+            -- mapping keeps getting reset each time I restart nvim-dap. Annoying but whatever.
+            --
+            vim.keymap.set(
+                "n",
+                "<leader>dd",
+                function()
+                    require("dapui").open()  -- Requires nvim-dap-ui
+
+                    vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
+                end,
+                {
+                    desc="[d]o [d]ebugger. Start a debugging session.",
+                }
+            )
         end,
         dependencies = {
             "mfussenegger/nvim-dap",
@@ -669,7 +699,7 @@ return {
 
             "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
         },
-        keys = { "<F5>" },
+        keys = { "<F5>", "<leader>dd" },
     },
 
     -- Adds the current value(s) of variables as you step through the code. Super handy!
