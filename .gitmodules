@@ -61,9 +61,6 @@
 [submodule "bundle/cmp-tmux"]
 	path = bundle/cmp-tmux
 	url = git@github.com:andersevenrud/cmp-tmux.git
-[submodule "bundle/vim-qf_resize"]
-	path = bundle/vim-qf_resize
-	url = git@github.com:blueyed/vim-qf_resize.git
 [submodule "bundle/quick-scope"]
 	path = bundle/quick-scope
 	url = git@github.com:bradford-smith94/quick-scope.git
@@ -172,9 +169,6 @@
 [submodule "bundle/vim-cool"]
 	path = bundle/vim-cool
 	url = git@github.com:romainl/vim-cool.git
-[submodule "bundle/vim-qf"]
-	path = bundle/vim-qf
-	url = git@github.com:romainl/vim-qf.git
 [submodule "bundle/cmp_luasnip"]
 	path = bundle/cmp_luasnip
 	url = git@github.com:saadparwaiz1/cmp_luasnip.git
