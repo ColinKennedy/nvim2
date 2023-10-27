@@ -334,17 +334,6 @@ return {
         version = "stable",
     },
 
-    -- Create simple templates for Vim projects using a '.projections.json' sidecar file
-    -- Quickfix helper functions
-    {
-        "romainl/vim-qf",
-        config = function()
-            vim.g.qf_auto_resize = 0
-        end,
-        ft = "qf",
-        version = "0.*",
-    },
-
     -- Quickfix auto previews and other fun features
     {
         "kevinhwang91/nvim-bqf",
