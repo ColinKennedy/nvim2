@@ -253,13 +253,13 @@ return {
                 }
             )
         end,
-        dependencies = {"Lazytangent/nvim-gps", "nvim-tree/nvim-web-devicons"},
+        dependencies = {"ColinKennedy/nvim-gps", "nvim-tree/nvim-web-devicons"},
         event = "VeryLazy",
     },
 
     -- Use treesitter to show your current cursor context (class > function > etc)
     {
-        "Lazytangent/nvim-gps",
+        "ColinKennedy/nvim-gps",
         config = function()
             require("nvim-gps").setup()
         end,
