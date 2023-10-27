@@ -95,9 +95,6 @@ vim.keymap.set(
     {desc="[j]oin the line below without adding an extra space"}
 )
 
-vim.keymap.set("n", "[q", ":cprevious<CR>", {desc="Move up the QuickFix window."})
-vim.keymap.set("n", "]q", ":cnext<CR>", {desc="Move down the QuickFix window."})
-
 -- Basic mappings that can be used to make Vim "magic" by default
 -- Reference: https://stackoverflow.com/q/3760444
 -- Reference: http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
