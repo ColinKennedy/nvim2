@@ -286,9 +286,6 @@
 [submodule "bundle/grapple.nvim"]
 	path = bundle/grapple.nvim
 	url = git@github.com:cbochs/grapple.nvim.git
-[submodule "bundle/term-edit.nvim"]
-	path = bundle/term-edit.nvim
-	url = git@github.com:chomosuke/term-edit.nvim.git
 [submodule "bundle/better-escape.nvim"]
 	path = bundle/better-escape.nvim
 	url = git@github.com:max397574/better-escape.nvim.git
