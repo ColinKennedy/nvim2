@@ -10,16 +10,6 @@ return {
         end,
     },
 
-    {
-        -- Async Make + awesome quick-fix window error reporting
-        "ColinKennedy/vim-dispatch",
-        cmd = { "Dispatch", "Make" },
-        config = function()
-            vim.g.dispatch_no_maps = 1
-        end,
-        version = "1.*",
-    },
-
     -- A cool plugin that makes it easier to search/replace variations of words
     -- Example: Subvert/child{,ren}/adult{,s}/g
     --

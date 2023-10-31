@@ -20,7 +20,7 @@ return {
     -- Extra quick-fix commands
     {
         "romainl/vim-qf",
-        cmd = {"SaveList", "LoadList", "ListLists"},
+        ft = "qf"
     },
 
     -- Allow the quickfix buffer to be directly editted. Finally!

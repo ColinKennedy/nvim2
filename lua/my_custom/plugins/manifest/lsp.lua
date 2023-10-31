@@ -197,7 +197,7 @@ return {
                 }
             )
         end,
-        event = "VeryLazy",  -- Or maybe InsertEnter
+        event = "User LspComplete",
         version = "0.*",
     },
 
