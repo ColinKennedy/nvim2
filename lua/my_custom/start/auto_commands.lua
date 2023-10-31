@@ -10,6 +10,15 @@ local is_ignoring_syntax_events = function()
     return false
 end
 
+-- Remove the column-highlight on QuickFix & LocationList buffers
+vim.api.nvim_create_autocmd(
+    "FileType",
+    {
+        pattern = "qf",
+        command = "setlocal nonumber colorcolumn=",
+    }
+)
+
 -- Reference: https://stackoverflow.com/questions/12485981
 --
 -- Enable syntax highlighting when buffers are displayed in a window through
@@ -148,3 +157,96 @@ vim.api.nvim_create_autocmd(
         pattern = "*.usd*",
     }
 )
+
+
+-- TODO: Consider defer-evaling this, since it runs off of ``TextYankPost``
+--
+-- Highlight the yanked text for a brief moment. Basically, blink the yanked region.
+--
+-- Reference: https://www.reddit.com/r/neovim/comments/gofplz/comment/hqa6xhc/?utm_source=share&utm_medium=web2x&context=3
+--
+vim.api.nvim_create_autocmd(
+    "TextYankPost",
+    {
+        callback = function()
+            local highlight_group = "IncSearch"
+            if vim.fn.hlexists("HighlightedyankRegion") > 0
+            then
+                highlight_group = "HighlightedyankRegion"
+            end
+
+            vim.highlight.on_yank{ higroup=highlight_group, timeout=100 }
+        end,
+        pattern = "*",
+    }
+)
+
+
+if vim.fn.has("nvim")
+then
+    local is_fzf_terminal = function()
+        local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+        local ending = ";#FZF"
+
+        return name:sub(-#ending) == ending
+    end
+
+    local group = vim.api.nvim_create_augroup("TerminalBehavior", { clear = true })
+    -- Switch from the terminal window back to other buffers quickly
+    -- Reference: https://github.com/junegunn/fzf.vim/issues/544#issuecomment-457456166
+    --
+    vim.api.nvim_create_autocmd(
+        "TermOpen",
+        {
+            callback = function()
+                if (is_fzf_terminal())
+                then
+                    return
+                end
+
+                vim.keymap.set(
+                    "t",
+                    "<ESC><ESC>",
+                    "<C-\\><C-n>",
+                    {
+                        buffer=true,
+                        desc="Exit the terminal by pressing <ESC> twice in a row.",
+                        noremap=true,
+                    }
+                )
+            end,
+            group = group,
+            pattern = "*",
+        }
+    )
+
+    -- Neovim doesn't close the terminal immediately - this autocmd forces the
+    -- terminal to close (like it does in Vim)
+    --
+    -- Reference: https://vi.stackexchange.com/a/17923
+    --
+    vim.api.nvim_create_autocmd(
+        "TermClose",
+        {
+            command = "silent! :q",
+            group = group,
+            pattern = "*",
+        }
+    )
+
+    -- Neovim also doesn't enter insert mode immediately when a terminal is
+    -- opened. So we add it as an explicit command, here.
+    --
+    -- This is different from `autocmd WinEnter` because `TermOpen`
+    -- executes when a Terminal is first created. And WinEnter executes
+    -- when you leave a window and come back to it.
+    --
+    vim.api.nvim_create_autocmd(
+        "TermOpen",
+        {
+            command = "startinsert",
+            group = group,
+            pattern = "*",
+        }
+    )
+end

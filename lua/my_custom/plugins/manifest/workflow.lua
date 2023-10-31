@@ -704,6 +704,7 @@ return {
     --
     {
         "ColinKennedy/nvim-rg",
+        branch = "combined_issue_fixed",
         cmd = "Rg",
         keys = {"<leader>rg", "<leader>rw"}
     }

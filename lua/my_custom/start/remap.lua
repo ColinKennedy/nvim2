@@ -268,6 +268,16 @@ vim.keymap.set(
     {desc="Exit Vim without saving."}
 )
 
+-- Search for text within some visual selection
+--
+-- Reference: https://www.reddit.com/r/neovim/comments/16ztjvl/comment/k3hd4i1/?utm_source=share&utm_medium=web2x&context=3
+--
+vim.keymap.set("x", "/", "<Esc>/\\%V", { desc = "Search within a visual selection" })
+
+-- Change Vim to add numbered j/k  movement to the jumplist
+vim.cmd[[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k']]
+vim.cmd[[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j']]
+
 -- Allow quick and easy movement out of a terminal buffer using just <C-hjkl>
 vim.keymap.set(
     "t",
@@ -304,4 +314,32 @@ vim.keymap.set(
         desc = "Move to the right of the terminal buffer.",
         silent = true,
     }
+)
+
+vim.keymap.set("t", "<C-w>o", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
+vim.keymap.set("t", "<C-w><C-o>", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
+
+
+vim.cmd[[
+let g:_pager_bottom_texts = [":", "?", "/", "Pattern not found  (press RETURN)", "(END)"]
+
+
+" If the user is in a pager, re-enter the terminal buffer and scroll up
+function! MoveIfInPager()
+    let l:current_line = getline(".")
+
+    " re-enter the terminal buffer and press "k" to scroll up in the pager
+    if index(g:_pager_bottom_texts, l:current_line) >= 0
+        normal i
+
+        " We send 2 "k" keys, so it scrolls at double-speed
+        call timer_start(0, {-> feedkeys("k")})
+        call timer_start(10, {-> feedkeys("k")})  " 10 happened to be a decent number
+    endif
+endfunction
+]]
+vim.keymap.set(
+    "t",
+    "kk",
+    "<C-\\><C-n>:call MoveIfInPager()<CR>"
 )
