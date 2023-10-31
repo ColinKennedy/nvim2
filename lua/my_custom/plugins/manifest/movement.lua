@@ -119,4 +119,57 @@ return {
         event = "VeryLazy",
         version = "2.*",
     },
+
+    -- Use the s/S key to hop quickly from one place to another.
+    --
+    -- Usage:
+    --     - Press s
+    --     - Type a letter
+    --     - Type another letter
+    --     - If your text that you want to jump to **doesn't** light up then press <Enter>
+    --         - You're done
+    --     - If it has a lit-up letter next to it, press it
+    --         - You're done
+    {
+        "ggandor/leap.nvim",
+        config = function()
+            vim.keymap.set(
+                "n",
+                "s",
+                "<Plug>(leap-forward-to)",
+                {
+                    desc = "Leap forward to",
+                    silent = true,
+                }
+            )
+            vim.keymap.set(
+                "n",
+                "S",
+                "<Plug>(leap-backward-to)",
+                {
+                    desc = "Leap backward to",
+                    silent = true,
+                }
+            )
+
+            require("leap").init_highlight()
+
+            require('leap').opts.safe_labels = {
+                "a", "s", "d", "f", "j", "k", "l", ";",
+                "g", "h",
+                "A", "S", "D", "F", "J", "K", "L",
+            }
+        end,
+        keys = {"S", "s"},
+    },
+
+    -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
+    {
+        "max397574/better-escape.nvim",
+        config = function()
+          require("better_escape").setup()
+        end,
+        event = "InsertEnter",
+    },
+
 }
