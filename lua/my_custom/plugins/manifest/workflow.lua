@@ -707,4 +707,14 @@ return {
         cmd = "SymbolsOutline",
         keys = {"<Space>SO"}
     },
+
+    -- Search with :Rg
+    -- :Rg -t vim foo (searches "foo" for vim files
+    -- :Rg (triggers an interactive prompt for a search)
+    --
+    {
+        "ColinKennedy/nvim-rg",
+        cmd = "Rg",
+        keys = {"<leader>rg", "<leader>rw"}
+    }
 }

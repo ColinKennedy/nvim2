@@ -225,7 +225,7 @@
 	url = git@github.com:glts/vim-textobj-comment.git
 [submodule "bundle/nvim-gps"]
 	path = bundle/nvim-gps
-	url = git@github.com:Lazytangent/nvim-gps.git
+	url = git@github.com:ColinKennedy/nvim-gps.git
 [submodule "bundle/winbar.nvim"]
 	path = bundle/winbar.nvim
 	url = git@github.com:ColinKennedy/winbar.nvim.git
@@ -307,3 +307,6 @@
 [submodule "bundle/vim-qfedit"]
 	path = bundle/vim-qfedit
 	url = git@github.com:itchyny/vim-qfedit.git
+[submodule "bundle/nvim-rg"]
+	path = bundle/nvim-rg
+	url = git@github.com:ColinKennedy/nvim-rg.git
