@@ -56,9 +56,11 @@ local configuration = { root = vim.g.vim_home .. "/bundle" }
 
 require("lazy").setup(plugins, configuration)
 
-require("my_custom.start.remap")
-require("my_custom.start.initialization")
-require("my_custom.start.setting")
 require("my_custom.start.auto_commands")
+require("my_custom.start.command")
 require("my_custom.start.global_confirm")
+require("my_custom.start.initialization")
+require("my_custom.start.lsp_diagnostics")
+require("my_custom.start.remap")
+require("my_custom.start.setting")
 vim.cmd("source " .. vim.g.vim_home .. "/plugin/miscellaneous_commands.vim")
