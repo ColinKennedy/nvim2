@@ -5,8 +5,6 @@
 - viI mapping doesn't work anymore. FIX
 - Add groups to all vim.api.nvim_create_autocmd( commands
 
-- Make sure toggle terminal is always above the quickfix. And quickfix is created above the terminal
-
 - Assembly viewer - https://github.com/neovim/neovim/issues/19708
     - Implement a "VisualChanged" event
 
