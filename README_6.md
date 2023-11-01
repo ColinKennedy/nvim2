@@ -1,4 +1,6 @@
 - :Rg is so annoying. It changes the size of the window!
+ - It's because of `vim.opt.laststatus = 3`, somehow. Make a reproduction
+- Remove the "Searching..." dialog from nvim-rg. And its other s:Alert calls
 
 - viI mapping doesn't work anymore. FIX
 - Add groups to all vim.api.nvim_create_autocmd( commands
