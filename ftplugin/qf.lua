@@ -5,6 +5,3 @@ protected_window.register_window_and_buffer(
     vim.api.nvim_get_current_win(),
     vim.fn.bufnr()
 )
-
--- Move the quick-fix buffer to the top of the window
-vim.cmd[[wincmd K]]
