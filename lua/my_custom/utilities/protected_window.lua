@@ -25,15 +25,15 @@ function M.register_window_and_buffer(window, buffer)
                     return
                 end
 
-                if not vim.api.nvim_win_is_valid(current_window)
-                then
-                    -- The window was closed. Skip.
-                    return
-                end
-
                 -- Change the window's buffer back to the buffer that it should be
                 vim.schedule(
                     function()
+                        if not vim.api.nvim_win_is_valid(window)
+                        then
+                            -- The window was closed. Skip.
+                            return
+                        end
+
                         local current_buffer = vim.fn.bufnr()
 
                         if current_buffer == buffer
