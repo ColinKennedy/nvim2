@@ -1,13 +1,11 @@
 require("my_custom.start.speed_up")
 
-vim.cmd[[
-" Note: This should be a temporary measure. Once I am on the latest Neovim
-" / Vim which natively discovers USD files, I shouldn't need this anymore.
-"
-" Reference: https://github.com/vim/vim/pull/12370
-"
-au BufNewFile,BufRead *.usda,*.usd setf usd
-]]
+-- TODO: Remove this line after updating Neovim to (fb3e2bf7b1fc26fef4d168fd2eb2d8eaba1d9390) (a.k.a vim-patch:9.0.1549)
+--
+-- Reference: https://github.com/neovim/neovim/pull/23608
+--
+vim.cmd[[au BufNewFile,BufRead *.cppobjdump,*.objdump setf objdump]]
+
 
 -- Important: According to lazy.nvim, the leader key must be set before lazy.nvim is
 -- called or else it will break various things.
