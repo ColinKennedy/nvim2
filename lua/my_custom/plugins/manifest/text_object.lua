@@ -184,6 +184,46 @@ return {
     -- Adds pair mappings (like ]l [l) to Vim
     {
         "tpope/vim-unimpaired",
+        config = function()
+            local _safe_run = function(text)
+                local success, _ = pcall(vim.cmd, text)
+
+                if not success
+                then
+                    vim.api.nvim_err_writeln("No more items")
+                end
+            end
+
+            vim.keymap.set(
+                "n",
+                "[q",
+                function()
+                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
+
+                    fixer.choose_last_window()
+
+                    _safe_run([[execute "normal \<Plug>(unimpaired-cprevious)"]])
+                end,
+                {
+                    desc="Move up the Quick-Fix window.",
+                }
+            )
+
+            vim.keymap.set(
+                "n",
+                "]q",
+                function()
+                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
+
+                    fixer.choose_last_window()
+
+                    _safe_run([[execute "normal \<Plug>(unimpaired-cnext)"]])
+                end,
+                {
+                    desc="Move down the Quick-Fix window.",
+                }
+            )
+        end,
         keys = {
             "<P", ">P",
             "<p", ">p",
