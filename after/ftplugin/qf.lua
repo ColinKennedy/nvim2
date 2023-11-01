@@ -23,6 +23,3 @@ vim.api.nvim_buf_create_user_command(
     end,
     { nargs=1 }
 )
-
--- When a quick-fix window is created, move it to the top of Vim
--- vim.cmd[[wincmd K]]
