@@ -317,7 +317,7 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         cmd = { "AerialNavToggle", "AerialToggle"},
         keys = { "<space>SN", "<space>SS" }, -- S as in "Summary"
-        version = "stable",
+        -- version = "stable",  -- Note: The latest is probably safe. The maintainer's good
     },
 
     -- Auto-insert pairs
@@ -610,6 +610,7 @@ return {
             vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
         end,
         version = "v2.*",
+        cmd = "ToggleTerm",
         keys = "<Space>T",
     },
 
