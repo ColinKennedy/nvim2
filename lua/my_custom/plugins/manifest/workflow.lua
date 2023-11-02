@@ -426,9 +426,9 @@ return {
                 {desc="Open NvimTree starting from the `:pwd`."}
             )
         end,
-        cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
+        -- cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        keys = { "<space>W" } -- W as in "workspace view"
+        -- keys = { "<space>W" } -- W as in "workspace view"
     },
 
     -- Seamlessly switch between a binary file view and a hexdump-ish view and back
