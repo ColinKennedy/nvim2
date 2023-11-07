@@ -20,6 +20,7 @@ local _is_current_window_allowed = function()
     if (
         type_ == "toggleterm" -- Reference: https://github.com/akinsho/toggleterm.nvim
         or type_ == "qf"
+        or type_ == "aerial"  -- Reference: https://github.com/stevearc/aerial.nvim
         or vim.o.buftype == "terminal"
     )
     then
