@@ -306,4 +306,4 @@
 	url = git@github.com:itchyny/vim-qfedit.git
 [submodule "bundle/nvim-rg"]
 	path = bundle/nvim-rg
-	url = git@github.com:ColinKennedy/nvim-rg.git
+	url = git@github.com:duane9/nvim-rg.git

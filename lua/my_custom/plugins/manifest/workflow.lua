@@ -226,60 +226,43 @@ return {
     --     ft = "python",
     -- },
 
-    -- -- Enables nvim-treesitter syntax highlighting groups for USD files.
-    -- --
-    -- -- Note: This does nothing unless you call
-    -- --
-    -- -- ```
-    -- -- require("nvim-treesitter.configs").setup {
-    -- --     parser_install_dir = installation_directory,
-    -- --     highlight = { enable = true },
-    -- -- }
-    -- -- ```
-    -- --
     -- {
-    --     "ColinKennedy/nvim-treesitter-usd",
-    --     ft = "usd",
-    --     version = "0.*",
+    --     "ColinKennedy/nvim-treesitter-textobjects",
+    --     branch = "modified_include_surrounding_whitespace_behavior",
+    --     config = function()
+    --         require("my_custom.plugins.data.nvim_treesitter_textobjects_config")
+    --     end,
+    --     dependencies = {
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    --     -- TODO: It seems that lazy-loading this sometimes causes the plug-in
+    --     -- to break. Though it would be nice if there was a way to consistently
+    --     -- lazy-load it.
+    --     --
+    --     -- event = { "VeryLazy" },
+    --     -- keys = {
+    --     --     "[k", "]k",
+    --     --     "[m", "]m",
+    --     --     "[K", "]K",
+    --     --     "[M", "]M",
+    --     --
+    --     --     "dab",
+    --     --     "dac",
+    --     --     "dad",
+    --     --     "daf",
+    --     --     "dic",
+    --     --     "did",
+    --     --     "dif",
+    --     --
+    --     --     "vab",
+    --     --     "vac",
+    --     --     "vad",
+    --     --     "vaf",
+    --     --     "vic",
+    --     --     "vid",
+    --     --     "vif",
+    --     -- },
     -- },
-
-    {
-        "ColinKennedy/nvim-treesitter-textobjects",
-        branch = "modified_include_surrounding_whitespace_behavior",
-        config = function()
-            require("my_custom.plugins.data.nvim_treesitter_textobjects_config")
-        end,
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
-        -- TODO: It seems that lazy-loading this sometimes causes the plug-in
-        -- to break. Though it would be nice if there was a way to consistently
-        -- lazy-load it.
-        --
-        -- event = { "VeryLazy" },
-        -- keys = {
-        --     "[k", "]k",
-        --     "[m", "]m",
-        --     "[K", "]K",
-        --     "[M", "]M",
-        --
-        --     "dab",
-        --     "dac",
-        --     "dad",
-        --     "daf",
-        --     "dic",
-        --     "did",
-        --     "dif",
-        --
-        --     "vab",
-        --     "vac",
-        --     "vad",
-        --     "vaf",
-        --     "vic",
-        --     "vid",
-        --     "vif",
-        -- },
-    },
 
     -- Kickass class / function viewer
     {
@@ -704,8 +687,7 @@ return {
     -- :Rg (triggers an interactive prompt for a search)
     --
     {
-        "ColinKennedy/nvim-rg",
-        branch = "combined_issue_fixes",
+        "duane9/nvim-rg",
         cmd = "Rg",
         keys = {"<leader>rg", "<leader>rw"}
     }
