@@ -30,6 +30,8 @@ require("nvim-treesitter.configs").setup {
             if ok and stats and stats.size > max_filesize then
                 return true
             end
+
+            return false
         end,
 
         enable = true,
