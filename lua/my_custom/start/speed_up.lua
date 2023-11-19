@@ -5,6 +5,7 @@ local plugins_to_disable = {
     "man",
     "matchit",
     -- "matchparen",  -- I like being able to see matching parentheses
+    "netrw",
     "netrwPlugin",
     "remote_plugins",  -- This is a name for the runtime/plugin/rplugin.vim file
     "shada_plugin",
