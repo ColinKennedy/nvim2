@@ -1,3 +1,11 @@
+--- Find and load all unstaged `git diff` commits as a Neovim QuickFix buffer.
+---
+--- Heavily inspired by `git jump`, which does the same thing.
+---
+--- @source https://github.com/git/git/tree/master/contrib/git-jump
+---
+
+
 --- @class _DiffDetails The line or row (line number) details that were found.
 --- @field path string An absolute or relative path to a file or directory on-disk.
 --- @field row integer A 1-or-more number indicating the line of some changed text.
