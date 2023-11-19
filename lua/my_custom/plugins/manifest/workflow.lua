@@ -632,7 +632,7 @@ return {
         config = function()
             require("my_custom.plugins.manifest.hydra")
         end,
-        keys = { "<Space>G" },
+        keys = { "<Space>GD", "<Space>GG" },
     },
 
     -- Show classes / functions / variables in an outliner
