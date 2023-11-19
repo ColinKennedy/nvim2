@@ -25,11 +25,12 @@ vim.opt.runtimepath:append(install_path)
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
         "diff",
-        "usd",
+        "lua",
         "python",
-        -- "vim",  -- Note: This currently errors on-install during compiling. Not sure why.
-        "vimdoc",
         "query",
+        "usd",
+        "vim",
+        "vimdoc",
     },
     parser_install_dir = install_path,
     highlight = {
