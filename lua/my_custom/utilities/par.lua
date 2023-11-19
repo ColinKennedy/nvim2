@@ -1,11 +1,25 @@
+--- A module for finding and applying `par` to Neovim (or compiling it, if neededed).
+---
+--- @module 'my_custom.utilities.par'
+---
+
 local filer = require("my_custom.utilities.filer")
 
 local _COMMAND_NAME = "par"
 
 local M = {}
 
+--- @class _ShellArguments
+--- @field cwd string? The directory on-disk where a shell command will be called from.
+--- @field on_stderr fun(job_id: integer, data: table<string>, event): nil An on-error callback.
 
-local _get_commands = function(source, bin)
+--- Get the commands needed in order to compile `par` from scratch.
+---
+--- @param source string The absolute path to `"$XDG_CONFIG_PATH/nvim/sources/par"`.
+--- @param bin string The absolute path where the `par` executable goes when it's compiled.
+--- @return table<string> # The commands to run.
+---
+local _get_par_compile_commands = function(source, bin)
     local extraction_directory = "par-master" -- TODO: Auto-get this directory name
 
     local output = {}
@@ -42,20 +56,30 @@ local _get_commands = function(source, bin)
 end
 
 
+--- Add `path` to the `$PATH` environment variable.
+---
+--- @param path string An absolute or relative directory on-disk.
+---
 local _prepend_to_path = function(path)
     vim.cmd("let $PATH='" .. path .. ":" .. os.getenv("PATH") .. "'")
 end
 
--- Reference: http://www.nicemice.net/par/
+-- @source http://www.nicemice.net/par
+-- @source https://stackoverflow.com/q/6735996
 --
 -- s0 - disables suffixes
--- Reference: https://stackoverflow.com/q/6735996
 --
 local _enable_par = function()
     vim.opt.formatprg = "par s0w88"
 end
 
 
+--- Run `command` with shell `options` and indicate if the call succeeded.
+---
+--- @param command string The shell command to call. No string escapes needed.
+--- @param options _ShellArguments Optional data to include for the shell command.
+--- @return boolean If success, return `true`.
+---
 local _run_shell_command = function(command, options)
     local job = vim.fn.jobstart(command, options)
     local result = vim.fn.jobwait({job})[1]
@@ -69,7 +93,7 @@ local _run_shell_command = function(command, options)
     then
         vim.api.nvim_err_writeln('The requested command "' .. command .. '" timed out.')
 
-        return
+        return false
     elseif result == -2
     then
         vim.api.nvim_err_writeln(
@@ -102,6 +126,7 @@ local _run_shell_command = function(command, options)
 end
 
 
+--- Find a valid `par` executable and load it, if able.
 function M.load_or_install()
     local executable = vim.fn.executable("par") == 1
 
@@ -131,11 +156,11 @@ function M.load_or_install()
         vim.fn.mkdir(source, "p")  -- Recursively create directories
     end
 
-    local commands = _get_commands(source, bin)
+    local commands = _get_par_compile_commands(source, bin)
 
     for _, command in ipairs(commands)
     do
-        stderr = {}
+        local stderr = {}
 
         if not _run_shell_command(
             command,
@@ -144,15 +169,13 @@ function M.load_or_install()
                 on_stderr=function(job_id, data, event)
                     for line in ipairs(data)
                     do
-                        table.insert(stderr, data)
+                        table.insert(stderr, line)
                     end
                 end,
             }
         )
         then
-            vim.api.nvim_err_writeln('Cannot install par')
-            print("STDERR")
-            print(sterr)
+            vim.api.nvim_err_writeln("Cannot install par.")
 
             return
         end

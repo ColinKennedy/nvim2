@@ -123,8 +123,15 @@ then
 end
 
 -- Enable (or download `par`)
-local par = require("my_custom.utilities.par")
-par.load_or_install()
+local module = "my_custom.utilities.par"
+local package_exists, par = pcall(require, module)
+
+if package_exists
+then
+    par.load_or_install()
+else
+    vim.api.nvim_err_writeln('Could not load "' .. module .. '" module.')
+end
 
 -- Disable tag completion (TAB)
 --
