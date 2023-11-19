@@ -183,7 +183,6 @@ return {
             vim.api.nvim_set_hl(0, "FidgetTitle", {link="Identifier"})
         end,
         event = { "InsertEnter", "VeryLazy" },
-        tag = "legacy",  -- TODO: Remove this after the repository re-write, later
     },
 
     -- Iteratively show the next argument, in a pop-up window
