@@ -143,36 +143,36 @@ return {
                     icon = "",
                     color = get_best_hex("Question"),
                     -- cterm_color = "65",
-                    name = "dapui_breakpoints"
+                    name = "dapui_breakpoints",
                 },
                 dapui_console = {
                     icon = "",
                     color = get_best_hex("Comment"),
                     -- cterm_color = "65",
-                    name = "dapui_console"
+                    name = "dapui_console",
                 },
                 ["dap-repl"] = {  -- By default, it is shown as bright white
                     icon = "󱜽",
                     -- cterm_color = "65",
-                    name = "dap_repl"
+                    name = "dap_repl",
                 },
                 dapui_scopes = {
                     icon = "󰓾",
                     color = get_best_hex("Function"),
                     -- cterm_color = "40",
-                    name = "dapui_scopes"
+                    name = "dapui_scopes",
                 },
                 dapui_stacks = {
                     icon = "",
                     color = get_best_hex("Directory"),
                     -- cterm_color = "65",
-                    name = "dapui_stacks"
+                    name = "dapui_stacks",
                 },
                 dapui_watches = {
                     icon = "󰂥",
                     color = get_best_hex("Constant"),
                     -- cterm_color = "65",
-                    name = "dapui_watches"
+                    name = "dapui_watches",
                 },
             }
         end,
