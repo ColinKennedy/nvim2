@@ -307,3 +307,9 @@
 [submodule "bundle/nvim-rg"]
 	path = bundle/nvim-rg
 	url = git@github.com:duane9/nvim-rg.git
+[submodule "bundle/marks.nvim"]
+	path = bundle/marks.nvim
+	url = git@github.com:chentoast/marks.nvim
+[submodule "bundle/vim-gh-line"]
+	path = bundle/vim-gh-line
+	url = git@github.com:chentoast/vim-gh-line

@@ -672,5 +672,24 @@ return {
         "duane9/nvim-rg",
         cmd = "Rg",
         keys = {"<leader>rg", "<leader>rw"}
+    },
+
+    -- Cool Neovim mark displays and mappings. e.g. `dmx` deletes mark x. m[ / m] to move
+    -- Reference: https://github.com/chentoast/marks.nvim#mappings
+    --
+    {
+        "chentoast/marks.nvim",
+        config = function()
+            require("marks").setup{}
+        end,
+        event = "VeryLazy",
+    },
+
+    -- Use `:GH` or `:GB` to open the lines in your webbrowser
+    -- (GH = lines, GB = git blame)
+    --
+    {
+        "ruanyl/vim-gh-line",
+        cmd = { "GB", "GBInteractive", "GH", "GHInteractive" },
     }
 }
