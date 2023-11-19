@@ -202,14 +202,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            -- I was getting a "not a Win32 application" error on Windows so I added this workaround.
-            --
-            -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#troubleshooting
-            --
-            if vim.fn.has("win32") == 1
-            then
-                require('nvim-treesitter.install').compilers = { "clang" }
-            end
+            require("my_custom.plugins.data.nvim_treesitter")
         end,
         lazy = true,
         version = "0.*",
