@@ -83,7 +83,7 @@ return {
         --
         commit = "5d87ac1fe8d729f116bda2f90a7211ad309ddf5a",
         dependencies = { "junegunn/fzf" },
-        cmd = { "Args", "Buffers", "Files", "FZF", "GFiles", "Helptags", "History", "Lines" },
+        cmd = { "Args", "Buffers", "Commands", "Files", "FZF", "GFiles", "Helptags", "History", "Lines" },
         keys = {"<space>A", "<space>B", "<space>E", "<space>L", "<space>e"},
     },
 
