@@ -309,6 +309,7 @@ return {
             require('persistent-breakpoints.api').load_breakpoints()
         end,
         dependencies = {"mfussenegger/nvim-dap"},
+        ft = {"c", "cpp"},  -- These are the file types that I'd usually have breakpoints
         keys = { "<leader>db" },
     },
 }
