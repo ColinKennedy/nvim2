@@ -140,6 +140,8 @@ function M.get_git_diff(directory)
             then
                 local source = _get_source_line(line)
                 table.insert(output, {filename=path, lnum=row, text=source})
+
+                -- Reset the row so that only one entry is found per "git hunk"
                 row = nil
             end
         end
