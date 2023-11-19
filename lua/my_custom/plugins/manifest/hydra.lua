@@ -82,7 +82,7 @@ Hydra(
 
 
 local git_diff_hint = [[
- Movement       Control                Display             Diagnose
+ Movement       Control                Display
  _J_: next hunk   _t_: s[t]age hunk        _d_: show [d]eleted
  ^ ^              _r_: [r]eset hunk
  _K_: prev hunk   _c_: [c]heckout hunk
