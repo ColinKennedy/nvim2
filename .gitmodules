@@ -295,3 +295,9 @@
 [submodule "bundle/vim-gh-line"]
 	path = bundle/vim-gh-line
 	url = git@github.com:chentoast/vim-gh-line
+[submodule "bundle/hlargs.nvim"]
+	path = bundle/hlargs.nvim
+	url = git@github.com:m-demare/hlargs.nvim.git
+[submodule "bundle/nvim-tree.lua"]
+	path = bundle/nvim-tree.lua
+	url = git@github.com:nvim-tree/nvim-tree.lua.git
