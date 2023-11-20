@@ -202,7 +202,7 @@ return {
 
                     fixer.choose_last_window()
 
-                    _safe_run([[execute "normal \<Plug>(unimpaired-cprevious)"]])
+                    _safe_run([[CAbove]])
                 end,
                 {
                     desc="Move up the Quick-Fix window.",
@@ -217,7 +217,7 @@ return {
 
                     fixer.choose_last_window()
 
-                    _safe_run([[execute "normal \<Plug>(unimpaired-cnext)"]])
+                    _safe_run([[CBelow]])
                 end,
                 {
                     desc="Move down the Quick-Fix window.",
