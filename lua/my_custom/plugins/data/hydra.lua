@@ -4,6 +4,26 @@ local gitsigns = require("gitsigns")
 local gitsigns_utility = require("my_custom.plugins.data.gitsigns")
 
 
+local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff"
+
+
+local function _is_git_diff_tab_exists(tab)
+    local tabs = vim.fn.tabpagebuflist()
+    local exists = vim.tbl_contains(tabs, tab)
+
+    if not exists
+    then
+        return false
+    end
+
+    if vim.fn.exists("t:" .. _GIT_DIFF_TAB_VARIABLE) == 1
+    then
+        return true
+    end
+
+    return false
+end
+
 local git_hint = [[
  Movement       Control                Display             Diagnose
  _J_: next hunk   _t_: s[t]age hunk        _d_: show [d]eleted   _b_: blame line
@@ -93,6 +113,7 @@ local git_diff_hint = [[
 local previous_diff_deleted = nil
 local previous_diff_line_highlight = nil
 local previous_diff_signs = nil
+local _GIT_DIFF_TAB_NUMBER = nil
 
 Hydra(
     {
@@ -106,6 +127,12 @@ Hydra(
             },
             invoke_on_body = true,
             on_enter = function()
+                vim.cmd[[tabnew %]]
+
+                -- Open the current buffer in a new tab, Save-and-close the tab later
+                _GIT_DIFF_TAB_NUMBER = vim.fn.tabpagenr()
+                vim.api.nvim_tabpage_set_var(0, _GIT_DIFF_TAB_VARIABLE, "1")
+
                 vim.cmd "silent! %foldopen!"
 
                 previous_diff_deleted = config.config.show_deleted
@@ -125,9 +152,10 @@ Hydra(
                 vim.api.nvim_set_current_win(current_window)
             end,
             on_exit = function()
-                local cursor = vim.api.nvim_win_get_cursor(0)
-                vim.api.nvim_win_set_cursor(0, cursor)
-                vim.cmd[[normal zv]]  -- Unfold everything at the current cursor
+                if _is_git_diff_tab_exists(_GIT_DIFF_TAB_NUMBER)
+                then
+                    vim.cmd("tabclose " .. _GIT_DIFF_TAB_NUMBER)
+                end
 
                 gitsigns.toggle_signs(previous_diff_signs)
                 gitsigns.toggle_linehl(previous_diff_line_highlight)
