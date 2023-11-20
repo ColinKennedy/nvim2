@@ -17,7 +17,8 @@
 | n | `<space>`A  | Select a new [A]rgs file from the `:args` list.                                           |
 | n | `<space>`B  | Search existing [B]uffers and select + view it.                                           |
 | n | `<space>`E  | [E]dit a new file, searching first from the project's root directory.                     |
-| n | `<space>`G  | Enter [G]it mode for committing to repositories.                                          |
+| n | `<space>`GD | Enter [G]it [D]iff mode for committing to repositories. Basically git add -p, but better. |
+| n | `<space>`GG | Enter [G]it mode for committing to repositories.                                          |
 | n | `<space>`L  | Search [l]ines in the current window for text.                                            |
 | n | `<space>`SN | [S]witch [N]avigation inside / outside of classes and functions.                          |
 | n | `<space>`SO | Open [S]ymbols [O]utliner                                                                 |
