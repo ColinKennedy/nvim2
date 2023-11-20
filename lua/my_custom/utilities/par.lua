@@ -13,6 +13,22 @@ local M = {}
 --- @field cwd string? The directory on-disk where a shell command will be called from.
 --- @field on_stderr fun(job_id: integer, data: table<string>, event): nil An on-error callback.
 
+
+--- Create a command-line call to copy `source` to `destination`.
+--- @param source string The absolute path to some file on-disk to copy.
+--- @param destination string The absolute path to some path to copy to.
+--- @return string[] # The command to run via the command-line
+---
+local _get_copy_command = function(source, destination)
+    if vim.fn.has("win32") == 1
+    then
+        return {"Xcopy", source, destination}
+    end
+
+    return {"cp", source, destination}
+end
+
+
 --- Get the commands needed in order to compile `par` from scratch.
 ---
 --- @param source string The absolute path to `"$XDG_CONFIG_PATH/nvim/sources/par"`.
@@ -35,12 +51,18 @@ local _get_par_compile_commands = function(source, bin)
     local commands = {
         {"tar", "-xzvf", "master.tar.gz"},  -- This creates `extraction_directory`
         {"make", "-C", extraction_directory, "-f", "protoMakefile"},
-        {
-            "cp",
-            filer.join_path({source, extraction_directory, _COMMAND_NAME}),
-            filer.join_path({bin, _COMMAND_NAME}),
-        },
     }
+
+    -- TODO: Make this code simpler. Just dispatch separate jobs for tar / make
+    -- and then rely on the Lua / Vimscript APIs as much as possible.
+    --
+    table.insert(
+        commands,
+        _get_copy_command(
+            filer.join_path({source, extraction_directory, _COMMAND_NAME}),
+            filer.join_path({bin, _COMMAND_NAME})
+        )
+    )
 
     if vim.fn.isdirectory(bin) == 0
     then
