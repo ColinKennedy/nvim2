@@ -88,9 +88,6 @@
 [submodule "bundle/vim-indentwise"]
 	path = bundle/vim-indentwise
 	url = git@github.com:jeetsukumaran/vim-indentwise.git
-[submodule "bundle/null-ls.nvim"]
-	path = bundle/null-ls.nvim
-	url = git@github.com:jose-elias-alvarez/null-ls.nvim.git
 [submodule "bundle/vim-ripgrep"]
 	path = bundle/vim-ripgrep
 	url = git@github.com:jremmen/vim-ripgrep.git
@@ -145,9 +142,6 @@
 [submodule "bundle/lualine.nvim"]
 	path = bundle/lualine.nvim
 	url = git@github.com:nvim-lualine/lualine.nvim.git
-[submodule "bundle/nvim-tree.lua"]
-	path = bundle/nvim-tree.lua
-	url = git@github.com:nvim-tree/nvim-tree.lua.git
 [submodule "bundle/nvim-web-devicons"]
 	path = bundle/nvim-web-devicons
 	url = git@github.com:nvim-tree/nvim-web-devicons.git
@@ -211,9 +205,6 @@
 [submodule "bundle/vim-exchange"]
 	path = bundle/vim-exchange
 	url = git@github.com:tommcdo/vim-exchange.git
-[submodule "bundle/mason-null-ls.nvim"]
-	path = bundle/mason-null-ls.nvim
-	url = git@github.com:jay-babu/mason-null-ls.nvim.git
 [submodule "bundle/spaceless.nvim"]
 	path = bundle/spaceless.nvim
 	url = git@github.com:lewis6991/spaceless.nvim.git
@@ -241,9 +232,6 @@
 [submodule "bundle/nvim-dap-python"]
 	path = bundle/nvim-dap-python
 	url = git@github.com:mfussenegger/nvim-dap-python.git
-[submodule "bundle/vim-python-pep8-indent"]
-	path = bundle/vim-python-pep8-indent
-	url = git@github.com:Vimjas/vim-python-pep8-indent.git
 [submodule "bundle/nvim-treesitter-context"]
 	path = bundle/nvim-treesitter-context
 	url = git@github.com:nvim-treesitter/nvim-treesitter-context.git
@@ -271,9 +259,6 @@
 [submodule "bundle/which-key.nvim"]
 	path = bundle/which-key.nvim
 	url = git@github.com:folke/which-key.nvim.git
-[submodule "bundle/hlargs.nvim"]
-	path = bundle/hlargs.nvim
-	url = git@github.com:m-demare/hlargs.nvim.git
 [submodule "bundle/toggleterm.nvim"]
 	path = bundle/toggleterm.nvim
 	url = git@github.com:akinsho/toggleterm.git
