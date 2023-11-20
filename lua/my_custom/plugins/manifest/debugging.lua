@@ -139,6 +139,10 @@ return {
     {
         "ColinKennedy/nvim-dap-ui",
         config = function()
+            -- Note: These colors look good with https://github.com/ColinKennedy/hybrid2.nvim
+            vim.api.nvim_set_hl(0, "SearchFG", {fg="#f0c674", ctermfg=222})
+            vim.api.nvim_set_hl(0, "DapUIDisassemblyHighlightLine", {link="SearchFG"})
+
             require("dapui").setup()
 
             vim.keymap.set(
