@@ -14,8 +14,6 @@ function! CAbove() abort
     endtry
 endfunction
 
-command! CAbove call CAbove()
-
 
 " Go to the next entry, relative to the current cursor.
 "
@@ -34,4 +32,5 @@ function! CBelow() abort
 endfunction
 
 
+command! CAbove call CAbove()
 command! CBelow call CBelow()
