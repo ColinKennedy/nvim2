@@ -33,6 +33,37 @@ return {
     -- Shows added, removed, etc git hunks
     {
         "lewis6991/gitsigns.nvim",
+        config = function()
+            local gitsigns = require("gitsigns")
+
+            gitsigns.setup()
+
+            vim.keymap.set(
+                "n",
+                "[g",
+                function()
+                    if vim.wo.diff then return "[g" end
+
+                    vim.schedule(function() gitsigns.prev_hunk() end)
+
+                    return "<Ignore>"
+                end,
+                { expr=true }
+            )
+
+            vim.keymap.set(
+                "n",
+                "]g",
+                function()
+                    if vim.wo.diff then return "]g" end
+
+                    vim.schedule(function() gitsigns.next_hunk() end)
+
+                    return "<Ignore>"
+                end,
+                { expr=true }
+            )
+        end,
         ft = "gitcommit",
         init = function()
             -- load gitsigns only when a git file is opened
@@ -55,6 +86,7 @@ return {
             -- Make deleted lines a bit easier to see
             vim.api.nvim_set_hl(0, "GitSignsDelete", {fg="#cc6666", ctermfg=167})
         end,
+        keys = { "[g", "]g" },
         opts = {
             signs = {
                 add = { text = "│" },
@@ -65,7 +97,7 @@ return {
                 untracked = { text = "" },
             },
         },
-        version = "0.*"
+        -- version = "0.*"  -- This release is super old and has bugs. But ideally we'd use it
     },
 
     -- TODO: Add this later
