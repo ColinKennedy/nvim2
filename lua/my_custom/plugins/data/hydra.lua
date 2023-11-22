@@ -127,7 +127,13 @@ Hydra(
             },
             invoke_on_body = true,
             on_enter = function()
-                vim.cmd[[tabnew %]]
+                if vim.api.nvim_buf_get_name(0) ~= ""
+                then
+                    -- If the buffer is named, open a new tab pointing to it
+                    vim.cmd[[tabnew %]]
+                else
+                    vim.cmd[[tabnew]]
+                end
 
                 -- Open the current buffer in a new tab, Save-and-close the tab later
                 _GIT_DIFF_TAB_NUMBER = vim.fn.tabpagenr()
