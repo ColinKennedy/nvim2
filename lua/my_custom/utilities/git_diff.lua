@@ -28,6 +28,16 @@ local function _is_changed(text)
 end
 
 
+--- Check if `text` has only whitespace.
+---
+--- @param text string Some text which might contain just whitespace.
+--- @return boolean # If `text` is whitespace-only, return `true`.
+---
+local function _is_empty(text)
+    return string.match(text, "^%s*$") ~= nil
+end
+
+
 --- Check if `text` is not actually a `git diff` line but a surrounding context line.
 ---
 --- A `git diff` marks any added/removed lines with + or - so any line that
@@ -112,7 +122,45 @@ end
 --- @return string # The real source code of `text`.
 ---
 local function _get_source_line(text)
-    return string.match(text, ".(.+)")
+    return string.match(text, ".(.*)")
+end
+
+
+--- Get the first line from `lines` that has text. Starting at `starting_index`.
+---
+--- Git hunks very typically have leading whitespace / newlines. When a line like this:
+---
+--- ```
+---
+---
+---     Some text.
+---     More text.
+--- ```
+---
+--- get loaded into a quickfix buffer, they end up looking like this:
+---
+--- `file.txt|10|`
+---
+--- This function helps find the first "    Some text." line.
+---
+--- @param lines string[] Some source code / some git hunk to search within for text.
+--- @param starting_index integer A 1-or-more index to start looking within.
+--- @return string? The found line, if any.
+---
+local function _get_first_non_empty_source_line(lines, starting_index)
+    local max = #lines
+
+    for index=starting_index, max
+    do
+        local line = _get_source_line(lines[index])
+
+        if not _is_empty(line)
+        then
+            return line
+        end
+    end
+
+    return nil
 end
 
 
@@ -127,7 +175,9 @@ function M.get_git_diff(directory)
     local path = nil
     local output = {}
 
-    for _, line in ipairs(vim.fn.systemlist(command, directory))
+    local lines = vim.fn.systemlist(command, directory)
+
+    for index, line in ipairs(lines)
     do
         local details = _get_details(line)
 
@@ -146,7 +196,7 @@ function M.get_git_diff(directory)
                 row = row + 1
             elseif _is_changed(line)
             then
-                local source = _get_source_line(line)
+                local source = _get_first_non_empty_source_line(lines, index) or ""
                 table.insert(output, {filename=path, lnum=row, text=source})
 
                 -- Reset the row so that only one entry is found per "git hunk"
