@@ -630,7 +630,7 @@ return {
     {
         "anuvyklack/hydra.nvim",
         config = function()
-            require("my_custom.plugins.manifest.hydra")
+            require("my_custom.plugins.data.hydra")
         end,
         keys = { "<Space>GD", "<Space>GG" },
     },
