@@ -1,6 +1,15 @@
+- <Space>GD - single-removed-lines don't quite work. I can't stage the line. Fix
+ - The `q` command doesn't delete the current tab correctly
+
+- winbar - add quickfix support - https://github.com/fgheng/winbar.nvim/issues
+ - vim.api.nvim_set_option_value("winbar", "test", {scope='local'})
+ - Show quickfix title
+ - call setqflist([], 'a', {'title': 'whatever'})
+ - echo getqflist({'id' : 0, 'all': 0}).title
+
 - :Rg is so annoying. It changes the size of the window!
  - It's because of `vim.opt.laststatus = 3`, somehow. Make a reproduction
-- Remove the "Searching..." dialog from nvim-rg. And its other s:Alert calls
+ - vimgrep also has this problem
 
 - viI mapping doesn't work anymore. FIX
 - Add groups to all vim.api.nvim_create_autocmd( commands

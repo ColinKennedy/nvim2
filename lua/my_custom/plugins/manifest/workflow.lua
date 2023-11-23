@@ -341,7 +341,7 @@ return {
     -- Useful git commands. Such as :Gcd
     {
         "tpope/vim-fugitive",
-        cmd = "Gcd",
+        cmd = {"Gcd", "Git"},
         version = "3.*",
     },
 
