@@ -9,6 +9,22 @@ local _S_START_SQUARE_BRACE = nil
 local _S_END_SQUARE_BRACE = nil
 
 
+local function _in_existing_quick_fix_entry()
+    local buffer = vim.fn.bufname('%')
+    local line = vim.fn.line('.')
+
+    for _, entry in ipairs(vim.fn.getqflist())
+    do
+        if entry.filename == buffer and entry.lnum == line
+        then
+            return true
+        end
+    end
+
+    return false
+end
+
+
 local function _get_visual_lines()
     local _, start_line, _, _ = unpack(vim.fn.getpos("v"))
     local _, end_line, _, _ = unpack(vim.fn.getpos("."))
@@ -174,8 +190,12 @@ Hydra(
             on_enter = function()
                 if vim.api.nvim_buf_get_name(0) ~= ""
                 then
+                    local row = vim.fn.line(".")
+                    local column = vim.fn.col(".")
+
                     -- If the buffer is named, open a new tab pointing to it
                     vim.cmd[[tabnew %]]
+                    vim.api.nvim_win_set_cursor(0, {row, column})
                 else
                     vim.cmd[[tabnew]]
                 end
@@ -201,6 +221,12 @@ Hydra(
                 vim.fn.setqflist(entries)
                 vim.cmd[[copen]]
                 vim.api.nvim_set_current_win(current_window)
+
+                if not _in_existing_quick_fix_entry()
+                then
+                    -- Important: Requires https://github.com/tpope/vim-unimpaired
+                    vim.cmd[[norm ]q]]
+                end
 
                 _save_other_s_mappings()
             end,
