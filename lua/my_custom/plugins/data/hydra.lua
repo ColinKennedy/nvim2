@@ -5,24 +5,69 @@ local gitsigns_utility = require("my_custom.plugins.data.gitsigns")
 
 
 local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff"
+local _S_START_SQUARE_BRACE = nil
+local _S_END_SQUARE_BRACE = nil
 
 
-local function _is_git_diff_tab_exists(tab)
-    local tabs = vim.fn.tabpagebuflist()
-    local exists = vim.tbl_contains(tabs, tab)
+local function _get_visual_lines()
+    local _, start_line, _, _ = unpack(vim.fn.getpos("v"))
+    local _, end_line, _, _ = unpack(vim.fn.getpos("."))
 
-    if not exists
+    if start_line > end_line
     then
-        return false
+        start_line, end_line = end_line, start_line
     end
 
-    if vim.fn.exists("t:" .. _GIT_DIFF_TAB_VARIABLE) == 1
-    then
-        return true
-    end
-
-    return false
+    return {start_line, end_line}
 end
+
+
+local function _save_other_s_mappings()
+    if vim.fn.maparg("s[", "n") ~= ""
+    then
+        _S_START_SQUARE_BRACE = vim.fn.maparg("s[", "n", false, true)
+        vim.api.nvim_del_keymap("n", "s[")
+    else
+        _S_START_SQUARE_BRACE = nil
+    end
+
+    if vim.fn.maparg("s]", "n") ~= ""
+    then
+        _S_END_SQUARE_BRACE = vim.fn.maparg("s]", "n", false, true)
+        vim.api.nvim_del_keymap("n", "s]")
+    else
+        _S_END_SQUARE_BRACE = nil
+    end
+end
+
+
+local function _restore_other_s_mappings()
+    local function _set(mapping, data)
+        vim.keymap.set(
+            "n",
+            mapping,
+            data["callback"],
+            {
+                buffer = data.buffer == 1,
+                expr = data.expr == 1,
+                noremap = data.noremap == 1,
+                nowait = data.nowait == 1,
+                silent = data.silent == 1,
+            }
+        )
+    end
+
+    if _S_START_SQUARE_BRACE ~= nil
+    then
+        _set("s[", _S_START_SQUARE_BRACE)
+    end
+
+    if _S_END_SQUARE_BRACE ~= nil
+    then
+        _set("s]", _S_END_SQUARE_BRACE)
+    end
+end
+
 
 local git_hint = [[
  Movement       Control                Display             Diagnose
@@ -64,7 +109,7 @@ Hydra(
             {
                 "J",
                 function()
-                    if vim.wo.diff then return "]c" end
+                    if vim.wo.diff then return "]q" end
                     vim.schedule(function() gitsigns_utility.next_hunk() end)
                     return "<Ignore>"
                 end,
@@ -72,7 +117,7 @@ Hydra(
             {
                 "K",
                 function()
-                    if vim.wo.diff then return "[c" end
+                    if vim.wo.diff then return "[q" end
                     vim.schedule(function() gitsigns_utility.previous_hunk() end)
                     return "<Ignore>"
                 end,
@@ -102,12 +147,12 @@ Hydra(
 
 
 local git_diff_hint = [[
- Movement       Control                Display
- _J_: next hunk   _t_: s[t]age hunk        _d_: show [d]eleted
+ Movement       Control
+ _J_: next hunk   _s_: [s]tage hunk
  ^ ^              _r_: [r]eset hunk
  _K_: prev hunk   _c_: [c]heckout hunk
- ^ ^              _T_: stage buffer
- ^ ^              ^ ^                      _q_: exit
+
+ ^ ^              _q_: exit               _Q_: exit at position
 ]]
 
 local previous_diff_deleted = nil
@@ -156,16 +201,17 @@ Hydra(
                 vim.fn.setqflist(entries)
                 vim.cmd[[copen]]
                 vim.api.nvim_set_current_win(current_window)
+
+                _save_other_s_mappings()
             end,
             on_exit = function()
-                if _is_git_diff_tab_exists(_GIT_DIFF_TAB_NUMBER)
-                then
-                    vim.cmd("tabclose " .. _GIT_DIFF_TAB_NUMBER)
-                end
+                vim.cmd("tabclose " .. _GIT_DIFF_TAB_NUMBER)
 
                 gitsigns.toggle_signs(previous_diff_signs)
                 gitsigns.toggle_linehl(previous_diff_line_highlight)
                 gitsigns.toggle_deleted(previous_diff_deleted)
+
+                _restore_other_s_mappings()
             end,
         },
         mode = {"n","x"},
@@ -174,7 +220,7 @@ Hydra(
             {
                 "J",
                 function()
-                    if vim.wo.diff then return "]c" end
+                    if vim.wo.diff then return "]q" end
                     vim.schedule(
                         function()
                             -- Important: Requires https://github.com/tpope/vim-unimpaired
@@ -196,21 +242,72 @@ Hydra(
                     )
                     return "<Ignore>"
                 end,
-                { expr = true, desc = "prev hunk" } },
+                { expr = true, desc = "previous hunk" } },
             {
                 "c",
-                gitsigns.reset_hunk,
+                function()
+                    if vim.wo.diff then return "]q" end
+
+                    vim.schedule(
+                        function()
+                            gitsigns.reset_hunk(_get_visual_lines())
+
+                            -- Important: Requires https://github.com/tpope/vim-unimpaired
+                            vim.cmd[[norm ]q]]
+                        end
+                    )
+
+                    return "<Ignore>"
+                end,
+                { silent = true, desc = "[c]heckout hunk and move to next hunk" },
+            },
+            {
+                "<M-c>",
+                function()
+                    if vim.wo.diff then return "<Ignore>" end
+
+                    vim.schedule(function() gitsigns.reset_hunk(_get_visual_lines()) end)
+
+                    return "<Ignore>"
+                end,
                 { silent = true, desc = "[c]heckout hunk" },
             },
-            { "t", ":Gitsigns stage_hunk<CR>", { silent = true, desc = "stage hunk" } },
+            {
+                "s",
+                function()
+                    if vim.wo.diff then return "]q" end
+
+                    vim.schedule(
+                        function()
+                            gitsigns.stage_hunk(_get_visual_lines())
+
+                            -- Important: Requires https://github.com/tpope/vim-unimpaired
+                            vim.cmd[[norm ]q]]
+                        end
+                    )
+
+                    return "<Ignore>"
+                end,
+                { silent = true, desc = "[s]tage hunk and move to next item" },
+            },
+            {
+                "<M-s>",
+                function()
+                    if vim.wo.diff then return "<Ignore>" end
+
+                    vim.schedule(function() gitsigns.stage_hunk(_get_visual_lines()) end)
+
+                    return "<Ignore>"
+                end,
+                { silent = true, desc = "[s]tage hunk" },
+            },
             {
                 "r",
-                gitsigns.undo_stage_hunk,
+                function() gitsigns.undo_stage_hunk(_get_visual_lines()) end,
                 { desc = "[r]eset staged hunk" },
             },
-            { "T", gitsigns.stage_buffer, { desc = "stage buffer" } },
-            { "d", gitsigns.toggle_deleted, { nowait = true, desc = "toggle deleted" } },
             { "q", nil, { exit = true, nowait = true, desc = "exit" } },
+            { "Q", nil, { exit = true, nowait = true, desc = "exit and save position" } },
         }
     }
 )
