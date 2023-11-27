@@ -9,11 +9,11 @@ local _S_START_SQUARE_BRACE = nil
 local _S_END_SQUARE_BRACE = nil
 
 
-local function _in_existing_quick_fix_entry()
-    local buffer = vim.fn.bufname('%')
-    local line = vim.fn.line('.')
+local function _in_existing_quick_fix_entry(identifier)
+    local buffer = vim.fn.bufname("%")
+    local line = vim.fn.line(".")
 
-    for _, entry in ipairs(vim.fn.getqflist())
+    for _, entry in ipairs(vim.fn.getqflist({id=1, items=1}).items or {})
     do
         if entry.filename == buffer and entry.lnum == line
         then
@@ -218,11 +218,16 @@ Hydra(
                 local directory = vim.fn.getcwd()
                 local entries = git_diff.get_git_diff(directory)
                 local current_window = vim.api.nvim_get_current_win()
+
                 vim.fn.setqflist(entries)
+                local list_identifier = vim.fn.getqflist({id=0}).id
+                vim.fn.setqflist({}, "r", {id=list_identifier, title="Git Diff"})
+                vim.fn.setqflist({}, "r", {id=list_identifier, context="Interactive Git"})
+
                 vim.cmd[[copen]]
                 vim.api.nvim_set_current_win(current_window)
 
-                if not _in_existing_quick_fix_entry()
+                if not _in_existing_quick_fix_entry(list_identifier)
                 then
                     -- Important: Requires https://github.com/tpope/vim-unimpaired
                     vim.cmd[[norm ]q]]
