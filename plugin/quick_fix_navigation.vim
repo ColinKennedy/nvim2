@@ -32,5 +32,41 @@ function! CBelow() abort
 endfunction
 
 
+" Go to the previous entry, relative to the current cursor.
+"
+" If at the first entry, cycle to the last entry.
+"
+function! LAbove() abort
+    try
+        labove
+    catch /.*/
+        try
+            lprevious
+        catch /.*/
+            llast
+        endtry
+    endtry
+endfunction
+
+
+" Go to the next entry, relative to the current cursor.
+"
+" If at the last entry, cycle to the first entry.
+"
+function! LBelow() abort
+    try
+        lbelow
+    catch /:E.*:/
+        try
+            lnext
+        catch /.*/
+            lfirst
+        endtry
+    endtry
+endfunction
+
+
 command! CAbove call CAbove()
 command! CBelow call CBelow()
+command! LAbove call LAbove()
+command! LBelow call LBelow()
