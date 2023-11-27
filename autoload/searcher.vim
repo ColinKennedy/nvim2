@@ -139,7 +139,7 @@ function! searcher#get_current_directory_options(base, ...)
     for l:full_path in glob(l:helper_directory . '/*', 0, 1)
         let l:file_name = fnamemodify(l:full_path, ':t')
 
-        if matchstr(l:file_name, l:fuzzy_text)
+        if !l:fuzzy_text || matchstr(l:file_name, l:fuzzy_text)
             let l:partial_path = substitute(l:full_path, l:current_file_directory . '[/\\]', '', '')
 
             " This makes directories auto-complete with a trailing '/', which
