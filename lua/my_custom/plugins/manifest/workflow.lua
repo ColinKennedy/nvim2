@@ -691,5 +691,43 @@ return {
     {
         "ruanyl/vim-gh-line",
         cmd = { "GB", "GBInteractive", "GH", "GHInteractive" },
-    }
+    },
+
+    -- Insert debug print statements easily.
+    --
+    -- g?v - insert variable debug prints below the current line
+    -- g?V - insert variable debug prints above the current line
+    --
+    {
+        "andrewferrier/debugprint.nvim",
+        config = function()
+
+            require("debugprint").setup(
+                { create_keymaps = false, create_commands = false }
+            )
+
+            vim.keymap.set(
+                "n",
+                "<leader>iV",
+                function()
+                    -- Note: setting `expr=true` and returning the value are essential
+                    return require("debugprint").debugprint({ above = true, variable = true })
+                end,
+                { expr = true }
+            )
+
+            vim.keymap.set(
+                "n",
+                "<leader>iv",
+                function()
+                    -- Note: setting `expr=true` and returning the value are essential
+                    return require("debugprint").debugprint({ above = false, variable = true })
+                end,
+                { expr = true }
+            )
+        end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        keys = { "<leader>iV", "<leader>iv" },
+        version = "*",
+    },
 }
