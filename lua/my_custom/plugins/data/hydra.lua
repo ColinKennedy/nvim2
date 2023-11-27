@@ -8,12 +8,27 @@ local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff"
 local _S_START_SQUARE_BRACE = nil
 local _S_END_SQUARE_BRACE = nil
 
+--- @alias _CursorRange table<integer, integer>
+---     Two values, both 1-or-more, indicating the start and end line of a text block.
 
-local function _in_existing_quick_fix_entry(identifier)
-    local buffer = vim.fn.bufname("%")
-    local line = vim.fn.line(".")
 
-    for _, entry in ipairs(vim.fn.getqflist({id=1, items=1}).items or {})
+--- Check if the current line is already inside of a Location List's entries.
+---
+--- @param window_identifier integer
+---     A 0-or-more value for the window to check.
+--- @param list_identifier integer
+---     A 1-or-more value for the Location List that (we assume) is paired with
+---     `window_identifier`.
+--- @return boolean
+---     If the cursor is within the Location List already, return `true`.
+---
+local function _in_existing_list_entry(window_identifier, list_identifier)
+    local buffer vim.api.nvim_win_get_buf(window_identifier)
+    local line, _ = unpack(vim.api.nvim_win_get_cursor(window_identifier))
+
+    for _, entry in ipairs(
+        vim.fn.getloclist(window_identifier, {id=list_identifier, items=1}).items or {}
+    )
     do
         if entry.filename == buffer and entry.lnum == line
         then
@@ -25,6 +40,7 @@ local function _in_existing_quick_fix_entry(identifier)
 end
 
 
+--- @return _CursorRange # Get the start/end lines of a visual selection.
 local function _get_visual_lines()
     local _, start_line, _, _ = unpack(vim.fn.getpos("v"))
     local _, end_line, _, _ = unpack(vim.fn.getpos("."))
@@ -38,6 +54,7 @@ local function _get_visual_lines()
 end
 
 
+--- Keep track of all of my `s` mappings so that they can be restored later, if needed.
 local function _save_other_s_mappings()
     if vim.fn.maparg("s[", "n") ~= ""
     then
@@ -57,6 +74,7 @@ local function _save_other_s_mappings()
 end
 
 
+--- Re-add my s-related mappings again.
 local function _restore_other_s_mappings()
     local function _set(mapping, data)
         vim.keymap.set(
@@ -218,19 +236,28 @@ Hydra(
                 local directory = vim.fn.getcwd()
                 local entries = git_diff.get_git_diff(directory)
                 local current_window = vim.api.nvim_get_current_win()
+                vim.fn.setloclist(current_window, entries)
+                local list_identifier = vim.fn.getloclist(current_window, {id=0}).id
+                vim.fn.setloclist(
+                    current_window,
+                    {},
+                    "r",
+                    {id=list_identifier, title="Git Diff"}
+                )
+                vim.fn.setloclist(
+                    current_window,
+                    {},
+                    "r",
+                    {id=list_identifier, context="Interactive Git"}
+                )
 
-                vim.fn.setqflist(entries)
-                local list_identifier = vim.fn.getqflist({id=0}).id
-                vim.fn.setqflist({}, "r", {id=list_identifier, title="Git Diff"})
-                vim.fn.setqflist({}, "r", {id=list_identifier, context="Interactive Git"})
-
-                vim.cmd[[copen]]
+                vim.cmd[[lopen]]
                 vim.api.nvim_set_current_win(current_window)
 
-                if not _in_existing_quick_fix_entry(list_identifier)
+                if not _in_existing_list_entry(current_window, list_identifier)
                 then
                     -- Important: Requires https://github.com/tpope/vim-unimpaired
-                    vim.cmd[[norm ]q]]
+                    vim.cmd[[norm ]l]]
                 end
 
                 _save_other_s_mappings()
@@ -251,11 +278,11 @@ Hydra(
             {
                 "J",
                 function()
-                    if vim.wo.diff then return "]q" end
+                    if vim.wo.diff then return "]l" end
                     vim.schedule(
                         function()
                             -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm ]q]]
+                            vim.cmd[[norm ]l]]
                         end
                     )
                     return "<Ignore>"
@@ -264,11 +291,11 @@ Hydra(
             {
                 "K",
                 function()
-                    if vim.wo.diff then return "[c" end
+                    if vim.wo.diff then return "[l" end
                     vim.schedule(
                         function()
                             -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm [q]]
+                            vim.cmd[[norm [l]]
                         end
                     )
                     return "<Ignore>"
@@ -277,14 +304,14 @@ Hydra(
             {
                 "c",
                 function()
-                    if vim.wo.diff then return "]q" end
+                    if vim.wo.diff then return "]l" end
 
                     vim.schedule(
                         function()
                             gitsigns.reset_hunk(_get_visual_lines())
 
                             -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm ]q]]
+                            vim.cmd[[norm ]l]]
                         end
                     )
 
@@ -306,14 +333,14 @@ Hydra(
             {
                 "s",
                 function()
-                    if vim.wo.diff then return "]q" end
+                    if vim.wo.diff then return "]l" end
 
                     vim.schedule(
                         function()
                             gitsigns.stage_hunk(_get_visual_lines())
 
                             -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm ]q]]
+                            vim.cmd[[norm ]l]]
                         end
                     )
 
