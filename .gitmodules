@@ -301,3 +301,6 @@
 [submodule "bundle/nvim-tree.lua"]
 	path = bundle/nvim-tree.lua
 	url = git@github.com:nvim-tree/nvim-tree.lua.git
+[submodule "bundle/debugprint.nvim"]
+	path = bundle/debugprint.nvim
+	url = git@github.com:andrewferrier/debugprint.nvim.git
