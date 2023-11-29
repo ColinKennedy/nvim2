@@ -307,3 +307,6 @@
 [submodule "bundle/stickybuf.nvim"]
 	path = bundle/stickybuf.nvim
 	url = git@github.com:stevearc/stickybuf.nvim.git
+[submodule "bundle/qf_helper.nvim"]
+	path = bundle/qf_helper.nvim
+	url = git@github.com:stevearc/qf_helper.nvim.git
