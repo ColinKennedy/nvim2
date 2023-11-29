@@ -1,11 +1,28 @@
+- Merge - https://github.com/danymat/neogen/pull/158
+- Add :Rg PR to add a title to the search results
+ - Merge this - https://github.com/duane9/nvim-rg/pull/4
+
+
+- Finish the disassembly parser
+ - Make a PR back to neovim + treesitter
+
+
 - <Space>GD - single-removed-lines don't quite work. I can't stage the line. Fix
  - The `q` command doesn't delete the current tab correctly
 
-- winbar - add quickfix support - https://github.com/fgheng/winbar.nvim/issues
- - vim.api.nvim_set_option_value("winbar", "test", {scope='local'})
- - Show quickfix title
- - call setqflist([], 'a', {'title': 'whatever'})
- - echo getqflist({'id' : 0, 'all': 0}).title
+- Consider changing :Rg to be a location list instead of a quickfix list. qflist blows
+
+
+
+def foo():
+    def wrapper():
+        return True
+
+
+- Neogen mistakenly says that foo has a return, when it actually doesn’t. And raises, too.
+
+
+
 
 - :Rg is so annoying. It changes the size of the window!
  - It's because of `vim.opt.laststatus = 3`, somehow. Make a reproduction
