@@ -735,5 +735,9 @@ return {
     {
         "stevearc/stickybuf.nvim",
         opts = {},
+        ft = {
+            "toggleterm",  -- Requires: https://github.com/akinsho/toggleterm.nvim
+            "qf",
+        },
     }
 }
