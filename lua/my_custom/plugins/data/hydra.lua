@@ -40,6 +40,16 @@ local function _in_existing_list_entry(window_identifier, list_identifier)
 end
 
 
+--- Check if the Location List tied to `window` is empty.
+---
+--- @param window integer A 0-or-more identifier for the source window to check.
+--- @return boolean # If `window` has no Location List or empty, return `true`.
+---
+local function _is_location_list_empty(window)
+    return vim.tbl_isempty(vim.fn.getloclist(window))
+end
+
+
 --- @return _CursorRange # Get the start/end lines of a visual selection.
 local function _get_visual_lines()
     local _, start_line, _, _ = unpack(vim.fn.getpos("v"))
@@ -254,7 +264,10 @@ Hydra(
                 vim.cmd[[lopen]]
                 vim.api.nvim_set_current_win(current_window)
 
-                if not _in_existing_list_entry(current_window, list_identifier)
+                if (
+                    not _in_existing_list_entry(current_window, list_identifier)
+                    and not _is_location_list_empty(current_window)
+                )
                 then
                     -- Important: Requires https://github.com/tpope/vim-unimpaired
                     vim.cmd[[norm ]l]]
