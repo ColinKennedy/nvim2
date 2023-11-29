@@ -204,9 +204,7 @@ return {
 
                     _safe_run([[CAbove]])
                 end,
-                {
-                    desc="Move up the Quick-Fix window.",
-                }
+                { desc="Move up the Quick-Fix window." }
             )
 
             vim.keymap.set(
@@ -219,9 +217,25 @@ return {
 
                     _safe_run([[CBelow]])
                 end,
-                {
-                    desc="Move down the Quick-Fix window.",
-                }
+                { desc="Move down the Quick-Fix window." }
+            )
+
+            vim.keymap.set(
+                "n",
+                "[l",
+                function()
+                    _safe_run([[LAbove]])
+                end,
+                { desc="Move up the Location List window." }
+            )
+
+            vim.keymap.set(
+                "n",
+                "]l",
+                function()
+                    _safe_run([[LBelow]])
+                end,
+                { desc="Move down the Location List window." }
             )
         end,
         keys = {
