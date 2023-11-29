@@ -730,4 +730,10 @@ return {
         keys = { "<leader>iV", "<leader>iv" },
         version = "*",
     },
+
+    -- Prevent buffers from being accidentally switched out. e.g. Terminal / Quick Fix
+    {
+        "stevearc/stickybuf.nvim",
+        opts = {},
+    }
 }
