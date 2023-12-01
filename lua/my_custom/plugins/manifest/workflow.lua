@@ -713,7 +713,10 @@ return {
                     -- Note: setting `expr=true` and returning the value are essential
                     return require("debugprint").debugprint({ above = true, variable = true })
                 end,
-                { expr = true }
+                {
+                    desc = "[i]nsert [V]ariable debug-print above the current line",
+                    expr = true,
+                }
             )
 
             vim.keymap.set(
@@ -723,7 +726,10 @@ return {
                     -- Note: setting `expr=true` and returning the value are essential
                     return require("debugprint").debugprint({ above = false, variable = true })
                 end,
-                { expr = true }
+                {
+                    desc = "[i]nsert [v]ariable debug-print below the current line",
+                    expr = true,
+                }
             )
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
