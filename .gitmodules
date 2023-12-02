@@ -1,6 +1,6 @@
 [submodule "bundle/zoomwintab.vim"]
 	path = bundle/zoomwintab.vim
-	url = git@github.com:troydm/zoomwintab.vim.git
+	url = git@github.com:ColinKennedy/zoomwintab.vim.git
 [submodule "bundle/hybrid2.nvim"]
 	path = bundle/hybrid2.nvim
 	url = git@github.com:ColinKennedy/hybrid2.nvim.git
