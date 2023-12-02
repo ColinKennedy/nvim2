@@ -1,9 +1,12 @@
+- Python navigation textobjects ]k ]c etc are missing
+
 - Merge - https://github.com/danymat/neogen/pull/158
 - Merge - https://github.com/nvim-treesitter/nvim-treesitter/pull/5755
 
-- Add v* mapping for "search the current selection"
-
 - ZoomWinToggle loses my place in terminal-normal mode. Annoying!
+ - Check on: https://github.com/akinsho/toggleterm.nvim/issues/516
+ - Also maybe make a PR for zoomwintoggle
+  - https://github.com/troydm/zoomwintab.vim/pull/16
 
 - Finish the disassembly parser
  - Make a PR back to neovim + treesitter
