@@ -2,6 +2,11 @@
 - Add :Rg PR to add a title to the search results
  - Merge this - https://github.com/duane9/nvim-rg/pull/4
 
+- Merge - https://github.com/nvim-treesitter/nvim-treesitter/pull/5755
+
+- Add v* mapping for "search the current selection"
+
+- ZoomWinToggle loses my place in terminal-normal mode. Annoying!
 
 - Finish the disassembly parser
  - Make a PR back to neovim + treesitter
@@ -12,14 +17,6 @@
 
 - Consider changing :Rg to be a location list instead of a quickfix list. qflist blows
 
-
-
-def foo():
-    def wrapper():
-        return True
-
-
-- Neogen mistakenly says that foo has a return, when it actually doesn’t. And raises, too.
 
 
 
