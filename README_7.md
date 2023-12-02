@@ -1,3 +1,6 @@
+- Fix - https://github.com/stevearc/qf_helper.nvim/issues/10
+
+
 - Do this + set conceallevel=1 to conceal stuff
 ; (
 ;    (

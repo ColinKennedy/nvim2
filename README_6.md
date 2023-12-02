@@ -1,7 +1,4 @@
 - Merge - https://github.com/danymat/neogen/pull/158
-- Add :Rg PR to add a title to the search results
- - Merge this - https://github.com/duane9/nvim-rg/pull/4
-
 - Merge - https://github.com/nvim-treesitter/nvim-treesitter/pull/5755
 
 - Add v* mapping for "search the current selection"
