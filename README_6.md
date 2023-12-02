@@ -8,9 +8,6 @@
  - Also maybe make a PR for zoomwintoggle
   - https://github.com/troydm/zoomwintab.vim/pull/16
 
-- Finish the disassembly parser
- - Make a PR back to neovim + treesitter
-
 
 - <Space>GD - single-removed-lines don't quite work. I can't stage the line. Fix
  - The `q` command doesn't delete the current tab correctly
