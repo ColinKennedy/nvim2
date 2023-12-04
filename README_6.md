@@ -2,6 +2,7 @@
 
 - Merge - https://github.com/danymat/neogen/pull/158
 - Merge - https://github.com/nvim-treesitter/nvim-treesitter/pull/5755
+- Merge - https://github.com/rcarriga/nvim-dap-ui/pull/309
 
 - ZoomWinToggle loses my place in terminal-normal mode. Annoying!
  - Check on: https://github.com/akinsho/toggleterm.nvim/issues/516
