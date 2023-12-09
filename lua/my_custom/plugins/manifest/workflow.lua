@@ -164,8 +164,7 @@ return {
     -- Press <C-w>o to full-screen the current buffer
     {
         -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
-        "ColinKennedy/zoomwintab.vim",
-        branch = "fix_toggleterm_cursor_issue",
+        "troydm/zoomwintab.vim",
         cmd = {"ZoomWinTabOut", "ZoomWinTabToggle"},
     },
 
