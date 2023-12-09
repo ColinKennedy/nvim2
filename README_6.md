@@ -1,4 +1,3 @@
-- Check if which-key will take the descs from lazy.nvim or if they still need to be duplicated
 - Python navigation textobjects ]k ]c etc are missing
 
 - Merge - https://github.com/danymat/neogen/pull/158
@@ -7,8 +6,6 @@
 
 - ZoomWinToggle loses my place in terminal-normal mode. Annoying!
  - Check on: https://github.com/akinsho/toggleterm.nvim/issues/516
- - Also maybe make a PR for zoomwintoggle
-  - https://github.com/troydm/zoomwintab.vim/pull/16
 
 
 - <Space>GD - single-removed-lines don't quite work. I can't stage the line. Fix
