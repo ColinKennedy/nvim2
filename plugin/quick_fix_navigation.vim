@@ -10,6 +10,7 @@ function! CAbove() abort
             cprevious
         catch /.*/
             clast
+            echomsg "Looped back to the end"
         endtry
     endtry
 endfunction
@@ -27,6 +28,7 @@ function! CBelow() abort
             cnext
         catch /.*/
             cfirst
+            echomsg "Looped back to the start"
         endtry
     endtry
 endfunction
@@ -44,6 +46,7 @@ function! LAbove() abort
             lprevious
         catch /.*/
             llast
+            echomsg "Looped back to the end"
         endtry
     endtry
 endfunction
@@ -61,6 +64,7 @@ function! LBelow() abort
             lnext
         catch /.*/
             lfirst
+            echomsg "Looped back to the start"
         endtry
     endtry
 endfunction

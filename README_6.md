@@ -1,3 +1,4 @@
+- Check if which-key will take the descs from lazy.nvim or if they still need to be duplicated
 - Python navigation textobjects ]k ]c etc are missing
 
 - Merge - https://github.com/danymat/neogen/pull/158

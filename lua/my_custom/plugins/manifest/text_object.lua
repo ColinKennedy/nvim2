@@ -185,58 +185,6 @@ return {
     {
         "tpope/vim-unimpaired",
         config = function()
-            local _safe_run = function(text)
-                local success, _ = pcall(vim.cmd, text)
-
-                if not success
-                then
-                    vim.api.nvim_err_writeln("No more items")
-                end
-            end
-
-            vim.keymap.set(
-                "n",
-                "[q",
-                function()
-                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-
-                    fixer.choose_last_window()
-
-                    _safe_run([[CAbove]])
-                end,
-                { desc="Move up the Quick-Fix window." }
-            )
-
-            vim.keymap.set(
-                "n",
-                "]q",
-                function()
-                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-
-                    fixer.choose_last_window()
-
-                    _safe_run([[CBelow]])
-                end,
-                { desc="Move down the Quick-Fix window." }
-            )
-
-            vim.keymap.set(
-                "n",
-                "[l",
-                function()
-                    _safe_run([[LAbove]])
-                end,
-                { desc="Move up the Location List window." }
-            )
-
-            vim.keymap.set(
-                "n",
-                "]l",
-                function()
-                    _safe_run([[LBelow]])
-                end,
-                { desc="Move down the Location List window." }
-            )
         end,
         keys = {
             "<P", ">P",
@@ -250,10 +198,44 @@ return {
             "[T", "]T",
             "[a", "]a",
             "[b", "]b",
-            "[l", "]l",
             "[p", "]p",
-            "[q", "]q",
             "[t", "]t",
+            {
+                "[q",
+                function()
+                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
+
+                    fixer.choose_last_window()
+                    fixer.safe_run([[CAbove]])
+                end,
+                desc="Move up the [q]uickfix window.",
+            },
+            {
+                "]q",
+                function()
+                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
+
+                    fixer.choose_last_window()
+                    fixer.safe_run([[CBelow]])
+                end,
+                desc="Move down the [q]uickfix window.",
+            },
+            {
+                "[l",
+                function()
+                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
+                    fixer.safe_run([[LAbove]])
+                end,
+                desc="Move up the [l]ocation list window.",
+            },
+            {
+                "]l",
+                function()
+                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
+                    fixer.safe_run([[LBelow]])
+                end,
+                desc="Move down the [l]ocation list window.",
+            },
         },
         version = "2.*",
     },

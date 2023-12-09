@@ -4,16 +4,16 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             require("my_custom.plugins.data.nvim_lsp_config")
-
-            vim.keymap.set(
-                "n",
-                "<leader>d",
-                function()
-                    vim.diagnostic.open_float({source="always"})
-                end
-            )
         end,
-        keys = { "[d", "]d" },
+        keys = {
+            "[d",
+            "]d",
+            {
+                "<leader>d",
+                function() vim.diagnostic.open_float({ source="always" }) end,
+                desc = "Open the [d]iagnostics window for the current cursor.",
+            },
+        },
         lazy = true,
     },
 

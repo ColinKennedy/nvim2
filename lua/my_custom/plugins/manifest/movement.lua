@@ -3,18 +3,16 @@ return {
     {
         "nanotee/zoxide.vim",
         command = "Zi",
-        config = function()
-            vim.keymap.set(
-                "n",
-                "<Space>Z",
-                ":Zi<CR>",
-                {desc="[Z]oxide's interative pwd switcher."}
-            )
-        end,
         dependencies = {
             "junegunn/fzf.vim",  -- Needed for ``:Zi``
         },
-        keys = "<Space>Z",
+        keys = {
+            {
+                "<Space>Z",
+                ":Zi<CR>",
+                desc="[Z]oxide's interative pwd switcher.",
+            },
+        },
     },
 
     {
@@ -39,43 +37,6 @@ return {
                 ":call fzf#run(fzf#wrap({'source': sort(argv())}))",
                 {}
             )
-
-            vim.keymap.set(
-                "n",
-                "<space>B",
-                ":Buffers<CR>",
-                {desc="Search existing [B]uffers and select + view it."}
-            )
-            vim.keymap.set(
-                "n",
-                "<space>e",
-                ":Files<CR>",
-                {desc="[e]dit a `:pwd` file."}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<space>L",
-                ":Lines<CR>",
-                {desc="[L]ines searcher (current file)"}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<space>A",
-                ":Args<CR>",
-                {desc="Select a new [A]rgs file from the `:args` list."}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<space>E",
-                ":call searcher#search_project_files()<CR>",
-                {
-                    desc="[E]dit a new project root file.",
-                    silent=true,
-                }
-            )
         end,
         -- TODO: Remove this pinned commit once this is solved
         --
@@ -84,7 +45,33 @@ return {
         commit = "5d87ac1fe8d729f116bda2f90a7211ad309ddf5a",
         dependencies = { "junegunn/fzf" },
         cmd = { "Args", "Buffers", "Commands", "Files", "FZF", "GFiles", "Helptags", "History", "Lines" },
-        keys = {"<space>A", "<space>B", "<space>E", "<space>L", "<space>e"},
+        keys = {
+            {
+                "<space>B",
+                ":Buffers<CR>",
+                desc="Search existing [B]uffers and select + view it.",
+            },
+            {
+                "<space>e",
+                ":Files<CR>",
+                desc="[e]dit a `:pwd` file.",
+            },
+            {
+                "<space>L",
+                ":Lines<CR>",
+                desc="[L]ines searcher (current file)",
+            },
+            {
+                "<space>A",
+                ":Args<CR>",
+                desc="Select a new [A]rgs file from the `:args` list.",
+            },
+            {
+                "<space>E",
+                ":call searcher#search_project_files()<CR>",
+                desc="[E]dit a new project root file.",
+            },
+        },
     },
 
     -- A more modern, faster grep engine.
@@ -133,25 +120,6 @@ return {
     {
         "ggandor/leap.nvim",
         config = function()
-            vim.keymap.set(
-                "n",
-                "s",
-                "<Plug>(leap-forward-to)",
-                {
-                    desc = "Leap forward to",
-                    silent = true,
-                }
-            )
-            vim.keymap.set(
-                "n",
-                "S",
-                "<Plug>(leap-backward-to)",
-                {
-                    desc = "Leap backward to",
-                    silent = true,
-                }
-            )
-
             require("leap").init_highlight()
 
             require('leap').opts.safe_labels = {
@@ -160,7 +128,10 @@ return {
                 "A", "S", "D", "F", "J", "K", "L",
             }
         end,
-        keys = {"S", "s"},
+        keys = {
+            { "S", "<Plug>(leap-backward-to)", desc = "Leap backward to", silent = true },
+            { "s", "<Plug>(leap-forward-to)", desc = "Leap forward to", silent = true },
+        },
     },
 
     -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.

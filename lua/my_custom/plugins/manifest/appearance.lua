@@ -37,32 +37,6 @@ return {
             local gitsigns = require("gitsigns")
 
             gitsigns.setup()
-
-            vim.keymap.set(
-                "n",
-                "[g",
-                function()
-                    if vim.wo.diff then return "[g" end
-
-                    vim.schedule(function() gitsigns.prev_hunk() end)
-
-                    return "<Ignore>"
-                end,
-                { expr=true }
-            )
-
-            vim.keymap.set(
-                "n",
-                "]g",
-                function()
-                    if vim.wo.diff then return "]g" end
-
-                    vim.schedule(function() gitsigns.next_hunk() end)
-
-                    return "<Ignore>"
-                end,
-                { expr=true }
-            )
         end,
         ft = "gitcommit",
         init = function()
@@ -86,7 +60,32 @@ return {
             -- Make deleted lines a bit easier to see
             vim.api.nvim_set_hl(0, "GitSignsDelete", {fg="#cc6666", ctermfg=167})
         end,
-        keys = { "[g", "]g" },
+        keys = {
+            {
+                "[g",
+                function()
+                    if vim.wo.diff then return "[g" end
+
+                    vim.schedule(function() require("gitsigns").prev_hunk() end)
+
+                    return "<Ignore>"
+                end,
+                desc="Go to the previous [g]it hunk in the current file.",
+                expr=true,
+            },
+            {
+                "]g",
+                function()
+                    if vim.wo.diff then return "]g" end
+
+                    vim.schedule(function() require("gitsigns").next_hunk() end)
+
+                    return "<Ignore>"
+                end,
+                desc="Go to the next [g]it hunk in the current file.",
+                expr=true,
+            },
+        },
         opts = {
             signs = {
                 add = { text = "│" },

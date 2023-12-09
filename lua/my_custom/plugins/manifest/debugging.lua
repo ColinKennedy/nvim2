@@ -31,107 +31,85 @@ return {
                     command = command,
                 }
             end
-
-            vim.keymap.set(
-                "n",
+        end,
+        cmd = "DapContinue",
+        keys = {
+            {
                 "<leader>d<space>",
                 ":DapContinue<CR>",
-                {desc="Continue through the debugger to the next breakpoint."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Continue through the debugger to the next breakpoint.",
+            },
+            {
                 "<leader>dl",
                 ":DapStepInto<CR>",
-                {desc="Move into a function call."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Move into a function call.",
+            },
+            {
                 "<leader>dj",
                 ":DapStepOver<CR>",
-                {desc="Skip over the current line."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Skip over the current line.",
+            },
+            {
                 "<leader>dh",
                 ":DapStepOut<CR>",
-                {desc="Move out of the current function call."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Move out of the current function call.",
+            },
+            {
                 "<leader>dx",
-                function()
-                    require("dap").run_to_cursor()
-                end,
-                {desc="Run to [d]ebug cursor to [x] marks the spot."}
-            )
-            vim.keymap.set(
-                "n",
+                function() require("dap").run_to_cursor() end,
+                desc="Run to [d]ebug cursor to [x] marks the spot.",
+            },
+            {
                 "<leader>dz",
                 ":ZoomWinTabToggle<CR>",
-                {desc="[d]ebugger [z]oom toggle (full-screen or minimize the window)."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="[d]ebugger [z]oom toggle (full-screen or minimize the window).",
+            },
+            {
                 "<leader>dgt",
                 ":lua require('dap').set_log_level('TRACE')<CR>",
-                {desc="Set [d]ebu[g] to [t]race level logging."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Set [d]ebu[g] to [t]race level logging.",
+            },
+            {
                 "<leader>dge",
-                function()
-                    vim.cmd(":edit " .. vim.fn.stdpath('cache') .. "/dap.log")
-                end,
-                {desc="Open the [d]ebu[g] [e]dit file."}
-            )
-            vim.keymap.set(
-                "n",
+                function() vim.cmd(":edit " .. vim.fn.stdpath('cache') .. "/dap.log") end,
+                desc="Open the [d]ebu[g] [e]dit file.",
+            },
+            {
                 "<F1>",
                 ":DapStepOut<CR>",
-                {desc="Move out of the current function call."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Move out of the current function call.",
+            },
+            {
                 "<F2>",
                 ":DapStepOver<CR>",
-                {desc="Skip over the current line."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Skip over the current line.",
+            },
+            {
                 "<F3>",
                 ":DapStepInto<CR>",
-                {desc="Move into a function call."}
-            )
-            vim.keymap.set(
-                "n",
+                desc="Move into a function call."
+            },
+            {
                 "<leader>d-",
-                function()
-                    require("dap").restart({terminateDebugee=false})
-                end,
-                {desc="Restart the current debug session."}
-            )
-            vim.keymap.set(
-                "n",
+                function() require("dap").restart({ terminateDebugee=false }) end,
+                desc="Restart the current debug session.",
+            },
+            {
                 "<leader>d=",
-                function()
-                    require("dap").disconnect({terminateDebugee=false})
-                end,
-                {desc="Disconnect from a remote DAP session."}
-            )
-            vim.keymap.set(
-                "n",
+                function() require("dap").disconnect({ terminateDebugee=false }) end,
+                desc="Disconnect from a remote DAP session.",
+            },
+            {
                 "<leader>d_",
                 function()
                     require("dap").terminate()
                     require("dapui").close()
                 end,
-                {desc="Kill the current debug session."}
-            )
+                desc="Kill the current debug session.",
+            },
             -- vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
             -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
-        end,
-        cmd = "DapContinue",
-        lazy = true,
+        },
         version = "0.*",
     },
 
@@ -303,17 +281,16 @@ return {
                 load_breakpoints_event = { "BufReadPost" }
             }
 
-            vim.keymap.set(
-                "n",
-                "<leader>db",
-                ":PBToggleBreakpoint<CR>",
-                {desc="Set a breakpoint (and remember it even when we re-open the file)."}
-            )
-
             require('persistent-breakpoints.api').load_breakpoints()
         end,
         dependencies = {"mfussenegger/nvim-dap"},
         ft = {"c", "cpp"},  -- These are the file types that I'd usually have breakpoints
-        keys = { "<leader>db" },
+        keys = {
+            {
+                "<leader>db",
+                ":PBToggleBreakpoint<CR>",
+                desc="Set a breakpoint (and remember it even when we re-open the file).",
+            },
+        },
     },
 }

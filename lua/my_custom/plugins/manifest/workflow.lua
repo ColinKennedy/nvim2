@@ -36,23 +36,20 @@ return {
     -- A treesitter-based tool for splitting and joining lines. Pretty fast.
     {
         "Wansmer/treesj",
-        keys = {"<leader>sa"},
         config = function()
             require("my_custom.plugins.data.treesj")
 
             local treesj = require("treesj")
 
             treesj.setup({ max_join_length = 150 })
-
-            vim.keymap.set(
-                "n",
-                "<leader>sa",
-                function()
-                    treesj.toggle()
-                end,
-                {}
-            )
         end,
+        keys = {
+            {
+                "<leader>sa",
+                function() require("treesj").toggle() end,
+                desc = "Toggle (Join or split) [s]plit [a]rguments at the cursor."
+            },
+        },
     },
 
     -- A plugin that is able to load project-specific .vimrc files
@@ -277,23 +274,21 @@ return {
                     },
                 }
             )
-
-            vim.keymap.set(
-                "n",
-                "<space>SS",
-                ":AerialToggle<CR>",
-                {desc="[S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc."}
-            )
-            vim.keymap.set(
-                "n",
-                "<space>SN",
-                ":AerialNavToggle<CR>",
-                {desc="[S]witch [N]avigation inside / outside of classes and functions."}
-            )
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         cmd = { "AerialNavToggle", "AerialToggle"},
-        keys = { "<space>SN", "<space>SS" }, -- S as in "Summary"
+        keys = {
+            {
+                "<space>SS",
+                ":AerialToggle<CR>",
+                desc="[S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc.",
+            },
+            {
+                "<space>SN",
+                ":AerialNavToggle<CR>",
+                desc="[S]witch [N]avigation inside / outside of classes and functions.",
+            },
+        },
         -- version = "stable",  -- Note: The latest is probably safe. The maintainer's good
     },
 
@@ -396,16 +391,16 @@ return {
                 toggle_current_directory,
                 {nargs=0}
             )
-            vim.keymap.set(
-                "n",
-                "<space>W",
-                ":PwdNvimTreeToggle<CR>",
-                {desc="Open NvimTree starting from the `:pwd`."}
-            )
         end,
         -- cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        -- keys = { "<space>W" } -- W as in "workspace view"
+        keys = {
+            {
+                "<space>W",
+                ":PwdNvimTreeToggle<CR>",
+                desc="Open NvimTree starting from the `:pwd`.",
+            },
+        },
     },
 
     -- Seamlessly switch between a binary file view and a hexdump-ish view and back
@@ -511,53 +506,43 @@ return {
         version = "stable",
     },
 
-    -- An async "parameter highlights" plugin that uses tree-sitter.
-    -- It works without LSP on any of its supported languages.
+    -- -- An async "parameter highlights" plugin that uses tree-sitter.
+    -- -- It works without LSP on any of its supported languages.
+    -- --
+    -- {
+    --     "m-demare/hlargs.nvim",
+    --     config = function()
+    --         require('hlargs').setup()
     --
-    {
-        "m-demare/hlargs.nvim",
-        config = function()
-            require('hlargs').setup()
-
-            -- Reference: https://github.com/m-demare/hlargs.nvim/blob/07e33afafd9d32b304a8557bfc1772516c005d75/doc/hlargs.txt#L306
-            vim.api.nvim_create_augroup("LspAttach_hlargs", {clear = true})
-            vim.api.nvim_create_autocmd("LspAttach", {
-                group = "LspAttach_hlargs",
-                callback = function(args)
-                    if not (args.data and args.data.client_id) then
-                        return
-                    end
-
-                    for _, client in ipairs(vim.lsp.get_active_clients())
-                    do
-                        local caps = client.server_capabilities
-
-                        if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-                            require("hlargs").disable_buf(args.buf)
-
-                            break
-                        end
-                    end
-                end,
-            })
-        end,
-        event = { "VeryLazy" },
-    },
+    --         -- Reference: https://github.com/m-demare/hlargs.nvim/blob/07e33afafd9d32b304a8557bfc1772516c005d75/doc/hlargs.txt#L306
+    --         vim.api.nvim_create_augroup("LspAttach_hlargs", {clear = true})
+    --         vim.api.nvim_create_autocmd("LspAttach", {
+    --             group = "LspAttach_hlargs",
+    --             callback = function(args)
+    --                 if not (args.data and args.data.client_id) then
+    --                     return
+    --                 end
+    --
+    --                 for _, client in ipairs(vim.lsp.get_active_clients())
+    --                 do
+    --                     local caps = client.server_capabilities
+    --
+    --                     if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+    --                         require("hlargs").disable_buf(args.buf)
+    --
+    --                         break
+    --                     end
+    --                 end
+    --             end,
+    --         })
+    --     end,
+    --     event = { "VeryLazy" },
+    -- },
 
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
         "akinsho/toggleterm.nvim",
         config = function()
-            vim.keymap.set(
-                "n",
-                "<space>T",
-                ":ToggleTerm direction=horizontal<CR>",
-                {
-                    desc="Create a [T]erminal on the bottom of the current window.",
-                    silent=true,
-                }
-            )
-
             require("toggleterm").setup()
 
             -- Important: This allows terminals to stay in terminal mode even
@@ -577,7 +562,14 @@ return {
         end,
         version = "v2.*",
         cmd = "ToggleTerm",
-        keys = "<Space>T",
+        keys = {
+            {
+                "<Space>T",
+                ":ToggleTerm direction=horizontal<CR>",
+                desc="Create a [T]erminal on the bottom of the current window.",
+                silent=true,
+            },
+        },
     },
 
     -- Allow quick and easy navigation to common project files
@@ -585,45 +577,29 @@ return {
     --
     {
         "cbochs/grapple.nvim",
-        config = function()
-            vim.keymap.set(
-                "n",
-                "<M-S-j>",
-                function()
-                    require("grapple").cycle_forward()
-                end,
-                {desc = "Move to the next saved project path."}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<M-S-k>",
-                function()
-                    require("grapple").cycle_backward()
-                end,
-                {desc = "Move to the previous saved project path."}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<M-S-l>",
-                function()
-                    require("grapple").popup_tags("git")
-                end,
-                {desc = "Show all saved project paths."}
-            )
-
-            vim.keymap.set(
-                "n",
-                "<M-S-h>",
-                function()
-                    require("grapple").toggle({scope="git"})
-                end,
-                {desc = "Add / Remove the current file as a project path."}
-            )
-        end,
         dependencies = {"ColinKennedy/plenary.nvim"},
-        keys = { "<M-S-h>", "<M-S-j>", "<M-S-k>", "<M-S-l>" },
+        keys = {
+            {
+                "<M-S-j>",
+                function() require("grapple").cycle_forward() end,
+                desc = "Move to the next saved project path.",
+            },
+            {
+                "<M-S-k>",
+                function() require("grapple").cycle_backward() end,
+                desc = "Move to the previous saved project path.",
+            },
+            {
+                "<M-S-l>",
+                function() require("grapple").popup_tags("git") end,
+                desc = "Show all saved project paths.",
+            },
+            {
+                "<M-S-h>",
+                function() require("grapple").toggle({ scope="git" }) end,
+                desc = "Add / Remove the current file as a project path.",
+            },
+        },
         version = "v0.*",
     },
 
@@ -649,20 +625,17 @@ return {
             print("Note: If symbol outliner doesn't open, wait for LSPs and try again.")
 
             require("symbols-outline").setup()
-
-            vim.keymap.set(
-                "n",
-                "<Space>SO",
-                ":SymbolsOutline<CR>",
-                {
-                    desc = "Open [S]ymbols [O]utliner",
-                    silent = true,
-                }
-            )
         end,
         dependencies = { "neovim/nvim-lspconfig" },
         cmd = "SymbolsOutline",
-        keys = {"<Space>SO"}
+        keys = {
+            {
+                "<Space>SO",
+                ":SymbolsOutline<CR>",
+                desc = "Open [S]ymbols [O]utliner",
+                silent = true,
+            },
+        },
     },
 
     -- Search with :Rg
@@ -695,46 +668,34 @@ return {
     },
 
     -- Insert debug print statements easily.
-    --
-    -- g?v - insert variable debug prints below the current line
-    -- g?V - insert variable debug prints above the current line
-    --
     {
         "andrewferrier/debugprint.nvim",
         config = function()
-
             require("debugprint").setup(
                 { create_keymaps = false, create_commands = false }
             )
-
-            vim.keymap.set(
-                "n",
+        end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        keys = {
+            {
                 "<leader>iV",
                 function()
                     -- Note: setting `expr=true` and returning the value are essential
                     return require("debugprint").debugprint({ above = true, variable = true })
                 end,
-                {
-                    desc = "[i]nsert [V]ariable debug-print above the current line",
-                    expr = true,
-                }
-            )
-
-            vim.keymap.set(
-                "n",
+                desc = "[i]nsert [V]ariable debug-print above the current line",
+                expr = true,
+            },
+            {
                 "<leader>iv",
                 function()
                     -- Note: setting `expr=true` and returning the value are essential
                     return require("debugprint").debugprint({ above = false, variable = true })
                 end,
-                {
-                    desc = "[i]nsert [v]ariable debug-print below the current line",
-                    expr = true,
-                }
-            )
-        end,
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        keys = { "<leader>iV", "<leader>iv" },
+                desc = "[i]nsert [v]ariable debug-print below the current line",
+                expr = true,
+            },
+        },
         version = "*",
     },
 

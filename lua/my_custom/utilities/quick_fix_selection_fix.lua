@@ -80,4 +80,14 @@ function M.choose_last_window()
 end
 
 
+function M.safe_run(text)
+    local success, _ = pcall(vim.cmd, text)
+
+    if not success
+    then
+        vim.api.nvim_err_writeln("No more items")
+    end
+end
+
+
 return M
