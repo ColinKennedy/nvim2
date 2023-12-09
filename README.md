@@ -44,14 +44,18 @@
 | n | [-           | Go to the previous line of lesser indentation.                                                |
 | n | [=           | Go to the previous line of equal indentation.                                                 |
 | n | [d           | Search upwards for diagnostic messages and go to it, if one is found.                         |
+| n | [e           | Previous diagnostic [e]rror.                                                                  |
 | n | [p           | [p]ut text on the line above, at the same level of indentation.                               |
 | n | [q           | Move up the QuickFix window.                                                                  |
+| n | [w           | Previous diagnostic [w]arning.                                                                |
 | n | ]+           | Go to the next line of greater indentation.                                                   |
 | n | ]-           | Go to the next line of lesser indentation.                                                    |
 | n | ]=           | Go to the next line of equal indentation.                                                     |
 | n | ]d           | Search downwards for diagnostic messages and go to it, if one is found.                       |
+| n | ]e           | Next diagnostic [e]rror.                                                                      |
 | n | ]p           | [p]ut text on the line below, at the same level of indentation.                               |
 | n | ]q           | Move down the QuickFix window.                                                                |
+| n | ]w           | Next diagnostic [w]arning.                                                                    |
 
 
 ### Terminal / Tmux Communication

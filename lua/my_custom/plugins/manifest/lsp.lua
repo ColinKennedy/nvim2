@@ -30,7 +30,7 @@ return {
             require("my_custom.plugins.data.nvim_cmp")
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        event = { "InsertEnter" },
+        event = { "InsertCharPre" },
         version = "0.*",
     },
 
@@ -182,7 +182,7 @@ return {
             vim.api.nvim_set_hl(0, "FidgetTask", {fg="#4b5156", ctermfg=65})
             vim.api.nvim_set_hl(0, "FidgetTitle", {link="Identifier"})
         end,
-        event = { "InsertEnter", "VeryLazy" },
+        event = { "LspAttach" },
     },
 
     -- Iteratively show the next argument, in a pop-up window
@@ -224,7 +224,7 @@ return {
                 lua = {"luacheck"},
             }
 
-            lint = require("lint")
+            local lint = require("lint")
             lint.linters.pydocstyle.args = { "--convention=google" }
 
             lint.try_lint()

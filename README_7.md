@@ -10,6 +10,9 @@
 ;    (#set! conceal "…")
 ; )
 
+- Make a quickfix search searcher
+
+
 - add LSP for C++, Python, and C++ USD, and C++ Qt
  - LSP auto-complete
  - Python

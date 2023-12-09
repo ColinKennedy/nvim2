@@ -338,8 +338,58 @@ function! MoveIfInPager()
     endif
 endfunction
 ]]
+
 vim.keymap.set(
     "t",
     "kk",
     "<C-\\><C-n>:call MoveIfInPager()<CR>"
+)
+
+vim.keymap.set(
+    "v",
+    "Q",
+    function()
+        -- For some reason this is faster than just calling `:norm Q`
+        vim.cmd(":norm @" .. vim.fn.reg_recorded() .. "<CR>")
+    end,
+    { desc = "Repeat the last recorded register on all selected lines." }
+)
+
+
+local _go_to_diagnostic = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+
+-- Reference: https://www.joshmedeski.com/posts/underrated-square-bracket
+--
+-- map("n", "]d", _go_to_diagnostic(true), { desc = "Next Diagnostic" })
+-- map("n", "[d", _go_to_diagnostic(false), { desc = "Prev Diagnostic" })
+--
+vim.keymap.set(
+    "n",
+    "]e",
+    _go_to_diagnostic(true, "ERROR"),
+    { desc = "Next diagnostic [e]rror." }
+)
+vim.keymap.set(
+    "n",
+    "[e",
+    _go_to_diagnostic(false, "ERROR"),
+    { desc = "Previous diagnostic [e]rror." }
+)
+vim.keymap.set(
+    "n",
+    "]w",
+    _go_to_diagnostic(true, "WARN"),
+    { desc = "Next diagnostic [w]arning." }
+)
+vim.keymap.set(
+    "n",
+    "[w",
+    _go_to_diagnostic(false, "WARN"),
+    { desc = "Previous diagnostic [w]arning." }
 )
