@@ -345,13 +345,11 @@ vim.keymap.set(
     "<C-\\><C-n>:call MoveIfInPager()<CR>"
 )
 
+-- Reference: https://github.com/neovim/neovim/issues/21422#issue-1497443707
 vim.keymap.set(
-    "v",
+    "x",
     "Q",
-    function()
-        -- For some reason this is faster than just calling `:norm Q`
-        vim.cmd(":norm @" .. vim.fn.reg_recorded() .. "<CR>")
-    end,
+    ":normal @<C-r>=reg_recorded()<CR><CR>",
     { desc = "Repeat the last recorded register on all selected lines." }
 )
 
