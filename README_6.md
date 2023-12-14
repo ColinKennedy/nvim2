@@ -1,8 +1,16 @@
+
+Request jumplist support for debugging
+
+Often when debugging it's useful to step quickly through the code until some area of interest is found. Sometimes you realize that you've past the area of interest and are actually now in a different function, with a different call stack. If we had `<c-p>`/`<c-o>` to go backwards, we'd be able to effectively retrace the movements of the debugger to get to the current point. However to use `<c-p>`/`<c-o>`, (Neo)vim requires cursor positions to be added to the jump list.
+
 - Python navigation textobjects ]k ]c etc are missing
 
 - Merge - https://github.com/danymat/neogen/pull/158
 - Merge - https://github.com/nvim-treesitter/nvim-treesitter/pull/5755
 - Merge - https://github.com/rcarriga/nvim-dap-ui/pull/309
+ - Fix the gross stuff that I forgot to clean in this PR
+ - nvim-dap-ui PR - note to self - need to check if parser is installed with vim.inspect(require "nvim-treesitter.info".installed_parsers())
+
 
 - ZoomWinToggle loses my place in terminal-normal mode. Annoying!
  - Check on: https://github.com/akinsho/toggleterm.nvim/issues/516
