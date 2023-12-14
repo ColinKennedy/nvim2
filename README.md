@@ -34,7 +34,7 @@
 2. mapping
 3. description
 
-| 1 |     2        |                                         3                                                     |
+| 1 |      2       |                                         3                                                     |
 | - | ------------ | --------------------------------------------------------------------------------------------- |
 | n | `<leader>`cc | [c]opy the [c]urrent file in the current window to the system clipboard. Assuming +clipboard. |
 | n | `<leader>`cd | [c]hange the [d]irectory (`:pwd`) to the directory of the current open window.                |
@@ -112,6 +112,10 @@
 
 
 ### LSP
+1. mode
+2. mapping
+3. description
+
 | 1 |      2       |                           3                                |
 | - | -----------  | ---------------------------------------------------------- |
 | n | K            | Show documentation.                                        |
@@ -120,6 +124,16 @@
 | n | gi           | [g]o to [i]mplementations.                                 |
 | n | gr           | [g]o to [r]eferences (where a variable is used)            |
 | n | <leader>gca  | [c]ode [a]ction - Show available commands under the cursor.|
+
+
+### Quickfix
+1. mode
+2. mapping
+3. description
+
+| 1 |      2       |                           3                               |
+| - | -----------  | --------------------------------------------------------- |
+| n | <leader>ct   | Change the title of the Quickfix buffer                   |
 
 
 ### Miscellaneous
@@ -187,6 +201,10 @@
 Super quickly register "important" files in a project and swap between them. So helpful!
 
 This plug-in is basically https://github.com/ThePrimeagen/harpoon but actually good.
+
+1. mode
+2. mapping
+3. description
 
 | 1 |      2       |                                  3                                 |
 | - | ------------ | ------------------------------------------------------------------ |

@@ -19,6 +19,41 @@ vim.api.nvim_create_autocmd(
     }
 )
 
+vim.api.nvim_create_autocmd(
+    "FileType",
+    {
+        callback = function()
+            vim.keymap.set(
+                "n",
+                "<leader>ct",
+                function()
+                    local current_name = vim.fn.getqflist({title=true, winid=true}).title
+                    local name = vim.fn.input("New Name: ", current_name)
+
+                    if name == ""
+                    then
+                        return
+                    end
+
+                    vim.fn.setqflist({}, "r", {title=name, winid=true})
+
+                    local success, winbar = pcall(require, "winbar")
+
+                    if success
+                    then
+                        winbar.run_on_current_buffer()
+                    end
+                end,
+                {
+                    buffer = true,
+                    desc = "[c]hange Quickfix [t]itle.",
+                }
+            )
+        end,
+        pattern = "qf",
+    }
+)
+
 -- Reference: https://stackoverflow.com/questions/12485981
 --
 -- Enable syntax highlighting when buffers are displayed in a window through
