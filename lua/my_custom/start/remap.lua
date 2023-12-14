@@ -391,3 +391,25 @@ vim.keymap.set(
     _go_to_diagnostic(false, "WARN"),
     { desc = "Previous diagnostic [w]arning." }
 )
+
+
+vim.keymap.set(
+    "n",
+    "<leader>gsp",
+    function()
+        local saver = require("my_custom.utilities.git_stash.saver")
+        saver.push()
+    end,
+    { desc = "[g]it [s]tash [p]ush the current repository." }
+)
+
+
+vim.keymap.set(
+    "n",
+    "<leader>gsa",
+    function()
+        vim.cmd[[:Telescope git_stash]]
+        print("Stash was applied")
+    end,
+    { desc = "[g]it [s]tash [a]pply onto the current repository." }
+)

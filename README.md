@@ -63,7 +63,7 @@
 2. mapping
 3. description
 
-| 1 |     2        |                                         3                               |
+| 1 |      2       |                                         3                               |
 | - | ------------ | ----------------------------------------------------------------------- |
 | n | `<leader>`rr | [r]e-[r]un the last terminal command (The !! syntax is UNIX-specific)   |
 | n | `<leader>`st | [s]end to the nearest [t]erminal your system clipboard text.            |
@@ -74,7 +74,7 @@
 2. mapping
 3. description
 
-| 1 |     2         |                                         3                                          |
+| 1 |       2       |                                         3                                          |
 | - | ------------- | ---------------------------------------------------------------------------------- |
 | n | J             | Keep the cursor in the same position while pressing ``J``.                         |
 | n | `<leader>`dil | [d]elete [i]nside the current [l]ine, without the ending newline character.        |
@@ -91,8 +91,8 @@
 2. mapping
 3. description
 
-| 1 |      2        |                                 3                                  |
-| - | -----------   | ------------------------------------------------------------------ |
+| 1 |       2       |                                 3                                  |
+| - | ------------- | ------------------------------------------------------------------ |
 | n | `<F1>`        | Move out of the current function call.                             |
 | n | `<F2>`        | Skip over the current line.                                        |
 | n | `<F3>`        | Move into a function call.                                         |
@@ -117,7 +117,7 @@
 3. description
 
 | 1 |      2       |                           3                                |
-| - | -----------  | ---------------------------------------------------------- |
+| - | ------------ | ---------------------------------------------------------- |
 | n | K            | Show documentation.                                        |
 | n | gD           | [g]o to [d]eclarations.                                    |
 | n | gd           | [g]o to [d]efinition.                                      |
@@ -132,8 +132,8 @@
 3. description
 
 | 1 |      2       |                           3                               |
-| - | -----------  | --------------------------------------------------------- |
-| n | <leader>ct   | Change the title of the Quickfix buffer                   |
+| - | ------------ | --------------------------------------------------------- |
+| n | `<leader>`ct | Change the title of the Quickfix buffer                   |
 
 
 ### Miscellaneous
@@ -141,18 +141,20 @@
 2. mapping
 3. description
 
-| 1 |      2       |                           3                               |
-| - | -----------  | --------------------------------------------------------- |
-| c | %s/          | Make Vim's search more "magic", by default.               |
-| c | >s/          | Make Vim's search more "magic", by default.               |
-| n | /            | Make Vim's search more "magic", by default.               |
-| n | `<C-w><C-o>` | Toggle full-screen or minimize a window.                  |
-| n | `<C-w>`o     | Toggle full-screen or minimize a window.                  |
-| n | `<F12>`      | Totally useless ROT13 encyption (for fun!)                |
-| n | QQ           | Exit Vim without saving.                                  |
-| v | /            | Make Vim's search more "magic", by default.               |
-| v | `<leader>`pe | Load the selected [p]ython [e]rror as a quickfix window.  |
-| v | `<leader>`tx | [t]oggle [x]-marks display.                               |
+| 1 |       2       |                           3                               |
+| - | ------------- | --------------------------------------------------------- |
+| c | %s/           | Make Vim's search more "magic", by default.               |
+| c | >s/           | Make Vim's search more "magic", by default.               |
+| n | /             | Make Vim's search more "magic", by default.               |
+| n | QQ            | Exit Vim without saving.                                  |
+| n | `<C-w><C-o>`  | Toggle full-screen or minimize a window.                  |
+| n | `<C-w>`o      | Toggle full-screen or minimize a window.                  |
+| n | `<F12>`       | Totally useless ROT13 encyption (for fun!)                |
+| v | /             | Make Vim's search more "magic", by default.               |
+| v | `<leader>`gsa | [g]it [s]tash [a]pply onto the current repository.        |
+| v | `<leader>`gsp | [g]it [s]tash [p]ush the current repository.              |
+| v | `<leader>`pe  | Load the selected [p]ython [e]rror as a quickfix window.  |
+| v | `<leader>`tx  | [t]oggle [x]-marks display.                               |
 
 
 ### Text-Object / Text-Object-like
