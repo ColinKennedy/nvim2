@@ -200,10 +200,6 @@ return {
         build = ":TSUpdate",
         config = function()
             require("my_custom.plugins.data.nvim_treesitter")
-
-            -- Needed for tree-sitter diff parsers
-            vim.api.nvim_set_hl(0, "@text.diff.add.diff", {link="DiffAdd"})
-            vim.api.nvim_set_hl(0, "@text.diff.delete.diff", {link="DiffDelete"})
         end,
         lazy = true,
         version = "0.*",
