@@ -319,20 +319,6 @@ return {
         version = "1.*",
     },
 
-    -- A tool which automatically backs up modified files to a git repository
-    {
-        "ColinKennedy/vim-git-backup",
-        cmd = {
-            "BackupCurrentFile",
-            "GHistory",
-            "OpenCurrentFileBackupHistory",
-            "RestoreFileUsingGitBackup",
-            "ToggleBackupFile",
-        },
-        event = { "BufWritePre", "FileWritePre" },
-        version = "2.*",
-    },
-
     -- Useful git commands. Such as :Gcd
     {
         "tpope/vim-fugitive",

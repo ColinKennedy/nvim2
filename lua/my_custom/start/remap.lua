@@ -409,7 +409,6 @@ vim.keymap.set(
     "<leader>gsa",
     function()
         vim.cmd[[:Telescope git_stash]]
-        print("Stash was applied")
     end,
     { desc = "[g]it [s]tash [a]pply onto the current repository." }
 )

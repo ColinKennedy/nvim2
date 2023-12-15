@@ -313,3 +313,6 @@
 [submodule "bundle/telescope.nvim"]
 	path = bundle/telescope.nvim
 	url = git@github.com:nvim-telescope/telescope.nvim.git
+[submodule "bundle/telescope-file-history.nvim"]
+	path = bundle/telescope-file-history.nvim
+	url = git@github.com:ColinKennedy/telescope-file-history.nvim.git
