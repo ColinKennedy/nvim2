@@ -319,6 +319,17 @@ return {
         version = "1.*",
     },
 
+    -- Auto-saves changes to a git repository. Use `:Telescope file_history
+    -- history2` to show the commit history of the current file.
+    --
+    {
+        "ColinKennedy/telescope-file-history.nvim",
+        config = function()
+            require("file_history").setup { backup_dir = "~/.vim_custom_backups" }
+            require("telescope").load_extension("file_history")
+        end
+    },
+
     -- Useful git commands. Such as :Gcd
     {
         "tpope/vim-fugitive",
