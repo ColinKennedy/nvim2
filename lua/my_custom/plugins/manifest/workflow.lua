@@ -327,7 +327,15 @@ return {
         config = function()
             require("file_history").setup { backup_dir = "~/.vim_custom_backups" }
             require("telescope").load_extension("file_history")
-        end
+        end,
+        cmd = "Telescope",
+        keys = {
+            {
+                "<space>GF",
+                ":Telescope file_history history2<CR>",
+                desc="Show [G]it [F]ile History.",
+            },
+        },
     },
 
     -- Useful git commands. Such as :Gcd
