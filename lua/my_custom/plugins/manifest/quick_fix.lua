@@ -54,6 +54,7 @@ return {
     -- Extra quick-fix commands
     {
         "ColinKennedy/vim-qf",
+        branch = "custom_edits",
         config = function()
             vim.g.qf_auto_resize = 0
             vim.g.qf_window_bottom = 0
