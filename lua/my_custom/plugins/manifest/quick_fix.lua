@@ -54,6 +54,34 @@ return {
     -- Extra quick-fix commands
     {
         "romainl/vim-qf",
+        config = function()
+            vim.api.nvim_create_autocmd(
+                "FileType",
+                {
+                    callback = function()
+                        vim.keymap.set(
+                            "n",
+                            "{",
+                            "<Plug>(qf_previous_file)",
+                            {
+                                buffer=true,
+                                desc="Select the previous quick-fix entry of a different file.",
+                            }
+                        )
+                        vim.keymap.set(
+                            "n",
+                            "}",
+                            "<Plug>(qf_next_file)",
+                            {
+                                buffer=true,
+                                desc="Select the next quick-fix entry of a different file.",
+                            }
+                        )
+                    end,
+                    pattern = "qf"
+                }
+            )
+        end,
         ft = "qf"
     },
 
@@ -66,67 +94,6 @@ return {
     --
     {
         "itchyny/vim-qfedit",
-        ft = "qf",
-    },
-
-
-    -- More Quick Fix / Location List improvements.
-    --
-    -- - Keep the quickfix location in sync with cursor location in the file
-    -- - One keybinding for next/prev that intelligently chooses between quickfix and loclist
-    --
-    {
-        "stevearc/qf_helper.nvim",
-        config = function()
-            require("qf_helper").setup(
-                {
-                    quickfix = {
-                        default_bindings = false,
-                    },
-                }
-            )
-
-            local nav = require("qf_helper.nav")
-
-            -- Remove the column-highlight on QuickFix & LocationList buffers
-            vim.api.nvim_create_autocmd(
-                "FileType",
-                {
-                    pattern = "qf",
-                    callback = function()
-                        local buffer = vim.fn.bufnr()
-
-                        vim.keymap.set(
-                            "n",
-                            "<C-p>",
-                            "<CR><C-W>p",
-                            { desc = "Preview entry", buffer = buffer }
-                        )
-
-                        vim.keymap.set(
-                            "n",
-                            "{",
-                            function()
-                                local qfwin = vim.api.nvim_get_current_win()
-                                nav.jump(-vim.v.count1, { by_file = true })
-                                vim.api.nvim_set_current_win(qfwin)
-                            end,
-                            { desc = "Jump to previous file in list", buffer = buffer }
-                        )
-
-                        vim.keymap.set(
-                            "n",
-                            "}",
-                            function()
-                                local qfwin = vim.api.nvim_get_current_win()
-                                nav.jump(vim.v.count1, { by_file = true })
-                                vim.api.nvim_set_current_win(qfwin)
-                            end, { desc = "Jump to next file in list", buffer = buffer }
-                        )
-                    end
-                }
-            )
-        end,
         ft = "qf",
     },
 }
