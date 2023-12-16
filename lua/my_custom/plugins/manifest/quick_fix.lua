@@ -53,8 +53,11 @@ return {
 
     -- Extra quick-fix commands
     {
-        "romainl/vim-qf",
+        "ColinKennedy/vim-qf",
         config = function()
+            vim.g.qf_auto_resize = 0
+            vim.g.qf_window_bottom = 0
+
             vim.api.nvim_create_autocmd(
                 "FileType",
                 {
