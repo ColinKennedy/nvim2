@@ -192,33 +192,6 @@ return {
             add_zoom_keymap("<leader>ds", "dapui_scopes")
             add_zoom_keymap("<leader>dt", "dapui_stacks")  -- dt as in s[t]acks
             add_zoom_keymap("<leader>dr", "dap-repl")
-
-            vim.keymap.set(
-                "n",
-                "<F5>",
-                function()
-                    require("dapui").open()
-
-                    vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
-                end,
-                {desc="Start a debugging session."}
-            )
-
-            -- Note: Added this <leader>dd duplicate of <F5> because somehow the <F5>
-            -- mapping keeps getting reset each time I restart nvim-dap. Annoying but whatever.
-            --
-            vim.keymap.set(
-                "n",
-                "<leader>dd",
-                function()
-                    require("dapui").open()  -- Requires nvim-dap-ui
-
-                    vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
-                end,
-                {
-                    desc="[d]o [d]ebugger. Start a debugging session.",
-                }
-            )
         end,
         dependencies = {
             "mfussenegger/nvim-dap",
@@ -227,7 +200,26 @@ return {
 
             "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
         },
-        keys = { "<F5>", "<leader>dd" },
+        keys = {
+            {
+                "<F5>",
+                function()
+                    require("dapui").open()  -- Requires nvim-dap-ui
+
+                    vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
+                end,
+                desc="Start a debugging session.",
+            },
+            {
+                "<leader>dd",
+                function()
+                    require("dapui").open()  -- Requires nvim-dap-ui
+
+                    vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
+                end,
+                desc="[d]o [d]ebugger. Start a debugging session.",
+            },
+        },
     },
 
     -- Adds the current value(s) of variables as you step through the code. Super handy!

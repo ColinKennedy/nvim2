@@ -13,7 +13,11 @@ return {
     -- Surround plugin. Lets you change stuff would words really easily
     {
         "tpope/vim-surround",
-        keys = { "cs", "ds", "ys" },
+        keys = {
+            { "cs", desc = "[c]hange [s]urrounding characters." },
+            { "ds", desc = "[d]elete [s]urrounding characters." },
+            { "ys", desc = "add [s]urrounding characters." },
+        },
         version = "2.*",
     },
 
@@ -154,7 +158,16 @@ return {
     -- Gives vim a few tools to navigate through indented blocks more easily
     {
         "jeetsukumaran/vim-indentwise",
-        keys = { "[%", "[+", "[-", "[=", "[_", "]%", "]+", "]-", "]=", "]_" },
+        keys = {
+            { "[+", desc = "Go to the previous line of greater indent." },
+            { "[-", desc = "Go to the previous line of lesser indent." },
+            { "[=", desc = "Go to the previous line of equal indent." },
+            -- "[_",
+            { "]+", desc = "Go to the next line of greater indent." },
+            { "]-", desc = "Go to the next line of lesser indent." },
+            { "]=", desc = "Go to the next line of equal indent." },
+            -- "]_",
+        },
         version = "1.*",
     },
 
@@ -166,7 +179,10 @@ return {
         config = function()
             vim.g.ip_skipfold = 1
         end,
-        keys = {"{", "}"},
+        keys = {
+            { "{", desc = "Go to the previous paragraph including whitespace." },
+            { "}", desc = "Go to the next paragraph including whitespace." },
+        },
         -- version = "1.*",  TODO There is a tag but it's broken so we get the latest commits
     },
 
@@ -187,19 +203,30 @@ return {
         config = function()
         end,
         keys = {
-            "<P", ">P",
-            "<p", ">p",
-            -- "=P", "=p",
-            "[<Space>", "]<Space>",  -- Add newlines above / below the cursor
-            "[A", "]A",
-            "[B", "]B",
-            "[L", "]L",
-            "[Q", "]Q",
-            "[T", "]T",
-            "[a", "]a",
-            "[b", "]b",
-            "[p", "]p",
-            "[t", "]t",
+            { "<P", desc = "Do [p]ut, but dedented onto the previous line." },
+            { ">P", desc = "Do [p]ut, but indented onto the previous line." },
+            { "<p", desc = "Do [p]ut, but dedented onto the next line." },
+            { ">p", desc = "Do [p]ut, but indented onto the next line." },
+            -- "=P", "=p", -- equal indentation put
+            { "[<Space>", desc = "Add a newline above the current line." },
+            { "]<Space>", desc = "Add a newline below the current line." },
+            { "[A", desc = "Go to the first [A]rgs." },
+            { "]A", desc = "Go to the last [A]rgs." },
+            { "[B", desc = "Go to the first [B]uffer." },
+            { "]B", desc = "Go to the last [B]uffer." },
+            { "[L", desc = "Go to the first [L]ocation list entry." },
+            { "]L", desc = "Go to the last [L]ocation list entry." },
+            { "[Q", desc = "Go to the first [Q]uickfix entry." },
+            { "]Q", desc = "Go to the last [Q]uickfix entry." },
+            { "[T", desc = "Go to the first tag." },
+            { "]T", desc = "Go to the last tag." },
+            { "[a", desc = "Go to the previous [a]rgs." },
+            { "]a", desc = "Go to the next [a]rgs." },
+            { "[b", desc = "Go to the previous [b]uffer." },
+            { "]b", desc = "Go to the next [b]uffer." },
+            { "[p", desc = "Do [p]ut to the previous line." },
+            { "]p", desc = "Do [p]ut to the next line." },
+            -- "[t", "]t",  tags
             {
                 "[q",
                 function()
@@ -262,16 +289,29 @@ return {
     {
         "ColinKennedy/vim-ninja-feet",
         keys = {
-            "c[", "c]",
-            "d[", "d]",
-            "p[", "p]",
-            "s[", "s]",
-            "z[", "z]",
+            { "c[", desc = "Make an edit from the cursor to the start of a text object and [c]hange it." },
+            { "c]", desc = "Make an edit from the cursor to the end of a text object and [c]hange it." },
+            { "d[", desc = "Make an edit from the cursor to the start of a text object and [d]elete it." },
+            { "d]", desc = "Make an edit from the cursor to the end of a text object and [d]elete it." },
+            -- "p[", "p]",
+
+            { "s[", desc = "Make an edit from the cursor to the start of a text object and [s]elect it." },
+            { "s]", desc = "Make an edit from the cursor to the end of a text object and [s]elect it." },
+            { "z[", desc = "Make to the start of a text object." },
+            { "z]", desc = "Move to the end of a text object." },
         },
     },
 
     -- Exchange any two text objects with a new text-motion, `cx`
-    {"tommcdo/vim-exchange", keys = {"cx"}},
+    {
+        "tommcdo/vim-exchange",
+        keys = {
+            {
+                "cx",
+                desc = "[c]hange and e[x]change two text objects.",
+            },
+        },
+    },
 
     -- Add comment text objects ``ac`` / ``ic``. e.g. ``dac`` (delete comment) or  ``gcac`` (requires ``numToStr/Comment.nvim``)
     {

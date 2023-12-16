@@ -63,9 +63,21 @@ return {
     },
 
     -- Press * or # in Visual mode to start a search
+    -- TODO: This doesn't work. Why?
     {
         "bronson/vim-visual-star-search",
-        keys = {"*", "#"},
+        keys = {
+            {
+                "*",
+                desc = "Search for the next occurrence of the currently selected text.",
+                mode = "v",
+            },
+            {
+                "#",
+                desc = "Search for the previous occurrence of the currently selected text.",
+                mode = "v",
+            },
+        },
         version = "0.*",
     },
 
@@ -140,7 +152,12 @@ return {
             require("my_custom.plugins.data.smart_splits")
         end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
-        keys = { "<C-h>", "<C-j>", "<C-k>", "<C-l>" },
+        keys = {
+            { "<C-h>", desc = "Move cursor to the left window (or tmux)." },
+            { "<C-j>", desc = "Move cursor to the below window (or tmux)." },
+            { "<C-k>", desc = "Move cursor to the above window (or tmux)." },
+            { "<C-l>", desc = "Move cursor to the right window (or tmux)." },
+        },
         version = "1.*",
     },
 
@@ -186,7 +203,9 @@ return {
             "L3MON4D3/LuaSnip",
             "nvim-treesitter/nvim-treesitter"
         },
-        keys = { "<leader>id" },
+        keys = {
+            { "<leader>id", desc = "[i]nsert [d]ocstring at the current cursor." }
+        },
         version = "*",  -- Only follow the latest stable release
     },
 
@@ -328,7 +347,6 @@ return {
             require("file_history").setup { backup_dir = "~/.vim_custom_backups" }
             require("telescope").load_extension("file_history")
         end,
-        cmd = "Telescope",
         keys = {
             {
                 "<space>GF",
@@ -506,7 +524,10 @@ return {
                 }
             )
         end,
-        keys = {"<Space>", "<leader>"},
+        keys = {
+            { "<Space>", desc = "The space switcher key." },
+            { "<leader>", desc = "The custom mapping location." }
+        },
         version = "stable",
     },
 
@@ -613,7 +634,10 @@ return {
         config = function()
             require("my_custom.plugins.data.hydra")
         end,
-        keys = { "<Space>GD", "<Space>GG" },
+        keys = {
+            { "<Space>GD", desc = "[G]it [D]iff mode (basically a sort of git add -p mode)" },
+            { "<Space>GG", desc = "[G]it [G]eneral mode" },
+        },
     },
 
     -- Show classes / functions / variables in an outliner
@@ -649,7 +673,10 @@ return {
     {
         "duane9/nvim-rg",
         cmd = "Rg",
-        keys = {"<leader>rg", "<leader>rw"}
+        keys = {
+            { "<leader>rg", desc = "Search :pwd with [rg] - ripgrep." },
+            { "<leader>rw", desc = "Search the current [w]ord at :pwd with [rg] - ripgrep." },
+        }
     },
 
     -- Cool Neovim mark displays and mappings. e.g. `dmx` deletes mark x. m[ / m] to move

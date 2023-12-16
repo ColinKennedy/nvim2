@@ -6,8 +6,8 @@ return {
             require("my_custom.plugins.data.nvim_lsp_config")
         end,
         keys = {
-            "[d",
-            "]d",
+            { "[d", desc = "Previous available [d]iagnostic." },
+            { "]d", desc = "Next available [d]iagnostic." },
             {
                 "<leader>d",
                 function() vim.diagnostic.open_float({ source="always" }) end,
