@@ -667,15 +667,22 @@ return {
     },
 
     -- Search with :Rg
-    -- :Rg -t vim foo (searches "foo" for vim files
+    -- :Rg -t vim foo (searches "foo" for vim files)
+    -- :Rg -t vim foo /somewhere (searches "foo" for vim files in the /somewhere directory)
     -- :Rg (triggers an interactive prompt for a search)
     --
     {
         "duane9/nvim-rg",
         cmd = "Rg",
+        config = function()
+            -- The plug-in comes with a default <leader>rg mapping. I don't like it so I'm overriding it
+            vim.keymap.set("n", "<leader>rg", ":Rg ", { desc = "Search :pwd with [rg] - ripgrep." })
+        end,
         keys = {
-            { "<leader>rg", desc = "Search :pwd with [rg] - ripgrep." },
-            { "<leader>rw", desc = "Search the current [w]ord at :pwd with [rg] - ripgrep." },
+            {
+                "<leader>rg",
+                desc = "Search :pwd with [rg] - ripgrep.",
+            },
         }
     },
 
@@ -803,24 +810,24 @@ return {
             {
                 "<leader>cid",
                 function() require("dial.map").manipulate("decrement", "normal") end,
-                { desc = "[c]hange the [i]ncrement with [d]ecrease." },
+                desc = "[c]hange the [i]ncrement with [d]ecrease.",
             },
             {
                 "<leader>cii",
                 function() require("dial.map").manipulate("increment", "normal") end,
-                { desc = "[c]hange the [i]ncrement with [i]ncrease." },
+                desc = "[c]hange the [i]ncrement with [i]ncrease.",
             },
             {
                 "<leader>cid",
                 mode = "v",
                 function() require("dial.map").manipulate("decrement", "visual") end,
-                { desc = "[c]hange the [i]ncrement with [d]ecrease." },
+                desc = "[c]hange the [i]ncrement with [d]ecrease.",
             },
             {
                 "<leader>cii",
                 mode = "v",
                 function() require("dial.map").manipulate("increment", "visual") end,
-                { desc = "[c]hange the [i]ncrement with [i]ncrease." },
+                desc = "[c]hange the [i]ncrement with [i]ncrease.",
             },
         },
         version = "0.*",
