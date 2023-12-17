@@ -822,6 +822,7 @@ return {
                 function() require("dial.map").manipulate("increment", "visual") end,
                 { desc = "[c]hange the [i]ncrement with [i]ncrease." },
             },
-        }
+        },
+        version = "0.*",
     }
 }
