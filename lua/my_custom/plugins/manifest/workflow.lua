@@ -775,4 +775,53 @@ return {
         end,
         dependencies = {"ColinKennedy/plenary.nvim"},
     },
+
+    -- Use <leader>cii to increment semver / dates
+    -- Use <leader>cid to decrement semver / dates
+    --
+    {
+        "monaqa/dial.nvim",
+        config = function()
+            local augend = require("dial.augend")
+
+            require("dial.config").augends:register_group{
+                default = {
+                    augend.semver.alias.semver,
+                    augend.integer.alias.decimal,
+                    augend.date.alias["%Y/%m/%d"],
+                    augend.date.alias["%Y-%m-%d"],
+                },
+                visual = {
+                    augend.semver.alias.semver,
+                    augend.integer.alias.decimal,
+                    augend.date.alias["%Y/%m/%d"],
+                    augend.date.alias["%Y-%m-%d"],
+                },
+            }
+        end,
+        keys = {
+            {
+                "<leader>cid",
+                function() require("dial.map").manipulate("decrement", "normal") end,
+                { desc = "[c]hange the [i]ncrement with [d]ecrease." },
+            },
+            {
+                "<leader>cii",
+                function() require("dial.map").manipulate("increment", "normal") end,
+                { desc = "[c]hange the [i]ncrement with [i]ncrease." },
+            },
+            {
+                "<leader>cid",
+                mode = "v",
+                function() require("dial.map").manipulate("decrement", "visual") end,
+                { desc = "[c]hange the [i]ncrement with [d]ecrease." },
+            },
+            {
+                "<leader>cii",
+                mode = "v",
+                function() require("dial.map").manipulate("increment", "visual") end,
+                { desc = "[c]hange the [i]ncrement with [i]ncrease." },
+            },
+        }
+    }
 }

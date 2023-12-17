@@ -316,3 +316,6 @@
 [submodule "bundle/vim-qf"]
 	path = bundle/vim-qf
 	url = git@github.com:ColinKennedy/vim-qf.git
+[submodule "bundle/dial.nvim"]
+	path = bundle/dial.nvim
+	url = git@github.com:monaqa/dial.nvim.git
