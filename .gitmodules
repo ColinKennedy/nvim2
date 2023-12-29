@@ -319,3 +319,6 @@
 [submodule "bundle/dial.nvim"]
 	path = bundle/dial.nvim
 	url = git@github.com:monaqa/dial.nvim.git
+[submodule "bundle/smart-tab.nvim"]
+	path = bundle/smart-tab.nvim
+	url = git@github.com:boltlessengineer/smart-tab.nvim.git

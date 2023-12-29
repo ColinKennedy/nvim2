@@ -831,5 +831,21 @@ return {
             },
         },
         version = "0.*",
-    }
+    },
+
+    -- Press <Tab> in insert mode to move to the end of the current node.
+    {
+        "boltlessengineer/smart-tab.nvim",
+        config = function()
+            require('smart-tab').setup()
+        end,
+        dependencies = {"nvim-treesitter/nvim-treesitter"},
+        keys = {
+            {
+                "<Tab>",
+                mode = "i",
+                desc = "Easily jump to the end of the current node.",
+            }
+        }
+    },
 }
