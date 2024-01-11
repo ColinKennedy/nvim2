@@ -322,3 +322,6 @@
 [submodule "bundle/smart-tab.nvim"]
 	path = bundle/smart-tab.nvim
 	url = git@github.com:boltlessengineer/smart-tab.nvim.git
+[submodule "bundle/timeline.nvim"]
+	path = bundle/timeline.nvim
+	url = git@github.com:ColinKennedy/timeline.nvim.git
