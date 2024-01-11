@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd(
                 return
             end
 
-            vim.api.nvim_win_set_height(window, math.min(quickfix_length, _DEFAULT_SIZE))
+            vim.api.nvim_win_set_height(window, math.min(window_height, _DEFAULT_SIZE))
         end
     }
 )
