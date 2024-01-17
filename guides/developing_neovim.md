@@ -10,12 +10,6 @@ cmake -B build -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER=clang -D ENABLE_ASA
 ```
 
 
-msg_puts_attr("Is visual mode, actually", 0);
-// emsg(_("Is visual mode, actually"));
-// snprintf(errmsg, sizeof(errmsg), "is a visual print");
-// fprintf(stderr, "Is visual, actually");
-
-
 ## Debugging
 ### Configuration
 - Make sure you compile with debug symbols enabled
@@ -162,4 +156,13 @@ EOF
 "   },
 " }
 " EOF
+```
+
+
+## Printing in Neovim
+```c
+msg_puts_attr("Is visual mode, actually", 0);
+// emsg(_("Is visual mode, actually"));
+// snprintf(errmsg, sizeof(errmsg), "is a visual print");
+// fprintf(stderr, "Is visual, actually");
 ```
