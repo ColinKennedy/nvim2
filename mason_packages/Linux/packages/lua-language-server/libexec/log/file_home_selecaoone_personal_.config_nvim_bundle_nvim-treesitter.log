@@ -1,0 +1,1310 @@
+[21:23:37.189][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:66]: Lua Lsp startup, root: 	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec
+[21:23:37.190][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:67]: ROOT:	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec
+[21:23:37.190][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:68]: LOGPATH:	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/log
+[21:23:37.190][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:69]: METAPATH:	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta
+[21:23:37.190][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:70]: VERSION:	3.7.0
+[21:23:37.248][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 2.143 MB
+        # 00 : 2.143 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:23:37.256][info] [#0:script/client.lua:657]: Client init	{
+  capabilities = {
+    textDocument = {
+      callHierarchy = {
+        dynamicRegistration = false
+      },
+      codeAction = {
+        codeActionLiteralSupport = {
+          codeActionKind = {
+            valueSet = { "", "quickfix", "refactor", "refactor.extract", "refactor.inline", "refactor.rewrite", "source", "source.organizeImports" }
+          }
+        },
+        dataSupport = true,
+        dynamicRegistration = false,
+        isPreferredSupport = true,
+        resolveSupport = {
+          properties = { "edit" }
+        }
+      },
+      completion = {
+        completionItem = {
+          commitCharactersSupport = false,
+          deprecatedSupport = false,
+          documentationFormat = { "markdown", "plaintext" },
+          preselectSupport = false,
+          snippetSupport = false
+        },
+        completionItemKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }
+        },
+        contextSupport = false,
+        dynamicRegistration = false
+      },
+      declaration = {
+        linkSupport = true
+      },
+      definition = {
+        linkSupport = true
+      },
+      documentHighlight = {
+        dynamicRegistration = false
+      },
+      documentSymbol = {
+        dynamicRegistration = false,
+        hierarchicalDocumentSymbolSupport = true,
+        symbolKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+        }
+      },
+      hover = {
+        contentFormat = { "markdown", "plaintext" },
+        dynamicRegistration = false
+      },
+      implementation = {
+        linkSupport = true
+      },
+      publishDiagnostics = {
+        relatedInformation = true,
+        tagSupport = {
+          valueSet = { 1, 2 }
+        }
+      },
+      references = {
+        dynamicRegistration = false
+      },
+      rename = {
+        dynamicRegistration = false,
+        prepareSupport = true
+      },
+      semanticTokens = {
+        augmentsSyntaxTokens = true,
+        dynamicRegistration = false,
+        formats = { "relative" },
+        multilineTokenSupport = false,
+        overlappingTokenSupport = true,
+        requests = {
+          full = {
+            delta = true
+          },
+          range = false
+        },
+        serverCancelSupport = false,
+        tokenModifiers = { "declaration", "definition", "readonly", "static", "deprecated", "abstract", "async", "modification", "documentation", "defaultLibrary" },
+        tokenTypes = { "namespace", "type", "class", "enum", "interface", "struct", "typeParameter", "parameter", "variable", "property", "enumMember", "event", "function", "method", "macro", "keyword", "modifier", "comment", "string", "number", "regexp", "operator", "decorator" }
+      },
+      signatureHelp = {
+        dynamicRegistration = false,
+        signatureInformation = {
+          activeParameterSupport = true,
+          documentationFormat = { "markdown", "plaintext" },
+          parameterInformation = {
+            labelOffsetSupport = true
+          }
+        }
+      },
+      synchronization = {
+        didSave = true,
+        dynamicRegistration = false,
+        willSave = true,
+        willSaveWaitUntil = true
+      },
+      typeDefinition = {
+        linkSupport = true
+      }
+    },
+    window = {
+      showDocument = {
+        support = true
+      },
+      showMessage = {
+        messageActionItem = {
+          additionalPropertiesSupport = false
+        }
+      },
+      workDoneProgress = true
+    },
+    workspace = {
+      applyEdit = true,
+      configuration = true,
+      didChangeWatchedFiles = {
+        dynamicRegistration = false,
+        relativePatternSupport = true
+      },
+      semanticTokens = {
+        refreshSupport = true
+      },
+      symbol = {
+        dynamicRegistration = false,
+        hierarchicalWorkspaceSymbolSupport = true,
+        symbolKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+        }
+      },
+      workspaceEdit = {
+        resourceOperations = { "rename", "create", "delete" }
+      },
+      workspaceFolders = true
+    }
+  },
+  clientInfo = {
+    name = "Neovim",
+    version = "0.9.0"
+  },
+  initializationOptions = {},
+  processId = 53309,
+  rootPath = "/home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter",
+  rootUri = "file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter",
+  trace = "off",
+  workspaceFolders = { {
+      name = "/home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter",
+      uri = "file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter"
+    } }
+}
+[21:23:37.256][info] [#0:script/language.lua:137]: VSC language: nil
+[21:23:37.256][info] [#0:script/language.lua:138]: LS  language: en-us
+[21:23:37.256][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.256][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/log/file_home_selecaoone_personal_.config_nvim_bundle_nvim-treesitter.log
+[21:23:37.257][info] [#0:script/workspace/workspace.lua:48]: Workspace create: 	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.462][warn] [#0:script/config/loader.lua:116]: No config?	{}
+[21:23:37.462][info] [#0:script/provider/provider.lua:53]: Load config from .luarc.json/.luarc.jsonc	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.462][info] [#0:script/provider/provider.lua:54]: {
+  ["$schema"] = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  diagnostics = {
+    groupFileStatus = {
+      strict = "Opened",
+      strong = "Opened"
+    },
+    groupSeverity = {
+      strict = "Warning",
+      strong = "Warning"
+    },
+    unusedLocalExclude = { "_*" }
+  },
+  runtime = {
+    version = "LuaJIT"
+  },
+  workspace = {
+    checkThirdParty = false,
+    library = { "lua", "$VIMRUNTIME", "${3rd}/luv/library" }
+  }
+}
+[21:23:37.463][warn] [#0:script/config/loader.lua:116]: No config?	{}
+[21:23:37.463][info] [#0:script/provider/provider.lua:53]: Load config from .luarc.json/.luarc.jsonc	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.463][info] [#0:script/provider/provider.lua:54]: {
+  ["$schema"] = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  diagnostics = {
+    groupFileStatus = {
+      strict = "Opened",
+      strong = "Opened"
+    },
+    groupSeverity = {
+      strict = "Warning",
+      strong = "Warning"
+    },
+    unusedLocalExclude = { "_*" }
+  },
+  runtime = {
+    version = "LuaJIT"
+  },
+  workspace = {
+    checkThirdParty = false,
+    library = { "lua", "$VIMRUNTIME", "${3rd}/luv/library" }
+  }
+}
+[21:23:37.464][warn] [#0:script/config/loader.lua:116]: No config?	{}
+[21:23:37.464][info] [#0:script/provider/provider.lua:53]: Load config from .luarc.json/.luarc.jsonc	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.464][info] [#0:script/provider/provider.lua:54]: {
+  ["$schema"] = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  diagnostics = {
+    groupFileStatus = {
+      strict = "Opened",
+      strong = "Opened"
+    },
+    groupSeverity = {
+      strict = "Warning",
+      strong = "Warning"
+    },
+    unusedLocalExclude = { "_*" }
+  },
+  runtime = {
+    version = "LuaJIT"
+  },
+  workspace = {
+    checkThirdParty = false,
+    library = { "lua", "$VIMRUNTIME", "${3rd}/luv/library" }
+  }
+}
+[21:23:37.464][warn] [#0:script/config/loader.lua:116]: No config?	{}
+[21:23:37.464][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[21:23:37.464][info] [#0:script/provider/provider.lua:62]: nil
+[21:23:37.465][warn] [#0:script/config/loader.lua:116]: No config?	{}
+[21:23:37.465][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[21:23:37.465][info] [#0:script/provider/provider.lua:62]: nil
+[21:23:37.465][warn] [#0:script/config/loader.lua:116]: No config?	{}
+[21:23:37.465][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[21:23:37.465][info] [#0:script/provider/provider.lua:62]: nil
+[21:23:37.566][info] [#0:script/library.lua:212]: Init builtin library at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.620][info] [#0:script/plugin.lua:86]: plugin path:	/home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.620][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.620][info] [#0:script/library.lua:212]: Init builtin library at:	nil
+[21:23:37.741][info] [#0:script/workspace/workspace.lua:324]: Preload start:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.753][info] [#0:script/workspace/workspace.lua:330]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:37.800][info] [#0:script/workspace/workspace.lua:324]: Preload start:	<fallback>
+[21:23:37.803][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/builtin.lua
+[21:23:37.804][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/table.lua
+[21:23:37.804][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/math.lua
+[21:23:37.804][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/debug.lua
+[21:23:37.805][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/io.lua
+[21:23:37.805][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/utf8.lua
+[21:23:37.806][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/os.lua
+[21:23:37.806][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/basic.lua
+[21:23:37.807][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/string.lua
+[21:23:37.807][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/package.lua
+[21:23:37.807][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
+[21:23:37.908][info] [#0:script/workspace/workspace.lua:379]: Found 11 files at:	<fallback>
+[21:23:37.908][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	<fallback>
+[21:23:37.912][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/package.lua , size = 2.944 KB
+[21:23:37.914][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/package.lua
+[21:23:37.914][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/string.lua , size = 6.341 KB
+[21:23:37.920][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/string.lua
+[21:23:37.920][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/coroutine.lua , size = 2.590 KB
+[21:23:37.922][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
+[21:23:37.922][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/basic.lua , size = 15.336 KB
+[21:23:37.935][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/basic.lua
+[21:23:37.935][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/utf8.lua , size = 2.386 KB
+[21:23:37.938][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/utf8.lua
+[21:23:37.938][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/os.lua , size = 5.600 KB
+[21:23:37.943][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/os.lua
+[21:23:37.943][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/io.lua , size = 6.364 KB
+[21:23:37.951][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/io.lua
+[21:23:37.951][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/math.lua , size = 8.509 KB
+[21:23:37.958][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/math.lua
+[21:23:37.958][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/debug.lua , size = 7.637 KB
+[21:23:37.965][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/debug.lua
+[21:23:37.965][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/table.lua , size = 4.230 KB
+[21:23:37.969][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/table.lua
+[21:23:37.969][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/builtin.lua , size = 0.302 KB
+[21:23:37.970][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/Lua%205.4%20en-us%20utf8/builtin.lua
+[21:23:37.983][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[21:23:37.983][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[21:23:37.983][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.069][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.180] sec: <fallback>
+[21:23:38.069][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: <fallback>
+[21:23:38.069][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	<fallback>
+[21:23:38.069][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	<fallback>
+[21:23:38.116][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.118][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[21:23:38.118][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[21:23:38.118][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[21:23:38.119][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[21:23:38.119][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[21:23:38.119][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[21:23:38.119][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[21:23:38.119][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[21:23:38.119][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[21:23:38.119][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[21:23:38.120][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[21:23:38.120][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[21:23:38.120][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.122][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[21:23:38.122][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[21:23:38.122][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[21:23:38.122][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[21:23:38.223][info] [#0:script/workspace/workspace.lua:379]: Found 207 files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:38.223][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:38.224][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua , size = 0.348 KB
+[21:23:38.226][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[21:23:38.229][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua , size = 0.797 KB
+[21:23:38.231][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[21:23:38.233][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua , size = 6.364 KB
+[21:23:38.240][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[21:23:38.242][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua , size = 14.989 KB
+[21:23:38.266][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[21:23:38.268][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/errors.lua , size = 15.165 KB
+[21:23:38.278][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.279][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/luv_dir_t.lua , size = 1.056 KB
+[21:23:38.281][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.282][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/luv_thread_t.lua , size = 0.500 KB
+[21:23:38.283][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.286][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/luv_work_ctx_t.lua , size = 0.530 KB
+[21:23:38.286][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.288][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/types.lua , size = 17.131 KB
+[21:23:38.301][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.304][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv.lua , size = 98.128 KB
+[21:23:38.371][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.372][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_async_t.lua , size = 1.058 KB
+[21:23:38.373][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.375][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_check_t.lua , size = 0.694 KB
+[21:23:38.376][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.378][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_fs_event_t.lua , size = 1.033 KB
+[21:23:38.380][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.381][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_handle_t.lua , size = 5.129 KB
+[21:23:38.384][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.384][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_fs_poll_t.lua , size = 1.140 KB
+[21:23:38.386][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.386][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_idle_t.lua , size = 1.074 KB
+[21:23:38.387][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.387][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_pipe_t.lua , size = 2.988 KB
+[21:23:38.390][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.390][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_poll_t.lua , size = 2.646 KB
+[21:23:38.392][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.392][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_process_t.lua , size = 0.617 KB
+[21:23:38.393][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.393][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_prepare_t.lua , size = 0.716 KB
+[21:23:38.394][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.394][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_signal_t.lua , size = 2.997 KB
+[21:23:38.396][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.396][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_req_t.lua , size = 0.705 KB
+[21:23:38.397][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.397][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_stream_t.lua , size = 5.906 KB
+[21:23:38.401][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.401][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_tcp_t.lua , size = 3.923 KB
+[21:23:38.405][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.405][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_timer_t.lua , size = 1.999 KB
+[21:23:38.417][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.417][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_udp_t.lua , size = 5.970 KB
+[21:23:38.422][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.422][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library/uv_tty_t.lua , size = 1.135 KB
+[21:23:38.424][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/3rd/luv/library
+[21:23:38.424][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua , size = 7.949 KB
+[21:23:38.430][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[21:23:38.431][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua , size = 18.123 KB
+[21:23:38.437][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[21:23:38.437][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua , size = 6.323 KB
+[21:23:38.442][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[21:23:38.442][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua , size = 5.600 KB
+[21:23:38.447][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[21:23:38.447][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua , size = 7.310 KB
+[21:23:38.454][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[21:23:38.454][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua , size = 2.541 KB
+[21:23:38.456][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[21:23:38.456][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua , size = 0.642 KB
+[21:23:38.458][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[21:23:38.458][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua , size = 1.320 KB
+[21:23:38.460][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[21:23:38.460][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua , size = 1.984 KB
+[21:23:38.463][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[21:23:38.464][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua , size = 0.884 KB
+[21:23:38.465][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[21:23:38.465][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua , size = 2.699 KB
+[21:23:38.468][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[21:23:38.468][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua , size = 2.529 KB
+[21:23:38.472][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[21:23:38.473][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/caching.lua , size = 1.653 KB
+[21:23:38.475][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.475][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter.lua , size = 0.604 KB
+[21:23:38.475][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.476][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/compat.lua , size = 0.671 KB
+[21:23:38.477][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.477][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/fold.lua , size = 3.760 KB
+[21:23:38.480][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.480][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/configs.lua , size = 17.758 KB
+[21:23:38.494][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.494][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/highlight.lua , size = 1.210 KB
+[21:23:38.495][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.496][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/incremental_selection.lua , size = 5.401 KB
+[21:23:38.501][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.501][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/info.lua , size = 5.092 KB
+[21:23:38.506][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.506][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/locals.lua , size = 9.629 KB
+[21:23:38.515][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.515][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/install.lua , size = 22.352 KB
+[21:23:38.548][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.549][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/parsers.lua
+[21:23:38.549][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.549][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/query.lua , size = 12.730 KB
+[21:23:38.559][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.559][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/shell_command_selectors.lua , size = 8.233 KB
+[21:23:38.566][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.566][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/statusline.lua , size = 1.386 KB
+[21:23:38.567][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.567][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/tsrange.lua , size = 3.576 KB
+[21:23:38.571][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.571][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/utils.lua , size = 6.361 KB
+[21:23:38.576][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.576][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/health.lua , size = 5.872 KB
+[21:23:38.580][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.580][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/indent.lua , size = 11.680 KB
+[21:23:38.589][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.589][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/ts_utils.lua , size = 14.204 KB
+[21:23:38.611][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.611][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/query_predicates.lua , size = 6.113 KB
+[21:23:38.622][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua
+[21:23:38.622][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/autoload/ccomplete.lua , size = 26.345 KB
+[21:23:38.658][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.659][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/filetype.lua , size = 1.542 KB
+[21:23:38.661][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.661][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/c.lua , size = 0.031 KB
+[21:23:38.662][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.662][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/calender.lua , size = 0.031 KB
+[21:23:38.663][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.663][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/css.lua , size = 0.031 KB
+[21:23:38.663][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.663][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/query.lua , size = 0.146 KB
+[21:23:38.664][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.664][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/indent.lua , size = 0.031 KB
+[21:23:38.665][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.665][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/xdefaults.lua , size = 0.031 KB
+[21:23:38.666][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.666][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/indent/query.lua , size = 0.135 KB
+[21:23:38.666][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.667][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/_vim9script.lua , size = 15.439 KB
+[21:23:38.688][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.688][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/editorconfig.lua , size = 6.716 KB
+[21:23:38.698][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.699][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/man.lua , size = 24.703 KB
+[21:23:38.724][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.725][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/nvim/health.lua , size = 12.706 KB
+[21:23:38.736][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.736][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/F.lua , size = 0.824 KB
+[21:23:38.738][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.738][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_init_packages.lua , size = 2.773 KB
+[21:23:38.741][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.741][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_inspector.lua , size = 7.792 KB
+[21:23:38.749][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.749][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_editor.lua , size = 29.339 KB
+[21:23:38.833][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.833][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_meta.lua , size = 12.077 KB
+[21:23:38.843][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.843][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_watch.lua , size = 5.115 KB
+[21:23:38.848][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.848][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/diagnostic.lua , size = 56.640 KB
+[21:23:38.887][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.887][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype/options.lua , size = 2.561 KB
+[21:23:38.890][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.890][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype/detect.lua , size = 47.479 KB
+[21:23:38.923][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.927][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype.lua , size = 74.400 KB
+[21:23:38.977][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.978][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/fs.lua , size = 10.662 KB
+[21:23:38.986][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.986][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/health.lua , size = 1.537 KB
+[21:23:38.988][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.988][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/highlight.lua , size = 3.749 KB
+[21:23:38.992][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:38.992][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/inspect.lua , size = 8.864 KB
+[21:23:39.000][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.000][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/keymap.lua , size = 3.573 KB
+[21:23:39.003][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.003][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/loader.lua , size = 15.990 KB
+[21:23:39.018][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.018][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/_snippet.lua , size = 10.744 KB
+[21:23:39.029][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.029][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/_watchfiles.lua , size = 9.196 KB
+[21:23:39.037][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.037][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/buf.lua , size = 27.860 KB
+[21:23:39.054][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.055][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/codelens.lua , size = 8.261 KB
+[21:23:39.062][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.062][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/diagnostic.lua , size = 8.867 KB
+[21:23:39.112][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.114][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/handlers.lua , size = 23.587 KB
+[21:23:39.130][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.131][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/health.lua , size = 1.240 KB
+[21:23:39.132][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.134][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/log.lua , size = 5.151 KB
+[21:23:39.138][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.139][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/protocol.lua , size = 28.367 KB
+[21:23:39.148][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.149][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/rpc.lua , size = 23.695 KB
+[21:23:39.165][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.167][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/semantic_tokens.lua , size = 24.755 KB
+[21:23:39.182][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.183][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/sync.lua , size = 15.681 KB
+[21:23:39.191][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.193][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/tagfunc.lua , size = 2.339 KB
+[21:23:39.195][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.197][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/types.lua , size = 0.924 KB
+[21:23:39.198][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.200][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/util.lua , size = 70.763 KB
+[21:23:39.248][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.251][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp.lua , size = 82.409 KB
+[21:23:39.302][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.306][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/secure.lua , size = 4.830 KB
+[21:23:39.310][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.312][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_fold.lua , size = 6.753 KB
+[21:23:39.319][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.319][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/shared.lua , size = 22.392 KB
+[21:23:39.337][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.337][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_meta.lua , size = 2.839 KB
+[21:23:39.341][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.341][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_range.lua , size = 3.646 KB
+[21:23:39.346][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.346][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/health.lua , size = 0.888 KB
+[21:23:39.347][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.347][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua , size = 8.609 KB
+[21:23:39.356][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.356][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/language.lua , size = 3.528 KB
+[21:23:39.359][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.359][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/languagetree.lua , size = 26.168 KB
+[21:23:39.381][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.381][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/playground.lua , size = 12.551 KB
+[21:23:39.389][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.389][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/query.lua , size = 21.253 KB
+[21:23:39.403][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.403][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter.lua , size = 15.442 KB
+[21:23:39.413][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.413][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/ui.lua , size = 3.672 KB
+[21:23:39.415][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.415][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/uri.lua , size = 3.376 KB
+[21:23:39.418][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.424][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/version.lua , size = 12.146 KB
+[21:23:39.432][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.432][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter.lua
+[21:23:39.432][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/caching.lua
+[21:23:39.432][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/compat.lua
+[21:23:39.432][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/pack/dist/opt/cfilter/plugin/cfilter.lua , size = 3.266 KB
+[21:23:39.434][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.435][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/editorconfig.lua , size = 0.410 KB
+[21:23:39.435][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.435][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/nvim.lua , size = 0.639 KB
+[21:23:39.436][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.436][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/man.lua , size = 0.772 KB
+[21:23:39.437][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.437][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/syntax/query.lua , size = 0.135 KB
+[21:23:39.438][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:23:39.438][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua , size = 4.230 KB
+[21:23:39.440][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[21:23:39.440][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua , size = 0.302 KB
+[21:23:39.441][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[21:23:39.441][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/configs.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/fold.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/highlight.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/incremental_selection.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/info.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/install.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/locals.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/query.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/shell_command_selectors.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/statusline.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/tsrange.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/utils.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/health.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/indent.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/query_predicates.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/ts_utils.lua
+[21:23:39.444][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/parsers.lua
+[21:23:39.547][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/javascript.so , size = 337.391 KB
+[21:23:39.552][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/x86asm.so , size = 48.336 KB
+[21:23:39.553][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/asm.so , size = 93.141 KB
+[21:23:39.555][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/c.so , size = 788.766 KB
+[21:23:39.652][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/comment.so , size = 17.031 KB
+[21:23:39.653][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:23:39.653][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:23:39.653][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/plugin/nvim-treesitter.lua , size = 0.733 KB
+[21:23:39.654][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/scripts/check-queries.lua , size = 3.810 KB
+[21:23:39.657][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/scripts/minimal_init.lua , size = 0.528 KB
+[21:23:39.658][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/scripts/update-readme.lua , size = 1.601 KB
+[21:23:39.659][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/scripts/write-lockfile.lua , size = 0.407 KB
+[21:23:39.660][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/algorithm_spec.lua , size = 0.782 KB
+[21:23:39.660][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/c_spec.lua , size = 3.652 KB
+[21:23:39.663][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/capnp_spec.lua , size = 1.145 KB
+[21:23:39.664][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/common.lua , size = 6.370 KB
+[21:23:39.669][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/cpp_spec.lua , size = 2.422 KB
+[21:23:39.671][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/css_spec.lua , size = 0.600 KB
+[21:23:39.671][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/dart_spec.lua , size = 1.759 KB
+[21:23:39.672][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/gdscript_spec.lua , size = 0.460 KB
+[21:23:39.673][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/gleam_spec.lua , size = 7.648 KB
+[21:23:39.678][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/go_spec.lua , size = 0.769 KB
+[21:23:39.679][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/graphql_spec.lua , size = 0.418 KB
+[21:23:39.679][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/html_spec.lua , size = 1.429 KB
+[21:23:39.680][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/java_spec.lua , size = 1.753 KB
+[21:23:39.682][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/javascript_spec.lua , size = 3.000 KB
+[21:23:39.684][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/jsx_spec.lua , size = 1.003 KB
+[21:23:39.685][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/comment.lua , size = 0.049 KB
+[21:23:39.685][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/cond.lua , size = 0.124 KB
+[21:23:39.686][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/func.lua , size = 0.111 KB
+[21:23:39.686][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/loop.lua , size = 0.116 KB
+[21:23:39.686][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/method_index_expr.lua , size = 0.031 KB
+[21:23:39.687][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/nested-table.lua , size = 0.043 KB
+[21:23:39.687][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/no-indent-after-paren-pairs.lua , size = 0.063 KB
+[21:23:39.687][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/string.lua , size = 0.040 KB
+[21:23:39.688][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua/table.lua , size = 0.094 KB
+[21:23:39.688][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/lua_spec.lua , size = 2.502 KB
+[21:23:39.690][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/nickel_spec.lua , size = 0.977 KB
+[21:23:39.691][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/python_spec.lua , size = 6.043 KB
+[21:23:39.694][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/ql_spec.lua , size = 0.562 KB
+[21:23:39.695][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/r_spec.lua , size = 1.690 KB
+[21:23:39.696][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/ruby_spec.lua , size = 0.774 KB
+[21:23:39.697][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/rust_spec.lua , size = 4.068 KB
+[21:23:39.699][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/smali_spec.lua , size = 1.003 KB
+[21:23:39.700][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/sql_spec.lua , size = 0.410 KB
+[21:23:39.701][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/swift_spec.lua , size = 0.835 KB
+[21:23:39.701][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/terraform_spec.lua , size = 1.896 KB
+[21:23:39.702][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/tiger_spec.lua , size = 5.885 KB
+[21:23:39.705][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/usd_spec.lua , size = 0.527 KB
+[21:23:39.706][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/vue_spec.lua , size = 0.573 KB
+[21:23:39.706][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/wgsl_spec.lua , size = 0.412 KB
+[21:23:39.707][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/yaml_spec.lua , size = 0.576 KB
+[21:23:39.707][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/yang_spec.lua , size = 0.704 KB
+[21:23:39.708][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/zig_spec.lua , size = 0.561 KB
+[21:23:39.709][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/php_spec.lua , size = 0.926 KB
+[21:23:39.709][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/indent/t32_spec.lua , size = 3.692 KB
+[21:23:39.712][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/query/highlights/lua/test.lua , size = 0.354 KB
+[21:23:39.712][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/query/highlights_spec.lua , size = 3.484 KB
+[21:23:39.714][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/query/injection_spec.lua , size = 2.521 KB
+[21:23:39.716][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/tests/unit/ts_utils_spec.lua , size = 2.771 KB
+[21:23:39.720][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/cpp.so , size = 3973.867 KB
+[21:23:39.850][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [1.490] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:39.850][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:39.851][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:39.851][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter
+[21:23:39.925][warn] [#0:script/proto/proto.lua:187]: Method [textDocument/didOpen] takes [2.030]sec. {
+  jsonrpc = "2.0",
+  method = "textDocument/didOpen",
+  params = {
+    textDocument = {
+      languageId = "lua",
+      text = '"***"',
+      uri = "file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/parsers.lua",
+      version = 0
+    }
+  }
+}
+[21:23:39.927][info] [#0:script/provider/diagnostic.lua:557]: Diagnostics scope [file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter], files count:[179]
+[21:23:39.990][warn] [#0:script/proto/proto.lua:187]: Method [textDocument/semanticTokens/full] takes [2.010]sec. {
+  id = 8,
+  jsonrpc = "2.0",
+  method = "textDocument/semanticTokens/full",
+  params = {
+    textDocument = {
+      uri = "file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/lua/nvim-treesitter/parsers.lua"
+    }
+  }
+}
+[21:23:40.852][info] [#0:script/provider/diagnostic.lua:574]: Diagnostics scope [file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter] finished, takes [0.930] sec.
+[21:24:00.261][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:00.262][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:00.362][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:24:00.463][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:00.463][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:00.463][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:05.361][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:05.362][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:05.462][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:24:05.563][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:05.563][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:05.563][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:06.106][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:06.106][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:06.207][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:24:06.307][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:06.307][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:06.307][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:24:13.265][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:13.268][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:13.268][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:13.268][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:13.268][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:16.366][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:16.368][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:16.368][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:16.368][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:16.368][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:17.111][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:17.112][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:17.112][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:17.112][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:24:17.112][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:29:11.147][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 124.294 MB
+        # 00 : 118.922 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.929 MB
+        # 04 : 4.337 MB
+    --------------- Coroutine ---------------
+        Total:     905
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      905
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:30:39.313][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.313][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.414][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:30:39.415][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.415][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.515][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.515][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.515][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.516][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:30:39.617][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.617][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:39.617][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:40.160][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:40.161][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:40.261][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:30:40.362][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:40.362][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:40.362][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:30:48.416][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 100.634 MB
+        # 00 : 90.900 MB
+        # 01 : 4.378 MB
+        # 02 : 0.053 MB
+        # 03 : 0.053 MB
+        # 04 : 5.251 MB
+    --------------- Coroutine ---------------
+        Total:     148
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      148
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:31:46.424][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:46.424][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:46.525][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:31:46.625][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:46.625][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:46.626][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.170][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.170][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.270][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:31:47.322][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.323][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.371][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.371][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.371][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.423][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:31:47.524][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.524][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:31:47.524][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:03.170][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.171][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.271][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:32:03.324][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.325][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.372][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.372][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.372][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.425][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:32:03.426][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.426][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.526][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.526][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.526][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.527][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:32:03.628][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.628][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:03.628][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:32:36.176][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.177][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.277][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:32:36.331][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.331][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.378][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.378][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.378][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.430][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.431][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.431][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:32:36.531][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:32:36.532][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.532][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.532][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.632][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.632][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:32:36.632][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.334][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.334][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.434][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.434][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.435][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:33:14.535][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:33:14.535][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.535][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.535][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.635][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.635][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:14.635][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:15.182][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:15.182][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:15.283][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:33:15.383][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:15.383][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:15.383][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:37.238][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 89.458 MB
+        # 00 : 84.308 MB
+        # 01 : 4.139 MB
+        # 02 : 0.053 MB
+        # 03 : 0.053 MB
+        # 04 : 0.905 MB
+    --------------- Coroutine ---------------
+        Total:     79
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      79
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:33:47.340][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.340][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.440][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.440][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.441][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:33:47.541][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:33:47.541][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.542][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.542][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.641][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.641][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:47.641][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:48.187][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:48.187][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:48.288][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:33:48.388][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:48.388][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:33:48.388][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.345][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.345][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.445][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.446][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.446][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:34:28.546][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:34:28.546][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.547][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.547][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.647][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.647][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:28.647][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:29.193][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:29.193][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:29.293][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:34:29.394][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:29.394][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:34:29.394][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.200][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.201][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.301][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:35:37.354][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.355][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.402][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.402][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.402][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.454][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.455][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.455][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:35:37.555][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:35:37.556][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.556][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.556][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.656][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.656][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:35:37.656][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.216][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.216][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.316][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:37:18.368][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.368][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.417][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.417][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.417][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.468][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.468][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.469][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:37:18.568][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:37:18.569][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.569][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.569][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.669][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.669][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:37:18.669][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:11.231][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 126.985 MB
+        # 00 : 121.488 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 1.002 MB
+        # 04 : 4.390 MB
+    --------------- Coroutine ---------------
+        Total:     1010
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      1010
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:39:26.231][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.231][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.332][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:39:26.383][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.383][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.432][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.432][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.432][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.483][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.484][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:39:26.484][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.584][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.584][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:39:26.584][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.584][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.685][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.685][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:39:26.685][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:40:48.495][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 95.200 MB
+        # 00 : 85.341 MB
+        # 01 : 4.443 MB
+        # 02 : 0.053 MB
+        # 03 : 0.053 MB
+        # 04 : 5.311 MB
+    --------------- Coroutine ---------------
+        Total:     66
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      66
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:41:38.249][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.249][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.350][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:41:38.400][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.400][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.450][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.450][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.450][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.501][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:41:38.502][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.502][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.601][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.602][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.602][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.603][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:41:38.703][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.703][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:41:38.703][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.260][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.260][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.361][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:42:47.411][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.411][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.461][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.461][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.461][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.512][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:42:47.513][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.513][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.612][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.612][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.612][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.613][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:42:47.714][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.714][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:42:47.714][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:43:37.415][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 92.233 MB
+        # 00 : 86.992 MB
+        # 01 : 4.178 MB
+        # 02 : 0.053 MB
+        # 03 : 0.053 MB
+        # 04 : 0.957 MB
+    --------------- Coroutine ---------------
+        Total:     170
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      170
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:44:33.272][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.273][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.373][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:44:33.422][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.423][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.474][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.474][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.474][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.523][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:44:33.525][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.525][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.624][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.624][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.624][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.626][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:44:33.726][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.726][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:44:33.726][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.285][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.286][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.386][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:45:56.435][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.435][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.487][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.487][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.487][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.536][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:45:56.537][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.538][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.636][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.636][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.636][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.638][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so , size = 12.797 KB
+[21:45:56.739][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.739][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:45:56.739][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/test.so
+[21:46:49.294][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.296][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.296][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.296][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.296][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.444][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.446][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.446][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.446][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.446][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.547][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.549][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.549][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.549][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:46:49.549][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.445][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.447][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.447][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.447][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.447][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.548][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.550][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.550][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.550][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:09.550][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:10.297][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:10.299][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:10.299][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:10.299][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:10.299][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.298][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.299][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.299][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.299][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.299][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.445][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.447][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.447][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.448][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.448][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.548][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.550][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.551][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.551][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:13.551][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.304][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.305][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.305][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.305][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.305][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.452][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.454][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.454][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.454][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.454][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.555][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.558][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.558][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.558][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:14.558][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:47:37.299][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.299][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.400][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:47:37.448][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.448][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.500][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.501][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.501][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.549][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:47:37.551][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.551][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.650][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.650][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.650][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.652][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:47:37.752][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.753][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:47:37.753][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.305][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.306][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.406][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:48:28.454][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.455][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.507][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.507][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.507][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.555][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:48:28.557][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.558][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.656][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.656][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.656][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.658][info] [#0:script/workspace/loading.lua:140]: Preload dll at: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so , size = 20.867 KB
+[21:48:28.759][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.759][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:48:28.759][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/parser/objdump.so
+[21:49:11.312][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 131.617 MB
+        # 00 : 126.012 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 1.049 MB
+        # 04 : 4.450 MB
+    --------------- Coroutine ---------------
+        Total:     1149
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      1149
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:49:21.315][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.316][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.316][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.317][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.317][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.464][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.465][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.465][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.465][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.466][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.567][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.569][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.569][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.569][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:21.569][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.466][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.468][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.468][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.468][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.468][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.569][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.571][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.571][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.571][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:49.571][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:50.319][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:50.321][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:50.321][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:50.321][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:49:50.321][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.470][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.472][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.472][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.472][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.472][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.574][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.576][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.576][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.576][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:12.576][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:13.322][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:13.324][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:13.324][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:13.324][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:13.324][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.323][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.325][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.325][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.325][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.325][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.470][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.472][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.472][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.472][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.472][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.573][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.575][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.575][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.576][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:22.576][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/nvim-treesitter/queries/objdump/highlights.scm
+[21:50:48.574][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 101.329 MB
+        # 00 : 91.375 MB
+        # 01 : 4.490 MB
+        # 02 : 0.053 MB
+        # 03 : 0.053 MB
+        # 04 : 5.358 MB
+    --------------- Coroutine ---------------
+        Total:     240
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      240
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================

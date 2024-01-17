@@ -3,7 +3,7 @@
 ---
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string)
 ---
 ---@class stringlib
 string = {}
@@ -11,7 +11,7 @@ string = {}
 ---
 ---Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.byte)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.byte)
 ---
 ---@param s  string|number
 ---@param i? integer
@@ -23,7 +23,7 @@ function string.byte(s, i, j) end
 ---
 ---Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.char)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.char)
 ---
 ---@param byte integer
 ---@param ... integer
@@ -34,7 +34,7 @@ function string.char(byte, ...) end
 ---
 ---Returns a string containing a binary representation (a *binary chunk*) of the given function.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.dump)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.dump)
 ---
 ---@param f      async fun(...):...
 ---@param strip? boolean
@@ -45,7 +45,7 @@ function string.dump(f, strip) end
 ---
 ---Looks for the first match of `pattern` (see [§6.4.1](http://www.lua.org/manual/5.1/manual.html#6.4.1)) in the string.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.find)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.find)
 ---
 ---@param s       string|number
 ---@param pattern string|number
@@ -60,7 +60,7 @@ function string.find(s, pattern, init, plain) end
 ---
 ---Returns a formatted version of its variable number of arguments following the description given in its first argument.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.format)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.format)
 ---
 ---@param s string|number
 ---@param ... any
@@ -81,7 +81,7 @@ function string.format(s, ...) end
 ---```
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.gmatch)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.gmatch)
 ---
 ---@param s       string|number
 ---@param pattern string|number
@@ -92,7 +92,7 @@ function string.gmatch(s, pattern) end
 ---
 ---Returns a copy of s in which all (or the first `n`, if given) occurrences of the `pattern` (see [§6.4.1](http://www.lua.org/manual/5.1/manual.html#6.4.1)) have been replaced by a replacement string specified by `repl`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.gsub)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.gsub)
 ---
 ---@param s       string|number
 ---@param pattern string|number
@@ -106,7 +106,7 @@ function string.gsub(s, pattern, repl, n) end
 ---
 ---Returns its length.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.len)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.len)
 ---
 ---@param s string|number
 ---@return integer
@@ -116,7 +116,7 @@ function string.len(s) end
 ---
 ---Returns a copy of this string with all uppercase letters changed to lowercase.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.lower)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.lower)
 ---
 ---@param s string|number
 ---@return string
@@ -126,7 +126,7 @@ function string.lower(s) end
 ---
 ---Looks for the first match of `pattern` (see [§6.4.1](http://www.lua.org/manual/5.1/manual.html#6.4.1)) in the string.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.match)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.match)
 ---
 ---@param s       string|number
 ---@param pattern string|number
@@ -139,7 +139,7 @@ function string.match(s, pattern, init) end
 ---
 ---Returns a binary string containing the values `v1`, `v2`, etc. packed (that is, serialized in binary form) according to the format string `fmt` (see [§6.4.2](http://www.lua.org/manual/5.1/manual.html#6.4.2)) .
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.pack)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.pack)
 ---
 ---@param fmt string
 ---@param v1  string|number
@@ -153,7 +153,7 @@ function string.pack(fmt, v1, v2, ...) end
 ---
 ---Returns the size of a string resulting from `string.pack` with the given format string `fmt` (see [§6.4.2](http://www.lua.org/manual/5.1/manual.html#6.4.2)) .
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.packsize)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.packsize)
 ---
 ---@param fmt string
 ---@return integer
@@ -163,7 +163,7 @@ function string.packsize(fmt) end
 ---
 ---Returns a string that is the concatenation of `n` copies of the string `s` separated by the string `sep`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.rep)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.rep)
 ---
 ---@param s    string|number
 ---@param n    integer
@@ -175,7 +175,7 @@ function string.rep(s, n, sep) end
 ---
 ---Returns a string that is the string `s` reversed.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.reverse)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.reverse)
 ---
 ---@param s string|number
 ---@return string
@@ -185,7 +185,7 @@ function string.reverse(s) end
 ---
 ---Returns the substring of the string that starts at `i` and continues until `j`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.sub)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.sub)
 ---
 ---@param s  string|number
 ---@param i  integer
@@ -198,7 +198,7 @@ function string.sub(s, i, j) end
 ---
 ---Returns the values packed in string according to the format string `fmt` (see [§6.4.2](http://www.lua.org/manual/5.1/manual.html#6.4.2)) .
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.unpack)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.unpack)
 ---
 ---@param fmt  string
 ---@param s    string
@@ -211,7 +211,7 @@ function string.unpack(fmt, s, pos) end
 ---
 ---Returns a copy of this string with all lowercase letters changed to uppercase.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-string.upper)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.upper)
 ---
 ---@param s string|number
 ---@return string

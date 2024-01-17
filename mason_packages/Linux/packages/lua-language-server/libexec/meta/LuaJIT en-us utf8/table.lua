@@ -3,7 +3,7 @@
 ---
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table)
 ---
 ---@class tablelib
 table = {}
@@ -11,7 +11,7 @@ table = {}
 ---
 ---Given a list where all elements are strings or numbers, returns the string `list[i]..sep..list[i+1] ··· sep..list[j]`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.concat)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.concat)
 ---
 ---@param list table
 ---@param sep? string
@@ -24,7 +24,7 @@ function table.concat(list, sep, i, j) end
 ---
 ---Inserts element `value` at position `pos` in `list`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.insert)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.insert)
 ---
 ---@overload fun(list: table, value: any)
 ---@param list table
@@ -36,7 +36,7 @@ function table.insert(list, pos, value) end
 ---
 ---Returns the largest positive numerical index of the given table, or zero if the table has no positive numerical indices.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.maxn)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.maxn)
 ---
 ---@param table table
 ---@return integer
@@ -53,7 +53,7 @@ function table.maxn(table) end
 ---```
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.move)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.move)
 ---
 ---@param a1  table
 ---@param f   integer
@@ -67,7 +67,7 @@ function table.move(a1, f, e, t, a2) end
 ---
 ---Returns a new table with all arguments stored into keys `1`, `2`, etc. and with a field `"n"` with the total number of arguments.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.pack)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.pack)
 ---
 ---@return table
 ---@nodiscard
@@ -76,7 +76,7 @@ function table.pack(...) end
 ---
 ---Removes from `list` the element at position `pos`, returning the value of the removed element.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.remove)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.remove)
 ---
 ---@param list table
 ---@param pos? integer
@@ -86,7 +86,7 @@ function table.remove(list, pos) end
 ---
 ---Sorts list elements in a given order, *in-place*, from `list[1]` to `list[#list]`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.sort)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.sort)
 ---
 ---@generic T
 ---@param list T[]
@@ -102,7 +102,7 @@ function table.sort(list, comp) end
 ---By default, `i` is `1` and `j` is `#list`.
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.unpack)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.unpack)
 ---
 ---@generic T
 ---@param list T[]
@@ -116,7 +116,7 @@ function table.unpack(list, i, j) end
 ---
 ---Executes the given f over all elements of table. For each element, f is called with the index and respective value as arguments. If f returns a non-nil value, then the loop is broken, and this value is returned as the final value of foreach.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.foreach)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.foreach)
 ---
 ---@generic T
 ---@param list any
@@ -129,7 +129,7 @@ function table.foreach(list, callback) end
 ---
 ---Executes the given f over the numerical indices of table. For each index, f is called with the index and respective value as arguments. Indices are visited in sequential order, from 1 to n, where n is the size of the table. If f returns a non-nil value, then the loop is broken and this value is returned as the result of foreachi.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.foreachi)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.foreachi)
 ---
 ---@generic T
 ---@param list any
@@ -142,7 +142,7 @@ function table.foreachi(list, callback) end
 ---
 ---Returns the number of elements in the table. This function is equivalent to `#list`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.getn)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.getn)
 ---
 ---@generic T
 ---@param list T[]

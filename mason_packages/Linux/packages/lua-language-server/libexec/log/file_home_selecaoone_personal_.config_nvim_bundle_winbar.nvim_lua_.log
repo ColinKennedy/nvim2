@@ -1,0 +1,820 @@
+[21:06:50.372][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:66]: Lua Lsp startup, root: 	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec
+[21:06:50.372][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:67]: ROOT:	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec
+[21:06:50.372][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:68]: LOGPATH:	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/log
+[21:06:50.372][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:69]: METAPATH:	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta
+[21:06:50.372][info] [#0:/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/main.lua:70]: VERSION:	3.7.0
+[21:06:50.432][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 2.143 MB
+        # 00 : 2.143 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:06:50.442][info] [#0:script/client.lua:657]: Client init	{
+  capabilities = {
+    textDocument = {
+      callHierarchy = {
+        dynamicRegistration = false
+      },
+      codeAction = {
+        codeActionLiteralSupport = {
+          codeActionKind = {
+            valueSet = { "", "quickfix", "refactor", "refactor.extract", "refactor.inline", "refactor.rewrite", "source", "source.organizeImports" }
+          }
+        },
+        dataSupport = true,
+        dynamicRegistration = false,
+        isPreferredSupport = true,
+        resolveSupport = {
+          properties = { "edit" }
+        }
+      },
+      completion = {
+        completionItem = {
+          commitCharactersSupport = false,
+          deprecatedSupport = false,
+          documentationFormat = { "markdown", "plaintext" },
+          preselectSupport = false,
+          snippetSupport = false
+        },
+        completionItemKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }
+        },
+        contextSupport = false,
+        dynamicRegistration = false
+      },
+      declaration = {
+        linkSupport = true
+      },
+      definition = {
+        linkSupport = true
+      },
+      documentHighlight = {
+        dynamicRegistration = false
+      },
+      documentSymbol = {
+        dynamicRegistration = false,
+        hierarchicalDocumentSymbolSupport = true,
+        symbolKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+        }
+      },
+      hover = {
+        contentFormat = { "markdown", "plaintext" },
+        dynamicRegistration = false
+      },
+      implementation = {
+        linkSupport = true
+      },
+      publishDiagnostics = {
+        relatedInformation = true,
+        tagSupport = {
+          valueSet = { 1, 2 }
+        }
+      },
+      references = {
+        dynamicRegistration = false
+      },
+      rename = {
+        dynamicRegistration = false,
+        prepareSupport = true
+      },
+      semanticTokens = {
+        augmentsSyntaxTokens = true,
+        dynamicRegistration = false,
+        formats = { "relative" },
+        multilineTokenSupport = false,
+        overlappingTokenSupport = true,
+        requests = {
+          full = {
+            delta = true
+          },
+          range = false
+        },
+        serverCancelSupport = false,
+        tokenModifiers = { "declaration", "definition", "readonly", "static", "deprecated", "abstract", "async", "modification", "documentation", "defaultLibrary" },
+        tokenTypes = { "namespace", "type", "class", "enum", "interface", "struct", "typeParameter", "parameter", "variable", "property", "enumMember", "event", "function", "method", "macro", "keyword", "modifier", "comment", "string", "number", "regexp", "operator", "decorator" }
+      },
+      signatureHelp = {
+        dynamicRegistration = false,
+        signatureInformation = {
+          activeParameterSupport = true,
+          documentationFormat = { "markdown", "plaintext" },
+          parameterInformation = {
+            labelOffsetSupport = true
+          }
+        }
+      },
+      synchronization = {
+        didSave = true,
+        dynamicRegistration = false,
+        willSave = true,
+        willSaveWaitUntil = true
+      },
+      typeDefinition = {
+        linkSupport = true
+      }
+    },
+    window = {
+      showDocument = {
+        support = true
+      },
+      showMessage = {
+        messageActionItem = {
+          additionalPropertiesSupport = false
+        }
+      },
+      workDoneProgress = true
+    },
+    workspace = {
+      applyEdit = true,
+      configuration = true,
+      didChangeWatchedFiles = {
+        dynamicRegistration = false,
+        relativePatternSupport = true
+      },
+      semanticTokens = {
+        refreshSupport = true
+      },
+      symbol = {
+        dynamicRegistration = false,
+        hierarchicalWorkspaceSymbolSupport = true,
+        symbolKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+        }
+      },
+      workspaceEdit = {
+        resourceOperations = { "rename", "create", "delete" }
+      },
+      workspaceFolders = true
+    }
+  },
+  clientInfo = {
+    name = "Neovim",
+    version = "0.9.4"
+  },
+  initializationOptions = {},
+  processId = 21217,
+  rootPath = "/home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/",
+  rootUri = "file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/",
+  trace = "off",
+  workspaceFolders = { {
+      name = "/home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/",
+      uri = "file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/"
+    } }
+}
+[21:06:50.442][info] [#0:script/language.lua:137]: VSC language: nil
+[21:06:50.442][info] [#0:script/language.lua:138]: LS  language: en-us
+[21:06:50.442][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.442][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/log/file_home_selecaoone_personal_.config_nvim_bundle_winbar.nvim_lua_.log
+[21:06:50.443][info] [#0:script/workspace/workspace.lua:48]: Workspace create: 	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.547][info] [#0:script/provider/provider.lua:46]: Load config from client	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.547][info] [#0:script/provider/provider.lua:47]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.548][info] [#0:script/provider/provider.lua:46]: Load config from client	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.548][info] [#0:script/provider/provider.lua:47]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.548][info] [#0:script/provider/provider.lua:46]: Load config from client	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.548][info] [#0:script/provider/provider.lua:47]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.549][info] [#0:script/provider/provider.lua:46]: Load config from client	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.549][info] [#0:script/provider/provider.lua:47]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.549][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[21:06:50.549][info] [#0:script/provider/provider.lua:62]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.550][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[21:06:50.550][info] [#0:script/provider/provider.lua:62]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.550][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[21:06:50.550][info] [#0:script/provider/provider.lua:62]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.550][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[21:06:50.550][info] [#0:script/provider/provider.lua:62]: {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    },
+    workspace = {
+      checkThirdParty = false,
+      library = { "/home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime" }
+    }
+  }
+}
+[21:06:50.652][info] [#0:script/library.lua:212]: Init builtin library at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.705][info] [#0:script/plugin.lua:86]: plugin path:	/home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua
+[21:06:50.705][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua
+[21:06:50.705][info] [#0:script/library.lua:212]: Init builtin library at:	nil
+[21:06:50.829][info] [#0:script/workspace/workspace.lua:324]: Preload start:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.838][info] [#0:script/workspace/workspace.lua:330]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:50.839][info] [#0:script/workspace/workspace.lua:324]: Preload start:	<fallback>
+[21:06:50.848][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[21:06:50.849][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[21:06:50.850][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:50.874][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[21:06:50.874][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[21:06:50.874][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.130][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[21:06:51.130][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[21:06:51.130][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[21:06:51.131][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[21:06:51.131][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[21:06:51.131][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[21:06:51.131][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[21:06:51.131][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[21:06:51.131][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[21:06:51.131][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[21:06:51.132][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[21:06:51.133][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[21:06:51.133][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[21:06:51.133][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[21:06:51.133][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[21:06:51.133][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[21:06:51.133][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[21:06:51.133][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[21:06:51.134][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[21:06:51.134][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[21:06:51.134][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[21:06:51.134][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[21:06:51.134][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[21:06:51.134][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[21:06:51.134][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[21:06:51.235][info] [#0:script/workspace/workspace.lua:379]: Found 104 files at:	<fallback>
+[21:06:51.235][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	<fallback>
+[21:06:51.235][info] [#0:script/workspace/workspace.lua:379]: Found 108 files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:51.235][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:51.237][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua , size = 0.348 KB
+[21:06:51.240][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[21:06:51.240][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[21:06:51.240][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua , size = 5.600 KB
+[21:06:51.254][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[21:06:51.254][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[21:06:51.254][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua , size = 6.364 KB
+[21:06:51.264][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[21:06:51.264][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[21:06:51.264][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua , size = 4.230 KB
+[21:06:51.271][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[21:06:51.271][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[21:06:51.271][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua , size = 2.699 KB
+[21:06:51.275][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[21:06:51.275][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[21:06:51.275][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua , size = 6.323 KB
+[21:06:51.284][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[21:06:51.284][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[21:06:51.284][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua , size = 0.642 KB
+[21:06:51.285][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[21:06:51.286][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[21:06:51.286][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua , size = 1.320 KB
+[21:06:51.295][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[21:06:51.295][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[21:06:51.295][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua , size = 18.123 KB
+[21:06:51.304][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[21:06:51.304][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[21:06:51.304][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua , size = 7.310 KB
+[21:06:51.312][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[21:06:51.312][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[21:06:51.313][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua , size = 2.541 KB
+[21:06:51.316][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[21:06:51.316][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[21:06:51.316][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua , size = 1.984 KB
+[21:06:51.320][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[21:06:51.320][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[21:06:51.320][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua , size = 0.884 KB
+[21:06:51.323][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[21:06:51.323][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[21:06:51.323][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[21:06:51.323][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua , size = 14.989 KB
+[21:06:51.340][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[21:06:51.341][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[21:06:51.341][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua , size = 2.529 KB
+[21:06:51.345][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[21:06:51.345][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[21:06:51.345][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua , size = 0.797 KB
+[21:06:51.346][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[21:06:51.346][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[21:06:51.346][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/autoload/ccomplete.lua , size = 26.345 KB
+[21:06:51.371][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.371][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/filetype.lua , size = 1.613 KB
+[21:06:51.372][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.372][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/filetype.lua
+[21:06:51.373][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/c.lua , size = 0.031 KB
+[21:06:51.373][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.373][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/autoload/ccomplete.lua
+[21:06:51.373][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/c.lua
+[21:06:51.373][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.373][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/calender.lua , size = 0.031 KB
+[21:06:51.374][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.374][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/calender.lua
+[21:06:51.374][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/cs.lua , size = 0.031 KB
+[21:06:51.374][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.374][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/cs.lua
+[21:06:51.374][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/css.lua , size = 0.031 KB
+[21:06:51.375][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.375][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/css.lua
+[21:06:51.375][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/d.lua , size = 0.031 KB
+[21:06:51.375][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.375][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/d.lua
+[21:06:51.375][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.376][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/indent.lua , size = 0.031 KB
+[21:06:51.376][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.376][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/indent.lua
+[21:06:51.376][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/query.lua , size = 0.146 KB
+[21:06:51.377][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.377][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/query.lua
+[21:06:51.377][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/xdefaults.lua , size = 0.031 KB
+[21:06:51.377][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.377][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/ftplugin/xdefaults.lua
+[21:06:51.377][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/indent/query.lua , size = 0.135 KB
+[21:06:51.378][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.378][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/indent/query.lua
+[21:06:51.378][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/_vim9script.lua , size = 15.439 KB
+[21:06:51.396][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.396][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/_vim9script.lua
+[21:06:51.396][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/editorconfig.lua , size = 7.479 KB
+[21:06:51.403][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.403][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/editorconfig.lua
+[21:06:51.403][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/bc.lua , size = 5.417 KB
+[21:06:51.407][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.407][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/bc.lua
+[21:06:51.407][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/bcsave.lua , size = 19.096 KB
+[21:06:51.423][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.423][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/bcsave.lua
+[21:06:51.423][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_arm.lua , size = 18.891 KB
+[21:06:51.440][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.440][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_arm.lua
+[21:06:51.440][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_arm64.lua , size = 30.163 KB
+[21:06:51.474][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.474][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_arm64be.lua , size = 0.604 KB
+[21:06:51.475][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.475][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_arm64.lua
+[21:06:51.475][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_arm64be.lua
+[21:06:51.475][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.475][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips.lua , size = 21.494 KB
+[21:06:51.492][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.492][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips.lua
+[21:06:51.492][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64.lua , size = 0.689 KB
+[21:06:51.492][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.493][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64.lua
+[21:06:51.493][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64el.lua , size = 0.700 KB
+[21:06:51.493][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.493][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64el.lua
+[21:06:51.493][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64r6.lua , size = 0.700 KB
+[21:06:51.494][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.494][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64r6el.lua , size = 0.711 KB
+[21:06:51.494][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.494][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64r6.lua
+[21:06:51.495][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mips64r6el.lua
+[21:06:51.495][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mipsel.lua , size = 0.698 KB
+[21:06:51.495][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.495][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_mipsel.lua
+[21:06:51.495][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_ppc.lua , size = 19.825 KB
+[21:06:51.511][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.511][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_ppc.lua
+[21:06:51.511][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_x64.lua , size = 0.695 KB
+[21:06:51.512][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.512][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_x64.lua
+[21:06:51.512][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_x86.lua , size = 33.033 KB
+[21:06:51.540][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.540][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dis_x86.lua
+[21:06:51.540][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dump.lua , size = 20.130 KB
+[21:06:51.559][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.559][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/dump.lua
+[21:06:51.559][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/p.lua , size = 8.891 KB
+[21:06:51.567][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.567][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/v.lua , size = 5.576 KB
+[21:06:51.571][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.571][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/p.lua
+[21:06:51.571][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/v.lua
+[21:06:51.571][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/vmdef.lua , size = 7.920 KB
+[21:06:51.586][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.586][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/vmdef.lua
+[21:06:51.586][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/zone.lua , size = 0.979 KB
+[21:06:51.587][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.587][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/jit/zone.lua
+[21:06:51.587][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/man.lua , size = 25.082 KB
+[21:06:51.606][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.606][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/man.lua
+[21:06:51.606][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/nvim/health.lua , size = 12.706 KB
+[21:06:51.615][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.615][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/nvim/health.lua
+[21:06:51.615][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/F.lua , size = 0.824 KB
+[21:06:51.617][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.617][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/F.lua
+[21:06:51.617][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_editor.lua , size = 29.364 KB
+[21:06:51.637][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.637][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_editor.lua
+[21:06:51.637][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_init_packages.lua , size = 2.773 KB
+[21:06:51.640][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.640][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_init_packages.lua
+[21:06:51.640][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_inspector.lua , size = 7.915 KB
+[21:06:51.647][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.647][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_inspector.lua
+[21:06:51.647][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_options.lua , size = 12.261 KB
+[21:06:51.657][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.657][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_watch.lua , size = 5.387 KB
+[21:06:51.662][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.662][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_options.lua
+[21:06:51.662][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/_watch.lua
+[21:06:51.662][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/diagnostic.lua , size = 56.640 KB
+[21:06:51.701][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.701][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/diagnostic.lua
+[21:06:51.702][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype/detect.lua , size = 47.659 KB
+[21:06:51.738][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.738][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype/detect.lua
+[21:06:51.738][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype/options.lua , size = 2.561 KB
+[21:06:51.741][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.741][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype/options.lua
+[21:06:51.741][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype.lua , size = 74.400 KB
+[21:06:51.819][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.819][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/filetype.lua
+[21:06:51.819][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/fs.lua , size = 10.702 KB
+[21:06:51.827][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.828][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/fs.lua
+[21:06:51.828][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/health.lua , size = 1.782 KB
+[21:06:51.830][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.830][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/health.lua
+[21:06:51.830][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/highlight.lua , size = 3.749 KB
+[21:06:51.833][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.833][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/highlight.lua
+[21:06:51.833][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/inspect.lua , size = 8.864 KB
+[21:06:51.840][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.840][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/keymap.lua , size = 3.573 KB
+[21:06:51.843][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.843][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/inspect.lua
+[21:06:51.844][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/keymap.lua
+[21:06:51.844][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/loader.lua , size = 16.182 KB
+[21:06:51.859][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.859][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/loader.lua
+[21:06:51.860][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/_snippet.lua , size = 10.744 KB
+[21:06:51.871][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.871][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/_watchfiles.lua , size = 9.692 KB
+[21:06:51.879][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.879][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/_snippet.lua
+[21:06:51.879][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/_watchfiles.lua
+[21:06:51.879][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/buf.lua , size = 27.969 KB
+[21:06:51.897][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.897][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/buf.lua
+[21:06:51.897][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/codelens.lua , size = 8.554 KB
+[21:06:51.904][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.904][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/codelens.lua
+[21:06:51.904][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/diagnostic.lua , size = 8.867 KB
+[21:06:51.911][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.911][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/diagnostic.lua
+[21:06:51.912][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/handlers.lua , size = 23.587 KB
+[21:06:51.928][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.928][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/handlers.lua
+[21:06:51.928][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/health.lua , size = 1.240 KB
+[21:06:51.929][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.929][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/log.lua , size = 5.151 KB
+[21:06:51.934][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.934][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/health.lua
+[21:06:51.934][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/log.lua
+[21:06:51.934][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/protocol.lua , size = 28.367 KB
+[21:06:51.943][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.944][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/protocol.lua
+[21:06:51.944][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/rpc.lua , size = 23.695 KB
+[21:06:51.961][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.961][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/rpc.lua
+[21:06:51.961][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/semantic_tokens.lua , size = 25.936 KB
+[21:06:51.978][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.978][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/semantic_tokens.lua
+[21:06:51.979][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/sync.lua , size = 15.681 KB
+[21:06:51.987][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.987][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/sync.lua
+[21:06:51.987][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/tagfunc.lua , size = 2.339 KB
+[21:06:51.990][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.990][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/tagfunc.lua
+[21:06:51.990][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/types.lua , size = 0.924 KB
+[21:06:51.991][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:51.991][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/types.lua
+[21:06:51.992][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/util.lua , size = 70.764 KB
+[21:06:52.084][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.084][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp/util.lua
+[21:06:52.084][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp.lua , size = 82.377 KB
+[21:06:52.131][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.131][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/lsp.lua
+[21:06:52.131][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.132][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/secure.lua , size = 4.830 KB
+[21:06:52.136][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.136][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/secure.lua
+[21:06:52.136][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/shared.lua , size = 22.292 KB
+[21:06:52.153][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.153][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/shared.lua
+[21:06:52.153][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_fold.lua , size = 8.207 KB
+[21:06:52.161][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.161][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_meta.lua , size = 2.839 KB
+[21:06:52.164][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.164][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_fold.lua
+[21:06:52.164][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_meta.lua
+[21:06:52.164][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_range.lua , size = 3.646 KB
+[21:06:52.168][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.168][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/_range.lua
+[21:06:52.168][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/health.lua , size = 0.888 KB
+[21:06:52.169][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.169][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/health.lua
+[21:06:52.169][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua , size = 8.781 KB
+[21:06:52.176][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.176][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua
+[21:06:52.176][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/language.lua , size = 3.558 KB
+[21:06:52.179][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.179][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/language.lua
+[21:06:52.179][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/languagetree.lua , size = 27.647 KB
+[21:06:52.196][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.196][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/languagetree.lua
+[21:06:52.196][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/playground.lua , size = 12.562 KB
+[21:06:52.205][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.205][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/playground.lua
+[21:06:52.205][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/query.lua , size = 21.253 KB
+[21:06:52.217][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.217][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter/query.lua
+[21:06:52.217][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.218][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter.lua , size = 15.225 KB
+[21:06:52.227][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.227][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/ui.lua , size = 3.672 KB
+[21:06:52.229][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.229][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/treesitter.lua
+[21:06:52.229][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/ui.lua
+[21:06:52.229][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/uri.lua , size = 3.376 KB
+[21:06:52.232][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.232][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/uri.lua
+[21:06:52.232][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/version.lua , size = 12.146 KB
+[21:06:52.240][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.240][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/lua/vim/version.lua
+[21:06:52.240][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/pack/dist/opt/cfilter/plugin/cfilter.lua , size = 3.266 KB
+[21:06:52.242][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.242][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/pack/dist/opt/cfilter/plugin/cfilter.lua
+[21:06:52.242][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/editorconfig.lua , size = 0.410 KB
+[21:06:52.242][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.242][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/man.lua , size = 0.772 KB
+[21:06:52.243][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.243][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/editorconfig.lua
+[21:06:52.243][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/man.lua
+[21:06:52.244][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.246][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/nvim.lua , size = 0.639 KB
+[21:06:52.247][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.247][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/plugin/nvim.lua
+[21:06:52.247][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/syntax/query.lua , size = 0.135 KB
+[21:06:52.247][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime
+[21:06:52.247][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/Downloads/squashfs-root/usr/share/nvim/runtime/syntax/query.lua
+[21:06:52.247][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua , size = 7.949 KB
+[21:06:52.253][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[21:06:52.253][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[21:06:52.253][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua , size = 0.302 KB
+[21:06:52.254][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[21:06:52.254][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[21:06:52.254][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[21:06:52.254][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [1.050] sec: <fallback>
+[21:06:52.254][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: <fallback>
+[21:06:52.254][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	<fallback>
+[21:06:52.254][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	<fallback>
+[21:06:52.270][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua
+[21:06:52.373][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/config.lua , size = 0.727 KB
+[21:06:52.374][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua , size = 0.628 KB
+[21:06:52.375][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/utils.lua , size = 0.275 KB
+[21:06:52.482][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [1.070] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:52.482][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:52.482][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:52.482][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/
+[21:06:52.531][warn] [#0:script/proto/proto.lua:187]: Method [textDocument/didOpen] takes [1.530]sec. {
+  jsonrpc = "2.0",
+  method = "textDocument/didOpen",
+  params = {
+    textDocument = {
+      languageId = "lua",
+      text = '"***"',
+      uri = "file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua",
+      version = 0
+    }
+  }
+}
+[21:06:52.558][info] [#0:script/provider/diagnostic.lua:557]: Diagnostics scope [file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/], files count:[108]
+[21:06:52.583][warn] [#0:script/proto/proto.lua:187]: Method [textDocument/semanticTokens/full] takes [1.490]sec. {
+  id = 10,
+  jsonrpc = "2.0",
+  method = "textDocument/semanticTokens/full",
+  params = {
+    textDocument = {
+      uri = "file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua"
+    }
+  }
+}
+[21:06:52.622][info] [#0:script/provider/diagnostic.lua:574]: Diagnostics scope [file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/] finished, takes [0.050] sec.
+[21:07:03.472][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua
+[21:07:03.472][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua
+[21:07:03.472][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua
+[21:07:03.472][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua
+[21:07:03.473][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua
+[21:07:03.473][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/winbar.lua
+[21:07:07.445][info] [#0:script/provider/diagnostic.lua:557]: Diagnostics scope [file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/], files count:[108]
+[21:07:07.495][info] [#0:script/provider/diagnostic.lua:574]: Diagnostics scope [file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/] finished, takes [0.060] sec.
+[21:07:24.450][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:24.453][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:24.453][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:24.453][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:24.453][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:24.453][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:52.452][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:52.454][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:52.454][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:52.455][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:52.455][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:07:52.455][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:27.459][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:27.461][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:27.461][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:27.462][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:27.462][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:27.462][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:38.461][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:38.463][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:38.463][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:38.463][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:38.463][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.010] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:38.463][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:57.464][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:57.466][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:57.466][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:57.467][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:57.467][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:08:57.467][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:22.468][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:22.470][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:22.470][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:22.471][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:22.471][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:22.471][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:49.473][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:49.475][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:49.475][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:49.475][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:49.475][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:49.475][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:57.472][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:57.474][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:57.474][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:57.475][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:57.475][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:09:57.475][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:20.478][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:20.480][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:20.480][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:20.480][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:20.480][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:20.480][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:36.479][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:36.481][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:36.481][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:36.481][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:36.481][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:10:36.481][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:04.482][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:04.485][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:04.485][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:04.485][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:04.485][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:04.485][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:12.484][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:12.486][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:12.486][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:12.486][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:12.486][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:11:12.486][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:21.497][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:21.499][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:21.499][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:21.499][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:21.499][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:21.499][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:24.498][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:24.499][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:24.499][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:24.500][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:24.500][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:24.500][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:28.497][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:28.499][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:28.499][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:28.499][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:28.499][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:28.499][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:38.498][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:38.500][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:38.500][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:38.500][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:38.500][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:38.500][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:51.502][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:51.504][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:51.504][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:51.504][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:51.504][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:12:51.504][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///home/selecaoone/personal/.config/nvim/bundle/winbar.nvim/lua/winbar/init.lua
+[21:16:50.433][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 69.048 MB
+        # 00 : 68.588 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.146 MB
+        # 04 : 0.207 MB
+    --------------- Coroutine ---------------
+        Total:     278
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      278
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:17:33.309][info] [#0:script/provider/provider.lua:169]: Server shutdown.
+[21:17:33.410][info] [#0:script/provider/provider.lua:162]: Server exited.

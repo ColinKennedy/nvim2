@@ -4,7 +4,7 @@
 ---
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32)
 ---
 ---@class bit32lib
 bit32 = {}
@@ -15,7 +15,7 @@ bit32 = {}
 ---This shift operation is what is called arithmetic shift. Vacant bits on the left are filled with copies of the higher bit of `x`; vacant bits on the right are filled with zeros.
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.arshift)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.arshift)
 ---
 ---@param x    integer
 ---@param disp integer
@@ -26,7 +26,7 @@ function bit32.arshift(x, disp) end
 ---
 ---Returns the bitwise *and* of its operands.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.band)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.band)
 ---
 ---@return integer
 ---@nodiscard
@@ -41,7 +41,7 @@ function bit32.band(...) end
 ---```
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.bnot)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.bnot)
 ---
 ---@param x integer
 ---@return integer
@@ -51,7 +51,7 @@ function bit32.bnot(x) end
 ---
 ---Returns the bitwise *or* of its operands.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.bor)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.bor)
 ---
 ---@return integer
 ---@nodiscard
@@ -60,7 +60,7 @@ function bit32.bor(...) end
 ---
 ---Returns a boolean signaling whether the bitwise *and* of its operands is different from zero.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.btest)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.btest)
 ---
 ---@return boolean
 ---@nodiscard
@@ -69,7 +69,7 @@ function bit32.btest(...) end
 ---
 ---Returns the bitwise *exclusive or* of its operands.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.bxor)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.bxor)
 ---
 ---@return integer
 ---@nodiscard
@@ -78,7 +78,7 @@ function bit32.bxor(...) end
 ---
 ---Returns the unsigned number formed by the bits `field` to `field + width - 1` from `n`.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.extract)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.extract)
 ---
 ---@param n      integer
 ---@param field  integer
@@ -90,7 +90,7 @@ function bit32.extract(n, field, width) end
 ---
 ---Returns a copy of `n` with the bits `field` to `field + width - 1` replaced by the value `v` .
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.replace)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.replace)
 ---
 ---@param n integer
 ---@param v integer
@@ -102,7 +102,7 @@ function bit32.replace(n, v, field, width) end
 ---
 ---Returns the number `x` rotated `disp` bits to the left. Negative displacements rotate to the right.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.lrotate)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.lrotate)
 ---
 ---@param x     integer
 ---@param distp integer
@@ -119,7 +119,7 @@ function bit32.lrotate(x, distp) end
 ---```
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.lshift)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.lshift)
 ---
 ---@param x     integer
 ---@param distp integer
@@ -130,7 +130,7 @@ function bit32.lshift(x, distp) end
 ---
 ---Returns the number `x` rotated `disp` bits to the right. Negative displacements rotate to the left.
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.rrotate)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.rrotate)
 ---
 ---@param x     integer
 ---@param distp integer
@@ -147,7 +147,7 @@ function bit32.rrotate(x, distp) end
 ---```
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-bit32.rshift)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-bit32.rshift)
 ---
 ---@param x     integer
 ---@param distp integer

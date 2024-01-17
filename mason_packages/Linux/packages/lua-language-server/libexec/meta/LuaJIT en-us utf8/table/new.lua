@@ -8,7 +8,7 @@
 ---```
 ---
 ---
----[View documents](http://www.lua.org/manual/5.1/manual.html#pdf-table.new)
+---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-table.new)
 ---
 ---@param narray integer
 ---@param nhash integer
