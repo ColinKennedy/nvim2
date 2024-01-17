@@ -62,7 +62,7 @@ accidentally killing the debugee. Here's how:
 - Re-enter the debugger (using `:DapContinue`)
 - Now go back to the debugee (e.g. Houdini)
 - Re-run the script that you want to debug again
-- Voila, you've
+- Voila, you've done it
 
 
 ### Debugging References
