@@ -1,3 +1,12 @@
+## Editing
+Add ccls as the LSP, it works well with compile_commands.json
+
+```sh
+rez-env ccls
+nvim
+```
+
+
 ## Compile
 ```sh
 rez-env gcc-8
