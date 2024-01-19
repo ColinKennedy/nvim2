@@ -147,7 +147,7 @@ Hydra(
                 gitsigns.toggle_deleted(false)
             end,
         },
-        mode = {"n","x"},
+        mode = {"n", "x"},
         body = "<Space>GG",
         heads = {
             {
@@ -379,6 +379,37 @@ Hydra(
             },
             { "q", nil, { exit = true, nowait = true, desc = "exit" } },
             { "Q", nil, { exit = true, nowait = true, desc = "exit and save position" } },
+        }
+    }
+)
+
+local debug_hint = [[
+ Movement
+ _h_: Move out  _j_: Skip over  _l_: Move into _<Space>: Continue
+
+ _q_: Exit
+]]
+
+Hydra(
+    {
+        name = "Debugging",
+        hint = debug_hint,
+        config = {
+            color = "pink",
+            hint = {
+                position = "top-right",
+                border = "rounded",
+            },
+            invoke_on_body = true,
+        },
+        mode = {"n", "x"},
+        body = "<Space>D",
+        heads = {
+            { "h", ":DapStepOut<CR>", { silent = true, desc = "Move out of the current function call." } },
+            { "j", ":DapStepOver<CR>", { silent = true, desc = "Skip over the current line." } },
+            { "l", ":DapStepInto<CR>", { silent = true, desc = "Move into a function call." } },
+            { "<Space>", ":DapContinue<CR>", { silent = true, desc = "Continue to the next breakpoint." } },
+            { "q", nil, { exit = true, nowait = true, desc = "Exit." } },
         }
     }
 )

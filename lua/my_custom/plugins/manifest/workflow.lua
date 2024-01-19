@@ -635,6 +635,7 @@ return {
             require("my_custom.plugins.data.hydra")
         end,
         keys = {
+            { "<Space>D", desc = "[D]ebugging mode" },
             { "<Space>GD", desc = "[G]it [D]iff mode (basically a sort of git add -p mode)" },
             { "<Space>GG", desc = "[G]it [G]eneral mode" },
         },
