@@ -1,3 +1,16 @@
+- This is supposed to always join, even on non-tree-sitter files. But the mapping doesn't work. Fix!
+ - https://github.com/Wansmer/treesj
+
+
+- Abbreviations don't trigger. Why? Possibly cmp related
+<Space>GD goes to the wrong tab when the command ends. Fix
+
+
+-- Press * or # in Visual mode to start a search
+-- TODO: This doesn't work. Why?
+{
+    "bronson/vim-visual-star-search",
+
 
 Request jumplist support for debugging
 
