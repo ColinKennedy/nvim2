@@ -136,15 +136,6 @@ return {
         dependencies = {"nvim-treesitter/nvim-treesitter"},
     },
 
-    -- This plugin makes `:cd` local to each tab. Very useful if you do
-    -- "tab-per-project" workflows
-    --
-    {
-        "kana/vim-tabpagecd",
-        event = { "TabEnter", "TabLeave" },
-        version = "0.*",
-    },
-
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
     {
         "mrjones2014/smart-splits.nvim",

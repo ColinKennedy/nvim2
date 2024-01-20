@@ -407,3 +407,9 @@ vim.keymap.set(
     end,
     { desc = "[g]it [s]tash [a]pply onto the current repository." }
 )
+
+-- Auto-Replace :cd to :tcd, which is better, all around
+--
+-- Reference: https://vim.fandom.com/wiki/Replace_a_builtin_command_using_cabbrev
+--
+vim.cmd[[cabbrev cd <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'tcd' : 'cd')<CR>]]
