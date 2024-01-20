@@ -86,8 +86,8 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>j",
-    "gJx",
-    {desc="[j]oin the line below without adding an extra space"}
+    "j:s/^\\s*//<CR>kgJ",
+    {desc="[j]oin this line with the line below, without whitespace."}
 )
 
 -- Basic mappings that can be used to make Vim "magic" by default
