@@ -106,9 +106,6 @@
 [submodule "bundle/vim-operator-user"]
 	path = bundle/vim-operator-user
 	url = git@github.com:kana/vim-operator-user.git
-[submodule "bundle/vim-tabpagecd"]
-	path = bundle/vim-tabpagecd
-	url = git@github.com:kana/vim-tabpagecd.git
 [submodule "bundle/vim-textobj-indent"]
 	path = bundle/vim-textobj-indent
 	url = git@github.com:kana/vim-textobj-indent.git
