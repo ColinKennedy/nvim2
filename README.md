@@ -156,6 +156,7 @@
 | v | `<leader>`gsp | [g]it [s]tash [p]ush the current repository.              |
 | v | `<leader>`pe  | Load the selected [p]ython [e]rror as a quickfix window.  |
 | v | `<leader>`tx  | [t]oggle [x]-marks display.                               |
+| v | `<leader>`j   | [j]oin this line with the line below, without whitespace. |
 
 
 ### Text-Object / Text-Object-like
