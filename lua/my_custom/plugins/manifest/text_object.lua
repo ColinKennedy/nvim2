@@ -288,6 +288,7 @@ return {
     -- {"ColinKennedy/vim-ninja-feet", keys = {"d[", "d]"}},
     {
         "ColinKennedy/vim-ninja-feet",
+        branch = "add_extra_visual_operators",
         keys = {
             { "c[", desc = "Make an edit from the cursor to the start of a text object and [c]hange it." },
             { "c]", desc = "Make an edit from the cursor to the end of a text object and [c]hange it." },
@@ -297,7 +298,7 @@ return {
 
             { "s[", desc = "Make an edit from the cursor to the start of a text object and [s]elect it." },
             { "s]", desc = "Make an edit from the cursor to the end of a text object and [s]elect it." },
-            { "z[", desc = "Make to the start of a text object." },
+            { "z[", desc = "Move to the start of a text object." },
             { "z]", desc = "Move to the end of a text object." },
         },
     },
