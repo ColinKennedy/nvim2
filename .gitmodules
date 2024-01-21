@@ -273,7 +273,7 @@
 	url = git@github.com:mfussenegger/nvim-lint.git
 [submodule "bundle/hydra.nvim"]
 	path = bundle/hydra.nvim
-	url = git@github.com:anuvyklack/hydra.nvim.git
+	url = git@github.com:nvimtools/hydra.nvim.git
 [submodule "bundle/leap.nvim"]
 	path = bundle/leap.nvim
 	url = git@github.com:ggandor/leap.nvim.git
