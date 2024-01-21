@@ -218,6 +218,19 @@ This plug-in is basically https://github.com/ThePrimeagen/harpoon but actually g
 | n | `<M-S-l>`    | [l]ist all saved files.                                            |
 
 
+#### telescope.nvim
+Various mappings that leverage telescope.nvim.
+
+1. mode
+2. mapping
+3. description
+
+| 1 |        2         |                                  3                                 |
+| - | ---------------- | ------------------------------------------------------------------ |
+| n | `<leader>`gsa    | [g]it [s]tash [a]pply onto the current repository.                 |
+| n | `<leader>`gsp    | [g]it [s]tash [p]ush the current repository.                       |
+
+
 #### vim-bqf
 1. mode
 2. mapping
