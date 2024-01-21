@@ -1,10 +1,27 @@
+- pylance, try it out
+
 - This is supposed to always join, even on non-tree-sitter files. But the mapping doesn't work. Fix!
  - https://github.com/Wansmer/treesj
 
 
+- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
+ - black
+ - debugpy
+ - isort
+ - mypy
+ - pylint
+ - pydocstyle
+ - ruff
+- Or maybe do none-ls?
+- https://www.youtube.com/watch?v=jWZ_JeLgDxU
+- https://youtu.be/jWZ_JeLgDxU?si=gAMaE5a-mNA0BQca&t=333
+ - https://github.com/bcampolo/nvim-starter-kit/tree/python#neovim-starter-kit-for-python-
+ - <leader>di to show information under the cursor?
+ - You can use dap somehow to run unittests????
+
+
 - Abbreviations don't trigger. Why? Possibly cmp related
 <Space>GD goes to the wrong tab when the command ends. Fix
-
 
 -- Press * or # in Visual mode to start a search
 -- TODO: This doesn't work. Why?
