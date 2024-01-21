@@ -1,13 +1,14 @@
+- https://github.com/fgheng/winbar.nvim
+ - https://github.com/fgheng/winbar.nvim/issues/27
+- https://github.com/lewis6991/spaceless.nvim
+ - https://github.com/lewis6991/spaceless.nvim/issues/10
+
 - https://github.com/ColinKennedy/vim-cmake
 - https://github.com/ColinKennedy/vim-dispatch
 - https://github.com/ColinKennedy/vim-indent-object
-- https://github.com/ColinKennedy/vim-ninja-feet
- - https://github.com/tommcdo/vim-ninja-feet/issues/13
 - https://github.com/MarcWeber/vim-addon-local-vimrc
-- https://github.com/andrewferrier/debugprint.nvim
 - https://github.com/anuvyklack/hydra.nvim
 - https://github.com/bronson/vim-visual-star-search
-- https://github.com/fgheng/winbar.nvim
 - https://github.com/glts/vim-textobj-comment
 - https://github.com/jeetsukumaran/vim-indentwise
 - https://github.com/justinmk/vim-ipmotion
@@ -17,7 +18,6 @@
 - https://github.com/kana/vim-textobj-indent
 - https://github.com/kana/vim-textobj-line
 - https://github.com/kana/vim-textobj-user
-- https://github.com/lewis6991/spaceless.nvim
 - https://github.com/max397574/better-escape.nvim
 - https://github.com/mbbill/undotree
 - https://github.com/numToStr/Comment.nvim
@@ -32,6 +32,7 @@
 - https://github.com/tpope/vim-surround
 - https://github.com/tpope/vim-unimpaired
 - https://github.com/troydm/zoomwintab.vim
+
 --- https://github.com/ColinKennedy/neogen
 --- https://github.com/ColinKennedy/nvim-dap-ui
 --- https://github.com/ColinKennedy/nvim-gps

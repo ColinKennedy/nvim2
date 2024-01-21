@@ -726,7 +726,12 @@ return {
                 expr = true,
             },
         },
-        version = "*",
+        -- TODO: Check if a new release is made with the LICENSE file. If so,
+        -- re-add the `version = "*",` line
+        --
+        -- Reference: https://github.com/andrewferrier/debugprint.nvim
+        --
+        -- version = "*",
     },
 
     -- Prevent buffers from being accidentally switched out. e.g. Terminal / Quick Fix
