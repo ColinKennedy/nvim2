@@ -10,6 +10,8 @@
  - https://github.com/lewis6991/spaceless.nvim/issues/10
 - https://github.com/max397574/better-escape.nvim
  - https://github.com/max397574/better-escape.nvim/issues/56
+- https://github.com/mbbill/undotree
+ - https://github.com/mbbill/undotree/issues/169
 - https://github.com/numToStr/Comment.nvim
  - https://github.com/numToStr/Comment.nvim/issues/428
 - https://github.com/nvimtools/hydra.nvim
@@ -18,19 +20,19 @@
  - https://github.com/tpope/vim-fugitive/issues/2256
 - https://github.com/troydm/zoomwintab.vim
  - https://github.com/troydm/zoomwintab.vim/issues/17
+- https://github.com/kana/vim-operator-user
+ - https://github.com/kana/vim-textobj-user/issues/82
 
-- https://github.com/ColinKennedy/vim-cmake
-- https://github.com/ColinKennedy/vim-dispatch
 - https://github.com/bronson/vim-visual-star-search
+ - Maybe replace with - https://github.com/godlygeek/vim-files/blob/master/plugin/vsearch.vim
+
 - https://github.com/glts/vim-textobj-comment
 - https://github.com/justinmk/vim-ipmotion
 - https://github.com/kana/vim-operator-replace
-- https://github.com/kana/vim-operator-user
 - https://github.com/kana/vim-tabpagecd
 - https://github.com/kana/vim-textobj-indent
 - https://github.com/kana/vim-textobj-line
 - https://github.com/kana/vim-textobj-user
-- https://github.com/mbbill/undotree
 - https://github.com/ruanyl/vim-gh-line
 - https://github.com/tpope/vim-abolish
 - https://github.com/tpope/vim-eunuch
@@ -39,6 +41,9 @@
 - https://github.com/tpope/vim-sleuth
 - https://github.com/tpope/vim-surround
 - https://github.com/tpope/vim-unimpaired
+- https://github.com/ColinKennedy/vim-dispatch
+- https://github.com/ColinKennedy/vim-cmake
+
 
 --- https://github.com/ColinKennedy/neogen
 --- https://github.com/ColinKennedy/nvim-dap-ui
