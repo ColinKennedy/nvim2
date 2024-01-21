@@ -621,7 +621,7 @@ return {
 
     -- Add "submodes" to Neovim. e.g. <Space>G for "git mode"
     {
-        "anuvyklack/hydra.nvim",
+        "nvimtools/hydra.nvim",
         config = function()
             require("my_custom.plugins.data.hydra")
         end,
@@ -630,6 +630,7 @@ return {
             { "<Space>GD", desc = "[G]it [D]iff mode (basically a sort of git add -p mode)" },
             { "<Space>GG", desc = "[G]it [G]eneral mode" },
         },
+        version = "v1.*",
     },
 
     -- Show classes / functions / variables in an outliner
