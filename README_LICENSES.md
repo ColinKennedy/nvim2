@@ -1,22 +1,28 @@
+- https://github.com/MarcWeber/vim-addon-local-vimrc
+ - https://github.com/MarcWeber/vim-addon-local-vimrc/issues/17
+- https://github.com/ColinKennedy/vim-indent-object
+ - https://github.com/michaeljsmith/vim-indent-object/issues/30
 - https://github.com/fgheng/winbar.nvim
  - https://github.com/fgheng/winbar.nvim/issues/27
+- https://github.com/jeetsukumaran/vim-indentwise
+ - https://github.com/jeetsukumaran/vim-indentwise/issues/20
 - https://github.com/lewis6991/spaceless.nvim
  - https://github.com/lewis6991/spaceless.nvim/issues/10
 - https://github.com/max397574/better-escape.nvim
  - https://github.com/max397574/better-escape.nvim/issues/56
 - https://github.com/numToStr/Comment.nvim
  - https://github.com/numToStr/Comment.nvim/issues/428
+- https://github.com/nvimtools/hydra.nvim
+ - https://github.com/nvimtools/hydra.nvim/issues/28
+- https://github.com/tpope/vim-fugitive
+ - https://github.com/tpope/vim-fugitive/issues/2256
 - https://github.com/troydm/zoomwintab.vim
  - https://github.com/troydm/zoomwintab.vim/issues/17
 
 - https://github.com/ColinKennedy/vim-cmake
 - https://github.com/ColinKennedy/vim-dispatch
-- https://github.com/ColinKennedy/vim-indent-object
-- https://github.com/MarcWeber/vim-addon-local-vimrc
-- https://github.com/anuvyklack/hydra.nvim
 - https://github.com/bronson/vim-visual-star-search
 - https://github.com/glts/vim-textobj-comment
-- https://github.com/jeetsukumaran/vim-indentwise
 - https://github.com/justinmk/vim-ipmotion
 - https://github.com/kana/vim-operator-replace
 - https://github.com/kana/vim-operator-user
@@ -28,7 +34,6 @@
 - https://github.com/ruanyl/vim-gh-line
 - https://github.com/tpope/vim-abolish
 - https://github.com/tpope/vim-eunuch
-- https://github.com/tpope/vim-fugitive
 - https://github.com/tpope/vim-markdown
 - https://github.com/tpope/vim-repeat
 - https://github.com/tpope/vim-sleuth
