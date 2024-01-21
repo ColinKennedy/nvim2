@@ -2,6 +2,12 @@
  - https://github.com/fgheng/winbar.nvim/issues/27
 - https://github.com/lewis6991/spaceless.nvim
  - https://github.com/lewis6991/spaceless.nvim/issues/10
+- https://github.com/max397574/better-escape.nvim
+ - https://github.com/max397574/better-escape.nvim/issues/56
+- https://github.com/numToStr/Comment.nvim
+ - https://github.com/numToStr/Comment.nvim/issues/428
+- https://github.com/troydm/zoomwintab.vim
+ - https://github.com/troydm/zoomwintab.vim/issues/17
 
 - https://github.com/ColinKennedy/vim-cmake
 - https://github.com/ColinKennedy/vim-dispatch
@@ -18,11 +24,8 @@
 - https://github.com/kana/vim-textobj-indent
 - https://github.com/kana/vim-textobj-line
 - https://github.com/kana/vim-textobj-user
-- https://github.com/max397574/better-escape.nvim
 - https://github.com/mbbill/undotree
-- https://github.com/numToStr/Comment.nvim
 - https://github.com/ruanyl/vim-gh-line
-- https://github.com/tommcdo/vim-exchange
 - https://github.com/tpope/vim-abolish
 - https://github.com/tpope/vim-eunuch
 - https://github.com/tpope/vim-fugitive
@@ -31,7 +34,6 @@
 - https://github.com/tpope/vim-sleuth
 - https://github.com/tpope/vim-surround
 - https://github.com/tpope/vim-unimpaired
-- https://github.com/troydm/zoomwintab.vim
 
 --- https://github.com/ColinKennedy/neogen
 --- https://github.com/ColinKennedy/nvim-dap-ui
@@ -72,6 +74,7 @@
 --- https://github.com/mfussenegger/nvim-dap-python
 --- https://github.com/mfussenegger/nvim-lint
 --- https://github.com/mrjones2014/smart-splits.nvim
+--- https://github.com/nanotee/zoxide.vim
 --- https://github.com/neovim/nvim-lspconfig
 --- https://github.com/nvim-lualine/lualine.nvim
 --- https://github.com/nvim-telescope/telescope.nvim
@@ -82,6 +85,7 @@
 --- https://github.com/pappasam/jedi-language-server
 --- https://github.com/ray-x/lsp_signature.nvim
 --- https://github.com/romainl/vim-cool
+--- https://github.com/saadparwaiz1/cmp_luasnip
 --- https://github.com/simrat39/rust-tools.nvim
 --- https://github.com/simrat39/symbols-outline.nvim
 --- https://github.com/stevearc/aerial.nvim
@@ -89,5 +93,3 @@
 --- https://github.com/theHamsta/nvim-dap-virtual-text
 --- https://github.com/wellle/targets.vim
 --- https://github.com/williamboman/mason.nvim
---- nanotee/zoxide.vim
---- saadparwaiz1/cmp_luasnip
