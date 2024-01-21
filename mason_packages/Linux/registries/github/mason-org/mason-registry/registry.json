@@ -271,7 +271,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/ansible-lint@6.22.1",
+      "id": "pkg:pypi/ansible-lint@6.22.2",
       "supported_platforms": [
         "unix"
       ]
@@ -2669,7 +2669,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/editorconfig-checker/editorconfig-checker@2.7.2",
+      "id": "pkg:github/editorconfig-checker/editorconfig-checker@2.8.0",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -2914,7 +2914,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/WhatsApp/erlang-language-platform@2023-12-15",
+      "id": "pkg:github/WhatsApp/erlang-language-platform@2024-01-18",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -3154,7 +3154,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/erlang-ls/erlang_ls@0.49.0",
+      "id": "pkg:github/erlang-ls/erlang_ls@0.50.0",
       "build": [
         {
           "target": "win",
@@ -3826,7 +3826,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:npm/%40glint/core@1.2.2",
+      "id": "pkg:npm/%40glint/core@1.3.0",
       "extra_packages": [
         "typescript"
       ]
@@ -3953,7 +3953,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/incu6us/goimports-reviser@v3.6.2",
+      "id": "pkg:github/incu6us/goimports-reviser@v3.6.3",
       "asset": [
         {
           "target": "darwin_x64",
@@ -4117,7 +4117,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:golang/github.com/segmentio/golines@v0.11.0"
+      "id": "pkg:golang/github.com/segmentio/golines@v0.12.1"
     },
     "bin": {
       "golines": "golang:golines"
@@ -5884,7 +5884,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/JohnnyMorganz/luau-lsp@1.27.0",
+      "id": "pkg:github/JohnnyMorganz/luau-lsp@1.27.1",
       "asset": [
         {
           "target": [
@@ -6132,7 +6132,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40mdx-js/language-server@0.2.2"
+      "id": "pkg:npm/%40mdx-js/language-server@0.3.0"
     },
     "bin": {
       "mdx-language-server": "npm:mdx-language-server"
@@ -7114,7 +7114,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.47.1",
+      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.48.0",
       "asset": {
         "file": "php-cs-fixer.phar"
       }
@@ -7663,7 +7663,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:composer/vimeo/psalm@5.19.1"
+      "id": "pkg:composer/vimeo/psalm@5.20.0"
     },
     "bin": {
       "psalm": "composer:psalm",
@@ -7804,7 +7804,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:pypi/pyink@23.10.0"
+      "id": "pkg:pypi/pyink@23.12.1"
     },
     "bin": {
       "pyink": "pypi:pyink"
@@ -8546,7 +8546,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/ruff@0.1.13"
+      "id": "pkg:pypi/ruff@0.1.14"
     },
     "bin": {
       "ruff": "pypi:ruff"
@@ -8787,7 +8787,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/semgrep@1.56.0",
+      "id": "pkg:pypi/semgrep@1.57.0",
       "supported_platforms": [
         "unix"
       ]
@@ -9213,7 +9213,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/snyk/cli@v1.1269.0",
+      "id": "pkg:github/snyk/cli@v1.1271.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -9490,7 +9490,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:gem/sorbet@0.5.11200",
+      "id": "pkg:gem/sorbet@0.5.11213",
       "supported_platforms": [
         "unix"
       ]
@@ -9786,7 +9786,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:npm/stylelint@16.1.0"
+      "id": "pkg:npm/stylelint@16.2.0"
     },
     "bin": {
       "stylelint": "npm:stylelint"
@@ -9807,7 +9807,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/johnnymorganz/stylua@v0.19.1",
+      "id": "pkg:github/johnnymorganz/stylua@v0.20.0",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -10266,7 +10266,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/latex-lsp/texlab@v5.12.1",
+      "id": "pkg:github/latex-lsp/texlab@v5.12.2",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -10806,7 +10806,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/crate-ci/typos@v1.17.1",
+      "id": "pkg:github/crate-ci/typos@v1.17.2",
       "asset": [
         {
           "target": "darwin_x64",
@@ -11015,7 +11015,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/daveshanley/vacuum@v0.7.2",
+      "id": "pkg:github/daveshanley/vacuum@v0.8.1",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -11520,7 +11520,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/vulture@2.10"
+      "id": "pkg:pypi/vulture@2.11"
     },
     "bin": {
       "vulture": "pypi:vulture"
