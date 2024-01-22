@@ -358,6 +358,37 @@ return {
                 desc="[g]it [a]dd [c]urrent file.",
             },
             {
+                "<leader>gap",
+                ":Git add -p<CR>",
+                -- TODO: Figure out how to get nice tree-sitter highlighting here
+                -- function()
+                --     vim.cmd[[Git add -p]]
+                --     local keys = vim.api.nvim_replace_termcodes(
+                --         "<C-\\><C-n>",
+                --         true,
+                --         false,
+                --         true
+                --     )
+                --     local mode = "m"
+                --     vim.api.nvim_feedkeys(keys, mode, false)
+                --     vim.treesitter.start(2, "diff")
+                --     vim.api.nvim_feedkeys("a", mode, false)
+                --     -- vim.schedule(function()
+                --     --     local keys = vim.api.nvim_replace_termcodes(
+                --     --         "<C-\\><C-n>",
+                --     --         true,
+                --     --         false,
+                --     --         true
+                --     --     )
+                --     --     local mode = "m"
+                --     --     vim.api.nvim_feedkeys(keys, mode, false)
+                --     --     vim.treesitter.start(0, "diff")
+                --     --     vim.api.nvim_feedkeys("a", mode, false)
+                --     -- end)
+                -- end,
+                desc="[g]it [a]dd -[p] interactive command.",
+            },
+            {
                 "<leader>ga%",
                 ":Git add %<CR>",
                 desc="[g]it [a]dd %-[c]urrent file.",  -- This is the same as <leader>gac
