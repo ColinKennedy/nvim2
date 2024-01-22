@@ -149,29 +149,27 @@ local function _go_to_next_hunk(paths)
 
     if actions.has_next_hunk(forwards)
     then
-        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
-        vim.schedule(function() gitsigns.next_hunk() end)
+        gitsigns.next_hunk()
 
         return
     end
 
     local current = vim.fn.expand("%:p")
-    local next = _get_next_in_list(current, paths)
+    local next_ = _get_next_in_list(current, paths)
 
-    if next == nil
+    if next_ == nil
     then
-        vim.api.nvim_err_writeln("No next file could be found.")
+        vim.api.nvim_err_writeln("No next_ file could be found.")
 
         return
     end
 
-    vim.cmd("edit " .. next)
+    vim.cmd("edit " .. next_)
     vim.cmd[[normal gg]]
 
     if not actions.in_hunk()
     then
-        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
-        vim.schedule(function() gitsigns.next_hunk() end)
+        gitsigns.next_hunk()
     end
 end
 
@@ -181,8 +179,7 @@ local function _go_to_previous_hunk(paths)
 
     if actions.has_next_hunk(forwards)
     then
-        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
-        vim.schedule(function() gitsigns.prev_hunk() end)
+        gitsigns.prev_hunk()
 
         return
     end
@@ -202,8 +199,7 @@ local function _go_to_previous_hunk(paths)
 
     if not actions.in_hunk()
     then
-        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
-        vim.schedule(function() gitsigns.prev_hunk() end)
+        gitsigns.prev_hunk()
     end
 end
 
