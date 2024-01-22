@@ -8,8 +8,6 @@
  - https://github.com/lewis6991/spaceless.nvim/issues/10
 - https://github.com/numToStr/Comment.nvim
  - https://github.com/numToStr/Comment.nvim/issues/428
-- https://github.com/nvimtools/hydra.nvim
- - https://github.com/nvimtools/hydra.nvim/issues/28
 - https://github.com/tpope/vim-fugitive
  - https://github.com/tpope/vim-fugitive/issues/2256
 - https://github.com/troydm/zoomwintab.vim
