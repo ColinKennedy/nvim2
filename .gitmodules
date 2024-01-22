@@ -120,7 +120,7 @@
 	url = git@github.com:kwkarlwang/bufresize.nvim.git
 [submodule "bundle/gitsigns.nvim"]
 	path = bundle/gitsigns.nvim
-	url = git@github.com:lewis6991/gitsigns.nvim.git
+	url = git@github.com:ColinKennedy/gitsigns.nvim.git
 [submodule "bundle/undotree"]
 	path = bundle/undotree
 	url = git@github.com:mbbill/undotree.git
