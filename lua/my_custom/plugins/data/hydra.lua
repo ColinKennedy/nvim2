@@ -1,10 +1,12 @@
 local Hydra = require("hydra")
+local async = require("gitsigns.async")
+local actions_extended = require("gitsigns.actions_extended")
 local config = require("gitsigns.config")
 local gitsigns = require("gitsigns")
 local gitsigns_utility = require("my_custom.plugins.data.gitsigns")
 
 
-local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff"
+local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff_tab"
 local _S_START_SQUARE_BRACE = nil
 local _S_END_SQUARE_BRACE = nil
 
@@ -40,6 +42,25 @@ local function _in_existing_list_entry(window_identifier, list_identifier)
 end
 
 
+local function _in_visual_mode()
+    local current_mode = vim.fn.mode()
+
+    if (
+        current_mode == "v"
+        or current_mode == "vs"
+        or current_mode == "V"
+        or current_mode == "Vs"
+        or current_mode == "\\<C-V>"
+        or current_mode == "\\<C-Vs>"
+    )
+    then
+        return true
+    end
+
+    return false
+end
+
+
 --- Check if the Location List tied to `window` is empty.
 ---
 --- @param window integer A 0-or-more identifier for the source window to check.
@@ -47,6 +68,26 @@ end
 ---
 local function _is_location_list_empty(window)
     return vim.tbl_isempty(vim.fn.getloclist(window))
+end
+
+
+local function _get_git_diff_paths(directory)
+    -- These paths are relative to the root of the git repository
+    local relative_paths = vim.fn.systemlist(
+        "git diff --name-only",
+        directory
+    )
+
+    local output = {}
+
+    for _, path in ipairs(relative_paths)
+    do
+        -- TODO: Account for windows \ separators
+        local absolute = directory .. "/" .. path
+        table.insert(output, absolute)
+    end
+
+    return output
 end
 
 
@@ -61,6 +102,144 @@ local function _get_visual_lines()
     end
 
     return {start_line, end_line}
+end
+
+
+local function _get_next_in_list(element, items)
+    if vim.tbl_isempty(items)
+    then
+        return nil
+    end
+
+    local previous = nil
+
+    for index, item in ipairs(items)
+    do
+        if element > item
+        then
+            return item
+        end
+    end
+
+    return items[#items]
+end
+
+
+local function _get_previous_in_list(element, items)
+    if vim.tbl_isempty(items)
+    then
+        return nil
+    end
+
+    local previous = nil
+
+    for index, item in ipairs(items)
+    do
+        if element < item
+        then
+            return item
+        end
+    end
+
+    return items[1]
+end
+
+
+local function _go_to_next_hunk(paths)
+    local forwards = true
+
+    if actions_extended.has_next_hunk(forwards)
+    then
+        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
+        vim.schedule(function() gitsigns.next_hunk() end)
+
+        return
+    end
+
+    local current = vim.fn.expand("%:p")
+    local next = _get_next_in_list(current, paths)
+
+    if next == nil
+    then
+        vim.api.nvim_err_writeln("No next file could be found.")
+
+        return
+    end
+
+    vim.cmd("edit " .. next)
+    actions_extended.move_to_first_hunk()
+
+    -- vim.schedule(
+    -- async.void(
+    --     function()
+    --         async.scheduler()
+    --         local hunks = actions_extended.get_head_hunks() or {}
+    --
+    --         if vim.tbl_isempty(hunks)
+    --         then
+    --             print("STOPPING")
+    --             return
+    --         end
+    --
+    --         local hunk = hunks[1]
+    --         print('DEBUGPRINT[9]: hydra.lua:180: hunk=' .. vim.inspect(hunk))
+    --         local line = hunk.added.start or hunk.removed.start
+    --         print('DEBUGPRINT[10]: hydra.lua:182: line=' .. vim.inspect(line))
+    --
+    --         vim.api.nvim_win_set_cursor(0, {line, 0})
+    --     end
+    -- )()
+
+    -- vim.cmd[[normal gg]]
+    --
+    -- if not actions_extended.in_hunk()
+    -- then
+    --     -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
+    --     vim.schedule(function() gitsigns.next_hunk() end)
+    -- end
+    -- vim.schedule(
+    --     function()
+    --     vim.cmd[[normal gg]]
+    --     gitsigns.next_hunk()
+    --     --
+    --     -- if not actions_extended.in_hunk()
+    --     -- then
+    --     --     -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
+    --     --     gitsigns.next_hunk()
+    --     -- end
+    -- end)
+end
+
+
+local function _go_to_previous_hunk(paths)
+    local forwards = false
+
+    if actions_extended.has_next_hunk(forwards)
+    then
+        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
+        vim.schedule(function() gitsigns.prev_hunk() end)
+
+        return
+    end
+
+    local current = vim.fn.expand("%:p")
+    local previous = _get_previous_in_list(current, paths)
+
+    if previous == nil
+    then
+        vim.api.nvim_err_writeln("No previous file could be found.")
+
+        return
+    end
+
+    vim.cmd("edit " .. previous)
+    vim.cmd[[normal gg]]
+
+    if not actions_extended.in_hunk()
+    then
+        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
+        vim.schedule(function() gitsigns.prev_hunk() end)
+    end
 end
 
 
@@ -113,81 +292,81 @@ local function _restore_other_s_mappings()
 end
 
 
-local git_hint = [[
- Movement       Control                Display             Diagnose
- _J_: next hunk   _t_: s[t]age hunk        _d_: show [d]eleted   _b_: blame line
- ^ ^              _r_: [r]eset hunk        ^ ^                   ^ ^
- _K_: prev hunk   _c_: [c]heckout hunk     _p_: [p]review hunk   _B_: blame show full
- ^ ^              _T_: stage buffer        ^ ^                   _/_: show base file
- ^
- ^ ^              _<Enter>_: Neogit                _q_: exit
-]]
-
-Hydra(
-    {
-        name = "Git",
-        hint = git_hint,
-        config = {
-            color = "pink",
-            hint = {
-                float_opts = { border = "rounded" },
-            },
-            invoke_on_body = true,
-            on_enter = function()
-                vim.cmd "silent! %foldopen!"
-                gitsigns.toggle_signs(true)
-                gitsigns.toggle_linehl(true)
-            end,
-            on_exit = function()
-                local cursor_pos = vim.api.nvim_win_get_cursor(0)
-                vim.api.nvim_win_set_cursor(0, cursor_pos)
-                vim.cmd 'normal zv'  -- Unfold evrything at the current cursor
-                gitsigns.toggle_signs(false)
-                gitsigns.toggle_linehl(false)
-                gitsigns.toggle_deleted(false)
-            end,
-        },
-        mode = {"n", "x"},
-        body = "<Space>GG",
-        heads = {
-            {
-                "J",
-                function()
-                    if vim.wo.diff then return "]q" end
-                    vim.schedule(function() gitsigns_utility.next_hunk() end)
-                    return "<Ignore>"
-                end,
-                { expr = true, desc = "next hunk" } },
-            {
-                "K",
-                function()
-                    if vim.wo.diff then return "[q" end
-                    vim.schedule(function() gitsigns_utility.previous_hunk() end)
-                    return "<Ignore>"
-                end,
-                { expr = true, desc = "prev hunk" } },
-            {
-                "c",
-                gitsigns.reset_hunk,
-                { silent = true, desc = "[c]heckout hunk" },
-            },
-            { "t", ":Gitsigns stage_hunk<CR>", { silent = true, desc = "stage hunk" } },
-            {
-                "r",
-                gitsigns.undo_stage_hunk,
-                { desc = "[r]eset staged hunk" },
-            },
-            { "T", gitsigns.stage_buffer, { desc = "stage buffer" } },
-            { "p", gitsigns.preview_hunk, { desc = "preview hunk" } },
-            { "d", gitsigns.toggle_deleted, { nowait = true, desc = "toggle deleted" } },
-            { "b", gitsigns.blame_line, { desc = "blame" } },
-            { "B", function() gitsigns.blame_line{ full = true } end, { desc = "blame show full" } },
-            { "/", gitsigns.show, { exit = true, desc = "show base file" } }, -- show the base of the file
-            { "<Enter>", "<Cmd>Neogit<CR>", { exit = true, desc = "Neogit" } },
-            { "q", nil, { exit = true, nowait = true, desc = "exit" } },
-        }
-    }
-)
+-- local git_hint = [[
+--  Movement       Control                Display             Diagnose
+--  _J_: next hunk   _s_: [s]tage hunk        _d_: show [d]eleted   _b_: blame line
+--  ^ ^              _r_: [r]eset hunk        ^ ^                   ^ ^
+--  _K_: prev hunk   _c_: [c]heckout hunk     _p_: [p]review hunk   _B_: blame show full
+--  ^ ^              _S_: stage buffer        ^ ^                   _/_: show base file
+--  ^
+--  ^ ^              _<Enter>_: Neogit                _q_: exit
+-- ]]
+--
+-- Hydra(
+--     {
+--         name = "Git",
+--         hint = git_hint,
+--         config = {
+--             color = "pink",
+--             hint = {
+--                 float_opts = { border = "rounded" },
+--             },
+--             invoke_on_body = true,
+--             on_enter = function()
+--                 vim.cmd "silent! %foldopen!"
+--                 gitsigns.toggle_signs(true)
+--                 gitsigns.toggle_linehl(true)
+--             end,
+--             on_exit = function()
+--                 local cursor_pos = vim.api.nvim_win_get_cursor(0)
+--                 vim.api.nvim_win_set_cursor(0, cursor_pos)
+--                 vim.cmd 'normal zv'  -- Unfold evrything at the current cursor
+--                 gitsigns.toggle_signs(false)
+--                 gitsigns.toggle_linehl(false)
+--                 gitsigns.toggle_deleted(false)
+--             end,
+--         },
+--         mode = {"n", "x"},
+--         body = "<Space>GG",
+--         heads = {
+--             {
+--                 "J",
+--                 function()
+--                     if vim.wo.diff then return "]q" end
+--                     vim.schedule(function() gitsigns_utility.next_hunk() end)
+--                     return "<Ignore>"
+--                 end,
+--                 { expr = true, desc = "next hunk" } },
+--             {
+--                 "K",
+--                 function()
+--                     if vim.wo.diff then return "[q" end
+--                     vim.schedule(function() gitsigns_utility.previous_hunk() end)
+--                     return "<Ignore>"
+--                 end,
+--                 { expr = true, desc = "prev hunk" } },
+--             {
+--                 "c",
+--                 gitsigns.reset_hunk,
+--                 { silent = true, desc = "[c]heckout hunk" },
+--             },
+--             {
+--                 "r",
+--                 gitsigns.undo_stage_hunk,
+--                 { desc = "[r]eset staged hunk" },
+--             },
+--             { "s", ":Gitsigns stage_hunk<CR>", { silent = true, desc = "stage hunk" } },
+--             { "S", gitsigns.stage_buffer, { desc = "stage buffer" } },
+--             { "p", gitsigns.preview_hunk, { desc = "preview hunk" } },
+--             { "d", gitsigns.toggle_deleted, { nowait = true, desc = "toggle deleted" } },
+--             { "b", gitsigns.blame_line, { desc = "blame" } },
+--             { "B", function() gitsigns.blame_line{ full = true } end, { desc = "blame show full" } },
+--             { "/", gitsigns.show, { exit = true, desc = "show base file" } }, -- show the base of the file
+--             { "<Enter>", "<Cmd>Neogit<CR>", { exit = true, desc = "Neogit" } },
+--             { "q", nil, { exit = true, nowait = true, desc = "exit" } },
+--         }
+--     }
+-- )
 
 
 local git_diff_hint = [[
@@ -206,7 +385,7 @@ local _GIT_DIFF_TAB_NUMBER = nil
 
 Hydra(
     {
-        name = "Git Diff",
+        name = "Git Interactive-Diff",
         hint = git_diff_hint,
         config = {
             color = "pink",
@@ -242,36 +421,9 @@ Hydra(
                 gitsigns.toggle_signs(true)
                 gitsigns.toggle_linehl(true)
 
-                local git_diff = require("my_custom.utilities.git_diff")
+                -- TODO: Maybe it should be based on the buffer instead. Probably.
                 local directory = vim.fn.getcwd()
-                local entries = git_diff.get_git_diff(directory)
-                local current_window = vim.api.nvim_get_current_win()
-                vim.fn.setloclist(current_window, entries)
-                local list_identifier = vim.fn.getloclist(current_window, {id=0}).id
-                vim.fn.setloclist(
-                    current_window,
-                    {},
-                    "r",
-                    {id=list_identifier, title="Git Diff"}
-                )
-                vim.fn.setloclist(
-                    current_window,
-                    {},
-                    "r",
-                    {id=list_identifier, context="Interactive Git"}
-                )
-
-                vim.cmd[[lopen]]
-                vim.api.nvim_set_current_win(current_window)
-
-                if (
-                    not _in_existing_list_entry(current_window, list_identifier)
-                    and not _is_location_list_empty(current_window)
-                )
-                then
-                    -- Important: Requires https://github.com/tpope/vim-unimpaired
-                    vim.cmd[[norm ]l]]
-                end
+                vim.g._hydra_git_diff_paths = _get_git_diff_paths(directory)
 
                 _save_other_s_mappings()
             end,
@@ -282,6 +434,8 @@ Hydra(
                 gitsigns.toggle_linehl(previous_diff_line_highlight)
                 gitsigns.toggle_deleted(previous_diff_deleted)
 
+                vim.g._hydra_git_diff_paths = nil
+
                 _restore_other_s_mappings()
             end,
         },
@@ -290,30 +444,13 @@ Hydra(
         heads = {
             {
                 "J",
-                function()
-                    if vim.wo.diff then return "]l" end
-                    vim.schedule(
-                        function()
-                            -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm ]l]]
-                        end
-                    )
-                    return "<Ignore>"
-                end,
-                { expr = true, desc = "next hunk" } },
+                function() _go_to_next_hunk(vim.g._hydra_git_diff_paths) end,
+                { desc = "next hunk" },
+            },
             {
                 "K",
-                function()
-                    if vim.wo.diff then return "[l" end
-                    vim.schedule(
-                        function()
-                            -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm [l]]
-                        end
-                    )
-                    return "<Ignore>"
-                end,
-                { expr = true, desc = "previous hunk" } },
+                function() _go_to_previous_hunk(vim.g._hydra_git_diff_paths) end,
+                { desc = "previous hunk" } },
             {
                 "c",
                 function()
@@ -346,18 +483,23 @@ Hydra(
             {
                 "s",
                 function()
-                    if vim.wo.diff then return "]l" end
+                    local paths = vim.g._hydra_git_diff_paths
 
-                    vim.schedule(
-                        function()
-                            gitsigns.stage_hunk(_get_visual_lines())
+                    if _in_visual_mode()
+                    then
+                        vim.schedule(
+                            function()
+                                gitsigns.stage_hunk(_get_visual_lines())
 
-                            -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm ]l]]
-                        end
-                    )
+                                _go_to_next_hunk(paths)
+                            end
+                        )
 
-                    return "<Ignore>"
+                        return
+                    end
+
+                    gitsigns.stage_hunk()
+                    _go_to_next_hunk(paths)
                 end,
                 { silent = true, desc = "[s]tage hunk and move to next item" },
             },
