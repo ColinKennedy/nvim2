@@ -2,7 +2,6 @@ local Hydra = require("hydra")
 local actions = require("gitsigns.actions")
 local config = require("gitsigns.config")
 local gitsigns = require("gitsigns")
-local gitsigns_utility = require("my_custom.plugins.data.gitsigns")
 
 
 local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff_tab"
