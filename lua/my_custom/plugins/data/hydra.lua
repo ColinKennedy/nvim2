@@ -130,7 +130,7 @@ Hydra(
         config = {
             color = "pink",
             hint = {
-                border = "rounded"
+                float_opts = { border = "rounded" },
             },
             invoke_on_body = true,
             on_enter = function()
@@ -212,7 +212,7 @@ Hydra(
             color = "pink",
             hint = {
                 position = "top-right",
-                border = "rounded",
+                float_opts = { border = "rounded" },
             },
             invoke_on_body = true,
             on_enter = function()
@@ -397,8 +397,8 @@ Hydra(
         config = {
             color = "pink",
             hint = {
+                float_opts = { border = "rounded" },
                 position = "top-right",
-                border = "rounded",
             },
             invoke_on_body = true,
         },
