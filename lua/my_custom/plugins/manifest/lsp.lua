@@ -170,13 +170,18 @@ return {
         "j-hui/fidget.nvim",
         config = function()
             require("fidget").setup{
-                text = {
-                    -- spinner = "dots_ellipsis"  -- I like this alternative
-                    spinner = "meter"
+                notification = {
+                    window = {
+                        winblend = 10,
+                    },
                 },
-                window = {
-                    blend = 10
-                }
+                progress = {
+                    display = {
+                        progress_icon = {
+                            pattern = "meter",
+                        },
+                    },
+                },
             }
 
             vim.api.nvim_set_hl(0, "FidgetTask", {fg="#4b5156", ctermfg=65})
