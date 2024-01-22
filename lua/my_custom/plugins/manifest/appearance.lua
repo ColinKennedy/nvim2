@@ -62,6 +62,28 @@ return {
         end,
         keys = {
             {
+                "<leader>gah",
+                ":Gitsigns stage_hunk<CR>",
+                desc="[g]it [a]dd [h]unk.",
+                mode = {"n", "v"},
+            },
+            {
+                "<leader>gch",
+                function()
+                    require("gitsigns").reset_hunk()
+                end,
+                desc="[g]it [c]heckout [h]unk.",
+                mode = {"n", "v"},
+            },
+            {
+                "<leader>grh",
+                function()
+                    require("gitsigns").undo_stage_hunk()
+                end,
+                desc="[g]it [r]eset [h]unk.",
+                mode = {"n", "v"},
+            },
+            {
                 "[g",
                 function()
                     if vim.wo.diff then return "[g" end

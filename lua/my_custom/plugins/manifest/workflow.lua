@@ -351,6 +351,58 @@ return {
     {
         "tpope/vim-fugitive",
         cmd = {"Gcd", "Git"},
+        keys = {
+            {
+                "<leader>gac",
+                ":Git add %<CR>",
+                desc="[g]it [a]dd [c]urrent file.",
+            },
+            {
+                "<leader>ga%",
+                ":Git add %<CR>",
+                desc="[g]it [a]dd %-[c]urrent file.",  -- This is the same as <leader>gac
+            },
+            {
+                "<leader>gcm",
+                ':Git commit -m ""<Left>',
+                desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
+            },
+            {
+                "<leader>gdc",
+                ":Git diff --cached<CR>",
+                desc="[g]it [d]iff --[c]ached.",
+            },
+            {
+                "<leader>gdi",
+                ":Git diff ",
+                desc="[g]it [d][i] (WIP).",
+            },
+            {
+                "<leader>gph",
+                ":Git push<CR>",
+                desc="[g]it [p]us[h].",
+            },
+            {
+                "<leader>gpl",
+                ":Git pull<CR>",
+                desc="[g]it [p]ul[l].",
+            },
+            {
+                "<leader>grc",
+                ":Git reset %<CR>",
+                desc="[g]it [r]eset [c]urrent.",
+            },
+            {
+                "<leader>gr%",
+                ":Git reset %<CR>",
+                desc="[g]it [r]eset %-[c]urrent.",
+            },
+            {
+                "<leader>gss",
+                ":Git status --short --branch<CR>",
+                desc="[g]it [s]hort [s]tatus.",
+            },
+        },
         version = "3.*",
     },
 
