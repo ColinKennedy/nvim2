@@ -642,7 +642,9 @@ return {
     {
         "akinsho/toggleterm.nvim",
         config = function()
-            require("toggleterm").setup()
+            require("toggleterm").setup{
+                auto_scroll = false,
+            }
 
             -- Important: This allows terminals to stay in terminal mode even
             -- as you move in and out of them
