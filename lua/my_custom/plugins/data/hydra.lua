@@ -1,6 +1,5 @@
 local Hydra = require("hydra")
-local async = require("gitsigns.async")
-local actions_extended = require("gitsigns.actions_extended")
+local actions = require("gitsigns.actions")
 local config = require("gitsigns.config")
 local gitsigns = require("gitsigns")
 local gitsigns_utility = require("my_custom.plugins.data.gitsigns")
@@ -148,7 +147,7 @@ end
 local function _go_to_next_hunk(paths)
     local forwards = true
 
-    if actions_extended.has_next_hunk(forwards)
+    if actions.has_next_hunk(forwards)
     then
         -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
         vim.schedule(function() gitsigns.next_hunk() end)
@@ -167,54 +166,20 @@ local function _go_to_next_hunk(paths)
     end
 
     vim.cmd("edit " .. next)
-    actions_extended.move_to_first_hunk()
+    vim.cmd[[normal gg]]
 
-    -- vim.schedule(
-    -- async.void(
-    --     function()
-    --         async.scheduler()
-    --         local hunks = actions_extended.get_head_hunks() or {}
-    --
-    --         if vim.tbl_isempty(hunks)
-    --         then
-    --             print("STOPPING")
-    --             return
-    --         end
-    --
-    --         local hunk = hunks[1]
-    --         print('DEBUGPRINT[9]: hydra.lua:180: hunk=' .. vim.inspect(hunk))
-    --         local line = hunk.added.start or hunk.removed.start
-    --         print('DEBUGPRINT[10]: hydra.lua:182: line=' .. vim.inspect(line))
-    --
-    --         vim.api.nvim_win_set_cursor(0, {line, 0})
-    --     end
-    -- )()
-
-    -- vim.cmd[[normal gg]]
-    --
-    -- if not actions_extended.in_hunk()
-    -- then
-    --     -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
-    --     vim.schedule(function() gitsigns.next_hunk() end)
-    -- end
-    -- vim.schedule(
-    --     function()
-    --     vim.cmd[[normal gg]]
-    --     gitsigns.next_hunk()
-    --     --
-    --     -- if not actions_extended.in_hunk()
-    --     -- then
-    --     --     -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
-    --     --     gitsigns.next_hunk()
-    --     -- end
-    -- end)
+    if not actions.in_hunk()
+    then
+        -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
+        vim.schedule(function() gitsigns.next_hunk() end)
+    end
 end
 
 
 local function _go_to_previous_hunk(paths)
     local forwards = false
 
-    if actions_extended.has_next_hunk(forwards)
+    if actions.has_next_hunk(forwards)
     then
         -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
         vim.schedule(function() gitsigns.prev_hunk() end)
@@ -233,9 +198,9 @@ local function _go_to_previous_hunk(paths)
     end
 
     vim.cmd("edit " .. previous)
-    vim.cmd[[normal gg]]
+    vim.cmd[[normal G]]
 
-    if not actions_extended.in_hunk()
+    if not actions.in_hunk()
     then
         -- gitsigns is async. We need to schedule so gitsigns has time to fill its cache
         vim.schedule(function() gitsigns.prev_hunk() end)
