@@ -319,3 +319,6 @@
 [submodule "bundle/timeline.nvim"]
 	path = bundle/timeline.nvim
 	url = git@github.com:ColinKennedy/timeline.nvim.git
+[submodule "bundle/opsort.vim"]
+	path = bundle/opsort.vim
+	url = git@github.com:ralismark/opsort.vim.git

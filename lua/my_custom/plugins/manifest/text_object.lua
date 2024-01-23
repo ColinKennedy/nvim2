@@ -320,4 +320,12 @@ return {
         dependencies = { "kana/vim-textobj-user" },
         version = "1.*",
     },
+
+    -- Use gs to sort stuff
+    --
+    -- Normal mode: gsip sorts a paragraph
+    -- Visual mode: gs
+    {
+        "ralismark/opsort.vim",
+    },
 }
