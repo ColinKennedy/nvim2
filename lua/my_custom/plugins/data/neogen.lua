@@ -11,6 +11,7 @@ require("neogen").setup(
         snippet_engine = "luasnip",
     }
 )
+
 -- TODO: Not sure how useful Neogen is, in practice. Seems to break too easily.
 vim.keymap.set(
     "n",
