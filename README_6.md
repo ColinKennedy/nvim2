@@ -39,12 +39,6 @@ ugin/spaceless.lua:11>
 - Abbreviations don't trigger. Why? Possibly cmp related
 <Space>GD goes to the wrong tab when the command ends. Fix
 
--- Press * or # in Visual mode to start a search
--- TODO: This doesn't work. Why?
-{
-    "bronson/vim-visual-star-search",
-
-
 Request jumplist support for debugging
 
 Often when debugging it's useful to step quickly through the code until some area of interest is found. Sometimes you realize that you've past the area of interest and are actually now in a different function, with a different call stack. If we had `<c-p>`/`<c-o>` to go backwards, we'd be able to effectively retrace the movements of the debugger to get to the current point. However to use `<c-p>`/`<c-o>`, (Neo)vim requires cursor positions to be added to the jump list.
