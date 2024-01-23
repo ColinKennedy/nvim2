@@ -43,10 +43,10 @@ return {
 
             treesj.setup({ max_join_length = 150 })
         end,
+        cmd = { "TSJToggle" },
         keys = {
             {
                 "<leader>sa",
-                function() require("treesj").toggle() end,
                 desc = "Toggle (Join or split) [s]plit [a]rguments at the cursor."
             },
         },
@@ -60,25 +60,6 @@ return {
     --
     {
         "MarcWeber/vim-addon-local-vimrc",
-    },
-
-    -- Press * or # in Visual mode to start a search
-    -- TODO: This doesn't work. Why?
-    {
-        "bronson/vim-visual-star-search",
-        keys = {
-            {
-                "*",
-                desc = "Search for the next occurrence of the currently selected text.",
-                mode = "v",
-            },
-            {
-                "#",
-                desc = "Search for the previous occurrence of the currently selected text.",
-                mode = "v",
-            },
-        },
-        version = "0.*",
     },
 
     -- Auto-completion tags for Houdini SideFX VEX commands
