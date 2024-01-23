@@ -36,7 +36,7 @@ return {
         config = function()
             local gitsigns = require("gitsigns")
 
-            gitsigns.setup()
+            gitsigns.setup({ signs = { changedelete = { text = '～' } } })
         end,
         ft = "gitcommit",
         init = function()
@@ -106,16 +106,6 @@ return {
                 end,
                 desc="Go to the next [g]it hunk in the current file.",
                 expr=true,
-            },
-        },
-        opts = {
-            signs = {
-                add = { text = "│" },
-                change = { text = "╵" },
-                delete = { text = "_" },
-                topdelete = { text = "‾" },
-                changedelete = { text = "x" },
-                untracked = { text = "" },
             },
         },
         -- version = "0.*"  -- This release is super old and has bugs. But ideally we'd use it
