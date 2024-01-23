@@ -2,14 +2,15 @@
 --
 -- Reference: https://github.com/Wansmer/treesj/discussions/19
 --
-local langs = require("treesj.langs")["presets"]
+local languages = require("treesj.langs")["presets"]
 
 local callback = function()
     local options = {
         desc = "[s]plit [a]rgument list",
         buffer = true,
     }
-    if langs[vim.bo.filetype] then
+
+    if languages[vim.bo.filetype] then
         vim.keymap.set(
             "n",
             "<leader>sa",
