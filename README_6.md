@@ -1,7 +1,23 @@
-- pylance, try it out
+- Get `dad` to work again
 
-- This is supposed to always join, even on non-tree-sitter files. But the mapping doesn't work. Fix!
- - https://github.com/Wansmer/treesj
+
+
+```
+warning: Undefined global `vim`.
+Error detected while processing TextChangedI Autocommands for "*":
+Error executing lua callback: ...nal/.config/nvim/bundle/spaceless.nvim/lua/spaceless.lua:61: attempt to compare nil with numb
+er
+stack traceback:
+        ...nal/.config/nvim/bundle/spaceless.nvim/lua/spaceless.lua:61: in function <...nal/.config/nvim/bundle/spaceless.nvim
+/lua/spaceless.lua:55>
+        .../.config/nvim/bundle/spaceless.nvim/plugin/spaceless.lua:12: in function <.../.config/nvim/bundle/spaceless.nvim/pl
+ugin/spaceless.lua:11>
+```
+
+
+- Fix checkhealth issues
+- pylance, try it out
+- Update hybrid2 to deal with LSP colors
 
 
 - https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
