@@ -52,10 +52,6 @@ Often when debugging it's useful to step quickly through the code until some are
  - nvim-dap-ui PR - note to self - need to check if parser is installed with vim.inspect(require "nvim-treesitter.info".installed_parsers())
 
 
-- ZoomWinToggle loses my place in terminal-normal mode. Annoying!
- - Check on: https://github.com/akinsho/toggleterm.nvim/issues/516
-
-
 - <Space>GD - single-removed-lines don't quite work. I can't stage the line. Fix
  - The `q` command doesn't delete the current tab correctly
 
@@ -64,10 +60,6 @@ Often when debugging it's useful to step quickly through the code until some are
 
 
 
-
-- :Rg is so annoying. It changes the size of the window!
- - It's because of `vim.opt.laststatus = 3`, somehow. Make a reproduction
- - vimgrep also has this problem
 
 - viI mapping doesn't work anymore. FIX
 - Add groups to all vim.api.nvim_create_autocmd( commands
