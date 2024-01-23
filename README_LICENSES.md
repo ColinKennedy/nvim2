@@ -15,9 +15,6 @@
 - https://github.com/kana/vim-operator-user
  - https://github.com/kana/vim-textobj-user/issues/82
 
-- https://github.com/bronson/vim-visual-star-search
- - Maybe replace with - https://github.com/godlygeek/vim-files/blob/master/plugin/vsearch.vim
-
 - https://github.com/glts/vim-textobj-comment
 - https://github.com/justinmk/vim-ipmotion
 - https://github.com/kana/vim-operator-replace

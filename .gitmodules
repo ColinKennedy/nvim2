@@ -64,9 +64,6 @@
 [submodule "bundle/quick-scope"]
 	path = bundle/quick-scope
 	url = git@github.com:bradford-smith94/quick-scope.git
-[submodule "bundle/vim-visual-star-search"]
-	path = bundle/vim-visual-star-search
-	url = git@github.com:bronson/vim-visual-star-search.git
 [submodule "bundle/cmp-buffer"]
 	path = bundle/cmp-buffer
 	url = git@github.com:hrsh7th/cmp-buffer.git
