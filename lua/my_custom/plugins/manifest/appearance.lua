@@ -380,5 +380,11 @@ return {
         dependencies = {"romgrk/fzy-lua-native"},
         -- Reference: https://github.com/gelguy/wilder.nvim#faster-startup-time
         event = "CmdlineEnter",
-    }
+    },
+
+    -- Keep the Vim cursor in the center of the screen, even at the bottom of the buffer
+    {
+        "arnamak/stay-centered.nvim",
+        config = true,
+    },
 }
