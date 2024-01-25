@@ -322,3 +322,6 @@
 [submodule "bundle/opsort.vim"]
 	path = bundle/opsort.vim
 	url = git@github.com:ralismark/opsort.vim.git
+[submodule "bundle/diffview.nvim"]
+	path = bundle/diffview.nvim
+	url = git@github.com:sindrets/diffview.nvim.git

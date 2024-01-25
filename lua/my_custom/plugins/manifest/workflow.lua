@@ -892,4 +892,10 @@ return {
         },
         version = "0.*",
     },
+
+    -- Use :DiffviewOpen to resolve git merge conflicts
+    {
+        "sindrets/diffview.nvim",
+        cmd = {"DiffviewOpen"},
+    },
 }
