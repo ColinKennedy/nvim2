@@ -2,6 +2,8 @@
 
 - Writing a Neovim auto-fold docstrings plug-in
 
+- Make :checkhealth work
+- Fix qf <Enter> mapping
 
 - Writing your own help
  - https://www.reddit.com/r/neovim/comments/18xfs1y/i_have_started_to_maintain_my_own_vim_help_file/
@@ -11,10 +13,7 @@
  - https://www.reddit.com/r/vim/comments/gaexfl/create_own_help_files/
  - https://github.com/nbeaver/vim-help-file
 
-- Add ~/.gitconfig changes
-
-- Try out mergetool
- - https://www.youtube.com/watch?v=57x4ZzzCr2Y
+https://gitlab.com/yorickpeterse/nvim-pqf
 
 
 ```
@@ -33,6 +32,38 @@ ugin/spaceless.lua:11>
 - Fix checkhealth issues
 - pylance, try it out
 - Update hybrid2 to deal with LSP colors
+
+
+
+
+
+
+
+
+
+- Audit the latest changes to docstring folding. Make sure it works as I want it to
+ - Fast
+ - Doesn't break
+ - Doesn't change the cursor position
+```
+-- -- TODO: This is super slow on big files. Fix?
+-- -- TODO: Consider lazy-loading this
+-- vim.cmd[[
+-- function! GetDocumentationFold(line)
+--     return luaeval(printf('require("my_custom.utilities.fold").get_fold_level(%d)', a:line - 1))
+-- endfunction
+--
+--
+-- set foldmethod=expr
+-- set foldexpr=GetDocumentationFold(v:lnum)
+-- ]]
+
+vim.cmd[[
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+]]
+```
+
 
 
 - https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
