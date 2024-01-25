@@ -2,7 +2,7 @@ return {
     -- Zoxide auto-jump, but for Vim
     {
         "nanotee/zoxide.vim",
-        command = "Zi",
+        cmd = {"Z", "Zi"},
         dependencies = {
             "junegunn/fzf.vim",  -- Needed for ``:Zi``
         },
