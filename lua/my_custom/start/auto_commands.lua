@@ -134,22 +134,6 @@ vim.api.nvim_create_autocmd(
     }
 )
 
--- Force Vim's cursor to stay in the center of the screen, always
-vim.api.nvim_create_autocmd(
-    {"BufEnter", "WinEnter", "WinNew", "VimResized"},
-    {
-        group = group,
-        pattern = {"*", "*.*"},
-        callback = function()
-            if vim.bo.filetype == "assembly_explorer"
-            then
-                vim.wo.scrolloff = 0
-            else
-                vim.wo.scrolloff = 999
-            end
-        end,
-    }
-)
 
 -- Whenever you edit a local .vimrc file, immediately re-source it
 -- See the ``vim-addon-local-vimrc`` plug-in for details.

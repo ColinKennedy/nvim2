@@ -437,3 +437,11 @@ end
 -- If the filetype isn't supported by "Wansmer/treesj", this should give you a fallback.
 --
 vim.api.nvim_create_autocmd({"FileType"}, {pattern="*", callback=callback})
+
+
+vim.keymap.set(
+    "n",
+    "QA",
+    function() vim.cmd[[wqall]] end,
+    { desc = "[w]rite and [q]uit [all] buffers." }
+)
