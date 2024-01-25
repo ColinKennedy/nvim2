@@ -4,6 +4,7 @@
     - Install on CentOS 7 with: https://computingforgeeks.com/install-git-2-on-centos-7/
 - Requires jedi-language-server to be installed (for null-ls)
 - For debugging [debugpy](https://pypi.org/project/debugpy)
+- Requires [fd](https://github.com/sharkdp/fd), for searching folder with :FzfCd / <leader>cD
 
 
 ## Mappings

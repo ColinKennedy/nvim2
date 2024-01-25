@@ -331,7 +331,7 @@ return {
     -- Useful git commands. Such as :Gcd
     {
         "tpope/vim-fugitive",
-        cmd = {"Gcd", "Git"},
+        cmd = { "G", "Gcd", "Gdiffsplit", "Git", "Gvdiffsplit" },
         keys = {
             {
                 "<leader>gac",
@@ -696,7 +696,8 @@ return {
             { "<Space>GD", desc = "[G]it [D]iff mode (basically a sort of git add -p mode)" },
             { "<Space>GG", desc = "[G]it [G]eneral mode" },
         },
-        version = "v1.*",
+        -- TODO: Re-add this once there's a version that contains LICENSE
+        -- version = "v1.*",
     },
 
     -- Show classes / functions / variables in an outliner

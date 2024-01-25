@@ -37,14 +37,39 @@ return {
                 ":call fzf#run(fzf#wrap({'source': sort(argv())}))",
                 {}
             )
+
+            vim.api.nvim_create_user_command(
+                "FzfCd",
+                ":call FzfCd()",
+                {
+                    desc="Search within the current :pwd for a new directory and :cd into it.",
+                }
+            )
         end,
         dependencies = { "junegunn/fzf" },
-        cmd = { "Args", "Buffers", "Commands", "Files", "FZF", "GFiles", "Helptags", "History", "Lines" },
+        cmd = {
+            "Args",
+            "Buffers",
+            "Commands",
+            "FZF",
+            "Files",
+            "FzfCd",
+            "GFiles",
+            "Helptags",
+            "History",
+            "Lines",
+        },
         keys = {
             {
                 "<space>B",
                 ":Buffers<CR>",
                 desc="Search existing [B]uffers and select + view it.",
+            },
+            {
+                "<leader>cD",
+                ":FzfCd<CR>",
+                desc="Search within the current :pwd for a new directory and :cd into it.",
+                silent=true,
             },
             {
                 "<space>e",

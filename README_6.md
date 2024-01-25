@@ -1,5 +1,20 @@
 - Get `dad` to work again
 
+- Writing a Neovim auto-fold docstrings plug-in
+
+
+- Writing your own help
+ - https://www.reddit.com/r/neovim/comments/18xfs1y/i_have_started_to_maintain_my_own_vim_help_file/
+ - https://www.reddit.com/r/neovim/comments/gaiybh/not_sure_how_to_create_my_own_help_file/
+ - https://vim.fandom.com/wiki/Add_your_note_files_to_Vim_help
+ - https://www.reddit.com/r/vim/comments/2wc5ev/making_my_own_vim_help_file/
+ - https://www.reddit.com/r/vim/comments/gaexfl/create_own_help_files/
+ - https://github.com/nbeaver/vim-help-file
+
+- Add ~/.gitconfig changes
+
+- Try out mergetool
+ - https://www.youtube.com/watch?v=57x4ZzzCr2Y
 
 
 ```
