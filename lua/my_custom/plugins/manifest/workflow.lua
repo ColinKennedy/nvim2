@@ -193,7 +193,8 @@ return {
             require("my_custom.plugins.data.nvim_treesitter")
         end,
         lazy = true,
-        version = "0.*",
+        -- TODO: Re-add this once tree-sitter-disassembly is incorporated
+        -- version = "0.*",
     },
 
     -- TODO: Possibly remove this submodule
