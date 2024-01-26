@@ -1,8 +1,9 @@
 - Get `dad` to work again
 
-- Writing a Neovim auto-fold docstrings plug-in
-
-- Make :checkhealth work
+- When scrolling, I don't want stay-centered to run on terminal buffers. I'd
+  rather my old code work for that
+- Find out how to make 2+ toggleterms in a single tab
+- How do you align LSP symbols to the right
 - Fix qf <Enter> mapping
 
 - Writing your own help
@@ -28,41 +29,8 @@ stack traceback:
 ugin/spaceless.lua:11>
 ```
 
-
-- Fix checkhealth issues
 - pylance, try it out
 - Update hybrid2 to deal with LSP colors
-
-
-
-
-
-
-
-
-
-- Audit the latest changes to docstring folding. Make sure it works as I want it to
- - Fast
- - Doesn't break
- - Doesn't change the cursor position
-```
--- -- TODO: This is super slow on big files. Fix?
--- -- TODO: Consider lazy-loading this
--- vim.cmd[[
--- function! GetDocumentationFold(line)
---     return luaeval(printf('require("my_custom.utilities.fold").get_fold_level(%d)', a:line - 1))
--- endfunction
---
---
--- set foldmethod=expr
--- set foldexpr=GetDocumentationFold(v:lnum)
--- ]]
-
-vim.cmd[[
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-]]
-```
 
 
 
