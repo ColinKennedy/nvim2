@@ -1,4 +1,4 @@
-#!/home/selecaoone/personal/.config/nvim//mason_packages/Linux/packages/pylint/venv/bin/python
+#!/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/pylint/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

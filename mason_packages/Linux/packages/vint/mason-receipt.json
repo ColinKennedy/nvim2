@@ -1,0 +1,1 @@
+{"name":"vint","metrics":{"completion_time":1706259198932,"start_time":1706259192723},"links":{"bin":{"vint":"venv\/bin\/vint"},"opt":{},"share":{}},"secondary_sources":[],"schema_version":"1.1","primary_source":{"id":"pkg:pypi\/vim-vint@0.3.21","type":"registry+v1"}}

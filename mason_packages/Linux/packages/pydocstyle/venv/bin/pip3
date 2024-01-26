@@ -1,4 +1,4 @@
-#!/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/pydocstyle/venv/bin/python3.7
+#!/home/selecaoone/personal/.config/nvim/mason_packages/Linux/packages/pydocstyle/venv/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys

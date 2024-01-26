@@ -1,5 +1,27 @@
 # changelog
 
+## 3.7.4
+`2024-1-5`
+* `FIX` rename to unicode with `Lua.runtime.unicodeName = true`
+
+## 3.7.3
+`2023-11-14`
+* `FIX` can not infer arg type in some cases.
+
+## 3.7.2
+`2023-11-9`
+* `FIX` [#2407]
+
+[#2407]: https://github.com/LuaLS/lua-language-server/issues/2407
+
+## 3.7.1
+`2023-11-7`
+* `FIX` [#2299]
+* `FIX` [#2335]
+
+[#2299]: https://github.com/LuaLS/lua-language-server/issues/2299
+[#2335]: https://github.com/LuaLS/lua-language-server/issues/2335
+
 ## 3.7.0
 `2023-8-24`
 * `NEW` support `---@type` and `--[[@as]]` for return statement

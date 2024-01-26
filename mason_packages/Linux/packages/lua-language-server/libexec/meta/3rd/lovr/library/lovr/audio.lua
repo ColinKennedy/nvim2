@@ -271,7 +271,6 @@ function lovr.audio.setGeometry(vertices, indices, material) end
 ---
 ---Sets the orientation of the virtual audio listener in angle/axis representation.
 ---
----@overload fun(orientation: lovr.Quat)
 ---@param angle number # The number of radians the listener should be rotated around its rotation axis.
 ---@param ax number # The x component of the axis of rotation.
 ---@param ay number # The y component of the axis of rotation.
@@ -281,14 +280,9 @@ function lovr.audio.setOrientation(angle, ax, ay, az) end
 ---
 ---Sets the position and orientation of the virtual audio listener.
 ---
----
----### NOTE:
----The position of the listener doesn't use any specific units, but usually they can be thought of as meters to match the headset module.
----
----@overload fun(position: lovr.Vec3, orientation: lovr.Quat)
----@param x number # The x position of the listener.
----@param y number # The y position of the listener.
----@param z number # The z position of the listener.
+---@param x number # The x position of the listener, in meters.
+---@param y number # The y position of the listener, in meters.
+---@param z number # The z position of the listener, in meters.
 ---@param angle number # The number of radians the listener is rotated around its axis of rotation.
 ---@param ax number # The x component of the axis of rotation.
 ---@param ay number # The y component of the axis of rotation.
@@ -296,11 +290,8 @@ function lovr.audio.setOrientation(angle, ax, ay, az) end
 function lovr.audio.setPose(x, y, z, angle, ax, ay, az) end
 
 ---
----Sets the position of the virtual audio listener.
+---Sets the position of the virtual audio listener, in meters.
 ---
----The position doesn't have any specific units, but usually they can be thought of as meters, to match the headset module.
----
----@overload fun(position: lovr.Vec3)
 ---@param x number # The x position of the listener.
 ---@param y number # The y position of the listener.
 ---@param z number # The z position of the listener.
@@ -621,7 +612,6 @@ function Source:setLooping(loop) end
 ---
 ---Sets the orientation of the Source in angle/axis representation.
 ---
----@overload fun(self: lovr.Source, orientation: lovr.Quat)
 ---@param angle number # The number of radians the Source should be rotated around its rotation axis.
 ---@param ax number # The x component of the axis of rotation.
 ---@param ay number # The y component of the axis of rotation.
@@ -645,14 +635,9 @@ function Source:setPitch(pitch) end
 ---
 ---Sets the position and orientation of the Source.
 ---
----
----### NOTE:
----The position doesn't have any defined units, but meters are used by convention.
----
----@overload fun(self: lovr.Source, position: lovr.Vec3, orientation: lovr.Quat)
----@param x number # The x position of the Source.
----@param y number # The y position of the Source.
----@param z number # The z position of the Source.
+---@param x number # The x position of the Source, in meters.
+---@param y number # The y position of the Source, in meters.
+---@param z number # The z position of the Source, in meters.
 ---@param angle number # The number of radians the Source is rotated around its axis of rotation.
 ---@param ax number # The x component of the axis of rotation.
 ---@param ay number # The y component of the axis of rotation.
@@ -660,7 +645,7 @@ function Source:setPitch(pitch) end
 function Source:setPose(x, y, z, angle, ax, ay, az) end
 
 ---
----Sets the position of the Source.
+---Sets the position of the Source, in meters.
 ---
 ---Setting the position will cause the Source to be distorted and attenuated based on its position relative to the listener.
 ---
@@ -668,14 +653,9 @@ function Source:setPose(x, y, z, angle, ax, ay, az) end
 ---
 ---Setting the position of a stereo Source will cause an error.
 ---
----
----### NOTE:
----The position doesn't have any defined units, but meters are used by convention.
----
----@overload fun(self: lovr.Source, position: lovr.Vec3)
----@param x number # The x coordinate of the position.
----@param y number # The y coordinate of the position.
----@param z number # The z coordinate of the position.
+---@param x number # The x coordinate.
+---@param y number # The y coordinate.
+---@param z number # The z coordinate.
 function Source:setPosition(x, y, z) end
 
 ---

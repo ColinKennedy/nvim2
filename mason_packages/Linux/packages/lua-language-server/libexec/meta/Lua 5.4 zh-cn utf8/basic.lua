@@ -327,6 +327,7 @@ function setfenv(f, table) end
 ---@field __newindex table|fun(t,k,v)|nil
 ---@field __call (fun(t,...):...)|nil
 ---@field __pairs (fun(t):(fun(t,k,v):any,any))|nil
+---@field __close (fun(t,errobj):any)|nil
 
 ---
 ---给指定表设置元表。 （你不能在 Lua 中改变其它类型值的元表，那些只能在 C 里做。） 如果 `metatable` 是 `nil`， 将指定表的元表移除。 如果原来那张元表有 `"__metatable"` 域，抛出一个错误。
