@@ -1220,7 +1220,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/cfn-lint@0.84.0"
+      "id": "pkg:pypi/cfn-lint@0.85.0"
     },
     "bin": {
       "cfn-lint": "pypi:cfn-lint"
@@ -2311,7 +2311,7 @@
       "Runtime"
     ],
     "source": {
-      "id": "pkg:github/denoland/deno@v1.40.1",
+      "id": "pkg:github/denoland/deno@v1.40.2",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -5123,7 +5123,7 @@
       "DAP"
     ],
     "source": {
-      "id": "pkg:github/microsoft/vscode-js-debug@v1.86.0",
+      "id": "pkg:github/microsoft/vscode-js-debug@v1.86.1",
       "asset": {
         "file": "js-debug-dap-{{version}}.tar.gz"
       },
@@ -5336,7 +5336,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/kcl-lang/kcl@v0.7.4",
+      "id": "pkg:github/kcl-lang/kcl@v0.7.5",
       "asset": [
         {
           "target": "darwin_x64",
@@ -6538,7 +6538,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/nim-lang/langserver@fdcd323034067ed4ad2a86f1646f54edb28b1027",
+      "id": "pkg:github/nim-lang/langserver@601ac2a8ce210e04975794b92c3a0af082db4198",
       "build": [
         {
           "target": "unix",
@@ -8999,7 +8999,7 @@
       "Compiler"
     ],
     "source": {
-      "id": "pkg:github/shader-slang/slang@v2023.5.8",
+      "id": "pkg:github/shader-slang/slang@v2024.0.0",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -9213,7 +9213,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/snyk/cli@v1.1274.0",
+      "id": "pkg:github/snyk/cli@v1.1275.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -9490,7 +9490,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:gem/sorbet@0.5.11218",
+      "id": "pkg:gem/sorbet@0.5.11219",
       "supported_platforms": [
         "unix"
       ]
@@ -9566,7 +9566,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:npm/sql-formatter@15.1.2"
+      "id": "pkg:npm/sql-formatter@15.1.3"
     },
     "bin": {
       "sql-formatter": "npm:sql-formatter"
@@ -10662,7 +10662,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/trufflesecurity/trufflehog@v3.64.0",
+      "id": "pkg:github/trufflesecurity/trufflehog@v3.65.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -11053,7 +11053,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/daveshanley/vacuum@v0.8.3",
+      "id": "pkg:github/daveshanley/vacuum@v0.8.5",
       "asset": [
         {
           "target": "darwin_arm64",
