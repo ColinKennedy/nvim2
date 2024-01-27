@@ -1,0 +1,8 @@
+*my_commands.txt*	Interesting :Commands to remembers
+
+================================================================================
+Terminals                                              |my_commands_terminals|
+
+Create 2+ Terminals                    |my_commands_create_multiple_terminals|
+
+:1ToggleTerm, :2ToggleTerm, etc creates multiple terminal windows
