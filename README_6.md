@@ -3,7 +3,8 @@
 - https://www.reddit.com/r/neovim/comments/1abev8d/any_tips_to_optimize_cmp_performance/
 
 - How do you align LSP symbols to the right
-- Fix qf <Enter> mapping
+- <Enter> in a quickfix buffer sometimes doesn't actually go to the selected thing. Fix!
+ - Possibly related to ccls not being there (and causing an error)?
 
 https://github.com/HoNamDuong/hybrid.nvim/blob/master/lua/hybrid/highlights.lua
 
