@@ -4,4 +4,4 @@ sources/
 
 mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT en-us utf8
 mason_packages/Linux/packages/lua-language-server/libexec/meta/LuaJIT en-us utf8/*.lua
-mason_packages/Linux/packages/lua-language-server/libexec/log/*.log
+mason_packages/Linux/packages/lua-language-server/libexec/log/
