@@ -134,7 +134,6 @@ vim.api.nvim_create_autocmd(
     }
 )
 
-
 -- Whenever you edit a local .vimrc file, immediately re-source it
 -- See the ``vim-addon-local-vimrc`` plug-in for details.
 --
