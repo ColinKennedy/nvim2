@@ -1,18 +1,18 @@
 *my_notes.txt*	All notes about using Neovim or general development
 
 ================================================================================
-Introduction                                                |my_configuration|
+Introduction                                                *my_configuration*
 ================================================================================
 
 Sections
 
-- General ......................................... *my_configuration_general*
-- Plugins ......................................... *my_configuration_plugins*
+- General ......................................... |my_configuration_general|
 
 
 ================================================================================
-General                                             |my_configuration_plugins|
+General                                             *my_configuration_general*
 
-1. Debugging .................................................. *my_debugging*
-2. Mappings .................................................... *my_mappings*
-3. Commands .................................................... *my_commands*
+1. Debugging .............................................. |my_debugging.txt|
+2. Mappings ................................................ |my_mappings.txt|
+3. Commands ................................................ |my_commands.txt|
+4. Writing Vimdoc Files ........................ |my_writing_vimdoc_files.txt|
