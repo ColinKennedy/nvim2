@@ -1,18 +1,18 @@
 *my_debugging.txt*      How to debug using Neovim
 
-- Debugging Remotely ....................... *my_debugging_debugging_remotely*
-    - Setup .......................... *my_debugging_debugging_remotely_setup*
-    - nvim-dap handshake ................... *my_debugging_nvim-dap_handshake*
-    - Best Practices ........................... *my_debugging_best_practices*
-- Set And View Trace Logs ............. *my_debugging_set_and_view_trace_logs*
-- Debugging References ............................. *my_debugging_references*
+- Debugging Remotely ....................... |my_debugging_debugging_remotely|
+    - Setup .......................... |my_debugging_debugging_remotely_setup|
+    - nvim-dap handshake ................... |my_debugging_nvim-dap_handshake|
+    - Best Practices ........................... |my_debugging_best_practices|
+- Set And View Trace Logs ............. |my_debugging_set_and_view_trace_logs|
+- Debugging References ............................. |my_debugging_references|
 
 
 ================================================================================
-Debugging Remotely                           |my_debugging_debugging_remotely|
+Debugging Remotely                           *my_debugging_debugging_remotely*
 
 --------------------------------------------------------------------------------
-Setup                                  |my_debugging_debugging_remotely_setup|
+Setup                                  *my_debugging_debugging_remotely_setup*
 
 - Create a houdini environment that includes the code that you want to debug
   remotely + https://github.com/microsoft/debugpy
@@ -28,7 +28,7 @@ import debugpy;debugpy.listen(5678)
 
 
 --------------------------------------------------------------------------------
-nvim-dap handshake                          |my_debugging_nvim-dap_handshake|
+nvim-dap handshake                          *my_debugging_nvim-dap_handshake*
 
 This guide targets Houdini as a specific example
 
@@ -49,7 +49,7 @@ neovim.
 
 
 --------------------------------------------------------------------------------
-Best Practices                                   |my_debugging_best_practices|
+Best Practices                                   *my_debugging_best_practices*
 
 When working with a remote process, you may find that you cannot restart / stop
 the debugger without calling the debugee. To be honest there might be a better
@@ -72,7 +72,7 @@ accidentally killing the debugee. Here's how:
 
 
 ================================================================================
-Set And View Trace Logs                |my_debugging_set_and_view_trace_logs|
+Set And View Trace Logs                *my_debugging_set_and_view_trace_logs*
 
 Need help figuring out why debugging isn't working?
 
@@ -88,7 +88,7 @@ Use this to show verbose messages on why the debugger doesn't start.
 
 
 ================================================================================
-Debugging References                                 |my_debugging_references|
+Debugging References                                 *my_debugging_references*
 
 - Useful Microsoft launch / attach information - https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
 - More Microsoft documentation, very beginner friendly - https://github.com/microsoft/debugpy/wiki/Command-Line-Reference#example-2-working-with-remote-code-or-code-running-in-docker-container

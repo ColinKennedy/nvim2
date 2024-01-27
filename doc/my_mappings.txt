@@ -4,20 +4,20 @@
 Sections
 ================================================================================
 
-1. Workspace Switching ..................... *my_mappings_workspace_switching*
-Utility / Movement Related ............ *my_mappings_utility_movement_related*
-Terminal / Tmux Communication ...... *my_mappings_terminal_tmux_communication*
-Formatting And Editting ................ *my_mappings_formatting_and_editting*
-Debugging ............................................ *my_mappings_debugging*
-Quickfix .............................................. *my_mappings_quickfix*
-Miscellaneous .................................... *my_mappings_miscellaneous*
-Text-Objects ...................................... *my_mappings_text_objects*
-grapple.nvim ...................................... *my_mappings_grapple.nvim*
-telescope.nvim .................................. *my_mappings_telescope.nvim*
-vim-bqf ................................................ *my_mappings_vim-bqf*
+Workspace Switching ..................... |my_mappings_workspace_switching|
+Utility / Movement Related ............ |my_mappings_utility_movement_related|
+Terminal / Tmux Communication ...... |my_mappings_terminal_tmux_communication|
+Formatting And Editting ................ |my_mappings_formatting_and_editting|
+Debugging ............................................ |my_mappings_debugging|
+Quickfix .............................................. |my_mappings_quickfix|
+Miscellaneous .................................... |my_mappings_miscellaneous|
+Text-Objects ...................................... |my_mappings_text_objects|
+grapple.nvim ...................................... |my_mappings_grapple.nvim|
+telescope.nvim .................................. |my_mappings_telescope.nvim|
+vim-bqf ................................................ |my_mappings_vim-bqf|
 
 ================================================================================
-Workspace Switching                          |my_mappings_workspace_switching|
+Workspace Switching                          *my_mappings_workspace_switching*
 
 Legend
 
@@ -44,7 +44,7 @@ Legend
 
 
 ================================================================================
-Utility / Movement Related              |my_mappings_utility_movement_related|
+Utility / Movement Related              *my_mappings_utility_movement_related*
 
 Legend
 
@@ -77,7 +77,7 @@ Legend
 
 
 ================================================================================
-Terminal / Tmux Communication        |my_mappings_terminal_tmux_communication|
+Terminal / Tmux Communication        *my_mappings_terminal_tmux_communication*
 
 Legend
 
@@ -92,7 +92,7 @@ Legend
 
 
 ================================================================================
-Formatting And Editting                  |my_mappings_formatting_and_editting|
+Formatting And Editting                  *my_mappings_formatting_and_editting*
 
 Legend
 
@@ -113,7 +113,7 @@ Legend
 
 
 ================================================================================
-Debugging                                              |my_mappings_debugging|
+Debugging                                              *my_mappings_debugging*
 
 Legend
 
@@ -142,7 +142,7 @@ Legend
 
 
 ================================================================================
-LSP                                                          |my_mappings_lsp|
+LSP                                                          *my_mappings_lsp*
 
 Legend
 
@@ -161,7 +161,7 @@ Legend
 
 
 ================================================================================
-Quickfix                                                |my_mappings_quickfix|
+Quickfix                                                *my_mappings_quickfix*
 
 Legend
 
@@ -175,7 +175,7 @@ Legend
 
 
 ================================================================================
-Miscellaneous                                     |my_mappings_miscellaneous|
+Miscellaneous                                     *my_mappings_miscellaneous*
 
 Legend
 
@@ -201,7 +201,7 @@ Legend
 
 
 ================================================================================
-Text-Objects                                        |my_mappings_text_objects|
+Text-Objects                                        *my_mappings_text_objects*
 
 Legend
 
@@ -246,7 +246,7 @@ Legend
 
 
 ================================================================================
-grapple.nvim                                        |my_mappings_grapple.nvim|
+grapple.nvim                                        *my_mappings_grapple.nvim*
 
 Super quickly register "important" files in a project and swap between them. So helpful!
 This plug-in is basically https://github.com/ThePrimeagen/harpoon but actually good.
@@ -266,7 +266,7 @@ Legend
 
 
 ================================================================================
-telescope.nvim                                    |my_mappings_telescope.nvim|
+telescope.nvim                                    *my_mappings_telescope.nvim*
 
 Various mappings that leverage telescope.nvim.
 
@@ -283,7 +283,7 @@ Legend
 
 
 ================================================================================
-vim-bqf                                                 |my_mappings_vim-bqf|
+vim-bqf                                                 *my_mappings_vim-bqf*
 
 Legend
 

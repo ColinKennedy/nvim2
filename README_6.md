@@ -1,10 +1,11 @@
 - Get `dad` to work again
 
-- When scrolling, I don't want stay-centered to run on terminal buffers. I'd
-  rather my old code work for that
-- Find out how to make 2+ toggleterms in a single tab
+- https://www.reddit.com/r/neovim/comments/1abev8d/any_tips_to_optimize_cmp_performance/
+
 - How do you align LSP symbols to the right
 - Fix qf <Enter> mapping
+
+https://github.com/HoNamDuong/hybrid.nvim/blob/master/lua/hybrid/highlights.lua
 
 - Writing your own help
  - https://www.reddit.com/r/neovim/comments/18xfs1y/i_have_started_to_maintain_my_own_vim_help_file/
@@ -72,6 +73,18 @@ Often when debugging it's useful to step quickly through the code until some are
 - Consider changing :Rg to be a location list instead of a quickfix list. qflist blows
 
 
+```
+Issues while press pressing <Tab>. Fix?
+E5108: Error executing lua ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:154: Vim:E15: Invalid expression:
+stack traceback:
+        [C]: in function 'nvim_eval'
+        ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:154: in function 'solve'
+        ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:133: in function <...al/.config/nvim/bundle/nvim-cmp/lua/c
+mp/utils/keymap.lua:132>
+        ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:248: in function <...al/.config/nvim/bundle/nvim-cmp/lua/c
+mp/utils/keymap.lua:247>
+
+```
 
 
 

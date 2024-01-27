@@ -1,7 +1,10 @@
+my_commands	my_notes.txt	/*my_commands*
 my_commands.txt	my_commands.txt	/*my_commands.txt*
-my_configuration	my_notes.txt	/*my_configuration*
+my_commands_create_multiple_terminals	my_commands.txt	/*my_commands_create_multiple_terminals*
+my_commands_terminals	my_commands.txt	/*my_commands_terminals*
 my_configuration_general	my_notes.txt	/*my_configuration_general*
 my_configuration_plugins	my_notes.txt	/*my_configuration_plugins*
+my_debugging	my_notes.txt	/*my_debugging*
 my_debugging.txt	my_debugging.txt	/*my_debugging.txt*
 my_debugging_best_practices	my_debugging.txt	/*my_debugging_best_practices*
 my_debugging_debugging_remotely	my_debugging.txt	/*my_debugging_debugging_remotely*
@@ -9,10 +12,12 @@ my_debugging_debugging_remotely_setup	my_debugging.txt	/*my_debugging_debugging_
 my_debugging_nvim-dap_handshake	my_debugging.txt	/*my_debugging_nvim-dap_handshake*
 my_debugging_references	my_debugging.txt	/*my_debugging_references*
 my_debugging_set_and_view_trace_logs	my_debugging.txt	/*my_debugging_set_and_view_trace_logs*
+my_mappings	my_notes.txt	/*my_mappings*
 my_mappings.txt	my_mappings.txt	/*my_mappings.txt*
 my_mappings_debugging	my_mappings.txt	/*my_mappings_debugging*
 my_mappings_formatting_and_editting	my_mappings.txt	/*my_mappings_formatting_and_editting*
 my_mappings_grapple.nvim	my_mappings.txt	/*my_mappings_grapple.nvim*
+my_mappings_lsp	my_mappings.txt	/*my_mappings_lsp*
 my_mappings_miscellaneous	my_mappings.txt	/*my_mappings_miscellaneous*
 my_mappings_quickfix	my_mappings.txt	/*my_mappings_quickfix*
 my_mappings_telescope.nvim	my_mappings.txt	/*my_mappings_telescope.nvim*
