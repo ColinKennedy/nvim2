@@ -43,7 +43,9 @@ vim.opt.lazyredraw = true
 -- Reference: https://www.reddit.com/r/neovim/comments/r9acxp/neovim_is_slow_because_of_python_provider/
 --
 vim.g.python_host_prog = "/bin/python"
-vim.g.python3_host_prog = "/usr/local/bin/python3.7"
+-- Reference: https://www.inmotionhosting.com/support/server/linux/install-python-3-9-centos-7/
+-- vim.g.python3_host_prog = "/usr/local/bin/python3.7"
+vim.g.python3_host_prog = "/usr/local/bin/python3.9"
 
 -- Force Neovim to have one statusline for all buffers (rather than one-per-buffer)
 --
