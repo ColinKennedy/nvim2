@@ -53,11 +53,6 @@ require("nvim-treesitter.configs").setup {
     },
     indent = {
         enable = true,
-        -- I'm preferring to use the ``Vimjas/vim-python-pep8-indent``
-        -- plug-in until the treesitter plugin is fixed.
-        --
-        -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
-        --
         disable = {"cpp"},
     },
 }
