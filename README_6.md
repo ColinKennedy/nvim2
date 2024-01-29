@@ -7,14 +7,9 @@
  - Possibly related to ccls not being there (and causing an error)?
 
 https://github.com/HoNamDuong/hybrid.nvim/blob/master/lua/hybrid/highlights.lua
+https://github.com/PHSix/nvim-hybrid
 
-- Writing your own help
- - https://www.reddit.com/r/neovim/comments/18xfs1y/i_have_started_to_maintain_my_own_vim_help_file/
- - https://www.reddit.com/r/neovim/comments/gaiybh/not_sure_how_to_create_my_own_help_file/
- - https://vim.fandom.com/wiki/Add_your_note_files_to_Vim_help
- - https://www.reddit.com/r/vim/comments/2wc5ev/making_my_own_vim_help_file/
- - https://www.reddit.com/r/vim/comments/gaexfl/create_own_help_files/
- - https://github.com/nbeaver/vim-help-file
+https://github.com/idanarye/nvim-blunder
 
 https://gitlab.com/yorickpeterse/nvim-pqf
 
