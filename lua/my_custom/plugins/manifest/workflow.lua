@@ -106,7 +106,8 @@ return {
             local context = require("treesitter-context")
             context.setup{
                 on_attach = function(bufnr)
-                    type_ = vim.bo[bufnr].filetype
+                    local type_ = vim.bo[bufnr].filetype
+
                     return type_ == "diff" or type_ == "usd" or type_ == "objdump"
                 end,
             }
