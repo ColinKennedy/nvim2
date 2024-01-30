@@ -10,3 +10,6 @@ Website development and other stuff
 
 ## Working With Remotes
 https://github.com/chipsenkbeil/distant.nvim
+
+## iOS stuff
+https://github.com/wojciech-kulik/xcodebuild.nvim
