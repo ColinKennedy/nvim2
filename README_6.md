@@ -1,8 +1,10 @@
 - Get `dad` to work again
 
+- <leader>rr seems to not work anymore. Fix!
+
 - https://www.reddit.com/r/neovim/comments/1abev8d/any_tips_to_optimize_cmp_performance/
 
-- src/ex_cmds.h is super slow. Figure out why and make it fast again
+- tree-sitter + src/ex_cmds.h is super slow. Figure out why and make it fast again
 
 - How do you align LSP symbols to the right
 - <Enter> in a quickfix buffer sometimes doesn't actually go to the selected thing. Fix!
@@ -30,6 +32,9 @@ ugin/spaceless.lua:11>
 
 - pylance, try it out
 - Update hybrid2 to deal with LSP colors
+
+
+- Check on https://github.com/jdrupal-dev/code-refactor.nvim in a few months
 
 
 
