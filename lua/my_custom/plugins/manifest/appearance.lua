@@ -419,4 +419,14 @@ return {
             )
         end,
     },
+
+    -- Highlight the whole line when you're in linewise selection mode.
+    --
+    -- Why is this not Vim's default behavior??
+    --
+    {
+        "0xAdk/full_visual_line.nvim",
+        keys = "V",
+        opts = {},
+    },
 }

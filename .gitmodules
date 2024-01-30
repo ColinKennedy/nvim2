@@ -328,3 +328,6 @@
 [submodule "bundle/stay-centered.nvim"]
 	path = bundle/stay-centered.nvim
 	url = git@github.com:arnamak/stay-centered.nvim.git
+[submodule "bundle/full_visual_line.nvim"]
+	path = bundle/full_visual_line.nvim
+	url = git@github.com:0xAdk/full_visual_line.nvim.git
