@@ -53,6 +53,12 @@ require("nvim-treesitter.configs").setup {
     },
     indent = {
         enable = true,
-        disable = {"cpp"},
+        -- TODO: Possibly remove this "python" disable.
+        --
+        -- Very unfortunately needed because indentation via treesitter has bugs.
+        --
+        -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
+        --
+        disable = {"cpp", "python"},
     },
 }
