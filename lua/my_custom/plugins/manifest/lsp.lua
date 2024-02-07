@@ -42,7 +42,7 @@ return {
 
     -- Neovim snippet engine (which also displays in nvim-cmp)
     {
-        "ColinKennedy/LuaSnip",
+        "L3MON4D3/LuaSnip",
         config = function()
             require("luasnip.loaders.from_lua").lazy_load(
                 { paths = "./snippets" }

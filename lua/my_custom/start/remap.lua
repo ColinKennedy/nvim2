@@ -445,3 +445,10 @@ vim.keymap.set(
     function() vim.cmd[[wqall]] end,
     { desc = "[w]rite and [q]uit [all] buffers." }
 )
+
+vim.keymap.set(
+    "n",
+    "<leader>lcs",
+    function() require('luasnip').unlink_current() end,
+    { desc = "[l]eave [c]urrent [s]nippet." }
+)
