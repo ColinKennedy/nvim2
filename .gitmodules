@@ -54,7 +54,7 @@
 	url = git@github.com:KaraMCC/vim-gemini.git
 [submodule "bundle/LuaSnip"]
 	path = bundle/LuaSnip
-	url = git@github.com:L3MON4D3/LuaSnip.git
+	url = git@github.com:ColinKennedy/LuaSnip.git
 [submodule "bundle/vim-addon-local-vimrc"]
 	path = bundle/vim-addon-local-vimrc
 	url = git@github.com:MarcWeber/vim-addon-local-vimrc.git

@@ -173,7 +173,7 @@ return {
             require("my_custom.plugins.data.neogen")
         end,
         dependencies = {
-            "L3MON4D3/LuaSnip",
+            "ColinKennedy/LuaSnip",
             "nvim-treesitter/nvim-treesitter"
         },
         keys = {
