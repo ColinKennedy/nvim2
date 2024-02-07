@@ -425,7 +425,12 @@ return {
     -- Why is this not Vim's default behavior??
     --
     {
-        "0xAdk/full_visual_line.nvim",
+        "ColinKennedy/full_visual_line.nvim",
+        -- TODO: Remove this fork + branch once the PR is merged
+        --
+        -- Reference: https://github.com/0xAdk/full_visual_line.nvim/pull/3
+        --
+        branch = "fix_visual_line_with_vim_ninja_feet",
         keys = "V",
         opts = {},
     },

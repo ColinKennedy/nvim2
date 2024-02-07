@@ -330,7 +330,7 @@
 	url = git@github.com:arnamak/stay-centered.nvim.git
 [submodule "bundle/full_visual_line.nvim"]
 	path = bundle/full_visual_line.nvim
-	url = git@github.com:0xAdk/full_visual_line.nvim.git
+	url = git@github.com:ColinKennedy/full_visual_line.nvim.git
 [submodule "bundle/vim-python-pep8-indent"]
 	path = bundle/vim-python-pep8-indent
 	url = git@github.com:Vimjas/vim-python-pep8-indent.git
