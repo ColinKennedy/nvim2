@@ -1,20 +1,8 @@
 - https://github.com/fgheng/winbar.nvim
  - https://github.com/fgheng/winbar.nvim/issues/27
-- https://github.com/jeetsukumaran/vim-indentwise
- - https://github.com/jeetsukumaran/vim-indentwise/issues/20
 - https://github.com/lewis6991/spaceless.nvim
  - https://github.com/lewis6991/spaceless.nvim/issues/10
-- https://github.com/troydm/zoomwintab.vim
- - https://github.com/troydm/zoomwintab.vim/issues/17
-- https://github.com/kana/vim-operator-user
- - https://github.com/kana/vim-textobj-user/issues/82
-
-- https://github.com/glts/vim-textobj-comment
-- https://github.com/justinmk/vim-ipmotion
-- https://github.com/kana/vim-operator-replace
-- https://github.com/kana/vim-tabpagecd
-- https://github.com/kana/vim-textobj-indent
-- https://github.com/kana/vim-textobj-line
-- https://github.com/kana/vim-textobj-user
 - https://github.com/ruanyl/vim-gh-line
-- https://github.com/ColinKennedy/vim-cmake
+ - https://github.com/ruanyl/vim-gh-line/issues/62
+
+- https://github.com/justinmk/vim-ipmotion
