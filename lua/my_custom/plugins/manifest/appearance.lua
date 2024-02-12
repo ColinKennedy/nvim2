@@ -76,6 +76,12 @@ return {
                 mode = {"n", "v"},
             },
             {
+                "ih",
+                ":<C-U>Gitsigns select_hunk<CR>",
+                desc="Select [i]nside git [h]unk.",
+                mode = {"o", "x"},
+            },
+            {
                 "<leader>grh",
                 function()
                     require("gitsigns").undo_stage_hunk()

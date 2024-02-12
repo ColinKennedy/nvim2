@@ -233,6 +233,7 @@ Legend
 | n | p    | Change [p]ut so that it behaves like the `y`ank key.                         |
 | v | .    | Make `.` work with visually selected lines.                                  |
 | v | aI   | Select [a]round lines of same + outer [I]ndentation, spanning whitespace.  |
+| v | ih   | Select [i]nside git [h]unk.                                                |
 | v | iI   | Select [i]nside lines of same [I]ndentation, spanning whitespace.          |
 | x | ac   | Select [a]round a [c]lass. (including the class definition line).          |
 | x | ai   | Select [a]round [i]ndent + outer indent. Stop at whitespace.               |
