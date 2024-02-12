@@ -114,6 +114,45 @@ Legend
 
 
 ================================================================================
+Git                                                          *my_mappings_git*
+
+Miscellaneous git-related mappings from various plugins.
+
+Legend
+
+- 1 == mode
+- 2 == mapping
+- 3 == description
+
+| 1 |       2       |                                         3                                          |
+| - | ------------- | ---------------------------------------------------------------------------------- |
+| n | J             | Keep the cursor in the same position while pressing `J`.                             |
+| n | <leader>dil   | [d]elete [i]nside the current [l]ine, without the ending newline character.        |
+| n | <leader>iV    | [i]nsert [V]ariable debug-print above the current line                             |
+| n | <leader>id    | [i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.      |
+| n | <leader>iv    | [i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.      |
+| n | <leader>j     | [j]oin the line below without adding an extra space                                |
+| n | <leader>sa    | [s]plit [a]rgs - Split a line with arguments into multiple lines.                  |
+| n | <leader>ss    | [s]ubstitute [s]election (in-file search/replace) for the word under your cursor.  |
+| n | <leader>gss   | [g]it [s]hort [s]tatus.                                                            |
+| n | <leader>gr%   | [g]it [r]eset %-[c]urrent.                                                         |
+| n | <leader>grc   | [g]it [r]eset [c]urrent.                                                           |
+| n | <leader>gpl   | [g]it [p]ul[l].                                                                    |
+| n | <leader>gph   | [g]it [p]us[h].                                                                    |
+| n | <leader>gdi   | [g]it [d][i] (Interactive).                                                        |
+| n | <leader>gdc   | [g]it [d]iff --[c]ached.                                                           |
+| n | <leader>ga%   | [g]it [a]dd %-[c]urrent file.                                                      |
+| n | <leader>gap   | [g]it [a]dd -[p] interactive command.                                              |
+| n | <leader>gac   | [g]it [a]dd [c]urrent file.                                                        |
+| n | <leader>gcm   | [g]it [c]ommit [m]essage (WIP, you still have to press Enter).                     |
+| n | <leader>gch   | [g]it [c]heckout [h]unk.                                                           |
+| n | <leader>gah   | [g]it [a]dd [h]unk.                                                                |
+| n | <leader>grh   | [g]it [r]eset [h]unk.                                                              |
+| n | <leader>gsa   | [g]it [s]tash [a]pply onto the current repository.                                 |
+| n | <leader>gsp   | [g]it [s]tash [p]ush the current repository.                                       |
+
+
+================================================================================
 Debugging                                              *my_mappings_debugging*
 
 Legend
@@ -158,7 +197,7 @@ Legend
 | n | gd           | [g]o to [d]efinition.                                      |
 | n | gi           | [g]o to [i]mplementations.                                 |
 | n | gr           | [g]o to [r]eferences (where a variable is used)            |
-| n | <leader>gca  | [c]ode [a]ction - Show available commands under the cursor.|
+| n | <leader>oca  | [o]pen [c]ode [a]ction - Show commands under the cursor.   |
 
 
 ================================================================================
@@ -194,8 +233,6 @@ Legend
 | n | <C-w>o        | Toggle full-screen or minimize a window.                  |
 | n | <F12>         | Totally useless ROT13 encyption (for fun!)                |
 | v | /             | Make Vim's search more "magic", by default.               |
-| v | <leader>gsa   | [g]it [s]tash [a]pply onto the current repository.        |
-| v | <leader>gsp   | [g]it [s]tash [p]ush the current repository.              |
 | v | <leader>pe    | Load the selected [p]ython [e]rror as a quickfix window.  |
 | v | <leader>tx    | [t]oggle [x]-marks display.                               |
 | v | <leader>j     | [j]oin this line with the line below, without whitespace. |
