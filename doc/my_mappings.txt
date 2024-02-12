@@ -12,6 +12,7 @@ Debugging ............................................ |my_mappings_debugging|
 Quickfix .............................................. |my_mappings_quickfix|
 Miscellaneous .................................... |my_mappings_miscellaneous|
 Text-Objects ...................................... |my_mappings_text_objects|
+LuaSnip ................................................ |my_mappings_luasnip|
 grapple.nvim ...................................... |my_mappings_grapple.nvim|
 telescope.nvim .................................. |my_mappings_telescope.nvim|
 vim-bqf ................................................ |my_mappings_vim-bqf|
@@ -246,7 +247,7 @@ Legend
 
 
 ================================================================================
-LuaSnip                                             *my_mappings_grapple.nvim*
+LuaSnip                                             *my_mappings_luasnip.nvim*
 
 Legend
 
