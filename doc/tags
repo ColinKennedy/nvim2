@@ -15,6 +15,7 @@ my_mappings_debugging	my_mappings.txt	/*my_mappings_debugging*
 my_mappings_formatting_and_editting	my_mappings.txt	/*my_mappings_formatting_and_editting*
 my_mappings_grapple.nvim	my_mappings.txt	/*my_mappings_grapple.nvim*
 my_mappings_lsp	my_mappings.txt	/*my_mappings_lsp*
+my_mappings_luasnip.nvim	my_mappings.txt	/*my_mappings_luasnip.nvim*
 my_mappings_miscellaneous	my_mappings.txt	/*my_mappings_miscellaneous*
 my_mappings_quickfix	my_mappings.txt	/*my_mappings_quickfix*
 my_mappings_telescope.nvim	my_mappings.txt	/*my_mappings_telescope.nvim*
