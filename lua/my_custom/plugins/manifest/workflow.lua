@@ -900,4 +900,12 @@ return {
         "sindrets/diffview.nvim",
         cmd = {"DiffviewOpen"},
     },
+
+    -- Extend Vim's :mksession. Auto-save and restore those sessions
+    --
+    -- I primarily use this along with
+    -- https://github.com/tmux-plugins/tmux-resurrect so that I don't lose
+    -- work.
+    --
+    { "tpope/vim-obsession" },
 }
