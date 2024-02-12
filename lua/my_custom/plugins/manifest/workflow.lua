@@ -1,15 +1,4 @@
 return {
-    -- Lightweight CMake command - limited project structure knowledge
-    {
-        "ColinKennedy/vim-cmake",
-        cmd = { "CMake", "CMakeClean", "CMakeFindBuildDir" },
-        config = function()
-            -- Always generate a compile_commands.json file
-            vim.g.cmake_export_compile_commands = 1
-            vim.g.cmake_executable = "cmake3"
-        end,
-    },
-
     -- A cool plugin that makes it easier to search/replace variations of words
     -- Example: Subvert/child{,ren}/adult{,s}/g
     --

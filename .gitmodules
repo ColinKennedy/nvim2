@@ -7,9 +7,6 @@
 [submodule "bundle/neogen"]
 	path = bundle/neogen
 	url = git@github.com:ColinKennedy/neogen.git
-[submodule "bundle/vim-cmake"]
-	path = bundle/vim-cmake
-	url = git@github.com:ColinKennedy/vim-cmake.git
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = git@github.com:ColinKennedy/vim-dispatch.git
