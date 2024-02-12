@@ -13,3 +13,10 @@ https://github.com/chipsenkbeil/distant.nvim
 
 ## iOS stuff
 https://github.com/wojciech-kulik/xcodebuild.nvim
+
+
+## Possibly Useful
+https://github.com/dlvhdr/gh-addressed.nvim?tab=readme-ov-file
+https://github.com/dlvhdr/gh-blame.nvim
+https://github.com/yioneko/nvim-yati
+https://www.reddit.com/r/neovim/comments/1amp8hm/spookynvim_motionplugin_agnostic_remote_text/
