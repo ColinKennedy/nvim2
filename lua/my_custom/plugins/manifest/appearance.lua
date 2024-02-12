@@ -85,7 +85,7 @@ return {
             },
             {
                 "<leader>gtd",
-                function() require("gitsigns").toggle_deleted end,
+                function() require("gitsigns").toggle_deleted() end,
                 desc="[g]it [t]oggle [d]elete display.",
                 mode = {"o", "x"},
             },
