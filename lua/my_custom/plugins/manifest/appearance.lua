@@ -76,18 +76,24 @@ return {
                 mode = {"n", "v"},
             },
             {
-                "ih",
-                ":<C-U>Gitsigns select_hunk<CR>",
-                desc="Select [i]nside git [h]unk.",
-                mode = {"o", "x"},
-            },
-            {
                 "<leader>grh",
                 function()
                     require("gitsigns").undo_stage_hunk()
                 end,
                 desc="[g]it [r]eset [h]unk.",
                 mode = {"n", "v"},
+            },
+            {
+                "<leader>gtd",
+                function() require("gitsigns").toggle_deleted end,
+                desc="[g]it [t]oggle [d]elete display.",
+                mode = {"o", "x"},
+            },
+            {
+                "ih",
+                ":<C-U>Gitsigns select_hunk<CR>",
+                desc="Select [i]nside git [h]unk.",
+                mode = {"o", "x"},
             },
             {
                 "[g",
