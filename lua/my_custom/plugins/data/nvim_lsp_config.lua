@@ -108,11 +108,11 @@ vim.api.nvim_create_autocmd(
             -- )
             vim.keymap.set(
                 "n",
-                "<leader>gca",
+                "<leader>oca",
                 vim.lsp.buf.code_action,
                 {
                     buffer=event.buf,
-                    desc="[c]ode [a]ction - Show available commands for what's under your cursor."
+                    desc="[o]pen [c]ode [a]ction - Show commands under the cursor."
                 }
             )
             vim.keymap.set(

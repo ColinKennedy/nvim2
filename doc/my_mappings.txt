@@ -4,12 +4,13 @@
 Sections
 ================================================================================
 
-Workspace Switching ..................... |my_mappings_workspace_switching|
+Workspace Switching ........................ |my_mappings_workspace_switching|
 Utility / Movement Related ............ |my_mappings_utility_movement_related|
 Terminal / Tmux Communication ...... |my_mappings_terminal_tmux_communication|
 Formatting And Editting ................ |my_mappings_formatting_and_editting|
 Git ........................................................ |my_mappings_git|
 Debugging ............................................ |my_mappings_debugging|
+LSP ........................................................ |my_mappings_lsp|
 Quickfix .............................................. |my_mappings_quickfix|
 Miscellaneous .................................... |my_mappings_miscellaneous|
 Text-Objects ...................................... |my_mappings_text_objects|
