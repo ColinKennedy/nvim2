@@ -372,7 +372,7 @@ return {
             },
             {
                 "<leader>gcop",
-                ':Git checkout -p',
+                ':Git checkout -p<CR>',
                 desc="[g]it [c]heckout --[p]artial.",
             },
             {
