@@ -8,6 +8,7 @@ Workspace Switching ..................... |my_mappings_workspace_switching|
 Utility / Movement Related ............ |my_mappings_utility_movement_related|
 Terminal / Tmux Communication ...... |my_mappings_terminal_tmux_communication|
 Formatting And Editting ................ |my_mappings_formatting_and_editting|
+Git ........................................................ |my_mappings_git|
 Debugging ............................................ |my_mappings_debugging|
 Quickfix .............................................. |my_mappings_quickfix|
 Miscellaneous .................................... |my_mappings_miscellaneous|
@@ -145,6 +146,7 @@ Legend
 | n | <leader>gap   | [g]it [a]dd -[p] interactive command.                                              |
 | n | <leader>gac   | [g]it [a]dd [c]urrent file.                                                        |
 | n | <leader>gcm   | [g]it [c]ommit [m]essage (WIP, you still have to press Enter).                     |
+| n | <leader>gcop  | [g]it [c]heckout --[p]artial.                                                      |
 | n | <leader>gch   | [g]it [c]heckout [h]unk.                                                           |
 | n | <leader>gah   | [g]it [a]dd [h]unk.                                                                |
 | n | <leader>grh   | [g]it [r]eset [h]unk.                                                              |

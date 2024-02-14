@@ -371,6 +371,11 @@ return {
                 desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
             },
             {
+                "<leader>gcop",
+                ':Git checkout -p',
+                desc="[g]it [c]heckout --[p]artial.",
+            },
+            {
                 "<leader>gdc",
                 ":Git diff --cached<CR>",
                 desc="[g]it [d]iff --[c]ached.",
