@@ -1,6 +1,9 @@
 - Get `dad` to work again
 
 - <leader>rr seems to not work anymore. Fix!
+- <leader>ts - Do I still want it?
+
+- Adding doxygen per-type?
 
 - https://www.reddit.com/r/neovim/comments/1abev8d/any_tips_to_optimize_cmp_performance/
 
