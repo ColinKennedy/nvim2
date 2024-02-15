@@ -196,7 +196,7 @@ return {
         dependencies = {
             "mfussenegger/nvim-dap",
 
-            "theHamsta/nvim-dap-virtual-text",  -- Optional dependency for virtual text
+            "ColinKennedy/nvim-dap-virtual-text",  -- Optional dependency for virtual text
 
             "mfussenegger/nvim-dap-python",  -- Optional adapter for Python
         },
@@ -224,7 +224,8 @@ return {
 
     -- Adds the current value(s) of variables as you step through the code. Super handy!
     {
-        "theHamsta/nvim-dap-virtual-text",
+        "ColinKennedy/nvim-dap-virtual-text",
+        branch = "fix_missing_asm_parser",
         config = function()
             require("nvim-dap-virtual-text").setup()
         end,

@@ -234,7 +234,7 @@
 	url = git@github.com:kevinhwang91/nvim-bqf.git
 [submodule "bundle/nvim-dap-virtual-text"]
 	path = bundle/nvim-dap-virtual-text
-	url = git@github.com:theHamsta/nvim-dap-virtual-text.git
+	url = git@github.com:ColinKennedy/nvim-dap-virtual-text.git
 [submodule "bundle/zoxide.vim"]
 	path = bundle/zoxide.vim
 	url = git@github.com:nanotee/zoxide.vim.git
