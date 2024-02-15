@@ -224,6 +224,10 @@ return {
 
     -- Adds the current value(s) of variables as you step through the code. Super handy!
     {
+        -- TODO: Remove this fork once the missing parser bug is fixed
+        --
+        -- Reference: https://github.com/theHamsta/nvim-dap-virtual-text/issues/71
+        --
         "ColinKennedy/nvim-dap-virtual-text",
         branch = "fix_missing_asm_parser",
         config = function()
