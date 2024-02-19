@@ -14,8 +14,12 @@ https://github.com/chipsenkbeil/distant.nvim
 ## iOS stuff
 https://github.com/wojciech-kulik/xcodebuild.nvim
 
+## Appearance
+Pretty quickfix buffer - https://github.com/folke/trouble.nvim
+https://github.com/yorickpeterse/nvim-pqf
 
 ## Possibly Useful
+https://github.com/bfredl/nvim-miniyank
 https://github.com/dlvhdr/gh-addressed.nvim?tab=readme-ov-file
 https://github.com/dlvhdr/gh-blame.nvim
 https://github.com/yioneko/nvim-yati
