@@ -900,4 +900,12 @@ return {
     -- work.
     --
     { "tpope/vim-obsession" },
+
+    -- Allow `gf` to work in unifided diff (.diff) files.
+    {
+        -- "kana/vim-gf-diff",
+        "vim-scripts/gf-diff",
+        dependencies = { "kana/vim-gf-user" },
+        keys = { "gf", desc = "[g]o-to [f]ile." },
+    }
 }

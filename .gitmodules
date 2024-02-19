@@ -334,3 +334,9 @@
 [submodule "bundle/vim-obsession"]
 	path = bundle/vim-obsession
 	url = git@github.com:tpope/vim-obsession.git
+[submodule "bundle/vim-gf-diff"]
+	path = bundle/vim-gf-diff
+	url = git@github.com:kana/vim-gf-diff.git
+[submodule "bundle/vim-gf-user"]
+	path = bundle/vim-gf-user
+	url = git@github.com:kana/vim-gf-user.git
