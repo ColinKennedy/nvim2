@@ -28,7 +28,6 @@ return {
             print("lazy vim-operator-replace")
         end,
         dependencies = { "kana/vim-operator-user" },
-        priority = _PRIORITY + 2,
         version = "0.*",
         keys = {
             -- Change the [p]ut key to now be a text object, like yy!
