@@ -1,4 +1,41 @@
+When resizing the disassembly buffer, I get this error
+Fix
+```
+Error executing vim.schedule lua callback: .../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:555: Cursor position outside buffer
+stack traceback:
+        [C]: in function 'nvim_win_set_cursor'
+        .../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:555: in function <.../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:554>
+Error executing vim.schedule lua callback: .../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:555: Cursor position outside buffer
+stack traceback:
+        [C]: in function 'nvim_win_set_cursor'
+        .../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:555: in function <.../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:554>
+```
+
+- Add syntax highlighting for markdown
+- https://gitlab.com/yorickpeterse/nvim-pqf
+
+- Change nvim-lspconfig to trigger if gd / gf or some other mapping is pressed
+
+
+- kevinhwang91/nvim-bqf is causing the <CR> (Enter) key not to work. Fix!
+- Re-add lua to winbar. Find out why it's slow and fix
+- Try out Nvim 0.10's `nvim -q -` for loading files into the quickfix
+
+- get my cool git add -p working on Neovim again
 - Get `dad` to work again
+
+
+- Figure out how to get this while keeping my put plugin
+https://github.com/bfredl/nvim-miniyank
+
+
+
+Try out one of these
+```
+https://github.com/wsdjeg/vim-fetch
+https://github.com/bogado/file-line
+https://github.com/lervag/file-line
+```
 
 - <leader>rr seems to not work anymore. Fix!
 - <leader>ts - Do I still want it?
@@ -17,8 +54,6 @@ https://github.com/HoNamDuong/hybrid.nvim/blob/master/lua/hybrid/highlights.lua
 https://github.com/PHSix/nvim-hybrid
 
 https://github.com/idanarye/nvim-blunder
-
-https://gitlab.com/yorickpeterse/nvim-pqf
 
 
 ```

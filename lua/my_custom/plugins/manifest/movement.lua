@@ -74,7 +74,7 @@ return {
             {
                 "<space>e",
                 ":Files<CR>",
-                desc="[e]dit a `:pwd` file.",
+                desc="Find and [e]dit a file starting from `:pwd`.",
             },
             {
                 "<space>L",

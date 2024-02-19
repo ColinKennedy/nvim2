@@ -82,4 +82,31 @@ function M.join_os_paths(paths)
     return output
 end
 
+--- Find the top-most directory, starting from `directory`.
+---
+--- @param directory string? An absolute path within some git, Rez, etc directory.
+--- @return string? # The found path, if any
+---
+function M.get_project_root(directory)
+    local current = directory or vim.fn.getcwd()
+    -- TODO: Convert these functions to Lua when I feel like it someday
+    local search_options = {
+        "searcher#get_cmake_root",
+        "searcher#get_rez_root",
+        "searcher#get_git_root",
+    }
+
+    for _, name in ipairs(search_options)
+    do
+        local root = vim.fn[name](current)
+
+        if root ~= nil
+        then
+            return root
+        end
+    end
+
+    return nil
+end
+
 return M

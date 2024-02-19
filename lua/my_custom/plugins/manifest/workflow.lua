@@ -563,7 +563,7 @@ return {
                             name = "+LSP [c]ode prefix",
                             a = "Run [c]ode [a]ction",
                         },
-                        e = "[e]dit a `:pwd` file",
+                        e = "Find and [e]dit a file starting from `:pwd`.",
                         q = "Switch to [q]uickfix window, if open",
                         w = {
                             name = "+workspace LSP prefix",
