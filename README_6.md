@@ -113,6 +113,7 @@ Often when debugging it's useful to step quickly through the code until some are
 
 - Consider changing :Rg to be a location list instead of a quickfix list. qflist blows
 
+- Added <Space>CD for Fzf CDing
 
 ```
 Issues while press pressing <Tab>. Fix?
