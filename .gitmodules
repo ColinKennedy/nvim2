@@ -340,3 +340,6 @@
 [submodule "bundle/vim-gf-user"]
 	path = bundle/vim-gf-user
 	url = git@github.com:kana/vim-gf-user.git
+[submodule "bundle/gf-diff"]
+	path = bundle/gf-diff
+	url = git@github.com:vim-scripts/gf-diff.git
