@@ -849,12 +849,8 @@ return {
 
             require("dial.config").augends:register_group{
                 default = {
-                    augend.semver.alias.semver,
-                    augend.integer.alias.decimal,
-                    augend.date.alias["%Y/%m/%d"],
-                    augend.date.alias["%Y-%m-%d"],
-                },
-                visual = {
+                    augend.constant.alias.bool,
+                    augend.constant.new{ elements = {"True", "False"} },
                     augend.semver.alias.semver,
                     augend.integer.alias.decimal,
                     augend.date.alias["%Y/%m/%d"],
@@ -864,26 +860,28 @@ return {
         end,
         keys = {
             {
-                "<leader>cid",
-                function() require("dial.map").manipulate("decrement", "normal") end,
-                desc = "[c]hange the [i]ncrement with [d]ecrease.",
+                "<C-a>",
+                "<Plug>(dial-increment)",
+                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
+                mode = {"n", "v"},
             },
             {
-                "<leader>cii",
-                function() require("dial.map").manipulate("increment", "normal") end,
-                desc = "[c]hange the [i]ncrement with [i]ncrease.",
+                "<C-x>",
+                "<Plug>(dial-decrement)",
+                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
+                mode = {"n", "v"},
             },
             {
-                "<leader>cid",
-                mode = "v",
-                function() require("dial.map").manipulate("decrement", "visual") end,
-                desc = "[c]hange the [i]ncrement with [d]ecrease.",
+                "g<C-a>",
+                "g<Plug>(dial-increment)",
+                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
+                mode = {"n", "v"},
             },
             {
-                "<leader>cii",
-                mode = "v",
-                function() require("dial.map").manipulate("increment", "visual") end,
-                desc = "[c]hange the [i]ncrement with [i]ncrease.",
+                "g<C-x>",
+                "g<Plug>(dial-decrement)",
+                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
+                mode = {"n", "v"},
             },
         },
         version = "0.*",
