@@ -14,7 +14,7 @@ return {
         "kevinhwang91/nvim-bqf",
         dependencies = {"junegunn/fzf", "nvim-treesitter/nvim-treesitter"},
         ft = "qf",
-        -- Add back in once there are new tags that include this patch
+        -- TODO: Add back in once there are new tags that include this patch
         --
         -- Reference: https://github.com/kevinhwang91/nvim-bqf/issues/134
         --
