@@ -94,15 +94,6 @@ return {
         },
     },
 
-    -- A more modern, faster grep engine.
-    -- Requires https://github.com/BurntSushi/ripgrep to be installed
-    --
-    {
-        "jremmen/vim-ripgrep",
-        cmd = "Rg",
-        version = "1.*",
-    },
-
     -- A plugin that highlights the character to move to a word or WORD with f/t
     --
     -- Note:

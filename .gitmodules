@@ -82,9 +82,6 @@
 [submodule "bundle/vim-indentwise"]
 	path = bundle/vim-indentwise
 	url = git@github.com:jeetsukumaran/vim-indentwise.git
-[submodule "bundle/vim-ripgrep"]
-	path = bundle/vim-ripgrep
-	url = git@github.com:jremmen/vim-ripgrep.git
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
