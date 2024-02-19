@@ -14,7 +14,11 @@ return {
         "kevinhwang91/nvim-bqf",
         dependencies = {"junegunn/fzf", "nvim-treesitter/nvim-treesitter"},
         ft = "qf",
-        version = "0.*",
+        -- Add back in once there are new tags that include this patch
+        --
+        -- Reference: https://github.com/kevinhwang91/nvim-bqf/issues/134
+        --
+        -- version = "1.*",
     },
 
     -- Extra quick-fix commands
