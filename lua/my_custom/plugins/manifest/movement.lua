@@ -14,34 +14,41 @@ return {
     -- Integrate FZF into Neovim
     {
         "ibhagwan/fzf-lua",
-        cmd = "FzfLua",
+        cmd = { "Commands", "FzfLua", "GFiles", "Helptags", "History" },
         config = function()
             require("fzf-lua").setup{
                 previewers = { builtin = { syntax_delay = 200 } },
-                winopts = { height = 0.95, width = 0.95 },
+                winopts = {
+                    height = 0.95,
+                    width = 0.95,
+                    preview = {
+                        vertical       = 'up:45%',
+                        layout = "vertical",
+                    },
+                },
             }
 
             vim.api.nvim_create_user_command(
                 "Commands",
-                ":FzfLua commands<CR>",
+                function() require("fzf-lua").commands() end,
                 { desc = "Show all available Commands." }
             )
 
             vim.api.nvim_create_user_command(
                 "GFiles",
-                ":FzfLua git_files<CR>",
+                function() require("fzf-lua").git_files() end,
                 { desc = "Find and [e]dit a file in the git repository." }
             )
 
             vim.api.nvim_create_user_command(
                 "Helptags",
-                ":FzfLua help_tags<CR>",
+                function() require("fzf-lua").help_tags() end,
                 { desc = "Search all :help tags." }
             )
 
             vim.api.nvim_create_user_command(
                 "History",
-                ":FzfLua history<CR>",
+                function() require("fzf-lua").history() end,
                 { desc = "Show all past, executed commands." }
             )
         end,
