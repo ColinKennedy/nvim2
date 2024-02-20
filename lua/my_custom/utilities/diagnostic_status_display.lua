@@ -28,7 +28,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         -- Enable virtual text only on Warning or above, override spacing to 2
         virtual_text = {
             spacing = 2,
-            severity_limit = "Warning",
+            min = { severity = vim.diagnostic.severity.WARN },
         },
     }
 )
@@ -86,7 +86,7 @@ local echo_diagnostic = function()
             local diags = vim
                 .lsp
                 .diagnostic
-                .get_line_diagnostics(bufnf, line, { severity_limit = 'Warning' })
+                .get_line_diagnostics(bufnr, line, { min = { severity = vim.diagnostic.severity.WARN } })
 
             if #diags == 0 then
                 -- If we previously echo'd a message, clear it out by echoing an empty

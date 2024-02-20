@@ -11,7 +11,7 @@ stack traceback:
         .../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:555: in function <.../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:554>
 ```
 
-- Add syntax highlighting for markdown
+- Changed Winbar background color (colorscheme)
 - Try this out - https://github.com/jvgrootveld/telescope-zoxide
 - https://gitlab.com/yorickpeterse/nvim-pqf
 
