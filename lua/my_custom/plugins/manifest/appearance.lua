@@ -20,6 +20,8 @@ return {
             -- Show trailing whitespace as red text
             -- TODO: Get this color automatically
             vim.api.nvim_set_hl(0, "NonText", {bg="#5f0000", ctermbg=52})
+
+            vim.api.nvim_set_hl(0, "@python_docstring_block_title", {link="Define"})
         end,
         version = "1.*"
     },
