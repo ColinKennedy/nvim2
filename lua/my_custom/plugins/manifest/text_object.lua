@@ -24,9 +24,6 @@ return {
     -- Enables ``piw`` and other awesome text objects
     {
         "kana/vim-operator-replace",
-        config = function()
-            print("lazy vim-operator-replace")
-        end,
         dependencies = { "kana/vim-operator-user" },
         version = "0.*",
         keys = {
