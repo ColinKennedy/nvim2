@@ -337,3 +337,6 @@
 [submodule "bundle/sphinx.nvim"]
 	path = bundle/sphinx.nvim
 	url = git@github.com:stsewd/sphinx.nvim.git
+[submodule "bundle/fzf-lua"]
+	path = bundle/fzf-lua
+	url = git@github.com:ibhagwan/fzf-lua.git
