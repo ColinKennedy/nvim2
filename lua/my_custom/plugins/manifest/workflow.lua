@@ -906,5 +906,14 @@ return {
         "vim-scripts/gf-diff",
         dependencies = { "kana/vim-gf-user" },
         keys = { "gf", desc = "[g]o-to [f]ile." },
+    },
+
+    -- Add extra queries for RST to make it better suited for Python / Sphinx
+    {
+        "stsewd/sphinx.nvim",
+        ft = {
+            "python",  -- I have RST injected into Python files to include it here
+            "rst",
+        },
     }
 }
