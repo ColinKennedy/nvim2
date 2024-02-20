@@ -17,7 +17,7 @@ return {
         cmd = "FzfLua",
         config = function()
             require("fzf-lua").setup{
-                previewers = { builtin = { syntax_delay = 100 } },
+                previewers = { builtin = { syntax_delay = 200 } },
                 winopts = { height = 0.95, width = 0.95 },
             }
 
@@ -60,8 +60,17 @@ return {
             {
                 "<space>E",
                 function()
-                    filer = require("my_custom.utilities.filer")
-                    require("fzf-lua").files({ cwd = filer.get_project_root() })
+                    local filer = require("my_custom.utilities.filer")
+                    local root = filer.get_project_root()
+
+                    if not root
+                    then
+                        vim.api.nvim_err_writeln('No root could be fould.')
+
+                        return
+                    end
+
+                    require("fzf-lua").files({ cwd = root })
                 end,
                 desc="[E]dit a new project root file.",
             },

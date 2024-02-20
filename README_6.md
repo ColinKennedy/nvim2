@@ -12,6 +12,7 @@ stack traceback:
 ```
 
 - Add syntax highlighting for markdown
+- Try this out - https://github.com/jvgrootveld/telescope-zoxide
 - https://gitlab.com/yorickpeterse/nvim-pqf
 
 - Change nvim-lspconfig to trigger if gd / gf or some other mapping is pressed

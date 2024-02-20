@@ -10,12 +10,17 @@ local value = "V"
 
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
+        "c",
+        "cpp",
         "diff",
-        "usd",
+        "lua",
+        "markdown",
         "python",
-        -- "vim",  -- Note: This currently errors on-install during compiling. Not sure why.
-        "vimdoc",
         "query",
+        "rst",
+        "usd",
+        "vim",
+        "vimdoc",
     },
     parser_install_dir = installation_directory,
     highlight = {
