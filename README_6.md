@@ -11,12 +11,13 @@ stack traceback:
         .../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:555: in function <.../bundle/nvim-dap-ui/lua/dapui/components/disassembly.lua:554>
 ```
 
-- Changed Winbar background color (colorscheme)
+- Move /home/selecaoone/personal/.config/nvim/lua/my_custom/start/lsp_diagnostics.lua to hybrid2
 - Try this out - https://github.com/jvgrootveld/telescope-zoxide
 - https://gitlab.com/yorickpeterse/nvim-pqf
 
 - Change nvim-lspconfig to trigger if gd / gf or some other mapping is pressed
 
+- Add individual sections - https://github.com/danymat/neogen/issues/165
 
 - kevinhwang91/nvim-bqf is causing the <CR> (Enter) key not to work. Fix!
 - Re-add lua to winbar. Find out why it's slow and fix
