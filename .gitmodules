@@ -85,9 +85,6 @@
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
-[submodule "bundle/fzf.vim"]
-	path = bundle/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
 [submodule "bundle/vim-ipmotion"]
 	path = bundle/vim-ipmotion
 	url = git@github.com:justinmk/vim-ipmotion.git

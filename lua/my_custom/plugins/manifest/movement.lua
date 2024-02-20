@@ -1,19 +1,6 @@
 return {
     -- Zoxide auto-jump, but for Vim
-    {
-        "nanotee/zoxide.vim",
-        cmd = {"Z", "Zi"},
-        dependencies = {
-            "junegunn/fzf.vim",  -- Needed for ``:Zi``
-        },
-        keys = {
-            {
-                "<Space>Z",
-                ":Zi<CR>",
-                desc="[Z]oxide's interative pwd switcher.",
-            },
-        },
-    },
+    { "nanotee/zoxide.vim", cmd = { "Z" } },
 
     {
         "junegunn/fzf",
@@ -23,73 +10,75 @@ return {
         lazy = true,
         version = "0.*",
     },
+
+    -- Integrate FZF into Neovim
     {
-        "junegunn/fzf.vim",
+        "ibhagwan/fzf-lua",
+        cmd = "FzfLua",
         config = function()
-            -- Define Zz to get around an error in lazy.nvim
-            -- This should be temporary, ideally. Delete, later
-            --
-            -- Reference: https://github.com/folke/lazy.nvim/issues/718
-            --
-            vim.cmd[[let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }]]
+            require("fzf-lua").setup{
+                previewers = { builtin = { syntax_delay = 100 } },
+                winopts = { height = 0.95, width = 0.95 },
+            }
+
             vim.api.nvim_create_user_command(
-                "Args",
-                ":call fzf#run(fzf#wrap({'source': sort(argv())}))",
-                {}
+                "Commands",
+                ":FzfLua commands<CR>",
+                { desc = "Show all available Commands." }
             )
 
             vim.api.nvim_create_user_command(
-                "FzfCd",
-                ":call FzfCd()",
-                {
-                    desc="Search within the current :pwd for a new directory and :cd into it.",
-                }
+                "GFiles",
+                ":FzfLua git_files<CR>",
+                { desc = "Find and [e]dit a file in the git repository." }
+            )
+
+            vim.api.nvim_create_user_command(
+                "Helptags",
+                ":FzfLua help_tags<CR>",
+                { desc = "Search all :help tags." }
+            )
+
+            vim.api.nvim_create_user_command(
+                "History",
+                ":FzfLua history<CR>",
+                { desc = "Show all past, executed commands." }
             )
         end,
-        dependencies = { "junegunn/fzf" },
-        cmd = {
-            "Args",
-            "Buffers",
-            "Commands",
-            "FZF",
-            "Files",
-            "FzfCd",
-            "GFiles",
-            "Helptags",
-            "History",
-            "Lines",
-        },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
             {
-                "<space>B",
-                ":Buffers<CR>",
-                desc="Search existing [B]uffers and select + view it.",
-            },
-            {
-                "<leader>cD",
-                ":FzfCd<CR>",
-                desc="Search within the current :pwd for a new directory and :cd into it.",
-                silent=true,
-            },
-            {
-                "<space>e",
-                ":Files<CR>",
-                desc="Find and [e]dit a file starting from `:pwd`.",
-            },
-            {
-                "<space>L",
-                ":Lines<CR>",
-                desc="[L]ines searcher (current file)",
-            },
-            {
                 "<space>A",
-                ":Args<CR>",
+                ":FzfLua args<CR>",
                 desc="Select a new [A]rgs file from the `:args` list.",
             },
             {
+                "<space>B",
+                ":FzfLua buffers<CR>",
+                desc="Search existing [B]uffers and select + view it.",
+            },
+            {
                 "<space>E",
-                ":call searcher#search_project_files()<CR>",
+                function()
+                    filer = require("my_custom.utilities.filer")
+                    require("fzf-lua").files({ cwd = filer.get_project_root() })
+                end,
                 desc="[E]dit a new project root file.",
+            },
+            {
+                "<space>L",
+                ":FzfLua blines<CR>",
+                desc="[L]ines searcher (current file)",
+            },
+            {
+                "<space>e",
+                ":FzfLua files<CR>",
+                desc="Find and [e]dit a file starting from `:pwd`.",
+            },
+            {
+                "<space>l",
+                ":FzfLua lines<CR>",
+                desc="[l]ines searcher (all lines from all buffers)",
             },
         },
     },
