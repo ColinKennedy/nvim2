@@ -100,7 +100,7 @@ function M.get_project_root(directory)
     do
         local root = vim.fn[name](current)
 
-        if root ~= nil
+        if root ~= ""
         then
             return root
         end
