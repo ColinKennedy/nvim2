@@ -50,10 +50,10 @@ local echo_timer = nil
 local echo_timeout = 20
 
 -- The highlight group to use for warning messages.
-local warning_hlgroup = 'WarningMsg'
+local warning_hlgroup = "DiagnosticWarn"
 
 -- The highlight group to use for error messages.
-local error_hlgroup = 'ErrorMsg'
+local error_hlgroup = "DiagnosticError"
 
 -- If the first diagnostic line has fewer than this many characters, also add
 -- the second line to it.

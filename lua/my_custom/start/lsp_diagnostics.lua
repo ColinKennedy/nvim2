@@ -69,22 +69,16 @@ vim.cmd[[highlight LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=
 vim.cmd[[highlight LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
 vim.cmd[[highlight LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
 
--- TODO: Figure out how to right-align the virtual text
---
--- Reference: https://github.com/neovim/neovim/issues/16545
---
--- Maybe useful?
---     https://github.com/neovim/neovim/issues/11634
---     https://github.com/neovim/neovim/issues/16634
---     https://jdhao.github.io/2021/09/09/nvim_use_virtual_text/
---     https://github.com/neovim/neovim/issues/11634
---
 -- Place virtual text really far away from the source code (so I don't see it often)
 vim.diagnostic.config(
     {
         virtual_text = {
+            -- Note: 84 here basically means "89" when you account for offsets
+            --
+            -- So this places diagnostics just after the 88 character mark.
+            --
+            virt_text_win_col = 84,
             severity_sort = true,
-            spacing = 40,
         }
     }
 )
