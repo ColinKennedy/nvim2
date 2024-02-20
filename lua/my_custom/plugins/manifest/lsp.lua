@@ -31,7 +31,11 @@ return {
         end,
         dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
         event = { "InsertCharPre" },
-        version = "0.*",
+        -- TODO: Possibly re-add tags if this issue ever addresses it.
+        --
+        -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/1830
+        --
+        -- version = "0.*",
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
