@@ -106,7 +106,6 @@ local echo_diagnostic = function()
             local width = vim.api.nvim_get_option('columns') - 15
             local lines = vim.split(diag.message, "\n")
             local message = lines[1]
-            local trimmed = false
 
             if #lines > 1 and #message <= short_line_limit then
                 message = message .. ' ' .. lines[2]
