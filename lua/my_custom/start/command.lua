@@ -160,3 +160,11 @@ vim.api.nvim_create_user_command(
     end,
     { bang=true, nargs="*" }
 )
+
+vim.api.nvim_create_user_command(
+    "CloseAllFloatingWindows",
+    function()
+        require("my_custom.utilities.window_helper").close_all_floating_windows()
+    end,
+    { nargs=0 }
+)
