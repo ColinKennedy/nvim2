@@ -61,6 +61,7 @@ return {
             require("my_custom.plugins.nvim_treesitter_context.configuration")
         end,
         dependencies = {"nvim-treesitter/nvim-treesitter"},
+        event = { "CursorMoved", "CursorMovedI" },
     },
 
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
@@ -154,43 +155,31 @@ return {
         ft = "python",
     },
 
-    -- {
-    --     "ColinKennedy/nvim-treesitter-textobjects",
-    --     branch = "modified_include_surrounding_whitespace_behavior",
-    --     config = function()
-    --         require("my_custom.plugins.data.nvim_treesitter_textobjects_config")
-    --     end,
-    --     dependencies = {
-    --         "nvim-treesitter/nvim-treesitter",
-    --     },
-    --     -- TODO: It seems that lazy-loading this sometimes causes the plug-in
-    --     -- to break. Though it would be nice if there was a way to consistently
-    --     -- lazy-load it.
-    --     --
-    --     -- event = { "VeryLazy" },
-    --     -- keys = {
-    --     --     "[k", "]k",
-    --     --     "[m", "]m",
-    --     --     "[K", "]K",
-    --     --     "[M", "]M",
-    --     --
-    --     --     "dab",
-    --     --     "dac",
-    --     --     "dad",
-    --     --     "daf",
-    --     --     "dic",
-    --     --     "did",
-    --     --     "dif",
-    --     --
-    --     --     "vab",
-    --     --     "vac",
-    --     --     "vad",
-    --     --     "vaf",
-    --     --     "vic",
-    --     --     "vid",
-    --     --     "vif",
-    --     -- },
-    -- },
+    {
+        "ColinKennedy/nvim-treesitter-textobjects",
+        branch = "modified_include_surrounding_whitespace_behavior",
+        config = function()
+            require("my_custom.plugins.nvim_treesitter_textobjects.configuration")
+        end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        keys = {
+            "[k", "]k",
+            "[m", "]m",
+            "[K", "]K",
+            "[M", "]M",
+
+            "dad",
+            "daf",
+
+            "Vad",
+            "Vaf",
+            "Vif",
+            "vad",
+            "vaf",
+            "vid",
+            "vif",
+        },
+    },
 
     -- Kickass class / function viewer
     {
