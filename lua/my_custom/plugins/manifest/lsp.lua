@@ -22,18 +22,18 @@ return {
     },
 
     -- TODO: Fix this again
-    -- -- Enable auto-completion in Neovim
-    -- {
-    --     "hrsh7th/nvim-cmp",
-    --     config = require("my_custom.plugins.nvim_cmp.configuration"),
-    --     dependencies = require("my_custom.plugins.nvim_cmp.dependencies"),
-    --     event = { "InsertCharPre" },
-    --     -- TODO: Possibly re-add tags if this issue ever addresses it.
-    --     --
-    --     -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/1830
-    --     --
-    --     -- version = "0.*",
-    -- },
+    -- Enable auto-completion in Neovim
+    {
+        "hrsh7th/nvim-cmp",
+        config = function() require("my_custom.plugins.nvim_cmp.configuration") end,
+        dependencies = require("my_custom.plugins.nvim_cmp.dependencies"),
+        event = { "InsertCharPre" },
+        -- TODO: Possibly re-add tags if this issue ever addresses it.
+        --
+        -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/1830
+        --
+        -- version = "0.*",
+    },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
     {

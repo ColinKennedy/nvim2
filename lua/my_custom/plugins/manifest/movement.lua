@@ -15,6 +15,7 @@ return {
     -- Integrate FZF into Neovim
     {
         "ibhagwan/fzf-lua",
+        branch = "windows",
         cmd = { "Commands", "FzfLua", "GFiles", "Helptags", "History" },
         config = function() require("my_custom.plugins.fzf_lua.configuration") end,
         dependencies = { "nvim-tree/nvim-web-devicons" },

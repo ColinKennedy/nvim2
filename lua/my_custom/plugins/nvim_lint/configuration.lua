@@ -1,4 +1,4 @@
-local mason_utility = require("my_custom.plugins.data.mason_utility")
+local mason_utility = require("my_custom.plugins.mason.utility")
 mason_utility.add_bin_folder_to_path()
 
 require("lint").linters_by_ft = {
