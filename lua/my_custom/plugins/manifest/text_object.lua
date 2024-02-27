@@ -370,7 +370,6 @@ return {
     --
     -- Normal mode: gsip sorts a paragraph
     -- Visual mode: gs
-    {
-        "ralismark/opsort.vim",
-    },
+    --
+    { "ralismark/opsort.vim", keys = { { "gs", desc = "A [s]orting operator." } } },
 }
