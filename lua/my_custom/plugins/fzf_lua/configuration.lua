@@ -4,7 +4,7 @@ require("fzf-lua").setup{
         height = 0.95,
         width = 0.95,
         preview = {
-            vertical       = 'up:45%',
+            vertical = 'up:45%',
             layout = "vertical",
         },
     },
