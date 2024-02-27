@@ -26,33 +26,7 @@ return {
         "kana/vim-operator-replace",
         dependencies = { "kana/vim-operator-user" },
         version = "0.*",
-        keys = {
-            -- Change the [p]ut key to now be a text object, like yy!
-            {
-                "p",
-                "<Plug>(operator-replace)",
-                desc="Change `p` to act more like `y`."
-            },
-            -- Change the [pp]ut key to now be a text object, like yy!
-            {
-                "pp",
-                "p",
-                desc="Change `p` to act more like `y`."
-            },
-            -- Set P to <NOP> so that it's not possible to accidentally put text
-            -- twice, using the P key.
-            --
-            {
-                "P",
-                "<NOP>",
-                desc="Prevent text from being put, twice.",
-            },
-            {
-                "PP",
-                "P",
-                desc="Put text, like you normally would in Vim, but how [Y]ank does it.",
-            },
-        },
+        keys = require("my_custom.plugins.vim_operator_replace.keys"),
     },
     {
         "kana/vim-operator-user",
@@ -88,9 +62,7 @@ return {
     -- Comment / uncomment with ``gcc`` and other ``gc`` text motion commands
     {
         "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
+        config = true,
         event = "VeryLazy",
         version = "0.*",
     },
@@ -105,96 +77,12 @@ return {
             vim.g.indent_object_no_default_key_mappings = "1"
         end,
         version = "1.*",
-        keys = {
-            {
-                "aI",
-                ':<C-u>cal HandleTextObjectMapping(0, 1, 0, [line("."), line("."), col("."), col(".")])<CR>',
-                mode = "o",
-                desc="Select [a]round lines of same + outer [I]ndentation, spanning whitespace.",
-                silent=true,
-            },
-            {
-                "aI",
-                ':<C-u>cal HandleTextObjectMapping(0, 1, 1, [line("."), line("."), col("."), col(".")])<CR>',
-                mode = "v",
-                desc="Select [a]round lines of same + outer [I]ndentation, spanning whitespace.",
-                silent=true,
-            },
-            {
-                "ai",
-                ':<C-u>cal HandleTextObjectMapping(0, 0, 0, [line("."), line("."), col("."), col(".")])<CR>',
-                mode = "o",
-                desc="Select [a]round lines of same + outer [I]ndentation, stopping at whitespace.",
-                silent=true,
-            },
-            {
-                "ai",
-                ':<C-u>cal HandleTextObjectMapping(0, 0, 1, [line("."), line("."), col("."), col(".")])<CR>',
-                mode = "v",
-                desc="Select [a]round lines of same + outer [I]ndentation, stopping at whitespace.",
-                silent=true,
-            },
-            {
-                "iI",
-                ':<C-u>cal HandleTextObjectMapping(1, 1, 0, [line("."), line("."), col("."), col(".")])<CR>',
-                mode = "o",
-                desc="Select [i]nside lines of same [I]ndentation, spanning whitespace.",
-                silent=true,
-            },
-            {
-                "iI",
-                ':<C-u>cal HandleTextObjectMapping(1, 1, 1, [line("\'<"), line("\'>"), col("\'<"), col("\'>")])<CR><Esc>gv',
-                mode = "v",
-                desc="Select [i]nside lines of same [I]ndentation, spanning whitespace.",
-                silent=true,
-            },
-            {
-                "ii",
-                ':<C-u>cal HandleTextObjectMapping(1, 0, 0, [line("."), line("."), col("."), col(".")])<CR>',
-                mode = "o",
-                desc="Select [i]nside lines of same [I]ndentation, stopping at whitespace.",
-                silent=true,
-            },
-            {
-                "ii",
-                ':<C-u>cal HandleTextObjectMapping(1, 0, 1, [line("\'<"), line("\'>"), col("\'<"), col("\'>")])<CR><Esc>gv',
-                mode = "v",
-                desc="Select [i]nside lines of same [I]ndentation, stopping at whitespace.",
-                silent=true,
-            },
-        },
+        keys = require("my_custom.plugins.vim_indent_object.keys"),
     },
 
     {
         "kana/vim-textobj-indent",
-        config=function()
-            vim.g.textobj_indent_no_default_key_mappings = "1"
-
-            vim.keymap.set(
-                "o",
-                "ai",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [a]round [i]ndent + outer indent. Stop at whitespace."}
-            )
-            vim.keymap.set(
-                "x",
-                "ai",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [a]round [i]ndent + outer indent. Stop at whitespace."}
-            )
-            vim.keymap.set(
-                "o",
-                "ii",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [i]nside all [i]ndent lines. Stop at whitespace."}
-            )
-            vim.keymap.set(
-                "x",
-                "ii",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [i]nside all [i]ndent lines. Stop at whitespace."}
-            )
-        end,
+        config = function() require("my_custom.plugins.vim_textobj_indent.configuration") end,
         dependencies = { "kana/vim-textobj-user" },
         event = "VeryLazy",
         version = "0.*",
@@ -247,68 +135,7 @@ return {
         "tpope/vim-unimpaired",
         config = function()
         end,
-        keys = {
-            { "<P", desc = "Do [p]ut, but dedented onto the previous line." },
-            { ">P", desc = "Do [p]ut, but indented onto the previous line." },
-            { "<p", desc = "Do [p]ut, but dedented onto the next line." },
-            { ">p", desc = "Do [p]ut, but indented onto the next line." },
-            -- "=P", "=p", -- equal indentation put
-            { "[<Space>", desc = "Add a newline above the current line." },
-            { "]<Space>", desc = "Add a newline below the current line." },
-            { "[A", desc = "Go to the first [A]rgs." },
-            { "]A", desc = "Go to the last [A]rgs." },
-            { "[B", desc = "Go to the first [B]uffer." },
-            { "]B", desc = "Go to the last [B]uffer." },
-            { "[L", desc = "Go to the first [L]ocation list entry." },
-            { "]L", desc = "Go to the last [L]ocation list entry." },
-            { "[Q", desc = "Go to the first [Q]uickfix entry." },
-            { "]Q", desc = "Go to the last [Q]uickfix entry." },
-            { "[T", desc = "Go to the first tag." },
-            { "]T", desc = "Go to the last tag." },
-            { "[a", desc = "Go to the previous [a]rgs." },
-            { "]a", desc = "Go to the next [a]rgs." },
-            { "[b", desc = "Go to the previous [b]uffer." },
-            { "]b", desc = "Go to the next [b]uffer." },
-            { "[p", desc = "Do [p]ut to the previous line." },
-            { "]p", desc = "Do [p]ut to the next line." },
-            -- "[t", "]t",  tags
-            {
-                "[q",
-                function()
-                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-
-                    fixer.choose_last_window()
-                    fixer.safe_run([[CAbove]])
-                end,
-                desc="Move up the [q]uickfix window.",
-            },
-            {
-                "]q",
-                function()
-                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-
-                    fixer.choose_last_window()
-                    fixer.safe_run([[CBelow]])
-                end,
-                desc="Move down the [q]uickfix window.",
-            },
-            {
-                "[l",
-                function()
-                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-                    fixer.safe_run([[LAbove]])
-                end,
-                desc="Move up the [l]ocation list window.",
-            },
-            {
-                "]l",
-                function()
-                    local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-                    fixer.safe_run([[LBelow]])
-                end,
-                desc="Move down the [l]ocation list window.",
-            },
-        },
+        keys = require("my_custom.plugins.vim_unimpaired.keys"),
         version = "2.*",
     },
 

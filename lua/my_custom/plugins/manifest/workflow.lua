@@ -26,7 +26,7 @@ return {
     {
         "Wansmer/treesj",
         config = function()
-            require("my_custom.plugins.data.treesj")
+            require("my_custom.plugins.treesj.configuration")
 
             local treesj = require("treesj")
 
@@ -51,40 +51,6 @@ return {
         "MarcWeber/vim-addon-local-vimrc",
     },
 
-    -- Auto-completion tags for Houdini SideFX VEX commands
-    {
-        "ColinKennedy/vim-vex-complete",
-        ft = { "vex" },
-        version = "1.*",
-    },
-
-    -- Auto-completion tags for Pixar USD keywords
-    {
-        "ColinKennedy/vim-usd-complete",
-        ft = { "usda", "usd" },
-        version = "1.*",
-    },
-
-    -- A plugin that makes Vim's "gf" command work with USD URIs
-    {
-        "ColinKennedy/vim-usd-goto",
-        config = function()
-            vim.g.usdresolve_command = 'rez-env USD -- usdresolve "{path}"'
-        end,
-        ft = { "usda", "usd" },
-        version = "1.*",
-    },
-
-    -- Read and write USD crate files
-    {
-        "ColinKennedy/vim-usd-crate-auto-convert",
-        config = function()
-            vim.g.usdcat_command = 'rez_usdcat'
-        end,
-        ft = { "usda", "usd" },
-        version = "1.*",
-    },
-
     -- Always show the current USD Prim context. Useful when navigating nested files
     --
     -- TODO: Figure out a way to defer-eval this plug-in
@@ -92,17 +58,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
         config = function()
-            local context = require("treesitter-context")
-            context.setup{
-                on_attach = function(bufnr)
-                    local type_ = vim.bo[bufnr].filetype
-
-                    return type_ == "diff" or type_ == "usd" or type_ == "objdump"
-                end,
-            }
-
-            -- Make the context background black
-            vim.api.nvim_set_hl(0, "TreesitterContext", {ctermbg=16, bg="#101010"})
+            require("my_custom.plugins.nvim_treesitter_context.configuration")
         end,
         dependencies = {"nvim-treesitter/nvim-treesitter"},
     },
@@ -110,9 +66,7 @@ return {
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
     {
         "mrjones2014/smart-splits.nvim",
-        config = function()
-            require("my_custom.plugins.data.smart_splits")
-        end,
+        config = function() require("my_custom.plugins.smart_splits.configuration") end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
         keys = {
             { "<C-h>", desc = "Move cursor to the left window (or tmux)." },
@@ -128,9 +82,7 @@ return {
     --
     {
         "kwkarlwang/bufresize.nvim",
-        config = function()
-            require("bufresize").setup()
-        end,
+        config = true,
         event = { "VeryLazy" },
     },
 
@@ -145,6 +97,13 @@ return {
         -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
         "troydm/zoomwintab.vim",
         cmd = {"ZoomWinTabOut", "ZoomWinTabToggle"},
+        keys = {
+            {
+                "<C-w>o",
+                ":ZoomWinTabToggle<CR>",
+                desc="Toggle full-screen or minimize a window.",
+            },
+        },
     },
 
     -- TODO: If I lazy-load this plug-in, it forces the cursor to the top of the file. No idea why. Check that out, later
@@ -158,9 +117,7 @@ return {
     {
         "ColinKennedy/neogen",
         branch = "combined_branch",
-        config = function()
-            require("my_custom.plugins.data.neogen")
-        end,
+        config = function() require("my_custom.plugins.neogen.configuration") end,
         cmd = { "Neogen" },
         dependencies = {
             "L3MON4D3/LuaSnip",
@@ -180,9 +137,7 @@ return {
         --
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function()
-            require("my_custom.plugins.data.nvim_treesitter")
-        end,
+        config = function() require("my_custom.plugins.nvim_treesitter.configuration") end,
         lazy = true,
         -- TODO: Re-add this once tree-sitter-disassembly is incorporated
         -- version = "0.*",
@@ -240,37 +195,10 @@ return {
     -- Kickass class / function viewer
     {
         "stevearc/aerial.nvim",
-        config = function()
-            require("aerial").setup(
-                {
-                    backends = { "lsp", "treesitter" },
-                    highlight_on_jump = 100,  -- Shorten the blink time to be fast
-                    nav = {
-                        keymaps = {
-                            ["<CR>"] = "actions.jump",
-                            ["q"] = "actions.close",
-                        },
-                    },
-                    layout = {
-                        resize_to_content = false,
-                    },
-                }
-            )
-        end,
+        config = function() require("my_custom.plugins.aerial.configuration") end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         cmd = { "AerialNavToggle", "AerialToggle"},
-        keys = {
-            {
-                "<space>SS",
-                ":AerialToggle<CR>",
-                desc="[S]witch [S]idebar - Open a sidebar that shows the code file's classes, functions, etc.",
-            },
-            {
-                "<space>SN",
-                ":AerialNavToggle<CR>",
-                desc="[S]witch [N]avigation inside / outside of classes and functions.",
-            },
-        },
+        keys = require("my_custom.plugins.aerial.keys"),
         -- version = "stable",  -- Note: The latest is probably safe. The maintainer's good
     },
 
@@ -324,94 +252,7 @@ return {
     {
         "tpope/vim-fugitive",
         cmd = { "G", "Gcd", "Gdiffsplit", "Git", "Gvdiffsplit" },
-        keys = {
-            {
-                "<leader>gac",
-                ":Git add %<CR>",
-                desc="[g]it [a]dd [c]urrent file.",
-            },
-            {
-                "<leader>gap",
-                ":Git add -p<CR>",
-                -- TODO: Figure out how to get nice tree-sitter highlighting here
-                -- function()
-                --     vim.cmd[[Git add -p]]
-                --     local keys = vim.api.nvim_replace_termcodes(
-                --         "<C-\\><C-n>",
-                --         true,
-                --         false,
-                --         true
-                --     )
-                --     local mode = "m"
-                --     vim.api.nvim_feedkeys(keys, mode, false)
-                --     vim.treesitter.start(2, "diff")
-                --     vim.api.nvim_feedkeys("a", mode, false)
-                --     -- vim.schedule(function()
-                --     --     local keys = vim.api.nvim_replace_termcodes(
-                --     --         "<C-\\><C-n>",
-                --     --         true,
-                --     --         false,
-                --     --         true
-                --     --     )
-                --     --     local mode = "m"
-                --     --     vim.api.nvim_feedkeys(keys, mode, false)
-                --     --     vim.treesitter.start(0, "diff")
-                --     --     vim.api.nvim_feedkeys("a", mode, false)
-                --     -- end)
-                -- end,
-                desc="[g]it [a]dd -[p] interactive command.",
-            },
-            {
-                "<leader>ga%",
-                ":Git add %<CR>",
-                desc="[g]it [a]dd %-[c]urrent file.",  -- This is the same as <leader>gac
-            },
-            {
-                "<leader>gcm",
-                ':Git commit -m ""<Left>',
-                desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
-            },
-            {
-                "<leader>gcop",
-                ':Git checkout -p<CR>',
-                desc="[g]it [c]heckout --[p]artial.",
-            },
-            {
-                "<leader>gdc",
-                ":Git diff --cached<CR>",
-                desc="[g]it [d]iff --[c]ached.",
-            },
-            {
-                "<leader>gdi",
-                ":Git diff ",
-                desc="[g]it [d][i] (WIP).",
-            },
-            {
-                "<leader>gph",
-                ":Git push<CR>",
-                desc="[g]it [p]us[h].",
-            },
-            {
-                "<leader>gpl",
-                ":Git pull<CR>",
-                desc="[g]it [p]ul[l].",
-            },
-            {
-                "<leader>grc",
-                ":Git reset %<CR>",
-                desc="[g]it [r]eset [c]urrent.",
-            },
-            {
-                "<leader>gr%",
-                ":Git reset %<CR>",
-                desc="[g]it [r]eset %-[c]urrent.",
-            },
-            {
-                "<leader>gss",
-                ":Git status --short --branch<CR>",
-                desc="[g]it [s]hort [s]tatus.",
-            },
-        },
+        keys = require("my_custom.plugins.vim_fugitive.keys"),
         version = "3.*",
     },
 
@@ -435,37 +276,14 @@ return {
     -- Removes whitespace only on the lines you've changed. Pretty cool!
     {
         "lewis6991/spaceless.nvim",
-        config = function()
-            require("spaceless").setup()
-        end,
+        config = true,
         event = { "InsertEnter" },
     },
 
     -- A tree file/directory viewer plug-in
     {
         "nvim-tree/nvim-tree.lua",
-        config = function()
-            local toggle_current_directory = function()
-                local current_directory = vim.fn.getcwd()
-                vim.cmd(":NvimTreeToggle " .. current_directory)
-            end
-
-            -- termguicolors was already set elsewhere. But I'll keep it commented here
-            -- just so that we remember to do it in case that changes in the future.
-            --
-            -- set termguicolors to enable highlight groups
-            --
-            -- vim.opt.termguicolors = true
-
-            -- Empty setup using defaults
-            require("nvim-tree").setup()
-
-            vim.api.nvim_create_user_command(
-                "PwdNvimTreeToggle",
-                toggle_current_directory,
-                {nargs=0}
-            )
-        end,
+        config = function() require("my_custom.plugins.nvim_tree.configuration") end,
         -- cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
@@ -484,98 +302,14 @@ return {
     --
     {
         "RaafatTurki/hex.nvim",
-        config = function()
-            require("hex").setup()
-        end,
+        config = true,
         cmd = "HexToggle",
     },
 
     -- A pop-up that shows you available Neovim keymaps. Only pops up if you're slow
     {
         "folke/which-key.nvim",
-        config = function()
-            local which_key = require("which-key")
-
-            which_key.setup {
-                ignore_missing = true,
-                triggers_blacklist = {
-                    c = {"%", ">"},  -- Prevent mappings like %s/ from popping up
-                },
-                plugins = {
-                    presets = {
-                        motions = false,
-                        text_objects = false,
-                        operators = false,
-                    }
-                }
-            }
-
-            which_key.register(
-                {
-                    ["<leader>"] = {
-                        c = "+file-ish prefix",
-                        d = {
-                            name = "+debug prefix",
-                            ["<Space>"] = "Continue through the debugger to the next breakpoint.",
-                            ["-"] = "Restart the current debug session.",
-                            ["="] = "Disconnect from a remote DAP session.",
-                            ["_"] = "Kill the current debug session.",
-                            b = "Set a breakpoint (and remember it even when we re-open the file).",
-                            d = "[d]o [d]ebugger.",
-                            g = {
-                                name = "+debu[g] lo[g] prefix",
-                                e = "Open the [d]ebu[g] [e]dit file.",
-                                t = "Set [d]ebu[g] to [t]race level logging.",
-                            },
-                            h = "Move out of the current function call.",
-                            j = "Skip over the current line.",
-                            l = "Move into a function call.",
-                            z = "[d]ebugger [z]oom toggle (full-screen or minimize the window).",
-                        },
-                        f = "[f]ind text using hop-mode",
-                        i = {
-                            name = "+insert prefix",
-                            d = "[i]nsert auto-[d]ocstring.",
-                        },
-                        r = "+run prefix",
-                        s = {
-                            name = "+misc prefix",
-                            a = { "[s]plit [a]rgument list" },
-                        },
-                    },
-                    ["<space>"] = {
-                        name = "Space Switching Mappings",
-                        A = "Show [A]rgs list",
-                        B = "Show [B]uffers list",
-                        D = "[D]ebugging interactive mode",
-                        E = "[E]dit a new project root file",
-                        G = "[G]it interactive mode",
-                        L = "[L]ines searcher (current file)",
-                        S = {
-                            name = "[S]witcher aerial.nvim windows",
-                            A = "[S]witch [N]avigation",
-                            S = "[S]witch [S]idebar",
-                            O = "[S]ymbols [O]utliner (LSP)",
-                        },
-                        T = "Create a [T]erminal on the bottom of the current window.",
-                        W = "Open [W]orkspace (NvimTree)",
-                        Z = "[Z]oxide's interative pwd switcher",
-                        c = {
-                            name = "+LSP [c]ode prefix",
-                            a = "Run [c]ode [a]ction",
-                        },
-                        e = "Find and [e]dit a file starting from `:pwd`.",
-                        q = "Switch to [q]uickfix window, if open",
-                        w = {
-                            name = "+workspace LSP prefix",
-                            a = "LSP [w]orkspace [a]dd",
-                            l = "LSP [w]orkspace [l]ist",
-                            r = "LSP [w]orkspace [r]remove",
-                        },
-                    },
-                }
-            )
-        end,
+        config = function() require("my_custom.plugins.which_key.configuration") end,
         keys = {
             { "<Space>", desc = "The space switcher key." },
             { "<leader>", desc = "The custom mapping location." }
@@ -619,26 +353,7 @@ return {
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
         "akinsho/toggleterm.nvim",
-        config = function()
-            require("toggleterm").setup{
-                auto_scroll = false,
-            }
-
-            -- Important: This allows terminals to stay in terminal mode even
-            -- as you move in and out of them
-            --
-            function _G.set_terminal_keymaps()
-                local opts = {buffer = 0}
-                vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-                vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-                vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-                vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-                vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-                vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
-            end
-            -- Note: If you only want these mappings for toggle term use term://*toggleterm#* instead
-            vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-        end,
+        config = function() require("my_custom.plugins.toggleterm.configuration") end,
         version = "v2.*",
         cmd = "ToggleTerm",
         keys = {
@@ -657,37 +372,14 @@ return {
     {
         "cbochs/grapple.nvim",
         dependencies = {"ColinKennedy/plenary.nvim"},
-        keys = {
-            {
-                "<M-S-j>",
-                function() require("grapple").cycle_forward() end,
-                desc = "Move to the next saved project path.",
-            },
-            {
-                "<M-S-k>",
-                function() require("grapple").cycle_backward() end,
-                desc = "Move to the previous saved project path.",
-            },
-            {
-                "<M-S-l>",
-                function() require("grapple").popup_tags("git") end,
-                desc = "Show all saved project paths.",
-            },
-            {
-                "<M-S-h>",
-                function() require("grapple").toggle({ scope="git" }) end,
-                desc = "Add / Remove the current file as a project path.",
-            },
-        },
+        keys = require("my_custom.plugins.grapple.keys"),
         version = "v0.*",
     },
 
     -- Add "submodes" to Neovim. e.g. <Space>G for "git mode"
     {
         "nvimtools/hydra.nvim",
-        config = function()
-            require("my_custom.plugins.data.hydra")
-        end,
+        config = function() require("my_custom.plugins.hydra.configuration") end,
         keys = {
             { "<Space>D", desc = "[D]ebugging mode" },
             { "<Space>GD", desc = "[G]it [D]iff mode (basically a sort of git add -p mode)" },
@@ -748,9 +440,7 @@ return {
     --
     {
         "chentoast/marks.nvim",
-        config = function()
-            require("marks").setup{}
-        end,
+        config = true,
         event = "VeryLazy",
     },
 
@@ -815,28 +505,7 @@ return {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.5",
         cmd = "Telescope",
-        config = function()
-            local get_reasonable_bg = function(name)
-                local type_colors = vim.api.nvim_get_hl(0, {name=name})
-
-                return type_colors.bg or type_colors.fg
-            end
-
-            -- These colorscheme values are based on https://github.com/ColinKennedy/hybrid2.nvim
-            vim.api.nvim_set_hl(0, "TelescopePreviewTitle", {bg=get_reasonable_bg("Comment"), fg="black"})
-            vim.api.nvim_set_hl(0, "TelescopePromptTitle", {bg=get_reasonable_bg("Search"), fg="black"})
-            vim.api.nvim_set_hl(0, "TelescopeResultsTitle", {bg=get_reasonable_bg("Type"), fg="black"})
-
-            local hard_color = "#121212"
-            vim.api.nvim_set_hl(0, "TelescopeBorder", {bg=hard_color, fg=hard_color})
-            vim.api.nvim_set_hl(0, "TelescopeNormal", {bg=hard_color})
-
-            local background = "#252931"
-            vim.api.nvim_set_hl(0, "TelescopePromptCounter", {bg=background})
-            vim.api.nvim_set_hl(0, "TelescopePromptBorder", {bg=background, fg="#252931"})
-            vim.api.nvim_set_hl(0, "TelescopePromptNormal", {bg=background, fg="#abb2bf"})
-            vim.api.nvim_set_hl(0, "TelescopePromptPrefix", {bg=background, fg="#e06c75"})
-        end,
+        config = function() require("my_custom.plugins.telescope.configuration") end,
         dependencies = {"ColinKennedy/plenary.nvim"},
     },
 
@@ -845,46 +514,8 @@ return {
     --
     {
         "monaqa/dial.nvim",
-        config = function()
-            local augend = require("dial.augend")
-
-            require("dial.config").augends:register_group{
-                default = {
-                    augend.constant.alias.bool,
-                    augend.constant.new{ elements = {"True", "False"} },
-                    augend.semver.alias.semver,
-                    augend.integer.alias.decimal,
-                    augend.date.alias["%Y/%m/%d"],
-                    augend.date.alias["%Y-%m-%d"],
-                },
-            }
-        end,
-        keys = {
-            {
-                "<C-a>",
-                "<Plug>(dial-increment)",
-                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
-                mode = {"n", "v"},
-            },
-            {
-                "<C-x>",
-                "<Plug>(dial-decrement)",
-                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
-                mode = {"n", "v"},
-            },
-            {
-                "g<C-a>",
-                "g<Plug>(dial-increment)",
-                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
-                mode = {"n", "v"},
-            },
-            {
-                "g<C-x>",
-                "g<Plug>(dial-decrement)",
-                desc = "Increment the semver, decimal, date, etc. Or toggle True/False.",
-                mode = {"n", "v"},
-            },
-        },
+        config = function() require("my_custom.plugins.dial.configuration") end,
+        keys = require("my_custom.plugins.dial.keys"),
         version = "0.*",
     },
 

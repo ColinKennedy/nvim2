@@ -5,7 +5,8 @@ return {
     {
         "junegunn/fzf",
         build=function()
-            vim.cmd[[call fzf#install()]]
+            -- vim.cmd[[call fzf#install()]]
+            vim.fn["fzf#install"]()
         end,
         lazy = true,
         version = "0.*",
@@ -15,88 +16,9 @@ return {
     {
         "ibhagwan/fzf-lua",
         cmd = { "Commands", "FzfLua", "GFiles", "Helptags", "History" },
-        config = function()
-            require("fzf-lua").setup{
-                previewers = { builtin = { syntax_delay = 200 } },
-                winopts = {
-                    height = 0.95,
-                    width = 0.95,
-                    preview = {
-                        vertical       = 'up:45%',
-                        layout = "vertical",
-                    },
-                },
-            }
-
-            vim.api.nvim_create_user_command(
-                "Commands",
-                function() require("fzf-lua").commands() end,
-                { desc = "Show all available Commands." }
-            )
-
-            vim.api.nvim_create_user_command(
-                "GFiles",
-                function() require("fzf-lua").git_files() end,
-                { desc = "Find and [e]dit a file in the git repository." }
-            )
-
-            vim.api.nvim_create_user_command(
-                "Helptags",
-                function() require("fzf-lua").help_tags() end,
-                { desc = "Search all :help tags." }
-            )
-
-            vim.api.nvim_create_user_command(
-                "History",
-                function() require("fzf-lua").history() end,
-                { desc = "Show all past, executed commands." }
-            )
-        end,
+        config = function() require("my_custom.plugins.fzf_lua.configuration") end,
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        keys = {
-            {
-                "<space>A",
-                ":FzfLua args<CR>",
-                desc="Select a new [A]rgs file from the `:args` list.",
-            },
-            {
-                "<space>B",
-                ":FzfLua buffers<CR>",
-                desc="Search existing [B]uffers and select + view it.",
-            },
-            {
-                "<space>E",
-                function()
-                    local filer = require("my_custom.utilities.filer")
-                    local root = filer.get_project_root()
-
-                    if not root
-                    then
-                        vim.api.nvim_err_writeln('No root could be fould.')
-
-                        return
-                    end
-
-                    require("fzf-lua").files({ cwd = root })
-                end,
-                desc="[E]dit a new project root file.",
-            },
-            {
-                "<space>L",
-                ":FzfLua blines<CR>",
-                desc="[L]ines searcher (current file)",
-            },
-            {
-                "<space>e",
-                ":FzfLua files<CR>",
-                desc="Find and [e]dit a file starting from `:pwd`.",
-            },
-            {
-                "<space>l",
-                ":FzfLua lines<CR>",
-                desc="[l]ines searcher (all lines from all buffers)",
-            },
-        },
+        keys = require("my_custom.plugins.fzf_lua.keys"),
     },
 
     -- A plugin that highlights the character to move to a word or WORD with f/t
@@ -113,9 +35,7 @@ return {
     --
     {
         "bradford-smith94/quick-scope",
-        config = function()
-            require("my_custom.plugins.data.quick_scope")
-        end,
+        config = function() require("my_custom.plugins.quick_scope.configuration") end,
         init = function()
             require("my_custom.utilities.utility").lazy_load("quick-scope")
         end,
@@ -135,15 +55,7 @@ return {
     --         - You're done
     {
         "ggandor/leap.nvim",
-        config = function()
-            require("leap").init_highlight()
-
-            require('leap').opts.safe_labels = {
-                "a", "s", "d", "f", "j", "k", "l", ";",
-                "g", "h",
-                "A", "S", "D", "F", "J", "K", "L",
-            }
-        end,
+        config = function() require("my_custom.plugins.leap.configuration") end,
         keys = {
             { "S", "<Plug>(leap-backward-to)", desc = "Leap backward to", silent = true },
             { "s", "<Plug>(leap-forward-to)", desc = "Leap forward to", silent = true },
@@ -153,9 +65,7 @@ return {
     -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
     {
         "max397574/better-escape.nvim",
-        config = function()
-          require("better_escape").setup()
-        end,
+        config = true,
         event = "InsertEnter",
     },
 

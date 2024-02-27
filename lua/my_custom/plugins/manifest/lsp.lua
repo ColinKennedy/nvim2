@@ -2,9 +2,7 @@ return {
     -- The plug-in that adds LSPs of all languages to Neovim
     {
         "neovim/nvim-lspconfig",
-        config = function()
-            require("my_custom.plugins.data.nvim_lsp_config")
-        end,
+        config = function() require("my_custom.plugins.nvim_lspconfig.configuration") end,
         keys = {
             { "[d", desc = "Previous available [d]iagnostic." },
             { "]d", desc = "Next available [d]iagnostic." },
@@ -23,20 +21,19 @@ return {
         version = "0.*",
     },
 
-    -- Enable auto-completion in Neovim
-    {
-        "hrsh7th/nvim-cmp",
-        config = function()
-            require("my_custom.plugins.data.nvim_cmp")
-        end,
-        dependencies = require("my_custom.plugins.data.nvim_cmp_dependencies"),
-        event = { "InsertCharPre" },
-        -- TODO: Possibly re-add tags if this issue ever addresses it.
-        --
-        -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/1830
-        --
-        -- version = "0.*",
-    },
+    -- TODO: Fix this again
+    -- -- Enable auto-completion in Neovim
+    -- {
+    --     "hrsh7th/nvim-cmp",
+    --     config = require("my_custom.plugins.nvim_cmp.configuration"),
+    --     dependencies = require("my_custom.plugins.nvim_cmp.dependencies"),
+    --     event = { "InsertCharPre" },
+    --     -- TODO: Possibly re-add tags if this issue ever addresses it.
+    --     --
+    --     -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/1830
+    --     --
+    --     -- version = "0.*",
+    -- },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
     {
@@ -47,20 +44,7 @@ return {
     -- Neovim snippet engine (which also displays in nvim-cmp)
     {
         "L3MON4D3/LuaSnip",
-        config = function()
-            require("luasnip.loaders.from_lua").lazy_load(
-                { paths = "./snippets" }
-            )
-            require("luasnip").config.set_config(
-                {
-                    enable_autosnippets = true,
-                    history = false,
-                    updateevents = "TextChanged,TextChangedI",
-                }
-            )
-
-            vim.g._snippet_super_prefer_keywords = true
-        end,
+        config = function() require("my_custom.plugins.luasnip.configuration") end,
         event = "InsertEnter",
         version = "1.*",  -- TODO: There's a 2+. Add?
     },
@@ -114,19 +98,7 @@ return {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",  -- :MasonUpdate updates registry contents
         cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUpdate"},
-        config = function()
-            local filer = require("my_custom.utilities.filer")
-
-            local install_root = filer.join_path(
-                {
-                    vim.g.vim_home,
-                    "mason_packages",
-                    vim.loop.os_uname().sysname,
-                }
-            )
-
-            require("mason").setup({ install_root_dir = install_root })
-        end,
+        config = function() require("my_custom.plugins.mason.configuration") end,
         version = "1.*",
     },
 
@@ -172,25 +144,7 @@ return {
     -- A visual progress indicator for slow LSPs. Very useful for C++ & USD
     {
         "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup{
-                notification = {
-                    window = {
-                        winblend = 10,
-                    },
-                },
-                progress = {
-                    display = {
-                        progress_icon = {
-                            pattern = "meter",
-                        },
-                    },
-                },
-            }
-
-            vim.api.nvim_set_hl(0, "FidgetTask", {fg="#4b5156", ctermfg=65})
-            vim.api.nvim_set_hl(0, "FidgetTitle", {link="Identifier"})
-        end,
+        config = function() require("my_custom.plugins.fidget.configuration") end,
         event = { "LspAttach" },
     },
 
@@ -224,29 +178,7 @@ return {
     -- A simple linter that integrates with LSPs automatically
     {
         "mfussenegger/nvim-lint",
-        config = function()
-            local mason_utility = require("my_custom.plugins.data.mason_utility")
-            mason_utility.add_bin_folder_to_path()
-
-            require("lint").linters_by_ft = {
-                python = {"pydocstyle", "pylint"},
-                lua = {"luacheck"},
-            }
-
-            local lint = require("lint")
-            lint.linters.pydocstyle.args = { "--convention=google" }
-
-            lint.try_lint()
-            vim.api.nvim_create_autocmd(
-                { "BufWritePost" },
-                {
-                    callback = function()
-                        lint = require("lint")
-                        lint.try_lint()
-                    end
-                }
-            )
-        end,
+        config = function() require("my_custom.plugins.nvim_lint.configuration") end,
         event = "VeryLazy",
     },
 }

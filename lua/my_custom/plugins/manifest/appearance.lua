@@ -2,25 +2,7 @@ return {
     {
         "ColinKennedy/hybrid2.nvim",
         priority = 1000,  -- Load this first
-        config = function()
-            vim.cmd.colorscheme("hybrid2")
-
-            -- Show namespaces as a separate color
-            -- TODO: Get this color automatically
-            vim.api.nvim_set_hl(0, "@namespace", {fg="#707880", ctermfg=243})
-
-            -- https://github.com/stsewd/tree-sitter-comment
-            --
-            -- Installed via ``:TSInstall comment``
-            --
-            vim.api.nvim_set_hl(0, "@text.danger", {link="SpellBad"})
-            vim.api.nvim_set_hl(0, "@text.question", {link="SpellLocal"})
-            vim.api.nvim_set_hl(0, "@text.note", {link="SpellCap"})
-
-            -- Show trailing whitespace as red text
-            -- TODO: Get this color automatically
-            vim.api.nvim_set_hl(0, "NonText", {bg="#5f0000", ctermbg=52})
-        end,
+        config = function() require("my_custom.plugins.hybrid2.configuration") end,
         version = "1.*"
     },
 
@@ -36,90 +18,11 @@ return {
         config = function()
             local gitsigns = require("gitsigns")
 
-            gitsigns.setup({ signs = { changedelete = { text = '～' } } })
+            gitsigns.setup({ signs = { changedelete = { text = "～" } } })
         end,
         ft = "gitcommit",
-        init = function()
-            -- load gitsigns only when a git file is opened
-            vim.api.nvim_create_autocmd(
-                { "BufRead" },
-                {
-                    group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
-                    callback = function()
-                        vim.fn.system("git -C " .. vim.fn.expand "%:p:h" .. " rev-parse")
-                        if vim.v.shell_error == 0 then
-                            vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-                            vim.schedule(function()
-                                require("lazy").load { plugins = { "gitsigns.nvim" } }
-                            end)
-                        end
-                    end
-                }
-            )
-
-            -- Make deleted lines a bit easier to see
-            vim.api.nvim_set_hl(0, "GitSignsDelete", {fg="#cc6666", ctermfg=167})
-        end,
-        keys = {
-            {
-                "<leader>gah",
-                ":Gitsigns stage_hunk<CR>",
-                desc="[g]it [a]dd [h]unk.",
-                mode = {"n", "v"},
-            },
-            {
-                "<leader>gch",
-                function()
-                    require("gitsigns").reset_hunk()
-                end,
-                desc="[g]it [c]heckout [h]unk.",
-                mode = {"n", "v"},
-            },
-            {
-                "<leader>grh",
-                function()
-                    require("gitsigns").undo_stage_hunk()
-                end,
-                desc="[g]it [r]eset [h]unk.",
-                mode = {"n", "v"},
-            },
-            {
-                "<leader>gtd",
-                function() require("gitsigns").toggle_deleted() end,
-                desc="[g]it [t]oggle [d]elete display.",
-                mode = {"o", "x"},
-            },
-            {
-                "ih",
-                ":<C-U>Gitsigns select_hunk<CR>",
-                desc="Select [i]nside git [h]unk.",
-                mode = {"o", "x"},
-            },
-            {
-                "[g",
-                function()
-                    if vim.wo.diff then return "[g" end
-
-                    vim.schedule(function() require("gitsigns").prev_hunk() end)
-
-                    return "<Ignore>"
-                end,
-                desc="Go to the previous [g]it hunk in the current file.",
-                expr=true,
-            },
-            {
-                "]g",
-                function()
-                    if vim.wo.diff then return "]g" end
-
-                    vim.schedule(function() require("gitsigns").next_hunk() end)
-
-                    return "<Ignore>"
-                end,
-                desc="Go to the next [g]it hunk in the current file.",
-                expr=true,
-            },
-        },
+        init = function() require("my_custom.plugins.gitsigns.initialization") end,
+        keys = require("my_custom.plugins.gitsigns.keys"),
         -- version = "0.*"  -- This release is super old and has bugs. But ideally we'd use it
     },
 
@@ -134,35 +37,7 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
-        config = function()
-            require("lualine").setup {
-              options = {
-                icons_enabled = true,
-                theme = "onedark",
-                section_separators = { left = "", right = ""},
-                component_separators = { left = '', right = ''},
-              },
-              sections = {
-                lualine_b = {"branch"},
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {
-                    {
-                        "diagnostics",
-                        symbols = {
-                            -- Reference: www.nerdfonts.com/cheat-sheet
-                            error = " ",
-                            warn = "⚠ ",
-                            info = " ",
-                            hint = " ",
-                        },
-                    },
-                    "progress",
-                },
-                lualine_z = {"location"}
-              },
-            }
-        end,
+        config = function() require("my_custom.plugins.lualine.configuration") end,
         event = "VeryLazy",
     },
 
@@ -170,70 +45,12 @@ return {
     {
         "nvim-tree/nvim-web-devicons",
         config = function()
-            local _suggest_a_color = function(highlight_group)
-                local data = vim.api.nvim_get_hl_by_name(highlight_group, true)
-                local foreground = data["foreground"]
-
-                if foreground ~= nil
-                then
-                    return foreground
-                end
-
-                return data["background"] or ""
-            end
-
-            local get_best_hex = function(highlight_group)
-                local color = _suggest_a_color(highlight_group)
-
-                if color ~= ""
-                then
-                    return string.format("#%06x", color)
-                end
-
-                return "#428850"
-            end
-
-            require("nvim-web-devicons").set_icon {
-                dapui_breakpoints = {
-                    icon = "",
-                    color = get_best_hex("Question"),
-                    -- cterm_color = "65",
-                    name = "dapui_breakpoints",
-                },
-                dapui_console = {
-                    icon = "",
-                    color = get_best_hex("Comment"),
-                    -- cterm_color = "65",
-                    name = "dapui_console",
-                },
-                ["dap-repl"] = {  -- By default, it is shown as bright white
-                    icon = "󱜽",
-                    -- cterm_color = "65",
-                    name = "dap_repl",
-                },
-                dapui_scopes = {
-                    icon = "󰓾",
-                    color = get_best_hex("Function"),
-                    -- cterm_color = "40",
-                    name = "dapui_scopes",
-                },
-                dapui_stacks = {
-                    icon = "",
-                    color = get_best_hex("Directory"),
-                    -- cterm_color = "65",
-                    name = "dapui_stacks",
-                },
-                dapui_watches = {
-                    icon = "󰂥",
-                    color = get_best_hex("Constant"),
-                    -- cterm_color = "65",
-                    name = "dapui_watches",
-                },
-            }
+            require("my_custom.plugins.nvim_web_devicons.configuration")
         end,
         lazy = true,
     },
 
+    -- TODO: Do I even still need this? Remove?
     -- Enhanced markdown highlighting and syntax
     {
         "tpope/vim-markdown",
@@ -263,51 +80,7 @@ return {
     --
     {
         "ColinKennedy/winbar.nvim",
-        config = function()
-            require("winbar").setup(
-                {
-                    enabled = true,
-
-                    show_file_path = true,
-                    show_symbols = true,
-
-                    colors = {
-                        path = "", -- You can customize colors like #c946fd
-                        file_name = "",
-                        symbols = "",
-                    },
-
-                    icons = {
-                        file_icon_default = "",
-                        seperator = ">",
-                        editor_state = "●",
-                        lock_icon = "",
-                    },
-
-                    exclude_filetype = {
-                        -- Built-in windows
-                        "qf",
-                        "help",
-
-                        "",  -- Neovim terminals have no filetype. Disable terminals.
-                        "NvimTree",  -- nvim-tree/nvim-tree.lua
-
-                        -- Extras
-                        "Outline",
-                        "Trouble",
-                        "alpha",
-                        "dashboard",
-                        "lir",
-                        "neogitstatus",
-                        "packer",
-                        "spectre_panel",
-                        "startify",
-                        "toggleterm",
-
-                    }
-                }
-            )
-        end,
+        config = function() require("my_custom.plugins.winbar.configuration") end,
         dependencies = {"ColinKennedy/nvim-gps", "nvim-tree/nvim-web-devicons"},
         event = "VeryLazy",
     },
@@ -315,9 +88,7 @@ return {
     -- Use treesitter to show your current cursor context (class > function > etc)
     {
         "ColinKennedy/nvim-gps",
-        config = function()
-            require("nvim-gps").setup()
-        end,
+        config = true,
         dependencies = {"nvim-treesitter/nvim-treesitter"},
         lazy = true,
     },
@@ -330,65 +101,7 @@ return {
     --
     {
         "gelguy/wilder.nvim",
-        config = function()
-            local wilder = require("wilder")
-
-            wilder.setup({modes = {":", "/", "?"}})
-
-            -- Disable Python remote plugin
-            wilder.set_option("use_python_remote_plugin", 0)
-
-            wilder.set_option(
-                "pipeline",
-                {
-                    wilder.branch(
-                        wilder.cmdline_pipeline(
-                            {
-                                fuzzy = 1,
-                                fuzzy_filter = wilder.lua_fzy_filter(),
-                            }
-                        ),
-                        wilder.vim_search_pipeline()
-                    )
-                }
-            )
-
-            local gradient = {
-              "#f4468f", "#fd4a85", "#ff507a", "#ff566f", "#ff5e63",
-              "#ff6658", "#ff704e", "#ff7a45", "#ff843d", "#ff9036",
-              "#f89b31", "#efa72f", "#e6b32e", "#dcbe30", "#d2c934",
-              "#c8d43a", "#bfde43", "#b6e84e", "#aff05b"
-            }
-
-            for i, fg in ipairs(gradient) do
-              gradient[i] = wilder.make_hl("WilderGradient" .. i, "Pmenu", {{a = 1}, {a = 1}, {foreground = fg}})
-            end
-
-            wilder.set_option(
-                "renderer",
-                wilder.renderer_mux(
-                    {
-                        [":"] = wilder.popupmenu_renderer(
-                            wilder.popupmenu_border_theme(
-                                {
-                                    border = "rounded",
-                                    highlights = {
-                                        default = wilder.make_hl("WilderPmenu", "Normal"),
-                                        border = "Normal", -- highlight to use for the border
-                                        gradient = gradient,
-                                    },
-                                    highlighter = wilder.highlighter_with_gradient(
-                                        { wilder.lua_fzy_highlighter() }
-                                    ),
-                                    left = { " ", wilder.popupmenu_devicons() },
-                                    right = { " ", wilder.popupmenu_scrollbar() },
-                                }
-                            )
-                        ),
-                    }
-                )
-            )
-        end,
+        config = function() require("my_custom.plugins.wilder.configuration") end,
         dependencies = {"romgrk/fzy-lua-native"},
         -- Reference: https://github.com/gelguy/wilder.nvim#faster-startup-time
         event = "CmdlineEnter",
@@ -402,34 +115,7 @@ return {
     --
     {
         "arnamak/stay-centered.nvim",
-        config = function()
-            require("stay-centered").setup{
-                -- Reference: https://github.com/akinsho/toggleterm.nvim
-                skip_filetypes = {"toggleterm"},
-            }
-
-            -- Force Vim's cursor to stay in the center of the screen, in
-            -- a terminal We use a slightly different way of centering because
-            -- it doesn't look at good on a terminal buffer compared to
-            -- a normal buffer.
-            --
-            vim.api.nvim_create_autocmd(
-                "TermEnter",
-                {
-                    callback = function()
-                        vim.api.nvim_create_autocmd(
-                            {"WinNew"},
-                            {
-                                callback = function() vim.wo.scrolloff = 999 end,
-                                once = true,
-                            }
-                        )
-                    end,
-                    pattern = "term://*toggleterm#*",
-                    once = true,
-                }
-            )
-        end,
+        config = function() require("my_custom.plugins.stay_centered.configuration") end,
     },
 
     -- Highlight the whole line when you're in linewise selection mode.
