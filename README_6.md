@@ -1,5 +1,4 @@
 - Change :Pcd to print the new directory
-- Get `dad` to work again
 - Move /home/selecaoone/personal/.config/nvim/lua/my_custom/start/lsp_diagnostics.lua to hybrid2
 - Add individual sections - https://github.com/danymat/neogen/issues/165
 
