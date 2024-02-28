@@ -1,7 +1,13 @@
 return {
     -- Zoxide auto-jump, but for Vim
-    { "nanotee/zoxide.vim", cmd = { "Z" } },
-
+    {
+        "nanotee/zoxide.vim",
+        dependencies = {
+            -- TODO: Try to remove this fzf dependency
+            "junegunn/fzf",  -- Needed for Zi
+        },
+        cmd = { "Z", "Zi" },
+    },
     {
         "junegunn/fzf",
         build=function()
