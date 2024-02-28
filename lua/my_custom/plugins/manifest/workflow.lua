@@ -28,14 +28,39 @@ return {
         config = function()
             require("my_custom.plugins.treesj.configuration")
 
-            local treesj = require("treesj")
+            -- A fallback configuration in case the language is unsupported.
+            --
+            -- Reference: https://github.com/Wansmer/treesj/discussions/19
+            --
+            local callback = function()
+                local options = {
+                    desc = "[s]plit [a]rgument list",
+                    buffer = true,
+                }
 
-            treesj.setup({ max_join_length = 150 })
+                local languages = require("treesj.langs")["presets"]
+
+                if languages[vim.bo.filetype] then
+                    vim.keymap.set("n", "<leader>sa", ":TSJToggle<CR>", options)
+                else
+                    -- This fallback requires https://github.com/FooSoft/vim-argwrap
+                    vim.keymap.set("n", "<leader>sa", ":ArgWrap<CR>", options)
+                end
+            end
+
+            -- Redefine the <leader>sa command depending on the filetype
+            -- If the filetype isn't supported by "Wansmer/treesj", this should give you a fallback.
+            --
+            vim.api.nvim_create_autocmd({"FileType"}, {pattern="*", callback=callback})
+
+            -- We need to call this for the first time, for the current file
+            callback()
         end,
         cmd = { "TSJToggle" },
         keys = {
             {
                 "<leader>sa",
+                "TSJToggle",
                 desc = "Toggle (Join or split) [s]plit [a]rguments at the cursor."
             },
         },
