@@ -1,4 +1,5 @@
 require("fzf-lua").setup{
+    files = { git_icons = false },  -- This is pretty slow (so we disable it)
     previewers = { builtin = { syntax_delay = 200 } },
     winopts = {
         height = 0.95,
