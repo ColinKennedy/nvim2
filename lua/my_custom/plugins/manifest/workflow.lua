@@ -521,9 +521,20 @@ return {
 
     -- Allow `gf` to work in unifided diff (.diff) files.
     {
-        "vim-scripts/gf-diff",
+        "ColinKennedy/vim-gf-diff",
+        branch = "add_absolute_path_buffer_option",
         dependencies = { "kana/vim-gf-user" },
-        keys = { "gf", desc = "[g]o-to [f]ile." },
+        keys = {
+            {
+                "gf",
+                "<Plug>(gf-user-gf)",
+                desc = "[g]o-to [f]ile.",
+            }
+        }
+    },
+    {
+        "kana/vim-gf-user",
+        version = "1.*",
     },
 
     -- Add extra queries for RST to make it better suited for Python / Sphinx

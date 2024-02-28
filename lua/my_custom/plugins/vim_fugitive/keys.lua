@@ -6,7 +6,19 @@ return {
     },
     {
         "<leader>gap",
-        ":Git add -p<CR>",
+        function()
+            local git_helper = require("my_custom.utilities.git_helper")
+
+            vim.cmd[[Git add -p]]
+
+            -- vim-fugitive always displays paths relative to the root of the
+            -- git repository. But our `getcwd()` may be a subfolder or
+            -- somewhere else, which causes `gf` to fail. This command tells
+            -- the `gf` command to point the relative paths to the correct
+            -- absolute directory.
+            --
+            vim.b.vim_gf_diff_base_directory = git_helper.get_git_root()
+        end,
         -- TODO: Figure out how to get nice tree-sitter highlighting here
         -- function()
         --     vim.cmd[[Git add -p]]

@@ -331,12 +331,12 @@
 [submodule "bundle/vim-gf-user"]
 	path = bundle/vim-gf-user
 	url = git@github.com:kana/vim-gf-user.git
-[submodule "bundle/gf-diff"]
-	path = bundle/gf-diff
-	url = git@github.com:vim-scripts/gf-diff.git
 [submodule "bundle/sphinx.nvim"]
 	path = bundle/sphinx.nvim
 	url = git@github.com:stsewd/sphinx.nvim.git
 [submodule "bundle/fzf-lua"]
 	path = bundle/fzf-lua
 	url = git@github.com:ibhagwan/fzf-lua.git
+[submodule "bundle/vim-gf-diff"]
+	path = bundle/vim-gf-diff
+	url = git@github.com:ColinKennedy/vim-gf-diff.git
