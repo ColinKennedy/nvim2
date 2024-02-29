@@ -221,6 +221,7 @@ return {
     --
     {
         "ColinKennedy/telescope-file-history.nvim",
+        branch = "add_multi_commit_support",
         config = function()
             require("file_history").setup { backup_dir = "~/.vim_custom_backups" }
             require("telescope").load_extension("file_history")
@@ -228,7 +229,7 @@ return {
         keys = {
             {
                 "<space>GF",
-                ":Telescope file_history history2<CR>",
+                ":Telescope file_history log<CR>",
                 desc="Show [G]it [F]ile History.",
             },
         },
