@@ -546,5 +546,17 @@ return {
             "python",  -- I have RST injected into Python files to include it here
             "rst",
         },
-    }
+    },
+
+    -- Show / Hide a location list or quickfix
+    {
+        "ColinKennedy/ListToggle",
+        branch = "make_height_optional",
+        config = function() vim.g.lt_height = 0 end,
+        cmd = { "LToggle", "QToggle" },
+        keys = {
+            { "<leader>l", desc = "Toggle the [l]ocation list display." },
+            { "<leader>q", desc = "Toggle the [q]uickfix display." },
+        },
+    },
 }
