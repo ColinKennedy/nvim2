@@ -459,6 +459,7 @@ return {
                 end,
                 desc = "[i]nsert [V]ariable debug-print above the current line",
                 expr = true,
+                mode = {"n", "v"},
             },
             {
                 "<leader>iv",
@@ -468,6 +469,7 @@ return {
                 end,
                 desc = "[i]nsert [v]ariable debug-print below the current line",
                 expr = true,
+                mode = {"n", "v"},
             },
         },
         version = "1.*",
