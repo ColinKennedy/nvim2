@@ -395,15 +395,12 @@ return {
     -- :Rg (triggers an interactive prompt for a search)
     --
     {
-        "ColinKennedy/nvim-rg",
+        "duane9/nvim-rg",
         cmd = "Rg",
-        config = function()
-            -- The plug-in comes with a default <leader>rg mapping. I don't like it so I'm overriding it
-            vim.keymap.set("n", "<leader>rg", ":Rg ", { desc = "Search :pwd with [rg] - ripgrep." })
-        end,
         keys = {
             {
                 "<leader>rg",
+                ":Rg",
                 desc = "Search :pwd with [rg] - ripgrep.",
             },
         }
