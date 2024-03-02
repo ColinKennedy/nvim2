@@ -3,16 +3,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function() require("my_custom.plugins.nvim_lspconfig.configuration") end,
-        keys = {
-            { "[d", desc = "Previous available [d]iagnostic." },
-            { "]d", desc = "Next available [d]iagnostic." },
-            {
-                "<leader>d",
-                function() vim.diagnostic.open_float({ source="always" }) end,
-                desc = "Open the [d]iagnostics window for the current cursor.",
-            },
-        },
-        lazy = true,
+        keys = require("my_custom.plugins.nvim_lspconfig.keys"),
     },
 
     {
