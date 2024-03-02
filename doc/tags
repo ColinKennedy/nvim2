@@ -13,6 +13,7 @@ my_debugging_set_and_view_trace_logs	my_debugging.txt	/*my_debugging_set_and_vie
 my_mappings.txt	my_mappings.txt	/*my_mappings.txt*
 my_mappings_debugging	my_mappings.txt	/*my_mappings_debugging*
 my_mappings_formatting_and_editting	my_mappings.txt	/*my_mappings_formatting_and_editting*
+my_mappings_git	my_mappings.txt	/*my_mappings_git*
 my_mappings_grapple.nvim	my_mappings.txt	/*my_mappings_grapple.nvim*
 my_mappings_lsp	my_mappings.txt	/*my_mappings_lsp*
 my_mappings_luasnip.nvim	my_mappings.txt	/*my_mappings_luasnip.nvim*
@@ -25,8 +26,11 @@ my_mappings_utility_movement_related	my_mappings.txt	/*my_mappings_utility_movem
 my_mappings_vim-bqf	my_mappings.txt	/*my_mappings_vim-bqf*
 my_mappings_workspace_switching	my_mappings.txt	/*my_mappings_workspace_switching*
 my_notes.txt	my_notes.txt	/*my_notes.txt*
+my_plugins.txt	my_plugins.txt	/*my_plugins.txt*
+my_plugins_neotest	my_plugins.txt	/*my_plugins_neotest*
 my_requirements.txt	my_requirements.txt	/*my_requirements.txt*
 my_requirements_clis	my_requirements.txt	/*my_requirements_clis*
 my_requirements_plugins	my_requirements.txt	/*my_requirements_plugins*
 my_writing_vimdoc_files.txt	my_writing_vimdoc_files.txt	/*my_writing_vimdoc_files.txt*
+my_writing_vimdoc_files_making_edits	my_writing_vimdoc_files.txt	/*my_writing_vimdoc_files_making_edits*
 my_writing_vimdoc_files_references	my_writing_vimdoc_files.txt	/*my_writing_vimdoc_files_references*

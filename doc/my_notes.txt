@@ -16,3 +16,4 @@ General                                             *my_configuration_general*
 2. Mappings ................................................ |my_mappings.txt|
 3. Commands ................................................ |my_commands.txt|
 4. Writing Vimdoc Files ........................ |my_writing_vimdoc_files.txt|
+5. Plugins .................................................. |my_plugins.txt|

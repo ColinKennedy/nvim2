@@ -1,5 +1,16 @@
 *my_writing_vimdoc_files.txt*	Explaining how to write Vim documentation
 
+================================================================================
+Making Edits                           *my_writing_vimdoc_files_making_edits*
+
+When you're done editing a .txt file in the nvim/doc directory, run this:
+
+    execute "helptags " . expand("%:p:h")
+    or
+    helptags ~/personal/.config/nvim/doc
+
+And the ~/personal/.config/nvim/doc/tags file will update with any new tags
+needed.
 
 ================================================================================
 References                               *my_writing_vimdoc_files_references*
