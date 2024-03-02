@@ -19,6 +19,7 @@ stack traceback:
 - Try this out - https://github.com/jvgrootveld/telescope-zoxide
 - https://gitlab.com/yorickpeterse/nvim-pqf
 
+- Check up on https://github.com/folke/lazy.nvim/issues/1343
 - Change nvim-lspconfig to trigger if gd / gf or some other mapping is pressed
 
 - kevinhwang91/nvim-bqf is causing the <CR> (Enter) key not to work. Fix!

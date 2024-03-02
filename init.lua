@@ -29,7 +29,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Add extra autocommands before lazy.nvim is called so that they can be used for plug-ins
 require("my_custom.start.auto_commands_pre")
 
