@@ -340,3 +340,15 @@
 [submodule "bundle/ListToggle"]
 	path = bundle/ListToggle
 	url = git@github.com:ColinKennedy/ListToggle.git
+[submodule "bundle/neotest"]
+	path = bundle/neotest
+	url = git@github.com:nvim-neotest/neotest.git
+[submodule "bundle/FixCursorHold.nvim"]
+	path = bundle/FixCursorHold.nvim
+	url = git@github.com:antoinemadec/FixCursorHold.nvim.git
+[submodule "bundle/neotest-plenary"]
+	path = bundle/neotest-plenary
+	url = git@github.com:nvim-neotest/neotest-plenary.git
+[submodule "bundle/neotest-python"]
+	path = bundle/neotest-python
+	url = git@github.com:nvim-neotest/neotest-python.git

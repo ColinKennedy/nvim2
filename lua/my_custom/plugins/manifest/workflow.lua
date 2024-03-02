@@ -540,4 +540,28 @@ return {
             { "<leader>q", desc = "Toggle the [q]uickfix display." },
         },
     },
+
+    -- Run unittests in a simple GUI. It has auto-watch capabilities and more!
+    {
+        "nvim-neotest/neotest",
+        config = require("my_custom.plugins.neotest.configuration"),
+        cmd = {
+            "NeotestRunCurrent",
+            "NeotestRunDirectory",
+            "NeotestRunFile",
+            "NeotestRunSuite",
+            "NeotestRunSuite",
+        },
+        dependencies = {
+            -- Required
+            "ColinKennedy/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+
+            -- Optional
+            "nvim-neotest/neotest-plenary",
+            "nvim-neotest/neotest-python",
+        },
+        keys = require("my_custom.plugins.neotest.keys"),
+    },
 }
