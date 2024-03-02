@@ -11,7 +11,7 @@ return {
     },
     {
         "<M-S-l>",
-        function() require("grapple").popup_tags("git") end,
+        function() require("grapple").open_tags("git") end,
         desc = "Show all saved project paths.",
     },
     {
