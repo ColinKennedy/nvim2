@@ -396,8 +396,6 @@ return {
     --
     {
         "ColinKennedy/nvim-rg",
-        -- TODO: Remove once https://github.com/duane9/nvim-rg/pull/6 merges
-        branch = "issues/5-make_starting_lines_consistent",
         cmd = "Rg",
         config = function()
             -- The plug-in comes with a default <leader>rg mapping. I don't like it so I'm overriding it
