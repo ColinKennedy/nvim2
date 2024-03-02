@@ -6,6 +6,11 @@
 - For debugging [debugpy](https://pypi.org/project/debugpy)
 - Requires [fd](https://github.com/sharkdp/fd), for searching folder with :FzfCd / <leader>cD
 
+## Optional Requires
+- Anything that `:checkhealth` recommends
+- [fswatch](https://github.com/emcrisostomo/fswatch), for better LSP file change performance
+    - Reference: https://github.com/neovim/neovim/pull/27347
+
 
 ## Mappings
 ### Workspace switching
