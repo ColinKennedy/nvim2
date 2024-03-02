@@ -25,3 +25,7 @@ https://github.com/dlvhdr/gh-blame.nvim
 https://github.com/yioneko/nvim-yati
 https://www.reddit.com/r/neovim/comments/1amp8hm/spookynvim_motionplugin_agnostic_remote_text/
 https://github.com/tamton-aquib/keys.nvim
+
+## In theory useful but don't seem to work
+https://github.com/briangwaltney/paren-hint.nvim
+https://github.com/code-biscuits/nvim-biscuits
