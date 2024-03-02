@@ -1,4 +1,5 @@
 - Change :Pcd to print the new directory
+- <leader>rr isn't working anymore. Fix!
 - Move /home/selecaoone/personal/.config/nvim/lua/my_custom/start/lsp_diagnostics.lua to hybrid2
 - Add individual sections - https://github.com/danymat/neogen/issues/165
 
