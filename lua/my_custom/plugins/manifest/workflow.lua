@@ -48,19 +48,6 @@ return {
         "MarcWeber/vim-addon-local-vimrc",
     },
 
-    -- Always show the current USD Prim context. Useful when navigating nested files
-    --
-    -- TODO: Figure out a way to defer-eval this plug-in
-    --
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("my_custom.plugins.nvim_treesitter_context.configuration")
-        end,
-        dependencies = {"nvim-treesitter/nvim-treesitter"},
-        event = { "CursorMoved", "CursorMovedI" },
-    },
-
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
     {
         "mrjones2014/smart-splits.nvim",

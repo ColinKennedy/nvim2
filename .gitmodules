@@ -217,9 +217,6 @@
 [submodule "bundle/nvim-dap-python"]
 	path = bundle/nvim-dap-python
 	url = git@github.com:mfussenegger/nvim-dap-python.git
-[submodule "bundle/nvim-treesitter-context"]
-	path = bundle/nvim-treesitter-context
-	url = git@github.com:nvim-treesitter/nvim-treesitter-context.git
 [submodule "bundle/treesj"]
 	path = bundle/treesj
 	url = git@github.com:Wansmer/treesj.git
