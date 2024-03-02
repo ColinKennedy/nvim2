@@ -427,3 +427,17 @@ vim.keymap.set(
     function() require('luasnip').unlink_current() end,
     { desc = "[l]eave [c]urrent [s]nippet." }
 )
+
+vim.keymap.set(
+    "n",
+    "<leader>ts",
+    ":call terminal_swapper#swap_to_terminal()<CR>",
+    { desc = "Open full-screen [t]erminal and [s]witch to it." }
+)
+
+vim.keymap.set(
+    "t",
+    "<leader>ts",
+    "<C-\\><C-n>:call terminal_swapper#swap_to_previous_window()<CR>",
+    { desc = "Close the current [t]erminal buffer [s]witch to the previous window." }
+)
