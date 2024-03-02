@@ -398,11 +398,7 @@ return {
         "duane9/nvim-rg",
         cmd = "Rg",
         keys = {
-            {
-                "<leader>rg",
-                ":Rg",
-                desc = "Search :pwd with [rg] - ripgrep.",
-            },
+            { "<leader>rg", ":Rg", desc = "Search :pwd with [rg] - ripgrep." },
         }
     },
 
