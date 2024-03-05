@@ -546,6 +546,7 @@ return {
         "nvim-neotest/neotest",
         config = require("my_custom.plugins.neotest.configuration"),
         cmd = {
+            "Neotest",
             "NeotestRunCurrent",
             "NeotestRunDirectory",
             "NeotestRunFile",
