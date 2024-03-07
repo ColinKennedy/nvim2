@@ -188,6 +188,7 @@ vim.api.nvim_create_autocmd(
     {
         callback = function()
             local highlight_group = "IncSearch"
+
             if vim.fn.hlexists("HighlightedyankRegion") > 0
             then
                 highlight_group = "HighlightedyankRegion"
