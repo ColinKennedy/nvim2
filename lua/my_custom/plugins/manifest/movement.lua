@@ -75,4 +75,28 @@ return {
         event = "InsertEnter",
     },
 
+
+    -- Allow quick and easy navigation to common project files
+    -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
+    --
+    {
+        "cbochs/grapple.nvim",
+        dependencies = {"ColinKennedy/plenary.nvim"},
+        keys = require("my_custom.plugins.grapple.keys"),
+        version = "v0.*",
+    },
+
+    -- Press <C-w>o to full-screen the current buffer
+    {
+        -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
+        "troydm/zoomwintab.vim",
+        cmd = {"ZoomWinTabOut", "ZoomWinTabToggle"},
+        keys = {
+            {
+                "<C-w>o",
+                ":ZoomWinTabToggle<CR>",
+                desc="Toggle full-screen or minimize a window.",
+            },
+        },
+    },
 }

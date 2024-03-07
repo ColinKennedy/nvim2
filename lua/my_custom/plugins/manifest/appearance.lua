@@ -132,4 +132,11 @@ return {
         keys = "V",
         opts = {},
     },
+
+    -- Highlight todo notes and other comments in the current buffer. Very pretty!
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "ColinKennedy/plenary.nvim" },
+        config = function() require("my_custom.plugins.todo_comments.configuration") end,
+    },
 }

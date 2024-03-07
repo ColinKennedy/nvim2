@@ -32,4 +32,10 @@ return {
         ft = { "usda", "usd" },
         version = "1.*",
     },
+
+    -- TODO: Consider adding this again
+    -- -- Read a .egg (a Python zip file) as if it's a regular file
+    -- {
+    --     "ColinKennedy/vim-egg-read",
+    -- }
 }

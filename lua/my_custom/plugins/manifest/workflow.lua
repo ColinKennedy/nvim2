@@ -71,28 +71,10 @@ return {
         event = { "VeryLazy" },
     },
 
-    -- TODO: Consider adding this again
-    -- -- Read a .egg (a Python zip file) as if it's a regular file
-    -- {
-    --     "ColinKennedy/vim-egg-read",
-    -- }
-
-    -- Press <C-w>o to full-screen the current buffer
-    {
-        -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
-        "troydm/zoomwintab.vim",
-        cmd = {"ZoomWinTabOut", "ZoomWinTabToggle"},
-        keys = {
-            {
-                "<C-w>o",
-                ":ZoomWinTabToggle<CR>",
-                desc="Toggle full-screen or minimize a window.",
-            },
-        },
-    },
-
-    -- TODO: If I lazy-load this plug-in, it forces the cursor to the top of the file. No idea why. Check that out, later
-    -- Auto-read external file changes
+    -- TODO: If I lazy-load this plug-in, it forces the cursor to the top of
+    -- the file. No idea why. Check that out, later Auto-read external file
+    -- changes.
+    --
     {
         "ColinKennedy/vim-file-system-watcher",
         -- event = { "VeryLazy" },
@@ -338,16 +320,6 @@ return {
                 silent=true,
             },
         },
-    },
-
-    -- Allow quick and easy navigation to common project files
-    -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
-    --
-    {
-        "cbochs/grapple.nvim",
-        dependencies = {"ColinKennedy/plenary.nvim"},
-        keys = require("my_custom.plugins.grapple.keys"),
-        version = "v0.*",
     },
 
     -- Add "submodes" to Neovim. e.g. <Space>G for "git mode"

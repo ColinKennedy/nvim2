@@ -352,3 +352,6 @@
 [submodule "bundle/neotest-python"]
 	path = bundle/neotest-python
 	url = git@github.com:nvim-neotest/neotest-python.git
+[submodule "bundle/todo-comments.nvim"]
+	path = bundle/todo-comments.nvim
+	url = git@github.com:folke/todo-comments.nvim.git
