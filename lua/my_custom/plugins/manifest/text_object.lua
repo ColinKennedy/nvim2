@@ -198,5 +198,8 @@ return {
     -- Normal mode: gsip sorts a paragraph
     -- Visual mode: gs
     --
-    { "ralismark/opsort.vim", keys = { { "gs", desc = "A [s]orting operator." } } },
+    {
+        "ralismark/opsort.vim",
+        keys = { { "gs", desc = "A [s]orting operator.", mode = { "v", "o" } } },
+    },
 }
