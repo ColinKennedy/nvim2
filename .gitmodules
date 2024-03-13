@@ -181,9 +181,6 @@
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = git@github.com:tpope/vim-unimpaired.git
-[submodule "bundle/targets.vim"]
-	path = bundle/targets.vim
-	url = git@github.com:wellle/targets.vim.git
 [submodule "bundle/mason.nvim"]
 	path = bundle/mason.nvim
 	url = git@github.com:williamboman/mason.nvim.git
@@ -355,3 +352,6 @@
 [submodule "bundle/todo-comments.nvim"]
 	path = bundle/todo-comments.nvim
 	url = git@github.com:folke/todo-comments.nvim.git
+[submodule "bundle/mini.ai"]
+	path = bundle/mini.ai
+	url = git@github.com:echasnovski/mini.ai.git

@@ -42,21 +42,11 @@ return {
         version = "0.*",
     },
 
-    -- XXX: Removed due to this issue: https://github.com/wellle/targets.vim/issues/268
-    -- Targets - A great companion to vim-surround
-    {
-        "wellle/targets.vim",
-        config=function()
-            -- TODO: Add this, later
-            -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
-            -- autocmd User targets#mappings#user call targets#mappings#extend({
-            --     \ '@': {'quote': [{'d': '@'}]},
-            --     \ })
-        end,
-        event = "VeryLazy",
-        version = "0.*",
-    },
-
+    -- `vin(` to select around parentheses. etc etc.
+    --
+    -- A replacement for target.nvim
+    --
+    { "echasnovski/mini.ai", config = true, event = "VeryLazy", version = "*" },
 
     -- TODO: Can I defer load this? Figure out how
     -- Comment / uncomment with ``gcc`` and other ``gc`` text motion commands
