@@ -4,6 +4,9 @@
 
 - Add session callback autocmd to Neovim
 
+- Is there a “:norm py” text object to paste from the yank register?
+- https://www.reddit.com/r/neovim/comments/1bftq35/do_you_guys_remap_p_to_dp/
+
 - Change :Pcd to print the new directory
 - <leader>rr isn't working anymore. Fix!
 - Move /home/selecaoone/personal/.config/nvim/lua/my_custom/start/lsp_diagnostics.lua to hybrid2
