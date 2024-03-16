@@ -14,7 +14,13 @@ require("fzf-lua").setup{
 vim.api.nvim_create_user_command(
     "Commands",
     function() require("fzf-lua").commands() end,
-    { desc = "Show all available Commands." }
+    { desc = "Show all available Neovim Commands." }
+)
+
+vim.api.nvim_create_user_command(
+    "Keymaps",
+    function() require("fzf-lua").keymaps() end,
+    { desc = "Show all available Neovim keymaps / mappings." }
 )
 
 vim.api.nvim_create_user_command(
