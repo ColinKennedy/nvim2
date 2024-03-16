@@ -18,6 +18,21 @@ https://github.com/wojciech-kulik/xcodebuild.nvim
 Pretty quickfix buffer - https://github.com/folke/trouble.nvim
 https://github.com/yorickpeterse/nvim-pqf
 
+```lua
+{
+    "brenoprata10/nvim-highlight-colors",
+    config = function()
+        vim.cmd[[
+            set termguicolors
+            set t_Co=256
+        ]]
+
+        require('nvim-highlight-colors').setup {}
+    end
+}
+```
+
+
 ## Possibly Useful
 https://github.com/bfredl/nvim-miniyank
 https://github.com/dlvhdr/gh-addressed.nvim?tab=readme-ov-file
