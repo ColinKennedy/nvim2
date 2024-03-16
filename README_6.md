@@ -1,3 +1,9 @@
+- Virtual text is cutting off the last characters to the right of the text
+ - e.g. sphinx-code-include
+- gs sort isn't working anymore!
+
+- Add session callback autocmd to Neovim
+
 - Change :Pcd to print the new directory
 - <leader>rr isn't working anymore. Fix!
 - Move /home/selecaoone/personal/.config/nvim/lua/my_custom/start/lsp_diagnostics.lua to hybrid2
