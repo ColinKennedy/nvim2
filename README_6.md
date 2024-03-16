@@ -2,6 +2,11 @@
  - e.g. sphinx-code-include
 - Add back in if / ik & af / aK for functions and classes
 
+- Ask this to support winfixbuf
+ - https://github.com/mbbill/undotree
+ - vim-fugitive
+ - diffview.nvim
+
 - Add session callback autocmd to Neovim
 
 - Is there a “:norm py” text object to paste from the yank register?
