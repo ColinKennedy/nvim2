@@ -190,6 +190,6 @@ return {
     --
     {
         "ralismark/opsort.vim",
-        keys = { { "gs", desc = "A [s]orting operator.", mode = { "v", "o" } } },
+        keys = { { "gs", desc = "A [s]orting operator.", mode = { "n", "o", "v" } } },
     },
 }
