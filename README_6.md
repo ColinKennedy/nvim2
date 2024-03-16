@@ -1,6 +1,6 @@
 - Virtual text is cutting off the last characters to the right of the text
  - e.g. sphinx-code-include
-- gs sort isn't working anymore!
+- Add back in if / ik & af / aK for functions and classes
 
 - Add session callback autocmd to Neovim
 
