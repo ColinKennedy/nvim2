@@ -253,19 +253,68 @@ then
         }
     )
 
-    -- Neovim also doesn't enter insert mode immediately when a terminal is
-    -- opened. So we add it as an explicit command, here.
-    --
-    -- This is different from `autocmd WinEnter` because `TermOpen`
-    -- executes when a Terminal is first created. And WinEnter executes
-    -- when you leave a window and come back to it.
-    --
+    -- Make sure a terminal buffer can never be switched away
     vim.api.nvim_create_autocmd(
         "TermOpen",
         {
-            command = "startinsert",
+            callback = function()
+                if vim.fn.exists("&winfixbuf") == 1 then
+                    vim.cmd[[set winfixbuf]]
+                end
+            end,
             group = group,
             pattern = "*",
         }
     )
 end
+
+-- Associate certain windows with certain file types, using `'winfixbuf'`
+-- e.g. If a window is created that points to a specific buffer, only allow
+-- that window to show that buffer and no other.
+--
+-- This is a bit of a hack. Really, plugin authors should integrate support
+-- `'winfixbuf'`. But this will work in the meantime while plugins update their
+-- settings.
+--
+vim.api.nvim_create_autocmd(
+    "WinNew",
+    {
+        callback = function()
+            vim.schedule(
+                function()
+                    local type_ = vim.bo.filetype
+                    print("FILETYPE")
+                    print(vim.bo.filetype)
+                    if (
+                        type_ == "NvimTree" -- https://github.com/nvim-tree/nvim-tree.lua
+
+                        -- https://github.com/stevearc/aerial.nvim
+                        or type_ == "aerial"
+                        or type_ == "aerial-nav"
+
+                        -- https://github.com/rcarriga/nvim-dap-ui
+                        or type_ == "dapui_watches"
+                        or type_ == "dapui_stacks"
+                        or type_ == "dapui_breakpoints"
+                        or type_ == "dapui_scopes"
+                        or type_ == "dapui_console"
+                        -- https://github.com/mfussenegger/nvim-dap
+                        or type_ == "dap-repl"
+
+                        or type_ == "DiffviewFiles"  -- https://github.com/sindrets/diffview.nvim
+                        or type_ == "Outline"  -- https://github.com/simrat39/symbols-outline.nvim
+                        or type_ == "TelescopePrompt"  -- https://github.com/nvim-telescope/telescope.nvim
+                        or type_ == "fzf"  -- https://github.com/ibhagwan/fzf-lua
+                        or type_ == "mason"  -- https://github.com/williamboman/mason.nvim
+                        or type_ == "neotest-summary"  -- https://github.com/nvim-neotest/neotest
+                        or type_ == "qf"
+                        or type_ == "undotree"  -- https://github.com/mbbill/undotree
+                    )
+                    then
+                        _enable_winfixbuf_if_supported()
+                    end
+                end
+            )
+        end,
+    }
+)
