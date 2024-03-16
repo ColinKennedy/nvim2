@@ -7,7 +7,7 @@ require("lualine").setup {
   },
   sections = {
     lualine_b = {"branch"},
-    lualine_c = {},
+    lualine_c = { "grapple" },
     lualine_x = {},
     lualine_y = {
         {
