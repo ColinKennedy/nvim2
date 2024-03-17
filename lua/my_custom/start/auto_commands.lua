@@ -268,6 +268,11 @@ then
     )
 end
 
+--- @boolean # If `'winfixbuf'` is enabled in this (Neo)vim version
+local function _is_winfixbuf_supported()
+    return vim.fn.exists("&winfixbuf") == 1
+end
+
 -- Associate certain windows with certain file types, using `'winfixbuf'`
 -- e.g. If a window is created that points to a specific buffer, only allow
 -- that window to show that buffer and no other.
@@ -282,9 +287,13 @@ vim.api.nvim_create_autocmd(
         callback = function()
             vim.schedule(
                 function()
+                    if not _is_winfixbuf_supported()
+                    then
+                        return
+                    end
+
                     local type_ = vim.bo.filetype
-                    print("FILETYPE")
-                    print(vim.bo.filetype)
+
                     if (
                         type_ == "NvimTree" -- https://github.com/nvim-tree/nvim-tree.lua
 
@@ -311,7 +320,7 @@ vim.api.nvim_create_autocmd(
                         or type_ == "undotree"  -- https://github.com/mbbill/undotree
                     )
                     then
-                        _enable_winfixbuf_if_supported()
+                        vim.wo.winfixbuf = true
                     end
                 end
             )
