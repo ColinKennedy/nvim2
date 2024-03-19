@@ -53,6 +53,11 @@ return {
         desc="[g]it [a]dd %-[c]urrent file.",  -- This is the same as <leader>gac
     },
     {
+        "<leader>gcb",
+        ":Git checkout ",
+        desc="[g]it [c]heckout [b]ranch.",
+    },
+    {
         "<leader>gcm",
         ':Git commit -m ""<Left>',
         desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
