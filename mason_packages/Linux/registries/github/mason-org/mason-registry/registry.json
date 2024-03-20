@@ -619,6 +619,30 @@
     }
   },
   {
+    "name": "basedpyright",
+    "description": "Fork of the Pyright static type checker for Python, with extra Pylance features.",
+    "homepage": "https://detachhead.github.io/basedpyright",
+    "licenses": [
+      "MIT"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "categories": [
+      "LSP"
+    ],
+    "source": {
+      "id": "pkg:pypi/basedpyright@1.6.0"
+    },
+    "schemas": {
+      "lsp": "vscode:https://raw.githubusercontent.com/DetachHead/basedpyright/v{{version}}/packages/vscode-pyright/package.json"
+    },
+    "bin": {
+      "basedpyright": "pypi:basedpyright",
+      "basedpyright-langserver": "pypi:basedpyright-langserver"
+    }
+  },
+  {
     "name": "bash-debug-adapter",
     "description": "Bash shell debugger, based on bashdb.",
     "homepage": "https://github.com/rogalmic/vscode-bash-debug",
@@ -1315,6 +1339,71 @@
     },
     "bin": {
       "chrome-debug-adapter": "node:out/src/chromeDebug.js"
+    }
+  },
+  {
+    "name": "circleci-yaml-language-server",
+    "description": "Language server for CircleCI YAML configurations",
+    "homepage": "https://github.com/CircleCI-Public/circleci-yaml-language-server",
+    "licenses": [
+      "Apache-2.0"
+    ],
+    "languages": [
+      "YAML"
+    ],
+    "categories": [
+      "LSP"
+    ],
+    "source": {
+      "id": "pkg:github/CircleCI-Public/circleci-yaml-language-server@0.9.3",
+      "asset": [
+        {
+          "target": "darwin_arm64",
+          "file": [
+            "darwin-arm64-lsp",
+            "schema.json"
+          ],
+          "bin": "darwin-arm64-lsp"
+        },
+        {
+          "target": "darwin_x64",
+          "file": [
+            "darwin-amd64-lsp",
+            "schema.json"
+          ],
+          "bin": "darwin-amd64-lsp"
+        },
+        {
+          "target": "linux_arm64_gnu",
+          "file": [
+            "linux-arm64-lsp",
+            "schema.json"
+          ],
+          "bin": "linux-arm64-lsp"
+        },
+        {
+          "target": "linux_x64_gnu",
+          "file": [
+            "linux-amd64-lsp",
+            "schema.json"
+          ],
+          "bin": "linux-amd64-lsp"
+        },
+        {
+          "target": "win_x64",
+          "file": [
+            "windows-amd64-lsp.exe",
+            "schema.json"
+          ],
+          "bin": "windows-amd64-lsp.exe"
+        }
+      ]
+    },
+    "bin": {
+      "circleci-yaml-language-server": "{{source.asset.bin}}"
+    },
+    "share": {
+      "circleci-yaml-language-server/schema.json": "schema.json"
     }
   },
   {
@@ -3128,6 +3217,27 @@
     }
   },
   {
+    "name": "erb-formatter",
+    "description": "Format ERB files with speed and precision.",
+    "homepage": "https://github.com/nebulab/erb-formatter",
+    "licenses": [
+      "MIT"
+    ],
+    "languages": [
+      "HTML",
+      "Ruby"
+    ],
+    "categories": [
+      "Formatter"
+    ],
+    "source": {
+      "id": "pkg:gem/erb-formatter@0.7.2"
+    },
+    "bin": {
+      "erb-formatter": "gem:erb-formatter"
+    }
+  },
+  {
     "name": "erb-lint",
     "description": "erb-lint is a tool to help lint your ERB or HTML files using the included linters or by writing your own.",
     "homepage": "https://github.com/Shopify/erb-lint",
@@ -3456,6 +3566,26 @@
     ]
   },
   {
+    "name": "findent",
+    "description": "findent indents/beautifies/converts and can optionally generate the dependencies of Fortran sources.",
+    "homepage": "https://pypi.org/project/findent/",
+    "licenses": [
+      "BSD-2-Clause"
+    ],
+    "languages": [
+      "Fortran"
+    ],
+    "categories": [
+      "Formatter"
+    ],
+    "source": {
+      "id": "pkg:pypi/findent@4.3.1"
+    },
+    "bin": {
+      "findent": "pypi:findent"
+    }
+  },
+  {
     "name": "firefox-debug-adapter",
     "description": "Debug your web application or browser extension in Firefox.",
     "homepage": "https://github.com/firefox-devtools/vscode-firefox-debug",
@@ -3633,6 +3763,26 @@
     },
     "bin": {
       "fourmolu": "{{source.asset.file}}"
+    }
+  },
+  {
+    "name": "fprettify",
+    "description": "fprettify is an auto-formatter for modern Fortran code that imposes strict whitespace formatting, written in Python.",
+    "homepage": "https://pypi.org/project/fprettify",
+    "licenses": [
+      "GPL-3.0-or-later"
+    ],
+    "languages": [
+      "Fortran"
+    ],
+    "categories": [
+      "Formatter"
+    ],
+    "source": {
+      "id": "pkg:pypi/fprettify@0.3.7"
+    },
+    "bin": {
+      "fprettify": "pypi:fprettify"
     }
   },
   {
@@ -4288,7 +4438,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/golangci/golangci-lint@v1.56.2",
+      "id": "pkg:github/golangci/golangci-lint@v1.57.0",
       "asset": [
         {
           "target": "linux_armv6l",
@@ -4768,7 +4918,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:generic/haskell/haskell-language-server@2.5.0.0",
+      "id": "pkg:generic/haskell/haskell-language-server@2.7.0.0",
       "build": [
         {
           "target": "unix",
@@ -4781,8 +4931,8 @@
             "wrapper": "bin/haskell-language-server-wrapper",
             "server_9_2_8": "bin/haskell-language-server-9.2.8",
             "server_9_4_8": "bin/haskell-language-server-9.4.8",
-            "server_9_6_3": "bin/haskell-language-server-9.6.3",
-            "server_9_8_1": "bin/haskell-language-server-9.8.1"
+            "server_9_6_4": "bin/haskell-language-server-9.6.4",
+            "server_9_8_2": "bin/haskell-language-server-9.8.2"
           }
         },
         {
@@ -4796,8 +4946,8 @@
             "wrapper": "haskell-language-server-wrapper.exe",
             "server_9_2_8": "haskell-language-server-9.2.8.exe",
             "server_9_4_8": "haskell-language-server-9.4.8.exe",
-            "server_9_6_3": "haskell-language-server-9.6.3.exe",
-            "server_9_8_1": "haskell-language-server-9.8.1.exe"
+            "server_9_6_4": "haskell-language-server-9.6.4.exe",
+            "server_9_8_2": "haskell-language-server-9.8.2.exe"
           }
         }
       ]
@@ -4806,8 +4956,8 @@
       "haskell-language-server-wrapper": "{{source.build.bin.wrapper}}",
       "haskell-language-server-9.2.8": "{{source.build.bin.server_9_2_8}}",
       "haskell-language-server-9.4.8": "{{source.build.bin.server_9_4_8}}",
-      "haskell-language-server-9.6.3": "{{source.build.bin.server_9_6_3}}",
-      "haskell-language-server-9.8.1": "{{source.build.bin.server_9_8_1}}"
+      "haskell-language-server-9.6.4": "{{source.build.bin.server_9_6_4}}",
+      "haskell-language-server-9.8.2": "{{source.build.bin.server_9_8_2}}"
     }
   },
   {
@@ -5325,6 +5475,30 @@
     },
     "bin": {
       "jedi-language-server": "pypi:jedi-language-server"
+    }
+  },
+  {
+    "name": "jinja-lsp",
+    "description": "Experimental jinja lsp server, with autocomplete, syntax highlighting, hover, goto definition, code actions and\nlinting.\n",
+    "homepage": "https://github.com/uros-5/jinja-lsp",
+    "licenses": [
+      "MIT"
+    ],
+    "languages": [
+      "Django",
+      "Jinja",
+      "Nunjucks"
+    ],
+    "categories": [
+      "LSP",
+      "Linter",
+      "Compiler"
+    ],
+    "source": {
+      "id": "pkg:cargo/jinja-lsp@0.1.61"
+    },
+    "bin": {
+      "jinja-lsp": "cargo:jinja-lsp"
     }
   },
   {
@@ -6005,6 +6179,33 @@
     },
     "bin": {
       "lemonade": "golang:lemonade"
+    }
+  },
+  {
+    "name": "lexical",
+    "description": "Lexical is a next-generation elixir language server",
+    "homepage": "https://github.com/lexical-lsp/lexical",
+    "licenses": [
+      "Apache-2.0"
+    ],
+    "languages": [
+      "Elixir"
+    ],
+    "categories": [
+      "LSP"
+    ],
+    "source": {
+      "id": "pkg:github/lexical-lsp/lexical@v0.5.2",
+      "asset": [
+        {
+          "target": "unix",
+          "file": "lexical-{{version}}.zip:libexec/",
+          "bin": "exec:libexec/lexical/bin/start_lexical.sh"
+        }
+      ]
+    },
+    "bin": {
+      "lexical": "{{source.asset.bin}}"
     }
   },
   {
@@ -7132,6 +7333,26 @@
     }
   },
   {
+    "name": "ocamlearlybird",
+    "description": "OCaml debug adapter.",
+    "homepage": "https://github.com/hackwaly/ocamlearlybird",
+    "licenses": [
+      "MIT"
+    ],
+    "languages": [
+      "OCaml"
+    ],
+    "categories": [
+      "DAP"
+    ],
+    "source": {
+      "id": "pkg:opam/earlybird@1.3.2"
+    },
+    "bin": {
+      "ocamlearlybird": "opam:ocamlearlybird"
+    }
+  },
+  {
     "name": "ocamlformat",
     "description": "ocamlformat is a tool for formatting OCaml code. It automatically adjusts the layout of your code to follow the\nrecommended style guidelines, making it easier to read and understand.\n",
     "homepage": "https://github.com/ocaml-ppx/ocamlformat",
@@ -7165,7 +7386,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/oelint-adv@4.4.4"
+      "id": "pkg:pypi/oelint-adv@4.4.5"
     },
     "bin": {
       "oelint-adv": "pypi:oelint-adv"
@@ -7573,7 +7794,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.52.0",
+      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.52.1",
       "asset": {
         "file": "php-cs-fixer.phar"
       }
@@ -7634,7 +7855,7 @@
   {
     "name": "phpcbf",
     "description": "phpcbf automatically corrects coding standard violations that would be detected by phpcs.",
-    "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+    "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
     "licenses": [
       "BSD-3-Clause"
     ],
@@ -7645,7 +7866,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/squizlabs/PHP_CodeSniffer@3.7.2",
+      "id": "pkg:github/PHPCSStandards/PHP_CodeSniffer@3.9.0",
       "asset": {
         "file": "phpcbf.phar"
       }
@@ -7657,7 +7878,7 @@
   {
     "name": "phpcs",
     "description": "phpcs tokenizes PHP, JavaScript and CSS files to detect violations of a defined standard.",
-    "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+    "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
     "licenses": [
       "BSD-3-Clause"
     ],
@@ -7668,7 +7889,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/squizlabs/PHP_CodeSniffer@3.7.2",
+      "id": "pkg:github/PHPCSStandards/PHP_CodeSniffer@3.9.0",
       "asset": {
         "file": "phpcs.phar"
       }
@@ -7805,7 +8026,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/PowerShell/PowerShellEditorServices@v3.18.0",
+      "id": "pkg:github/PowerShell/PowerShellEditorServices@v3.18.1",
       "asset": {
         "file": "PowerShellEditorServices.zip"
       }
@@ -8404,7 +8625,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/pyright@1.1.354"
+      "id": "pkg:npm/pyright@1.1.355"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/microsoft/pyright/{{version}}/packages/vscode-pyright/package.json"
@@ -8647,6 +8868,26 @@
     },
     "bin": {
       "reformat-gherkin": "pypi:reformat-gherkin"
+    }
+  },
+  {
+    "name": "regols",
+    "description": "OPA Rego language server",
+    "homepage": "https://github.com/kitagry/regols",
+    "licenses": [
+      "MIT"
+    ],
+    "languages": [
+      "Rego"
+    ],
+    "categories": [
+      "LSP"
+    ],
+    "source": {
+      "id": "pkg:golang/github.com/kitagry/regols@v0.2.2"
+    },
+    "bin": {
+      "regols": "golang:regols"
     }
   },
   {
@@ -9324,7 +9565,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/semgrep@1.65.0",
+      "id": "pkg:pypi/semgrep@1.66.0",
       "supported_platforms": [
         "unix"
       ]
@@ -9536,7 +9777,7 @@
       "Compiler"
     ],
     "source": {
-      "id": "pkg:github/shader-slang/slang@v2024.1.3",
+      "id": "pkg:github/shader-slang/slang@v2024.1.4",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -9692,7 +9933,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/snyk/snyk-ls@v20240318.145323",
+      "id": "pkg:github/snyk/snyk-ls@v20240319.085424",
       "asset": [
         {
           "target": "darwin_x64",
@@ -10051,7 +10292,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:gem/sorbet@0.5.11294",
+      "id": "pkg:gem/sorbet@0.5.11295",
       "supported_platforms": [
         "unix"
       ]
@@ -10467,7 +10708,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/svelte-language-server@0.16.5"
+      "id": "pkg:npm/svelte-language-server@0.16.6"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/sveltejs/language-tools/language-server-{{version}}/packages/svelte-vscode/package.json"
@@ -11100,6 +11341,52 @@
     },
     "bin": {
       "thriftls": "{{source.asset.file}}"
+    }
+  },
+  {
+    "name": "tinymist",
+    "description": "Tinymist [ˈtaɪni mɪst] is an integrated language service for Typst [taɪpst]. You can also call it \"微霭\" [wēi ǎi] in\nChinese.\n",
+    "homepage": "https://github.com/Myriad-Dreamin/tinymist",
+    "licenses": [
+      "Apache-2.0"
+    ],
+    "languages": [
+      "Typst"
+    ],
+    "categories": [
+      "LSP"
+    ],
+    "source": {
+      "id": "pkg:github/Myriad-Dreamin/tinymist@v0.11.0",
+      "asset": [
+        {
+          "target": "linux_x64_gnu",
+          "file": "tinymist-linux-x64"
+        },
+        {
+          "target": "linux_arm64_gnu",
+          "file": "tinymist-linux-arm64"
+        },
+        {
+          "target": "darwin_x64",
+          "file": "tinymist-darwin-x64"
+        },
+        {
+          "target": "darwin_arm64",
+          "file": "tinymist-darwin-arm64"
+        },
+        {
+          "target": "win_x64",
+          "file": "tinymist-win32-x64.exe"
+        },
+        {
+          "target": "win_arm64",
+          "file": "tinymist-win32-arm64.exe"
+        }
+      ]
+    },
+    "bin": {
+      "tinymist": "{{source.asset.file}}"
     }
   },
   {
@@ -12235,7 +12522,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40vtsls/language-server@0.2.0"
+      "id": "pkg:npm/%40vtsls/language-server@0.2.1"
     },
     "schemas": {
       "lsp": "https://raw.githubusercontent.com/yioneko/vtsls/main/packages/service/configuration.schema.json"
