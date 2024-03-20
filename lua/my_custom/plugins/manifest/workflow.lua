@@ -422,17 +422,6 @@ return {
         version = "1.*",
     },
 
-    -- Prevent buffers from being accidentally switched out. e.g. Terminal / Quick Fix
-    {
-        "stevearc/stickybuf.nvim",
-        opts = {},
-        ft = {
-            "toggleterm",  -- Requires: https://github.com/akinsho/toggleterm.nvim
-            "qf",
-        },
-    },
-
-
     -- Generic tool for picking stuff.
     --
     -- Favorites:

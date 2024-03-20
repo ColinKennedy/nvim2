@@ -201,6 +201,13 @@ vim.api.nvim_create_autocmd(
 )
 
 
+local function _enable_winfixbuf_if_supported()
+    if vim.fn.exists("&winfixbuf") == 1 then
+        vim.cmd[[set winfixbuf]]
+    end
+end
+
+
 if vim.fn.has("nvim")
 then
     local is_fzf_terminal = function()
@@ -257,11 +264,7 @@ then
     vim.api.nvim_create_autocmd(
         "TermOpen",
         {
-            callback = function()
-                if vim.fn.exists("&winfixbuf") == 1 then
-                    vim.cmd[[set winfixbuf]]
-                end
-            end,
+            callback = _enable_winfixbuf_if_supported,
             group = group,
             pattern = "*",
         }

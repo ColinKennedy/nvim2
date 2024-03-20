@@ -283,9 +283,6 @@
 [submodule "bundle/debugprint.nvim"]
 	path = bundle/debugprint.nvim
 	url = git@github.com:andrewferrier/debugprint.nvim.git
-[submodule "bundle/stickybuf.nvim"]
-	path = bundle/stickybuf.nvim
-	url = git@github.com:stevearc/stickybuf.nvim.git
 [submodule "bundle/telescope.nvim"]
 	path = bundle/telescope.nvim
 	url = git@github.com:nvim-telescope/telescope.nvim.git
