@@ -192,6 +192,7 @@ return {
             require("file_history").setup { backup_dir = "~/.vim_custom_backups" }
             require("telescope").load_extension("file_history")
         end,
+        dependencies = { "nvim-telescope/telescope.nvim" },
         keys = {
             {
                 "<space>GF",
