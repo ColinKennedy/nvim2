@@ -89,6 +89,7 @@ return {
     {
         "cbochs/grapple.nvim",
         dependencies = {"ColinKennedy/plenary.nvim"},
+        config = function() require("grapple").setup({ scope = "git_branch" }) end,
         keys = require("my_custom.plugins.grapple.keys"),
         version = "v0.*",
     },

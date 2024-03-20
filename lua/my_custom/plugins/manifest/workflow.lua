@@ -137,9 +137,6 @@ return {
             "dad",
             "daf",
 
-            "Vad",
-            "Vaf",
-            "Vif",
             "vad",
             "vaf",
             "vid",
