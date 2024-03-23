@@ -31,6 +31,6 @@ return {
         "<leader>tns",
         ":Neotest summary<CR>",
         function() require("neotest").run.run() end,
-        desc = "[t]oggle [n]eotest [o]utput floating window.",
+        desc = "[t]oggle [n]eotest [s]ummary floating window.",
     },
 }
