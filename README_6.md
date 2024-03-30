@@ -1,6 +1,11 @@
+- https://github.com/folke/neodev.nvim/issues/98
+
 - Virtual text is cutting off the last characters to the right of the text
  - e.g. sphinx-code-include
 - Add back in if / ik & af / aK for functions and classes
+
+- Once async tree-sitter parsing is possible, consider re-adding winbuf for Lua
+  files (currently it is disabled because it was too slow)
 
 - Ask this to support winfixbuf
  - https://github.com/mbbill/undotree
