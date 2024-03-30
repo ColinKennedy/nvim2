@@ -46,7 +46,12 @@ return {
     --
     -- A replacement for target.nvim
     --
-    { "echasnovski/mini.ai", config = true, event = "VeryLazy", version = "*" },
+    {
+        "echasnovski/mini.ai",
+        config = function() require("mini.ai").setup() end,
+        event = "VeryLazy",
+        version = "*",
+    },
 
     -- TODO: Can I defer load this? Figure out how
     -- Comment / uncomment with ``gcc`` and other ``gc`` text motion commands
