@@ -43,6 +43,12 @@ https://github.com/tamton-aquib/keys.nvim
 
 https://github.com/LunarVim/bigfile.nvim - Disable slow stuff while in big files
 
+https://github.com/Willem-J-an/nvim-dap-powershell
+
+https://github.com/Jezda1337/nvim-html-css
+
+https://github.com/DNLHC/glance.nvim
+
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim
 https://github.com/code-biscuits/nvim-biscuits
