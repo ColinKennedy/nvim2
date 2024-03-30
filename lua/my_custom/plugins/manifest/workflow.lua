@@ -134,6 +134,7 @@ return {
             "[K", "]K",
             "[M", "]M",
 
+            "did",
             "dad",
             "daf",
 

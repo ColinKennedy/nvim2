@@ -74,4 +74,9 @@ return {
     },
     -- vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
     -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
+    {
+        "<leader>db",
+        ":DapToggleBreakpoint<CR>",
+        desc="Set a breakpoint in the current file + cursor.",
+    },
 }
