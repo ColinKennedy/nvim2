@@ -3,6 +3,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function() require("my_custom.plugins.nvim_lspconfig.configuration") end,
+        event = "InsertEnter",
         keys = require("my_custom.plugins.nvim_lspconfig.keys"),
     },
 

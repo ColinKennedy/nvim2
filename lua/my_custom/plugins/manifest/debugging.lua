@@ -65,25 +65,4 @@ return {
         },
         lazy = true,
     },
-
-    -- Remember nvim-dap breakpoints between sessions, using ``:PBToggleBreakpoint``
-    {
-        "Weissle/persistent-breakpoints.nvim",
-        config = function()
-            require("persistent-breakpoints").setup{
-                load_breakpoints_event = { "BufReadPost" }
-            }
-
-            require('persistent-breakpoints.api').load_breakpoints()
-        end,
-        dependencies = {"mfussenegger/nvim-dap"},
-        ft = {"c", "cpp"},  -- These are the file types that I'd usually have breakpoints
-        keys = {
-            {
-                "<leader>db",
-                ":PBToggleBreakpoint<CR>",
-                desc="Set a breakpoint (and remember it even when we re-open the file).",
-            },
-        },
-    },
 }
