@@ -54,7 +54,7 @@
 	url = git@github.com:L3MON4D3/LuaSnip.git
 [submodule "bundle/vim-addon-local-vimrc"]
 	path = bundle/vim-addon-local-vimrc
-	url = git@github.com:MarcWeber/vim-addon-local-vimrc.git
+	url = git@github.com:ColinKennedy/vim-addon-local-vimrc.git
 [submodule "bundle/cmp-tmux"]
 	path = bundle/cmp-tmux
 	url = git@github.com:andersevenrud/cmp-tmux.git
