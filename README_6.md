@@ -1,3 +1,5 @@
+- Change Neovim to not flash on-start-up
+
 - https://github.com/folke/neodev.nvim/issues/98
 
 - Virtual text is cutting off the last characters to the right of the text

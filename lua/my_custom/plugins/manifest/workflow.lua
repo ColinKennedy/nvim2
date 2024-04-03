@@ -45,7 +45,17 @@ return {
     -- which may contain malicious code
     --
     {
-        "MarcWeber/vim-addon-local-vimrc",
+        "ColinKennedy/vim-addon-local-vimrc",
+        branch = "my_edits",
+        config = function()
+            vim.g.local_vimrc = {
+                cache_file = vim.fn.expand("~/.vim_local_rc_cache"),
+                hash_fun = "LVRHashOfFile",
+                implementations = {"sha512sum", "sha256sum", "sha1sum", "md5sum", "viml"},
+                names = {".vimrc",'.vimrc.lua'},
+                resource_on_cwd_change = true,
+            }
+        end,
     },
 
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux

@@ -49,6 +49,20 @@ extend(plugins, require("my_custom.plugins.manifest.text_object"))
 extend(plugins, require("my_custom.plugins.manifest.workflow"))
 extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 
+table.insert(
+    plugins,
+    {
+        "ColinKennedy/timeline.nvim",
+
+        branch = "first_pass",
+        dir = "/home/selecaoone/personal/.config/nvim/bundle/timeline.nvim",
+        config = function()
+            require("timeline").setup()
+        end,
+        -- cmd = {"TimelineOpenCurrent", "TimelineOpenWindow"}
+    }
+)
+
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
 local configuration = { root = vim.g.vim_home .. "/bundle" }
 
@@ -64,3 +78,25 @@ require("my_custom.start.lsp_diagnostics")
 require("my_custom.start.saver").initialize()
 require("my_custom.utilities.quick_fix_selection_fix").initialize()
 vim.cmd("source " .. vim.g.vim_home .. "/plugin/miscellaneous_commands.vim")
+
+
+-- local client = vim.lsp.start_client{
+--     name = "usd_lsp",
+--     cmd = { "/home/selecaoone/repositories/usd-lsp/build/src/usd_lsp" },
+-- }
+--
+-- if not client then
+--     vim.notify("No usd_lsp client could be created.")
+-- end
+--
+--
+-- vim.api.nvim_create_autocmd(
+--     "FileType",
+--     {
+--         pattern = "usd",
+--         callback = function()
+--             print('DEBUGPRINT[1]: init.lua:175: client=' .. vim.inspect(client))
+--             vim.lsp.buf_attach_client(0, client)
+--         end
+--     }
+-- )
