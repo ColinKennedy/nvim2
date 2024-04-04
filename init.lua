@@ -53,9 +53,8 @@ table.insert(
     plugins,
     {
         "ColinKennedy/timeline.nvim",
-
         branch = "first_pass",
-        dir = "/home/selecaoone/personal/.config/nvim/bundle/timeline.nvim",
+        dir = "/home/selecaoone/repositories/personal/.config/nvim/bundle/timeline.nvim",
         config = function()
             require("timeline").setup()
         end,

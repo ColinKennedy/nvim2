@@ -349,3 +349,6 @@
 [submodule "bundle/mini.ai"]
 	path = bundle/mini.ai
 	url = git@github.com:echasnovski/mini.ai.git
+[submodule "bundle/nvim-nio"]
+	path = bundle/nvim-nio
+	url = git@github.com:nvim-neotest/nvim-nio.git

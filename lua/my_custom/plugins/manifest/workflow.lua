@@ -527,6 +527,7 @@ return {
             -- Required
             "ColinKennedy/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/nvim-nio",
             "nvim-treesitter/nvim-treesitter",
 
             -- Optional

@@ -1,3 +1,4 @@
+- Add C treesitter highlights
 - Change Neovim to not flash on-start-up
 
 - https://github.com/folke/neodev.nvim/issues/98
