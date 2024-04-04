@@ -38,7 +38,6 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         config = function() require("my_custom.plugins.lualine.configuration") end,
-        event = "VeryLazy",
     },
 
     -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
