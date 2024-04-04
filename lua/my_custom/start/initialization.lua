@@ -122,16 +122,21 @@ then
     vim.opt.formatoptions:append{"j"}
 end
 
--- Enable (or download `par`)
-local module = "my_custom.utilities.par"
-local package_exists, par = pcall(require, module)
+-- TODO: Make the I/O in this async, later? Then we can remove vim.schedule
+vim.schedule(
+    function()
+        -- Enable (or download `par`)
+        local module = "my_custom.utilities.par"
+        local package_exists, par = pcall(require, module)
 
-if package_exists
-then
-    par.load_or_install()
-else
-    vim.api.nvim_err_writeln('Could not load "' .. module .. '" module.')
-end
+        if package_exists
+        then
+            par.load_or_install()
+        else
+            vim.api.nvim_err_writeln('Could not load "' .. module .. '" module.')
+        end
+    end
+)
 
 -- Disable tag completion (TAB)
 --

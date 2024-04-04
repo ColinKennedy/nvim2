@@ -180,5 +180,5 @@ return {
     },
 
     -- Autocomplete and other niceties for developing with Neovim
-    {"folke/neodev.nvim", opts = {} },
+    {"folke/neodev.nvim", opts = {}, lazy = true},
 }
