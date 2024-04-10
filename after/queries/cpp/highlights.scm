@@ -5,3 +5,19 @@
  (#lua-match? @text.danger "^.+%!$"))
 ((comment) @text.question
  (#lua-match? @text.question "^.+%?$"))
+
+; Highlight docstrings
+(
+ (comment) @spell @comment.documentation
+ .
+ (declaration
+   (attribute_declaration
+     (attribute)))
+ (#lua-match? @comment.documentation "^\s*///")
+)
+(
+ (comment) @spell @comment.documentation
+ .
+ [(class_specifier) (struct_specifier)]
+ (#lua-match? @comment.documentation "^\s*///")
+)
