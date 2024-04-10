@@ -1,3 +1,66 @@
+local function _get_quickfix_item_path(current_item)
+    if current_item.bufnr >= 1 then
+        return vim.api.nvim_buf_get_name(current_item.bufnr)
+    end
+
+    return current_item.module or ""
+end
+
+local function next_quickfix_entry()
+    local index = vim.fn.getqflist({idx=0}).idx
+    local items = vim.fn.getqflist()
+    local next_item = items[index + 1]
+
+    if not next_item then
+        vim.cmd.cfirst()
+        print("Looped back to the start")
+
+        return
+    end
+
+    local current_item = items[index]
+    local current_path = _get_quickfix_item_path(current_item)
+    local next_path = _get_quickfix_item_path(next_item)
+
+    if current_path == next_path then
+        local success, _ = pcall(vim.cmd.cbelow)
+
+        if not success then
+            vim.cmd.cnext()
+        end
+    else
+        vim.cmd.cnext()
+    end
+end
+
+
+local function previous_quickfix_entry()
+    local index = vim.fn.getqflist({idx=0}).idx
+    local items = vim.fn.getqflist()
+    local next_item = items[index - 1]
+
+    if not next_item then
+        vim.cmd.clast()
+        print("Looped back to the end")
+
+        return
+    end
+
+    local current_item = items[index]
+    local current_path = _get_quickfix_item_path(current_item)
+    local next_path = _get_quickfix_item_path(next_item)
+
+    if current_path == next_path then
+        local success, _ = pcall(vim.cmd.cabove)
+
+        if not success then
+            vim.cmd.cprevious()
+        end
+    else
+        vim.cmd.cprevious()
+    end
+end
+
 return {
     { "<P", desc = "Do [p]ut, but dedented onto the previous line." },
     { ">P", desc = "Do [p]ut, but indented onto the previous line." },
@@ -25,22 +88,12 @@ return {
     -- "[t", "]t",  tags
     {
         "[q",
-        function()
-            local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-
-            fixer.choose_last_window()
-            fixer.safe_run([[CAbove]])
-        end,
+        function() previous_quickfix_entry() end,
         desc="Move up the [q]uickfix window.",
     },
     {
         "]q",
-        function()
-            local fixer = require("my_custom.utilities.quick_fix_selection_fix")
-
-            fixer.choose_last_window()
-            fixer.safe_run([[CBelow]])
-        end,
+        function() next_quickfix_entry() end,
         desc="Move down the [q]uickfix window.",
     },
     {
