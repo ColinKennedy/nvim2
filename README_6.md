@@ -1,5 +1,15 @@
-- Add C treesitter highlights
-- Change Neovim to not flash on-start-up
+- Find a good tmux session switcher
+- Add lc / sc snippets back
+
+
+- Why is python cutting off the text at the end of the column? Fix!
+ - /home/selecaoone/temp/most_repeated.py
+  - print("{prefix}: {value}".format(prefix=prefix.format(frequency), value=value))
+- Right-align the LSP text again, it's broken
+
+vim.lsp: File watcher ~
+- File watch backend: libuv-watchdirs
+- WARNING libuv-watchdirs has known performance issues. Consider installing fswatch.
 
 - https://github.com/folke/neodev.nvim/issues/98
 
@@ -14,6 +24,9 @@
  - https://github.com/mbbill/undotree
  - vim-fugitive
  - diffview.nvim
+
+- Weird Lualine flashing when switching buffers. Fix
+ - https://github.com/mrjones2014/smart-splits.nvim/issues/179
 
 - Add session callback autocmd to Neovim
 
