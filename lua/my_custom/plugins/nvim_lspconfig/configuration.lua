@@ -261,7 +261,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>d",
+    "=d",
     function() vim.diagnostic.open_float({source="always"}) end,
     {desc = "Open the [d]iagnostics window for the current cursor."}
 )
