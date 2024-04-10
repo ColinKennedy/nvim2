@@ -209,19 +209,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-require("mason").setup()
-
-require("mason-lspconfig").setup_handlers(
-    {
-        function(servername)
-            require("lspconfig")[servername].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-        end,
-    }
-)
-
 -- Whenever you move the cursor, the status-line shows LSP warnings / errors
 local group = vim.api.nvim_create_augroup("lsp_extensions", { clear = true })
 
@@ -236,6 +223,19 @@ vim.api.nvim_create_autocmd(
     }
 )
 
+local lspconfig = require("lspconfig")
+
+lspconfig.basedpyright.setup {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+}
+
+lspconfig.clangd.setup {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+}
+
+lspconfig.lua_ls.setup {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+}
 
 -- vim.keymap.set(
 --     "n",
