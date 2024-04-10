@@ -1,4 +1,3 @@
-- Find a good tmux session switcher
 - Add lc / sc snippets back
 
 
