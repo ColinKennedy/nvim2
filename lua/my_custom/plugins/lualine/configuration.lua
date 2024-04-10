@@ -15,7 +15,7 @@ require("lualine").setup {
             symbols = {
                 -- Reference: www.nerdfonts.com/cheat-sheet
                 error = " ",
-                warn = "⚠ ",
+                warn = " ",
                 info = " ",
                 hint = " ",
             },
