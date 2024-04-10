@@ -1,4 +1,3 @@
-- Add white outline around the diagnostic pop-up window
 - Find a good tmux session switcher
 - Add lc / sc snippets back
 
