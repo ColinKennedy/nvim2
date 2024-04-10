@@ -4,3 +4,8 @@ sources/
 
 mason_packages/Linux/packages/lua-language-server/libexec/meta/
 mason_packages/Linux/packages/lua-language-server/libexec/log/
+
+# clangd is too large to fit for GitHub so we need to exclude it
+mason_packages/Linux/bin/clangd
+mason_packages/Linux/packages/clangd/
+mason_packages/Linux/share/mason-schemas/lsp/clangd.json
