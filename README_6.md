@@ -1,7 +1,6 @@
-- Make tmux scroll-up colors better
-Why is [p so slow? Fix!
+- Fix the diagnostics that are occurring in-line. It doesn't go to the right. Annoying!
+- Why is [p so slow? Fix!
 - Add lc / sc snippets back
-
 
 - Why is python cutting off the text at the end of the column? Fix!
  - /home/selecaoone/temp/most_repeated.py
@@ -28,8 +27,6 @@ vim.lsp: File watcher ~
 
 - Weird Lualine flashing when switching buffers. Fix
  - https://github.com/mrjones2014/smart-splits.nvim/issues/179
-
-- Add session callback autocmd to Neovim
 
 - Is there a “:norm py” text object to paste from the yank register?
 - https://www.reddit.com/r/neovim/comments/1bftq35/do_you_guys_remap_p_to_dp/
