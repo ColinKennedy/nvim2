@@ -1,3 +1,5 @@
+local utils = require("lualine.utils.utils")
+
 require("lualine").setup {
   options = {
     icons_enabled = true,
@@ -12,6 +14,16 @@ require("lualine").setup {
     lualine_y = {
         {
             "diagnostics",
+            diagnostics_color = {
+                -- These values go good with hybrid2. Maybe add lualine to the theme?
+
+                -- warn = 'DiagnosticWarning',
+                warn = {
+                  fg = utils.extract_color_from_hllist(
+                    { "fg", "sp" }, { "DiagnosticWarning" }, "#ffcc00"
+                  ),
+                },
+            },
             symbols = {
                 -- Reference: www.nerdfonts.com/cheat-sheet
                 error = " ",
