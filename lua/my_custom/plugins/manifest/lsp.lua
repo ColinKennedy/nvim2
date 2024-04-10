@@ -5,7 +5,6 @@ return {
         config = function() require("my_custom.plugins.nvim_lspconfig.configuration") end,
         dependencies = {
             "folke/neodev.nvim",  -- Needed for Neovim LSP auto-complete
-            "williamboman/mason-lspconfig.nvim",
             "williamboman/mason.nvim",
         },
     },
