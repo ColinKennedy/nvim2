@@ -8,8 +8,6 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "williamboman/mason.nvim",
         },
-        event = "InsertEnter",
-        keys = require("my_custom.plugins.nvim_lspconfig.keys"),
     },
 
     {
