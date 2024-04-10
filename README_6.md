@@ -1,3 +1,5 @@
+- Make tmux scroll-up colors better
+Why is [p so slow? Fix!
 - Add lc / sc snippets back
 
 
