@@ -358,4 +358,5 @@ function! searcher#cd_to_project()
     endif
 
     execute ':cd ' . l:root
+    echomsg "cd'ed to \"" . l:root . "\""
 endfunction
