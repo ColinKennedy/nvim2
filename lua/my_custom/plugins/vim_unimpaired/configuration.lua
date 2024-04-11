@@ -22,16 +22,18 @@ end
 --- that indentation.
 ---
 --- @param lines string[] All of the lines of text to find.
---- @return string # The common indentation.
+--- @return string? # The common indentation.
 ---
 local function _get_common_indent(lines)
     local common_indent = nil
 
     for _, line in ipairs(lines) do
-        local indent = _get_leading_whitespace(line)
+        if line ~= "" then
+            local indent = _get_leading_whitespace(line)
 
-        if indent ~= nil and (common_indent == nil or indent < common_indent) then
-            common_indent = indent
+            if indent ~= nil and (common_indent == nil or indent < common_indent) then
+                common_indent = indent
+            end
         end
     end
 
@@ -85,10 +87,12 @@ local function _reposition_text(lines, extra_whitespace_to_add)
 
     local output = {}
 
+    print('DEBUGPRINT[13]: configuration.lua:89: common_indent=' .. vim.inspect(common_indent))
     for _, line in ipairs(lines) do
         local line_ = line:gsub("^" .. common_indent, "")
+        print('DEBUGPRINT[12]: configuration.lua:89: line_=' .. vim.inspect(line_))
 
-        if line ~= "" then
+        if line_ ~= "" then
             table.insert(output, extra_whitespace_to_add .. line_)
         else
             table.insert(output, line_)
@@ -119,11 +123,11 @@ vim.keymap.set(
 
         local whitespace = _get_leading_whitespace(line)
         local yanked_text = vim.fn.getreg('"')
+        print('DEBUGPRINT[11]: configuration.lua:122: whitespace=' .. vim.inspect(whitespace))
         local next_text = _reposition_text(_split_lines(yanked_text), whitespace)
 
-        local next_row = row - 1
-        vim.api.nvim_buf_set_lines(buffer, next_row, next_row, strict, next_text)
-        vim.api.nvim_win_set_cursor(window, {row, #whitespace})
+        vim.fn.setreg('+', next_text)
+        vim.api.nvim_command('normal! "+P')
     end,
     {desc="Paste to the line above, at the first non-whitespace character."}
 )
@@ -151,15 +155,8 @@ vim.keymap.set(
         local yanked_text = vim.fn.getreg('"')
         local next_text = _reposition_text(_split_lines(yanked_text), whitespace)
 
-        -- NOTE: This line is a bit weird. Vim counts the start of the line so
-        -- the next line is (confusingly) counted as if it were the same line.
-        -- The "current" line is actually {line - 1, line}
-        --
-        -- Anyway, this `next_row` works, just roll with it.
-        --
-        local next_row = row
-        vim.api.nvim_buf_set_lines(buffer, next_row, next_row, strict, next_text)
-        vim.api.nvim_win_set_cursor(window, {row, #whitespace})
+        vim.fn.setreg('+', next_text)
+        vim.api.nvim_command('normal! "+p')
     end,
     {desc="Paste to the line below, at the first non-whitespace character."}
 )
