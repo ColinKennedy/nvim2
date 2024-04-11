@@ -144,12 +144,16 @@ return {
             "[K", "]K",
             "[M", "]M",
 
-            "did",
+            "daC",
             "dad",
             "daf",
+            "diC",
+            "did",
 
+            "vaC",
             "vad",
             "vaf",
+            "viC",
             "vid",
             "vif",
         },
