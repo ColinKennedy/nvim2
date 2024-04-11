@@ -1,11 +1,10 @@
-- Fix the diagnostics that are occurring in-line. It doesn't go to the right. Annoying!
-- Why is [p so slow? Fix!
+- <leader>rr isn't working anymore. Fix!
+ - Make it work for a terminal or tmux
 - Add lc / sc snippets back
 
 - Why is python cutting off the text at the end of the column? Fix!
  - /home/selecaoone/temp/most_repeated.py
   - print("{prefix}: {value}".format(prefix=prefix.format(frequency), value=value))
-- Right-align the LSP text again, it's broken
 
 vim.lsp: File watcher ~
 - File watch backend: libuv-watchdirs
@@ -13,8 +12,6 @@ vim.lsp: File watcher ~
 
 - https://github.com/folke/neodev.nvim/issues/98
 
-- Virtual text is cutting off the last characters to the right of the text
- - e.g. sphinx-code-include
 - Add back in if / ik & af / aK for functions and classes
 
 - Once async tree-sitter parsing is possible, consider re-adding winbuf for Lua
@@ -28,11 +25,8 @@ vim.lsp: File watcher ~
 - Weird Lualine flashing when switching buffers. Fix
  - https://github.com/mrjones2014/smart-splits.nvim/issues/179
 
-- Is there a “:norm py” text object to paste from the yank register?
 - https://www.reddit.com/r/neovim/comments/1bftq35/do_you_guys_remap_p_to_dp/
 
-- Change :Pcd to print the new directory
-- <leader>rr isn't working anymore. Fix!
 - Move /home/selecaoone/personal/.config/nvim/lua/my_custom/start/lsp_diagnostics.lua to hybrid2
 - Add individual sections - https://github.com/danymat/neogen/issues/165
 
