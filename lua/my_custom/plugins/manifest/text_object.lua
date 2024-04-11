@@ -128,8 +128,7 @@ return {
     -- Adds pair mappings (like ]l [l) to Vim
     {
         "tpope/vim-unimpaired",
-        config = function()
-        end,
+        config = function() require("my_custom.plugins.vim_unimpaired.configuration") end,
         keys = require("my_custom.plugins.vim_unimpaired.keys"),
         version = "2.*",
     },
