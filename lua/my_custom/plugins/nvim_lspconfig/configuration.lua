@@ -1,103 +1,3 @@
--- -- Set up lspconfig.
--- local lspconfig = require("lspconfig")
--- -- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
---
--- lspconfig.rust_analyzer.setup { capabilities=capabilities }
---
--- local disable_completion = function(client)
---     -- Disable completion from pylsp because ``jedi_language_server``'s options are better.
---     -- Everything else is good though and should be kept.
---     --
---     -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/822
---     --
---     client.server_capabilities.completionProvider = false
--- end
---
--- pylsp_settings = {
---     pylsp = {
---         plugins = {
---             flake8 = { enabled = false },
---             pycodestyle = { enabled = false },
---             pyflakes = { enabled = false },
---         },
---     },
--- }
---
--- lspconfig.jedi_language_server.setup {
---     capabilities = capabilities,
---     on_attach = disable_completion,
--- }
--- lspconfig.jedi_language_server.setup { capabilities=capabilities }
---
--- -- Added "offsetEncoding" to avoid an annoying, spammy Neovim warning
--- --
--- -- Reference: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
--- --
--- -- Note: The reference is for null-ls.nvim but the same applies for this LSP.
--- --
--- capabilities.offsetEncoding = "utf-8"
--- lspconfig.ccls.setup { capabilities=capabilities }
--- lspconfig.ccls.setup { capabilities=capabilities }
---
---
--- -- Reference: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
--- lua_on_init = function(client)
---     local path = client.workspace_folders[1].name
---
---     if (
---         not vim.loop.fs_stat(path .. "/.luarc.json")
---         and not vim.loop.fs_stat(path .. "/.luarc.jsonc")
---     )
---     then
---         client.config.settings = vim.tbl_deep_extend(
---             "force",
---             client.config.settings,
---             {
---                 Lua = {
---                     -- Reference: https://www.reddit.com/r/neovim/comments/khk335/comment/gglrg7k/?utm_source=share&utm_medium=web2x&context=3
---                     -- diagnostics = {
---                     --     globals = { "vim" }
---                     -- },
---                     runtime = {
---                         -- Tell the language server which version of Lua you're using
---                         -- (most likely LuaJIT in the case of Neovim)
---                         version = "LuaJIT"
---                     },
---                     -- Make the server aware of Neovim runtime files
---                     workspace = {
---                         checkThirdParty = false,
---                         library = {
---                             vim.env.VIMRUNTIME
---                             -- "${3rd}/luv/library"
---                             -- "${3rd}/busted/library",
---                         }
---                         -- -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
---                         -- library = vim.api.nvim_get_runtime_file("", true)
---                     }
---                 }
---             }
---         )
---
---         client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
---     end
---
---     return true
--- end
---
--- require'lspconfig'.lua_ls.setup {}
--- --     settings = {
--- --         -- Lua = {
--- --         --     diagnostics = {
--- --         --         globals = { 'vim' }
--- --         --     }
--- --         -- },
--- --         cmd = { 'lua-language-server' , '--logpath' , '/tmp' },
--- --     },
--- --     -- on_init = lua_on_init,
--- -- }
-
-
 local on_attach = function(_, buffer)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set(
@@ -192,17 +92,6 @@ local on_attach = function(_, buffer)
             desc="[g]o to [r]eferences - Show all locations where a variable is used."
         }
     )
-    -- vim.keymap.set(
-    --     "n",
-    --     "<space>f",
-    --     function()
-    --         vim.lsp.buf.format { async = true }
-    --     end,
-    --     {
-    --         buffer=buffer,
-    --         desc="auto-[f]ormat the current file.",
-    --     }
-    -- )
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -236,13 +125,6 @@ lspconfig.clangd.setup {
 lspconfig.lua_ls.setup {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
-
--- vim.keymap.set(
---     "n",
---     "<space>q",
---     vim.diagnostic.setloclist,
---     {desc="Show the [d]iagnostics for the current file, in a location list window."}
--- )
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set(
