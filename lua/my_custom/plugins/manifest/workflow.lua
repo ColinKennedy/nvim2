@@ -446,7 +446,7 @@ return {
     --
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
+        tag = "0.1.*",
         cmd = "Telescope",
         config = function() require("my_custom.plugins.telescope.configuration") end,
         dependencies = {"ColinKennedy/plenary.nvim"},
