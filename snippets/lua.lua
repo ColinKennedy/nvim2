@@ -23,6 +23,14 @@ luasnip.add_snippets(
 
         snippet(
             {
+                docstring="Show the current directory of a Vim Lua file.",
+                trig="_CURRENT_DIRECTORY",
+            },
+            text([[local _CURRENT_DIRECTORY = vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand("<sfile>:p")), ":h")]])
+        ),
+
+        snippet(
+            {
                 docstring="Read from a file on-disk.",
                 trig="read_from_file",
             },
