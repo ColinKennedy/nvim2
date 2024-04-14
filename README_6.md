@@ -1,3 +1,34 @@
+- Make [p ]p fast again
+- local current_directory = vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand("<sfile>:p")), ":h")
+ - Added lua snippet for this _CURRENT_DIRECTORY
+
+- Wezterm - Fix font glyphs
+- tmux rename window - color should be yellow or white, not red
+
+https://github.com/tamton-aquib/keys.nvim
+https://github.com/roobert/f-string-toggle.nvim
+https://github.com/rktjmp/fwatch.nvim
+https://github.com/dhruvasagar/vim-highlight-word
+https://dotfyle.com/this-week-in-neovim/47#zootedb0t/citruszest.nvim
+https://gitlab.com/madyanov/svart.nvim
+https://github.com/marilari88/twoslash-queries.nvim
+https://github.com/barrett-ruth/import-cost.nvim
+https://github.com/roobert/action-hints.nvim
+https://github.com/willothy/savior.nvim
+https://github.com/willothy/wezterm.nvim
+
+- toggleterm and session support
+
+- Plugins that could benefit from persistent windows
+ - nvim-tree
+ - symbols-outline.nvim  SymbolsOutline  <Space>SO
+ - diffview.nvim
+ - hydra.nvim  <Space>GD  <Space>GG  <Space>D
+ - nvim-dap-ui
+ - undotree  UndotreeToggle
+ - vim-fugitive
+ - zoxide
+
 - <leader>rr isn't working anymore. Fix!
  - Make it work for a terminal or tmux
 - Add lc / sc snippets back
