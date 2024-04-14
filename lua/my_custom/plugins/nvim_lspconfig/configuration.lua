@@ -116,14 +116,17 @@ local lspconfig = require("lspconfig")
 
 lspconfig.basedpyright.setup {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    on_attach = on_attach,
 }
 
 lspconfig.clangd.setup {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    on_attach = on_attach,
 }
 
 lspconfig.lua_ls.setup {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    on_attach = on_attach,
 }
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
