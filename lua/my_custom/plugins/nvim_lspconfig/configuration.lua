@@ -150,3 +150,5 @@ vim.keymap.set(
     function() vim.diagnostic.open_float({source="always"}) end,
     {desc = "Open the [d]iagnostics window for the current cursor."}
 )
+
+vim.diagnostic.config({ virtual_text = false})
