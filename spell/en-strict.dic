@@ -1,4 +1,21 @@
 1  # NOTE: This is supposed to be a word count. But apparently any number is fine.
+# START - Generated qt_words.dic file
+PyQt
+PyQt4
+PyQt5
+PySide
+PySide2
+QObject
+QWidget
+Qt
+Qt.py
+QtCore
+QtGui
+QtWidgets
+layout
+widget
+
+# END - Generated qt_words.dic file
 # START - Generated programming_tags.dic file
 FIXME
 IMPORTANT
@@ -16,10 +33,26 @@ bash
 c++
 cmake
 vim
+html
+HTML
 
 # END - Generated file_types.dic file
-# START - Generated generic_words.dic file
-# Generic words
+# START - Generated websites.dic file
+stackoverflow
+
+# END - Generated websites.dic file
+# START - Generated job_generic.dic file
+# Words that I use in my line of work
+pipeline/S
+workflow/S
+
+# END - Generated job_generic.dic file
+# START - Generated programming_commands.dic file
+sudo
+
+# END - Generated programming_commands.dic file
+# START - Generated english_words.dic file
+# Generic words used by most English speakers
 # Reference: https://raw.githubusercontent.com/powerlanguage/word-lists/master/1000-most-common-words.txt
 #
 I
@@ -308,6 +341,7 @@ long
 look
 looking
 loss
+lot  # As in "a lot"
 low
 machine
 main
@@ -607,18 +641,117 @@ yet
 you
 your/S
 
-# END - Generated generic_words.dic file
-# START - Generated programming_commands.dic file
-sudo
+# END - Generated english_words.dic file
+# START - Generated programming_generic.dic file
+# Hard English words that are common in programming-related topics
+api
+attribute/S
+batch
+cache/S
+child
+class # ES
+color
+comma/S
+configuration
+controller/S
+database
+docstring/S
+documentation
+ensure
+exist
+http
+https
+import/S
+inherit/S
+instance/S
+invalid/S
+iteration/S
+library # IES
+local/S
+log/S
+major/S
+message/S
+minor/S
+model/S
+module/S
+namespace/S
+negative/S
+node/S
+patch # ES
+plug/S
+positive # S/ly
+query # ies
+raw
+recursive/Y
+reset/S
+rgb
+role/S
+save/S
+script/S
+select # ed
+setting/S
+shell/S
+standard/S
+stderr
+stdout
+symlink/S
+sync # es
+syntax
+terminal/S
+third-party
+thread/S
+unique
+validate  # /d
+verbose # ly
+version/S
+view/S
+viewer/S
+visibility # ies
 
-# END - Generated programming_commands.dic file
+# END - Generated programming_generic.dic file
 # START - Generated programming_extras.dic file
 # Words that I like to use which tend to also make documentation easier to write
 ensure
 
 # END - Generated programming_extras.dic file
+# START - Generated website_parts.dic file
+www
+
+# END - Generated website_parts.dic file
+# START - Generated c_keywords.dic file
+struct/S  # The keyword is struct but docstrings often pluralize it
+
+# END - Generated c_keywords.dic file
+# START - Generated documentation.dic file
+# "extra" is usually better than "optional" but we need to keep it for docstrings
+optional
+
+# END - Generated documentation.dic file
+# START - Generated computer_generic.dic file
+# Hard English words that are common in computer-related topics
+GUI
+background
+data
+defer
+disk
+display
+environment
+exception
+execution
+fault
+filter
+flag/S
+font
+frame/S
+index
+memory # ies
+segmentation
+signal/S
+slot/S
+
+# END - Generated computer_generic.dic file
 # START - Generated human_languages.dic file
-english
+english # Capital
 
 # END - Generated human_languages.dic file
 # START - Generated programming_concepts.dic file
@@ -649,8 +782,222 @@ third-party
 thread
 
 # END - Generated programming_concepts.dic file
+# START - Generated c_generic.dic file
+# Ideas put forward by C-like languages
+reference/S
+
+# END - Generated c_generic.dic file
 # START - Generated gui_things.dic file
 dialog/S
 widget/S
 
 # END - Generated gui_things.dic file
+# START - Generated python_keywords.dic file
+# Python-related keywords
+# These are keywords that are not actual words but we include anyway because
+# they're keywords that Python uses
+#
+None
+NoneType
+RuntimeError
+ValueError
+arg
+args
+callable
+classmethod
+cls
+def
+dict
+except
+id
+int
+iterable
+raises
+returns
+staticmethod
+str
+string
+tuple
+
+# Python keywords `import keyword;print(keyword.kwlist)`
+and
+as
+assert
+break
+class
+continue
+def
+del
+elif
+else
+except
+exec
+finally
+for
+from
+global
+if
+import
+in
+is
+lambda
+not
+or
+pass
+print
+raise
+return
+try
+while
+with
+yield
+
+# Python built-in words
+ArithmeticError
+AssertionError
+AttributeError
+BaseException
+BufferError
+BytesWarning
+DeprecationWarning
+EOFError
+Ellipsis
+EnvironmentError
+Exception
+False
+FloatingPointError
+FutureWarning
+GeneratorExit
+IOError
+ImportError
+ImportWarning
+IndentationError
+IndexError
+KeyError
+KeyboardInterrupt
+LookupError
+MemoryError
+NameError
+None
+NotImplemented
+NotImplementedError
+OSError
+OverflowError
+PendingDeprecationWarning
+ReferenceError
+RuntimeError
+RuntimeWarning
+StandardError
+StopIteration
+SyntaxError
+SyntaxWarning
+SystemError
+SystemExit
+TabError
+True
+TypeError
+UnboundLocalError
+UnicodeDecodeError
+UnicodeEncodeError
+UnicodeError
+UnicodeTranslateError
+UnicodeWarning
+UserWarning
+ValueError
+Warning
+ZeroDivisionError
+__debug__
+__doc__
+__import__
+__name__
+__package__
+abs
+all
+any
+apply
+basestring
+bin
+bool
+buffer
+bytearray
+bytes
+callable
+chr
+classmethod
+cmp
+coerce
+compile
+complex
+copyright
+credits
+delattr
+dict
+dir
+divmod
+enumerate
+eval
+execfile
+exit
+file
+filter
+float
+float
+format
+format
+frozenset
+frozenset
+getattr
+globals
+hasattr
+hash
+help
+hex
+id
+input
+int
+intern
+isinstance
+issubclass
+iter
+len
+license
+list
+locals
+long
+map
+max
+memoryview
+min
+next
+object
+oct
+open
+ord
+pow
+print
+property
+quit
+range
+raw_input
+reduce
+reload
+repr
+reversed
+round
+set
+setattr
+slice
+sorted
+staticmethod
+str
+sum
+super
+tuple
+type
+unichr
+unicode
+vars
+xrange
+zip
+
+# END - Generated python_keywords.dic file

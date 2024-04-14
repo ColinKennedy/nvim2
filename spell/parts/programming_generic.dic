@@ -1,13 +1,20 @@
 # Hard English words that are common in programming-related topics
+cursor
 api
 attribute/S
 batch
 cache/S
+character/S
 child
 class # ES
+code
 color
+column/S
 comma/S
+command/S
 configuration
+connection/S
+control/S
 controller/S
 database
 docstring/S
@@ -25,6 +32,7 @@ library # IES
 local/S
 log/S
 major/S
+message/S
 minor/S
 model/S
 module/S

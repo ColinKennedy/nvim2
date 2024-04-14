@@ -1,5 +1,15 @@
 ## Compile ASCII To Binary Spell File
 <!-- Reference: https://stackoverflow.com/a/41583025/3626104 -->
+```sh
+python3 ./combine.py
+```
+
+```vim
+:execute "mkspell! " . expand("%:p:h") . "/en-strict"
+```
+
+Or together
+
 ```vim
 :execute "python3 " . expand("%:p:h") . "/combine.py" | execute "mkspell! " . expand("%:p:h") . "/en-strict"
 ```
@@ -12,6 +22,7 @@ spelldump
 ```
 
 
+TODO Add these spell types
 ly
 ed
 s
