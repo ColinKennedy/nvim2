@@ -28,6 +28,15 @@ def _get_all_lines(paths: list[str]):
             output.extend(contents)
             output.append(f"# END - Generated {base_name} file")
 
+    if output:
+        output.insert(
+            0,
+            (
+                "1  # NOTE: This is supposed to be a word count. "
+                "But apparently any number is fine."
+            )
+        )
+
     return output
 
 
@@ -36,7 +45,7 @@ def main():
     lines = _get_all_lines(paths)
     blob = "\n".join(lines)
 
-    with open(os.path.join(_CURRENT_DIRECTORY, "en-strict.dict"), "w", encoding=_ENCODING) as handler:
+    with open(os.path.join(_CURRENT_DIRECTORY, "en-strict.dic"), "w", encoding=_ENCODING) as handler:
         handler.write(blob)
 
 

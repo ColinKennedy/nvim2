@@ -1,24 +1,3 @@
-1  # NOTE: This is supposed to be a word count. But apparently any number is fine.
-# START - Generated programming_tags.dic file
-FIXME
-IMPORTANT
-NOTE
-PERF
-PERFORMANCE
-TODO
-
-# END - Generated programming_tags.dic file
-# START - Generated file_types.dic file
-json
-cpp
-python
-bash
-c++
-cmake
-vim
-
-# END - Generated file_types.dic file
-# START - Generated generic_words.dic file
 # Generic words
 # Reference: https://raw.githubusercontent.com/powerlanguage/word-lists/master/1000-most-common-words.txt
 #
@@ -606,51 +585,3 @@ yes
 yet
 you
 your/S
-
-# END - Generated generic_words.dic file
-# START - Generated programming_commands.dic file
-sudo
-
-# END - Generated programming_commands.dic file
-# START - Generated programming_extras.dic file
-# Words that I like to use which tend to also make documentation easier to write
-ensure
-
-# END - Generated programming_extras.dic file
-# START - Generated human_languages.dic file
-english
-
-# END - Generated human_languages.dic file
-# START - Generated programming_concepts.dic file
-# Programming Concepts
-api
-cache
-classes
-comma
-controller
-docstring
-http
-https
-import
-libraries
-local
-major
-minor
-model
-module
-patch
-plug
-stackoverflow
-standard
-stderr
-stdout
-first-party
-third-party
-thread
-
-# END - Generated programming_concepts.dic file
-# START - Generated gui_things.dic file
-dialog/S
-widget/S
-
-# END - Generated gui_things.dic file
