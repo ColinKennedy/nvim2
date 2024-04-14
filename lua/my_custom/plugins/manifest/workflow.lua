@@ -321,9 +321,14 @@ return {
 
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
-        "akinsho/toggleterm.nvim",
+        -- TODO: Remove this fork later once https://github.com/akinsho/toggleterm.nvim/pull/568
+        -- is merged
+        --
+        "ColinKennedy/toggleterm.nvim",
+        branch = "add_session_support",
         config = function() require("my_custom.plugins.toggleterm.configuration") end,
-        version = "v2.*",
+        -- TODO: Add this back
+        -- version = "v2.*",
         cmd = "ToggleTerm",
         keys = {
             {
