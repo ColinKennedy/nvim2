@@ -1,0 +1,63 @@
+# Hard English words that are common in programming-related topics
+api
+attribute/S
+batch
+cache/S
+child
+class # ES
+color
+comma/S
+configuration
+controller/S
+database
+docstring/S
+documentation
+ensure
+exist
+http
+https
+import/S
+inherit/S
+instance/S
+invalid/S
+iteration/S
+library # IES
+local/S
+log/S
+major/S
+minor/S
+model/S
+module/S
+namespace/S
+negative/S
+node/S
+patch # ES
+plug/S
+positive # S/ly
+query # ies
+raw
+recursive/Y
+reset/S
+rgb
+role/S
+save/S
+script/S
+select # ed
+setting/S
+shell/S
+standard/S
+stderr
+stdout
+symlink/S
+sync # es
+syntax
+terminal/S
+third-party
+thread/S
+unique
+validate  # /d
+verbose # ly
+version/S
+view/S
+viewer/S
+visibility # ies
