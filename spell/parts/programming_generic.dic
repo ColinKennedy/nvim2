@@ -1,5 +1,4 @@
 # Hard English words that are common in programming-related topics
-cursor
 api
 attribute/S
 batch
@@ -16,6 +15,7 @@ configuration
 connection/S
 control/S
 controller/S
+cursor
 database
 docstring/S
 documentation
@@ -39,6 +39,7 @@ module/S
 namespace/S
 negative/S
 node/S
+output/S
 patch # ES
 plug/S
 positive # S/ly

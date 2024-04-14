@@ -1,9 +1,10 @@
-json
-cpp
-python
+HTML
 bash
 c++
 cmake
-vim
+cpp
+hpp  # C++ headers
 html
-HTML
+json
+python
+vim

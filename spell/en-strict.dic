@@ -31,15 +31,16 @@ footer/S
 
 # END - Generated html_generic.dic file
 # START - Generated file_types.dic file
-json
-cpp
-python
+HTML
 bash
 c++
 cmake
-vim
+cpp
+hpp  # C++ headers
 html
-HTML
+json
+python
+vim
 
 # END - Generated file_types.dic file
 # START - Generated websites.dic file
@@ -1745,7 +1746,6 @@ yourself
 # END - Generated english_words.dic file
 # START - Generated programming_generic.dic file
 # Hard English words that are common in programming-related topics
-cursor
 api
 attribute/S
 batch
@@ -1762,6 +1762,7 @@ configuration
 connection/S
 control/S
 controller/S
+cursor
 database
 docstring/S
 documentation
@@ -1785,6 +1786,7 @@ module/S
 namespace/S
 negative/S
 node/S
+output/S
 patch # ES
 plug/S
 positive # S/ly
@@ -1897,7 +1899,9 @@ thread
 # END - Generated programming_concepts.dic file
 # START - Generated c_generic.dic file
 # Ideas put forward by C-like languages
+constant/S
 reference/S
+static
 
 # END - Generated c_generic.dic file
 # START - Generated gui_things.dic file
@@ -2114,3 +2118,9 @@ xrange
 zip
 
 # END - Generated python_keywords.dic file
+# START - Generated english_misc.dic file
+# Words that I tend to use that may not be that common
+meaning/S
+means/S
+
+# END - Generated english_misc.dic file
