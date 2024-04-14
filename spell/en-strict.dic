@@ -1,8 +1,9 @@
+1
+
 # Programming Concepts
 api
 cache
 classes
-com
 comma
 controller
 docstring
@@ -21,21 +22,19 @@ stackoverflow
 standard
 stderr
 stdout
+first-party
 third-party
 thread
-www
 
 # Programming/Computer generic (Hard English words that are common in programming documentation)
 GUI
 JSON
-attribute
-attributes
-auto
+TODO
+attribute/S
 auto
 background
 batch
 child
-color
 color
 configuration
 data
@@ -52,23 +51,19 @@ exist
 fault
 filter
 flag
-flag
 flags
 font
 frame
-index
 index
 inherit
 instance
 invalid
 iteration
 log
-log
 logs
 memory
 namespace
 negative
-node
 node
 nodes
 positive
@@ -84,7 +79,6 @@ script
 segmentation
 select
 selected
-setting
 setting
 settings
 shell
@@ -942,6 +936,8 @@ parso
 rez
 
 # File formats
+cpp
+python
 json
 HTML
 
@@ -960,3 +956,11 @@ QObject
 QWidget
 widget
 layout
+
+# Common website things
+com
+gov
+http/S
+io
+net
+www
