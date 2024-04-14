@@ -51,8 +51,14 @@ local focus_terminal_if_needed = function()
         return
     end
 
-    local tab = vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage())
     local buffer = vim.fn.bufnr()
+
+    if vim.bo[buffer].buftype ~= "terminal"
+    then
+        return
+    end
+
+    local tab = vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage())
 
     local replaced = false
 
@@ -74,7 +80,7 @@ end
 local terminal_sender = vim.api.nvim_create_augroup("terminal_sender", { clear = true })
 
 vim.api.nvim_create_autocmd(
-    "TermOpen",
+    "WinEnter",
     {
         pattern = "*",
         callback = focus_terminal_if_needed,
