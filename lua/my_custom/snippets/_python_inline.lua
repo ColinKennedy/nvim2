@@ -1,13 +1,11 @@
 local common_snippet = require("my_custom.snippets._common_snippet")
-local is_line_beginning = require("my_custom.utilities.snippet_helper").is_line_beginning
 local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
-local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
-local events = require("luasnip.util.events")
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local function_ = luasnip.f
 local index = luasnip.i
+local repeat_ = require("luasnip.extras").rep
 local snippet = luasnip.s
 local text = luasnip.t
 
@@ -66,6 +64,22 @@ end
 
 return {
     common_snippet.print_snippet,
+
+    snippet(
+        {
+            docstring="list comprehension",
+            trig="lc",
+        },
+        format([[ [{} for {} in {}] ]], { index(1, "item"), repeat_(1), index(2) })
+    ),
+
+    snippet(
+        {
+            docstring="set comprehension",
+            trig="sc",
+        },
+        format([[ {{{} for {} in {}}} ]], { index(1, "item"), repeat_(1), index(2) })
+    ),
 
     -- TODO: This snippet sucks but I cannot figure out how to get
     -- `remove_leading_equal_sign` to work as a "pre-expand" snippet without it
