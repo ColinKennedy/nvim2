@@ -544,16 +544,16 @@ return {
     -- View / Switch-to previously saved Vim Session.vim files
     {
         "ColinKennedy/telescope-session-viewer",
-        cmd = { "Telescope" },
         config = function()
+            require("telescope-session-viewer").setup()
             require("telescope").load_extension("session_viewer")
         end,
-        dependencies = {"tpope/vim-obsession"},
+        dependencies = {"tpope/vim-obsession", "nvim-telescope/telescope.nvim"},
         event = {"SessionWritePost"},
         keys = {
             {
                 "<Space>SV",
-                ":Telescope session_viewer viewer<CR>",
+                ":Telescope session_viewer view<CR>",
                 desc = "Open the Vim [S]ession [V]iewer GUI.",
             }
         },
