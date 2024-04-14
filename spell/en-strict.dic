@@ -1909,6 +1909,12 @@ dialog/S
 widget/S
 
 # END - Generated gui_things.dic file
+# START - Generated english_miscellaneous.dic file
+# Words that I tend to use that may not be that common
+meaning/S
+means/S
+
+# END - Generated english_miscellaneous.dic file
 # START - Generated python_keywords.dic file
 # Python-related keywords
 # These are keywords that are not actual words but we include anyway because
@@ -2118,9 +2124,3 @@ xrange
 zip
 
 # END - Generated python_keywords.dic file
-# START - Generated english_misc.dic file
-# Words that I tend to use that may not be that common
-meaning/S
-means/S
-
-# END - Generated english_misc.dic file
