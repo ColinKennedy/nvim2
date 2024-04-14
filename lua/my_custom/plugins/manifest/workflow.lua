@@ -540,4 +540,22 @@ return {
         },
         keys = require("my_custom.plugins.neotest.keys"),
     },
+
+    -- View / Switch-to previously saved Vim Session.vim files
+    {
+        "ColinKennedy/telescope-session-viewer",
+        cmd = { "Telescope" },
+        config = function()
+            require("telescope").load_extension("session_viewer")
+        end,
+        dependencies = {"tpope/vim-obsession"},
+        event = {"SessionWritePost"},
+        keys = {
+            {
+                "<Space>SV",
+                ":Telescope session_viewer viewer<CR>",
+                desc = "Open the Vim [S]ession [V]iewer GUI.",
+            }
+        },
+    }
 }

@@ -352,3 +352,6 @@
 [submodule "bundle/nvim-nio"]
 	path = bundle/nvim-nio
 	url = git@github.com:nvim-neotest/nvim-nio.git
+[submodule "bundle/telescope-session-viewer"]
+	path = bundle/telescope-session-viewer
+	url = git@github.com:ColinKennedy/telescope-session-viewer.git

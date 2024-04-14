@@ -330,3 +330,11 @@ vim.api.nvim_create_autocmd(
         end,
     }
 )
+
+-- Keep track of the current layout, on-close. Create a Vim Session.vim file.
+local function _save_session()
+    if vim.v.this_session ~= "" then
+        vim.cmd("mksession! " .. vim.v.this_session)
+    end
+end
+vim.api.nvim_create_autocmd("VimLeave", { callback = _save_session })
