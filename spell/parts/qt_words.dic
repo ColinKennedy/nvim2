@@ -10,7 +10,7 @@ Qt.py
 QtCore
 QtGui
 QtWidgets
-dialog/S
-hover/GS
-layout/S
+dialog/SM
+hover/SGD
+layout/SM
 widget/S
