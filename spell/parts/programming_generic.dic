@@ -1,4 +1,6 @@
 # Hard English words that are common in programming-related topics
+Linux
+Windows
 api
 attribute/DSMGNVBX
 batch/MDSG
@@ -18,8 +20,10 @@ controller/MS
 core
 cursor/SM
 database/SM
+declare/DSI
 delete/DS
-directory/S
+depend/DIS
+directory/S5
 disable/DSGL
 docstring/S
 documentation/SM
@@ -30,10 +34,13 @@ equivalence/MS
 equivalent/MYS
 exist/SDG
 export/BGDS
+feature/S
+folder/S5
 function/S
 http
 https
 hyperlink/DS
+ignore/DIS
 import/ZGBSMDR
 inherit/EGSD
 instance/GD
@@ -46,6 +53,7 @@ major/SGMDY
 message/MGDS
 minor/SMDG
 model/ZGSJMDR
+modify/DIS
 module/MS
 namespace/S
 negative/MYGPDS
@@ -56,12 +64,16 @@ parameter/MS
 parse/DRSG
 parser/S
 patch/EGMDS
+path/DS
 permalink/DS
 plug/US
 positive/MYPS
+prevent/DIS
 query/DSMG
 raw/PTMR
 recursive/Y
+release/DS
+repository/S
 request
 reset/S
 rgb

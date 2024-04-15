@@ -1,4 +1,5 @@
 # Reference: https://cgit.freedesktop.org/libreoffice/dictionaries/tree/en/en_US.aff
+#
 # 2024-01-29 (Marco A.G.Pinto)
 # - Fix: apostrophe handling, by adding: WORDCHARS 0123456789’ to the .aff.
 #
@@ -31,22 +32,22 @@ PFX U Y 1
 PFX U   0     un         .
 
 PFX C Y 1
-PFX C   0     de          .
+PFX C   0     de         .
 
 PFX O Y 1
-PFX O   0     en          .
+PFX O   0     en         .
 
 PFX Q Y 1
-PFX Q   0     ex          .
+PFX Q   0     ex         .
 
 PFX E Y 1
-PFX E   0     dis         .
+PFX E   0     dis        .
 
 PFX F Y 1
-PFX F   0     con         .
+PFX F   0     con        .
 
 PFX K Y 1
-PFX K   0     pro         .
+PFX K   0     pro        .
 
 SFX V N 2
 SFX V   e     ive        e
@@ -102,11 +103,12 @@ SFX Z   y     iers       [^aeiou]y
 SFX Z   0     ers        [aeiou]y
 SFX Z   0     ers        [^ey]
 
-SFX S Y 4
+SFX S Y 5
 SFX S   y     ies        [^aeiou]y
 SFX S   0     s          [aeiou]y
 SFX S   0     es         [sxzh]
 SFX S   0     s          [^sxzhy]
+SFX S   0     es         o
 
 SFX P Y 3
 SFX P   y     iness      [^aeiou]y
@@ -115,6 +117,9 @@ SFX P   0     ness       [^y]
 
 SFX M Y 1
 SFX M   0     's         .
+
+SFX W Y 1
+SFX W   0     n't        .
 
 SFX B Y 3
 SFX B   0     able       [^aeiou]
@@ -125,10 +130,16 @@ SFX L Y 1
 SFX L   0     ment       .
 
 SFX 1 Y 1
-SFX 1   0     'll         .
+SFX 1   0     'll        .
 
 SFX 2 Y 1
 SFX 2   0     'd         .
 
 PFX 3 Y 1
-PFX 3   0     re-         .
+PFX 3   0     re-        .
+
+PFX 4 Y 1
+PFX 4   0     auto-      .
+
+PFX 5 Y 1
+PFX 5   0     sub        .

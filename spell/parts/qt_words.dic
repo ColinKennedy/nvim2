@@ -12,5 +12,6 @@ QtGui
 QtWidgets
 dialog/SM
 hover/SGD
+label/DS
 layout/SM
 widget/S

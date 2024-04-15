@@ -30,24 +30,26 @@ spelldump
 ## TODO
 ### Missing words
 re-apply
-isn't
-e.g. isn't working
-doesn't
 unindent
 indentation
 
 
 ### Thesaurus
 TODO Figure this out
+
 Get thesaurus results for
-- Integrate
 - content -> data
+- information -> data
+- weird -> odd
+- interfering - getting in the way of
 - relies -> needs
+- otherwise -> else
 - generate -> create
+- damaged -> broken
+- maintains -> keeps
 - miscellaneous -> various
 - agnostic -> unaware
 - extract -> get
-- responsible for -> meant for
 - encountered -> found
 - previously -> in the past
 - generic -> general
@@ -64,8 +66,12 @@ large -> big
 - https://github.com/rhysd/vim-grammarous
 
 
+
 #### Plugin Idea
+- Add a "full" dictionary and make it swappable
 - Adds setlocal spell if the buffer has a compatible treesitter parser
 - Combiner script on start-up that you can turn on / off
 - Add spell options for code variable(s)?
 - Bundles cmp + thesaurus options
+- Spell level switching (relaxed, strict)
+- Spell categories - including variable names, too?

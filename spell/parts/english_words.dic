@@ -210,7 +210,7 @@ divide/DRSMZGB
 division/MS
 do/SJMRHZG
 doctor/SMDG
-does/AU
+does/AUW
 dog/SM
 dollar/SM
 don't
@@ -290,7 +290,7 @@ fight/SMRZG
 figure/FEGSD
 fill/AIDGS
 final/SMY
-find/JMRZGS
+find/JMRZGS4
 fine/CAFTGDS
 finger/MDGSJ
 finish/ADSG
@@ -335,7 +335,7 @@ girl/MS
 give/ZGJRS
 glad/MYSP
 glass/MDSG
-go/JMRHZG
+go/JMRHZGS
 gold/MNS
 gone/ZR
 good/MYSP
@@ -409,7 +409,7 @@ instrument/MDSG
 interest/ESMD
 invent/ASGVD
 iron/MDSG
-is
+is/W
 island/SZMR
 it/USM
 job/SM
@@ -993,6 +993,7 @@ yet
 you/SMH
 young/TMR
 your/S
+zero/S
 
 
 
@@ -1196,7 +1197,6 @@ figure/FEGSD
 fill/AIDGS
 final/SMY
 finally
-find/JMRZGS
 fine/CAFTGDS
 finish/ADSG
 fire/MS

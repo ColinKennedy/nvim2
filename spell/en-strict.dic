@@ -1,4 +1,12 @@
 1  # NOTE: This is supposed to be a word count. But apparently any number is fine.
+# START - Generated personal_rez_related.dic file
+# Keywords for https://github.com/AcademySoftwareFoundation/rez
+Rez
+context
+implicit
+package/DIS
+
+# END - Generated personal_rez_related.dic file
 # START - Generated qt_words.dic file
 PyQt
 PyQt4
@@ -14,6 +22,7 @@ QtGui
 QtWidgets
 dialog/SM
 hover/SGD
+label/DS
 layout/SM
 widget/S
 
@@ -33,14 +42,15 @@ footer/SM
 
 # END - Generated html_generic.dic file
 # START - Generated file_types.dic file
-html/M
 bash/GMDS
 cmake
 html
+html/M
 json
 lua
 nvim/M
 python/SM
+txt
 vim/M
 
 # C++ related
@@ -299,7 +309,7 @@ divide/DRSMZGB
 division/MS
 do/SJMRHZG
 doctor/SMDG
-does/AU
+does/AUW
 dog/SM
 dollar/SM
 don't
@@ -379,7 +389,7 @@ fight/SMRZG
 figure/FEGSD
 fill/AIDGS
 final/SMY
-find/JMRZGS
+find/JMRZGS4
 fine/CAFTGDS
 finger/MDGSJ
 finish/ADSG
@@ -424,7 +434,7 @@ girl/MS
 give/ZGJRS
 glad/MYSP
 glass/MDSG
-go/JMRHZG
+go/JMRHZGS
 gold/MNS
 gone/ZR
 good/MYSP
@@ -498,7 +508,7 @@ instrument/MDSG
 interest/ESMD
 invent/ASGVD
 iron/MDSG
-is
+is/W
 island/SZMR
 it/USM
 job/SM
@@ -1082,6 +1092,7 @@ yet
 you/SMH
 young/TMR
 your/S
+zero/S
 
 
 
@@ -1285,7 +1296,6 @@ figure/FEGSD
 fill/AIDGS
 final/SMY
 finally
-find/JMRZGS
 fine/CAFTGDS
 finish/ADSG
 fire/MS
@@ -1776,14 +1786,23 @@ yourself
 # START - Generated programming_environment_varables.dic file
 # TODO: Figure out a way to proceduralize these settings
 $HOME
+$LD_LIBRARY_PATH
+$LIBRARY_PATH
+$PATH
 $PWD
+$PYTHONPATH
 %HOME%
+%LD_LIBRARY_PATH%
+%LIBRARY_PATH%
+%PATH%
 %PWD%
-/tmp
+%PYTHONPATH%
 
 # END - Generated programming_environment_varables.dic file
 # START - Generated programming_generic.dic file
 # Hard English words that are common in programming-related topics
+Linux
+Windows
 api
 attribute/DSMGNVBX
 batch/MDSG
@@ -1803,8 +1822,10 @@ controller/MS
 core
 cursor/SM
 database/SM
+declare/DSI
 delete/DS
-directory/S
+depend/DIS
+directory/S5
 disable/DSGL
 docstring/S
 documentation/SM
@@ -1815,10 +1836,13 @@ equivalence/MS
 equivalent/MYS
 exist/SDG
 export/BGDS
+feature/S
+folder/S5
 function/S
 http
 https
 hyperlink/DS
+ignore/DIS
 import/ZGBSMDR
 inherit/EGSD
 instance/GD
@@ -1831,6 +1855,7 @@ major/SGMDY
 message/MGDS
 minor/SMDG
 model/ZGSJMDR
+modify/DIS
 module/MS
 namespace/S
 negative/MYGPDS
@@ -1841,12 +1866,16 @@ parameter/MS
 parse/DRSG
 parser/S
 patch/EGMDS
+path/DS
 permalink/DS
 plug/US
 positive/MYPS
+prevent/DIS
 query/DSMG
 raw/PTMR
 recursive/Y
+release/DS
+repository/S
 request
 reset/S
 rgb
@@ -1888,12 +1917,16 @@ trace
 warning/DS
 
 # END - Generated programming_logging.dic file
+# START - Generated programming_paths.dic file
+/tmp
+
+# END - Generated programming_paths.dic file
 # START - Generated python_sphinx.dic file
-Sphinx
 :mod:
+:obj:
+Sphinx
 intersphinx
 inventory
-:obj:
 
 # END - Generated python_sphinx.dic file
 # START - Generated internet_speak.dic file
@@ -1927,32 +1960,48 @@ user/MS
 ensure/ZGDRS
 
 # END - Generated programming_extras.dic file
+# START - Generated python_first_party_libraries.dic file
+fnmatch
+glob
+subprocess
+
+# END - Generated python_first_party_libraries.dic file
 # START - Generated website_parts.dic file
 www
 com
 
 # END - Generated website_parts.dic file
 # START - Generated programming_common.dic file
-# Extra words that I think are common but might not be
+# Extra words that I think are common in programming but might not be
 above
 absolute
+beginning
 below
 duplicate/DS
 empty
 entry/S
+expression/S
+extra/S
+fail/DS
+failure/S
 fake/D
 fallback/S
+given
 handle/RS
+install/DIS
 item/S
 limit
 load/DS
 look/MDRSZG
 manual/SY
 mimic/DS
+prefer/DS
 regular
 relative
 setting/S
 tag/S
+unittest/DIS
+unless
 utility/S
 
 # END - Generated programming_common.dic file
@@ -2024,6 +2073,8 @@ english
 # END - Generated human_languages.dic file
 # START - Generated programming_concepts.dic file
 # Programming Concepts
+OS
+OSes
 api
 cache/MGDS
 callback/S
@@ -2069,6 +2120,10 @@ static/SM
 string/MDRSZG
 
 # END - Generated c_generic.dic file
+# START - Generated browser_related_words.dic file
+firefox
+
+# END - Generated browser_related_words.dic file
 # START - Generated python_keywords.dic file
 # Python-related keywords
 # These are keywords that are not actual words but we include anyway because
@@ -2309,6 +2364,8 @@ UTF
 
 # END - Generated abbreviations_programming.dic file
 # START - Generated python_third_party_libraries.dic file
+isort
+pydocstyle
 pylint
 
 # END - Generated python_third_party_libraries.dic file

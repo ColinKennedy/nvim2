@@ -1,3 +1,5 @@
+- python argument variable colors are still showing up as orange (disable this)
+- Change spell START and END to be prettier
 - tmux rename window - color should be yellow or white, not red
 
 https://github.com/tamton-aquib/keys.nvim
