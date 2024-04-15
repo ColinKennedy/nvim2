@@ -1,0 +1,6 @@
+# TODO: Figure out a way to proceduralize these settings
+$HOME
+$PWD
+%HOME%
+%PWD%
+/tmp

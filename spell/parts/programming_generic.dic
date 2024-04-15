@@ -1,4 +1,5 @@
 # Hard English words that are common in programming-related topics
+$PWD
 api
 attribute/DSMGNVBX
 batch/MDSG
@@ -8,7 +9,6 @@ child/M
 class/GMDS
 code/COZGDRS
 color/AEGDS
-export/BGDS
 column/SMD
 comma/SM
 command/SMDRLZG
@@ -28,12 +28,13 @@ equal/SMDYG
 equivalence/MS
 equivalent/MYS
 exist/SDG
+export/BGDS
+function/S
 http
 https
 import/ZGBSMDR
 inherit/EGSD
 instance/GD
-invalid/GMDYS
 iteration/AM
 library/SM
 local/SMY
@@ -74,8 +75,10 @@ syntax/M
 terminal/MYS
 third-party
 thread/SMDRZG
+toggle/DS
 unique/YTRP
 utility
+valid/IGMDYS
 validate/IGNDS
 variable/ISM
 verbose/Y
