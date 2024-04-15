@@ -33,12 +33,13 @@ footer/SM
 
 # END - Generated html_generic.dic file
 # START - Generated file_types.dic file
-HTML/M
+html/M
 bash/GMDS
 cmake
 html
 json
 lua
+nvim/M
 python/SM
 vim/M
 
@@ -66,6 +67,7 @@ stackoverflow
 # START - Generated pseudo_words.dic file
 # "Words" that people tend to use that I don't like but deal with
 config/S
+desc
 
 # END - Generated pseudo_words.dic file
 # START - Generated job_generic.dic file
@@ -1769,8 +1771,18 @@ your/S
 yourself
 
 # END - Generated english_words.dic file
+# START - Generated programming_environment_varables.dic file
+# TODO: Figure out a way to proceduralize these settings
+$HOME
+$PWD
+%HOME%
+%PWD%
+/tmp
+
+# END - Generated programming_environment_varables.dic file
 # START - Generated programming_generic.dic file
 # Hard English words that are common in programming-related topics
+$PWD
 api
 attribute/DSMGNVBX
 batch/MDSG
@@ -1780,7 +1792,6 @@ child/M
 class/GMDS
 code/COZGDRS
 color/AEGDS
-export/BGDS
 column/SMD
 comma/SM
 command/SMDRLZG
@@ -1800,12 +1811,13 @@ equal/SMDYG
 equivalence/MS
 equivalent/MYS
 exist/SDG
+export/BGDS
+function/S
 http
 https
 import/ZGBSMDR
 inherit/EGSD
 instance/GD
-invalid/GMDYS
 iteration/AM
 library/SM
 local/SMY
@@ -1846,8 +1858,10 @@ syntax/M
 terminal/MYS
 third-party
 thread/SMDRZG
+toggle/DS
 unique/YTRP
 utility
+valid/IGMDYS
 validate/IGNDS
 variable/ISM
 verbose/Y
@@ -1864,11 +1878,12 @@ IIRC
 # END - Generated internet_speak.dic file
 # START - Generated personal_miscellaneous.dic file
 # Words that I tend to use that may not be that common
-clusive/QW
+clusive/QI
 combine/ADSG
 convert/BDGRS
 define/AGDS
 do/SJMRHZG
+e.g.
 edit/GDRS
 hard-coded
 identifier/S
@@ -1888,6 +1903,7 @@ ensure/ZGDRS
 # END - Generated programming_extras.dic file
 # START - Generated website_parts.dic file
 www
+com
 
 # END - Generated website_parts.dic file
 # START - Generated personal_work.dic file
@@ -1952,28 +1968,35 @@ english
 # Programming Concepts
 api
 cache/MGDS
+callback/S
 classes
 comma/SM
 console/S
 controller/MS
 docstring
 first-party
+hack/DS
+hook/DS
 http
 https
-log/DG
 import/ZGBSMDR
 libraries
 local/SMY
+log/DG
+logic
 major/SGMDY
 minor/SMDG
 model/ZGSJMDR
 module/MS
 patch/EGMDS
+path/S
 plug/US
 stackoverflow
 standard/MS
 stderr
 stdout
+support/DSU
+text
 third-party
 thread/SMDRZG
 
@@ -2203,18 +2226,32 @@ zip/US
 #
 boolean/S
 false/PRYT
+nil
 true/MTGDRS
 
 # END - Generated lua_keywords.dic file
+# START - Generated neovim_words.dic file
+:h
+keymap
+visual
+
+# END - Generated neovim_words.dic file
 # START - Generated english_words2.dic file
 # Extra words that I think are common but might not be
 above
 below
+duplicate/DS
+entry/S
+handle/RS
 limit
+load/DS
 look/MDRSZG
+relative
+setting/S
+utility/S
 
 # END - Generated english_words2.dic file
 # START - Generated neovim_plugins.dic file
-telescope/DSMG
+telescope
 
 # END - Generated neovim_plugins.dic file
