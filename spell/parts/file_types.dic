@@ -1,10 +1,13 @@
 HTML/M
 bash/GMDS
-c++
 cmake
-cpp
-hpp  # C++ headers
 html
 json
+lua
 python/SM
 vim/M
+
+# C++ related
+c++
+cpp
+hpp

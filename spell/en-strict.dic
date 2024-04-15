@@ -35,24 +35,39 @@ footer/SM
 # START - Generated file_types.dic file
 HTML/M
 bash/GMDS
-c++
 cmake
-cpp
-hpp  # C++ headers
 html
 json
+lua
 python/SM
 vim/M
 
+# C++ related
+c++
+cpp
+hpp
+
 # END - Generated file_types.dic file
+# START - Generated program_names.dic file
+neovim
+vim
+
+# END - Generated program_names.dic file
 # START - Generated gui_words.dic file
 highlight/SMDRZG
 
 # END - Generated gui_words.dic file
 # START - Generated websites.dic file
+bitbucket
+github
 stackoverflow
 
 # END - Generated websites.dic file
+# START - Generated pseudo_words.dic file
+# "Words" that people tend to use that I don't like but deal with
+config/S
+
+# END - Generated pseudo_words.dic file
 # START - Generated job_generic.dic file
 # Words that I use in my line of work
 pipeline/SM
@@ -1765,6 +1780,7 @@ child/M
 class/GMDS
 code/COZGDRS
 color/AEGDS
+export/BGDS
 column/SMD
 comma/SM
 command/SMDRLZG
@@ -1772,7 +1788,7 @@ configuration/S
 connection/EMS
 control/CS
 controller/MS
-core  # e.g. core, utility, etc
+core
 cursor/SM
 database/SM
 disable/DSGL
@@ -1812,7 +1828,7 @@ positive/MYPS
 query/DSMG
 raw/PTMR
 recursive/Y
-request  # e.g. a web request
+request
 reset/S
 rgb
 role/MS
@@ -1831,7 +1847,7 @@ terminal/MYS
 third-party
 thread/SMDRZG
 unique/YTRP
-utility  # e.g. core, utility, etc  # ies
+utility
 validate/IGNDS
 variable/ISM
 verbose/Y
@@ -1848,14 +1864,20 @@ IIRC
 # END - Generated internet_speak.dic file
 # START - Generated personal_miscellaneous.dic file
 # Words that I tend to use that may not be that common
+clusive/QW
 combine/ADSG
+convert/BDGRS
 define/AGDS
 do/SJMRHZG
+edit/GDRS
 hard-coded
+identifier/S
+initialize/BDSGRZ
 meaning/M
 means/S
 need/MDSG
 session/MS
+temporary
 user/MS
 
 # END - Generated personal_miscellaneous.dic file
@@ -1871,6 +1893,7 @@ www
 # START - Generated personal_work.dic file
 # Words that I need for my work
 USD
+plugin
 
 # END - Generated personal_work.dic file
 # START - Generated c_keywords.dic file
@@ -1885,6 +1908,10 @@ struct/S
 # START - Generated documentation.dic file
 # "extra" is usually better than "optional" but we need to keep it for docstrings
 optional/Y
+
+# Example documentation typically uses these fake words
+bar
+foo
 
 # END - Generated documentation.dic file
 # START - Generated lsp_miscellaneous.dic file
@@ -1927,10 +1954,13 @@ api
 cache/MGDS
 classes
 comma/SM
+console/S
 controller/MS
 docstring
+first-party
 http
 https
+log/DG
 import/ZGBSMDR
 libraries
 local/SMY
@@ -1944,7 +1974,6 @@ stackoverflow
 standard/MS
 stderr
 stdout
-first-party
 third-party
 thread/SMDRZG
 
@@ -2179,6 +2208,9 @@ true/MTGDRS
 # END - Generated lua_keywords.dic file
 # START - Generated english_words2.dic file
 # Extra words that I think are common but might not be
+above
+below
+limit
 look/MDRSZG
 
 # END - Generated english_words2.dic file

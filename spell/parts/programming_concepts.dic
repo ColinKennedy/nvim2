@@ -3,10 +3,13 @@ api
 cache/MGDS
 classes
 comma/SM
+console/S
 controller/MS
 docstring
+first-party
 http
 https
+log/DG
 import/ZGBSMDR
 libraries
 local/SMY
@@ -20,6 +23,5 @@ stackoverflow
 standard/MS
 stderr
 stdout
-first-party
 third-party
 thread/SMDRZG

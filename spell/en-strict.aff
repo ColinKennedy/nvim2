@@ -36,6 +36,12 @@ PFX C   0     de          .
 PFX O Y 1
 PFX O   0     en          .
 
+PFX Q Y 1
+PFX Q   0     ex          .
+
+PFX W Y 1
+PFX W   0     in          .
+
 PFX E Y 1
 PFX E   0     dis         .
 
@@ -74,8 +80,9 @@ SFX J Y 2
 SFX J   e     ings       e
 SFX J   0     ings       [^e]
 
-SFX D Y 4
+SFX D Y 5
 SFX D   0     d          e
+SFX D   0     ged        g
 SFX D   y     ied        [^aeiou]y
 SFX D   0     ed         [^ey]
 SFX D   0     ed         [aeiou]y

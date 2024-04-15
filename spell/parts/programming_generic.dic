@@ -8,6 +8,7 @@ child/M
 class/GMDS
 code/COZGDRS
 color/AEGDS
+export/BGDS
 column/SMD
 comma/SM
 command/SMDRLZG
@@ -15,7 +16,7 @@ configuration/S
 connection/EMS
 control/CS
 controller/MS
-core  # e.g. core, utility, etc
+core
 cursor/SM
 database/SM
 disable/DSGL
@@ -55,7 +56,7 @@ positive/MYPS
 query/DSMG
 raw/PTMR
 recursive/Y
-request  # e.g. a web request
+request
 reset/S
 rgb
 role/MS
@@ -74,7 +75,7 @@ terminal/MYS
 third-party
 thread/SMDRZG
 unique/YTRP
-utility  # e.g. core, utility, etc  # ies
+utility
 validate/IGNDS
 variable/ISM
 verbose/Y

@@ -32,3 +32,12 @@ Allowing lower case of something upper (e.g. USD -> usd)
 
 ## Cool Moments
 Modifies -> Changes
+large -> big
+
+## TODO
+### Thesaurus
+Get thesaurus results for
+- Integrate
+
+### Check if I can reorder flags
+TODO
