@@ -203,7 +203,7 @@ did/AU
 die/DSM
 differ/DG
 difficult/Y
-direct/ASDGVT
+direct/ASDGVTY
 discuss
 distant/Y
 divide/DRSMZGB
@@ -745,7 +745,7 @@ should
 shoulder/MDGS
 shout/ZGMDRS
 show/JZGMDRS
-side/AGDS
+side/AGDSI
 sight/GMDYSJ
 sign/AFCGDS
 silent/MRYST
@@ -1037,7 +1037,7 @@ anyone/M
 anything/SM
 anyway/S
 appear/AESDG
-apply/ANXGDS
+apply/ANXGDS3
 approach/GBMDS
 area/SM
 argue/ZGDRS
@@ -1644,7 +1644,7 @@ wall/MDGS
 want/MDGS
 watch/BZGMDRS
 way/SM
-we
+we/12
 week/MYS
 well/MDPSG
 west/M

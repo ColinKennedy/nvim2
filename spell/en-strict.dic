@@ -61,11 +61,13 @@ highlight/SMDRZG
 # START - Generated websites.dic file
 bitbucket
 github
+readthedocs
 stackoverflow
 
 # END - Generated websites.dic file
 # START - Generated pseudo_words.dic file
 # "Words" that people tend to use that I don't like but deal with
+app/S
 config/S
 desc
 
@@ -290,7 +292,7 @@ did/AU
 die/DSM
 differ/DG
 difficult/Y
-direct/ASDGVT
+direct/ASDGVTY
 discuss
 distant/Y
 divide/DRSMZGB
@@ -832,7 +834,7 @@ should
 shoulder/MDGS
 shout/ZGMDRS
 show/JZGMDRS
-side/AGDS
+side/AGDSI
 sight/GMDYSJ
 sign/AFCGDS
 silent/MRYST
@@ -1124,7 +1126,7 @@ anyone/M
 anything/SM
 anyway/S
 appear/AESDG
-apply/ANXGDS
+apply/ANXGDS3
 approach/GBMDS
 area/SM
 argue/ZGDRS
@@ -1731,7 +1733,7 @@ wall/MDGS
 want/MDGS
 watch/BZGMDRS
 way/SM
-we
+we/12
 week/MYS
 well/MDPSG
 west/M
@@ -1782,7 +1784,6 @@ $PWD
 # END - Generated programming_environment_varables.dic file
 # START - Generated programming_generic.dic file
 # Hard English words that are common in programming-related topics
-$PWD
 api
 attribute/DSMGNVBX
 batch/MDSG
@@ -1802,6 +1803,8 @@ controller/MS
 core
 cursor/SM
 database/SM
+delete/DS
+directory/S
 disable/DSGL
 docstring/S
 documentation/SM
@@ -1815,11 +1818,13 @@ export/BGDS
 function/S
 http
 https
+hyperlink/DS
 import/ZGBSMDR
 inherit/EGSD
 instance/GD
 iteration/AM
 library/SM
+link/DGS
 local/SMY
 log/SM
 major/SGMDY
@@ -1831,10 +1836,12 @@ namespace/S
 negative/MYGPDS
 node/MS
 output/SM
+package/S
 parameter/MS
 parse/DRSG
 parser/S
 patch/EGMDS
+permalink/DS
 plug/US
 positive/MYPS
 query/DSMG
@@ -1852,7 +1859,7 @@ shell/MDRSG
 standard/MS
 stderr
 stdout
-symlink/S
+symlink/DS
 sync/MDSG
 syntax/M
 terminal/MYS
@@ -1869,8 +1876,26 @@ version/AFIMS
 view/AMDRSZG
 viewer/AM
 visibility/IM
+website/S
 
 # END - Generated programming_generic.dic file
+# START - Generated programming_logging.dic file
+critical
+debug
+error/DS
+info/DS
+trace
+warning/DS
+
+# END - Generated programming_logging.dic file
+# START - Generated python_sphinx.dic file
+Sphinx
+:mod:
+intersphinx
+inventory
+:obj:
+
+# END - Generated python_sphinx.dic file
 # START - Generated internet_speak.dic file
 # Short-hands that people tend to understand easily
 IIRC
@@ -1885,6 +1910,7 @@ define/AGDS
 do/SJMRHZG
 e.g.
 edit/GDRS
+etc
 hard-coded
 identifier/S
 initialize/BDSGRZ
@@ -1906,10 +1932,35 @@ www
 com
 
 # END - Generated website_parts.dic file
+# START - Generated programming_common.dic file
+# Extra words that I think are common but might not be
+above
+absolute
+below
+duplicate/DS
+empty
+entry/S
+fake/D
+fallback/S
+handle/RS
+item/S
+limit
+load/DS
+look/MDRSZG
+manual/SY
+mimic/DS
+regular
+relative
+setting/S
+tag/S
+utility/S
+
+# END - Generated programming_common.dic file
 # START - Generated personal_work.dic file
 # Words that I need for my work
 USD
-plugin
+plugin/S
+render/G
 
 # END - Generated personal_work.dic file
 # START - Generated c_keywords.dic file
@@ -1921,6 +1972,12 @@ const
 struct/S
 
 # END - Generated c_keywords.dic file
+# START - Generated programming_testing.dic file
+# Unittests, integration tests, and everything else
+fixture/S
+mock/S
+
+# END - Generated programming_testing.dic file
 # START - Generated documentation.dic file
 # "extra" is usually better than "optional" but we need to keep it for docstrings
 optional/Y
@@ -1955,6 +2012,7 @@ font/MS
 frame/DRSMZG
 index/ZGMDRS
 memory/SM
+screen/S
 segmentation/M
 signal/MDRYSZG
 slot/MS
@@ -2230,6 +2288,10 @@ nil
 true/MTGDRS
 
 # END - Generated lua_keywords.dic file
+# START - Generated python_common.dic file
+decorator
+
+# END - Generated python_common.dic file
 # START - Generated neovim_words.dic file
 :h
 keymap
@@ -2238,19 +2300,18 @@ visual
 # END - Generated neovim_words.dic file
 # START - Generated english_words2.dic file
 # Extra words that I think are common but might not be
-above
-below
-duplicate/DS
-entry/S
-handle/RS
-limit
-load/DS
-look/MDRSZG
-relative
-setting/S
-utility/S
+skip/DS
 
 # END - Generated english_words2.dic file
+# START - Generated abbreviations_programming.dic file
+URL/S
+UTF
+
+# END - Generated abbreviations_programming.dic file
+# START - Generated python_third_party_libraries.dic file
+pylint
+
+# END - Generated python_third_party_libraries.dic file
 # START - Generated neovim_plugins.dic file
 telescope
 

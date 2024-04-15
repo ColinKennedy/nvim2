@@ -29,22 +29,43 @@ spelldump
 
 ## TODO
 ### Missing words
-isn't
 re-apply
-we'll
-we'd
+isn't
+e.g. isn't working
+doesn't
+unindent
+indentation
 
 
 ### Thesaurus
 TODO Figure this out
 Get thesaurus results for
 - Integrate
+- content -> data
 - relies -> needs
 - generate -> create
 - miscellaneous -> various
+- agnostic -> unaware
+- extract -> get
+- responsible for -> meant for
+- encountered -> found
 - previously -> in the past
+- generic -> general
 Modifies -> Changes
 large -> big
 
 
-### TODO - Check if I can reorder flags
+### TODO
+- Check if I can reorder flags
+- Try out https://github.com/kamykn/spelunker.vim
+- Check out https://github.com/psliwka/vim-dirtytalk
+- https://github.com/ron89/thesaurus_query.vim
+- https://www.gutenberg.org/files/3202/files/
+- https://github.com/rhysd/vim-grammarous
+
+
+#### Plugin Idea
+- Adds setlocal spell if the buffer has a compatible treesitter parser
+- Combiner script on start-up that you can turn on / off
+- Add spell options for code variable(s)?
+- Bundles cmp + thesaurus options

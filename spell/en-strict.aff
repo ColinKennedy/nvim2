@@ -123,3 +123,12 @@ SFX B   e     able       [^aeiou]e
 
 SFX L Y 1
 SFX L   0     ment       .
+
+SFX 1 Y 1
+SFX 1   0     'll         .
+
+SFX 2 Y 1
+SFX 2   0     'd         .
+
+PFX 3 Y 1
+PFX 3   0     re-         .

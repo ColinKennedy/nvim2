@@ -1,5 +1,4 @@
 # Hard English words that are common in programming-related topics
-$PWD
 api
 attribute/DSMGNVBX
 batch/MDSG
@@ -19,6 +18,8 @@ controller/MS
 core
 cursor/SM
 database/SM
+delete/DS
+directory/S
 disable/DSGL
 docstring/S
 documentation/SM
@@ -32,11 +33,13 @@ export/BGDS
 function/S
 http
 https
+hyperlink/DS
 import/ZGBSMDR
 inherit/EGSD
 instance/GD
 iteration/AM
 library/SM
+link/DGS
 local/SMY
 log/SM
 major/SGMDY
@@ -48,10 +51,12 @@ namespace/S
 negative/MYGPDS
 node/MS
 output/SM
+package/S
 parameter/MS
 parse/DRSG
 parser/S
 patch/EGMDS
+permalink/DS
 plug/US
 positive/MYPS
 query/DSMG
@@ -69,7 +74,7 @@ shell/MDRSG
 standard/MS
 stderr
 stdout
-symlink/S
+symlink/DS
 sync/MDSG
 syntax/M
 terminal/MYS
@@ -86,3 +91,4 @@ version/AFIMS
 view/AMDRSZG
 viewer/AM
 visibility/IM
+website/S
