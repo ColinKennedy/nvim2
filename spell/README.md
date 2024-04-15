@@ -26,18 +26,25 @@ spelldump
 # https://cgit.freedesktop.org/libreoffice/dictionaries/tree/en/en_US.dic
 # https://manpages.ubuntu.com/manpages/focal/man5/hunspell.5.html
 
-'s onto words
-Allowing lower case of something upper (e.g. USD -> usd)
+
+## TODO
+### Missing words
+isn't
+re-apply
+we'll
+we'd
 
 
-## Cool Moments
+### Thesaurus
+TODO Figure this out
+Get thesaurus results for
+- Integrate
+- relies -> needs
+- generate -> create
+- miscellaneous -> various
+- previously -> in the past
 Modifies -> Changes
 large -> big
 
-## TODO
-### Thesaurus
-Get thesaurus results for
-- Integrate
 
-### Check if I can reorder flags
-TODO
+### TODO - Check if I can reorder flags
