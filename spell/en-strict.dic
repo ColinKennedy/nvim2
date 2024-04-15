@@ -12,8 +12,10 @@ Qt.py
 QtCore
 QtGui
 QtWidgets
-layout
-widget
+dialog/S
+hover  # ing # s
+layout/S
+widget/S
 
 # END - Generated qt_words.dic file
 # START - Generated programming_tags.dic file
@@ -43,6 +45,10 @@ python
 vim
 
 # END - Generated file_types.dic file
+# START - Generated gui_words.dic file
+highlight/S
+
+# END - Generated gui_words.dic file
 # START - Generated websites.dic file
 stackoverflow
 
@@ -53,6 +59,10 @@ pipeline/S
 workflow/S
 
 # END - Generated job_generic.dic file
+# START - Generated lua_documentation.dic file
+param
+
+# END - Generated lua_documentation.dic file
 # START - Generated programming_commands.dic file
 sudo
 
@@ -1762,10 +1772,13 @@ configuration
 connection/S
 control/S
 controller/S
+core  # e.g. core, utility, etc
 cursor
 database
+disable/S
 docstring/S
 documentation
+enable/S
 ensure
 exist
 http
@@ -1787,12 +1800,16 @@ namespace/S
 negative/S
 node/S
 output/S
+parameter/S
+parse/S
+parser/S
 patch # ES
 plug/S
 positive # S/ly
 query # ies
 raw
 recursive/Y
+request  # e.g. a web request
 reset/S
 rgb
 role/S
@@ -1811,7 +1828,9 @@ terminal/S
 third-party
 thread/S
 unique
-validate  # /d
+utility  # e.g. core, utility, etc  # ies
+validate  # /d /s
+variable/S
 verbose # ly
 version/S
 view/S
@@ -1819,6 +1838,24 @@ viewer/S
 visibility # ies
 
 # END - Generated programming_generic.dic file
+# START - Generated internet_speak.dic file
+# Short-hands that people tend to understand easily
+IIRC
+
+# END - Generated internet_speak.dic file
+# START - Generated personal_miscellaneous.dic file
+# Words that I tend to use that may not be that common
+combine # d # s
+define/S
+do  # ing
+hard-coded
+meaning/S
+means/S
+need # ed # s
+session/S
+user/S
+
+# END - Generated personal_miscellaneous.dic file
 # START - Generated programming_extras.dic file
 # Words that I like to use which tend to also make documentation easier to write
 ensure
@@ -1828,6 +1865,11 @@ ensure
 www
 
 # END - Generated website_parts.dic file
+# START - Generated personal_work.dic file
+# Words that I need for my work
+USD
+
+# END - Generated personal_work.dic file
 # START - Generated c_keywords.dic file
 # You may see /S or other modifications to the base keyword. This is because,
 # though C has specific keywords, we tend to pluralize the words, for example
@@ -1842,6 +1884,13 @@ struct/S
 optional
 
 # END - Generated documentation.dic file
+# START - Generated lsp_miscellaneous.dic file
+# Words that come up often in LSP documentation but nowhere else
+LSP
+jsonrpc
+specification
+
+# END - Generated lsp_miscellaneous.dic file
 # START - Generated computer_generic.dic file
 # Hard English words that are common in computer-related topics
 GUI
@@ -1900,21 +1949,13 @@ thread
 # START - Generated c_generic.dic file
 # Ideas put forward by C-like languages
 constant/S
+declaration/S
+definition/S
 reference/S
 static
+string/S
 
 # END - Generated c_generic.dic file
-# START - Generated gui_things.dic file
-dialog/S
-widget/S
-
-# END - Generated gui_things.dic file
-# START - Generated english_miscellaneous.dic file
-# Words that I tend to use that may not be that common
-meaning/S
-means/S
-
-# END - Generated english_miscellaneous.dic file
 # START - Generated python_keywords.dic file
 # Python-related keywords
 # These are keywords that are not actual words but we include anyway because
@@ -2124,3 +2165,13 @@ xrange
 zip
 
 # END - Generated python_keywords.dic file
+# START - Generated english_words2.dic file
+# Extra words that I think are common but might not be
+check/S
+look/S
+
+# END - Generated english_words2.dic file
+# START - Generated neovim_plugins.dic file
+telescope
+
+# END - Generated neovim_plugins.dic file

@@ -29,3 +29,12 @@ s
 es
 capitalization
 y -> ies
+
+'s onto words
+Allowing lower case of something upper (e.g. USD -> usd)
+
+- ing (e.g. do -> doing)
+
+
+## Cool Moments
+Modifies -> Changes

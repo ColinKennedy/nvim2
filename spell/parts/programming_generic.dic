@@ -15,10 +15,13 @@ configuration
 connection/S
 control/S
 controller/S
+core  # e.g. core, utility, etc
 cursor
 database
+disable/S
 docstring/S
 documentation
+enable/S
 ensure
 exist
 http
@@ -40,12 +43,16 @@ namespace/S
 negative/S
 node/S
 output/S
+parameter/S
+parse/S
+parser/S
 patch # ES
 plug/S
 positive # S/ly
 query # ies
 raw
 recursive/Y
+request  # e.g. a web request
 reset/S
 rgb
 role/S
@@ -64,7 +71,9 @@ terminal/S
 third-party
 thread/S
 unique
-validate  # /d
+utility  # e.g. core, utility, etc  # ies
+validate  # /d /s
+variable/S
 verbose # ly
 version/S
 view/S
