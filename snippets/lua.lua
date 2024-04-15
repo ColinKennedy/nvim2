@@ -5,6 +5,7 @@ local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local repeat_ = require("luasnip.extras").rep
 local index = luasnip.i
+local text = luasnip.t
 local snippet = luasnip.s
 
 
