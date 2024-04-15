@@ -5,7 +5,7 @@ batch
 cache/S
 character/S
 child
-class # ES
+class/S
 code
 color
 column/S
@@ -23,6 +23,9 @@ docstring/S
 documentation
 enable/S
 ensure
+equal/S
+equivalence
+equivalent/S
 exist
 http
 https
@@ -31,7 +34,7 @@ inherit/S
 instance/S
 invalid/S
 iteration/S
-library # IES
+library/S
 local/S
 log/S
 major/S
@@ -46,10 +49,10 @@ output/S
 parameter/S
 parse/S
 parser/S
-patch # ES
+patch/S
 plug/S
-positive # S/ly
-query # ies
+positive/SY
+query/S
 raw
 recursive/Y
 request  # e.g. a web request
@@ -58,24 +61,24 @@ rgb
 role/S
 save/S
 script/S
-select # ed
+select/D
 setting/S
 shell/S
 standard/S
 stderr
 stdout
 symlink/S
-sync # es
+sync/S
 syntax
 terminal/S
 third-party
 thread/S
 unique
 utility  # e.g. core, utility, etc  # ies
-validate  # /d /s
+validate/DS
 variable/S
-verbose # ly
+verbose/Y
 version/S
 view/S
 viewer/S
-visibility # ies
+visibility/S

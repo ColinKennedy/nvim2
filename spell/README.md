@@ -22,18 +22,12 @@ spelldump
 ```
 
 
-TODO Add these spell types
-ly
-ed
-s
-es
-capitalization
-y -> ies
+# Reference: https://cgit.freedesktop.org/libreoffice/dictionaries/tree/en/en_US.aff
+# https://cgit.freedesktop.org/libreoffice/dictionaries/tree/en/en_US.dic
+# https://manpages.ubuntu.com/manpages/focal/man5/hunspell.5.html
 
 's onto words
 Allowing lower case of something upper (e.g. USD -> usd)
-
-- ing (e.g. do -> doing)
 
 
 ## Cool Moments

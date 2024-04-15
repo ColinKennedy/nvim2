@@ -11,6 +11,6 @@ QtCore
 QtGui
 QtWidgets
 dialog/S
-hover  # ing # s
+hover/GS
 layout/S
 widget/S

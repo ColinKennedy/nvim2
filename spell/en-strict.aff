@@ -1,5 +1,28 @@
-SFX S Y 1
-SFX S 0 s .
+# Reference: https://cgit.freedesktop.org/libreoffice/dictionaries/tree/en/en_US.aff
+PFX I Y 1
+PFX I   0     in         .
+
+PFX C Y 1
+PFX C   0     de          .
+
+SFX D Y 4
+SFX D   0     d          e
+SFX D   y     ied        [^aeiou]y
+SFX D   0     ed         [^ey]
+SFX D   0     ed         [aeiou]y
+
+SFX G Y 2
+SFX G   e     ing        e
+SFX G   0     ing        [^e]
+
+SFX M Y 1
+SFX M   0     's         .
+
+SFX S Y 4
+SFX S   y     ies        [^aeiou]y
+SFX S   0     s          [aeiou]y
+SFX S   0     es         [sxzh]
+SFX S   0     s          [^sxzhy]
 
 SFX Y Y 1
-SFX Y 0 ly .
+SFX Y   0     ly         .

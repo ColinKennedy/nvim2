@@ -118,7 +118,7 @@ change
 character
 charge
 chart
-check
+check/GS
 chick
 chief
 child
@@ -170,7 +170,7 @@ country
 course
 cover
 cow
-crease
+crease/ICGMSDY
 create
 crop
 cross
@@ -207,7 +207,7 @@ discuss
 distant
 divide
 division
-do
+do/GS
 doctor
 does
 dog
@@ -461,7 +461,7 @@ locate
 log
 lone
 long
-look
+look/GS
 lost
 lot
 loud
@@ -914,7 +914,7 @@ unit
 until
 up
 us
-use
+use/GS
 usual
 valley
 value
@@ -1001,7 +1001,7 @@ your
 a
 able
 about
-absolute # ly
+absolute/Y
 accept/S
 according
 account/S
@@ -1037,7 +1037,7 @@ anything
 anyway
 appear
 apply
-approach  # es
+approach/S
 area/S
 argue/S
 argument/S
@@ -1085,13 +1085,13 @@ car/S
 card/S
 care/S
 career/S
-carry  # ies
+carry/S
 case/S
-catch  # es
+catch/S
 cause/S
 cell/S
 center/S
-certain  # ly
+certain/Y
 chance/S
 change/S
 character/S
@@ -1100,14 +1100,14 @@ children
 choice/S
 choose/S
 claim/S
-class  # es
+class/S
 clear/S
 close
 color
 come/S
 comment/S
 common
-company  # ies
+company/S
 compare/S
 completely
 computer/S
@@ -1141,7 +1141,7 @@ development/S
 difference/S
 different
 difficult
-discuss  # es
+discuss/S
 discussion/S
 do
 door
@@ -1197,12 +1197,12 @@ final
 finally
 find/S
 fine/S
-finish  # es
+finish/S
 fire/S
 first
 five
 floor/S
-focus  # es
+focus/S
 follow/S
 foot
 for
@@ -1220,14 +1220,14 @@ future
 general
 get
 give
-go
+go/GS
 goal
-good
-great
-ground
+good/S
+great/S
+ground/S
 group/S
 grow/S
-guess  # es
+guess/S
 half
 hand/S
 hang/S
@@ -1256,7 +1256,7 @@ huge
 hurt/S
 I
 idea/S
-identify # ies
+identify/S
 if
 image/S
 imagine/S
@@ -1265,7 +1265,6 @@ important
 in
 include/S
 including
-increase/S
 instead
 interest
 interesting
@@ -1311,7 +1310,7 @@ local/S
 long
 look
 lose/S
-loss  # es
+loss/S
 lot/S
 low
 main
@@ -1329,7 +1328,7 @@ media
 meet/S
 meeting/S
 member/S
-memory  # ies
+memory/S
 mention/S
 message/S
 method/S
@@ -1337,7 +1336,7 @@ might
 mile/S
 mind/S
 minute/S
-miss  # es
+miss/S
 model/S
 moment/S
 month/S
@@ -1396,7 +1395,7 @@ pain
 parent/S
 park/S
 part/S
-pass  # es
+pass/S
 past
 per
 percent
@@ -1428,26 +1427,26 @@ power/S
 practice/S
 prepare/S
 present/S
-press  # es
+press/S
 pressure/S
 pretty
 price/S
 private/S
 probably
 problem/S
-process  # es
+process/S
 program/S
 project/S
-property  # ies
+property/S
 protect/S
 prove/S
 provide/S
 public/S
 pull/S
 purpose/S
-push  # es
+push/S
 put/S
-quality  # ies
+quality/S
 question/S
 quickly
 quite
@@ -1455,7 +1454,7 @@ race
 raise/S
 rate/S
 rather
-reach  # es
+reach/S
 read/S
 ready
 real
@@ -1559,14 +1558,14 @@ step/S
 still
 stop/S
 store/S
-story  # ies
-strategy  # ies
+story/S
+strategy/S
 street/S
 strong
-study  # ies
+study/S
 stuff
 subject/S
-success  # es
+success/S
 such
 suggest/S
 summer
@@ -1579,10 +1578,10 @@ table/S
 take/S
 talk/S
 tax
-teach  # es
+teach/S
 teacher/S
 team/S
-technology  # ies
+technology/S
 tell/S
 ten
 test/S
@@ -1642,7 +1641,7 @@ wait/S
 walk/S
 wall/S
 want/S
-watch  # es
+watch/S
 way/S
 we
 week/S
@@ -1663,7 +1662,7 @@ why
 will/S
 win/S
 window/S
-wish  # es
+wish/S
 with
 within
 without

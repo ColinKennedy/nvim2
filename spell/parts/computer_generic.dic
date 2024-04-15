@@ -14,7 +14,7 @@ flag/S
 font
 frame/S
 index
-memory # ies
+memory/S
 segmentation
 signal/S
 slot/S
