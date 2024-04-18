@@ -49,6 +49,9 @@ https://github.com/Jezda1337/nvim-html-css
 
 https://github.com/DNLHC/glance.nvim
 
+https://github.com/rizsotto/Bear
+
+
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim
 https://github.com/code-biscuits/nvim-biscuits
