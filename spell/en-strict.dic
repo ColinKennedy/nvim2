@@ -60,8 +60,10 @@ hpp
 
 # END - Generated file_types.dic file
 # START - Generated program_names.dic file
+emacs
 neovim
 vim
+vscode
 
 # END - Generated program_names.dic file
 # START - Generated gui_words.dic file
@@ -272,13 +274,11 @@ cover/AEUGDS
 cow/ZGSMDR
 crease/ICOGMSD
 create/KADSGNV
-crop/MS
 cross/AUGTSD
 crowd/SMDG
 cry/ZGJDRSM
 current/FAY
 cut/TSMR
-dad/SM
 dance/MZGDRS
 danger/M
 dark/PXTMNRY
@@ -474,7 +474,6 @@ help/MDRZGSJ
 her
 here/M
 high/MRYZTP
-hill/MS
 him/S
 his
 history/SM
@@ -483,7 +482,6 @@ hold/MRJSZG
 hole/MGDS
 home/MYZGDRS
 hope/MS
-horse/UDSG
 hot/SYP
 hour/MYS
 house/ADSG
@@ -491,9 +489,7 @@ how/SM
 huge/YP
 human/SMRYTP
 hundred/SMH
-hunt/MDRSZG
 hurry/DSMG
-ice/CDSG
 idea/MS
 if/SM
 imagine/DSBJG
@@ -502,14 +498,11 @@ inch/MDSG
 include/GDS
 indicate/XDSGNV
 industry/SM
-insect
 instant/MRYS
 instrument/MDSG
 interest/ESMD
 invent/ASGVD
-iron/MDSG
 is/W
-island/SZMR
 it/USM
 job/SM
 join/AFDSG
@@ -980,7 +973,6 @@ thus
 tie/AUSD
 time/MYZGJDRS
 tiny/RTP
-tire/AGDS
 to/IU
 together/P
 told/AU
@@ -1060,15 +1052,11 @@ whole/SMP
 whose
 why/M
 wide/YTRP
-wife/MY
-wild/MRYSTP
-will/MDS
 win/SGMD
 wind/UASG
 window/SMDG
 wing/MDRZG
 winter/GSMD
-wire/AGDS
 wish/MDRSZG
 with
 woman/M
@@ -1766,7 +1754,6 @@ wish/MDRSZG
 with
 within/M
 without
-wonder/MDGLS
 word/ADSG
 work/ADJSG
 worker/MS

@@ -2,3 +2,8 @@
 USD
 plugin/S
 render/G
+
+# SideFX Houdini
+cook/ADGS
+
+crowd/SMDG

@@ -49,7 +49,9 @@ library/SM
 link/DGS
 local/SMY
 log/SM
+main
 major/SGMDY
+master
 message/MGDS
 minor/SMDG
 model/ZGSJMDR
@@ -80,6 +82,7 @@ rgb
 role/MS
 save/BJMZGDRS
 script/FSMDG
+security/S
 select/CSGVD
 setting/M
 shell/MDRSG
