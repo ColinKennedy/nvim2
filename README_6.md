@@ -1,3 +1,5 @@
+- Ifugre out why typing is slow in this file - /home/selecaoone/temp/test.py
+- @lsp.mod.defaultLibrary - Make it purple! like the others
 - python argument variable colors are still showing up as orange (disable this)
 - Change spell START and END to be prettier
 - tmux rename window - color should be yellow or white, not red
