@@ -1,0 +1,3 @@
+;; extends
+
+(paragraph (literal) @nospell)
