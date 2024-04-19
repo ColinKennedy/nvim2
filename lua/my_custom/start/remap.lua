@@ -427,3 +427,34 @@ vim.keymap.set(
     function() require('luasnip').unlink_current() end,
     { desc = "[l]eave [c]urrent [s]nippet." }
 )
+
+vim.keymap.set(
+    "n",
+    "<leader>ts",
+    ":SpellboundToggleBuffer2<CR>",
+    {
+        desc="[t]oggle all [s]trict spelling mistakes.",
+        silent=true,
+    }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>rs",
+    ":normal 1z=<CR>",
+    {
+        desc="[r]eplace word with [s]uggestion.",
+        silent=true,
+    }
+)
+
+vim.keymap.set(
+    "n",
+    "z?",
+    ":exe ':spellrare  ' .. expand('<cWORD>')<CR>",
+    {
+        desc="Add the current word to the rare words list.",
+        silent=true,
+    }
+)
+
