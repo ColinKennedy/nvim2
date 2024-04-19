@@ -1,3 +1,4 @@
+import copy
 import glob
 import os
 
@@ -6,6 +7,15 @@ _ENCODING = "ascii"
 
 
 def _get_all_lines(paths: list[str]):
+
+    def _strip_empty_strings(data: list[str]) -> list[str]:
+        output = copy.copy(data)
+
+        while output and not output[-1].strip():
+            _ = output.pop()
+
+        return output
+
     output: list[str] = []
     seen: set[str] = set()
 
@@ -23,10 +33,13 @@ def _get_all_lines(paths: list[str]):
 
             contents.append(line)
 
+        contents = _strip_empty_strings(contents)
+
         if contents:
             output.append(f"# START - Generated {base_name} file")
             output.extend(contents)
             output.append(f"# END - Generated {base_name} file")
+            output.append("")
 
     if output:
         output.insert(

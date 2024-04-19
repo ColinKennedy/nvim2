@@ -6,6 +6,7 @@ python3 ./combine.py
 
 ```vim
 :execute "mkspell! " . expand("%:p:h") . "/en-strict"
+:execute "mkspell! " . expand("%:p:h") . "/en-strict.utf-8.add"
 ```
 
 Or together
