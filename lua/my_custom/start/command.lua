@@ -174,3 +174,17 @@ vim.api.nvim_create_user_command(
     end,
     { nargs=0 }
 )
+
+vim.opt.spelllang = "en_us,cjk"
+
+vim.api.nvim_create_user_command(
+    "SpellboundToggleBuffer2",
+    function()
+        if require("my_custom_utilities.spelling").in_strict_mode() then
+            vim.opt.spelllang = "en_us,cjk"
+        else
+            vim.opt.spelllang = "en-strict,cjk"
+        end
+    end,
+    {desc="Enable / Disable spell suggestions and spell-checking.", nargs=0}
+)

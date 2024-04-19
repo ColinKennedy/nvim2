@@ -451,7 +451,11 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "z?",
-    ":exe ':spellrare  ' .. expand('<cWORD>')<CR>",
+    function()
+        if require("my_custom_utilities.spelling").in_strict_mode() then
+            vim.cmd[[:exe ":spellrare  " .. expand("<cWORD>")<CR>]]
+        end
+    end,
     {
         desc="Add the current word to the rare words list.",
         silent=true,
