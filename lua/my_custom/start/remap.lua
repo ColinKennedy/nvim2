@@ -453,7 +453,7 @@ vim.keymap.set(
     "z?",
     function()
         if require("my_custom.utilities.spelling").in_strict_mode() then
-            vim.cmd[[:exe ":spellrare  " .. expand("<cWORD>")<CR>]]
+            vim.cmd[[:exe ":spellrare  " .. expand("<cWORD>")]]
         end
     end,
     {
