@@ -233,6 +233,7 @@ Legend
 | - | ------------- | --------------------------------------------------------- |
 | n | <leader>ts    | [t]oggle all [s]trict spelling mistakes.                  |
 | n | <leader>rs    | [r]eplace word with [s]uggestion.                         |
+| n | z?            | Add the current word to the rare words list.              |
 
 
 ================================================================================
