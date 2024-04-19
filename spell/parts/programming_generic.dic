@@ -22,6 +22,7 @@ cursor/SM
 database/SM
 declare/DSI
 delete/DS
+demand/DSG
 depend/DIS
 directory/S5
 disable/DSGL
@@ -37,6 +38,8 @@ export/BGDS
 feature/S
 folder/S5
 function/S
+hidden
+hide/SGU
 http
 https
 hyperlink/DS
@@ -45,6 +48,7 @@ import/ZGBSMDR
 inherit/EGSD
 instance/GD
 iteration/AM
+leak/DSG
 library/SM
 link/DGS
 local/SMY
@@ -60,6 +64,7 @@ module/MS
 namespace/S
 negative/MYGPDS
 node/MS
+offset/SG
 output/SM
 package/S
 parameter/MS

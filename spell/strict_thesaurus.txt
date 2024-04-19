@@ -7,17 +7,21 @@ content/data
 information/data
 
 # Miscellaneous
+adjust/change
 agnostic/unaware
 algorithm/function
+customize/change
 damaged/broken
 encountered/found
 extract/get
 generate/create
 generic/general
+immediately/right away
 large/big
 miscellaneous/various
 modify/change
 necessary/needed
+prepare/ready
 previously/in the past
 relies/needs
 strange/odd
