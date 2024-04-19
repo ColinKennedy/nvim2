@@ -12,6 +12,7 @@ Git ........................................................ |my_mappings_git|
 Debugging ............................................ |my_mappings_debugging|
 LSP ........................................................ |my_mappings_lsp|
 Quickfix .............................................. |my_mappings_quickfix|
+Spelling .............................................. |my_mappings_spelling|
 Miscellaneous .................................... |my_mappings_miscellaneous|
 Text-Objects ...................................... |my_mappings_text_objects|
 LuaSnip ................................................ |my_mappings_luasnip|
@@ -217,6 +218,21 @@ Legend
 | 1 |      2       |                           3                               |
 | - | ------------ | --------------------------------------------------------- |
 | n | <leader>ct   | Change the title of the Quickfix buffer                   |
+
+
+================================================================================
+Spelling                                                *my_mappings_spelling*
+
+Legend
+
+- 1 == mode
+- 2 == mapping
+- 3 == description
+
+| 1 |       2       |                           3                               |
+| - | ------------- | --------------------------------------------------------- |
+| n | <leader>ts    | [t]oggle all [s]trict spelling mistakes.                  |
+| n | <leader>rs    | [r]eplace word with [s]uggestion.                         |
 
 
 ================================================================================
