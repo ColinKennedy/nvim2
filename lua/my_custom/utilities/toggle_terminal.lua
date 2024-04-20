@@ -109,8 +109,7 @@ end
 
 --- @return ToggleTerminal # Create a buffer from scratch.
 local function _create_terminal()
-    vim.cmd("enew!")
-    vim.cmd.terminal()
+    vim.cmd("edit! " .. _suggest_name("term://bash"))
 
     local buffer = vim.fn.bufnr()
     _initialize_terminal_buffer(buffer)
@@ -309,7 +308,7 @@ function M.initialize_terminal_from_session(terminal)
 
     if vim.fn.bufexists(terminal.buffer) == 0 then
         -- TODO: Not sure if this code makes sense. Keep it in mind for a future update
-        vim.cmd("enew!")
+        vim.cmd("edit! " .. _suggest_name("term://bash"))
         terminal.buffer = vim.fn.bufnr()
     end
 
@@ -322,7 +321,7 @@ end
 --- -- TODO: Finish the docstring
 function M.setup_autocommands()
     local group = vim.api.nvim_create_augroup("ToggleTerminalCommands", { clear = true })
-    local toggleterm_pattern = { "term://*#toggleterminal#*" }
+    local toggleterm_pattern = { "term://*::toggleterminal::*" }
 
     -- vim.api.nvim_create_autocmd(
     --     "BufEnter",
