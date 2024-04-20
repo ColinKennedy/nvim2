@@ -1,6 +1,13 @@
 -- TODO: Add Background shade color
 -- TODO: Save and restore the mode when moving between the buffer
 
+--- @class ToggleTerminal
+---     An simplified description of a terminal that can be shown / hidden.
+--- @field buffer number
+---     A 1-or-more index pointing to Vim buffer data.
+--- @field mode "insert" | "normal"
+---     The mode to prefer whenever the cursor moves into a `buffer` window.
+
 local M = {}
 
 local _TAB_TERMINALS = {}
@@ -13,6 +20,11 @@ local _Mode = {
 local _NEXT_NUMBER = 0
 
 
+--- Check if `buffer` is shown to the user.
+---
+--- @param buffer number A 0-or-more index pointing to some Vim data.
+--- @return boolean # If at least one window contains `buffer`.
+---
 local function _is_buffer_visible(buffer)
     for _, window in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
         if vim.api.nvim_win_get_buf(window) == buffer then
@@ -23,6 +35,11 @@ local function _is_buffer_visible(buffer)
     return false
 end
 
+--- Find all tab IDs that have `buffer`.
+---
+--- @param buffer number A 0-or-more index pointing to some Vim data.
+--- @return number[] # All of the tabs found, if any.
+---
 local function _get_buffer_tabs(buffer)
     local output = {}
 
@@ -37,6 +54,11 @@ local function _get_buffer_tabs(buffer)
     return output
 end
 
+--- Find all windows that show `buffer`.
+---
+--- @param buffer number A 0-or-more index pointing to some Vim data.
+--- @return number[] # All of the windows found, if any.
+---
 local function _get_buffer_windows(buffer)
     local output = {}
 
@@ -49,17 +71,31 @@ local function _get_buffer_windows(buffer)
     return output
 end
 
+--- Suggest a new terminal name, starting with `name`, that is unique.
+---
+--- @param name string
+---     Some terminal prefix. i.e. `"term://bash"`.
+--- @return string
+---     The full buffer path that doesn't already exist. i.e.
+---     `"term://bash;::toggleterminal::1"`. It's important though to remember
+---     - This won't be the final, real terminal path name because this name
+---     doesn't contain a $PWD.
+---
 local function _suggest_name(name)
-    local current = name .. ";#toggleterminal#" .. _NEXT_NUMBER
+    local current = name .. ";::toggleterminal::" .. _NEXT_NUMBER
 
     while vim.fn.bufexists(current) == 1 do
         _NEXT_NUMBER = _NEXT_NUMBER + 1
-        current = name .. ";#toggleterminal#" .. _NEXT_NUMBER
+        current = name .. ";::toggleterminal::" .. _NEXT_NUMBER
     end
 
     return current
 end
 
+--- Bootstrap `toggleterminal` logic to an existing terminal `buffer`.
+---
+--- @param buffer number A 0-or-more index pointing to some Vim data.
+---
 local function _initialize_terminal_buffer(buffer)
     vim.bo[buffer].bufhidden = "hide"
     vim.b[buffer]._toggle_terminal_buffer = true
@@ -71,6 +107,7 @@ local function _initialize_terminal_buffer(buffer)
     _NEXT_NUMBER = _NEXT_NUMBER + 1
 end
 
+--- @return ToggleTerminal # Create a buffer from scratch.
 local function _create_terminal()
     vim.cmd("enew!")
     vim.cmd.terminal()
@@ -84,6 +121,7 @@ local function _create_terminal()
     }
 end
 
+--- Make a window (non-terminal) so we can assign a terminal into it later.
 local function _prepare_terminal_window()
     vim.cmd[[set nosplitbelow]]
     vim.cmd[[10split]]
@@ -92,6 +130,7 @@ local function _prepare_terminal_window()
     vim.cmd.resize(10)
 end
 
+--- Open an existing terminal for the current tab or create one if it doesn't exist.
 local function _toggle_terminal()
     local tab = vim.fn.tabpagenr()
     local existing_terminal =  _TAB_TERMINALS[tab]
@@ -157,6 +196,11 @@ end
 -- --     local buffer = vim.fn.bufnr()
 -- -- end
 
+--- Check if `buffer` is a `toggleterminal`.
+---
+--- @param buffer number A 0-or-more index pointing to some Vim data.
+--- @return boolean # If it is a `toggleterminal`, return `true`.
+---
 local function _is_toggle_terminal(buffer)
     if vim.api.nvim_get_option_value("buftype", {buf=buffer}) ~= "terminal" then
         return false
@@ -165,6 +209,7 @@ local function _is_toggle_terminal(buffer)
     return vim.b[buffer]._toggle_terminal_buffer ~= nil
 end
 
+--- Convert the `toggleterminal` to vimscript so it can be saved to a Session file.
 local function _serialize_terminals()
     local contents = {}
 
@@ -217,6 +262,7 @@ local function _serialize_terminals()
     return output
 end
 
+--- Write a Sessionx.vim file to-disk.
 local function _write_sessionx_file()
     local session = vim.v.this_session
     local directory = vim.fn.fnamemodify(session, ":h")
@@ -248,6 +294,14 @@ local function _write_sessionx_file()
     handler:close()
 end
 
+--- Create a Neovim `toggleterminal` buffer from `terminal`.
+---
+--- This function is used for loading from sessions. `terminal` was serialized
+--- in the past and this function recreates the terminal buffer to match the
+--- settings that `terminal` saved.
+---
+--- @param terminal number A 1-or-more index
+---
 function M.initialize_terminal_from_session(terminal)
     for _, tab in ipairs(_get_buffer_tabs(terminal.buffer)) do
         _TAB_TERMINALS[tab] = terminal
@@ -262,9 +316,10 @@ function M.initialize_terminal_from_session(terminal)
     -- TODO: Fix
     -- _initialize_terminal_buffer(terminal.buffer)
     _BUFFER_TO_TERMINAL[terminal.buffer] = terminal
-    print('DEBUGPRINT[5]: toggle_terminal.lua:253: _BUFFER_TO_TERMINAL=' .. vim.inspect(_BUFFER_TO_TERMINAL))
 end
 
+--- Add Neovim `toggleterminal`-related autocommands.
+--- -- TODO: Finish the docstring
 function M.setup_autocommands()
     local group = vim.api.nvim_create_augroup("ToggleTerminalCommands", { clear = true })
     local toggleterm_pattern = { "term://*#toggleterminal#*" }
@@ -322,6 +377,7 @@ function M.setup_autocommands()
 
 end
 
+--- Add command(s) for interacting with the terminals.
 function M.setup_commands()
     vim.api.nvim_create_user_command(
         "ToggleTerminal",
@@ -330,6 +386,7 @@ function M.setup_commands()
     )
 end
 
+--- Add keymap(s) for interacting with the terminals.
 function M.setup_keymaps()
     vim.keymap.set(
         "n",
