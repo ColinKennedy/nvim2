@@ -18,6 +18,7 @@ local _Mode = {
     normal = "normal",
 }
 local _NEXT_NUMBER = 0
+local _STARTING_MODE = _Mode.insert -- NOTE: Start off in insert mode
 
 
 --- Check if `buffer` is shown to the user.
@@ -89,6 +90,11 @@ local function _suggest_name(name)
         current = name .. ";::toggleterminal::" .. _NEXT_NUMBER
     end
 
+    -- We add another one so that, if `_suggest_name` is called again, we save
+    -- 1 extra call to `vim.fn.bufexists`.
+    --
+    _NEXT_NUMBER = _NEXT_NUMBER + 1
+
     return current
 end
 
@@ -99,12 +105,6 @@ end
 local function _initialize_terminal_buffer(buffer)
     vim.bo[buffer].bufhidden = "hide"
     vim.b[buffer]._toggle_terminal_buffer = true
-
-    local terminal_name = vim.fn.expand("%:p")
-
-    -- NOTE: We assume only one terminal per tab here. Fix that, later
-    vim.api.nvim_buf_set_name(buffer, _suggest_name(terminal_name))
-    _NEXT_NUMBER = _NEXT_NUMBER + 1
 end
 
 --- @return ToggleTerminal # Create a buffer from scratch.
@@ -114,10 +114,7 @@ local function _create_terminal()
     local buffer = vim.fn.bufnr()
     _initialize_terminal_buffer(buffer)
 
-    return {
-        buffer=buffer,
-        mode=_Mode.insert,  -- NOTE: Start off in insert mode
-    }
+    return { buffer=buffer, mode=_STARTING_MODE }
 end
 
 --- Make a window (non-terminal) so we can assign a terminal into it later.
@@ -156,44 +153,50 @@ local function _toggle_terminal()
     end
 end
 
--- local function _handle_term_enter(buffer)
---     print("TERM ENTER")
---     print('DEBUGPRINT[6]: toggle_terminal.lua:123: vim.fn.bufnr()=' .. vim.inspect(vim.fn.bufnr()))
---     print('DEBUGPRINT[7]: toggle_terminal.lua:124: _BUFFER_TO_TERMINAL=' .. vim.inspect(_BUFFER_TO_TERMINAL))
+--- Change `buffer` to insert or normal mode.
+---
+--- @param buffer number A 1-or-more index pointing to a `toggleterm` buffer.
+---
+local function _handle_term_enter(buffer)
+    local terminal = _BUFFER_TO_TERMINAL[buffer]
+    local mode = terminal.mode
+
+    if mode == _Mode.insert then
+        vim.cmd.startinsert()
+    elseif mode == _Mode.normal then
+        -- TODO: Double-check this part
+        return
+    end
+end
+
+--- Keep track of `buffer` mode so we can restore it as needed, later.
+---
+--- @param buffer number A 1-or-more index pointing to a `toggleterm` buffer.
+---
+local function _handle_term_leave(buffer)
+    local raw_mode = vim.api.nvim_get_mode().mode
+    local mode = nil
+
+    if raw_mode:match("nt") then -- nt is normal mode in the terminal
+        mode = _Mode.normal
+    elseif raw_mode:match("t") then -- t is insert mode in the terminal
+        mode = _Mode.insert
+    end
+
+    -- print('DEBUGPRINT[2]: toggle_terminal.lua:130: mode=' .. vim.inspect(mode))
+    -- print('DEBUGPRINT[3]: toggle_terminal.lua:139: buffer=' .. vim.inspect(buffer))
+    -- print('DEBUGPRINT[4]: toggle_terminal.lua:140: _BUFFER_TO_TERMINAL=' .. vim.inspect(_BUFFER_TO_TERMINAL))
+    local terminal = _BUFFER_TO_TERMINAL[buffer]
+    terminal.mode = mode
+end
+
+-- local function on_term_open(buffer)
+--     print("on open")
+--     print(vim.fn.expand("#:p"))
 --     local terminal = _BUFFER_TO_TERMINAL[buffer]
---
---     local mode = terminal.mode
---
---     if mode == _Mode.insert then
---         vim.cmd.startinsert()
---     elseif mode == _Mode.normal then
---         -- TODO: Double-check this part
---         return
---     end
+--     terminal.mode
+--     print('DEBUGPRINT[15]: toggle_terminal.lua:196: terminal=' .. vim.inspect(terminal))
 -- end
---
--- local function _handle_term_leave()
---     local buffer = vim.fn.bufnr()
---
---     local raw_mode = vim.api.nvim_get_mode().mode
---     local mode = nil
---
---     if raw_mode:match("nt") then -- nt is normal mode in the terminal
---         mode = _Mode.normal
---     elseif raw_mode:match("t") then -- t is insert mode in the terminal
---         mode = _Mode.insert
---     end
---
---     print('DEBUGPRINT[2]: toggle_terminal.lua:130: mode=' .. vim.inspect(mode))
---     print('DEBUGPRINT[3]: toggle_terminal.lua:139: buffer=' .. vim.inspect(buffer))
---     print('DEBUGPRINT[4]: toggle_terminal.lua:140: _BUFFER_TO_TERMINAL=' .. vim.inspect(_BUFFER_TO_TERMINAL))
---     local terminal = _BUFFER_TO_TERMINAL[buffer]
---     terminal.mode = mode
--- end
---
--- -- local function on_term_open()
--- --     local buffer = vim.fn.bufnr()
--- -- end
 
 --- Check if `buffer` is a `toggleterminal`.
 ---
@@ -299,7 +302,7 @@ end
 --- in the past and this function recreates the terminal buffer to match the
 --- settings that `terminal` saved.
 ---
---- @param terminal number A 1-or-more index
+--- @param terminal ToggleTerminal Some serialized terminal data to make into a buffer.
 ---
 function M.initialize_terminal_from_session(terminal)
     for _, tab in ipairs(_get_buffer_tabs(terminal.buffer)) do
@@ -310,6 +313,7 @@ function M.initialize_terminal_from_session(terminal)
         -- TODO: Not sure if this code makes sense. Keep it in mind for a future update
         vim.cmd("edit! " .. _suggest_name("term://bash"))
         terminal.buffer = vim.fn.bufnr()
+        terminal.mode = _STARTING_MODE
     end
 
     -- TODO: Fix
@@ -323,31 +327,40 @@ function M.setup_autocommands()
     local group = vim.api.nvim_create_augroup("ToggleTerminalCommands", { clear = true })
     local toggleterm_pattern = { "term://*::toggleterminal::*" }
 
-    -- vim.api.nvim_create_autocmd(
-    --     "BufEnter",
-    --     {
-    --         pattern = toggleterm_pattern,
-    --         group = group,
-    --         nested = true, -- This is necessary in case the buffer is the last
-    --         callback = _handle_term_enter,
-    --     }
-    -- )
+    vim.api.nvim_create_autocmd(
+        "BufEnter",
+        {
+            pattern = toggleterm_pattern,
+            group = group,
+            nested = true, -- This is necessary in case the buffer is the last
+            callback = function()
+                local buffer = vim.fn.bufnr()
+                vim.schedule(function() _handle_term_enter(buffer) end)
+            end,
+        }
+    )
 
-    -- vim.api.nvim_create_autocmd(
-    --     "WinLeave",
-    --     {
-    --         pattern = toggleterm_pattern,
-    --         group = group,
-    --         callback = _handle_term_leave,
-    --     }
-    -- )
+    vim.api.nvim_create_autocmd(
+        "WinLeave",
+        {
+            pattern = toggleterm_pattern,
+            group = group,
+            callback = function()
+                local buffer = vim.fn.bufnr()
+                vim.schedule(function() _handle_term_leave(buffer) end)
+            end,
+        }
+    )
 
     -- vim.api.nvim_create_autocmd(
     --     "TermOpen",
     --     {
     --         pattern = toggleterm_pattern,
     --         group = group,
-    --         callback = on_term_open,
+    --         callback = function()
+    --             local buffer = vim.fn.bufnr()
+    --             vim.schedule(function() on_term_open(buffer) end)
+    --         end,
     --     }
     -- )
 
