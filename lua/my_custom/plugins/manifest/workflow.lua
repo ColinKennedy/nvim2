@@ -319,21 +319,17 @@ return {
     --     event = { "VeryLazy" },
     -- },
 
+
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
-        -- TODO: Remove this fork later once https://github.com/akinsho/toggleterm.nvim/pull/568
-        -- is merged
-        --
-        "ColinKennedy/toggleterm.nvim",
-        branch = "add_session_support",
-        config = function() require("my_custom.plugins.toggleterm.configuration") end,
-        -- TODO: Add this back
-        -- version = "v2.*",
+        "ColinKennedy/toggleterminal.nvim",
+        branch = "first_pass",  -- TODO: Remove later
         cmd = "ToggleTerm",
+        config = true,
         keys = {
             {
                 "<Space>T",
-                ":ToggleTerm direction=horizontal<CR>",
+                ":ToggleTerminl direction=horizontal<CR>",
                 desc="Create a [T]erminal on the bottom of the current window.",
                 silent=true,
             },
