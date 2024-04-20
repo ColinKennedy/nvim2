@@ -426,6 +426,10 @@ function M.setup_autocommands()
             callback = function()
                 local window = vim.fn.win_getid()
 
+                vim.wo[window].relativenumber = false
+                vim.wo[window].number = false
+                vim.wo[window].signcolumn = "no"
+
                 vim.schedule(function() _apply_highlights(window) end)
             end,
         }
