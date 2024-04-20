@@ -73,7 +73,6 @@ vim.keymap.set(
     "<C-\\><C-n><C-w>h",
     {
         desc="Jump to the window (or tmux pane) to the left.",
-        noremap=true,
     }
 )
 vim.keymap.set(
@@ -82,7 +81,6 @@ vim.keymap.set(
     "<C-\\><C-n><C-w>j",
     {
         desc="Jump to the window (or tmux pane) below.",
-        noremap=true,
     }
 )
 vim.keymap.set(
@@ -91,7 +89,6 @@ vim.keymap.set(
     "<C-\\><C-n><C-w>k",
     {
         desc="Jump to the window (or tmux pane) above.",
-        noremap=true,
     }
 )
 vim.keymap.set(
@@ -100,6 +97,5 @@ vim.keymap.set(
     "<C-\\><C-n><C-w>l",
     {
         desc="Jump to the window (or tmux pane) to the right.",
-        noremap=true,
     }
 )
