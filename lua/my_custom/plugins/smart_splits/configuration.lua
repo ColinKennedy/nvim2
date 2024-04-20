@@ -43,59 +43,26 @@ vim.keymap.set(
 )
 -- moving between splits
 vim.keymap.set(
-    "n",
+    {"n", "t"},
     "<C-h>",
     require("smart-splits").move_cursor_left,
     {desc="Jump to the window (or tmux pane) to the left."}
 )
 vim.keymap.set(
-    "n",
+    {"n", "t"},
     "<C-j>",
     require("smart-splits").move_cursor_down,
     {desc="Jump to the window (or tmux pane) below."}
 )
 vim.keymap.set(
-    "n",
+    {"n", "t"},
     "<C-k>",
     require("smart-splits").move_cursor_up,
     {desc="Jump to the window (or tmux pane) above."}
 )
 vim.keymap.set(
-    "n",
+    {"n", "t"},
     "<C-l>",
     require("smart-splits").move_cursor_right,
     {desc="Jump to the window (or tmux pane) to the right."}
-)
-
-vim.keymap.set(
-    "t",
-    "<C-h>",
-    "<C-\\><C-n><C-w>h",
-    {
-        desc="Jump to the window (or tmux pane) to the left.",
-    }
-)
-vim.keymap.set(
-    "t",
-    "<C-j>",
-    "<C-\\><C-n><C-w>j",
-    {
-        desc="Jump to the window (or tmux pane) below.",
-    }
-)
-vim.keymap.set(
-    "t",
-    "<C-k>",
-    "<C-\\><C-n><C-w>k",
-    {
-        desc="Jump to the window (or tmux pane) above.",
-    }
-)
-vim.keymap.set(
-    "t",
-    "<C-l>",
-    "<C-\\><C-n><C-w>l",
-    {
-        desc="Jump to the window (or tmux pane) to the right.",
-    }
 )
