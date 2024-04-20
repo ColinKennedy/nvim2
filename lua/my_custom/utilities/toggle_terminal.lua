@@ -25,6 +25,7 @@ local _BUFFER_TO_TERMINAL = {}
 local _Mode = {
     insert = "insert",
     normal = "normal",
+    unknown = "?",
 }
 local _NEXT_NUMBER = 0
 local _STARTING_MODE = _Mode.insert -- NOTE: Start off in insert mode
@@ -190,6 +191,10 @@ local function _handle_term_enter(buffer)
 
     if mode == _Mode.insert then
         vim.cmd.startinsert()
+    elseif mode == _Mode.unknown then
+        if _STARTING_MODE == _Mode.insert then
+            vim.cmd.startinsert()
+        end
     elseif mode == _Mode.normal then
         -- TODO: Double-check this part
         return
@@ -202,11 +207,9 @@ end
 ---
 local function _handle_term_leave(buffer)
     local raw_mode = vim.api.nvim_get_mode().mode
-    local mode = nil
+    local mode = _Mode.unknown
 
-    if raw_mode:match("n") then
-        mode = _Mode.normal
-    elseif raw_mode:match("nt") then -- nt is normal mode in the terminal
+    if raw_mode:match("nt") then -- nt is normal mode in the terminal
         mode = _Mode.normal
     elseif raw_mode:match("t") then -- t is insert mode in the terminal
         mode = _Mode.insert
@@ -390,7 +393,10 @@ function M.setup_autocommands()
             group = group,
             callback = function()
                 local buffer = vim.fn.bufnr()
-                vim.schedule(function() _handle_term_leave(buffer) end)
+
+                if not vim.tbl_isempty(_BUFFER_TO_TERMINAL) then
+                    _handle_term_leave(buffer)
+                end
             end,
         }
     )
@@ -449,6 +455,13 @@ function M.setup_keymaps()
         ":ToggleTerminal<CR>",
         {desc="Open / Close a terminal at the bottom of the tab", silent=true}
     )
+
+    vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]])
+    vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]])
+    vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
+    vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
+
+    vim.keymap.set("t", "jk", [[<C-\><C-n>]], {desc="Escape terminal mode easily."})
 end
 
 return M

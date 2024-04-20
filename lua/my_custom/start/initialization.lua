@@ -164,12 +164,3 @@ vim.api.nvim_create_autocmd(
 -- e.g. 'guicursor' sets the terminal cursor style if possible.
 --
 vim.opt.guicursor = "n-v-c:block-Cursor"
-
-
--- TODO:
--- Make it so terminals are always above
--- TermOpen
-
--- TODO:
--- Make it so quick-fix are always below
--- TermOpen
