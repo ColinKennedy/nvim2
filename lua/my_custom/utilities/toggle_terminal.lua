@@ -1,3 +1,11 @@
+--- Create and manage Neovim terminals.
+---
+--- It's assumed in this file that you want 1 terminal per tab. Support for more
+--- could be added but not needed right now.
+---
+--- @module 'my_custom.utilities.toggle_terminal'
+---
+
 -- TODO: Add Background shade color
 -- TODO: Save and restore the mode when moving between the buffer
 
@@ -183,9 +191,6 @@ local function _handle_term_leave(buffer)
         mode = _Mode.insert
     end
 
-    -- print('DEBUGPRINT[2]: toggle_terminal.lua:130: mode=' .. vim.inspect(mode))
-    -- print('DEBUGPRINT[3]: toggle_terminal.lua:139: buffer=' .. vim.inspect(buffer))
-    -- print('DEBUGPRINT[4]: toggle_terminal.lua:140: _BUFFER_TO_TERMINAL=' .. vim.inspect(_BUFFER_TO_TERMINAL))
     local terminal = _BUFFER_TO_TERMINAL[buffer]
     terminal.mode = mode
 end
