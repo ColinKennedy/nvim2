@@ -77,6 +77,8 @@ require("my_custom.start.lsp_diagnostics")
 require("my_custom.start.saver").initialize()
 require("my_custom.utilities.quick_fix_selection_fix").initialize()
 vim.cmd("source " .. vim.g.vim_home .. "/plugin/miscellaneous_commands.vim")
+local thesaurus = vim.fs.joinpath(_CURRENT_DIRECTORY, "spell", "strict_thesaurus.txt")
+vim.o.spellsuggest="file:" .. thesaurus
 
 
 -- local client = vim.lsp.start_client{
