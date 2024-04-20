@@ -7,7 +7,6 @@
 ---
 
 -- TODO: Add Background shade color
--- TODO: Save and restore the mode when moving between the buffer
 
 --- @class ToggleTerminal
 ---     An simplified description of a terminal that can be shown / hidden.
@@ -15,6 +14,8 @@
 ---     A 1-or-more index pointing to Vim buffer data.
 --- @field mode "insert" | "normal"
 ---     The mode to prefer whenever the cursor moves into a `buffer` window.
+
+local colorizer = require("my_custom.utilities.colorizer")
 
 local M = {}
 
@@ -42,6 +43,37 @@ local function _is_buffer_visible(buffer)
     end
 
     return false
+end
+
+--- Check if `buffer` is a `toggleterminal`.
+---
+--- @param buffer number A 0-or-more index pointing to some Vim data.
+--- @return boolean # If it is a `toggleterminal`, return `true`.
+---
+local function _is_toggle_terminal(buffer)
+    if vim.api.nvim_get_option_value("buftype", {buf=buffer}) ~= "terminal" then
+        return false
+    end
+
+    return vim.b[buffer]._toggle_terminal_buffer ~= nil
+end
+
+--- @return number[]
+---     Find all current `toggleterminal` buffers. This array includes shown or
+---     hidden buffers.
+---
+local function _get_all_toggle_terminals()
+    local output = {}
+
+    for tab = 1, vim.fn.tabpagenr("$") do
+        for _, buffer in ipairs(vim.fn.tabpagebuflist(tab)) do
+            if _is_toggle_terminal(buffer) then
+                table.insert(output, buffer)
+            end
+        end
+    end
+
+    return output
 end
 
 --- Find all tab IDs that have `buffer`.
@@ -80,6 +112,11 @@ local function _get_buffer_windows(buffer)
     return output
 end
 
+--- Get the next UUID so we can use if for terminal buffer names.
+local function _increment_terminal_uuid()
+    _NEXT_NUMBER = _NEXT_NUMBER + 1
+end
+
 --- Suggest a new terminal name, starting with `name`, that is unique.
 ---
 --- @param name string
@@ -94,14 +131,14 @@ local function _suggest_name(name)
     local current = name .. ";::toggleterminal::" .. _NEXT_NUMBER
 
     while vim.fn.bufexists(current) == 1 do
-        _NEXT_NUMBER = _NEXT_NUMBER + 1
+        _increment_terminal_uuid()
         current = name .. ";::toggleterminal::" .. _NEXT_NUMBER
     end
 
     -- We add another one so that, if `_suggest_name` is called again, we save
     -- 1 extra call to `vim.fn.bufexists`.
     --
-    _NEXT_NUMBER = _NEXT_NUMBER + 1
+    _increment_terminal_uuid()
 
     return current
 end
@@ -115,6 +152,24 @@ local function _initialize_terminal_buffer(buffer)
     vim.b[buffer]._toggle_terminal_buffer = true
 end
 
+--- Set colors onto `window`.
+---
+--- @param window number A 1-or-more value of some `toggleterminal` buffer.
+---
+local function _apply_highlights(window)
+    local namespace = "Normal"
+    local hex = colorizer.get_hex(namespace, "bg")
+    local darker = colorizer.shade_color(hex, -20)
+    local window_namespace = "ToggleTerminalNormal"
+    vim.api.nvim_set_hl(0, window_namespace, {bg = darker})
+
+    vim.api.nvim_set_option_value(
+        "winhighlight",
+        string.format("%s:%s", namespace, window_namespace),
+        { scope = "local", win = window }
+    )
+end
+
 --- @return ToggleTerminal # Create a buffer from scratch.
 local function _create_terminal()
     vim.cmd("edit! " .. _suggest_name("term://bash"))
@@ -125,13 +180,106 @@ local function _create_terminal()
     return { buffer=buffer, mode=_STARTING_MODE }
 end
 
+--- Change `buffer` to insert or normal mode.
+---
+--- @param buffer number A 1-or-more index pointing to a `toggleterm` buffer.
+---
+local function _handle_term_enter(buffer)
+    local terminal = _BUFFER_TO_TERMINAL[buffer]
+    local mode = terminal.mode
+
+    if mode == _Mode.insert then
+        vim.cmd.startinsert()
+    elseif mode == _Mode.normal then
+        -- TODO: Double-check this part
+        return
+    end
+end
+
+--- Keep track of `buffer` mode so we can restore it as needed, later.
+---
+--- @param buffer number A 1-or-more index pointing to a `toggleterm` buffer.
+---
+local function _handle_term_leave(buffer)
+    local raw_mode = vim.api.nvim_get_mode().mode
+    local mode = nil
+
+    if raw_mode:match("n") then
+        mode = _Mode.normal
+    elseif raw_mode:match("nt") then -- nt is normal mode in the terminal
+        mode = _Mode.normal
+    elseif raw_mode:match("t") then -- t is insert mode in the terminal
+        mode = _Mode.insert
+    end
+
+    local terminal = _BUFFER_TO_TERMINAL[buffer]
+
+    if mode then
+        terminal.mode = mode
+    end
+end
+
 --- Make a window (non-terminal) so we can assign a terminal into it later.
 local function _prepare_terminal_window()
     vim.cmd[[set nosplitbelow]]
-    vim.cmd[[10split]]
+    vim.cmd[[split]]
     vim.cmd[[set splitbelow&]] -- Restore the previous split setting
     vim.cmd.wincmd("J")  -- Move the split to the bottom of the tab
     vim.cmd.resize(10)
+end
+
+-- TODO: Maybe support this in the future
+-- local function _reset_highlights()
+--     print("RESETING")
+-- end
+
+--- Convert the `toggleterminal` to vimscript so it can be saved to a Session file.
+local function _serialize_terminals()
+    local contents = {}
+
+    for _, buffer in ipairs(_get_all_toggle_terminals()) do
+        local terminal = _BUFFER_TO_TERMINAL[buffer]
+
+        if not terminal then
+            vim.notify(
+                string.format(
+                    'Something went wrong. Expected "%s" buffer to have a saved terminal.',
+                    buffer
+                ),
+                vim.log.levels.ERROR
+            )
+
+            return nil
+        end
+
+        table.insert(
+            contents,
+            string.format(
+                "toggle_terminal.initialize_terminal_from_session(%s)",
+                vim.inspect(terminal)
+            )
+        )
+    end
+
+    if not contents then
+        return nil
+    end
+
+    local output = {}
+
+    table.insert(output, "lua << EOF")
+    table.insert(
+        output,
+        'local toggle_terminal = require("my_custom.utilities.toggle_terminal")'
+    )
+
+    for _, line in ipairs(contents) do
+        table.insert(output, line)
+    end
+
+    table.insert(output, "EOF")
+
+    return output
 end
 
 --- Open an existing terminal for the current tab or create one if it doesn't exist.
@@ -159,114 +307,6 @@ local function _toggle_terminal()
         _prepare_terminal_window()
         vim.cmd.buffer(terminal.buffer)
     end
-end
-
---- Change `buffer` to insert or normal mode.
----
---- @param buffer number A 1-or-more index pointing to a `toggleterm` buffer.
----
-local function _handle_term_enter(buffer)
-    local terminal = _BUFFER_TO_TERMINAL[buffer]
-    local mode = terminal.mode
-
-    if mode == _Mode.insert then
-        vim.cmd.startinsert()
-    elseif mode == _Mode.normal then
-        -- TODO: Double-check this part
-        return
-    end
-end
-
---- Keep track of `buffer` mode so we can restore it as needed, later.
----
---- @param buffer number A 1-or-more index pointing to a `toggleterm` buffer.
----
-local function _handle_term_leave(buffer)
-    local raw_mode = vim.api.nvim_get_mode().mode
-    local mode = nil
-
-    if raw_mode:match("nt") then -- nt is normal mode in the terminal
-        mode = _Mode.normal
-    elseif raw_mode:match("t") then -- t is insert mode in the terminal
-        mode = _Mode.insert
-    end
-
-    local terminal = _BUFFER_TO_TERMINAL[buffer]
-    terminal.mode = mode
-end
-
--- local function on_term_open(buffer)
---     print("on open")
---     print(vim.fn.expand("#:p"))
---     local terminal = _BUFFER_TO_TERMINAL[buffer]
---     terminal.mode
---     print('DEBUGPRINT[15]: toggle_terminal.lua:196: terminal=' .. vim.inspect(terminal))
--- end
-
---- Check if `buffer` is a `toggleterminal`.
----
---- @param buffer number A 0-or-more index pointing to some Vim data.
---- @return boolean # If it is a `toggleterminal`, return `true`.
----
-local function _is_toggle_terminal(buffer)
-    if vim.api.nvim_get_option_value("buftype", {buf=buffer}) ~= "terminal" then
-        return false
-    end
-
-    return vim.b[buffer]._toggle_terminal_buffer ~= nil
-end
-
---- Convert the `toggleterminal` to vimscript so it can be saved to a Session file.
-local function _serialize_terminals()
-    local contents = {}
-
-    for tab = 1, vim.fn.tabpagenr("$") do
-        for _, buffer in ipairs(vim.fn.tabpagebuflist(tab)) do
-            if _is_toggle_terminal(buffer) then
-                local terminal = _BUFFER_TO_TERMINAL[buffer]
-
-                if not terminal then
-                    vim.notify(
-                        string.format(
-                            'Something went wrong. Expected "%s" buffer to have a saved terminal.',
-                            buffer
-                        ),
-                        vim.log.levels.ERROR
-                    )
-
-                    return
-                end
-
-                table.insert(
-                    contents,
-                    string.format(
-                        "toggle_terminal.initialize_terminal_from_session(%s)",
-                        vim.inspect(terminal)
-                    )
-                )
-            end
-        end
-    end
-
-    if not contents then
-        return nil
-    end
-
-    local output = {}
-
-    table.insert(output, "lua << EOF")
-    table.insert(
-        output,
-        'local toggle_terminal = require("my_custom.utilities.toggle_terminal")'
-    )
-
-    for _, line in ipairs(contents) do
-        table.insert(output, line)
-    end
-
-    table.insert(output, "EOF")
-
-    return output
 end
 
 --- Write a Sessionx.vim file to-disk.
@@ -321,8 +361,6 @@ function M.initialize_terminal_from_session(terminal)
         terminal.mode = _STARTING_MODE
     end
 
-    -- TODO: Fix
-    -- _initialize_terminal_buffer(terminal.buffer)
     _BUFFER_TO_TERMINAL[terminal.buffer] = terminal
 end
 
@@ -357,35 +395,35 @@ function M.setup_autocommands()
         }
     )
 
+    -- TODO: Maybe support this in the future
     -- vim.api.nvim_create_autocmd(
-    --     "TermOpen",
+    --     "ColorScheme",
     --     {
-    --         pattern = toggleterm_pattern,
     --         group = group,
     --         callback = function()
-    --             local buffer = vim.fn.bufnr()
-    --             vim.schedule(function() on_term_open(buffer) end)
+    --             _reset_highlights()
+    --
+    --             for _, buffer in ipairs(_get_all_toggle_terminals()) do
+    --                 for _, window in ipairs(_get_buffer_windows(buffer)) do
+    --                     _apply_highlights(window)
+    --                 end
+    --             end
     --         end,
     --     }
     -- )
 
-    -- api.nvim_create_autocmd("ColorScheme", {
-    --   group = AUGROUP,
-    --   callback = function()
-    --     config.reset_highlights()
-    --     for _, term in pairs(terms.get_all()) do
-    --       if api.nvim_win_is_valid(term.window) then
-    --         api.nvim_win_call(term.window, function() ui.hl_term(term) end)
-    --       end
-    --     end
-    --   end,
-    -- })
-    --
-    -- api.nvim_create_autocmd("TermOpen", {
-    --   group = AUGROUP,
-    --   pattern = "term://*",
-    --   callback = apply_colors,
-    -- })
+    vim.api.nvim_create_autocmd(
+        "TermOpen",
+        {
+            group = group,
+            pattern = toggleterm_pattern,
+            callback = function()
+                local window = vim.fn.win_getid()
+
+                vim.schedule(function() _apply_highlights(window) end)
+            end,
+        }
+    )
 
     vim.api.nvim_create_autocmd(
         "SessionWritePost",
