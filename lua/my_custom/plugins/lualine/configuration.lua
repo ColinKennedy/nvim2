@@ -8,7 +8,7 @@ require("lualine").setup {
         component_separators = { left = '', right = ''},
     },
     sections = {
-        lualine_b = {"branch"},
+        lualine_b = { "branch", "git_extended_statusline" },
         lualine_c = { "grapple" },
         lualine_x = {},
         lualine_y = {

@@ -133,14 +133,28 @@ lspconfig.lua_ls.setup {
 vim.keymap.set(
     "n",
     "[d",
-    function() vim.diagnostic.goto_prev({float={source="always"}}) end,
+    function()
+        vim.diagnostic.goto_prev(
+            {
+                float={source="always"},
+                severity = { min = vim.diagnostic.severity.HINT },
+            }
+        )
+    end,
     {desc="Search upwards for diagnostic messages and go to it, if one is found."}
 )
 
 vim.keymap.set(
     "n",
     "]d",
-    function() vim.diagnostic.goto_next({float={source="always"}}) end,
+    function()
+        vim.diagnostic.goto_next(
+            {
+                float={source="always"},
+                severity = { min = vim.diagnostic.severity.HINT },
+            }
+        )
+    end,
     {desc="Search downwards for diagnostic messages and go to it, if one is found."}
 )
 
