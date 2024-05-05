@@ -184,9 +184,6 @@
 [submodule "bundle/mason.nvim"]
 	path = bundle/mason.nvim
 	url = git@github.com:williamboman/mason.nvim.git
-[submodule "bundle/vim-exchange"]
-	path = bundle/vim-exchange
-	url = git@github.com:tommcdo/vim-exchange.git
 [submodule "bundle/spaceless.nvim"]
 	path = bundle/spaceless.nvim
 	url = git@github.com:lewis6991/spaceless.nvim.git
@@ -355,3 +352,6 @@
 [submodule "bundle/toggleterminal.nvim"]
 	path = bundle/toggleterminal.nvim
 	url = git@github.com:ColinKennedy/toggleterminal.nvim.git
+[submodule "bundle/substitute.nvim"]
+	path = bundle/substitute.nvim
+	url = git@github.com:gbprod/substitute.nvim.git

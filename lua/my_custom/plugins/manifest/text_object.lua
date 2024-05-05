@@ -172,11 +172,29 @@ return {
 
     -- Exchange any two text objects with a new text-motion, `cx`
     {
-        "tommcdo/vim-exchange",
+        "gbprod/substitute.nvim",
+        config = true,
         keys = {
             {
                 "cx",
-                desc = "[c]hange and e[x]change two text objects.",
+                function() require('substitute.exchange').operator() end,
+                noremap = true,
+            },
+            {
+                "cxx",
+                function() require('substitute.exchange').line() end,
+                noremap = true,
+            },
+            {
+                "X",
+                mode = {"x"},
+                function() require('substitute.exchange').visual() end,
+                noremap = true,
+            },
+            {
+                "cxc",
+                function() require('substitute.exchange').cancel() end,
+                noremap = true,
             },
         },
     },
