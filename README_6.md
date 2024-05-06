@@ -14,6 +14,8 @@ https://github.com/hieulw/nvimrc
 
 - https://github.com/farmergreg/vim-lastplace
 
+- Update all plugins to their latest version
+ - debugprint got a new major version (for example)
 
 https://gist.github.com/romainl/7e2b425a1706cd85f04a0bd8b3898805
 
