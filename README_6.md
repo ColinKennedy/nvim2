@@ -14,46 +14,6 @@ https://github.com/hieulw/nvimrc
 
 - https://github.com/farmergreg/vim-lastplace
 
-neogen needs to fix this
-```
-def _validate_hik_nodes(nodes):
-    invalids = {node for node in nodes if not node.endswith(_AST_SUFFIX)}
-
-    if not invalids:
-        return
-
-    raise RuntimeError(
-        'Bad nodes detected. Got "{invalids}". '
-        'Please check your selection and try again.'.format(
-            invalids=sorted(invalids))
-    )
-```
-
-```
-def _export_hik_joint_cache(all_data):
-    invalids = {data.node for data in all_data if not data.foo.blah(_THING)}
-
-    if invalids:
-        QtWidgets.QMessageBox.critical(
-            None,
-            "Blah",
-            'stuff {invalids} {_THING}'.format(invalids=sorted(invalids), _THING=_THING)
-        )
-
-        return
-
-    for entry in all_data:
-        pass
-```
-
-```
-def flags(self, index):  # pylint: disable=unused-argument
-    return (
-        QtCore.Qt.ItemIsEnabled
-        | QtCore.Qt.ItemIsSelectable
-        | QtCore.Qt.ItemIsUserCheckable
-    )
-```
 
 https://gist.github.com/romainl/7e2b425a1706cd85f04a0bd8b3898805
 
