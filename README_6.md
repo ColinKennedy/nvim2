@@ -1,10 +1,109 @@
-- Finish the terminal plugin
+- I want a ]f for moving between functions again. And ]m
 
-- Ifugre out why typing is slow in this file - /home/selecaoone/temp/test.py
+- ]q and [q sequencing is completely broken
+ - repro:
+  - /home/selecaoone/repositories/personal/.config/nvim/bundle/git-extended-statusline/lua/git-extended-statusline/_core/display.lua
+  - search _LOGGER and ]q / [q around
+
+
+https://www.reddit.com/r/neovim/comments/1ckvoxr/fzflua_added_builtin_support_for_vscode_like_path/
+
+https://www.reddit.com/r/neovim/comments/1cktb6k/comment/l2paq1t/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+https://github.com/hieulw/nvimrc
+
+
+- https://github.com/farmergreg/vim-lastplace
+
+neogen needs to fix this
+```
+def _validate_hik_nodes(nodes):
+    invalids = {node for node in nodes if not node.endswith(_AST_SUFFIX)}
+
+    if not invalids:
+        return
+
+    raise RuntimeError(
+        'Bad nodes detected. Got "{invalids}". '
+        'Please check your selection and try again.'.format(
+            invalids=sorted(invalids))
+    )
+```
+
+```
+def _export_hik_joint_cache(all_data):
+    invalids = {data.node for data in all_data if not data.foo.blah(_THING)}
+
+    if invalids:
+        QtWidgets.QMessageBox.critical(
+            None,
+            "Blah",
+            'stuff {invalids} {_THING}'.format(invalids=sorted(invalids), _THING=_THING)
+        )
+
+        return
+
+    for entry in all_data:
+        pass
+```
+
+```
+def flags(self, index):  # pylint: disable=unused-argument
+    return (
+        QtCore.Qt.ItemIsEnabled
+        | QtCore.Qt.ItemIsSelectable
+        | QtCore.Qt.ItemIsUserCheckable
+    )
+```
+
+https://gist.github.com/romainl/7e2b425a1706cd85f04a0bd8b3898805
+
+https://github.com/neovim/neovim/commit/688860741589b4583129e426f4df0523f9213275
+
+https://www.reddit.com/r/neovim/comments/1ca3rm8/shoutout_to_andrewferrierdebugprintnvim_add/
+ - What a coincidence! I'll need to update. Thankfully you've been using git tags so it should be pretty painless. I might just deprecate my mappings and use the text object defaults.
+
+- Update debugprint to v2+
+https://github.com/andrewferrier/debugprint.nvim
+ - It provides commands to delete all debugging lines added to the current buffer as well as comment/uncomment those lines.
+
+- Prevent toggle terminals from showing up in the buffers list
+- https://www.reddit.com/r/neovim/comments/1c9ftdp/how_to_turn_off_code_suggestions_in_strings/
+
+- Figure out why typing is slow in this file - /home/selecaoone/temp/test.py
 - @lsp.mod.defaultLibrary - Make it purple! like the others
 - python argument variable colors are still showing up as orange (disable this)
 - Change spell START and END to be prettier
 - tmux rename window - color should be yellow or white, not red
+- tmux "more tabs" arrow could be a better color. Right now it's blue
+
+Similar comments. Gross!
+
+```
+# "Quick Fill" divider
+mc.menuItem(divider=True, dividerLabel="Quick Fill", parent=parent)
+
+# "Update all assets to latest" menu item
+mc.menuItem(
+    command=_update_all_assets_to_latest,
+    label="Update all assets to latest",
+    parent=parent,
+)
+
+# "Update selected assets to latest" menu item
+mc.menuItem(
+    command=_update_selected_assets_to_latest,
+    label="Update selected assets to latest",
+    parent=parent,
+)
+
+# "Remove selected assets" menu item
+mc.menuItem(
+    command=_remove_selected_assets,
+    image="/path/to/icon.png"
+    label="Remove selected assets",
+    parent=parent,
+)
+```
 
 https://github.com/tamton-aquib/keys.nvim
 https://github.com/roobert/f-string-toggle.nvim
