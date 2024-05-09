@@ -1,7 +1,7 @@
 ## Compile ASCII To Binary Spell File
 <!-- Reference: https://stackoverflow.com/a/41583025/3626104 -->
 ```vim
-:execute "py3file " . expand("%:p:h") . "/combine.py" | execute "mkspell! " . expand("%:p:h") . "/en-strict"
+:execute "py3file " . expand("%:p:h") . "/combine.py" | execute "mkspell! " . expand("%:p:h") . "/en-strict" | execute "mkspell! " . expand("%:p:h") . "/en-strict.utf-8.add"
 ```
 
 ## Important Files

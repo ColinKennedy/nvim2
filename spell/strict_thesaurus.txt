@@ -30,6 +30,7 @@ previously/in the past
 relies/needs
 strange/odd
 trigger/run
+weird/odd
 
 # Just for fun
 emacs/neovim
