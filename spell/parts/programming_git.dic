@@ -1,0 +1,12 @@
+# Words that are common in git-related code that aren't used elsewhere
+cherry-pick
+main
+master
+merge
+origin
+rebase
+revert
+
+commit
+remote
+upstream

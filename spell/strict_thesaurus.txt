@@ -12,6 +12,8 @@ agnostic/unaware
 algorithm/function
 customize/change
 damaged/broken
+describes/is
+detected/found
 encountered/found
 extract/get
 generate/create

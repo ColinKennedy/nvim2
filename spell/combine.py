@@ -2,7 +2,15 @@ import copy
 import glob
 import os
 
-_CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
+try:
+    _PATH = __file__
+except NameError:
+    # Called from within Vim
+    import vim
+
+    _PATH = vim.current.buffer.name
+
+_CURRENT_DIRECTORY: str = os.path.dirname(_PATH)
 _ENCODING = "ascii"
 
 

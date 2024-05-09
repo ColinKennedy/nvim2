@@ -84,6 +84,18 @@ config/S
 desc
 # END - Generated pseudo_words.dic file
 
+# START - Generated programming_git.dic file
+# Words that are common in git-related code that aren't used elsewhere
+cherry-pick
+commit
+main
+master
+merge
+origin
+rebase
+revert
+# END - Generated programming_git.dic file
+
 # START - Generated job_generic.dic file
 # Words that I use in my line of work
 pipeline/SM
@@ -1799,6 +1811,8 @@ view/AMDRSZG
 viewer/AM
 visibility/IM
 website/S
+
+git
 # END - Generated programming_generic.dic file
 
 # START - Generated programming_logging.dic file
@@ -1933,6 +1947,11 @@ optional/Y
 bar
 foo
 # END - Generated documentation.dic file
+
+# START - Generated personal_programming.dic file
+# Words that I use often that I think people should know
+caller
+# END - Generated personal_programming.dic file
 
 # START - Generated lsp_miscellaneous.dic file
 # Words that come up often in LSP documentation but nowhere else
