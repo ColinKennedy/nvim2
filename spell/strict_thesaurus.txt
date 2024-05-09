@@ -33,4 +33,3 @@ weird/odd
 # Just for fun
 emacs/neovim
 vscode/neovim
-

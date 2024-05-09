@@ -87,13 +87,16 @@ desc
 # START - Generated programming_git.dic file
 # Words that are common in git-related code that aren't used elsewhere
 cherry-pick
-commit
 main
 master
 merge
 origin
 rebase
 revert
+
+commit
+remote
+upstream
 # END - Generated programming_git.dic file
 
 # START - Generated job_generic.dic file

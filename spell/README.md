@@ -4,6 +4,11 @@
 :execute "py3file " . expand("%:p:h") . "/combine.py" | execute "mkspell! " . expand("%:p:h") . "/en-strict"
 ```
 
+## Important Files
+- en-strict.utf-8.add - Define words here so that they will be colored with
+  suggestion highlighting
+- strict_thesaurus.txt - Define the word to replace and its suggested alternative here
+
 
 ## Convert Binary Spell File to ASCII
 <!-- Reference: https://vi.stackexchange.com/a/5422/16073 -->
