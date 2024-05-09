@@ -1,5 +1,8 @@
 # Note: Use forward-slash for "real" lines. All other lines are considered comment lines.
 #
+# Important: The left and right-hand of / must both exist. Otherwise `z=` will
+# not replace the suggestion.
+#
 # Reference: `:help spellsuggest`
 
 # Words that could just be "data"

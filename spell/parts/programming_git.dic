@@ -7,6 +7,6 @@ origin
 rebase
 revert
 
-commit
-remote
+commit/S
+remote/S
 upstream
