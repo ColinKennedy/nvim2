@@ -180,6 +180,10 @@ vim.opt.spelllang = "en_us,cjk"
 vim.api.nvim_create_user_command(
     "SpellboundToggleBuffer2",
     function()
+        if not vim.opt.spell:get() then
+            vim.opt.spell = true
+        end
+
         if require("my_custom.utilities.spelling").in_strict_mode() then
             vim.opt.spelllang = "en_us,cjk"
         else
