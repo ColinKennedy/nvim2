@@ -164,3 +164,6 @@ vim.api.nvim_create_autocmd(
 -- e.g. 'guicursor' sets the terminal cursor style if possible.
 --
 vim.opt.guicursor = "n-v-c:block-Cursor"
+
+-- Allow sentences to start with "E.g.". Don't mark them as bad sentences
+vim.opt.spellcapcheck = [[.?!]\_[\])'"\t ]\+,E.g.,I.e.]]

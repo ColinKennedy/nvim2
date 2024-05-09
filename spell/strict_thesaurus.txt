@@ -14,8 +14,10 @@ customize/change
 damaged/broken
 describes/is
 detected/found
+difficult/hard
 encountered/found
 extract/get
+flows/goes
 generate/create
 generic/general
 immediately/right away
@@ -28,7 +30,6 @@ previously/in the past
 relies/needs
 strange/odd
 trigger/run
-weird/odd
 
 # Just for fun
 emacs/neovim

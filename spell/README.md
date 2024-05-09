@@ -26,10 +26,6 @@ spelldump
 - set spellsuggest to a file with built-in thesaurus options
 - Remove words that I don't need
 
-set spellcapcheck=[.?!]\_[\])'"\t ]\+,E.g.,I.e.
-
-Vim has `:h SpellBad` to show misspelled words. You can replace these words with z= according to your `:h spellsuggest`. But that highlighting only applies to words that are misspelled. What if the word that you want to replace is correctly spelled but you want to replace it with another word? How could you highlight that word to indicate "This word may be correct but there's a spelling suggestion that can be applied on this word". Ideally it'd be like `SpellSuggest` highlight group that I can control. Anyone know if there's a performant way to do that?
-
 
 ### Missing words
 re-apply
@@ -38,13 +34,6 @@ indentation
 
 
 ### Thesaurus
-Check my files for useful words
-
-difficult -> hard
-control -> drive
-equate -> equals
-flow -> goes
-
 TODO Figure this out
 
 Measuring complexity
