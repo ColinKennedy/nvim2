@@ -1,5 +1,9 @@
 - I want a ]f for moving between functions again. And ]m
 
+- A mapping that iterates over spelling suggestions
+
+- Remove virtual text for LSP / linter errors
+
 - ]q and [q sequencing is completely broken
  - repro:
   - /home/selecaoone/repositories/personal/.config/nvim/bundle/git-extended-statusline/lua/git-extended-statusline/_core/display.lua
