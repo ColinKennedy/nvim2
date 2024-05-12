@@ -17,6 +17,7 @@ customize/change
 damaged/broken
 describes/is
 detected/found
+determine/decide
 difficult/hard
 encountered/found
 extract/get

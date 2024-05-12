@@ -94,8 +94,8 @@ origin
 rebase
 revert
 
-commit
-remote
+commit/S
+remote/S
 upstream
 # END - Generated programming_git.dic file
 
@@ -1860,9 +1860,13 @@ initialize/BDSGRZ
 meaning/M
 means/S
 need/MDSG
+odd
 session/MS
 temporary
 user/MS
+
+# As in foo-ish
+ish
 # END - Generated personal_miscellaneous.dic file
 
 # START - Generated programming_extras.dic file
@@ -1925,6 +1929,9 @@ render/G
 cook/ADGS
 
 crowd/SMDG
+
+ascii
+unicode
 # END - Generated personal_work.dic file
 
 # START - Generated c_keywords.dic file
