@@ -22,6 +22,7 @@ determine/decide
 difficult/hard
 encountered/found
 extract/get
+factor/part
 flows/goes
 generate/create
 generic/general
@@ -30,9 +31,20 @@ large/big
 miscellaneous/various
 modify/change
 necessary/needed
+observe/check
+observe/see
+occur/happen
+operate/run
+particular/specific
+perhaps/maybe
+poor/bad
 prepare/ready
 previously/in the past
 relies/needs
+require/need
+segment/part
+separate/split
+significant/important
 strange/odd
 tricky/odd
 trigger/run
