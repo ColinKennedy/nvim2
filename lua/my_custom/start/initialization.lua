@@ -167,3 +167,9 @@ vim.opt.guicursor = "n-v-c:block-Cursor"
 
 -- Allow sentences to start with "E.g.". Don't mark them as bad sentences
 vim.opt.spellcapcheck = [[.?!]\_[\])'"\t ]\+,E.g.,I.e.]]
+
+-- Don't auto-resize buffers when a buffer is opened or closed
+--
+-- Reference: https://stackoverflow.com/a/33388054/3626104
+--
+vim.opt.equalalways = false
