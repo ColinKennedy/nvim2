@@ -431,7 +431,16 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>tsp",
-    function() vim.opt.spell = not(vim.opt.spell:get()) end,
+    function()
+        local value = not(vim.opt_local.spell:get())
+        vim.opt_local.spell = value
+
+        if value then
+            print("Spelling Enabled.")
+        else
+            print("Spelling Disabled.")
+        end
+    end,
     {
         desc="[t]oggle all [s]trict spelling mistakes.",
         silent=true,
