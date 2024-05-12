@@ -26,7 +26,14 @@ return {
         "ColinKennedy/vim-qf",
         branch = "custom_edits",
         config = function() require("my_custom.plugins.vim_qf.configuration") end,
-        ft = "qf"
+        ft = "qf",
+        keys = {
+            {
+                "<leader>tq",
+                "<Plug>(qf_qf_toggle_stay)",
+                desc="[t]oggle [q]uickfix window."
+            },
+        }
     },
 
     -- Allow the quickfix buffer to be directly editted. Finally!

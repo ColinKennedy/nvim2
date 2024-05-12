@@ -217,7 +217,8 @@ Legend
 
 | 1 |      2       |                           3                               |
 | - | ------------ | --------------------------------------------------------- |
-| n | <leader>ct   | Change the title of the Quickfix buffer                   |
+| n | <leader>ct   | [c]hange the [t]itle of the Quickfix buffer               |
+| n | <leader>tq   | [t]oggle [q]uickfix window (requires vim-qf).             |
 
 
 ================================================================================
