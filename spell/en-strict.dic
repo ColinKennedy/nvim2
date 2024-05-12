@@ -367,12 +367,10 @@ gun/SM
 had
 hair/MDS
 half/M
-hand/UDGS
 happen/SDGJ
 happy/URTP
 hard/NRYXTP
 has
-hat/ZGSMDR
 have/MGS
 he/M
 head/MDRZGJS
@@ -482,7 +480,6 @@ man/USY
 many/M
 map/AS
 mark/AMDSG
-market/MDRZGBS
 mass/MDSGV
 master/ADGS
 match/AMS
@@ -817,7 +814,6 @@ toward/S
 town/MS
 track/ZGSMDR
 trade/JDRSMZG
-train/ZGSMDRB
 tree/MDS
 triangle/SM
 trip/MYS
@@ -840,7 +836,6 @@ value/CAGSD
 vary/DSG
 very/RT
 view/AMDRSZG
-visit/ASGD
 wait/MDRZGS
 walk/MDRZGS
 wall/MDGS
@@ -1153,6 +1148,7 @@ impact/SMDG
 important/Y
 in/ASM
 include/GDS
+including
 instead
 interest/ESMD
 interesting/Y
@@ -1251,7 +1247,6 @@ nothing/PSM
 notice/MGDS
 now/M
 number/ASDG
-occur/AS
 of
 off/SZGDRJ
 offer/JGMD
@@ -1284,11 +1279,9 @@ per
 percent/MS
 perfect/PTGMDRYS
 performance/SM
-perhaps
 period/MS
 person/UMS
 personal/MYS
-phone/DSMG
 photo/SGMD
 physical/MYS
 pick/MDRSJZG
@@ -1302,7 +1295,6 @@ player/SM
 please/EDSG
 point/MDRSZG
 policy/SM
-poor/TRYP
 position/CKEMS
 possible/SM
 post/ZGMDRSJ
@@ -1366,7 +1358,6 @@ return/S
 right/MDRYSPTG
 rise/JMZGRS
 risk/GMDS
-road/IMS
 role/MS
 room/MDRZGS
 rule/MZGJDRS
@@ -1689,6 +1680,7 @@ visibility/IM
 website/S
 
 git
+shell/S
 # END - Generated programming_generic.dic file
 
 # START - Generated programming_logging.dic file
@@ -1805,8 +1797,9 @@ cook/ADGS
 crowd/SMDG
 
 ascii
+material/SMY
+movie/SM
 unicode
-
 wrap
 wrapper
 # END - Generated personal_work.dic file
@@ -2138,6 +2131,10 @@ vars
 xrange
 zip/US
 # END - Generated python_keywords.dic file
+
+# START - Generated cpp_generic.dic file
+operator/S
+# END - Generated cpp_generic.dic file
 
 # START - Generated lua_keywords.dic file
 # NOTE: You may see /S or other modifications to the base keyword. This is because,

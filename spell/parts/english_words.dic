@@ -465,7 +465,6 @@ paint/SZGJMDR
 pair/AMDSG
 parent/GMDS
 part/CDSG
-particular/SMY
 party/GDSM
 pass/M
 past/AMS
@@ -473,7 +472,6 @@ path/M
 pattern/SMDG
 pay/ASGBL
 people/MGDS
-perhaps
 period/MS
 person/UMS
 phrase/AGDS
@@ -705,7 +703,7 @@ triangle/SM
 trip/MYS
 trouble/DSMG
 truck/SZGMDR
-true .
+true
 try/AGDS
 turn/AMDRSZG
 twenty/SMH
@@ -722,7 +720,6 @@ value/CAGSD
 vary/DSG
 very/RT
 view/AMDRSZG
-vowel/SM
 wait/MDRZGS
 walk/MDRZGS
 wall/MDGS
@@ -1166,11 +1163,9 @@ per
 percent/MS
 perfect/PTGMDRYS
 performance/SM
-perhaps
 period/MS
 person/UMS
 personal/MYS
-phone/DSMG
 photo/SGMD
 physical/MYS
 pick/MDRSJZG
