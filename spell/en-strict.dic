@@ -981,7 +981,7 @@ word/ADSG
 work/ADJSG
 world/SM
 would/S
-write/S
+write/SDG
 written/AU
 wrong/STGMPDRY
 wrote/A
@@ -1846,6 +1846,7 @@ IIRC
 
 # START - Generated personal_miscellaneous.dic file
 # Words that I tend to use that may not be that common
+assume/SDG
 clusive/QI
 combine/ADSG
 convert/BDGRS
@@ -1932,6 +1933,9 @@ crowd/SMDG
 
 ascii
 unicode
+
+wrap
+wrapper
 # END - Generated personal_work.dic file
 
 # START - Generated c_keywords.dic file
@@ -1961,6 +1965,7 @@ foo
 # START - Generated personal_programming.dic file
 # Words that I use often that I think people should know
 caller
+nest/DSG
 # END - Generated personal_programming.dic file
 
 # START - Generated lsp_miscellaneous.dic file
@@ -2027,6 +2032,7 @@ module/MS
 patch/EGMDS
 path/S
 plug/US
+queue/SDG
 stackoverflow
 standard/MS
 stderr
@@ -2282,7 +2288,9 @@ visual
 
 # START - Generated english_words2.dic file
 # Extra words that I think are common but might not be
+anymore
 skip/DS
+split/SG
 # END - Generated english_words2.dic file
 
 # START - Generated abbreviations_programming.dic file
