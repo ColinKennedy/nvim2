@@ -30,6 +30,7 @@ require("nvim-treesitter.configs").setup {
         "cpp",
         "diff",
         "lua",
+        "luadoc",
         "python",
         "query",
         "usd",
