@@ -24,6 +24,7 @@ vim.opt.runtimepath:append(install_path)
 
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
+        "asm",
         "c",
         "cmake",
         "cpp",
