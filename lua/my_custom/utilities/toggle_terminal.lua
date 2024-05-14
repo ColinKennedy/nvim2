@@ -453,13 +453,6 @@ end
 
 --- Add keymap(s) for interacting with the terminals.
 function M.setup_keymaps()
-    vim.keymap.set(
-        "n",
-        "<Space>T",
-        ":ToggleTerminal<CR>",
-        {desc="Open / Close a terminal at the bottom of the tab", silent=true}
-    )
-
     vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]])
     vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]])
     vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
