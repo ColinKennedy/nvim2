@@ -29,6 +29,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+local _CURRENT_DIRECTORY = vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand("<sfile>:p")), ":h")
+
 -- Add extra autocommands before lazy.nvim is called so that they can be used for plug-ins
 require("my_custom.start.auto_commands_pre")
 
@@ -81,22 +83,62 @@ local thesaurus = vim.fs.joinpath(_CURRENT_DIRECTORY, "spell", "strict_thesaurus
 vim.o.spellsuggest="file:" .. thesaurus
 
 
+-- TODO: Remove all of this later
 -- local client = vim.lsp.start_client{
 --     name = "usd_lsp",
---     cmd = { "/home/selecaoone/repositories/usd-lsp/build/src/usd_lsp" },
+--     cmd = { "/home/selecaoone/repositories/usd_lsp/build/src/usd_lsp" },
 -- }
 --
 -- if not client then
 --     vim.notify("No usd_lsp client could be created.")
 -- end
 --
+-- vim.api.nvim_create_autocmd(
+--     "FileType",
+--     {
+--         -- pattern = "usd",
+--         callback = function()
+--             vim.lsp.buf_attach_client(0, client)
 --
+--             vim.keymap.set(
+--                 "n",
+--                 "gd",
+--                 vim.lsp.buf.definition,
+--                 {
+--                     buffer=buffer,
+--                     desc="[g]o to [d]efinition of the function / class.",
+--                 }
+--             )
+--         end
+--     }
+-- )
+
 -- vim.api.nvim_create_autocmd(
 --     "FileType",
 --     {
 --         pattern = "usd",
 --         callback = function()
---             print('DEBUGPRINT[1]: init.lua:175: client=' .. vim.inspect(client))
+--             vim.lsp.set_log_level("TRACE")
+--
+--             local client = vim.lsp.start_client{
+--                 name = "usd_lsp",
+--                 cmd = { "/home/selecaoone/repositories/usd_lsp/build/src/usd_lsp" },
+--             }
+--
+--             if not client then
+--                 vim.notify("No usd_lsp client could be created.")
+--             end
+--
+--             vim.keymap.set(
+--                 "n",
+--                 "gd",
+--                 vim.lsp.buf.definition,
+--                 {
+--                     buffer=buffer,
+--                     desc="[g]o to [d]efinition of the function / class.",
+--                 }
+--             )
+--
 --             vim.lsp.buf_attach_client(0, client)
 --         end
 --     }
