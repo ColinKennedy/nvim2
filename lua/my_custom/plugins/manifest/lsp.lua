@@ -21,7 +21,7 @@ return {
         "hrsh7th/nvim-cmp",
         config = function() require("my_custom.plugins.nvim_cmp.configuration") end,
         dependencies = require("my_custom.plugins.nvim_cmp.dependencies"),
-        event = { "InsertCharPre" },
+        event = { "InsertEnter" },
         -- TODO: Possibly re-add tags if this issue ever addresses it.
         --
         -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/1830

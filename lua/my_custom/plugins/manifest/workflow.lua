@@ -549,7 +549,7 @@ return {
             require("telescope-session-viewer").setup()
             require("telescope").load_extension("session_viewer")
         end,
-        dependencies = {"tpope/vim-obsession", "nvim-telescope/telescope.nvim"},
+        dependencies = { "nvim-telescope/telescope.nvim"},
         event = {"SessionWritePost"},
         keys = {
             {
