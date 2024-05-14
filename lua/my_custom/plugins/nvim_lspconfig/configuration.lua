@@ -1,3 +1,6 @@
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({})
+
 local on_attach = function(_, buffer)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set(
