@@ -7,6 +7,7 @@ return {
             "folke/neodev.nvim",  -- Needed for Neovim LSP auto-complete
             "williamboman/mason.nvim",
         },
+        event = { "BufReadPre", "BufNewFile" },
     },
 
     {
