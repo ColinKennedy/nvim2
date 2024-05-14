@@ -25,6 +25,8 @@ local bordered = cmp.config.window.bordered(
     { winhighlight="Normal:Normal,CursorLine:Visual,Search:None" }
 )
 
+local luasnip = require("luasnip")
+
 cmp.setup(
     {
         -- Reference: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#show-devicons-as-kind-field
@@ -35,76 +37,47 @@ cmp.setup(
         },
 
         mapping = {
+            -- Moving through completions
             ["<C-p>"] = cmp.mapping.select_prev_item(),
             ["<C-n>"] = cmp.mapping.select_next_item(),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+
+            -- Accept ([y]es) the completion.
+            --
+            -- This will auto-import if your LSP supports it.
+            -- This will expand snippets if the LSP sent a snippet.
+            --
+            ['<C-enter>'] = cmp.mapping.confirm { select = true },
+
+            -- <C-k> Move to the previous snippet jump location
+            -- <C-j> Move to the next snippet jump location
+            ['<C-j>'] = cmp.mapping(
+                function()
+                    if luasnip.expand_or_locally_jumpable() then
+                        luasnip.expand_or_jump()
+                    end
+                end,
+                { 'i', 's' }
+            ),
+            ['<C-k>'] = cmp.mapping(
+                function()
+                    if luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
+                    end
+                end,
+                { 'i', 's' }
+            ),
+
+            -- Scrolling up and down pop-up documentation
+            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-Space>"] = function(fallback)
+
+            ["<C-Space>"] = function(_)
                 -- Don't choose any completion item and use raw input text, instead
                 --
                 -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/429#issuecomment-954121524
                 --
                 cmp.abort()
             end,
-            ["<Space>"] = function(fallback)
-                -- Use whatever current text (completed or not) exists and stop completing
-                local visible = cmp.visible()
-                local has_entry = cmp.get_selected_entry() ~= nil
-
-                cmp.close()
-
-                -- If the completion menu pops up as you're typing but you're
-                -- ignoring the completion menu, interpret <Space> just as
-                -- space. But if the completion menu is up and an entry is
-                -- selected then assume that the user was attempting to do
-                -- auto-completion and DON'T insert a <Space> to keep it
-                -- consistent with the <C-Space> mapping
-                --
-                if not visible or (visible and not has_entry)
-                then
-                    fallback()
-                end
-            end,
-            ["<CR>"] = cmp.mapping.confirm {
-                -- Choose the currently selected completion item
-                behavior = cmp.ConfirmBehavior.Insert,  -- Don't delete the word to the right
-                select = false,
-            },
-            ["<Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                -- expand_or_locally_jumpable prevents the snippet from being re-entered.
-                --
-                -- Reference: https://github.com/L3MON4D3/LuaSnip/issues/799
-                --
-                -- elseif require("luasnip").expand_or_jumpable() then
-                --
-                -- There's apparently other approaches that do the same thing which I haven't tried.
-                --
-                -- e.g. ``region_check_events`` from https://github.com/L3MON4D3/LuaSnip/issues/770
-                -- e.g. ``leave_snippet`` from https://github.com/L3MON4D3/LuaSnip/issues/258#issuecomment-1011938524
-                --
-                elseif require("luasnip").expand_or_locally_jumpable() then
-                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-                else
-                    fallback()
-                end
-            end, {
-                "i",
-                "s",
-            }),
-            ["<S-Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                elseif require("luasnip").jumpable(-1) then
-                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-                else
-                    fallback()
-                end
-            end, {
-                "i",
-                "s",
-            }),
         },
 
         sources = cmp.config.sources(
