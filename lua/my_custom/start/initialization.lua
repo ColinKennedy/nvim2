@@ -1,3 +1,5 @@
+local wsl = require("my_custom.utilities.wsl")
+
 vim.cmd[[command! W :SudoWrite]]
 
 vim.opt.ttyfast = true  -- Makes certain terminals scroll faster
