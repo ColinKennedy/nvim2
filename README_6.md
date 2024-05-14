@@ -1,3 +1,39 @@
+https://www.amazon.com/Luxrite-Equivalent-Dimmable-Standard-Enclosed/dp/B07TXJB1R3/ref=sr_1_6?crid=XKTRWGIUYT89&dib=eyJ2IjoiMSJ9.4JoDIA8kPsr-W2mLCtJYQcKBu4SjlM0I92mPnsrdliAkSkDsIFhCSCRfErgBuCijEsdGG3t3DwfuR9W-IWTGcfa4n8q67inl_uBTY8b-K6p8IESigvNcWZAMQZGjRqpyZYGJtclVAYmFDo9bmof_AXiCMV0KkdkKoAsURORpCRDd14fLnxRmT4GpTidoUQeXqiCvJB8Xo7g-rzmKNyaZ3Q7DG0ThhhchCO76A9Sdm_5aErO5dSW852-u_Qg_9Cob_Rb4kO0glQjQjAZ08Wgh6jC0JfqO8p8Vyo6d0I9Mty0.f8NQ3LzNWY97mNGufT2HOpJijk5uqWVuzrIv6KVmlWw&dib_tag=se&keywords=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens&qid=1715636611&refinements=p_n_feature_nineteen_browse-bin%3A9692450011%2Cp_n_feature_seven_browse-bin%3A33240570011&rnid=33240560011&s=hi&sprefix=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens%2Caps%2C272&sr=1-6&th=1
+
+
+
+WSL auto-translate -
+ - C:\Users\korinkite\notes\video_notes\the_many_vim_forks.md
+  - should go to /mnt/c/
+ - should work with the `gf` and other commands
+
+- spellbound v2
+ - write a guide
+- git-extended-statusline
+
+
+
+I have coworkers who speak English as a second or even third language. To make my docstrings and documentation easier to understand, I added a restriction - "You may only use 1000 unique words" and made myself a list. Still, even though I made that list, I accidentally would still write words like "detected" instead of "found", "generate" instead of "create", "extract" instead of "get", etc. Old habits die hard.
+
+spellbound.nvim exists in order to:
+
+- Help point out hard words and suggest easier words instead
+- Jump to these suggested words easily
+- View suggestions entire projects
+
+A nice side effect of this plugin - if docstrings are easier for second/third English speakers, chances are its even easier to read for native speakers too.
+
+I have a setup that works well but spellbound.nvim is an attempt to make a generic plugin
+that others can use. If you try this out, please let me know how it goes for you. Thanks!
+
+
+
+
+
+- Update commands and remaps documentation
+
+https://github.com/jakobkhansen/journal.nvim
+
 - I want a ]f for moving between functions again. And ]m
 
 - A mapping that iterates over spelling suggestions
@@ -8,6 +44,23 @@
  - repro:
   - /home/selecaoone/repositories/personal/.config/nvim/bundle/git-extended-statusline/lua/git-extended-statusline/_core/display.lua
   - search _LOGGER and ]q / [q around
+
+https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua#L890-L908
+
+
+https://stackoverflow.com/questions/44237255/automatic-display-of-git-status-in-linux-bash
+
+https://github.com/ohmyzsh/ohmyzsh
+
+https://github.com/romkatv/gitstatus
+
+https://github.com/magicmonty/bash-git-prompt
+
+```
+Mode: normal
+Mapping: <leader>ts
+Changes the user's current buffer for a terminal buffer (toggles between the two)
+```
 
 
 https://www.reddit.com/r/neovim/comments/1ckvoxr/fzflua_added_builtin_support_for_vscode_like_path/
