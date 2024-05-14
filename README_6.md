@@ -2,14 +2,14 @@ https://www.amazon.com/Luxrite-Equivalent-Dimmable-Standard-Enclosed/dp/B07TXJB1
 
 
 
-WSL auto-translate -
- - C:\Users\korinkite\notes\video_notes\the_many_vim_forks.md
-  - should go to /mnt/c/
- - should work with the `gf` and other commands
-
 - spellbound v2
  - write a guide
 - git-extended-statusline
+
+- finalize telescope-session-viewer
+- finalize toggleterminal
+ - fix when it accidentally closes sometimes
+ - fix the insert on-move issue
 
 
 
