@@ -40,3 +40,15 @@ endfunction
 command! -nargs=1 -complete=customlist,searcher#get_current_directory_options Cedit :call s:edit_from_current_file_directory(<q-args>)
 " Create a new file from the point of view of the currently-opened file.
 command! -nargs=1 -complete=customlist,searcher#get_current_directory_options CEdit :call s:edit_from_current_file_directory(<q-args>)
+
+" A modified Dispatch command which takes into account the current
+" `errorformat`.  It's useful for parsing output logs for any issues.
+"
+" Important: This command requires vim-dispatch to be installed.
+"
+"
+if &rtp =~ 'vim-dispatch'
+    command! -bang -nargs=* -range=-1 -complete=customlist,dispatch#command_complete DispatchSilentSuccess
+          \ execute dispatch#compile_command(<bang>0, <q-args>,
+          \   <count> < 0 || <line1> == <line2> ? <count> : 0, '<mods>', 1)
+endif
