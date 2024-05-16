@@ -10,6 +10,7 @@ content/data
 information/data
 
 # Miscellaneous
+activate/run
 actual/real
 adjust/change
 agnostic/unaware
