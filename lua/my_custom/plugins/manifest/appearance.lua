@@ -97,7 +97,8 @@ return {
     -- plug-in as long as it's harmless.
     --
     {
-        "gelguy/wilder.nvim",
+        "Gelio/wilder.nvim",
+        branch = "fix-last-arg-completion-for-lua",
         config = function() require("my_custom.plugins.wilder.configuration") end,
         dependencies = {"romgrk/fzy-lua-native"},
         -- Reference: https://github.com/gelguy/wilder.nvim#faster-startup-time

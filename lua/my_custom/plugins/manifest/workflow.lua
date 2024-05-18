@@ -457,7 +457,7 @@ return {
     -- Use <leader>cid to decrement semver / dates
     --
     {
-        "monaqa/dial.nvim",
+        "ColinKennedy/dial.nvim",
         config = function() require("my_custom.plugins.dial.configuration") end,
         keys = require("my_custom.plugins.dial.keys"),
         version = "0.*",
