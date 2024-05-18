@@ -54,3 +54,6 @@ weird/odd
 # Just for fun
 emacs/neovim
 vscode/neovim
+
+# Words that I think are more generally applicable to programmers (and are simple)
+pass/send

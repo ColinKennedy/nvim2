@@ -56,21 +56,8 @@ Fry Readability
 
 
 ### TODO
-- Is there a way to visualize if a word has a spelling suggestion?
-- Check if I can reorder flags
 - Try out https://github.com/kamykn/spelunker.vim
 - Check out https://github.com/psliwka/vim-dirtytalk
 - https://github.com/ron89/thesaurus_query.vim
 - https://www.gutenberg.org/files/3202/files/
 - https://github.com/rhysd/vim-grammarous
-
-
-
-#### Plugin Idea
-- Add a "full" dictionary and make it swappable
-- Adds setlocal spell if the buffer has a compatible treesitter parser
-- Combiner script on start-up that you can turn on / off
-- Add spell options for code variable(s)?
-- Bundles cmp + thesaurus options
-- Spell level switching (relaxed, strict)
-- Spell categories - including variable names, too?

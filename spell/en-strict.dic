@@ -1592,6 +1592,7 @@ export/BGDS
 feature/S
 folder/S5
 function/S
+git
 hidden
 hide/SGU
 http
@@ -1629,6 +1630,7 @@ path/DS
 permalink/DS
 plug/US
 positive/MYPS
+prefix/SDG
 prevent/DIS
 query/DSMG
 raw/PTMR
@@ -1645,9 +1647,11 @@ security/S
 select/CSGVD
 setting/M
 shell/MDRSG
+shell/S
 standard/MS
 stderr
 stdout
+suffix/SDG
 symlink/DS
 sync/MDSG
 syntax/M
@@ -1666,9 +1670,6 @@ view/AMDRSZG
 viewer/AM
 visibility/IM
 website/S
-
-git
-shell/S
 # END - Generated programming_generic.dic file
 
 # START - Generated programming_logging.dic file
