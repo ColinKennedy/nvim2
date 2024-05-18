@@ -465,7 +465,7 @@ return {
 
     -- Use :DiffviewOpen to resolve git merge conflicts
     {
-        "sindrets/diffview.nvim",
+        "ColinKennedy/diffview.nvim",
         cmd = {"DiffviewOpen"},
     },
 

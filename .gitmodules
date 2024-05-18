@@ -297,7 +297,7 @@
 	url = git@github.com:ralismark/opsort.vim.git
 [submodule "bundle/diffview.nvim"]
 	path = bundle/diffview.nvim
-	url = git@github.com:sindrets/diffview.nvim.git
+	url = git@github.com:ColinKennedy/diffview.nvim.git
 [submodule "bundle/stay-centered.nvim"]
 	path = bundle/stay-centered.nvim
 	url = git@github.com:arnamak/stay-centered.nvim.git
