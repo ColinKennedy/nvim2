@@ -70,26 +70,55 @@ vim.cmd[[highlight LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE ct
 vim.cmd[[highlight LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
 
 -- Add icons for the left-hand sign gutter
-vim.fn.sign_define('DiagnosticSignError', {
-    text='',  -- Reference: www.nerdfonts.com/cheat-sheet
-    numhl='DiagnosticSignError',
-    texthl="DiagnosticSignError",
-})
-vim.fn.sign_define('DiagnosticSignWarn', {
-    text='⚠',  -- Reference: www.nerdfonts.com/cheat-sheet
-    numhl='DiagnosticSignWarn',
-    texthl="DiagnosticSignWarn"
-})
-vim.fn.sign_define('DiagnosticSignInfo', {
-    text='',  -- Reference: www.nerdfonts.com/cheat-sheet
-    numhl='DiagnosticSignInfo',
-    texthl="DiagnosticSignInfo"
-})
-vim.fn.sign_define('DiagnosticSignHint', {
-    text='',  -- Reference: www.nerdfonts.com/cheat-sheet
-    numhl='DiagnosticSignHint',
-    texthl="DiagnosticSignHint"
-})
+if vim.fn.has("nvim-0.10") then
+    vim.diagnostic.config(
+        {
+            signs = {
+                numhl = {
+                    [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                    [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                    [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                    [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                },
+                text = {
+                    -- Reference: www.nerdfonts.com/cheat-sheet
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.HINT] = "",
+                    [vim.diagnostic.severity.INFO] = "",
+                    [vim.diagnostic.severity.WARN] = "⚠",
+                },
+                texthl = {
+                    [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                    [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                    [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                    [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                },
+            }
+        }
+    )
+else
+    -- NOTE: Remove this once we've dropped Neovim 0.9 support
+    vim.fn.sign_define('DiagnosticSignError', {
+        text='',  -- Reference: www.nerdfonts.com/cheat-sheet
+        numhl='DiagnosticSignError',
+        texthl="DiagnosticSignError",
+    })
+    vim.fn.sign_define('DiagnosticSignWarn', {
+        text='⚠',  -- Reference: www.nerdfonts.com/cheat-sheet
+        numhl='DiagnosticSignWarn',
+        texthl="DiagnosticSignWarn"
+    })
+    vim.fn.sign_define('DiagnosticSignInfo', {
+        text='',  -- Reference: www.nerdfonts.com/cheat-sheet
+        numhl='DiagnosticSignInfo',
+        texthl="DiagnosticSignInfo"
+    })
+    vim.fn.sign_define('DiagnosticSignHint', {
+        text='',  -- Reference: www.nerdfonts.com/cheat-sheet
+        numhl='DiagnosticSignHint',
+        texthl="DiagnosticSignHint"
+    })
+end
 
 -- Add a bordered frame around the diagnostics window
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
