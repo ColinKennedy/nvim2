@@ -518,7 +518,8 @@ return {
 
     -- Run unittests in a simple GUI. It has auto-watch capabilities and more!
     {
-        "nvim-neotest/neotest",
+        "ColinKennedy/neotest",
+        branch = "fixed_deprecation_notice",
         config = require("my_custom.plugins.neotest.configuration"),
         cmd = {
             "Neotest",
