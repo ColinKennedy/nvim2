@@ -17,7 +17,6 @@ agnostic/unaware
 algorithm/function
 customize/change
 damaged/broken
-describes/is
 detected/found
 determine/decide
 difficult/hard
@@ -25,6 +24,7 @@ encountered/found
 extract/get
 factor/part
 flows/goes
+frequently/often
 generate/create
 generic/general
 immediately/right away

@@ -46,7 +46,7 @@ cmp.setup(
             -- This will auto-import if your LSP supports it.
             -- This will expand snippets if the LSP sent a snippet.
             --
-            ['<C-enter>'] = cmp.mapping.confirm { select = true },
+            ['<C-y>'] = cmp.mapping.confirm { select = true },
 
             -- <C-k> Move to the previous snippet jump location
             -- <C-j> Move to the next snippet jump location
