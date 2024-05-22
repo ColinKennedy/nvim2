@@ -73,6 +73,10 @@ vim.cmd[[highlight LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=und
 if vim.fn.has("nvim-0.10") then
     vim.diagnostic.config(
         {
+            -- Reference: https://github.com/neovim/neovim/commit/ad191be65e2b1641c181506166b1037b548d14a8
+            -- Reference: https://www.reddit.com/r/neovim/comments/10jh2jm/comment/j5koxew/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+            --
+            severity_sort = true,
             signs = {
                 numhl = {
                     [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
