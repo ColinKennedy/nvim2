@@ -112,10 +112,10 @@ return {
         --     A parser can also be loaded manually using a full path: >
         --         vim.treesitter.require_language("python", "/path/to/python.so")
         --
+        -- NOTE: Don't lazy-load nvim-treesitter or docstring folds in Python will break
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function() require("my_custom.plugins.nvim_treesitter.configuration") end,
-        lazy = true,
         -- TODO: Re-add this once tree-sitter-disassembly is incorporated
         -- version = "0.*",
     },
