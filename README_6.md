@@ -1,16 +1,35 @@
+- Get mypy working
+- right-align the LSP diagnostics. Again.
+
+- Try out - https://www.reddit.com/r/neovim/comments/1cxbegq/minigit_git_integration_with_tracking_gitrelated/
+
+https://github.com/rachartier/tiny-devicons-auto-colors.nvim
+https://www.reddit.com/r/neovim/comments/1cu6qd0/deviconcolorscheme_apply_your_colorscheme_in/
+
+https://www.reddit.com/r/neovim/comments/1cv2tha/adding_this_to_telescope_config_made_it_look_a/
+
 https://www.amazon.com/Luxrite-Equivalent-Dimmable-Standard-Enclosed/dp/B07TXJB1R3/ref=sr_1_6?crid=XKTRWGIUYT89&dib=eyJ2IjoiMSJ9.4JoDIA8kPsr-W2mLCtJYQcKBu4SjlM0I92mPnsrdliAkSkDsIFhCSCRfErgBuCijEsdGG3t3DwfuR9W-IWTGcfa4n8q67inl_uBTY8b-K6p8IESigvNcWZAMQZGjRqpyZYGJtclVAYmFDo9bmof_AXiCMV0KkdkKoAsURORpCRDd14fLnxRmT4GpTidoUQeXqiCvJB8Xo7g-rzmKNyaZ3Q7DG0ThhhchCO76A9Sdm_5aErO5dSW852-u_Qg_9Cob_Rb4kO0glQjQjAZ08Wgh6jC0JfqO8p8Vyo6d0I9Mty0.f8NQ3LzNWY97mNGufT2HOpJijk5uqWVuzrIv6KVmlWw&dib_tag=se&keywords=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens&qid=1715636611&refinements=p_n_feature_nineteen_browse-bin%3A9692450011%2Cp_n_feature_seven_browse-bin%3A33240570011&rnid=33240560011&s=hi&sprefix=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens%2Caps%2C272&sr=1-6&th=1
 
+https://www.reddit.com/r/neovim/comments/1cxgfqk/mestizonvim_a_dark_theme_for_those_who_dont_leave/
 
+Consider
+https://github.com/brenoprata10/nvim-highlight-colors
+
+- Add back in "dil" textobjects
 
 - spellbound v2
  - write a guide
 - git-extended-statusline
+
+- https://github.com/MeanderingProgrammer/markdown.nvim
 
 - finalize telescope-session-viewer
 - finalize toggleterminal
  - fix when it accidentally closes sometimes
  - fix the insert on-move issue
 
+- https://github.com/daniilrozanov/cmake.nvim
+ - async loading?
 
 
 I have coworkers who speak English as a second or even third language. To make my docstrings and documentation easier to understand, I added a restriction - "You may only use 1000 unique words" and made myself a list. Still, even though I made that list, I accidentally would still write words like "detected" instead of "found", "generate" instead of "create", "extract" instead of "get", etc. Old habits die hard.
