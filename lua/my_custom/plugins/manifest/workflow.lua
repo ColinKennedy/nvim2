@@ -303,7 +303,7 @@ return {
     --                     return
     --                 end
     --
-    --                 for _, client in ipairs(vim.lsp.get_active_clients())
+    --                 for _, client in ipairs(vim.lsp.get_clients())
     --                 do
     --                     local caps = client.server_capabilities
     --

@@ -6,7 +6,7 @@ local M = {}
 --
 function M.print_lsp_capabilities()
     local buffer = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_active_clients { bufnr = buffer }
+    local clients = vim.lsp.get_clients { bufnr = buffer }
 
     for _, client in pairs(clients)
     do
@@ -48,7 +48,7 @@ end
 -- Reference: https://gist.github.com/Lamarcke/36e086dd3bb2cebc593d505e2f838e07
 --
 local function get_attached_clients()
-    local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 
     if #buf_clients == 0 then
         return "LSP Inactive"
