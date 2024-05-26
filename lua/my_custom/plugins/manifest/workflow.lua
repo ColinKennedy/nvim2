@@ -93,7 +93,7 @@ return {
     -- Auto-generate docstrings, using ``<leader>id``
     {
         "ColinKennedy/neogen",
-        branch = "combined_branch",
+        branch = "combined_branch_002",
         config = function() require("my_custom.plugins.neogen.configuration") end,
         cmd = { "Neogen" },
         dependencies = {
