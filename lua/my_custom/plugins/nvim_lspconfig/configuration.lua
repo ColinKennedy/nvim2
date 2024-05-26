@@ -120,6 +120,11 @@ local lspconfig = require("lspconfig")
 lspconfig.basedpyright.setup {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
     on_attach = on_attach,
+    settings = {
+        basedpyright = {
+            analysis = { diagnosticMode = "off", typeCheckingMode = "off" },
+        }
+    }
 }
 
 lspconfig.clangd.setup {
