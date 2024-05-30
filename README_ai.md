@@ -8,8 +8,6 @@ https://github.com/Exafunction/codeium.vim
 https://github.com/HPRIOR/telescope-gpt
 https://github.com/Lommix/ollamachad.nvim
 https://github.com/Robitx/gp.nvim
-https://github.com/Robitx/gp.nvim/
-https://github.com/Robitx/gp.nvim/tree/main
 https://github.com/ShoofLLC/vim-openai
 https://github.com/TamaMcGlinn/vim-termhelp
 https://github.com/WhiteBlackGoose/gpt4all.nvim

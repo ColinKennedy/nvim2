@@ -53,6 +53,8 @@ https://github.com/rizsotto/Bear
 
 https://github.com/emmanueltouzery/decisive.nvim?tab=readme-ov-file
 
+https://github.com/Fildo7525/reloader.nvim
+
 
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim

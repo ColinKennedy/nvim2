@@ -1,5 +1,7 @@
-- Get mypy working
+- Apparently neodev isn't needed anymore - https://github.com/neovim/neovim/pull/24592
+
 - right-align the LSP diagnostics. Again.
+ - Or disable
 
 - Try out - https://www.reddit.com/r/neovim/comments/1cxbegq/minigit_git_integration_with_tracking_gitrelated/
 
