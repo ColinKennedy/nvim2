@@ -543,6 +543,38 @@ return {
         keys = require("my_custom.plugins.neotest.keys"),
     },
 
+    -- Extract / Inline variables and functions
+    {
+        "ThePrimeagen/refactoring.nvim",
+        config = true,
+        dependencies = {
+            "ColinKennedy/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        keys = {
+            {
+                mode = {"n", "x"},
+                "<leader>rif",
+                function() require("refactoring").refactor("Inline Function") end,
+            },
+            {
+                mode = {"x"},
+                "<leader>rxf",
+                function() require("refactoring").refactor("Extract Function") end,
+            },
+            {
+                mode = {"n", "x"},
+                "<leader>riv",
+                function() require("refactoring").refactor("Inline Variable") end,
+            },
+            {
+                mode = {"n", "x"},
+                "<leader>rxv",
+                function() require("refactoring").refactor("Extract Variable") end,
+            },
+        },
+    },
+
     {
         "ColinKennedy/spellbound.nvim",
         cmd = {"Spellbound"},

@@ -358,3 +358,6 @@
 [submodule "bundle/spellbound.nvim"]
 	path = bundle/spellbound.nvim
 	url = git@github.com:ColinKennedy/spellbound.nvim.git
+[submodule "bundle/refactoring.nvim"]
+	path = bundle/refactoring.nvim
+	url = git@github.com:ThePrimeagen/refactoring.nvim.git
