@@ -355,3 +355,6 @@
 [submodule "bundle/substitute.nvim"]
 	path = bundle/substitute.nvim
 	url = git@github.com:gbprod/substitute.nvim.git
+[submodule "bundle/spellbound.nvim"]
+	path = bundle/spellbound.nvim
+	url = git@github.com:ColinKennedy/spellbound.nvim.git

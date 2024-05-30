@@ -543,6 +543,77 @@ return {
         keys = require("my_custom.plugins.neotest.keys"),
     },
 
+    {
+        "ColinKennedy/spellbound.nvim",
+        cmd = {"Spellbound"},
+        config = function()
+            local dictionary = "en-strict"
+
+            require("spellbound").setup{
+                profiles = {
+                    strict = {
+                        dictionaries = {
+                            name = "en-strict",
+                            input_paths = function()
+                                local pattern = vim.fs.joinpath(
+                                    vim.g.vim_home,
+                                    "spell",
+                                    "parts",
+                                    "*"
+                                )
+
+                                return vim.fn.glob(pattern, true, false)
+                            end,
+                            output_path = vim.fs.joinpath(
+                                vim.g.vim_home,
+                                "spell",
+                                "en-strict.dic"
+                            ),
+                        },
+                        spellfile = {
+                            operation = "append",
+                            text = function()
+                                return "file:" .. vim.fs.joinpath(
+                                    vim.g.vim_home,
+                                    "spell",
+                                    dictionary .. ".utf-8.add"
+                                )
+                            end,
+                        },
+                        spelllang = { operation = "replace", text = dictionary .. ",cjk" },
+                        spellsuggest = {
+                            operation = "replace",
+                            text = function()
+                                return "file:" .. vim.fs.joinpath(
+                                    vim.g.vim_home,
+                                    "spell",
+                                    "strict_thesaurus.txt"
+                                )
+                            end,
+                        }
+                    }
+                },
+            }
+        end,
+        keys = {
+            {
+                "[r",
+                "<Plug>(SpellboundGoToPreviousRecommendation)",
+                desc = "Go to the previous recommendation.",
+            },
+            {
+                "]r",
+                "<Plug>(SpellboundGoToNextRecommendation)",
+                desc = "Go to the next recommendation.",
+            },
+            {
+                "<leader>tss",
+                ":Spellbound toggle-profile strict<CR>",
+                desc = "[t]oggle all [s]trict [s]pelling mistakes.",
+            },
+        }
+    },
+
     -- View / Switch-to previously saved Vim Session.vim files
     {
         "ColinKennedy/telescope-session-viewer",
