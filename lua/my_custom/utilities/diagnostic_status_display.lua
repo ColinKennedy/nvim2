@@ -1,3 +1,5 @@
+-- TODO: Move this somewhere to nvim-lspconfig?
+
 -- This buffer variable + logic comes from `toggle-lsp-diagnostics.nvim`
 --
 -- Reference: https://github.com/ColinKennedy/toggle-lsp-diagnostics.nvim

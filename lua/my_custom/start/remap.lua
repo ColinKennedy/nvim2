@@ -449,16 +449,6 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>tss",
-    ":SpellboundToggleBuffer2<CR>",
-    {
-        desc="[t]oggle all [s]trict spelling mistakes.",
-        silent=true,
-    }
-)
-
-vim.keymap.set(
-    "n",
     "<leader>rs",
     ":normal 1z=<CR>",
     {
