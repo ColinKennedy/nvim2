@@ -32,6 +32,21 @@ require("lualine").setup {
                 },
             },
             "progress",
+            {
+                "spellbound",
+                fallback_profile = { text = "none" },
+                profiles = {
+                    strict = {
+                        color = {
+                            fg = utils.extract_color_from_hllist(
+                                { "fg", "sp" },
+                                { "Title" },
+                                "#ffcc00"
+                            ),
+                        },
+                    },
+                },
+            }
         },
         lualine_z = {"location"}
     },
