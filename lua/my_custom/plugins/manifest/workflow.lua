@@ -662,5 +662,6 @@ return {
                 desc = "Open the Vim [S]ession [V]iewer GUI.",
             }
         },
-    }
+    },
+
 }
