@@ -161,13 +161,6 @@ vim.api.nvim_create_autocmd(
     }
 )
 
-local adjust_window_height = function(minimum, maximum)
-    local smallest = math.min(vim.fn.line("$"), maximum)
-    local value = math.max(smallest, minimum)
-
-    vim.cmd('execute ":' .. value .. 'wincmd _"')
-end
-
 vim.api.nvim_create_autocmd(
     {"BufRead", "BufNewFile"},
     {
