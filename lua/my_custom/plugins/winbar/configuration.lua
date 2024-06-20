@@ -20,7 +20,6 @@ require("winbar").setup(
 
         exclude_filetype = {
             -- Built-in windows
-            "qf",
             "help",
 
             "",  -- Neovim terminals have no filetype. Disable terminals.
