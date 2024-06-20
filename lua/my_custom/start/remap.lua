@@ -1,14 +1,5 @@
 vim.keymap.set(
     "n",
-    "<S-Enter>",
-    "O<Esc>j",
-    {
-        desc="Pressing Shift+Enter will add a new line below the bottom.",
-    }
-)
-
-vim.keymap.set(
-    "n",
     "<F12>",
     "ggg?G``",
     {
