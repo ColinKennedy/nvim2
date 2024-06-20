@@ -414,13 +414,6 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>lcs",
-    function() require('luasnip').unlink_current() end,
-    { desc = "[l]eave [c]urrent [s]nippet." }
-)
-
-vim.keymap.set(
-    "n",
     "<leader>tsp",
     function()
         local value = not(vim.opt_local.spell:get())

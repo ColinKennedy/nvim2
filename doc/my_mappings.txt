@@ -314,20 +314,6 @@ Legend
 
 
 ================================================================================
-LuaSnip                                             *my_mappings_luasnip.nvim*
-
-Legend
-
-- 1 == mode
-- 2 == mapping
-- 3 == description
-
-| 1 |      2      |                                            3                               |
-| - | ----------- | -------------------------------------------------------------------------- |
-| n | <leader>lcs | [l]eave [c]urrent [s]nippet.                                               |
-
-
-================================================================================
 grapple.nvim                                        *my_mappings_grapple.nvim*
 
 Super quickly register "important" files in a project and swap between them. So helpful!
