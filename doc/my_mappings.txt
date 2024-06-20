@@ -232,7 +232,6 @@ Legend
 
 | 1 |       2       |                           3                               |
 | - | ------------- | --------------------------------------------------------- |
-| n | <leader>tsp   | [t]oggle :set [sp]ell                                     |
 | n | <leader>tss   | [t]oggle all [s]trict [s]pelling mistakes.                |
 | n | <leader>rs    | [r]eplace word with [s]uggestion.                         |
 | n | z?            | Add the current word to the rare words list.              |
