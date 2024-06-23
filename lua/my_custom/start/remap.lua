@@ -69,13 +69,6 @@ vim.cmd("inoremap <expr> : search('\\%#:', 'n') ? '<Right>' : ':'")
 
 vim.keymap.set(
     "n",
-    "Y",
-    "y$",
-    {desc="Make capital-y work like capital-d and other commands. See :help Y"}
-)
-
-vim.keymap.set(
-    "n",
     "<leader>j",
     "j:s/^\\s*//<CR>kgJ",
     {desc="[j]oin this line with the line below, without whitespace."}
