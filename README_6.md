@@ -71,6 +71,11 @@ https://www.reddit.com/r/neovim/comments/1dpspyx/introducing_nvimripsubstitute_s
 https://www.reddit.com/r/neovim/comments/1dpww7b/finally_managed_to_integrate_lsp_servers_and/
 
 
+https://github.com/chrisgrieser/nvim-lsp-endhints
+
+that plugin that puts the commandline in te center of the screen might be a good addition
+
+
 Neogen thinks it's a yield and return at once. Which isn't working
 
 Also make sure it works with contextlib.contextmanager, too
