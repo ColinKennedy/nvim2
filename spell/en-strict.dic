@@ -1727,6 +1727,9 @@ ish
 # START - Generated programming_extras.dic file
 # Words that I like to use which tend to also make documentation easier to write
 ensure/ZGDRS
+
+# As in "space-separated"
+separate/D
 # END - Generated programming_extras.dic file
 
 # START - Generated python_first_party_libraries.dic file
@@ -2122,6 +2125,8 @@ zip/US
 # END - Generated python_keywords.dic file
 
 # START - Generated cpp_generic.dic file
+declaration/S
+definition/S
 operator/S
 # END - Generated cpp_generic.dic file
 
@@ -2166,3 +2171,9 @@ pylint
 # START - Generated neovim_plugins.dic file
 telescope
 # END - Generated neovim_plugins.dic file
+
+# START - Generated miscellaneous_technical.dic file
+# Words that come up in technical documentation
+estimate
+verify
+# END - Generated miscellaneous_technical.dic file

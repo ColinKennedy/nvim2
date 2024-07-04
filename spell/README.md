@@ -55,6 +55,9 @@ Raygor Readability	0
 Fry Readability
 
 
+https://spotintelligence.com/2022/12/19/text-similarity-python/
+
+
 ### TODO
 - Try out https://github.com/kamykn/spelunker.vim
 - Check out https://github.com/psliwka/vim-dirtytalk
