@@ -39,6 +39,64 @@ local tabler = require("my_custom.utilities.tabler")
 local extend = tabler.extend
 local plugins = {}
 
+
+local function _is_important(node)
+    if node:type() == "comment" then
+        return false
+    end
+
+    return true
+end
+
+
+local function _has_leading_newline(line)
+    local previous = line - 1
+    local text = vim.fn.getline(previous)
+
+    return text:match("^%s*$") ~= nil
+end
+
+
+local function _add_newline(node)
+    local sibling = node:prev_named_sibling()
+
+    if not sibling or not _is_important(sibling) then
+        return
+    end
+
+    local buffer = 0
+    local treesitter_line = node:start()
+    local vim_line = treesitter_line + 1
+
+    if _has_leading_newline(vim_line) then
+        return
+    end
+
+    vim.api.nvim_buf_set_lines(buffer, vim_line - 1, vim_line - 1, false, {""})
+end
+
+
+table.insert(
+    plugins,
+    {
+        "CKolkey/ts-node-action",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        opts = {
+            python = {
+                ["break_statement"] = _add_newline,
+                ["continue_statement"] = _add_newline,
+                ["for_statement"] = _add_newline,
+                ["if_statement"] = _add_newline,
+                ["return_statement"] = _add_newline,
+                ["try_statement"] = _add_newline,
+                ["while_statement"] = _add_newline,
+                ["with_statement"] = _add_newline,
+                ["yield"] = _add_newline,
+            },
+        },
+    }
+)
+
 vim.g.vim_home = filer.get_current_directory()
 
 extend(plugins, require("my_custom.plugins.manifest.appearance"))
