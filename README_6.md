@@ -1,3 +1,133 @@
+- Add -t --too a highlighting for bash
+ - And /Foo for windows
+
+- Mypy isn't running anymore. Fix!
+- What is my mapping that copies a failed test as a dot.separated.path? Add that back in
+
+- Reply: https://github.com/rachartier/tiny-devicons-auto-colors.nvim/issues/10#event-13240094897
+
+``r`` snippet doesn't preserve indentation
+
+How do you restart (attached) LSPs?
+
+
+## Anki
+Mapping to open a URL
+nmap: `gx`
+
+## Misc
+
+
+- navigate
+- search
+- display (stuff)
+- edit
+- refactor
+- infer
+- container integrations?
+
+- macros
+- spelling
+- assembly
+- timeline
+
+
+- https://github.com/TheBlob42/houdini.nvim
+
+
+neogen bug
+
+```python
+def set_enabled(self, index, value: bool) -> None:
+    node = index.data(constant.NODE_DATA_ROLE)
+
+    if not node.set_data(...):
+        return
+
+    start, end = iterbot.blah(index)
+    self.dataChanged.emit(start, end)
+```
+
+```python
+def foo() -> typing.Generator[str]:
+    yield "asdfsfd"
+```
+
+```python
+def foo():
+    def bar():
+        return "blah"
+
+    yield "asdfsfd"
+```
+
+https://seniormars.com/posts/neovim-workflow/
+https://www.reddit.com/r/neovim/comments/1dozoz5/yankassassinnvim_dont_let_the_cursor_move_while/
+https://www.reddit.com/r/neovim/comments/1dpq3jb/how_many_extmarks_is_considered_too_many/
+https://github.com/OXY2DEV/markview.nvim
+
+https://www.reddit.com/r/neovim/comments/1dpspyx/introducing_nvimripsubstitute_search_and_replace/
+
+https://www.reddit.com/r/neovim/comments/1dpww7b/finally_managed_to_integrate_lsp_servers_and/
+
+
+Neogen thinks it's a yield and return at once. Which isn't working
+
+Also make sure it works with contextlib.contextmanager, too
+
+- How to save past qf queries? (If it isn't just a default behavior)
+
+
+https://github.com/Ramilito/winbar.nvim
+
+https://github.com/niuiic/track.nvim
+
+https://github.com/sleepyswords/change-function.nvim
+
+https://github.com/rachartier/tiny-devicons-auto-colors.nvim
+
+https://github.com/VoxelPrismatic/rabbit.nvim?tab=readme-ov-file
+
+https://github.com/Aaronik/GPTModels.nvim
+
+https://github.com/FireIsGood/spaceman.nvim
+
+
+https://github.com/ravibrock/spellwarn.nvim
+
+https://github.com/BranimirE/fix-auto-scroll.nvim
+
+https://github.com/prichrd/vwd.nvim
+
+https://github.com/echasnovski/mini-git
+
+https://github.com/ysmb-wtsg/in-and-out.nvim
+
+https://github.com/oysandvik94/curl.nvim
+
+https://www.reddit.com/r/neovim/comments/1ds30mw/i_replaced_the_mode_names_with_ascii_emoticons/
+
+https://github.com/rachartier/tiny-inline-diagnostic.nvim
+
+
+https://github.com/brenoprata10/nvim-highlight-colors
+
+
+https://www.reddit.com/r/neovim/comments/1dthevz/lcars_star_trek_theme/#lightbox
+
+
+- https://github.com/folke/lazydev.nvim
+
+- https://www.reddit.com/r/neovim/comments/1d5orqz/open_files_from_windows_file_explorer_in_wsl/
+
+
+- https://github.com/monkoose/neocodeium
+- https://github.com/supermaven-inc/supermaven-nvim
+- Make it so I only get completion on-request, not all of the time
+- codium?
+- codeium?
+ - https://www.reddit.com/r/neovim/comments/1d3yvnt/codium_ai_or_codeium/
+
 - Apparently neodev isn't needed anymore - https://github.com/neovim/neovim/pull/24592
 
 - right-align the LSP diagnostics. Again.
@@ -9,6 +139,10 @@ https://github.com/rachartier/tiny-devicons-auto-colors.nvim
 https://www.reddit.com/r/neovim/comments/1cu6qd0/deviconcolorscheme_apply_your_colorscheme_in/
 
 https://www.reddit.com/r/neovim/comments/1cv2tha/adding_this_to_telescope_config_made_it_look_a/
+
+@tommytt2233 since no one is actually answering your question - Apparently it's both at once. He flew to France and Italy during week 1-2 in June, then to LA and Washington on June 15th and 16th. Then he holed up in Camp David for a week before the debate.
+
+France / Italy have the same timezone. So does LA and Washington. Though traveling can take its toll, you'd think a full week of recovery would make him ready. But when you're that old maybe recovery is much longer. Of course it's up to voters whether people buy the excuse.
 
 https://www.amazon.com/Luxrite-Equivalent-Dimmable-Standard-Enclosed/dp/B07TXJB1R3/ref=sr_1_6?crid=XKTRWGIUYT89&dib=eyJ2IjoiMSJ9.4JoDIA8kPsr-W2mLCtJYQcKBu4SjlM0I92mPnsrdliAkSkDsIFhCSCRfErgBuCijEsdGG3t3DwfuR9W-IWTGcfa4n8q67inl_uBTY8b-K6p8IESigvNcWZAMQZGjRqpyZYGJtclVAYmFDo9bmof_AXiCMV0KkdkKoAsURORpCRDd14fLnxRmT4GpTidoUQeXqiCvJB8Xo7g-rzmKNyaZ3Q7DG0ThhhchCO76A9Sdm_5aErO5dSW852-u_Qg_9Cob_Rb4kO0glQjQjAZ08Wgh6jC0JfqO8p8Vyo6d0I9Mty0.f8NQ3LzNWY97mNGufT2HOpJijk5uqWVuzrIv6KVmlWw&dib_tag=se&keywords=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens&qid=1715636611&refinements=p_n_feature_nineteen_browse-bin%3A9692450011%2Cp_n_feature_seven_browse-bin%3A33240570011&rnid=33240560011&s=hi&sprefix=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens%2Caps%2C272&sr=1-6&th=1
 
