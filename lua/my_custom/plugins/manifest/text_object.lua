@@ -50,7 +50,7 @@ return {
         "echasnovski/mini.ai",
         config = function() require("mini.ai").setup() end,
         event = "VeryLazy",
-        version = "*",
+        version = "0.*",
     },
 
     -- TODO: Can I defer load this? Figure out how
