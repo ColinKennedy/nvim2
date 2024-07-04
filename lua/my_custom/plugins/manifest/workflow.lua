@@ -408,11 +408,8 @@ return {
     -- Insert debug print statements easily.
     {
         "andrewferrier/debugprint.nvim",
-        config = function()
-            require("debugprint").setup(
-                { create_keymaps = false, create_commands = false }
-            )
-        end,
+        cmd = {"DeleteDebugPrints", "ToggleCommentDebugPrints"},
+        config = function() require("debugprint").setup({}) end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         keys = {
             {
@@ -436,7 +433,7 @@ return {
                 mode = {"n", "v"},
             },
         },
-        version = "1.*",
+        version = "3.*",
     },
 
     -- Generic tool for picking stuff.
