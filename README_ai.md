@@ -31,13 +31,18 @@ https://github.com/james1236/backseat.nvim
 https://github.com/jameshiew/nvim-magic
 https://github.com/jcdickinson/codeium.nvim
 https://github.com/jellydn/CopilotChat.nvim
+https://github.com/jkitching/awesome-vim-llm-plugins
 https://github.com/joshuavial/aider.nvim
 https://github.com/jpmcb/nvim-llama
 https://github.com/kamou/gpt-vim
 https://github.com/kiteco/vim-plugin
 https://github.com/leocus/codeassistant.vim
+https://github.com/leocus/codeassistant.vim
 https://github.com/madox2/vim-ai
 https://github.com/marco-souza/ollero.nvim
+https://github.com/monkoose/neocodeium
+https://github.com/olimorris/codecompanion.nvim
+https://github.com/pasky/claude.vim
 https://github.com/piersolenski/wtf.nvim
 https://github.com/skywind3000/vim-gpt-commit
 https://github.com/solyarisoftware/prompter.vim
@@ -51,7 +56,6 @@ https://github.com/you-n-g/simplegpt.nvim
 https://github.com/zbirenbaum/copilot-cmp
 https://github.com/zbirenbaum/copilot.lua
 https://www.vim.org/scripts/script.php?script_id=6048
-
 
 
 
