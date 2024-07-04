@@ -661,4 +661,12 @@ return {
         },
     },
 
+
+    -- Auto-backup your code to-disk whenever you save a file. And view its contents.
+    {
+        "ColinKennedy/timeline.nvim",
+        branch = "first_pass",
+        config = true,
+        -- cmd = {"TimelineOpenCurrent", "TimelineOpenWindow"}
+    },
 }
