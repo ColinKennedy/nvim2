@@ -68,6 +68,9 @@ https://github.com/OXY2DEV/markview.nvim
 
 https://www.reddit.com/r/neovim/comments/1dpspyx/introducing_nvimripsubstitute_search_and_replace/
 
+- https://github.com/neovim/neovim/pull/24565
+ - Add lazyredraw once this is merged
+
 https://www.reddit.com/r/neovim/comments/1dpww7b/finally_managed_to_integrate_lsp_servers_and/
 
 

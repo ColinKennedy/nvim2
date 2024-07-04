@@ -28,9 +28,6 @@ vim.opt.termguicolors = true
 -- TODO: Set this differently depending on if in Python or not
 vim.opt.colorcolumn = "88"
 
--- Don't redraw while executing macros (good performance config)
-vim.opt.lazyredraw = true
-
 -- TODO: This doesn't work. Add it later
 -- :W sudo saves the file
 -- (useful for handling the permission-denied error)
