@@ -81,6 +81,8 @@ vim.cmd("source " .. vim.g.vim_home .. "/plugin/miscellaneous_commands.vim")
 
 
 -- TODO: Remove all of this later
+-- vim.lsp.set_log_level("TRACE")
+--
 -- local client = vim.lsp.start_client{
 --     name = "usd_lsp",
 --     cmd = { "/home/selecaoone/repositories/usd_lsp/build/src/usd_lsp" },
@@ -95,6 +97,47 @@ vim.cmd("source " .. vim.g.vim_home .. "/plugin/miscellaneous_commands.vim")
 --     {
 --         -- pattern = "usd",
 --         callback = function()
+--             vim.lsp.buf_attach_client(0, client)
+--
+--             vim.keymap.set(
+--                 "n",
+--                 "gd",
+--                 vim.lsp.buf.definition,
+--                 {
+--                     buffer=buffer,
+--                     desc="[g]o to [d]efinition of the function / class.",
+--                 }
+--             )
+--         end
+--     }
+-- )
+
+-- vim.api.nvim_create_autocmd(
+--     "FileType",
+--     {
+--         pattern = "usd",
+--         callback = function()
+--             vim.lsp.set_log_level("TRACE")
+--
+--             local client = vim.lsp.start_client{
+--                 name = "usd_lsp",
+--                 cmd = { "/home/selecaoone/repositories/usd_lsp/build/src/usd_lsp" },
+--             }
+--
+--             if not client then
+--                 vim.notify("No usd_lsp client could be created.")
+--             end
+--
+--             vim.keymap.set(
+--                 "n",
+--                 "gd",
+--                 vim.lsp.buf.definition,
+--                 {
+--                     buffer=buffer,
+--                     desc="[g]o to [d]efinition of the function / class.",
+--                 }
+--             )
+--
 --             vim.lsp.buf_attach_client(0, client)
 --
 --             vim.keymap.set(
