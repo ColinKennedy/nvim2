@@ -55,6 +55,16 @@ https://github.com/emmanueltouzery/decisive.nvim?tab=readme-ov-file
 
 https://github.com/Fildo7525/reloader.nvim
 
+https://github.com/paopaol/cmp-doxygen
+
+https://github.com/rcarriga/cmp-dap
+
+https://github.com/davidsierradz/cmp-conventionalcommits
+
+https://github.com/cvusmo/LinuxUnrealBuildTool.nvim
+
+https://www.reddit.com/r/neovim/comments/1dpzlfr/kulalanvim_a_minimal_httpclient_interface_for/
+
 
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim
