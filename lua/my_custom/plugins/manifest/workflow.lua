@@ -537,6 +537,7 @@ return {
             "nvim-neotest/neotest-python",
         },
         keys = require("my_custom.plugins.neotest.keys"),
+        version = "5.*",
     },
 
     -- Extract / Inline variables and functions
