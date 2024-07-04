@@ -8,6 +8,8 @@
 
 ``r`` snippet doesn't preserve indentation
 
+- Try this - https://github.com/max397574/better-escape.nvim/issues/23#event-13398071792
+
 How do you restart (attached) LSPs?
 
 
