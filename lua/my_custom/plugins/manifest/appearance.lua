@@ -47,6 +47,26 @@ return {
         lazy = true,
     },
 
+    {
+        "rachartier/tiny-devicons-auto-colors.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons"
+        },
+        event = "VeryLazy",
+        config = function()
+            require('tiny-devicons-auto-colors').setup{
+                factors = {
+                    lightness = 1.75,  -- Adjust the lightness factor.
+                    chroma = 1,        -- Adjust the chroma factor.
+                    hue = 1.25,        -- Adjust the hue factor.
+                },
+                ignore = {
+                    "markdown"
+                }
+            }
+        end
+    },
+
     -- TODO: Do I even still need this? Remove?
     -- Enhanced markdown highlighting and syntax
     {

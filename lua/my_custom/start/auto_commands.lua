@@ -202,68 +202,66 @@ local function _enable_winfixbuf_if_supported()
 end
 
 
-if vim.fn.has("nvim")
-then
-    local is_fzf_terminal = function()
-        local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-        local ending = ";#FZF"
+--- @return boolean # Check if the current buffer is an fzf prompt
+local is_fzf_terminal = function()
+    local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+    local ending = ";#FZF"
 
-        return name:sub(-#ending) == ending
-    end
-
-    local group = vim.api.nvim_create_augroup("TerminalBehavior", { clear = true })
-    -- Switch from the terminal window back to other buffers quickly
-    -- Reference: https://github.com/junegunn/fzf.vim/issues/544#issuecomment-457456166
-    --
-    vim.api.nvim_create_autocmd(
-        "TermOpen",
-        {
-            callback = function()
-                if (is_fzf_terminal())
-                then
-                    return
-                end
-
-                vim.keymap.set(
-                    "t",
-                    "<ESC><ESC>",
-                    "<C-\\><C-n>",
-                    {
-                        buffer=true,
-                        desc="Exit the terminal by pressing <ESC> twice in a row.",
-                        noremap=true,
-                    }
-                )
-            end,
-            group = group,
-            pattern = "*",
-        }
-    )
-
-    -- Neovim doesn't close the terminal immediately - this autocmd forces the
-    -- terminal to close (like it does in Vim)
-    --
-    -- Reference: https://vi.stackexchange.com/a/17923
-    --
-    vim.api.nvim_create_autocmd(
-        "TermClose",
-        {
-            command = "silent! :q",
-            group = group,
-            pattern = "*",
-        }
-    )
-
-    -- Make sure a terminal buffer can never be switched away
-    vim.api.nvim_create_autocmd(
-        "TermOpen",
-        {
-            callback = _enable_winfixbuf_if_supported,
-            group = group,
-            pattern = "*",
-        }
-    )
+    return name:sub(-#ending) == ending
 end
+
+local group = vim.api.nvim_create_augroup("TerminalBehavior", { clear = true })
+-- Switch from the terminal window back to other buffers quickly
+-- Reference: https://github.com/junegunn/fzf.vim/issues/544#issuecomment-457456166
+--
+vim.api.nvim_create_autocmd(
+    "TermOpen",
+    {
+        callback = function()
+            if (is_fzf_terminal())
+            then
+                return
+            end
+
+            vim.keymap.set(
+                "t",
+                "<ESC><ESC>",
+                "<C-\\><C-n>",
+                {
+                    buffer=true,
+                    desc="Exit the terminal by pressing <ESC> twice in a row.",
+                    noremap=true,
+                }
+            )
+        end,
+        group = group,
+        pattern = "*",
+    }
+)
+
+-- Neovim doesn't close the terminal immediately - this autocmd forces the
+-- terminal to close (like it does in Vim)
+--
+-- Reference: https://vi.stackexchange.com/a/17923
+--
+vim.api.nvim_create_autocmd(
+    "TermClose",
+    {
+        command = "silent! :q",
+        group = group,
+        pattern = "*",
+    }
+)
+
+-- Make sure a terminal buffer can never be switched away
+vim.api.nvim_create_autocmd(
+    "TermOpen",
+    {
+        callback = _enable_winfixbuf_if_supported,
+        group = group,
+        pattern = "*",
+    }
+)
 
 --- @boolean # If `'winfixbuf'` is enabled in this (Neo)vim version
 local function _is_winfixbuf_supported()
