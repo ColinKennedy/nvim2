@@ -41,7 +41,7 @@ return {
         "L3MON4D3/LuaSnip",
         config = function() require("my_custom.plugins.luasnip.configuration") end,
         event = "InsertEnter",
-        version = "1.*",  -- TODO: There's a 2+. Add?
+        version = "2.*",
     },
 
     --     -- TODO: Consider deprecating my current auto-pairs for this?
