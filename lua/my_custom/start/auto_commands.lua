@@ -239,20 +239,6 @@ vim.api.nvim_create_autocmd(
     }
 )
 
--- Neovim doesn't close the terminal immediately - this autocmd forces the
--- terminal to close (like it does in Vim)
---
--- Reference: https://vi.stackexchange.com/a/17923
---
-vim.api.nvim_create_autocmd(
-    "TermClose",
-    {
-        command = "silent! :q",
-        group = group,
-        pattern = "*",
-    }
-)
-
 -- Make sure a terminal buffer can never be switched away
 vim.api.nvim_create_autocmd(
     "TermOpen",

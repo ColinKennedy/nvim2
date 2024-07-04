@@ -323,16 +323,15 @@ return {
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
         "ColinKennedy/toggleterminal.nvim",
-        branch = "first_pass",  -- TODO: Remove later
         cmd = "ToggleTerm",
         config = true,
         keys = {
             {
                 "<Space>T",
-                ":ToggleTerminl direction=horizontal<CR>",
-                desc="Create a [T]erminal on the bottom of the current window.",
+                ":ToggleTerminal<CR>",
+                desc="Open / Close a terminal at the bottom of the tab",
                 silent=true,
-            },
+            }
         },
     },
 
