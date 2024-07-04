@@ -90,6 +90,7 @@ vim.api.nvim_create_autocmd(
         end,
         nested = true,
         pattern = "*",
+        group=group,
     }
 )
 
