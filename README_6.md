@@ -531,3 +531,113 @@ Not an editor command: ^M
 
 
 https://github.com/dharmx/nvim/blob/e79ac39e3c9aff7e4e99ce889caea45c5fc65bc4/lua/scratch/node.lua
+
+
+
+```lua
+--- Find all children that fit within `range`.
+---
+--- Important:
+---     This function is **inclusive**, the ``root`` is returned as the first index.
+---
+--- @param root TSNode A Neovim tree-sitter node to check within.
+--- @param range _Range The 0-or-more treesitter start/end index lines.
+--- @return TSNode[] # The found children, if any.
+---
+local function _traverse_within_range(root, range)
+  local start, end_ = unpack(range)
+
+  local stack = {root}
+  local output = {}
+
+  while not vim.tbl_isempty(stack)
+  do
+    local current = table.remove(stack)
+
+    table.insert(output, current)
+
+    for child in current:iter_children()
+    do
+      if child:start() <= end_ and child:end_() >= start then
+        -- NOTE: ``child`` is in range
+        table.insert(stack, child)
+      end
+    end
+  end
+
+  return output
+end
+
+--- @class _NodeData
+---     A description of the injected data and its root.
+--- @field node
+---     The starting root node for this injected language.
+--- @field language
+---     The name of the injected language.
+---
+
+--- Find all injected languages in `parser`.
+---
+--- @param parser vim.treesitter.LanguageTree
+---     A starting tree to get all injections / trees.
+--- @return table<string, string>
+---     The found injections, if any.
+---
+local function _initialize_injections(parser)
+  local injections = {} ---@type table<string, vim.treesitter.dev.Injection>
+
+  parser:for_each_tree(function(parent_tree, parent_ltree)
+    local parent = parent_tree:root()
+    for _, child in pairs(parent_ltree:children()) do
+      for _, tree in pairs(child:trees()) do
+        local r = tree:root()
+        local node = assert(parent:named_descendant_for_range(r:range()))
+        local id = node:id()
+        if not injections[id] or r:byte_length() > injections[id].root:byte_length() then
+          injections[id] = child:lang()
+        end
+      end
+    end
+  end)
+
+  return injections
+end
+
+--- Find all nodes within line `range` at `buffer`.
+---
+--- @param range _Range The 0-or-more treesitter start/end index lines.
+--- @param buffer number? A Vim buffer to query from. 0 == current buffer.
+--- @return _NodeData[] # The found nodes, if any.
+---
+local function _get_nodes_in_range(range, buffer)
+  local buffer = buffer or 0
+  local parser = vim.treesitter.get_parser(buffer)
+  local injections = _initialize_injections(parser)
+  local trees = parser:parse(range)
+  local buffer_language = "python" -- TODO: Figure out how to query this
+
+  local nodes = {}
+
+  for _, tree in ipairs(trees)
+  do
+    local root = tree:root()
+    local language = injections[root:id()] or buffer_language
+
+    for _, node in ipairs(_traverse_within_range(root, range))
+    do
+      table.insert(nodes, {node=node, language=language})
+    end
+  end
+
+  return nodes
+end
+
+local buffer = 4
+local vim_start_line = 2
+local vim_end_line = 4
+local treesitter_start_line = vim_start_line - 1
+local treesitter_end_line = vim_end_line - 1
+
+local nodes = _get_nodes_in_range({treesitter_start_line, treesitter_end_line}, buffer)
+print(#nodes)
+```
