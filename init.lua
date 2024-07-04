@@ -34,7 +34,6 @@ local _CURRENT_DIRECTORY = vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand("<sfi
 -- Add extra autocommands before lazy.nvim is called so that they can be used for plug-ins
 require("my_custom.start.auto_commands_pre")
 
-
 local filer = require("my_custom.utilities.filer")
 local tabler = require("my_custom.utilities.tabler")
 local extend = tabler.extend
