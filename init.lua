@@ -40,8 +40,37 @@ local extend = tabler.extend
 local plugins = {}
 
 
-local function _is_important(node)
+function _startswith(str, start)
+  return str:sub(1, #start) == start
+end
+
+
+local function _is_comment_or_docstring(buffer, row, column)
+    for _, capture in pairs(vim.treesitter.get_captures_at_pos(buffer, row, column)) do
+        local text = capture.capture
+
+        if (
+            text == "string.documentation"
+            or text == "comment" or _startswith(text, "comment")
+        )
+        then
+            return true
+        end
+
+    end
+
+    return false
+end
+
+
+local function _is_important(node, buffer)
     if node:type() == "comment" then
+        return false
+    end
+
+    local start_row, start_column, _, _ = node:range()
+
+    if _is_comment_or_docstring(buffer, start_row, start_column) then
         return false
     end
 
@@ -57,10 +86,11 @@ local function _has_leading_newline(line)
 end
 
 
-local function _add_newline(node)
+local function _add_newline(node, buffer)
+    buffer = buffer or 0
     local sibling = node:prev_named_sibling()
 
-    if not sibling or not _is_important(sibling) then
+    if not sibling or not _is_important(sibling, buffer) then
         return
     end
 
@@ -76,6 +106,8 @@ local function _add_newline(node)
 end
 
 
+local action = { { _add_newline, name = "add_newline" } }
+
 table.insert(
     plugins,
     {
@@ -83,15 +115,15 @@ table.insert(
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
             python = {
-                ["break_statement"] = _add_newline,
-                ["continue_statement"] = _add_newline,
-                ["for_statement"] = _add_newline,
-                ["if_statement"] = _add_newline,
-                ["return_statement"] = _add_newline,
-                ["try_statement"] = _add_newline,
-                ["while_statement"] = _add_newline,
-                ["with_statement"] = _add_newline,
-                ["yield"] = _add_newline,
+                ["break_statement"] = action,
+                ["continue_statement"] = action,
+                ["for_statement"] = action,
+                ["if_statement"] = action,
+                ["return_statement"] = action,
+                ["try_statement"] = action,
+                ["while_statement"] = action,
+                ["with_statement"] = action,
+                ["yield"] = action,
             },
         },
     }
