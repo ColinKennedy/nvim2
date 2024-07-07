@@ -33,6 +33,7 @@ local remove_leading_equal_sign = function(text)
         function(_, _)
             local current_row = vim.fn.line(".")  -- This is "1-or-greater"
             local current_line = vim.fn.getline(current_row)
+            local leading_indent = string.sub(current_line, 0, (#current_line - #lstrip(current_line)))
 
             _, end_index = current_line:find("=")
 
@@ -45,6 +46,7 @@ local remove_leading_equal_sign = function(text)
 
             line_without_equals = current_line:sub(end_index + 1, #current_line)
             stripped = text .. lstrip(line_without_equals)
+            line = leading_indent .. stripped
 
             vim.schedule(
                 function()
@@ -53,7 +55,7 @@ local remove_leading_equal_sign = function(text)
                         current_row - 1,
                         current_row,
                         true,
-                        { stripped }
+                        { line }
                     )
                 end
             )

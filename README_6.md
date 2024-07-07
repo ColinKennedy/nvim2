@@ -1,12 +1,13 @@
-- Add -t --too a highlighting for bash
- - And /Foo for windows
+https://github.com/ColinKennedy/hide-verbose-comments
+https://github.com/ColinKennedy/telescope-session-viewer.nvim
+https://github.com/ColinKennedy/assembly-explorer.nvim
+https://github.com/ColinKennedy/neotest-cmake-ctest
+https://github.com/ColinKennedy/simple-session.nvim
+https://github.com/ColinKennedy/ai-mode.nvim
+https://github.com/ColinKennedy/timeline.nvim
 
-- Mypy isn't running anymore. Fix!
+
 - What is my mapping that copies a failed test as a dot.separated.path? Add that back in
-
-- Reply: https://github.com/rachartier/tiny-devicons-auto-colors.nvim/issues/10#event-13240094897
-
-``r`` snippet doesn't preserve indentation
 
 - Try this - https://github.com/max397574/better-escape.nvim/issues/23#event-13398071792
 
@@ -62,6 +63,10 @@ def foo():
 
     yield "asdfsfd"
 ```
+
+
+
+
 
 https://seniormars.com/posts/neovim-workflow/
 https://www.reddit.com/r/neovim/comments/1dozoz5/yankassassinnvim_dont_let_the_cursor_move_while/
