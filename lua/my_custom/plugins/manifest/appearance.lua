@@ -38,6 +38,12 @@ return {
         config = function() require("my_custom.plugins.lualine.configuration") end,
     },
 
+    -- Add named indices to `grapple.nvim`
+    {
+        "will-lynas/grapple-line.nvim",
+        dependencies = { "cbochs/grapple.nvim" },
+    },
+
     -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
     {
         "nvim-tree/nvim-web-devicons",

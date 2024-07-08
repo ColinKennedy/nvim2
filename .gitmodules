@@ -364,3 +364,6 @@
 [submodule "bundle/tiny-devicons-auto-colors.nvim"]
 	path = bundle/tiny-devicons-auto-colors.nvim
 	url = git@github.com:rachartier/tiny-devicons-auto-colors.nvim.git
+[submodule "bundle/grapple-line.nvim"]
+	path = bundle/grapple-line.nvim
+	url = git@github.com:will-lynas/grapple-line.nvim.git
