@@ -1,3 +1,5 @@
+- Change grapple-line's color
+
 https://github.com/ColinKennedy/hide-verbose-comments
 https://github.com/ColinKennedy/telescope-session-viewer.nvim
 https://github.com/ColinKennedy/assembly-explorer.nvim
