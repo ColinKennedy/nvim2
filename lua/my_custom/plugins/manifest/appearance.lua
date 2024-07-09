@@ -40,10 +40,10 @@ return {
 
     -- Add named indices to `grapple.nvim`
     {
-        "will-lynas/grapple-line.nvim",
+        "ColinKennedy/grapple-line.nvim",
         branch = "remove_padding",
         dependencies = { "cbochs/grapple.nvim" },
-        opts = { active_highlight = "PMenuMatch", number_of_files = 8 },
+        opts = { active_highlight = "PmenuSbar", number_of_files = 8 },
     },
 
     -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
