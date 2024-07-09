@@ -53,13 +53,9 @@ extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 table.insert(
     plugins,
     {
-        "ColinKennedy/timeline.nvim",
-        branch = "first_pass",
-        dir = "/home/selecaoone/repositories/personal/.config/nvim/bundle/timeline.nvim",
-        config = function()
-            require("timeline").setup()
-        end,
-        -- cmd = {"TimelineOpenCurrent", "TimelineOpenWindow"}
+        "ColinKennedy/nvim-treesitter-docstring",
+        cmd = "TSDocstring",
+        config = true,
     }
 )
 
