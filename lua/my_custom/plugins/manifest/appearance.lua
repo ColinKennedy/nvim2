@@ -42,7 +42,7 @@ return {
     {
         "will-lynas/grapple-line.nvim",
         dependencies = { "cbochs/grapple.nvim" },
-        opts = { number_of_files = 8 },
+        opts = { active_highlight = "PMenuMatch", number_of_files = 8 },
     },
 
     -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
