@@ -1,5 +1,8 @@
 https://github.com/will-lynas/grapple-line.nvim/pull/5/files
 
+https://www.reddit.com/r/neovim/comments/1dyq2ez/what_do_you_think_of_my_cmp_thesaurus_neovim/
+
+
 - Allow timeline.nvim to get git repo + branch name as part of the commit message
  - The "Updated file" message should also be a file path
 
