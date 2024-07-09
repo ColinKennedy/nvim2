@@ -1,5 +1,5 @@
-- Add missing git branch component
-- Change grapple-line's color
+- Allow timeline.nvim to get git repo + branch name as part of the commit message
+ - The "Updated file" message should also be a file path
 
 https://www.reddit.com/r/neovim/comments/1dy5z0n/leapnvim_remote_operations_with_visual_feedback/
 
