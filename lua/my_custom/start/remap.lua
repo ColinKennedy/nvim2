@@ -203,10 +203,10 @@ vim.keymap.set(
 
 vim.keymap.set(
     "v",
-    "<leader>pe",
+    "<leader>pt",
     ":<C-U>call traceback_parser_python#parse_visual_traceback()<CR>",
     {
-        desc="Load the selected [p]ython [e]rror as a quickfix window.",
+        desc="Load the selected [p]ython [t]raceback as a quickfix window.",
         silent=true,
     }
 )

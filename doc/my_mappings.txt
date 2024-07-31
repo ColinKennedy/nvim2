@@ -262,7 +262,8 @@ Legend
 | v | <C-a>         | Increment the semver, date, etc. Or toggle True/False.    |
 | v | <C-x>         | Increment the semver, date, etc. Or toggle True/False.    |
 | v | <leader>j     | [j]oin this line with the line below, without whitespace. |
-| v | <leader>pe    | Load the selected [p]ython [e]rror as a quickfix window.  |
+| v | <leader>pd    | [p]arse the [d]ot separated path from a unittest.         |
+| v | <leader>pt    | Load the selected [p]ython [e]rror as a quickfix window.  |
 | v | <leader>tx    | [t]oggle [x]-marks display.                               |
 
 
