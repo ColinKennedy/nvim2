@@ -5,7 +5,11 @@ sources/
 mason_packages/Linux/packages/lua-language-server/libexec/meta/
 mason_packages/Linux/packages/lua-language-server/libexec/log/
 
-# clangd is too large to fit for GitHub so we need to exclude it
+# clangd and basedpyright are too large to fit for GitHub so we need to exclude it
+mason_packages/Linux/bin/basedpyright
+mason_packages/Linux/bin/basedpyright-langserver
 mason_packages/Linux/bin/clangd
+mason_packages/Linux/packages/basedpyright/
 mason_packages/Linux/packages/clangd/
+mason_packages/Linux/share/mason-schemas/lsp/basedpyright.json
 mason_packages/Linux/share/mason-schemas/lsp/clangd.json
