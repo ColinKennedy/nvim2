@@ -4,7 +4,6 @@
 -- Reference: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
 --
 vim.cmd[[
-    highlight! CmpItemAbbr guibg=NONE gui=strikethrough guifg=111111
     highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
     highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
 
