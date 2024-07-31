@@ -428,3 +428,17 @@ vim.keymap.set(
         silent=true,
     }
 )
+
+vim.keymap.set(
+    "v",
+    "<leader>pd",
+    function()
+        local parser = require("my_custom.utilities.python_unittest_parser")
+
+        parser.copy_current_line_unittest_to_clipboard()
+    end,
+    {
+        desc="[p]arse the [d]ot separated path from a unittest read-out from the current line.",
+        silent=true,
+    }
+)
