@@ -1,6 +1,3 @@
-- Add missing git branch component
-- Change grapple-line's color
-
 https://www.reddit.com/r/neovim/comments/1dy5z0n/leapnvim_remote_operations_with_visual_feedback/
 
 https://github.com/ColinKennedy/hide-verbose-comments
