@@ -666,6 +666,27 @@ return {
         "ColinKennedy/timeline.nvim",
         branch = "first_pass",
         config = true,
+        opts = {
+            records = {
+                file_save = {
+                    extras = {
+                        message = function(data)
+                            local git = require("timeline.api.git")
+                            local directory = vim.fn.fnamemodify(data.source_path, ":p:h")
+                            local summary = git.get_summary(directory)
+
+                            local output = ""
+
+                            if summary then
+                                output = summary .. ": "
+                            end
+
+                            return output .. "Updated file"
+                        end,
+                    }
+                },
+            },
+        },
         -- cmd = {"TimelineOpenCurrent", "TimelineOpenWindow"}
     },
 }
