@@ -3,6 +3,10 @@
 
 https://github.com/will-lynas/grapple-line.nvim/pull/5/files
 
+
+Neogen Python typed args / kwargs are still broken
+
+
 https://www.reddit.com/r/neovim/comments/1dyq2ez/what_do_you_think_of_my_cmp_thesaurus_neovim/
 
 
@@ -46,35 +50,6 @@ nmap: `gx`
 
 
 - https://github.com/TheBlob42/houdini.nvim
-
-
-neogen bug
-
-```python
-def set_enabled(self, index, value: bool) -> None:
-    node = index.data(constant.NODE_DATA_ROLE)
-
-    if not node.set_data(...):
-        return
-
-    start, end = iterbot.blah(index)
-    self.dataChanged.emit(start, end)
-```
-
-```python
-def foo() -> typing.Generator[str]:
-    yield "asdfsfd"
-```
-
-```python
-def foo():
-    def bar():
-        return "blah"
-
-    yield "asdfsfd"
-```
-
-
 
 
 
