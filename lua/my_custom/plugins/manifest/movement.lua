@@ -83,10 +83,9 @@ return {
                 mappings = {
                     t = {
                         j = {
-                            k = function()
-                                vim.api.nvim_input([[<C-\><C-n>]])
-                            end,
-                        }
+                            k = [[<C-\><C-n>]],
+                            j = "j",
+                        },
                     },
                 }
             }
