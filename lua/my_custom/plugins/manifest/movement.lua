@@ -78,8 +78,19 @@ return {
     -- Use `jk` to exit -- INSERT -- mode. AND there's j/k input delay. Pretty useful.
     {
         "max397574/better-escape.nvim",
-        config = true,
-        event = "InsertEnter",
+        config = function()
+            require("better_escape").setup{
+                mappings = {
+                    t = {
+                        j = {
+                            k = function()
+                                vim.api.nvim_input([[<C-\><C-n>]])
+                            end,
+                        }
+                    },
+                }
+            }
+        end,
     },
 
 
