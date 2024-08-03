@@ -20,11 +20,6 @@ https://github.com/ColinKennedy/simple-session.nvim
 https://github.com/ColinKennedy/ai-mode.nvim
 https://github.com/ColinKennedy/timeline.nvim
 
-
-- What is my mapping that copies a failed test as a dot.separated.path? Add that back in
-
-- Try this - https://github.com/max397574/better-escape.nvim/issues/23#event-13398071792
-
 How do you restart (attached) LSPs?
 
 
@@ -70,8 +65,6 @@ https://github.com/chrisgrieser/nvim-lsp-endhints
 
 that plugin that puts the commandline in te center of the screen might be a good addition
 
-
-Neogen thinks it's a yield and return at once. Which isn't working
 
 Also make sure it works with contextlib.contextmanager, too
 
