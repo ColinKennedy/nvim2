@@ -1,3 +1,8 @@
+- How to save past qf queries? (If it isn't just a default behavior)
+
+- right-align the LSP diagnostics. Again.
+ - Or disable
+
 - Allow timeline.nvim to get git repo + branch name as part of the commit message
  - The "Updated file" message should also be a file path
 
@@ -65,8 +70,6 @@ https://github.com/chrisgrieser/nvim-lsp-endhints
 
 that plugin that puts the commandline in te center of the screen might be a good addition
 
-- How to save past qf queries? (If it isn't just a default behavior)
-
 
 https://github.com/Ramilito/winbar.nvim
 
@@ -114,14 +117,8 @@ https://www.reddit.com/r/neovim/comments/1dthevz/lcars_star_trek_theme/#lightbox
 - https://github.com/monkoose/neocodeium
 - https://github.com/supermaven-inc/supermaven-nvim
 - Make it so I only get completion on-request, not all of the time
-- codium?
-- codeium?
- - https://www.reddit.com/r/neovim/comments/1d3yvnt/codium_ai_or_codeium/
 
 - Apparently neodev isn't needed anymore - https://github.com/neovim/neovim/pull/24592
-
-- right-align the LSP diagnostics. Again.
- - Or disable
 
 - Try out - https://www.reddit.com/r/neovim/comments/1cxbegq/minigit_git_integration_with_tracking_gitrelated/
 
