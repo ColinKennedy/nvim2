@@ -65,9 +65,6 @@ https://github.com/chrisgrieser/nvim-lsp-endhints
 
 that plugin that puts the commandline in te center of the screen might be a good addition
 
-
-Also make sure it works with contextlib.contextmanager, too
-
 - How to save past qf queries? (If it isn't just a default behavior)
 
 
