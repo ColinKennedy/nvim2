@@ -671,18 +671,8 @@ return {
                 file_save = {
                     extras = {
                         message = function(data)
-                            local git = require("timeline.api.git")
-                            local directory = vim.fn.fnamemodify(data.source_path, ":p:h")
-                            local summary = git.get_summary(directory)
-
-                            local output = ""
-
-                            if summary then
-                                output = summary .. ": "
-                            end
-
-                            return output .. "Updated file"
-                        end,
+                            return require("timeline.api.git").get_default_file_save_message(data)
+                        end
                     }
                 },
             },
