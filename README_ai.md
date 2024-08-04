@@ -37,7 +37,6 @@ https://github.com/jpmcb/nvim-llama
 https://github.com/kamou/gpt-vim
 https://github.com/kiteco/vim-plugin
 https://github.com/leocus/codeassistant.vim
-https://github.com/leocus/codeassistant.vim
 https://github.com/madox2/vim-ai
 https://github.com/marco-souza/ollero.nvim
 https://github.com/monkoose/neocodeium
@@ -47,6 +46,7 @@ https://github.com/piersolenski/wtf.nvim
 https://github.com/skywind3000/vim-gpt-commit
 https://github.com/solyarisoftware/prompter.vim
 https://github.com/sourcegraph/sg.nvim
+https://github.com/supermaven-inc/supermaven-nvim
 https://github.com/tdfacer/explain-it.nvim
 https://github.com/terror/chatgpt.nvim
 https://github.com/tom-doerr/vim_codex

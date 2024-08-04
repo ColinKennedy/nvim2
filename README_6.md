@@ -1,5 +1,10 @@
 - Make a quickfix search searcher
 
+- Figure out inline diagnostics. They're weirdly inconsistent
+    - "rachartier/tiny-inline-diagnostic.nvim", is pretty though
+
+- Python navigation textobjects ]k ]c etc are missing
+
 - https://github.com/ysmb-wtsg/in-and-out.nvim
 
 - How to save past qf queries? (If it isn't just a default behavior)
@@ -77,11 +82,6 @@ https://github.com/echasnovski/mini-git
 
 https://www.reddit.com/r/neovim/comments/1ds30mw/i_replaced_the_mode_names_with_ascii_emoticons/
 
-https://github.com/rachartier/tiny-inline-diagnostic.nvim
-
-
-https://github.com/brenoprata10/nvim-highlight-colors
-
 
 https://www.reddit.com/r/neovim/comments/1dthevz/lcars_star_trek_theme/#lightbox
 
@@ -90,17 +90,11 @@ https://www.reddit.com/r/neovim/comments/1dthevz/lcars_star_trek_theme/#lightbox
 
 - https://www.reddit.com/r/neovim/comments/1d5orqz/open_files_from_windows_file_explorer_in_wsl/
 
-
-- https://github.com/monkoose/neocodeium
-- https://github.com/supermaven-inc/supermaven-nvim
 - Make it so I only get completion on-request, not all of the time
 
 - Apparently neodev isn't needed anymore - https://github.com/neovim/neovim/pull/24592
 
 - Try out - https://www.reddit.com/r/neovim/comments/1cxbegq/minigit_git_integration_with_tracking_gitrelated/
-
-https://github.com/rachartier/tiny-devicons-auto-colors.nvim
-https://www.reddit.com/r/neovim/comments/1cu6qd0/deviconcolorscheme_apply_your_colorscheme_in/
 
 https://www.reddit.com/r/neovim/comments/1cv2tha/adding_this_to_telescope_config_made_it_look_a/
 
@@ -381,8 +375,6 @@ Request jumplist support for debugging
 
 Often when debugging it's useful to step quickly through the code until some area of interest is found. Sometimes you realize that you've past the area of interest and are actually now in a different function, with a different call stack. If we had `<c-p>`/`<c-o>` to go backwards, we'd be able to effectively retrace the movements of the debugger to get to the current point. However to use `<c-p>`/`<c-o>`, (Neo)vim requires cursor positions to be added to the jump list.
 
-- Python navigation textobjects ]k ]c etc are missing
-
 - Merge - https://github.com/danymat/neogen/pull/158
 - Merge - https://github.com/nvim-treesitter/nvim-treesitter/pull/5755
 - Merge - https://github.com/rcarriga/nvim-dap-ui/pull/309
@@ -397,18 +389,6 @@ Often when debugging it's useful to step quickly through the code until some are
 
 - Added <Space>CD for Fzf CDing
 
-```
-Issues while press pressing <Tab>. Fix?
-E5108: Error executing lua ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:154: Vim:E15: Invalid expression:
-stack traceback:
-        [C]: in function 'nvim_eval'
-        ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:154: in function 'solve'
-        ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:133: in function <...al/.config/nvim/bundle/nvim-cmp/lua/c
-mp/utils/keymap.lua:132>
-        ...al/.config/nvim/bundle/nvim-cmp/lua/cmp/utils/keymap.lua:248: in function <...al/.config/nvim/bundle/nvim-cmp/lua/c
-mp/utils/keymap.lua:247>
-
-```
 
 
 
@@ -432,28 +412,7 @@ mp/utils/keymap.lua:247>
 - The :Rg command is window sizes are still fucked.
 
 - persistent-breakpoints doesn't load as expected. Fix
-- vim-git-backup - make into lua, maybe
 - searcher / navigation mode ( project, c = class, f = function, m = method, etc)
-
-
-Fix - Critical
-- While in terminal mode, the `git rebase -i master` doesn't work. I cannot <ESC> properly
-
-
-- Look into Neovim development
-
-
-```
-Failed to source `/home/selecaotwo/repositories/personal/.config/nvim/bundle/vim-ipmotion/plugin/ipmotion.vim`
-vim/_editor.lua:0: nvim_exec2()../home/selecaotwo/repositories/personal/.config/nvim/bundle/vim-ipmotion/plugin/ipmotion.vim, line 50: Vim:E492:
-Not an editor command: ^M
-#
-```
-
-
-
-- Possibly not needed anymore? - Terminal is really slow at typing, sometimes
-
 
 
 - need terminal send / etc code
@@ -462,125 +421,4 @@ Not an editor command: ^M
    - config to switch the priority
 
 
-
-
-
-
-- Helptags doesn't work anymore. perl error!
- - https://github.com/junegunn/fzf.vim/issues/1506
-  - 5d87ac1fe8d729f116bda2f90a7211ad309ddf5a, before perl was introduced as a dependency in 1dcdb21db618055134cd611f4f5918f6d00a5df0. I've locked my version for now to the lower commit but any advice would be appreciated.
-
-
-
-
 https://github.com/dharmx/nvim/blob/e79ac39e3c9aff7e4e99ce889caea45c5fc65bc4/lua/scratch/node.lua
-
-
-
-```lua
---- Find all children that fit within `range`.
----
---- Important:
----     This function is **inclusive**, the ``root`` is returned as the first index.
----
---- @param root TSNode A Neovim tree-sitter node to check within.
---- @param range _Range The 0-or-more treesitter start/end index lines.
---- @return TSNode[] # The found children, if any.
----
-local function _traverse_within_range(root, range)
-  local start, end_ = unpack(range)
-
-  local stack = {root}
-  local output = {}
-
-  while not vim.tbl_isempty(stack)
-  do
-    local current = table.remove(stack)
-
-    table.insert(output, current)
-
-    for child in current:iter_children()
-    do
-      if child:start() <= end_ and child:end_() >= start then
-        -- NOTE: ``child`` is in range
-        table.insert(stack, child)
-      end
-    end
-  end
-
-  return output
-end
-
---- @class _NodeData
----     A description of the injected data and its root.
---- @field node
----     The starting root node for this injected language.
---- @field language
----     The name of the injected language.
----
-
---- Find all injected languages in `parser`.
----
---- @param parser vim.treesitter.LanguageTree
----     A starting tree to get all injections / trees.
---- @return table<string, string>
----     The found injections, if any.
----
-local function _initialize_injections(parser)
-  local injections = {} ---@type table<string, vim.treesitter.dev.Injection>
-
-  parser:for_each_tree(function(parent_tree, parent_ltree)
-    local parent = parent_tree:root()
-    for _, child in pairs(parent_ltree:children()) do
-      for _, tree in pairs(child:trees()) do
-        local r = tree:root()
-        local node = assert(parent:named_descendant_for_range(r:range()))
-        local id = node:id()
-        if not injections[id] or r:byte_length() > injections[id].root:byte_length() then
-          injections[id] = child:lang()
-        end
-      end
-    end
-  end)
-
-  return injections
-end
-
---- Find all nodes within line `range` at `buffer`.
----
---- @param range _Range The 0-or-more treesitter start/end index lines.
---- @param buffer number? A Vim buffer to query from. 0 == current buffer.
---- @return _NodeData[] # The found nodes, if any.
----
-local function _get_nodes_in_range(range, buffer)
-  local buffer = buffer or 0
-  local parser = vim.treesitter.get_parser(buffer)
-  local injections = _initialize_injections(parser)
-  local trees = parser:parse(range)
-  local buffer_language = "python" -- TODO: Figure out how to query this
-
-  local nodes = {}
-
-  for _, tree in ipairs(trees)
-  do
-    local root = tree:root()
-    local language = injections[root:id()] or buffer_language
-
-    for _, node in ipairs(_traverse_within_range(root, range))
-    do
-      table.insert(nodes, {node=node, language=language})
-    end
-  end
-
-  return nodes
-end
-
-local buffer = 4
-local vim_start_line = 2
-local vim_end_line = 4
-local treesitter_start_line = vim_start_line - 1
-local treesitter_end_line = vim_end_line - 1
-
-local nodes = _get_nodes_in_range({treesitter_start_line, treesitter_end_line}, buffer)
-print(#nodes)
-```
