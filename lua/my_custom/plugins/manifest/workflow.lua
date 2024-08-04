@@ -343,6 +343,7 @@ return {
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
         "ColinKennedy/toggleterminal.nvim",
+        branch = "first_pass",
         cmd = "ToggleTerm",
         config = true,
         keys = {
