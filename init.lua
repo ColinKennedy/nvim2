@@ -41,6 +41,8 @@ local plugins = {}
 
 vim.g.vim_home = filer.get_current_directory()
 
+require("my_custom.start.fix_terminal_padding")
+
 extend(plugins, require("my_custom.plugins.manifest.appearance"))
 extend(plugins, require("my_custom.plugins.manifest.debugging"))
 extend(plugins, require("my_custom.plugins.manifest.lsp"))
