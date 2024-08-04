@@ -1,12 +1,8 @@
+- Make a quickfix search searcher
+
+- https://github.com/ysmb-wtsg/in-and-out.nvim
+
 - How to save past qf queries? (If it isn't just a default behavior)
-
-- right-align the LSP diagnostics. Again.
- - Or disable
-
-- Allow timeline.nvim to get git repo + branch name as part of the commit message
- - Add default git function to automate this
- - The "Updated file" message should also be a file path
-
 
 Neogen Python typed args / kwargs are still broken
 
@@ -78,8 +74,6 @@ https://github.com/FireIsGood/spaceman.nvim
 https://github.com/ravibrock/spellwarn.nvim
 
 https://github.com/echasnovski/mini-git
-
-https://github.com/ysmb-wtsg/in-and-out.nvim
 
 https://www.reddit.com/r/neovim/comments/1ds30mw/i_replaced_the_mode_names_with_ascii_emoticons/
 
