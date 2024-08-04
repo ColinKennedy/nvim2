@@ -4,6 +4,7 @@
  - Or disable
 
 - Allow timeline.nvim to get git repo + branch name as part of the commit message
+ - Add default git function to automate this
  - The "Updated file" message should also be a file path
 
 https://github.com/will-lynas/grapple-line.nvim/pull/5/files
