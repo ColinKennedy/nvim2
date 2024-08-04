@@ -316,3 +316,12 @@ local function _save_session()
     end
 end
 vim.api.nvim_create_autocmd("VimLeave", { callback = _save_session })
+
+vim.api.nvim_create_autocmd(
+    "QuickFixCmdPost",
+    {
+        callback = function()
+            require("my_custom.utilities.quick_fix_movement").sort("c")
+        end,
+    }
+)
