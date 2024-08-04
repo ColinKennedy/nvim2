@@ -7,8 +7,6 @@
  - Add default git function to automate this
  - The "Updated file" message should also be a file path
 
-https://github.com/will-lynas/grapple-line.nvim/pull/5/files
-
 
 Neogen Python typed args / kwargs are still broken
 
@@ -53,9 +51,7 @@ nmap: `gx`
 - https://github.com/TheBlob42/houdini.nvim
 
 
-
 https://seniormars.com/posts/neovim-workflow/
-https://www.reddit.com/r/neovim/comments/1dozoz5/yankassassinnvim_dont_let_the_cursor_move_while/
 https://www.reddit.com/r/neovim/comments/1dpq3jb/how_many_extmarks_is_considered_too_many/
 https://github.com/OXY2DEV/markview.nvim
 
