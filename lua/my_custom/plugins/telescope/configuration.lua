@@ -18,3 +18,7 @@ vim.api.nvim_set_hl(0, "TelescopePromptCounter", {bg=background})
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", {bg=background, fg="#252931"})
 vim.api.nvim_set_hl(0, "TelescopePromptNormal", {bg=background, fg="#abb2bf"})
 vim.api.nvim_set_hl(0, "TelescopePromptPrefix", {bg=background, fg="#e06c75"})
+
+require("telescope").setup(
+    { defaults={ prompt_prefix = "󰼛 ", selection_caret = "󱞩 " } }
+)
