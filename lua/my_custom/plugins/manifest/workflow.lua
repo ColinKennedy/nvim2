@@ -221,6 +221,26 @@ return {
     {
         "tpope/vim-fugitive",
         cmd = { "G", "Gcd", "Gdiffsplit", "Git", "Gvdiffsplit" },
+        config = function()
+            vim.api.nvim_create_autocmd(
+                "User",
+                {
+                    callback = function()
+                        local function _is_diff_related()
+                            local line = 1  -- Vim buffer line
+                            local text = vim.fn.getline(line)
+
+                            return text:find("^diff ")
+                        end
+
+                        if _is_diff_related() then
+                            vim.schedule(function() vim.treesitter.start(0, "diff") end)
+                        end
+                    end,
+                    pattern = "FugitivePager",
+                }
+            )
+        end,
         keys = require("my_custom.plugins.vim_fugitive.keys"),
         version = "3.*",
     },
