@@ -321,7 +321,9 @@ vim.api.nvim_create_autocmd(
     "QuickFixCmdPost",
     {
         callback = function()
-            require("my_custom.utilities.quick_fix_movement").sort("c")
+            local sorter = require("my_custom.utilities.quick_fix_sort")
+
+            sorter.sort_quick_fix()
         end,
     }
 )
