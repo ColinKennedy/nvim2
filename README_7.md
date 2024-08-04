@@ -10,8 +10,6 @@
 ;    (#set! conceal "…")
 ; )
 
-- Make a quickfix search searcher
-
 
 - add LSP for C++, Python, and C++ USD, and C++ Qt
  - LSP auto-complete
@@ -23,8 +21,6 @@
   - General
  - add deferred event call so that the plugins aren't loaded by default
   - NvChad uses ``event = "InsertEnter"``
-
-- Add Hunspell - To improve spell checking word variants
 
 - Follow-up
  - Typing "D" for a docstring in a real file is frustrating because cmp takes control away when new  LSP entries are added
@@ -39,12 +35,6 @@
 - Consider these completion sources
  - https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources#miscellaneous
   - https://github.com/rcarriga/cmp-dap
-  - https://github.com/JMarkin/cmp-diag-codes
-  - https://github.com/paopaol/cmp-doxygen
-  - https://github.com/hrsh7th/cmp-nvim-lua
-  - https://github.com/KadoBOT/cmp-pluginsA - Maybe???
-  - https://github.com/ray-x/cmp-treesitter
-  - https://github.com/uga-rosa/cmp-dynamic
  - https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
  - https://github.com/lukas-reineke/cmp-rg
 
