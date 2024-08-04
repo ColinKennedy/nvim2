@@ -34,6 +34,7 @@ nmap: `gx`
 ## Misc
 
 
+
 - navigate
 - search
 - display (stuff)
@@ -52,7 +53,7 @@ nmap: `gx`
 
 
 https://seniormars.com/posts/neovim-workflow/
-https://www.reddit.com/r/neovim/comments/1dpq3jb/how_many_extmarks_is_considered_too_many/
+
 https://github.com/OXY2DEV/markview.nvim
 
 https://www.reddit.com/r/neovim/comments/1dpspyx/introducing_nvimripsubstitute_search_and_replace/
@@ -62,21 +63,12 @@ https://www.reddit.com/r/neovim/comments/1dpspyx/introducing_nvimripsubstitute_s
 
 https://www.reddit.com/r/neovim/comments/1dpww7b/finally_managed_to_integrate_lsp_servers_and/
 
-
-https://github.com/chrisgrieser/nvim-lsp-endhints
-
 that plugin that puts the commandline in te center of the screen might be a good addition
 
 
 https://github.com/Ramilito/winbar.nvim
 
-https://github.com/niuiic/track.nvim
-
 https://github.com/sleepyswords/change-function.nvim
-
-https://github.com/rachartier/tiny-devicons-auto-colors.nvim
-
-https://github.com/VoxelPrismatic/rabbit.nvim?tab=readme-ov-file
 
 https://github.com/Aaronik/GPTModels.nvim
 
@@ -85,15 +77,9 @@ https://github.com/FireIsGood/spaceman.nvim
 
 https://github.com/ravibrock/spellwarn.nvim
 
-https://github.com/BranimirE/fix-auto-scroll.nvim
-
-https://github.com/prichrd/vwd.nvim
-
 https://github.com/echasnovski/mini-git
 
 https://github.com/ysmb-wtsg/in-and-out.nvim
-
-https://github.com/oysandvik94/curl.nvim
 
 https://www.reddit.com/r/neovim/comments/1ds30mw/i_replaced_the_mode_names_with_ascii_emoticons/
 
@@ -369,19 +355,6 @@ https://github.com/HoNamDuong/hybrid.nvim/blob/master/lua/hybrid/highlights.lua
 https://github.com/PHSix/nvim-hybrid
 
 https://github.com/idanarye/nvim-blunder
-
-
-```
-warning: Undefined global `vim`.
-Error detected while processing TextChangedI Autocommands for "*":
-Error executing lua callback: ...nal/.config/nvim/bundle/spaceless.nvim/lua/spaceless.lua:61: attempt to compare nil with numb
-er
-stack traceback:
-        ...nal/.config/nvim/bundle/spaceless.nvim/lua/spaceless.lua:61: in function <...nal/.config/nvim/bundle/spaceless.nvim
-/lua/spaceless.lua:55>
-        .../.config/nvim/bundle/spaceless.nvim/plugin/spaceless.lua:12: in function <.../.config/nvim/bundle/spaceless.nvim/pl
-ugin/spaceless.lua:11>
-```
 
 - pylance, try it out
 - Update hybrid2 to deal with LSP colors
