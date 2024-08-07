@@ -457,8 +457,6 @@ function M.setup_keymaps()
     vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]])
     vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
     vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
-
-    vim.keymap.set("t", "jk", [[<C-\><C-n>]], {desc="Escape terminal mode easily."})
 end
 
 return M
