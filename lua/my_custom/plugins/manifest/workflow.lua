@@ -464,10 +464,10 @@ return {
     --
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.*",
         cmd = "Telescope",
         config = function() require("my_custom.plugins.telescope.configuration") end,
         dependencies = {"ColinKennedy/plenary.nvim"},
+        version = "0.1.*",
     },
 
     -- Use <leader>cii to increment semver / dates
