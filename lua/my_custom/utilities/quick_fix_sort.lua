@@ -7,10 +7,10 @@ local M = {}
 
 --- Numerically and alphabetically sort the quick-fix list.
 function M.sort_quick_fix()
-    local list = vim.fn.getqflist()
+    local all = vim.fn.getqflist({all=true})
 
     table.sort(
-        list,
+        all.items,
         function(left, right)
             local left_buffer = vim.fn.bufname(left.bufnr)
             local right_buffer = vim.fn.bufname(right.bufnr)
@@ -47,7 +47,7 @@ function M.sort_quick_fix()
         end
     )
 
-    vim.fn.setqflist(list)
+    vim.fn.setqflist({}, "r", all)
 end
 
 return M
