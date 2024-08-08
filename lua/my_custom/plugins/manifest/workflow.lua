@@ -299,10 +299,6 @@ return {
     {
         "folke/which-key.nvim",
         config = function() require("my_custom.plugins.which_key.configuration") end,
-        keys = {
-            { "<Space>", desc = "The space switcher key." },
-            { "<leader>", desc = "The custom mapping location." }
-        },
         version = "v3.*",
     },
 

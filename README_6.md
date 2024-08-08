@@ -1,4 +1,12 @@
+- Fix all checkhleath issuse
+ - Fix all checkhleath issuse
 - Add which-key icons (apparently you can do that)
+
+- Add color to the telescope selector icon
+
+- Telescope quickfixhistory
+ - ctrl-q should select the quickfix history, not create a new one
+
 - Make a quickfix search searcher
 
 
