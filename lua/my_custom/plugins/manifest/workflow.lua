@@ -303,7 +303,7 @@ return {
             { "<Space>", desc = "The space switcher key." },
             { "<leader>", desc = "The custom mapping location." }
         },
-        version = "stable",
+        version = "v3.*",
     },
 
     -- -- An async "parameter highlights" plugin that uses tree-sitter.
