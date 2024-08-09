@@ -29,8 +29,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local _CURRENT_DIRECTORY = vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand("<sfile>:p")), ":h")
-
 local filer = require("my_custom.utilities.filer")
 local tabler = require("my_custom.utilities.tabler")
 local extend = tabler.extend

@@ -1,14 +1,13 @@
-- Fix all checkhleath issuse
- - Fix all checkhleath issuse
+- https://github.com/MisanthropicBit/neotest-busted
+
 - Add which-key icons (apparently you can do that)
 
 - Add color to the telescope selector icon
 
-- Telescope quickfixhistory
- - ctrl-q should select the quickfix history, not create a new one
-
 - Make a quickfix search searcher
 
+Telescope resume
+- Write this down
 
 https://github.com/mtrajano/tssorter.nvim
 
@@ -22,8 +21,6 @@ https://www.reddit.com/r/neovim/comments/1egwjgp/anyone_using_difftastic_with_fu
 https://www.reddit.com/r/neovim/comments/1eaxity/rachartiertinycodeactionnvim_a_simple_way_to_run/
 
 https://github.com/christopher-francisco/tmux-status.nvim
-
-https://github.com/yacineMTB/dingllm.nvim
 
 https://github.com/svampkorg/moody.nvim
 

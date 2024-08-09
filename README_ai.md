@@ -52,6 +52,7 @@ https://github.com/terror/chatgpt.nvim
 https://github.com/tom-doerr/vim_codex
 https://github.com/towry/commit-msg-sg.nvim
 https://github.com/tzachar/cmp-ai
+https://github.com/yacineMTB/dingllm.nvim
 https://github.com/you-n-g/simplegpt.nvim
 https://github.com/zbirenbaum/copilot-cmp
 https://github.com/zbirenbaum/copilot.lua
