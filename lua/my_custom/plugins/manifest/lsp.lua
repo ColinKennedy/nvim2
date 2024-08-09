@@ -143,21 +143,6 @@ return {
         event = { "LspAttach" },
     },
 
-    -- Iteratively show the next argument, in a pop-up window
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-            require("lsp_signature").setup(
-                {
-                    hint_enable = false,
-                    timer_interval = 500,  -- Wait longer before showing this pop-up
-                }
-            )
-        end,
-        event = "User LspComplete",
-        version = "0.*",
-    },
-
     -- Rust LSP tools
     {
         "ColinKennedy/rust-tools.nvim",

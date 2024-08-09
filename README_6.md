@@ -10,6 +10,9 @@
 - Make a quickfix search searcher
 
 
+https://github.com/mtrajano/tssorter.nvim
+
+https://www.reddit.com/r/neovim/comments/1embbrf/my_top_10_neovim_plugins_with_demos/
 
 https://github.com/isakbm/gitgraph.nvim
 
