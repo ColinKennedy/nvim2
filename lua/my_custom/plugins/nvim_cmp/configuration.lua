@@ -109,6 +109,8 @@ cmp.setup(
                     keyword_length = 3,  -- Most paths will be at least 4 characters long.
                     priority = 10,
                 },
+                -- Shows the function signature while you are typing
+                { name = 'nvim_lsp_signature_help' },
             }
         ),
 

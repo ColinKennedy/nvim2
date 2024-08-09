@@ -367,3 +367,6 @@
 [submodule "bundle/grapple-line.nvim"]
 	path = bundle/grapple-line.nvim
 	url = git@github.com:ColinKennedy/grapple-line.nvim.git
+[submodule "bundle/cmp-nvim-lsp-signature-help"]
+	path = bundle/cmp-nvim-lsp-signature-help
+	url = git@github.com:hrsh7th/cmp-nvim-lsp-signature-help.git
