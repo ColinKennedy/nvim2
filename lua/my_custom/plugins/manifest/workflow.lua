@@ -570,7 +570,6 @@ return {
                 "<leader>rif",
                 function() require("refactoring").refactor("Inline Function") end,
                 desc = "[r]efactor - [i]nline the [f]unction",
-                desc = "[r]efactor - [i]nline the [f]unction",
             },
             {
                 mode = {"x"},
