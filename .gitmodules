@@ -370,3 +370,6 @@
 [submodule "bundle/cmp-nvim-lsp-signature-help"]
 	path = bundle/cmp-nvim-lsp-signature-help
 	url = git@github.com:hrsh7th/cmp-nvim-lsp-signature-help.git
+[submodule "bundle/render-markdown.nvim"]
+	path = bundle/render-markdown.nvim
+	url = git@github.com:MeanderingProgrammer/render-markdown.nvim.git

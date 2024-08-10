@@ -165,4 +165,43 @@ return {
         dependencies = { "ColinKennedy/plenary.nvim" },
         config = function() require("my_custom.plugins.todo_comments.configuration") end,
     },
+
+    -- Make markdown files pretty
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        config = function()
+            local colorizer = require("my_custom.utilities.colorizer")
+            local lualine_colorizer = require("my_custom.utilities.lualine_colorizer")
+
+            local function set_header_color(header)
+                local foreground = lualine_colorizer.extract_color_from_hllist(
+                  { "fg" }, { string.format("@markup.heading.%s", header) }
+                )
+
+                local darker = colorizer.shade_color(foreground, -40)
+
+                vim.api.nvim_set_hl(
+                    0,
+                    string.format("RenderMarkdownH%sBg", header),
+                    {bg=darker, fg="White"}
+                )
+
+                vim.api.nvim_set_hl(
+                    0,
+                    string.format("RenderMarkdownH%s", header),
+                    {fg="White"}
+                )
+            end
+
+            for header=1,6
+            do
+                set_header_color(header)
+            end
+
+            vim.api.nvim_set_hl(0, "RenderMarkdownTableFill", {link="Normal"})
+
+            require('render-markdown').setup({ heading = { sign = false } })
+        end,
+        dependencies = { 'nvim-treesitter/nvim-treesitter' }
+    },
 }

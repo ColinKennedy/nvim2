@@ -65,6 +65,8 @@ https://github.com/cvusmo/LinuxUnrealBuildTool.nvim
 
 https://www.reddit.com/r/neovim/comments/1dpzlfr/kulalanvim_a_minimal_httpclient_interface_for/
 
+- Really pretty gitk alternative - https://github.com/isakbm/gitgraph.nvim
+
 
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim

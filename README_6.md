@@ -13,14 +13,10 @@ https://github.com/mtrajano/tssorter.nvim
 
 https://www.reddit.com/r/neovim/comments/1embbrf/my_top_10_neovim_plugins_with_demos/
 
-https://github.com/isakbm/gitgraph.nvim
-
 https://www.reddit.com/r/nvim/comments/1egpnsv/pretty_git_graph_using_kitty_and_vimflog/
 https://www.reddit.com/r/neovim/comments/1egwjgp/anyone_using_difftastic_with_fugitivevim/
 
 https://www.reddit.com/r/neovim/comments/1eaxity/rachartiertinycodeactionnvim_a_simple_way_to_run/
-
-https://github.com/christopher-francisco/tmux-status.nvim
 
 https://github.com/svampkorg/moody.nvim
 
