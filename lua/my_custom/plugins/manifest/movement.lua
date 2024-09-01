@@ -81,6 +81,8 @@ return {
         config = function()
             require("better_escape").setup{
                 mappings = {
+                    -- NOTE: This prevents jk from leaving VISUAL mode
+                    v = {j = {k = "k"}},
                     t = {
                         j = {
                             k = [[<C-\><C-n>]],
