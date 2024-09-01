@@ -1,6 +1,54 @@
-- https://github.com/MisanthropicBit/neotest-busted
+- Fix git rebase / git commit messages from triggering errors from timeline.nvim
+- Stop escaping VISUAL model whenever I press j/k
+- Fix the hybrid2 colors for the pop-=up menu. Mkae it look like wilder does/did
+- tmux-ressurect isn't grabbing session files anymore. Probably  because I removed the tpope plugin. Fix!
 
-- Add which-key icons (apparently you can do that)
+- <leader>sa doesn't work often
+ - /home/selecaoone/repositories/personal/.config/nvim/bundle/nvim-best-practices-plugin-template/spec/plugin_template/telescope_spec.lua
+```lua
+assert.equal(
+    {
+        "asdfasdf",
+        "ttttt",
+        "asdfasd",
+    },
+    _RESULT
+)
+```
+
+- <Space>T doesn't work with set winfixbuf. Fix!
+
+
+- Is is possible to have noice + completion work at the same time
+ - https://www.reddit.com/r/neovim/comments/1f0ade1/the_amount_of_customisation_neovim_provides_is/
+ - https://www.reddit.com/r/neovim/comments/1f0ade1/the_amount_of_customisation_neovim_provides_is/
+ - https://github.com/OXY2DEV/nvim/blob/main/lua/scripts/cmdline.lua
+
+https://github.com/lewis6991/satellite.nvim
+
+
+- highlighting within the quickfix - https://www.reddit.com/r/neovim/comments/1emc1r3/new_stevearc_quickernvim_plugin_for_better/
+
+
+- Possibly a replacement for qf-edit - https://github.com/stefandtw/quickfix-reflector.vim
+
+```
+**Is your feature request about something that is currently impossible or hard to do? Please describe the problem.**
+A window with `winfixbuf` can prevent a window from changing its current buffer. While that's great most of the time, sometimes plugins like to call a command to display a buffer and it doesn't care which window necessarily the buffer is displayed on. For example https://github.com/cbochs/grapple.nvim
+
+**Describe the solution you'd like**
+Vim already has a mechanism that stores "the previous window that the user was in which did not have winfixbuf applied to it" which we use for iterating over quickfix results. I believe the variable is called `altwin`. If Vim provided that as a value, plugin authors could choose to use it rather than assume that the current window is always `nowinfixbuf`.
+
+**Describe alternatives you've considered**
+Manually tracking visited windows via autocmd and finding the first window that does not have winfixbuf set onto it.
+
+**Additional context**
+```
+
+
+- Talk to the markview person to fix the colors
+
+- https://github.com/MisanthropicBit/neotest-busted
 
 - Add color to the telescope selector icon
 
@@ -22,8 +70,6 @@ https://github.com/svampkorg/moody.nvim
 
 https://github.com/mvllow/modes.nvim
 
-https://www.reddit.com/r/neovim/comments/1e1apfm/introducing_neominimap_yet_another_minimap_plugin/
-
 
 https://www.reddit.com/r/neovim/comments/1e7gkv6/introducing_applemusicnvim/
 https://www.reddit.com/r/neovim/comments/1e84m23/minuetainvim_code_completion_using_popular_llms/
@@ -39,8 +85,6 @@ https://github.com/neovim/neovim/issues/26079
 https://github.com/neovim/neovim/issues/25950
 
 https://github.com/neovim/neovim/issues/25950
-
-https://www.reddit.com/r/neovim/comments/1bap15p/plugin_icholylsplinksnvim_v100_release/
 
 
 

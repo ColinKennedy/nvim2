@@ -79,6 +79,12 @@ cmp.setup(
             end,
         },
 
+        -- Reference: https://www.reddit.com/r/neovim/comments/1f1rxtx/share_a_tip_to_improve_your_experience_in_nvimcmp
+        performance = {
+            debounce = 0, -- default is 60ms
+            throttle = 0, -- default is 30ms
+        },
+
         sources = cmp.config.sources(
             {
                 -- Complete snippet engine results
