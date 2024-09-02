@@ -17,7 +17,7 @@ return {
 
             if not root
             then
-                vim.api.nvim_err_writeln('No root could be fould.')
+                vim.api.nvim_err_writeln('No root could be found.')
 
                 return
             end
