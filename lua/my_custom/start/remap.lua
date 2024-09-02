@@ -58,7 +58,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>ss",
-    "<cmd>%s/\\<<C-r><C-w>\\>/<C-r><C-w>/<Right><CR>",
+    ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/<Right>",
     {
         desc="[s]ubstitute [s]election (in-file search/replace) for the word under your cursor.",
     }
