@@ -9,7 +9,6 @@ local snippet = luasnip.s
 local dynamicNode = require("luasnip.nodes.dynamicNode").D
 local snippetNode = require("luasnip.nodes.snippet").SN
 
-
 --- Create a dynamic LuaSnip snippet-node whose contents are created by Neogen.
 ---
 --- @param section string The Neogen section name to create a LuaSnip snippet.
@@ -22,6 +21,8 @@ local function _make_section_snippet_node(section)
             local neogen = require("neogen")
 
             local lines = neogen.generate(
+                -- TODO: Provide an explicit snippet engine (once there's an
+                -- argument for it).
                 {return_snippet = true, sections = {section}}
             )
 

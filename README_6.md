@@ -27,8 +27,6 @@ assert.equal(
 ```
 
 
-https://github.com/mtrajano/tssorter.nvim
-
 https://www.reddit.com/r/neovim/comments/1embbrf/my_top_10_neovim_plugins_with_demos/
 
 https://www.reddit.com/r/nvim/comments/1egpnsv/pretty_git_graph_using_kitty_and_vimflog/
@@ -41,7 +39,6 @@ https://github.com/svampkorg/moody.nvim
 https://github.com/mvllow/modes.nvim
 
 
-https://www.reddit.com/r/neovim/comments/1e7gkv6/introducing_applemusicnvim/
 https://www.reddit.com/r/neovim/comments/1e84m23/minuetainvim_code_completion_using_popular_llms/
 
 
@@ -58,46 +55,10 @@ https://github.com/neovim/neovim/issues/25950
 
 
 
-https://github.com/stevearc/quicker.nvim
-
-https://github.com/mtrajano/tssorter.nvim
-
 https://www.reddit.com/r/neovim/comments/1el3g8i/grugfarnvim_update_support_for_astgrep_syntax/
-
-https://github.com/stevearc/quicker.nvim
-
-https://github.com/CWood-sdf/banana.nvim
 
 https://github.com/yssl/QFEnter
 
-https://github.com/machakann/vim-swap
-
-https://github.com/preservim/nerdcommenter
-
-https://github.com/jubnzv/mdeval.nvim
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Testing stuff
-https://github.com/mfussenegger/nlua
-https://github.com/nvim-neorocks/nvim-busted-action/discussions/categories/ideas?discussions_q=category%3AIdeas+
-https://mrcjkb.dev/posts/2023-01-10-luarocks-tag-release.html
-https://zignar.net/2023/06/10/debugging-lua-in-neovim/
-https://hiphish.github.io/blog/2024/01/29/testing-neovim-plugins-with-busted/
-https://stackoverflow.com/questions/50394279/running-busted-from-luarocks-busted-is-not-recognized-as-an-internal-or-exte
-https://mrcjkb.dev/posts/2023-06-06-luarocks-test.html
-https://hiphish.github.io/blog/2024/01/29/testing-neovim-plugins-with-busted/
 
 
 
@@ -107,13 +68,9 @@ https://hiphish.github.io/blog/2024/01/29/testing-neovim-plugins-with-busted/
 - Figure out inline diagnostics. They're weirdly inconsistent
     - "rachartier/tiny-inline-diagnostic.nvim", is pretty though
 
-- Python navigation textobjects ]k ]c etc are missing
-
 - https://github.com/ysmb-wtsg/in-and-out.nvim
 
 - How to save past qf queries? (If it isn't just a default behavior)
-
-Neogen Python typed args / kwargs are still broken
 
 
 https://www.reddit.com/r/neovim/comments/1dyq2ez/what_do_you_think_of_my_cmp_thesaurus_neovim/

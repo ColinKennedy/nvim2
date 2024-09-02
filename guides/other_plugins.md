@@ -90,10 +90,18 @@ https://github.com/matkrin/telescope-spell-errors.nvim
 
 Also it looks like there's a way to show a markdown file as presentation slides. Not sure how!
 
-Writing markdown - https://github.com/Piotr1215/youtube/blob/main/nvim-markdown/slides.md
+- Writing markdown - https://github.com/Piotr1215/youtube/blob/main/nvim-markdown/slides.md
+    - https://github.com/jubnzv/mdeval.nvim
 
+- Sort basedon tree-sitter nodes - https://github.com/mtrajano/tssorter.nvim
+
+- git graph, with neovim - https://www.reddit.com/r/nvim/comments/1egpnsv/pretty_git_graph_using_kitty_and_vimflog/
 
 https://github.com/vigoux/architext.nvim
+
+- A HTML renderer in Neovim - https://github.com/CWood-sdf/banana.nvim
+
+- Swap arguments (contains text objects) - https://github.com/machakann/vim-swap
 
 
 ## In theory useful but don't seem to work
