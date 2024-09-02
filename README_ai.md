@@ -38,6 +38,7 @@ https://github.com/kamou/gpt-vim
 https://github.com/kiteco/vim-plugin
 https://github.com/leocus/codeassistant.vim
 https://github.com/madox2/vim-ai
+https://github.com/magicalne/nvim.ai
 https://github.com/marco-souza/ollero.nvim
 https://github.com/monkoose/neocodeium
 https://github.com/olimorris/codecompanion.nvim
@@ -53,6 +54,7 @@ https://github.com/tom-doerr/vim_codex
 https://github.com/towry/commit-msg-sg.nvim
 https://github.com/tzachar/cmp-ai
 https://github.com/yacineMTB/dingllm.nvim
+https://github.com/yetone/avante.nvim
 https://github.com/you-n-g/simplegpt.nvim
 https://github.com/zbirenbaum/copilot-cmp
 https://github.com/zbirenbaum/copilot.lua
