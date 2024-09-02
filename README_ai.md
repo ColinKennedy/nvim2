@@ -40,6 +40,7 @@ https://github.com/leocus/codeassistant.vim
 https://github.com/madox2/vim-ai
 https://github.com/magicalne/nvim.ai
 https://github.com/marco-souza/ollero.nvim
+https://github.com/milanglacier/minuet-ai.nvim
 https://github.com/monkoose/neocodeium
 https://github.com/olimorris/codecompanion.nvim
 https://github.com/pasky/claude.vim
