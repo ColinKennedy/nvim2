@@ -370,3 +370,6 @@
 [submodule "bundle/render-markdown.nvim"]
 	path = bundle/render-markdown.nvim
 	url = git@github.com:MeanderingProgrammer/render-markdown.nvim.git
+[submodule "bundle/satellite.nvim"]
+	path = bundle/satellite.nvim
+	url = git@github.com:lewis6991/satellite.nvim.git

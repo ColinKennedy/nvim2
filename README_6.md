@@ -3,16 +3,7 @@
 
 - check - https://github.com/SleepySwords/change-function.nvim/issues/6#event-13897533982
 
-
-- Is is possible to have noice + completion work at the same time
- - https://www.reddit.com/r/neovim/comments/1f0ade1/the_amount_of_customisation_neovim_provides_is/
- - https://www.reddit.com/r/neovim/comments/1f0ade1/the_amount_of_customisation_neovim_provides_is/
- - https://github.com/OXY2DEV/nvim/blob/main/lua/scripts/cmdline.lua
-
 https://github.com/lewis6991/satellite.nvim
-
-
-- highlighting within the quickfix - https://www.reddit.com/r/neovim/comments/1emc1r3/new_stevearc_quickernvim_plugin_for_better/
 
 
 https://github.com/akinsho/git-conflict.nvim
