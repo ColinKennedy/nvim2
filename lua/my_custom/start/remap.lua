@@ -49,7 +49,7 @@ vim.keymap.set(
 vim.keymap.set(
     "v",
     ".",
-    ":norm.<CR>",
+    "<cmd>norm.<CR>",
     {
         desc="Make `.` work with visually selected lines."
     }
@@ -58,7 +58,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>ss",
-    ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/<Right>",
+    "<cmd>%s/\\<<C-r><C-w>\\>/<C-r><C-w>/<Right><CR>",
     {
         desc="[s]ubstitute [s]election (in-file search/replace) for the word under your cursor.",
     }
@@ -89,7 +89,7 @@ vim.cmd('command! CopyCurrentFile :let @+=expand("%:p")<bar>echo "Copied " . exp
 vim.keymap.set(
     "n",
     "<leader>cc",
-    ":CopyCurrentFile<CR>",
+    "<cmd>CopyCurrentFile<CR>",
     {
         desc="[c]opy the [c]urrent file in the current window to the system clipboard. Assuming +clipboard.",
         silent=true,
@@ -123,7 +123,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "gx",
-    ":call command_extensions#better_gx()<CR>",
+    "<cmd>call command_extensions#better_gx()<CR>",
     {
         desc="Change `gx` to be more useful.",
         silent=true,
@@ -142,14 +142,14 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>cd",
-    ":lcd %:p:h<cr>:pwd<cr>",
+    "<cmd>lcd %:p:h<cr>:pwd<CR>",
     {desc="[c]hange the [d]irectory (`:pwd`) to the directory of the current open window."}
 )
 
 vim.keymap.set(
     "n",
     "<space>C",
-    ":close<CR>",
+    "<cmd>close<CR>",
     {desc="[C]lose the current window."}
 )
 
@@ -204,7 +204,7 @@ vim.keymap.set(
 vim.keymap.set(
     "v",
     "<leader>pt",
-    ":<C-U>call traceback_parser_python#parse_visual_traceback()<CR>",
+    "<cmd><C-U>call traceback_parser_python#parse_visual_traceback()<CR>",
     {
         desc="Load the selected [p]ython [t]raceback as a quickfix window.",
         silent=true,
@@ -223,7 +223,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>st",
-    ':execute "SendToRecentTerminal " . @+<CR>',
+    '<cmd>execute "SendToRecentTerminal " . @+<CR>',
     {
         desc="[s]end to the nearest [t]erminal your system clipboard text.",
         silent=true,
@@ -233,7 +233,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>rr",
-    ":SendToRecentTerminal !!<CR>",
+    "<cmd>SendToRecentTerminal !!<CR>",
     {
         desc="[r]e-[r]un the last terminal command (The !! syntax is UNIX-specific)",
         silent=true,
@@ -243,7 +243,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "QQ",
-    ":qall!<CR>",
+    "<cmd>qall!<CR>",
     {desc="Exit Vim without saving."}
 )
 
@@ -307,7 +307,7 @@ let g:_pager_bottom_texts = [":", "?", "/", "Pattern not found  (press RETURN)",
 vim.keymap.set(
     "x",
     "Q",
-    ":normal @<C-r>=reg_recorded()<CR><CR>",
+    "<cmd>normal @<C-r>=reg_recorded()<CR><CR>",
     { desc = "Repeat the last recorded register on all selected lines." }
 )
 
@@ -387,7 +387,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>rs",
-    ":normal 1z=<CR>",
+    "<cmd>normal 1z=<CR>",
     {
         desc="[r]eplace word with [s]uggestion.",
         silent=true,
