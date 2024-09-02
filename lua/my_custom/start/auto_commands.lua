@@ -195,13 +195,6 @@ vim.api.nvim_create_autocmd(
 )
 
 
-local function _enable_winfixbuf_if_supported()
-    if vim.fn.exists("&winfixbuf") == 1 then
-        vim.cmd[[set winfixbuf]]
-    end
-end
-
-
 --- @return boolean # Check if the current buffer is an fzf prompt
 local is_fzf_terminal = function()
     local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
@@ -241,9 +234,23 @@ vim.api.nvim_create_autocmd(
 
 -- Make sure a terminal buffer can never be switched away
 vim.api.nvim_create_autocmd(
-    "TermOpen",
+    "WinNew",
     {
-        callback = _enable_winfixbuf_if_supported,
+        callback = function()
+            local window = vim.api.nvim_get_current_win()
+
+            vim.schedule(
+                function()
+                    local buffer = vim.api.nvim_win_get_buf(window)
+
+                    if vim.bo[buffer].buftype == "terminal" then
+                        if vim.fn.exists("&winfixbuf") == 1 then
+                            vim.wo[window].winfixbuf = true
+                        end
+                    end
+                end
+            )
+        end,
         group = group,
         pattern = "*",
     }

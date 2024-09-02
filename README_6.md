@@ -1,22 +1,7 @@
-- Fix git rebase / git commit messages from triggering errors from timeline.nvim
-- Stop escaping VISUAL model whenever I press j/k
-- Fix the hybrid2 colors for the pop-=up menu. Mkae it look like wilder does/did
 - tmux-ressurect isn't grabbing session files anymore. Probably  because I removed the tpope plugin. Fix!
 
-- <leader>sa doesn't work often
- - /home/selecaoone/repositories/personal/.config/nvim/bundle/nvim-best-practices-plugin-template/spec/plugin_template/telescope_spec.lua
-```lua
-assert.equal(
-    {
-        "asdfasdf",
-        "ttttt",
-        "asdfasd",
-    },
-    _RESULT
-)
-```
 
-- <Space>T doesn't work with set winfixbuf. Fix!
+- check - https://github.com/SleepySwords/change-function.nvim/issues/6#event-13897533982
 
 
 - Is is possible to have noice + completion work at the same time
@@ -28,9 +13,6 @@ https://github.com/lewis6991/satellite.nvim
 
 
 - highlighting within the quickfix - https://www.reddit.com/r/neovim/comments/1emc1r3/new_stevearc_quickernvim_plugin_for_better/
-
-
-- Possibly a replacement for qf-edit - https://github.com/stefandtw/quickfix-reflector.vim
 
 ```
 **Is your feature request about something that is currently impossible or hard to do? Please describe the problem.**
@@ -46,7 +28,7 @@ Manually tracking visited windows via autocmd and finding the first window that 
 ```
 
 
-- Talk to the markview person to fix the colors
+https://github.com/akinsho/git-conflict.nvim
 
 - https://github.com/MisanthropicBit/neotest-busted
 
@@ -54,8 +36,19 @@ Manually tracking visited windows via autocmd and finding the first window that 
 
 - Make a quickfix search searcher
 
-Telescope resume
-- Write this down
+- <leader>sa doesn't work often
+ - /home/selecaoone/repositories/personal/.config/nvim/bundle/nvim-best-practices-plugin-template/spec/plugin_template/telescope_spec.lua
+```lua
+assert.equal(
+    {
+        "asdfasdf",
+        "ttttt",
+        "asdfasd",
+    },
+    _RESULT
+)
+```
+
 
 https://github.com/mtrajano/tssorter.nvim
 
@@ -466,6 +459,9 @@ https://github.com/lervag/file-line
 - Adding doxygen per-type?
 
 - https://www.reddit.com/r/neovim/comments/1abev8d/any_tips_to_optimize_cmp_performance/
+
+https://github.com/debugloop/layers.nvim
+- consider replacing hydra with this
 
 - tree-sitter + src/ex_cmds.h is super slow. Figure out why and make it fast again
 

@@ -118,21 +118,6 @@ return {
         lazy = true,
     },
 
-    -- TODO: Figure out how to lazy-load this plug-in
-    --
-    -- Overrides Vim's default Command mode and provides "wild card" results
-    -- + icons. Mostly cosmetic and isn't "necessary", but it is a fun little
-    -- plug-in as long as it's harmless.
-    --
-    {
-        "Gelio/wilder.nvim",
-        branch = "fix-last-arg-completion-for-lua",
-        config = function() require("my_custom.plugins.wilder.configuration") end,
-        dependencies = {"romgrk/fzy-lua-native"},
-        -- Reference: https://github.com/gelguy/wilder.nvim#faster-startup-time
-        event = "CmdlineEnter",
-    },
-
     -- Keep the Vim cursor in the center of the screen, even at the bottom of the buffer.
     --
     -- Maybe in the future this will change and Vim will have native support for this.
