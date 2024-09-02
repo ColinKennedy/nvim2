@@ -432,7 +432,7 @@ return {
                 "<leader>iV",
                 function()
                     -- Note: setting `expr=true` and returning the value are essential
-                    return require("debugprint").debugprint({ above = true, variable = true })
+                    return require("debugprint").debugprint({ above = true, variable = true, ignore_treesitter = false })
                 end,
                 desc = "[i]nsert [V]ariable debug-print above the current line",
                 expr = true,
@@ -442,7 +442,7 @@ return {
                 "<leader>iv",
                 function()
                     -- Note: setting `expr=true` and returning the value are essential
-                    return require("debugprint").debugprint({ above = false, variable = true })
+                    return require("debugprint").debugprint({ above = false, variable = true, ignore_treesitter = false })
                 end,
                 desc = "[i]nsert [v]ariable debug-print below the current line",
                 expr = true,
