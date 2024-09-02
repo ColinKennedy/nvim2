@@ -3,14 +3,13 @@
 
 - check - https://github.com/SleepySwords/change-function.nvim/issues/6#event-13897533982
 
-https://github.com/lewis6991/satellite.nvim
-
 
 https://github.com/akinsho/git-conflict.nvim
 
 - https://github.com/MisanthropicBit/neotest-busted
 
 - Add color to the telescope selector icon
+ - telescope color gets cleared somehow. Fix?
 
 - Make a quickfix search searcher
 
