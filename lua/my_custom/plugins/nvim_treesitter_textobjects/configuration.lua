@@ -53,13 +53,12 @@ require("nvim-treesitter.configs").setup {
 
 
     textobjects = {
-        -- TODO: Not working, fix
         move = {
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
           goto_next_start = {
             ["]k"] = "@class.outer",
-            -- ["]m"] = "@function.outer",  -- TODO: Add again once speed improves
+            ["]m"] = "@function.outer",
           },
           goto_next_end = {
             ["]K"] = "@class.outer",
@@ -67,7 +66,7 @@ require("nvim-treesitter.configs").setup {
           },
           goto_previous_start = {
             ["[k"] = "@class.outer",
-            -- ["[m"] = "@function.outer",  -- TODO: Add again once speed improves
+            ["[m"] = "@function.outer",
           },
           goto_previous_end = {
             ["[K"] = "@class.outer",
