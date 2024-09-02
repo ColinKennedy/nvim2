@@ -17,3 +17,5 @@ Auto-refactoring (based on tree-sitter)
 
 
 - Maybe consider this. I'm mostly happy with my mappings but could be something there - https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#super-tab-like-mapping
+
+https://andrewwegner.com/find-broken-links-with-github-actions.html

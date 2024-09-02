@@ -21,6 +21,7 @@ cmake -B build -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER=clang -D ENABLE_ASA
 
 ## Debugging
 ### Configuration
+- Install `konsole` because this adapter runs it
 - Make sure you compile with debug symbols enabled
 - Add a .vimrc with a configuration for nvim-dap (see below)
 - Get out of tmux if you're inside of it (from experience, it causes problems during debugging)
@@ -174,4 +175,10 @@ msg_puts_attr("Is visual mode, actually", 0);
 // emsg(_("Is visual mode, actually"));
 // snprintf(errmsg, sizeof(errmsg), "is a visual print");
 // fprintf(stderr, "Is visual, actually");
+```
+
+## How To Test (Vim)
+You run the Makefile that's in the test directory
+```sh
+cd test/old/testdir && make test_filename
 ```

@@ -67,6 +67,34 @@ https://www.reddit.com/r/neovim/comments/1dpzlfr/kulalanvim_a_minimal_httpclient
 
 - Really pretty gitk alternative - https://github.com/isakbm/gitgraph.nvim
 
+- Really cool sidebar minimap - Isrothy/neominimap.nvim
+
+- Possibly useful? https://github.com/CWood-sdf/banana.nvim
+
+- LSP textDocument/documentLink support for neovim - https://github.com/icholy/lsplinks.nvim
+
+- REST / CURL queries - https://www.reddit.com/r/neovim/comments/1eqrnz2/kulalanvim_v300_is_in_the_wild/
+
+- Remote devcontainers, ran through Neovim
+    - https://github.com/amitds1997/remote-nvim.nvim
+    - https://cadu.dev/running-neovim-on-devcontainers/
+    - https://github.com/erichlf/devcontainer-cli.nvim
+
+
+- zh / zl scrolls virtual text - https://www.reddit.com/r/neovim/comments/1ewps7u/newbie_question_how_to_scroll_virtual_text/
+
+- structured (nvim-treesitter) search and replace - https://github.com/cshuaimin/ssr.nvim
+
+https://github.com/matkrin/telescope-spell-errors.nvim
+
+
+Also it looks like there's a way to show a markdown file as presentation slides. Not sure how!
+
+Writing markdown - https://github.com/Piotr1215/youtube/blob/main/nvim-markdown/slides.md
+
+
+https://github.com/vigoux/architext.nvim
+
 
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim

@@ -14,19 +14,6 @@ https://github.com/lewis6991/satellite.nvim
 
 - highlighting within the quickfix - https://www.reddit.com/r/neovim/comments/1emc1r3/new_stevearc_quickernvim_plugin_for_better/
 
-```
-**Is your feature request about something that is currently impossible or hard to do? Please describe the problem.**
-A window with `winfixbuf` can prevent a window from changing its current buffer. While that's great most of the time, sometimes plugins like to call a command to display a buffer and it doesn't care which window necessarily the buffer is displayed on. For example https://github.com/cbochs/grapple.nvim
-
-**Describe the solution you'd like**
-Vim already has a mechanism that stores "the previous window that the user was in which did not have winfixbuf applied to it" which we use for iterating over quickfix results. I believe the variable is called `altwin`. If Vim provided that as a value, plugin authors could choose to use it rather than assume that the current window is always `nowinfixbuf`.
-
-**Describe alternatives you've considered**
-Manually tracking visited windows via autocmd and finding the first window that does not have winfixbuf set onto it.
-
-**Additional context**
-```
-
 
 https://github.com/akinsho/git-conflict.nvim
 
