@@ -35,9 +35,10 @@ function M.sort_quick_fix()
                 return true
             end
 
-            if left.text < right.text then
-                return true
-            end
+            -- NOTE: Not sure why but this errors sometimes
+            -- if left.text < right.text then
+            --     return true
+            -- end
 
             if left.text > right.text then
                 return false
