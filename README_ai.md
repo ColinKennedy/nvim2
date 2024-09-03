@@ -1,3 +1,4 @@
+https://github.com/Aaronik/GPTModels.nvim
 https://github.com/Bryley/neoai.nvim
 https://github.com/CamdenClark/flyboy
 https://github.com/CoderCookE/vim-chatgpt

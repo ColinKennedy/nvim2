@@ -1,3 +1,9 @@
+- Reply to - https://github.com/vim/vim/issues/14547
+
+https://github.com/ColinKennedy/telescope-session-viewer.nvim
+https://github.com/ColinKennedy/simple-session.nvim
+
+- Add a :Rg command the runs from the current buffer's directory
 - tmux-ressurect isn't grabbing session files anymore. Probably  because I removed the tpope plugin. Fix!
 
 
@@ -13,54 +19,22 @@ https://github.com/akinsho/git-conflict.nvim
 
 - Make a quickfix search searcher
 
-- <leader>sa doesn't work often
- - /home/selecaoone/repositories/personal/.config/nvim/bundle/nvim-best-practices-plugin-template/spec/plugin_template/telescope_spec.lua
-```lua
-assert.equal(
-    {
-        "asdfasdf",
-        "ttttt",
-        "asdfasd",
-    },
-    _RESULT
-)
-```
-
-
 https://www.reddit.com/r/neovim/comments/1embbrf/my_top_10_neovim_plugins_with_demos/
 
 https://www.reddit.com/r/nvim/comments/1egpnsv/pretty_git_graph_using_kitty_and_vimflog/
 https://www.reddit.com/r/neovim/comments/1egwjgp/anyone_using_difftastic_with_fugitivevim/
-
-https://www.reddit.com/r/neovim/comments/1eaxity/rachartiertinycodeactionnvim_a_simple_way_to_run/
 
 https://github.com/svampkorg/moody.nvim
 
 https://github.com/mvllow/modes.nvim
 
 
-https://www.reddit.com/r/neovim/comments/1e84m23/minuetainvim_code_completion_using_popular_llms/
-
-
 
 https://github.com/neovim/neovim/issues/27509
-
-https://github.com/neovim/neovim/issues/26131
-
-https://github.com/neovim/neovim/issues/26079
-
-https://github.com/neovim/neovim/issues/25950
-
-https://github.com/neovim/neovim/issues/25950
 
 
 
 https://www.reddit.com/r/neovim/comments/1el3g8i/grugfarnvim_update_support_for_astgrep_syntax/
-
-https://github.com/yssl/QFEnter
-
-
-
 
 
 
@@ -79,14 +53,15 @@ https://www.reddit.com/r/neovim/comments/1dyq2ez/what_do_you_think_of_my_cmp_the
 https://www.reddit.com/r/neovim/comments/1dy5z0n/leapnvim_remote_operations_with_visual_feedback/
 
 https://github.com/ColinKennedy/hide-verbose-comments
-https://github.com/ColinKennedy/telescope-session-viewer.nvim
 https://github.com/ColinKennedy/assembly-explorer.nvim
 https://github.com/ColinKennedy/neotest-cmake-ctest
-https://github.com/ColinKennedy/simple-session.nvim
 https://github.com/ColinKennedy/ai-mode.nvim
 https://github.com/ColinKennedy/timeline.nvim
 
 How do you restart (attached) LSPs?
+
+
+https://github.com/MagicDuck/grug-far.nvim
 
 
 ## Anki
@@ -118,8 +93,6 @@ https://seniormars.com/posts/neovim-workflow/
 
 https://github.com/OXY2DEV/markview.nvim
 
-https://www.reddit.com/r/neovim/comments/1dpspyx/introducing_nvimripsubstitute_search_and_replace/
-
 - https://github.com/neovim/neovim/pull/24565
  - Add lazyredraw once this is merged
 
@@ -132,8 +105,6 @@ https://github.com/Ramilito/winbar.nvim
 
 https://github.com/sleepyswords/change-function.nvim
 
-https://github.com/Aaronik/GPTModels.nvim
-
 https://github.com/FireIsGood/spaceman.nvim
 
 
@@ -141,29 +112,10 @@ https://github.com/ravibrock/spellwarn.nvim
 
 https://github.com/echasnovski/mini-git
 
-https://www.reddit.com/r/neovim/comments/1ds30mw/i_replaced_the_mode_names_with_ascii_emoticons/
-
-
-https://www.reddit.com/r/neovim/comments/1dthevz/lcars_star_trek_theme/#lightbox
-
-
-- https://github.com/folke/lazydev.nvim
 
 - https://www.reddit.com/r/neovim/comments/1d5orqz/open_files_from_windows_file_explorer_in_wsl/
 
-- Make it so I only get completion on-request, not all of the time
-
 - Apparently neodev isn't needed anymore - https://github.com/neovim/neovim/pull/24592
-
-- Try out - https://www.reddit.com/r/neovim/comments/1cxbegq/minigit_git_integration_with_tracking_gitrelated/
-
-https://www.reddit.com/r/neovim/comments/1cv2tha/adding_this_to_telescope_config_made_it_look_a/
-
-@tommytt2233 since no one is actually answering your question - Apparently it's both at once. He flew to France and Italy during week 1-2 in June, then to LA and Washington on June 15th and 16th. Then he holed up in Camp David for a week before the debate.
-
-France / Italy have the same timezone. So does LA and Washington. Though traveling can take its toll, you'd think a full week of recovery would make him ready. But when you're that old maybe recovery is much longer. Of course it's up to voters whether people buy the excuse.
-
-https://www.amazon.com/Luxrite-Equivalent-Dimmable-Standard-Enclosed/dp/B07TXJB1R3/ref=sr_1_6?crid=XKTRWGIUYT89&dib=eyJ2IjoiMSJ9.4JoDIA8kPsr-W2mLCtJYQcKBu4SjlM0I92mPnsrdliAkSkDsIFhCSCRfErgBuCijEsdGG3t3DwfuR9W-IWTGcfa4n8q67inl_uBTY8b-K6p8IESigvNcWZAMQZGjRqpyZYGJtclVAYmFDo9bmof_AXiCMV0KkdkKoAsURORpCRDd14fLnxRmT4GpTidoUQeXqiCvJB8Xo7g-rzmKNyaZ3Q7DG0ThhhchCO76A9Sdm_5aErO5dSW852-u_Qg_9Cob_Rb4kO0glQjQjAZ08Wgh6jC0JfqO8p8Vyo6d0I9Mty0.f8NQ3LzNWY97mNGufT2HOpJijk5uqWVuzrIv6KVmlWw&dib_tag=se&keywords=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens&qid=1715636611&refinements=p_n_feature_nineteen_browse-bin%3A9692450011%2Cp_n_feature_seven_browse-bin%3A33240570011&rnid=33240560011&s=hi&sprefix=12w%2B2700k%2Bled%2Blight%2Bbulbs%2B1100%2Blumens%2Caps%2C272&sr=1-6&th=1
 
 https://www.reddit.com/r/neovim/comments/1cxgfqk/mestizonvim_a_dark_theme_for_those_who_dont_leave/
 
@@ -172,16 +124,7 @@ https://github.com/brenoprata10/nvim-highlight-colors
 
 - Add back in "dil" textobjects
 
-- spellbound v2
- - write a guide
-- git-extended-statusline
-
 - https://github.com/MeanderingProgrammer/markdown.nvim
-
-- finalize telescope-session-viewer
-- finalize toggleterminal
- - fix when it accidentally closes sometimes
- - fix the insert on-move issue
 
 - https://github.com/daniilrozanov/cmake.nvim
  - async loading?
@@ -259,13 +202,9 @@ https://www.reddit.com/r/neovim/comments/1ca3rm8/shoutout_to_andrewferrierdebugp
 https://github.com/andrewferrier/debugprint.nvim
  - It provides commands to delete all debugging lines added to the current buffer as well as comment/uncomment those lines.
 
-- Prevent toggle terminals from showing up in the buffers list
 - https://www.reddit.com/r/neovim/comments/1c9ftdp/how_to_turn_off_code_suggestions_in_strings/
 
-- Figure out why typing is slow in this file - /home/selecaoone/temp/test.py
 - @lsp.mod.defaultLibrary - Make it purple! like the others
-- python argument variable colors are still showing up as orange (disable this)
-- Change spell START and END to be prettier
 - tmux rename window - color should be yellow or white, not red
 - tmux "more tabs" arrow could be a better color. Right now it's blue
 
@@ -344,10 +283,7 @@ vim.lsp: File watcher ~
 - Weird Lualine flashing when switching buffers. Fix
  - https://github.com/mrjones2014/smart-splits.nvim/issues/179
 
-- https://www.reddit.com/r/neovim/comments/1bftq35/do_you_guys_remap_p_to_dp/
-
 - Move /home/selecaoone/personal/.config/nvim/lua/my_custom/start/lsp_diagnostics.lua to hybrid2
-- Add individual sections - https://github.com/danymat/neogen/issues/165
 
 When resizing the disassembly buffer, I get this error
 Fix
@@ -378,8 +314,6 @@ stack traceback:
 - Figure out how to get this while keeping my put plugin
 https://github.com/bfredl/nvim-miniyank
 
-
-
 Try out one of these
 ```
 https://github.com/wsdjeg/vim-fetch
@@ -387,7 +321,6 @@ https://github.com/bogado/file-line
 https://github.com/lervag/file-line
 ```
 
-- <leader>rr seems to not work anymore. Fix!
 - <leader>ts - Do I still want it?
 
 - Adding doxygen per-type?
@@ -454,8 +387,6 @@ Often when debugging it's useful to step quickly through the code until some are
 - Added <Space>CD for Fzf CDing
 
 
-
-
 - viI mapping doesn't work anymore. FIX
 - Add groups to all vim.api.nvim_create_autocmd( commands
 
@@ -473,9 +404,6 @@ Often when debugging it's useful to step quickly through the code until some are
 - <Space>G doesn't work cross-files all of the time. Probably replace that whole logic
 - Might possibly also not be able to handle submodules as expected
 
-- The :Rg command is window sizes are still fucked.
-
-- persistent-breakpoints doesn't load as expected. Fix
 - searcher / navigation mode ( project, c = class, f = function, m = method, etc)
 
 
