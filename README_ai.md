@@ -13,6 +13,7 @@ https://github.com/ShoofLLC/vim-openai
 https://github.com/TamaMcGlinn/vim-termhelp
 https://github.com/WhiteBlackGoose/gpt4all.nvim
 https://github.com/aduros/ai.vim
+https://github.com/agusnt/askGemini.nvim
 https://github.com/bakks/butterfish.nvim
 https://github.com/codota/tabnine-nvim
 https://github.com/deifyed/naVi
