@@ -64,6 +64,10 @@ return {
         config = function() require("my_custom.plugins.smart_splits.configuration") end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
         keys = {
+            { "<A-h>", desc = "Enlarge (left) the current window." },
+            { "<A-j>", desc = "Enlarge (down) the current window." },
+            { "<A-k>", desc = "Enlarge (up) the current window." },
+            { "<A-l>", desc = "Enlarge (right) the current window." },
             { "<C-h>", desc = "Move cursor to the left window (or tmux)." },
             { "<C-j>", desc = "Move cursor to the below window (or tmux)." },
             { "<C-k>", desc = "Move cursor to the above window (or tmux)." },
