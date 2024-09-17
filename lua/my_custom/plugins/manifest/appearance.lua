@@ -192,7 +192,7 @@ return {
 
     -- A really pretty scrollbar. Not sure if I'll keep it. But it looks nice!
     {
-        "lewis6991/satellite.nvim",
+        "petertriho/nvim-scrollbar",
         config = true,
-    }
+    },
 }
