@@ -21,6 +21,8 @@ https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
 - For some reason when I leave dap, the <F5> mapping gets unset. Why? Fix.
 
 
+https://github.com/will-lynas/tmux-finder
+
 
 https://www.reddit.com/r/neovim/comments/1f2wkey/is_it_currently_possible_to_change_line_number/
 

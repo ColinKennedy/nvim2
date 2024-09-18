@@ -1,3 +1,16 @@
+- git-signs plugin commit: 2c2463d. Roll back to this
+
+
+- Make a "recommend class/function position" function
+ - takes the function definition under the cursor
+ - tree-sitter based
+ - search all functions
+  - Finds the first place alphabetically where the class/function should go
+   - Moves the cursor to it
+
+- does tmux-ressurect still work?
+
+- Why are my macros running so slowly?
 - Reply to - https://github.com/vim/vim/issues/14547
 
 https://github.com/ColinKennedy/telescope-session-viewer.nvim
