@@ -7,7 +7,9 @@ https://github.com/David-Kunz/gen.nvim
 https://github.com/Exafunction/codeium.nvim
 https://github.com/Exafunction/codeium.vim
 https://github.com/HPRIOR/telescope-gpt
+https://github.com/Kurama622/llm.nvim
 https://github.com/Lommix/ollamachad.nvim
+https://github.com/RayenMnif/tgpt.nvim
 https://github.com/Robitx/gp.nvim
 https://github.com/ShoofLLC/vim-openai
 https://github.com/TamaMcGlinn/vim-termhelp
@@ -44,6 +46,7 @@ https://github.com/magicalne/nvim.ai
 https://github.com/marco-souza/ollero.nvim
 https://github.com/milanglacier/minuet-ai.nvim
 https://github.com/monkoose/neocodeium
+https://github.com/oflisback/describe-command.nvim
 https://github.com/olimorris/codecompanion.nvim
 https://github.com/pasky/claude.vim
 https://github.com/piersolenski/wtf.nvim
