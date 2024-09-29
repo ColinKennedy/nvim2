@@ -1,8 +1,10 @@
+https://github.com/3v0k4/exit.nvim
 https://github.com/Aaronik/GPTModels.nvim
 https://github.com/Bryley/neoai.nvim
 https://github.com/CamdenClark/flyboy
 https://github.com/CoderCookE/vim-chatgpt
 https://github.com/CopilotC-Nvim/CopilotChat.nvim
+https://github.com/Dan7h3x/chatter.nvim
 https://github.com/David-Kunz/gen.nvim
 https://github.com/Exafunction/codeium.nvim
 https://github.com/Exafunction/codeium.vim

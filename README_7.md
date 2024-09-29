@@ -26,6 +26,7 @@
  - Typing "D" for a docstring in a real file is frustrating because cmp takes control away when new  LSP entries are added
   - https://github.com/hrsh7th/nvim-cmp/issues/1597
 
+- https://github.com/MagicDuck/grug-far.nvim
 
 - language server stuff
  - project cd

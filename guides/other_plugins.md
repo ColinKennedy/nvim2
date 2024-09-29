@@ -103,6 +103,25 @@ https://github.com/vigoux/architext.nvim
 
 - Swap arguments (contains text objects) - https://github.com/machakann/vim-swap
 
+- SideFX Houdini integration - https://github.com/TheBlob42/houdini.nvim
+
+- Doesn't seem to work - https://github.com/shortcuts/no-neck-pain.nvim
+
+
+- A command to help you learn Neo/Vim commands - https://www.reddit.com/r/neovim/comments/1fhbo7j/livecommandnvim_v200_just_released_new_preview/
+
+- Allow lowercase vim commands - https://github.com/gcmt/cmdfix.nvim
+
+- Faster web searches - https://github.com/Aliqyan-21/wit.nvim
+
+- Kubernetes CLI interactive viewer - https://github.com/Ramilito/kubectl.nvim
+
+
+
+## Probably not that useful
+https://github.com/topaxi/gh-actions.nvim
+
+
 
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim
