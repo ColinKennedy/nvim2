@@ -28,6 +28,8 @@
 
 - https://github.com/MagicDuck/grug-far.nvim
 
+- https://www.reddit.com/r/neovim/comments/1fmoxvw/oilnvim_appreciation/
+
 - language server stuff
  - project cd
  - auto-completion
