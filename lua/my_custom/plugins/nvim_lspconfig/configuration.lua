@@ -86,15 +86,25 @@ local on_attach = function(_, buffer)
             desc="[o]pen [c]ode [a]ction - Show commands under the cursor."
         }
     )
-    vim.keymap.set(
-        "n",
-        "gr",
-        vim.lsp.buf.references,
-        {
-            buffer=buffer,
-            desc="[g]o to [r]eferences - Show all locations where a variable is used."
-        }
-    )
+vim.keymap.set(
+    "n",
+    "grr",
+    function()
+        local word = vim.fn.expand('<cword>')
+
+        local function on_list(options)
+          options.title = 'Reference: ' .. word
+          vim.fn.setqflist({}, ' ', options)
+          vim.cmd.cfirst()
+        end
+
+        vim.lsp.buf.references(nil, { on_list = on_list })
+    end,
+    {
+        buffer=buffer,
+        desc="[g]o to [r]eferences - Show all locations where a variable is used."
+    }
+)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

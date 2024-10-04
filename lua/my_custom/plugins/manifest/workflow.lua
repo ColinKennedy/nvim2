@@ -32,7 +32,6 @@ return {
         keys = {
             {
                 "<leader>sa",
-                "TSJToggle",
                 desc = "Toggle (Join or split) [s]plit [a]rguments at the cursor."
             },
         },
