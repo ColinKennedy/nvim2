@@ -214,7 +214,7 @@ return {
         keys = {
             {
                 "<space>GF",
-                ":Telescope file_history log<CR>",
+                "<cmd>Telescope file_history log<CR>",
                 desc="Show [G]it [F]ile History.",
             },
         },
@@ -281,7 +281,7 @@ return {
         keys = {
             {
                 "<space>W",
-                ":PwdNvimTreeToggle<CR>",
+                "<cmd>PwdNvimTreeToggle<CR>",
                 desc="Open NvimTree starting from the `:pwd`.",
             },
         },
@@ -348,7 +348,7 @@ return {
         keys = {
             {
                 "<Space>T",
-                ":ToggleTerminal<CR>",
+                "<cmd>ToggleTerminal<CR>",
                 desc="Open / Close a terminal at the bottom of the tab",
                 silent=true,
             }
@@ -387,7 +387,7 @@ return {
         keys = {
             {
                 "<Space>SO",
-                ":SymbolsOutline<CR>",
+                "<cmd>SymbolsOutline<CR>",
                 desc = "Open [S]ymbols [O]utliner",
                 silent = true,
             },
@@ -403,7 +403,7 @@ return {
         "duane9/nvim-rg",
         cmd = "Rg",
         keys = {
-            { "<leader>rg", ":Rg", desc = "Search :pwd with [rg] - ripgrep." },
+            { "<leader>rg", "<cmd>Rg<CR>", desc = "Search :pwd with [rg] - ripgrep." },
         }
     },
 
@@ -464,8 +464,15 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
-        config = function() require("my_custom.plugins.telescope.configuration") end,
-        dependencies = {"ColinKennedy/plenary.nvim"},
+        config = function()
+            require("my_custom.plugins.telescope.configuration")
+
+            require("telescope").load_extension("plugin_template")
+        end,
+        dependencies = {
+            "ColinKennedy/nvim-best-practices-plugin-template",
+            "ColinKennedy/plenary.nvim",
+        },
         version = "0.1.*",
     },
 
@@ -532,6 +539,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
 
             -- Optional
+            "MisanthropicBit/neotest-busted",
             "nvim-neotest/neotest-plenary",
             "nvim-neotest/neotest-python",
         },
@@ -640,7 +648,7 @@ return {
             },
             {
                 "<leader>tss",
-                ":Spellbound toggle-profile strict<CR>",
+                "<cmd>Spellbound toggle-profile strict<CR>",
                 desc = "[t]oggle all [s]trict [s]pelling mistakes.",
             },
         }
@@ -658,7 +666,7 @@ return {
         keys = {
             {
                 "<Space>SV",
-                ":Telescope session_viewer view<CR>",
+                "<cmd>Telescope session_viewer view<CR>",
                 desc = "Open the Vim [S]ession [V]iewer GUI.",
             }
         },
