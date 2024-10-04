@@ -63,6 +63,11 @@ return {
         desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
     },
     {
+        "<leader>gcM",
+        '<cmd>Git commit --template ~/.gitcommit_template.txt<CR>',
+        desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
+    },
+    {
         "<leader>gcop",
         ':Git checkout -p<CR>',
         desc="[g]it [c]heckout --[p]artial.",
