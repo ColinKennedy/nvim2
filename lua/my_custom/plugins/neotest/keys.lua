@@ -1,35 +1,35 @@
 return {
     {
         "<leader>rtd",
-        ":NeotestRunDirectory<CR>",
+        "<cmd>NeotestRunDirectory<CR>",
         desc = "[r]un [t]est [d]irectory in Neotest.",
     },
     {
         "<leader>rtf",
-        ":NeotestRunFile<CR>",
+        "<cmd>NeotestRunFile<CR>",
         desc = "[r]un [t]est [f]ile in Neotest.",
     },
     {
         "<leader>rts",
-        ":NeotestRunSuite<CR>",
+        "<cmd>NeotestRunSuite<CR>",
         desc = "[r]un [t]est [s]uite (all tests) in Neotest.",
     },
     {
         "<leader>rtc",
-        ":NeotestRunCurrent<CR>",
+        "<cmd>NeotestRunCurrent<CR>",
         function() require("neotest").run.run() end,
         desc = "[r]un [t]est under [c]ursor in Neotest.",
     },
 
     {
         "<leader>tno",
-        ":Neotest output<CR>",
+        "<cmd>Neotest output<CR>",
         function() require("neotest").run.run() end,
         desc = "[t]oggle [n]eotest [o]utput floating window.",
     },
     {
         "<leader>tns",
-        ":Neotest summary<CR>",
+        "<cmd>Neotest summary<CR>",
         function() require("neotest").run.run() end,
         desc = "[t]oggle [n]eotest [s]ummary floating window.",
     },
