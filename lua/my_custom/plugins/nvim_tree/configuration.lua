@@ -1,6 +1,6 @@
 local toggle_current_directory = function()
     local current_directory = vim.fn.getcwd()
-    vim.cmd(":NvimTreeToggle " .. current_directory)
+    vim.cmd("NvimTreeToggle " .. current_directory)
 end
 
 -- termguicolors was already set elsewhere. But I'll keep it commented here
