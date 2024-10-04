@@ -1,7 +1,7 @@
 return {
     {
         "<leader>gac",
-        ":Git add %<CR>",
+        "<cmd>Git add %<CR>",
         desc="[g]it [a]dd [c]urrent file.",
     },
     {
@@ -49,7 +49,7 @@ return {
     },
     {
         "<leader>ga%",
-        ":Git add %<CR>",
+        "<cmd>Git add %<CR>",
         desc="[g]it [a]dd %-[c]urrent file.",  -- This is the same as <leader>gac
     },
     {
@@ -69,12 +69,12 @@ return {
     },
     {
         "<leader>gcop",
-        ':Git checkout -p<CR>',
+        '<cmd>Git checkout -p<CR>',
         desc="[g]it [c]heckout --[p]artial.",
     },
     {
         "<leader>gdc",
-        ":Git diff --cached<CR>",
+        "<cmd>Git diff --cached<CR>",
         desc="[g]it [d]iff --[c]ached.",
     },
     {
@@ -84,27 +84,27 @@ return {
     },
     {
         "<leader>gph",
-        ":Git push<CR>",
+        "<cmd>Git push<CR>",
         desc="[g]it [p]us[h].",
     },
     {
         "<leader>gpl",
-        ":Git pull<CR>",
+        "<cmd>Git pull<CR>",
         desc="[g]it [p]ul[l].",
     },
     {
         "<leader>grc",
-        ":Git reset %<CR>",
+        "<cmd>Git reset %<CR>",
         desc="[g]it [r]eset [c]urrent.",
     },
     {
         "<leader>gr%",
-        ":Git reset %<CR>",
+        "<cmd>Git reset %<CR>",
         desc="[g]it [r]eset %-[c]urrent.",
     },
     {
         "<leader>gss",
-        ":Git status --short --branch<CR>",
+        "<cmd>Git status --short --branch<CR>",
         desc="[g]it [s]hort [s]tatus.",
     },
 }
