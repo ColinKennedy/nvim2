@@ -512,18 +512,6 @@ return {
         },
     },
 
-    -- Show / Hide a location list or quickfix
-    {
-        "ColinKennedy/ListToggle",
-        branch = "make_height_optional",
-        config = function() vim.g.lt_height = 0 end,
-        cmd = { "LToggle", "QToggle" },
-        keys = {
-            { "<leader>l", desc = "Toggle the [l]ocation list display." },
-            { "<leader>q", desc = "Toggle the [q]uickfix display." },
-        },
-    },
-
     -- Run unittests in a simple GUI. It has auto-watch capabilities and more!
     {
         "nvim-neotest/neotest",

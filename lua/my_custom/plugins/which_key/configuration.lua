@@ -30,10 +30,7 @@ which_key.add(
 which_key.setup {
     plugins = {
         registers = false, -- Don't show your registers on " in NORMAL or <C-r> in INSERT mode
-        presets = {
-            motions = false,
-            text_objects = false,
-            operators = false,
-        }
-    }
+        presets = { motions = false, operators = false, text_objects = false }
+    },
+    triggers = { { "<auto>", mode = "n" } }, -- Only show NORMAL mode mappings
 }

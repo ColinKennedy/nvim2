@@ -319,9 +319,6 @@
 [submodule "bundle/vim-gf-diff"]
 	path = bundle/vim-gf-diff
 	url = git@github.com:ColinKennedy/vim-gf-diff.git
-[submodule "bundle/ListToggle"]
-	path = bundle/ListToggle
-	url = git@github.com:ColinKennedy/ListToggle.git
 [submodule "bundle/neotest"]
 	path = bundle/neotest
 	url = git@github.com:nvim-neotest/neotest.git
