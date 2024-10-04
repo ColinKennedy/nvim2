@@ -1,22 +1,22 @@
 return {
     {
         "<leader>d<space>",
-        ":DapContinue<CR>",
+        "<cmd>DapContinue<CR>",
         desc="Continue through the debugger to the next breakpoint.",
     },
     {
         "<leader>dl",
-        ":DapStepInto<CR>",
+        "<cmd>DapStepInto<CR>",
         desc="Move into a function call.",
     },
     {
         "<leader>dj",
-        ":DapStepOver<CR>",
+        "<cmd>DapStepOver<CR>",
         desc="Skip over the current line.",
     },
     {
         "<leader>dh",
-        ":DapStepOut<CR>",
+        "<cmd>DapStepOut<CR>",
         desc="Move out of the current function call.",
     },
     {
@@ -26,12 +26,12 @@ return {
     },
     {
         "<leader>dz",
-        ":ZoomWinTabToggle<CR>",
+        "<cmd>ZoomWinTabToggle<CR>",
         desc="[d]ebugger [z]oom toggle (full-screen or minimize the window).",
     },
     {
         "<leader>dgt",
-        ":lua require('dap').set_log_level('TRACE')<CR>",
+        "<cmd>lua require('dap').set_log_level('TRACE')<CR>",
         desc="Set [d]ebu[g] to [t]race level logging.",
     },
     {
@@ -41,17 +41,17 @@ return {
     },
     {
         "<F1>",
-        ":DapStepOut<CR>",
+        "<cmd>DapStepOut<CR>",
         desc="Move out of the current function call.",
     },
     {
         "<F2>",
-        ":DapStepOver<CR>",
+        "<cmd>DapStepOver<CR>",
         desc="Skip over the current line.",
     },
     {
         "<F3>",
-        ":DapStepInto<CR>",
+        "<cmd>DapStepInto<CR>",
         desc="Move into a function call."
     },
     {
@@ -72,11 +72,11 @@ return {
         end,
         desc="Kill the current debug session.",
     },
-    -- vim.keymap.set("n", "<leader>dv", ":call GoToWindow(g:vimspector_session_windows.variables)<CR>")
-    -- vim.keymap.set("n", "<leader>ds", ":call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
+    -- vim.keymap.set("n", "<leader>dv", "<cmd>call GoToWindow(g:vimspector_session_windows.variables)<CR>")
+    -- vim.keymap.set("n", "<leader>ds", "<cmd>call GoToWindow(g:vimspector_session_windows.stack_trace)<CR>")
     {
         "<leader>db",
-        ":DapToggleBreakpoint<CR>",
+        "<cmd>DapToggleBreakpoint<CR>",
         desc="Set a breakpoint in the current file + cursor.",
     },
 }
