@@ -29,12 +29,11 @@ cmake -B build -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER=clang -D ENABLE_ASA
 - Use <leader>dd to start the debugging process
 
 ### Configuration
-```vim
-" Reference: https://stackoverflow.com/a/18734557
-let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+```lua
+-- Reference: https://stackoverflow.com/a/18734557
+local _CURRENT_DIRECTORY = vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand("<sfile>:p")), ":h")
 
-" Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#configuration
-lua << EOF
+-- Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#configuration
 local dap = require("dap")
 
 dap.configurations.c = {
@@ -139,7 +138,7 @@ dap.defaults.fallback.external_terminal = {
 EOF
 
 " " Reference: https://stackoverflow.com/a/18734557
-" let g:_project_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+" let _CURRENT_DIRECTORY = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 "
 " lua << EOF
 " local dap = require("dap")
@@ -167,6 +166,22 @@ EOF
 " }
 " EOF
 ```
+
+
+## Printing in Neovim
+```c
+msg_puts_attr("Is visual mode, actually", 0);
+// emsg(_("Is visual mode, actually"));
+// snprintf(errmsg, sizeof(errmsg), "is a visual print");
+// fprintf(stderr, "Is visual, actually");
+```
+
+## How To Test (Vim)
+You run the Makefile that's in the test directory
+```sh
+cd test/old/testdir && make test_filename
+```
+
 
 
 ## Printing in Neovim
