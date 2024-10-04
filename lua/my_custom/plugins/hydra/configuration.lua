@@ -315,7 +315,7 @@ end
 --                 gitsigns.undo_stage_hunk,
 --                 { desc = "[r]eset staged hunk" },
 --             },
---             { "s", ":Gitsigns stage_hunk<CR>", { silent = true, desc = "stage hunk" } },
+--             { "s", "<cmd>Gitsigns stage_hunk<CR>", { silent = true, desc = "stage hunk" } },
 --             { "S", gitsigns.stage_buffer, { desc = "stage buffer" } },
 --             { "p", gitsigns.preview_hunk, { desc = "preview hunk" } },
 --             { "d", gitsigns.toggle_deleted, { nowait = true, desc = "toggle deleted" } },
@@ -507,10 +507,10 @@ Hydra(
         mode = {"n", "x"},
         body = "<Space>D",
         heads = {
-            { "h", ":DapStepOut<CR>", { silent = true, desc = "Move out of the current function call." } },
-            { "j", ":DapStepOver<CR>", { silent = true, desc = "Skip over the current line." } },
-            { "l", ":DapStepInto<CR>", { silent = true, desc = "Move into a function call." } },
-            { "<Space>", ":DapContinue<CR>", { silent = true, desc = "Continue to the next breakpoint." } },
+            { "h", "<cmd>DapStepOut<CR>", { silent = true, desc = "Move out of the current function call." } },
+            { "j", "<cmd>DapStepOver<CR>", { silent = true, desc = "Skip over the current line." } },
+            { "l", "<cmd>DapStepInto<CR>", { silent = true, desc = "Move into a function call." } },
+            { "<Space>", "<cmd>DapContinue<CR>", { silent = true, desc = "Continue to the next breakpoint." } },
             { "q", nil, { exit = true, nowait = true, desc = "Exit." } },
         }
     }

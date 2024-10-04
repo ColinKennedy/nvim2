@@ -1,12 +1,12 @@
 return {
     {
         "<space>A",
-        ":FzfLua args<CR>",
+        "<cmd>FzfLua args<CR>",
         desc="Select a new [A]rgs file from the `:args` list.",
     },
     {
         "<space>B",
-        ":FzfLua buffers<CR>",
+        "<cmd>FzfLua buffers<CR>",
         desc="Search existing [B]uffers and select + view it.",
     },
     {
@@ -28,17 +28,17 @@ return {
     },
     {
         "<space>L",
-        ":FzfLua blines<CR>",
+        "<cmd>FzfLua blines<CR>",
         desc="[L]ines searcher (current file)",
     },
     {
         "<space>e",
-        ":FzfLua files<CR>",
+        "<cmd>FzfLua files<CR>",
         desc="Find and [e]dit a file starting from `:pwd`.",
     },
     {
         "<space>l",
-        ":FzfLua lines<CR>",
+        "<cmd>FzfLua lines<CR>",
         desc="[l]ines searcher (all lines from all buffers)",
     },
 }
