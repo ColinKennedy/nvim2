@@ -40,10 +40,10 @@ local callback = function()
     local languages = require("treesj.langs")["presets"]
 
     if languages[vim.bo.filetype] then
-        vim.keymap.set("n", "<leader>sa", ":TSJToggle<CR>", options)
+        vim.keymap.set("n", "<leader>sa", "<cmd>TSJToggle<CR>", options)
     else
         -- This fallback requires https://github.com/FooSoft/vim-argwrap
-        vim.keymap.set("n", "<leader>sa", ":ArgWrap<CR>", options)
+        vim.keymap.set("n", "<leader>sa", "<cmd>ArgWrap<CR>", options)
     end
 end
 
