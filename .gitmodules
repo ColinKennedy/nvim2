@@ -367,6 +367,3 @@
 [submodule "bundle/render-markdown.nvim"]
 	path = bundle/render-markdown.nvim
 	url = git@github.com:MeanderingProgrammer/render-markdown.nvim.git
-[submodule "bundle/nvim-scrollview"]
-	path = bundle/nvim-scrollview
-	url = git@github.com:dstein64/nvim-scrollview.git
