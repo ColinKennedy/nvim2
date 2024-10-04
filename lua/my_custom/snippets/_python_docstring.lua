@@ -23,7 +23,7 @@ local function _make_section_snippet_node(section)
             local lines = neogen.generate(
                 -- TODO: Provide an explicit snippet engine (once there's an
                 -- argument for it).
-                {return_snippet = true, sections = {section}}
+                {return_snippet = true, sections = {section}, snippet_engine = "luasnip"}
             )
 
             local nodes = luasnip.parser.parse_snippet(
