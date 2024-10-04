@@ -241,6 +241,10 @@ vim.api.nvim_create_autocmd(
 
             vim.schedule(
                 function()
+                    if not vim.api.nvim_win_is_valid(window) then
+                        return
+                    end
+
                     local buffer = vim.api.nvim_win_get_buf(window)
 
                     if vim.bo[buffer].buftype == "terminal" then
