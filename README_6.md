@@ -1,5 +1,7 @@
 - git-signs plugin commit: 2c2463d. Roll back to this
 
+https://www.reddit.com/r/neovim/comments/1fwxa8b/comment/lqlqlm8/
+https://github.com/alexpasmantier/pymple.nvim
 
 - Make a "recommend class/function position" function
  - takes the function definition under the cursor

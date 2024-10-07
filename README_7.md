@@ -1,6 +1,10 @@
 - Fix - https://github.com/stevearc/qf_helper.nvim/issues/10
 
 
+https://github.com/chris-montero/LateForLunch-nvim
+
+https://dtinth.github.io/comic-mono-font/
+
 - Do this + set conceallevel=1 to conceal stuff
 ; (
 ;    (
