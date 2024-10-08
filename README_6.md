@@ -1,3 +1,5 @@
+- Try this out - https://github.com/iguanacucumber/magazine.nvim
+
 - git-signs plugin commit: 2c2463d. Roll back to this
 
 https://www.reddit.com/r/neovim/comments/1fwxa8b/comment/lqlqlm8/
@@ -9,6 +11,8 @@ https://github.com/alexpasmantier/pymple.nvim
  - search all functions
   - Finds the first place alphabetically where the class/function should go
    - Moves the cursor to it
+
+https://www.reddit.com/r/neovim/comments/1fqdy28/introducing_my_first_plugin_hereterm_toggle/
 
 - does tmux-ressurect still work?
 

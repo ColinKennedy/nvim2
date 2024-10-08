@@ -86,9 +86,8 @@ local echo_diagnostic = function()
             end
 
             local diags = vim
-                .lsp
                 .diagnostic
-                .get_line_diagnostics(bufnr, line, { min = { severity = vim.diagnostic.severity.WARN } })
+                .get(bufnr, { lnum=line, severity = vim.diagnostic.severity.WARN })
 
             if #diags == 0 then
                 -- If we previously echo'd a message, clear it out by echoing an empty
