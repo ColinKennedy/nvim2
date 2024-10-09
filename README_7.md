@@ -26,6 +26,9 @@ https://dtinth.github.io/comic-mono-font/
  - add deferred event call so that the plugins aren't loaded by default
   - NvChad uses ``event = "InsertEnter"``
 
+https://www.reddit.com/r/neovim/comments/1frlhwu/aqfnvim_store_edit_like_a_buffer_swap_filter_and/
+
+
 - Follow-up
  - Typing "D" for a docstring in a real file is frustrating because cmp takes control away when new  LSP entries are added
   - https://github.com/hrsh7th/nvim-cmp/issues/1597

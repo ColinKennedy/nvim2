@@ -2,8 +2,15 @@
 
 - git-signs plugin commit: 2c2463d. Roll back to this
 
+github.com/LunarVim/bigfile.nvim
+https://github.com/LazyVim/LazyVim/commit/938a6718c6f0d5c6716a34bd3383758907820c52#diff-c23db92fd0640198b1eb7ac514d6b8d815a2abcc1494f479d2f3c8f573ba3c0cR136
+
 https://www.reddit.com/r/neovim/comments/1fwxa8b/comment/lqlqlm8/
 https://github.com/alexpasmantier/pymple.nvim
+
+https://github.com/azratul/live-share.nvim?tab=readme-ov-file
+
+https://github.com/lucaSartore/nvim-dap-exception-breakpoints
 
 - Make a "recommend class/function position" function
  - takes the function definition under the cursor

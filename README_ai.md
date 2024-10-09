@@ -40,6 +40,7 @@ https://github.com/jellydn/CopilotChat.nvim
 https://github.com/jkitching/awesome-vim-llm-plugins
 https://github.com/joshuavial/aider.nvim
 https://github.com/jpmcb/nvim-llama
+https://github.com/k2589/LLuMinate.nvim
 https://github.com/kamou/gpt-vim
 https://github.com/kiteco/vim-plugin
 https://github.com/leocus/codeassistant.vim
