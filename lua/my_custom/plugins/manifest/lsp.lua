@@ -19,10 +19,11 @@ return {
     -- TODO: Fix this again
     -- Enable auto-completion in Neovim
     {
-        "hrsh7th/nvim-cmp",
+        "iguanacucumber/magazine.nvim",
         config = function() require("my_custom.plugins.nvim_cmp.configuration") end,
         dependencies = require("my_custom.plugins.nvim_cmp.dependencies"),
         event = { "InsertEnter" },
+        name = "nvim-cmp", -- Otherwise highlighting gets messed up
         -- TODO: Possibly re-add tags if this issue ever addresses it.
         --
         -- Reference: https://github.com/hrsh7th/nvim-cmp/issues/1830

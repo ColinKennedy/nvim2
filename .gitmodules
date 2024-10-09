@@ -75,7 +75,7 @@
 	url = git@github.com:hrsh7th/cmp-path.git
 [submodule "bundle/nvim-cmp"]
 	path = bundle/nvim-cmp
-	url = git@github.com:hrsh7th/nvim-cmp.git
+	url = git@github.com:iguanacucumber/magazine.git
 [submodule "bundle/fidget.nvim"]
 	path = bundle/fidget.nvim
 	url = git@github.com:j-hui/fidget.nvim.git
