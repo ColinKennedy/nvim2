@@ -116,6 +116,7 @@ https://github.com/vigoux/architext.nvim
 
 - Kubernetes CLI interactive viewer - https://github.com/Ramilito/kubectl.nvim
 
+- RSS Feed Reader - https://github.com/neo451/feed.nvim
 
 
 ## Probably not that useful
