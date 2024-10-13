@@ -45,7 +45,7 @@ return {
             docstring="Add a TODO note",
             trig="td",
         },
-        format('# TODO : {}', { index(1, "") }),
+        format('# TODO: {}', { index(1, "") }),
         { show_condition = or_(is_source_beginning("td"), line_end) }
 
     ),
