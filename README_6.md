@@ -1,3 +1,197 @@
+https://github.com/jake-stewart/force-cul.nvim
+
+
+Fix this broken case
+```
+def _ellipses_arguments(node: tree_sitter.Node, data: bytes) -> list[bytes]:
+    """Create snippets that tell the AI "there needs to be text here. Please fill in".
+
+    .. code-block:: python
+
+        def foo(???) -> None:
+            ...
+
+    The above example tells the AI "the contents for ()s is non-empty, please
+    fill it in".
+
+    Args:
+        node: Some tree-sitter node to start from. e.g. a class or function.
+        data: The source code to query from.
+
+    Yields:
+        [TODO:description]
+    """
+    def _is_collapsible(node: tree_sitter.Node) -> bool:
+        return node.type in {"parameters", "argument_list"}
+
+    def _iter_all_leaf_nodes_modified(
+        node: tree_sitter.Node,
+    ) -> typing.Generator[tuple[bool, tree_sitter.Node], None, None]:
+        stack = [node]
+
+        while stack:
+            node = stack.pop()
+
+            if node.child_count == 0:
+                yield False, node
+
+                continue
+
+            if _is_collapsible(node):
+                yield True, node
+
+                continue
+
+            for child in reversed(node.children):
+                stack.append(child)
+
+    # Before:
+    # def foo(some: int, thing: float) -> None:
+    #     _call_something(some)
+
+    # After:
+    # def foo(???) -> None:
+    #     _call_something(???)
+
+    output: list[bytes] = []
+    reduction_values = [0.1, 0.2, 0.4, 0.6, 0.7, 0.8, 0.9]
+
+    for reduction in reduction_values:
+        found = False
+        previous: typing.Optional[tree_sitter.Node] = None
+        case = b""
+
+        for is_collapsible, child in _iter_all_leaf_nodes_modified(node):
+            if found:
+                previous = _get_previous_whitespace_node(child)
+
+            found = True
+
+            if previous is not None:
+                # TODO: We could be more efficient (move the if out of the for loop)
+                case += data[previous.end_byte : child.start_byte]
+
+            if is_collapsible and random.random() < reduction:
+                case += _NEEDS_EXPANSION_MARKER
+            else:
+                case += data[child.start_byte : child.end_byte]
+
+        output.append(case)
+
+    return output
+```
+
+Accidentally includes Raises: even though it shouldn't
+```
+def _get_module_namespaces(node: tree_sitter.Node, data: bytes) -> list[bytes]:
+
+    """Find all Python imports within ``node`` and get their referenceable text.
+
+    .. code-block:: python
+
+        from .relative import foo
+        from .relative.parent import bar
+        from .blah.thing import stuff as thing
+        from .parentheses.stuff import (first as first_, stuff, last as lasty)
+
+        from absolute import absolutely
+        from absolute.inner import core
+        from multi.inner import child1, child2
+        from aliased.thing import original as alias
+        from complexy.one import (
+            fizz as buzz,
+            # Inner comment
+            middle,
+            stuff as final1,
+        )
+
+        import thing
+        import thing2 as asdfbbb
+        import nested.blah.final
+        import nested.blah.final as too
+
+        import thing2 as asdfbbb, thingz, something.ealse
+        import thing2 as asdfbbb, thingz, something.ealse
+
+        # Would return:
+        # absolutely
+        # alias
+        # bar
+        # buzz
+        # child1
+        # child2
+        # core
+        # final1
+        # first_
+        # foo
+        # lasty
+        # middle
+        # stuff
+        # thing
+
+    Args:
+        node: The tree-sitter Python module to search within.
+        data: The source code to query from.
+
+    Returns:
+        [TODO:return]
+    """
+    def _get_import_namespace(
+        node: tree_sitter.Node, data: bytes, start_index: int
+    ) -> list[bytes]:
+        output: list[bytes] = []
+
+        # NOTE: We skip the ``import`` keyword by starting at ``1``.
+        for index in range(start_index, node.child_count):
+            child = node.child(index)
+
+            if not child:
+                raise RuntimeError(f'Index "{index}" has no child in "{node}" node.')
+
+            if child.type == "dotted_name":
+                output.append(_get_node_text(child, data))
+            elif child.type == "aliased_import":
+                namespace_identifier = child.named_child(child.named_child_count - 1)
+
+                if not namespace_identifier:
+                    raise RuntimeError(f'Child "{child}" has no namespace identifier.')
+
+                output.append(_get_node_text(namespace_identifier, data))
+
+        return output
+
+    def _get_import_from_statement_namespaces(
+        node: tree_sitter.Node, data: bytes
+    ) -> list[bytes]:
+        return _get_import_namespace(node, data, 3)
+
+    def _get_import_statement_namespaces(
+        node: tree_sitter.Node, data: bytes
+    ) -> list[bytes]:
+        return _get_import_namespace(node, data, 1)
+
+    def _get_root_node(node: tree_sitter.Node) -> typing.Optional[tree_sitter.Node]:
+        current: typing.Optional[tree_sitter.Node] = node
+        previous: typing.Optional[tree_sitter.Node] = None
+
+        while current:
+            previous = current
+            current = current.parent
+
+        return previous
+
+    output: list[bytes] = []
+    root = typing.cast(tree_sitter.Node, _get_root_node(node))
+
+    for child in _iter_all_nodes(root):
+        if child.type == "import_from_statement":
+            output.extend(_get_import_from_statement_namespaces(child, data))
+        elif child.type == "import_statement":
+            output.extend(_get_import_statement_namespaces(child, data))
+
+    return output
+```
+
 - Try this out - https://github.com/iguanacucumber/magazine.nvim
 
 - git-signs plugin commit: 2c2463d. Roll back to this

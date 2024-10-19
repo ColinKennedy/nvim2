@@ -22,6 +22,8 @@ https://github.com/gbprod/substitute.nvim
 https://github.com/rbong/vim-flog/
 
 
+https://pastebin.com/QhX5s8w7
+
 
 
 https://github.com/IogaMaster/neocord
