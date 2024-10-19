@@ -118,6 +118,8 @@ https://github.com/vigoux/architext.nvim
 
 - RSS Feed Reader - https://github.com/neo451/feed.nvim
 
+- Neovim Remote Helper - https://github.com/mikew/nvrh. Works with a remote Neovim instance
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
