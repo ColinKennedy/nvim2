@@ -1,73 +1,72 @@
-https://github.com/3v0k4/exit.nvim
-https://github.com/Aaronik/GPTModels.nvim
-https://github.com/Bryley/neoai.nvim
-https://github.com/CamdenClark/flyboy
-https://github.com/CoderCookE/vim-chatgpt
-https://github.com/CopilotC-Nvim/CopilotChat.nvim
-https://github.com/Dan7h3x/chatter.nvim
-https://github.com/David-Kunz/gen.nvim
-https://github.com/Exafunction/codeium.nvim
-https://github.com/Exafunction/codeium.vim
-https://github.com/HPRIOR/telescope-gpt
-https://github.com/Kurama622/llm.nvim
-https://github.com/Lommix/ollamachad.nvim
-https://github.com/RayenMnif/tgpt.nvim
-https://github.com/Robitx/gp.nvim
-https://github.com/ShoofLLC/vim-openai
-https://github.com/TamaMcGlinn/vim-termhelp
-https://github.com/WhiteBlackGoose/gpt4all.nvim
-https://github.com/aduros/ai.vim
-https://github.com/agusnt/askGemini.nvim
-https://github.com/bakks/butterfish.nvim
-https://github.com/codota/tabnine-nvim
-https://github.com/deifyed/naVi
-https://github.com/dense-analysis/neural
-https://github.com/dpayne/CodeGPT.nvim
-https://github.com/dustinblackman/oatmeal.nvim
-https://github.com/frankroeder/parrot.nvim
-https://github.com/gera2ld/ai.nvim
-https://github.com/github/copilot.vim
-https://github.com/gsuuon/llm.nvim
-https://github.com/gsuuon/model.nvim
-https://github.com/huynle/ogpt.nvim
-https://github.com/jackMort/ChatGPT.nvim
-https://github.com/jackMort/ChatGPT.nvim/
-https://github.com/jackmort/chatgpt.nvim
-https://github.com/james1236/backseat.nvim
-https://github.com/jameshiew/nvim-magic
-https://github.com/jcdickinson/codeium.nvim
-https://github.com/jellydn/CopilotChat.nvim
-https://github.com/jkitching/awesome-vim-llm-plugins
-https://github.com/joshuavial/aider.nvim
-https://github.com/jpmcb/nvim-llama
-https://github.com/k2589/LLuMinate.nvim
-https://github.com/kamou/gpt-vim
-https://github.com/kiteco/vim-plugin
-https://github.com/leocus/codeassistant.vim
-https://github.com/madox2/vim-ai
-https://github.com/magicalne/nvim.ai
-https://github.com/marco-souza/ollero.nvim
-https://github.com/milanglacier/minuet-ai.nvim
-https://github.com/monkoose/neocodeium
-https://github.com/oflisback/describe-command.nvim
-https://github.com/olimorris/codecompanion.nvim
-https://github.com/pasky/claude.vim
-https://github.com/piersolenski/wtf.nvim
-https://github.com/skywind3000/vim-gpt-commit
-https://github.com/solyarisoftware/prompter.vim
-https://github.com/sourcegraph/sg.nvim
-https://github.com/supermaven-inc/supermaven-nvim
-https://github.com/tdfacer/explain-it.nvim
-https://github.com/terror/chatgpt.nvim
-https://github.com/tom-doerr/vim_codex
-https://github.com/towry/commit-msg-sg.nvim
-https://github.com/tzachar/cmp-ai
-https://github.com/yacineMTB/dingllm.nvim
-https://github.com/yetone/avante.nvim
-https://github.com/you-n-g/simplegpt.nvim
-https://github.com/zbirenbaum/copilot-cmp
-https://github.com/zbirenbaum/copilot.lua
-https://www.vim.org/scripts/script.php?script_id=6048
+- https://github.com/3v0k4/exit.nvim
+- https://github.com/Aaronik/GPTModels.nvim
+- https://github.com/Bryley/neoai.nvim
+- https://github.com/CamdenClark/flyboy
+- https://github.com/CoderCookE/vim-chatgpt
+- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+- https://github.com/Dan7h3x/chatter.nvim
+- https://github.com/David-Kunz/gen.nvim
+- https://github.com/Exafunction/codeium.nvim
+- https://github.com/Exafunction/codeium.vim
+- https://github.com/HPRIOR/telescope-gpt
+- https://github.com/Kurama622/llm.nvim
+- https://github.com/Lommix/ollamachad.nvim
+- https://github.com/RayenMnif/tgpt.nvim
+- https://github.com/Robitx/gp.nvim
+- https://github.com/ShoofLLC/vim-openai
+- https://github.com/TamaMcGlinn/vim-termhelp
+- https://github.com/WhiteBlackGoose/gpt4all.nvim
+- https://github.com/aduros/ai.vim
+- https://github.com/agusnt/askGemini.nvim
+- https://github.com/bakks/butterfish.nvim
+- https://github.com/codota/tabnine-nvim
+- https://github.com/deifyed/naVi
+- https://github.com/dense-analysis/neural
+- https://github.com/dpayne/CodeGPT.nvim
+- https://github.com/dustinblackman/oatmeal.nvim
+- https://github.com/frankroeder/parrot.nvim
+- https://github.com/gera2ld/ai.nvim
+- https://github.com/github/copilot.vim
+- https://github.com/gsuuon/llm.nvim
+- https://github.com/gsuuon/model.nvim
+- https://github.com/huynle/ogpt.nvim
+- https://github.com/jackMort/ChatGPT.nvim
+- https://github.com/james1236/backseat.nvim
+- https://github.com/jameshiew/nvim-magic
+- https://github.com/jcdickinson/codeium.nvim
+- https://github.com/jellydn/CopilotChat.nvim
+- https://github.com/jkitching/awesome-vim-llm-plugins
+- https://github.com/joshuavial/aider.nvim
+- https://github.com/jpmcb/nvim-llama
+- https://github.com/k2589/LLuMinate.nvim
+- https://github.com/kamou/gpt-vim
+- https://github.com/kiteco/vim-plugin
+- https://github.com/leocus/codeassistant.vim
+- https://github.com/madox2/vim-ai
+- https://github.com/magicalne/nvim.ai
+- https://github.com/marco-souza/ollero.nvim
+- https://github.com/milanglacier/minuet-ai.nvim
+- https://github.com/monkoose/neocodeium
+- https://github.com/oflisback/describe-command.nvim
+- https://github.com/olimorris/codecompanion.nvim
+- https://github.com/pasky/claude.vim
+- https://github.com/piersolenski/wtf.nvim
+- https://github.com/pwnwriter/code2prompt.nvim
+- https://github.com/skywind3000/vim-gpt-commit
+- https://github.com/solyarisoftware/prompter.vim
+- https://github.com/sourcegraph/sg.nvim
+- https://github.com/supermaven-inc/supermaven-nvim
+- https://github.com/tdfacer/explain-it.nvim
+- https://github.com/terror/chatgpt.nvim
+- https://github.com/tom-doerr/vim_codex
+- https://github.com/towry/commit-msg-sg.nvim
+- https://github.com/tzachar/cmp-ai
+- https://github.com/yacineMTB/dingllm.nvim
+- https://github.com/yetone/avante.nvim
+- https://github.com/you-n-g/simplegpt.nvim
+- https://github.com/zbirenbaum/copilot-cmp
+- https://github.com/zbirenbaum/copilot.lua
+- https://www.vim.org/scripts/script.php?script_id=6048
 
 
 
