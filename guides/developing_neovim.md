@@ -197,3 +197,15 @@ You run the Makefile that's in the test directory
 ```sh
 cd test/old/testdir && make test_filename
 ```
+
+
+## Lua / Busted Neovim Plugin Testing
+https://hiphish.github.io/blog/2024/01/29/testing-neovim-plugins-with-busted/
+https://zignar.net/2023/01/21/using-luarocks-as-lua-interpreter-with-luarocks/
+https://mrcjkb.dev/posts/2023-06-06-luarocks-test.html
+https://hiphish.github.io/blog/2024/02/29/introducing-neotest-busted/
+https://github.com/notomo/vusted
+
+https://github.com/MisanthropicBit/neotest-busted
+
+https://github.com/nvim-neorocks/nvim-busted-action
