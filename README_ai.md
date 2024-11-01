@@ -6,6 +6,7 @@
 - https://github.com/CopilotC-Nvim/CopilotChat.nvim
 - https://github.com/Dan7h3x/chatter.nvim
 - https://github.com/David-Kunz/gen.nvim
+- https://github.com/ErikBjare/gptme/tree/master/scripts/vim
 - https://github.com/Exafunction/codeium.nvim
 - https://github.com/Exafunction/codeium.vim
 - https://github.com/HPRIOR/telescope-gpt
@@ -24,6 +25,7 @@
 - https://github.com/dense-analysis/neural
 - https://github.com/dpayne/CodeGPT.nvim
 - https://github.com/dustinblackman/oatmeal.nvim
+- https://github.com/efugier/smartcat - It's not exactly a Vim plugin
 - https://github.com/frankroeder/parrot.nvim
 - https://github.com/gera2ld/ai.nvim
 - https://github.com/github/copilot.vim
