@@ -1,3 +1,6 @@
+]-, ]+, [-, [-, [=, ]=
+- Fix these mappings
+
 https://github.com/jake-stewart/force-cul.nvim
 
 
@@ -191,6 +194,16 @@ def _get_module_namespaces(node: tree_sitter.Node, data: bytes) -> list[bytes]:
 
     return output
 ```
+
+
+https://github.com/smilhey/ed-cmd.nvim
+
+https://www.reddit.com/r/neovim/comments/1g8jeyn/ccls_and_lsp_semantic_tokens/
+
+https://gregorias.github.io/posts/using-coroutines-in-neovim-lua/
+
+https://www.youtube.com/watch?v=G3NKwhWv8x0
+
 
 - Try this out - https://github.com/iguanacucumber/magazine.nvim
 
