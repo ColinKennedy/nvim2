@@ -1,4 +1,4 @@
-require("my_custom.start.speed_up")
+-- require("my_custom.start.speed_up")
 
 -- TODO: Remove this line after updating Neovim to (fb3e2bf7b1fc26fef4d168fd2eb2d8eaba1d9390) (a.k.a vim-patch:9.0.1549)
 --
@@ -47,17 +47,43 @@ extend(plugins, require("my_custom.plugins.manifest.text_object"))
 extend(plugins, require("my_custom.plugins.manifest.workflow"))
 extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 
+-- ``root`` e.g. ~/personal/.config/nvim/bundle"
+local configuration = { root = vim.g.vim_home .. "/bundle" }
+
+
+-- vim.g.plugin_template_configuration = {logging = {level = "debug", use_file = true}}
+--
+-- table.insert(
+--     plugins,
+--     {
+--         'ColinKennedy/nvim-best-practices-plugin-template',
+--         -- cmd = "PluginTemplate",
+--         directory = "/home/selecaoone/repositories/personal/.config/nvim/bundle/nvim-best-practices-plugin-template",
+--     }
+-- )
+--
+-- table.insert(
+--     plugins,
+--     {
+--       "rbong/vim-flog",
+--       lazy = true,
+--       cmd = { "Flog", "Flogsplit", "Floggit" },
+--       dependencies = {
+--         "tpope/vim-fugitive",
+--       },
+--     }
+-- )
+
 table.insert(
     plugins,
     {
-        "ColinKennedy/nvim-treesitter-docstring",
-        cmd = "TSDocstring",
-        config = true,
+        'ColinKennedy/cursor-text-object.nvim',
     }
 )
 
--- ``root`` e.g. ~/personal/.config/nvim/bundle"
-local configuration = { root = vim.g.vim_home .. "/bundle" }
+-- table.insert(plugins, { 'stevearc/profile.nvim' })
+
+
 
 require("lazy").setup(plugins, configuration)
 
@@ -71,108 +97,3 @@ require("my_custom.start.lsp_diagnostics")
 require("my_custom.start.saver").initialize()
 require("my_custom.utilities.quick_fix_selection_fix").initialize()
 vim.cmd("source " .. vim.g.vim_home .. "/plugin/miscellaneous_commands.vim")
-
-
--- TODO: Remove all of this later
--- vim.lsp.set_log_level("TRACE")
---
--- local client = vim.lsp.start_client{
---     name = "usd_lsp",
---     cmd = { "/home/selecaoone/repositories/usd_lsp/build/src/usd_lsp" },
--- }
---
--- if not client then
---     vim.notify("No usd_lsp client could be created.")
--- end
---
--- vim.api.nvim_create_autocmd(
---     "FileType",
---     {
---         -- pattern = "usd",
---         callback = function()
---             vim.lsp.buf_attach_client(0, client)
---
---             vim.keymap.set(
---                 "n",
---                 "gd",
---                 vim.lsp.buf.definition,
---                 {
---                     buffer=buffer,
---                     desc="[g]o to [d]efinition of the function / class.",
---                 }
---             )
---         end
---     }
--- )
-
--- vim.api.nvim_create_autocmd(
---     "FileType",
---     {
---         pattern = "usd",
---         callback = function()
---             vim.lsp.set_log_level("TRACE")
---
---             local client = vim.lsp.start_client{
---                 name = "usd_lsp",
---                 cmd = { "/home/selecaoone/repositories/usd_lsp/build/src/usd_lsp" },
---             }
---
---             if not client then
---                 vim.notify("No usd_lsp client could be created.")
---             end
---
---             vim.keymap.set(
---                 "n",
---                 "gd",
---                 vim.lsp.buf.definition,
---                 {
---                     buffer=buffer,
---                     desc="[g]o to [d]efinition of the function / class.",
---                 }
---             )
---
---             vim.lsp.buf_attach_client(0, client)
---
---             vim.keymap.set(
---                 "n",
---                 "gd",
---                 vim.lsp.buf.definition,
---                 {
---                     buffer=buffer,
---                     desc="[g]o to [d]efinition of the function / class.",
---                 }
---             )
---         end
---     }
--- )
-
--- vim.api.nvim_create_autocmd(
---     "FileType",
---     {
---         pattern = "usd",
---         callback = function()
---             vim.lsp.set_log_level("TRACE")
---
---             local client = vim.lsp.start_client{
---                 name = "usd_lsp",
---                 cmd = { "/home/selecaoone/repositories/usd_lsp/build/src/usd_lsp" },
---             }
---
---             if not client then
---                 vim.notify("No usd_lsp client could be created.")
---             end
---
---             vim.keymap.set(
---                 "n",
---                 "gd",
---                 vim.lsp.buf.definition,
---                 {
---                     buffer=buffer,
---                     desc="[g]o to [d]efinition of the function / class.",
---                 }
---             )
---
---             vim.lsp.buf_attach_client(0, client)
---         end
---     }
--- )
