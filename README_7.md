@@ -35,6 +35,10 @@ https://www.reddit.com/r/neovim/comments/1frlhwu/aqfnvim_store_edit_like_a_buffe
 
 - https://github.com/MagicDuck/grug-far.nvim
 
+https://www.reddit.com/r/neovim/comments/1gikghr/keyanalyzernvim_easily_find_unmapped_keys/
+https://github.com/meznaric/key-analyzer.nvim?tab=readme-ov-file
+
+
 - https://www.reddit.com/r/neovim/comments/1fmoxvw/oilnvim_appreciation/
 
 - language server stuff
