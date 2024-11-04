@@ -1,6 +1,7 @@
 ]-, ]+, [-, [-, [=, ]=
 - Fix these mappings
 
+
 https://github.com/jake-stewart/force-cul.nvim
 
 
@@ -204,6 +205,18 @@ https://gregorias.github.io/posts/using-coroutines-in-neovim-lua/
 
 https://www.youtube.com/watch?v=G3NKwhWv8x0
 
+https://github.com/ck-zhang/mistake.nvim/blob/main/lua/mistake/dict.lua
+
+
+https://github.com/neo451/feed.nvim
+
+https://github.com/ck-zhang/mistake.nvim
+
+
+
+- Looks really cool - https://github.com/t-troebst/perfanno.nvim
+
+
 
 - Try this out - https://github.com/iguanacucumber/magazine.nvim
 
@@ -211,6 +224,13 @@ https://www.youtube.com/watch?v=G3NKwhWv8x0
 
 github.com/LunarVim/bigfile.nvim
 https://github.com/LazyVim/LazyVim/commit/938a6718c6f0d5c6716a34bd3383758907820c52#diff-c23db92fd0640198b1eb7ac514d6b8d815a2abcc1494f479d2f3c8f573ba3c0cR136
+
+
+https://www.reddit.com/r/neovim/comments/1gi9iut/beta_symbolsnvim_code_outline_sidebar_my_first/
+
+https://www.reddit.com/r/neovim/comments/1ghh4so/pickls_the_general_purpose_language_server_for/
+https://github.com/mattn/efm-langserver
+
 
 https://www.reddit.com/r/neovim/comments/1fwxa8b/comment/lqlqlm8/
 https://github.com/alexpasmantier/pymple.nvim

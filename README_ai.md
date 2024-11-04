@@ -80,6 +80,11 @@ Perplexity.ai
 
 
 
+
+https://www.reddit.com/r/vim/comments/1ggzzul/quick_vim_llm_tip_i_made_a_keystroke_helper_that/
+
+
+
 https://www.reddit.com/r/neovim/comments/16zzpfz/gptvim_can_now_execute_python_and_lua_code_inside/
 
 https://www.reddit.com/r/neovim/comments/173w3us/phind_ai_copy_paste_link_fixer/

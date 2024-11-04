@@ -39,6 +39,9 @@ https://www.reddit.com/r/neovim/comments/1gikghr/keyanalyzernvim_easily_find_unm
 https://github.com/meznaric/key-analyzer.nvim?tab=readme-ov-file
 
 
+https://www.reddit.com/r/neovim/comments/1gfe673/is_there_any_way_to_make_a_custom_sorter_for/
+
+
 - https://www.reddit.com/r/neovim/comments/1fmoxvw/oilnvim_appreciation/
 
 - language server stuff
