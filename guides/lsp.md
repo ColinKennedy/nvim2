@@ -31,3 +31,6 @@ vim.diagnostic.config(
     }
 )
 ```
+
+## A Built-In LSP For Snippets
+https://www.reddit.com/r/neovim/comments/1g1x0v3/hacking_native_snippets_into_lsp_for_builtin/
