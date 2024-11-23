@@ -19,9 +19,6 @@
 [submodule "bundle/vim-indent-object"]
 	path = bundle/vim-indent-object
 	url = git@github.com:ColinKennedy/vim-indent-object.git
-[submodule "bundle/vim-ninja-feet"]
-	path = bundle/vim-ninja-feet
-	url = git@github.com:ColinKennedy/vim-ninja-feet.git
 [submodule "bundle/vim-python-dot-path"]
 	path = bundle/vim-python-dot-path
 	url = git@github.com:ColinKennedy/vim-python-dot-path.git

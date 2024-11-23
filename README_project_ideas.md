@@ -1,6 +1,7 @@
-- ninja feet
-- async parser
-- lua-busted profiler
+- ninja feet, in Neovim by default
+- Neovim plugin busted profiler
+
+- async parser PR
 
 https://stackoverflow.com/questions/15725744/easy-lua-profiling
 http://lua-users.org/wiki/ProfilingLuaCode

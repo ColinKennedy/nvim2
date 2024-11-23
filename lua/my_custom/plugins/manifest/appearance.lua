@@ -43,7 +43,7 @@ return {
         "ColinKennedy/grapple-line.nvim",
         branch = "remove_padding",
         dependencies = { "cbochs/grapple.nvim" },
-        opts = { colors = { active = "Visual" }, number_of_files = 8 },
+        opts = { number_of_files = 8 },
     },
 
     -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
