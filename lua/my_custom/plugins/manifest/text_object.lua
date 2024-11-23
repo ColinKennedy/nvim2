@@ -143,31 +143,29 @@ return {
         event = "VeryLazy",
     },
 
-    -- Life-changing text object extension. It's hard to explain but ...
+    -- A life-changing text object extension. [ and ] now become directional pending operators.
     --
-    -- Use z[i} to move to the insert from the beginning of a paragraph.
-    -- Use z]i} to move to the insert from the end of a paragraph.
-    -- But you can do the do this with __any__ text object
-    -- Also, you can use d]/d[ and c]/c[ to delete / change from other text objects
+    -- d]ip deletes from the cursor down. d[ip deletes from the top to the cursor.
+    -- Works with any text operator / text object. e.g. gc]ii works, etc etc.
     --
     -- {"ColinKennedy/vim-ninja-feet", keys = {"d[", "d]"}},
     {
-        "ColinKennedy/vim-ninja-feet",
-        branch = "add_extra_visual_operators",
-        keys = {
-            { "c[", desc = "[c]hange from the cursor to the start of a text object." },
-            { "c]", desc = "[c]hange from the cursor to the end of a text object." },
-            { "d[", desc = "[d]elete from the cursor to the start of a text object." },
-            { "d]", desc = "[d]elete from the cursor to the end of a text object." },
-            -- "p[", "p]",
-
-            { "s[", desc = "[s]elect from the cursor to the start of a text object." },
-            { "s]", desc = "[s]elect from the cursor to the end of a text object." },
-            { "y[", desc = "[y]ank from the cursor to the start of a text object." },
-            { "y]", desc = "[y]ank from the cursor to the end of a text object." },
-            { "z[", desc = "Move to the start of a text object." },
-            { "z]", desc = "Move to the end of a text object." },
-        },
+        "ColinKennedy/cursor-text-objects.nvim",
+        config = function()
+            vim.keymap.set(
+                {"o", "x"},
+                "[",
+                "<Plug>(cursor-text-objects-up)",
+                { desc = "Run from your current cursor to the end of the text-object." }
+            )
+            vim.keymap.set(
+                {"o", "x"},
+                "]",
+                "<Plug>(cursor-text-objects-down)",
+                { desc = "Run from your current cursor to the end of the text-object." }
+            )
+        end,
+        version = "v1.*",
     },
 
     -- Exchange any two text objects with a new text-motion, `cx`

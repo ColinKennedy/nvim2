@@ -370,3 +370,6 @@
 [submodule "bundle/nvim-scrollbar"]
 	path = bundle/nvim-scrollbar
 	url = git@github.com:petertriho/nvim-scrollbar.git
+[submodule "bundle/cursor-text-objects.nvim"]
+	path = bundle/cursor-text-objects.nvim
+	url = git@github.com:ColinKennedy/cursor-text-objects.nvim.git

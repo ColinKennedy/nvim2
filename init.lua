@@ -74,13 +74,6 @@ local configuration = { root = vim.g.vim_home .. "/bundle" }
 --     }
 -- )
 
-table.insert(
-    plugins,
-    {
-        'ColinKennedy/cursor-text-object.nvim',
-    }
-)
-
 -- table.insert(plugins, { 'stevearc/profile.nvim' })
 
 
