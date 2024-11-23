@@ -148,7 +148,6 @@ return {
     -- d]ip deletes from the cursor down. d[ip deletes from the top to the cursor.
     -- Works with any text operator / text object. e.g. gc]ii works, etc etc.
     --
-    -- {"ColinKennedy/vim-ninja-feet", keys = {"d[", "d]"}},
     {
         "ColinKennedy/cursor-text-objects.nvim",
         config = function()
