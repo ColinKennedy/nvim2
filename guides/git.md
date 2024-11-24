@@ -13,3 +13,8 @@ https://jeancharles.quillet.org/posts/2022-03-02-Practical-introduction-to-fugit
 /home/selecaoone/temp/merge_conflict_test/some_file.txt
 https://www.youtube.com/watch?v=vpwJ7fqD1CE
 https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
+
+
+## Extra Plugins
+A plugin that can open up github repo + branch + commit + lines directly in Neovim
+https://github.com/trevorhauter/gitportal.nvim
