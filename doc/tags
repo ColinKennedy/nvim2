@@ -1,5 +1,6 @@
 my_commands.txt	my_commands.txt	/*my_commands.txt*
 my_commands_create_multiple_terminals	my_commands.txt	/*my_commands_create_multiple_terminals*
+my_commands_telescope	my_commands.txt	/*my_commands_telescope*
 my_commands_terminals	my_commands.txt	/*my_commands_terminals*
 my_configuration	my_notes.txt	/*my_configuration*
 my_configuration_general	my_notes.txt	/*my_configuration_general*
@@ -16,9 +17,9 @@ my_mappings_formatting_and_editting	my_mappings.txt	/*my_mappings_formatting_and
 my_mappings_git	my_mappings.txt	/*my_mappings_git*
 my_mappings_grapple.nvim	my_mappings.txt	/*my_mappings_grapple.nvim*
 my_mappings_lsp	my_mappings.txt	/*my_mappings_lsp*
-my_mappings_luasnip.nvim	my_mappings.txt	/*my_mappings_luasnip.nvim*
 my_mappings_miscellaneous	my_mappings.txt	/*my_mappings_miscellaneous*
 my_mappings_quickfix	my_mappings.txt	/*my_mappings_quickfix*
+my_mappings_spelling	my_mappings.txt	/*my_mappings_spelling*
 my_mappings_telescope.nvim	my_mappings.txt	/*my_mappings_telescope.nvim*
 my_mappings_terminal_tmux_communication	my_mappings.txt	/*my_mappings_terminal_tmux_communication*
 my_mappings_text_objects	my_mappings.txt	/*my_mappings_text_objects*
