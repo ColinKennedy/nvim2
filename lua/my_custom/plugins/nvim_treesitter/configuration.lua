@@ -7,14 +7,10 @@ then
     require('nvim-treesitter.install').compilers = { "clang" }
 end
 
-local filer = require("my_custom.utilities.filer")
-
-local install_path = filer.join_path(
-    {
-        vim.g.vim_home,
-        "parsers",
-        vim.loop.os_uname().sysname,
-    }
+local install_path = vim.fs.joinpath(
+    vim.g.vim_home,
+    "parsers",
+    vim.loop.os_uname().sysname
 )
 
 -- If you need to change the installation directory of the parsers (see
