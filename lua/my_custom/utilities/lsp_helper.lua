@@ -47,7 +47,7 @@ end
 --
 -- Reference: https://gist.github.com/Lamarcke/36e086dd3bb2cebc593d505e2f838e07
 --
-local function get_attached_clients()
+function M.get_attached_clients()
     local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 
     if #buf_clients == 0 then
@@ -137,7 +137,7 @@ end
 
 
 function M.print_attached_clients()
-    print(get_attached_clients())
+    print(M.get_attached_clients())
 end
 
 
