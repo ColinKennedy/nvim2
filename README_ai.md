@@ -10,6 +10,7 @@
 - https://github.com/ErikBjare/gptme/tree/master/scripts/vim
 - https://github.com/Exafunction/codeium.nvim
 - https://github.com/Exafunction/codeium.vim
+- https://github.com/GeorgesAlkhouri/nvim-aider
 - https://github.com/HPRIOR/telescope-gpt
 - https://github.com/Kurama622/llm.nvim
 - https://github.com/Lommix/ollamachad.nvim
@@ -50,6 +51,7 @@
 - https://github.com/marco-souza/ollero.nvim
 - https://github.com/milanglacier/minuet-ai.nvim
 - https://github.com/monkoose/neocodeium
+- https://github.com/napisani/context-nvim
 - https://github.com/oflisback/describe-command.nvim
 - https://github.com/olimorris/codecompanion.nvim
 - https://github.com/pasky/claude.vim
