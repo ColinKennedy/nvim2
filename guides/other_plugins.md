@@ -120,6 +120,8 @@ https://github.com/vigoux/architext.nvim
 
 - Neovim Remote Helper - https://github.com/mikew/nvrh. Works with a remote Neovim instance
 
+- Profiler plugin, uses perf to show profile statistics in-line - https://github.com/t-troebst/perfanno.nvim
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
