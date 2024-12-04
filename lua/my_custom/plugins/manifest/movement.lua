@@ -1,3 +1,6 @@
+-- NOTE: Needed or zoomwintab will define keymaps
+vim.g.zoomwintab_remap = 0
+
 return {
     -- Zoxide auto-jump, but for Vim
     {
@@ -106,7 +109,6 @@ return {
         version = "v0.*",
     },
 
-    -- Press <C-w>o to full-screen the current buffer
     {
         -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
         "troydm/zoomwintab.vim",
@@ -114,7 +116,7 @@ return {
         keys = {
             {
                 "<C-w>o",
-                ":ZoomWinTabToggle<CR>",
+                "<cmd>ZoomWinTabToggle<CR>",
                 desc="Toggle full-screen or minimize a window.",
             },
         },

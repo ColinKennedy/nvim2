@@ -295,8 +295,8 @@ vim.keymap.set(
     }
 )
 
-vim.keymap.set("t", "<C-w>o", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
-vim.keymap.set("t", "<C-w><C-o>", "<C-\\><C-n>:ZoomWinTabToggle<CR>", {silent=true})
+vim.keymap.set("t", "<C-w>o", "<C-\\><C-n><cmd>ZoomWinTabToggle<CR>", {silent=true})
+vim.keymap.set("t", "<C-w><C-o>", "<C-\\><C-n><cmd>ZoomWinTabToggle<CR>", {silent=true})
 
 
 vim.cmd[[
