@@ -195,4 +195,10 @@ return {
         "petertriho/nvim-scrollbar",
         config = true,
     },
+
+    -- Track the cursor as it moves. Very fun and kind of useful!
+    {
+        "sphamba/smear-cursor.nvim",
+        opts = {},
+    },
 }
