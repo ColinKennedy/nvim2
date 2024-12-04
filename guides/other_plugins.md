@@ -122,6 +122,8 @@ https://github.com/vigoux/architext.nvim
 
 - Profiler plugin, uses perf to show profile statistics in-line - https://github.com/t-troebst/perfanno.nvim
 
+- A useful color picker - https://github.com/eero-lehtinen/oklch-color-picker.nvim
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim

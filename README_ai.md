@@ -72,6 +72,7 @@
 - https://github.com/you-n-g/simplegpt.nvim
 - https://github.com/zbirenbaum/copilot-cmp
 - https://github.com/zbirenbaum/copilot.lua
+- https://pieces.app/plugins/neovim
 - https://www.vim.org/scripts/script.php?script_id=6048
 
 
