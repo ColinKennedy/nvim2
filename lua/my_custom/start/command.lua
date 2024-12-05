@@ -1,3 +1,10 @@
+--- Create basic, useful Neovim user commands.
+---
+---@module 'my_custom.start.command'
+---
+
+local _TAB_TERMINALS = {}
+
 vim.api.nvim_create_user_command(
     "StripTrailingWhitespace",
     "%s/\\s\\+$//e",
@@ -36,8 +43,6 @@ vim.api.nvim_create_user_command(
 )
 
 
-TAB_TERMINALS = {}
-
 local focus_terminal_if_needed = function()
     local is_fzf_terminal = function()
         local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
@@ -62,18 +67,18 @@ local focus_terminal_if_needed = function()
 
     local replaced = false
 
-    for existing_tab, _ in pairs(TAB_TERMINALS)
+    for existing_tab, _ in pairs(_TAB_TERMINALS)
     do
         if existing_tab == tab
         then
-            TAB_TERMINALS[existing_tab] = buffer
+            _TAB_TERMINALS[existing_tab] = buffer
             replaced = true
         end
     end
 
     if not replaced
     then
-        table.insert(TAB_TERMINALS, tab, buffer)
+        table.insert(_TAB_TERMINALS, tab, buffer)
     end
 end
 
@@ -111,7 +116,7 @@ vim.api.nvim_create_user_command(
         local found = false
         local terminal_buffer = -1
 
-        for existing_tab, existing_terminal_buffer in pairs(TAB_TERMINALS)
+        for existing_tab, existing_terminal_buffer in pairs(_TAB_TERMINALS)
         do
             if existing_tab == tab
             then

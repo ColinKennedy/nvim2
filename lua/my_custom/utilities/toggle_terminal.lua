@@ -64,6 +64,7 @@ end
 ---     hidden buffers.
 ---
 local function _get_all_toggle_terminals()
+    ---@type number[]
     local output = {}
 
     for tab = 1, vim.fn.tabpagenr("$") do
@@ -83,6 +84,7 @@ end
 --- @return number[] # All of the tabs found, if any.
 ---
 local function _get_buffer_tabs(buffer)
+    ---@type number[]
     local output = {}
 
     for tab = 1, vim.fn.tabpagenr('$') do
@@ -102,6 +104,7 @@ end
 --- @return number[] # All of the windows found, if any.
 ---
 local function _get_buffer_windows(buffer)
+    ---@type number[]
     local output = {}
 
     for _, window in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -238,6 +241,7 @@ end
 
 --- Convert the `toggleterminal` to vimscript so it can be saved to a Session file.
 local function _serialize_terminals()
+    ---@type string[]
     local contents = {}
 
     for _, buffer in ipairs(_get_all_toggle_terminals()) do
@@ -268,6 +272,7 @@ local function _serialize_terminals()
         return nil
     end
 
+    ---@type string[]
     local output = {}
 
     table.insert(output, "lua << EOF")

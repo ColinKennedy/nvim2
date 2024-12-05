@@ -1,4 +1,10 @@
-local is_ignoring_syntax_events = function()
+--- Enable auto-commands and define custom auto-commands on-startup.
+---
+---@module 'my_custom.start.auto_commands'
+---
+
+---@return boolean # Check if we're current ignoring syntax-related auto-commands
+local function is_ignoring_syntax_events()
     for _, value in pairs(vim.opt.eventignore)
     do
         if value == "Syntax"
@@ -60,7 +66,7 @@ vim.api.nvim_create_autocmd(
 -- :argdo and :bufdo, which disable the Syntax autocmd event to speed up
 -- processing.
 --
-local group = vim.api.nvim_create_augroup("EnableSyntaxHighlighting", { clear = true})
+local _GROUP = vim.api.nvim_create_augroup("EnableSyntaxHighlighting", { clear = true})
 
 vim.api.nvim_create_autocmd(
     {"BufWinEnter", "WinEnter"},
@@ -90,7 +96,7 @@ vim.api.nvim_create_autocmd(
         end,
         nested = true,
         pattern = "*",
-        group=group,
+        group=_GROUP,
     }
 )
 
@@ -170,30 +176,16 @@ vim.api.nvim_create_autocmd(
     }
 )
 
-
--- TODO: Consider defer-evaling this, since it runs off of ``TextYankPost``
---
--- Highlight the yanked text for a brief moment. Basically, blink the yanked region.
---
--- Reference: https://www.reddit.com/r/neovim/comments/gofplz/comment/hqa6xhc/?utm_source=share&utm_medium=web2x&context=3
---
-vim.api.nvim_create_autocmd(
-    "TextYankPost",
-    {
-        callback = function()
-            local highlight_group = "IncSearch"
-
-            if vim.fn.hlexists("HighlightedyankRegion") > 0
-            then
-                highlight_group = "HighlightedyankRegion"
-            end
-
-            vim.highlight.on_yank{ higroup=highlight_group, timeout=100 }
-        end,
-        pattern = "*",
-    }
-)
-
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
 
 --- @return boolean # Check if the current buffer is an fzf prompt
 local is_fzf_terminal = function()
@@ -203,7 +195,8 @@ local is_fzf_terminal = function()
     return name:sub(-#ending) == ending
 end
 
-local group = vim.api.nvim_create_augroup("TerminalBehavior", { clear = true })
+_GROUP = vim.api.nvim_create_augroup("TerminalBehavior", { clear = true })
+
 -- Switch from the terminal window back to other buffers quickly
 -- Reference: https://github.com/junegunn/fzf.vim/issues/544#issuecomment-457456166
 --
@@ -227,7 +220,7 @@ vim.api.nvim_create_autocmd(
                 }
             )
         end,
-        group = group,
+        group = _GROUP,
         pattern = "*",
     }
 )
@@ -255,7 +248,7 @@ vim.api.nvim_create_autocmd(
                 end
             )
         end,
-        group = group,
+        group = _GROUP,
         pattern = "*",
     }
 )
@@ -321,12 +314,13 @@ vim.api.nvim_create_autocmd(
 )
 
 -- Keep track of the current layout, on-close. Create a Vim Session.vim file.
-local function _save_session()
-    if vim.v.this_session ~= "" then
-        vim.cmd("mksession! " .. vim.v.this_session)
+vim.api.nvim_create_autocmd("VimLeave", {
+    callback = function()
+        if vim.v.this_session ~= "" then
+            vim.cmd("mksession! " .. vim.v.this_session)
+        end
     end
-end
-vim.api.nvim_create_autocmd("VimLeave", { callback = _save_session })
+})
 
 vim.api.nvim_create_autocmd(
     "QuickFixCmdPost",

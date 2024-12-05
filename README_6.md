@@ -1,3 +1,16 @@
+- d[ii does a weird snapping for some reason
+
+using macros doesn't wo
+I couldn't do yi"^PP anymore. Fix!
+```
+{ name = "trace", highlight = "Comment" },
+{ name = "debug", highlight = "Comment" },
+{ name = "info", highlight = "None" },
+{ name = "warn", highlight = "WarningMsg" },
+{ name = "error", highlight = "ErrorMsg" },
+{ name = "fatal", highlight = "ErrorMsg" },
+```
+
 ]-, ]+, [-, [-, [=, ]=
 - Fix these mappings
 

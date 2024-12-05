@@ -1,31 +1,23 @@
+--- Converts the current window to Xs.
+---
+--- This utility is used to check the readability of a file.
+---
+---@module 'my_custom.utilities.virtual_text'
+---
+
 local M = {}
 
 local _NAMESPACE = vim.api.nvim_create_namespace("x_marks_the_spot")
 
 
-function _in(key, set)
-    return set[key] ~= nil
-end
-
-
-function _extend_set(set, keys)
-    for _, key in pairs(keys)
-    do
-        set[key] = true
-    end
-end
-
-
-function _remove_from_set(key, set)
-    set[key] = nil
-end
-
-
+--- Add X-marks onto `window`.
+---
+---@param window number A 0-or-move window to edit. 0 means "current window".
+---
 function M.add_all_marks(window)
-    local window = window or 0  -- 0 == "the current window"
+    window = window or 0  -- 0 == "the current window"
     local replacement_character = "x"
-    local allowed_characters = {}
-    _extend_set(allowed_characters, {" ", "\\t"})
+    local allowed_characters = {" ", "\\t"}
 
     local highest_priority = 999
 
@@ -37,7 +29,7 @@ function M.add_all_marks(window)
         do
             local character = string.sub(line, index, index)
 
-            if not _in(character, allowed_characters)
+            if not vim.tbl_contains(allowed_characters, character)
             then
                 vim.api.nvim_buf_set_extmark(
                     window,
@@ -57,8 +49,12 @@ function M.add_all_marks(window)
 end
 
 
+--- Remove all X marks.
+---
+---@param window number A 0-or-move window to edit. 0 means "current window".
+---
 function M.remove_all_marks(window)
-    local window = window or 0  -- 0 == "the current window"
+    window = window or 0  -- 0 == "the current window"
     local line_start = 0
     local line_end = -1
 

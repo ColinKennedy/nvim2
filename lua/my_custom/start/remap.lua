@@ -249,6 +249,7 @@ vim.keymap.set(
 
 -- Search for text within some visual selection
 --
+-- luacheck: ignore 631
 -- Reference: https://www.reddit.com/r/neovim/comments/16ztjvl/comment/k3hd4i1/?utm_source=share&utm_medium=web2x&context=3
 --
 vim.keymap.set("x", "/", "<Esc>/\\%V", { desc = "Search within a visual selection" })

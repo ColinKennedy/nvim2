@@ -36,7 +36,14 @@ return {
     },
     {
         "<leader>dge",
-        function() vim.cmd(":edit " .. vim.fn.stdpath('cache') .. "/dap.log") end,
+        function()
+            vim.cmd(
+                string.format(
+                    '<cmd>edit "%s"<CR>',
+                    vim.fs.joinpath(vim.fn.stdpath('cache'), "dap.log")
+                )
+            )
+        end,
         desc="Open the [d]ebu[g] [e]dit file.",
     },
     {

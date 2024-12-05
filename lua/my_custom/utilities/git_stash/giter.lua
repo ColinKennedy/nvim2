@@ -1,6 +1,6 @@
 --- Some functions to make working with the `git` CLI easier.
 ---
---- @module 'my_custom.utilities.git_stash.giter'
+---@module 'my_custom.utilities.git_stash.giter'
 ---
 
 local shell = require("my_custom.utilities.git_stash.shell")
@@ -9,29 +9,17 @@ local shell = require("my_custom.utilities.git_stash.shell")
 local M = {}
 
 
---- Get a "git recognizable stash name", given some stash `index`.
----
---- @param index integer
----     A 0-or-more value indicating the stash to grab. 0 is the latest stash,
----     1+ are older stashes.
---- @return string
----     The generated stash label.
----
-local function _get_stash_label(index)
-    return "stash@{" .. index .. "}"
-end
-
-
 --- Stash any uncommitted git changes at `directory`.
 ---
 --- Warning:
 ---     Calling this function will modify the state of your git repository.
 ---
---- @param directory string A folder on-disk within some git repository.
+---@param directory string A folder on-disk within some git repository.
 ---
 local function _create_git_stash(directory)
     local command = "git stash"
 
+    ---@type string[]
     local stderr = {}
     local result = shell.run_command(
         command,
@@ -56,12 +44,13 @@ end
 --- Warning:
 ---     Calling this function will modify the state of your git repository.
 ---
---- @param name string A description to save with the git stash.
---- @param directory string A folder on-disk within some git repository.
+---@param name string A description to save with the git stash.
+---@param directory string A folder on-disk within some git repository.
 ---
 local function _push_named_git_stash(name, directory)
     local command = 'git stash push -m "' .. name .. '"'
 
+    ---@type string[]
     local stderr = {}
     local result = shell.run_command(
         command,
@@ -83,11 +72,13 @@ end
 
 --- Find any previously-saved git stashes at `directory`.
 ---
---- @param directory string A folder on-disk within some git repository.
---- @return string[]? # The found git stashes, if any.
+---@param directory string A folder on-disk within some git repository.
+---@return string[]? # The found git stashes, if any.
 ---
 function M.get_stashes(directory)
+    ---@type string[]
     local stderr = {}
+    ---@type string[]
     local stdout = {}
 
     local result = shell.run_command(
@@ -113,6 +104,7 @@ function M.get_stashes(directory)
         return nil
     end
 
+    ---@type string[]
     local output = {}
 
     for _, line in ipairs(stdout) do
@@ -131,7 +123,7 @@ end
 --- Warning:
 ---     Calling this function will modify the state of your git repository.
 ---
---- @param directory string A folder on-disk within some git repository.
+---@param directory string A folder on-disk within some git repository.
 ---
 function M.push_stash(directory)
     local name = vim.fn.input("Stash Name (default=empty): ")

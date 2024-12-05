@@ -76,6 +76,7 @@ local function _get_git_diff_paths(directory)
         directory
     )
 
+    ---@type string[]
     local output = {}
 
     for _, path in ipairs(relative_paths)

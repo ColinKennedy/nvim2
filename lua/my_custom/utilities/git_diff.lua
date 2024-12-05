@@ -173,6 +173,7 @@ function M.get_git_diff(directory)
     local command = "git diff --no-prefix --relative"
     local row = nil
     local path = nil
+    ---@type _QuickFixEntry[]
     local output = {}
 
     local lines = vim.fn.systemlist(command, directory)

@@ -22,7 +22,7 @@ return {
         "iguanacucumber/magazine.nvim",
         config = function() require("my_custom.plugins.nvim_cmp.configuration") end,
         dependencies = require("my_custom.plugins.nvim_cmp.dependencies"),
-        event = { "InsertEnter" },
+        event = { "CmdlineEnter", "InsertEnter" },
         name = "nvim-cmp", -- Otherwise highlighting gets messed up
         -- TODO: Possibly re-add tags if this issue ever addresses it.
         --

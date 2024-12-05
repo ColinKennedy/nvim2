@@ -1,16 +1,16 @@
-local _is_terminal = function(data)
-    local variables = data["variables"]
+--- Find the quickfix window when we need to. Find the code window when we need to.
+---
+---@module 'my_custom.utilities.choose_window'
+---
 
-    if variables == nil
-    then
-        return false
-    end
+local M = {}
 
-    return variables["terminal_job_id"] ~= nil
-end
-
-
-local _is_code_buffer = function(data)
+--- Check if `data` is meant to display source code.
+---
+---@param data vim.fn.getwininfo.ret.item The window to consider.
+---@return boolean # If `data` is for code, return `true`.
+---
+local function _is_code_buffer(data)
     local buffer_type = vim.fn.getbufvar(data.bufnr, "&buftype")
 
     if (
@@ -27,7 +27,8 @@ local _is_code_buffer = function(data)
 end
 
 
-local get_current_quick_fix_window = function()
+---@return number? # Find the quickfix in the current tab.
+local function get_current_quick_fix_window()
     local winner_buffer = nil
 
     for _, data in pairs(vim.fn.getwininfo())
@@ -50,8 +51,8 @@ local get_current_quick_fix_window = function()
     return winner_buffer
 end
 
-
-local get_latest_non_terminal_buffer = function()
+---@return number # Find the last buffer that is no a terminal.
+local function get_latest_non_terminal_buffer()
     local winner_buffer = nil
     local winner_last_used = 0
 
@@ -83,7 +84,8 @@ local get_latest_non_terminal_buffer = function()
     return nil
 end
 
-local select_last_code_window = function()
+--- Select the last window in the current tab that was not a quickfix window.
+function M.select_last_code_window()
     local window = get_latest_non_terminal_buffer()
 
     if window == nil
@@ -97,7 +99,8 @@ local select_last_code_window = function()
 end
 
 
-local select_quick_fix_window = function()
+--- Find the nearest quickfix window in the current tab and switch to it.
+function M.select_quick_fix_window()
     local window = get_current_quick_fix_window()
 
     if window == nil
@@ -109,11 +112,5 @@ local select_quick_fix_window = function()
 
     vim.api.nvim_set_current_win(window)
 end
-
-
-local M = {}
-
-M.select_last_code_window = select_last_code_window
-M.select_quick_fix_window = select_quick_fix_window
 
 return M

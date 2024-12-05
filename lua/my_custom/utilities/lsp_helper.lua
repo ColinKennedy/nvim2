@@ -1,9 +1,15 @@
+--- Miscellaneous functions to make dealing with LSPs easier.
+---
+---@module 'my_custom.utilities.lsp_helper'
+---
+
 local M = {}
 
--- Print every LSP's capabilities as a quick list.
---
--- Reference: https://www.reddit.com/r/neovim/comments/13r7yzw/comment/jljyiar/?utm_source=share&utm_medium=web2x&context=3
---
+--- Print every LSP's capabilities as a quick list.
+---
+--- Reference:
+---     https://www.reddit.com/r/neovim/comments/13r7yzw/comment/jljyiar/?utm_source=share&utm_medium=web2x&context=3
+---
 function M.print_lsp_capabilities()
     local buffer = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients { bufnr = buffer }
@@ -12,6 +18,7 @@ function M.print_lsp_capabilities()
     do
         if client.name ~= "null-ls"
         then
+            ---@type string[]
             local capabilities = {}
 
             for key, value in pairs(client.server_capabilities)
@@ -42,11 +49,13 @@ function M.print_lsp_capabilities()
 end
 
 
--- Returns a string with a list of attached LSP clients, including
--- formatters and linters from null-ls, nvim-lint and formatter.nvim
---
--- Reference: https://gist.github.com/Lamarcke/36e086dd3bb2cebc593d505e2f838e07
---
+--- Returns a string with a list of attached LSP clients, including
+--- formatters and linters from null-ls, nvim-lint and formatter.nvim
+---
+--- Reference: https://gist.github.com/Lamarcke/36e086dd3bb2cebc593d505e2f838e07
+---
+---@return string # A summary of the Neovim clients that are currently attached to LSPs.
+---
 function M.get_attached_clients()
     local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 
@@ -55,6 +64,7 @@ function M.get_attached_clients()
     end
 
     local buf_ft = vim.bo.filetype
+    ---@type string[]
     local buf_client_names = {}
 
     -- add client
@@ -115,6 +125,7 @@ function M.get_attached_clients()
     end
 
     -- This needs to be a string only table so we can use concat below
+    ---@type string[]
     local unique_client_names = {}
 
     for _, client_name_target in ipairs(buf_client_names) do
@@ -136,6 +147,7 @@ function M.get_attached_clients()
 end
 
 
+--- Show all Neovim clients that are currently connected to LSPs.
 function M.print_attached_clients()
     print(M.get_attached_clients())
 end

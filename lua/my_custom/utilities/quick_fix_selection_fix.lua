@@ -9,6 +9,7 @@
 
 local M = {}
 
+---@type table<number, number>
 local _PREVIOUS_ALLOWED_WINDOWS_BY_TAB = {}
 
 

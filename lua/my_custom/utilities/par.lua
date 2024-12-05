@@ -1,23 +1,22 @@
 --- A module for finding and applying `par` to Neovim (or compiling it, if neededed).
 ---
---- @module 'my_custom.utilities.par'
+---@module 'my_custom.utilities.par'
 ---
-
-local filer = require("my_custom.utilities.filer")
 
 local _COMMAND_NAME = "par"
 
 local M = {}
 
---- @class _ShellArguments
---- @field cwd string? The directory on-disk where a shell command will be called from.
---- @field on_stderr fun(job_id: integer, data: table<string>, event): nil An on-error callback.
+---@class _ShellArguments Data to send to `vim.fn.jobstart`.
+---@field cwd string? The directory on-disk where a shell command will be called from.
+---@field on_stderr fun(job_id: integer, data: table<string>, event): nil An on-error callback.
 
 
 --- Create a command-line call to copy `source` to `destination`.
---- @param source string The absolute path to some file on-disk to copy.
---- @param destination string The absolute path to some path to copy to.
---- @return string[] # The command to run via the command-line
+---
+---@param source string The absolute path to some file on-disk to copy.
+---@param destination string The absolute path to some path to copy to.
+---@return string[] # The command to run via the command-line
 ---
 local _get_copy_command = function(source, destination)
     if vim.fn.has("win32") == 1
@@ -31,16 +30,17 @@ end
 
 --- Get the commands needed in order to compile `par` from scratch.
 ---
---- @param source string The absolute path to `"$XDG_CONFIG_PATH/nvim/sources/par"`.
---- @param bin string The absolute path where the `par` executable goes when it's compiled.
---- @return table<string> # The commands to run.
+---@param source string The absolute path to `"$XDG_CONFIG_PATH/nvim/sources/par"`.
+---@param bin string The absolute path where the `par` executable goes when it's compiled.
+---@return string[] # The commands to run.
 ---
 local _get_par_compile_commands = function(source, bin)
     local extraction_directory = "par-master" -- TODO: Auto-get this directory name
 
+    ---@type string[][]
     local output = {}
 
-    if vim.fn.filereadable(filer.join_path({source, "master.tar.gz"})) == 0
+    if vim.fn.filereadable(vim.fs.joinpath(source, "master.tar.gz")) == 0
     then
         table.insert(
             output,
@@ -59,8 +59,8 @@ local _get_par_compile_commands = function(source, bin)
     table.insert(
         commands,
         _get_copy_command(
-            filer.join_path({source, extraction_directory, _COMMAND_NAME}),
-            filer.join_path({bin, _COMMAND_NAME})
+            vim.fs.joinpath(source, extraction_directory, _COMMAND_NAME),
+            vim.fs.joinpath(bin, _COMMAND_NAME)
         )
     )
 
@@ -80,17 +80,17 @@ end
 
 --- Add `path` to the `$PATH` environment variable.
 ---
---- @param path string An absolute or relative directory on-disk.
+---@param path string An absolute or relative directory on-disk.
 ---
 local _prepend_to_path = function(path)
     vim.cmd("let $PATH='" .. path .. ":" .. os.getenv("PATH") .. "'")
 end
 
--- @source http://www.nicemice.net/par
--- @source https://stackoverflow.com/q/6735996
---
--- s0 - disables suffixes
---
+---@source http://www.nicemice.net/par
+---@source https://stackoverflow.com/q/6735996
+---
+--- s0 - disables suffixes
+---
 local _enable_par = function()
     vim.opt.formatprg = "par s0w88"
 end
@@ -98,9 +98,9 @@ end
 
 --- Run `command` with shell `options` and indicate if the call succeeded.
 ---
---- @param command string The shell command to call. No string escapes needed.
---- @param options _ShellArguments Optional data to include for the shell command.
---- @return boolean If success, return `true`.
+---@param command string The shell command to call. No string escapes needed.
+---@param options _ShellArguments Optional data to include for the shell command.
+---@return boolean # If success, return `true`.
 ---
 local _run_shell_command = function(command, options)
     local job = vim.fn.jobstart(command, options)
@@ -160,9 +160,9 @@ function M.load_or_install()
         return
     end
 
-    local bin = filer.join_path({vim.g.vim_home, "bin", vim.loop.os_uname().sysname})
+    local bin = vim.fs.joinpath(vim.g.vim_home, "bin", vim.loop.os_uname().sysname)
 
-    if vim.fn.filereadable(filer.join_path({bin, _COMMAND_NAME})) == 1
+    if vim.fn.filereadable(vim.fs.joinpath(bin, _COMMAND_NAME)) == 1
     then
         -- If `par` exists on-disk, add it to (Neo)vim
         _prepend_to_path(bin)
@@ -171,7 +171,7 @@ function M.load_or_install()
         return
     end
 
-    local source = filer.join_path({vim.g.vim_home, "sources", "par"})
+    local source = vim.fs.joinpath(vim.g.vim_home, "sources", "par")
 
     if vim.fn.isdirectory(source) == 0
     then
@@ -182,13 +182,14 @@ function M.load_or_install()
 
     for _, command in ipairs(commands)
     do
+        ---@type string[]
         local stderr = {}
 
         if not _run_shell_command(
             command,
             {
                 cwd=source,
-                on_stderr=function(job_id, data, event)
+                on_stderr=function(_, data, _)
                     for line in ipairs(data)
                     do
                         table.insert(stderr, line)

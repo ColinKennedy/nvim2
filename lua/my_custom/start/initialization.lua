@@ -1,4 +1,10 @@
-local wsl = require("my_custom.utilities.wsl")
+--- Set all basic Neovim settings at Neovim's start-up.
+---
+---@module 'my_custom.start.initialization'
+---
+
+-- TODO: Remove later
+-- local wsl = require("my_custom.utilities.wsl")
 
 vim.cmd[[command! W :SudoWrite]]
 
@@ -176,24 +182,25 @@ vim.opt.spellcapcheck = [[.?!]\_[\])'"\t ]\+,E.g.,I.e.]]
 --
 vim.opt.equalalways = false
 
---- Change a Windows `path` to a WSL-compatible path.
----
---- @param path string An absolute path on-disk. e.g. `"C:\Users\korinkite\temp\test.py"`.
---- @return string # The converted path. e.g. `"/mnt/c/users/korinkite/temp/test.py"`.
----
-function _convert_windows_paths_to_linux(path)
-    path = path:gsub("\\", "/")
-    path = string.gsub(
-        path,
-        "^([A-Z]):/",
-        function(match) return "/mnt/" .. string.lower(match) .. "/" end
-    )
-
-    return vim.fs.normalize(path)
-end
-
-if wsl.in_wsl() then
-    vim.opt.isfname:append("\\")
-    vim.opt.isfname:append(":")
-    vim.opt.includeexpr = "v:lua._convert_windows_paths_to_linux(v:fname)"
-end
+-- TODO: Fix this later
+-- --- Change a Windows `path` to a WSL-compatible path.
+-- ---
+-- --- @param path string An absolute path on-disk. e.g. `"C:\Users\korinkite\temp\test.py"`.
+-- --- @return string # The converted path. e.g. `"/mnt/c/users/korinkite/temp/test.py"`.
+-- ---
+-- function _convert_windows_paths_to_linux(path)
+--     path = path:gsub("\\", "/")
+--     path = string.gsub(
+--         path,
+--         "^([A-Z]):/",
+--         function(match) return "/mnt/" .. string.lower(match) .. "/" end
+--     )
+--
+--     return vim.fs.normalize(path)
+-- end
+--
+-- if wsl.in_wsl() then
+--     vim.opt.isfname:append("\\")
+--     vim.opt.isfname:append(":")
+--     vim.opt.includeexpr = "v:lua._convert_windows_paths_to_linux(v:fname)"
+-- end

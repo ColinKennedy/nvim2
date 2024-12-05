@@ -17,7 +17,7 @@ return {
         {
             dynamicNode(
                 1,
-                function(args)
+                function()
                     local super_test = require("my_custom.utilities.super_test")  -- TODO: Move this, later
                     local nodes = super_test.get_current_function_super_text()
 

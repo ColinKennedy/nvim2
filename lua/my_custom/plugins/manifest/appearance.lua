@@ -187,7 +187,8 @@ return {
 
             require('render-markdown').setup({ heading = { sign = false } })
         end,
-        dependencies = { 'nvim-treesitter/nvim-treesitter' }
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        ft = {"markdown"},
     },
 
     -- A really pretty scrollbar. Not sure if I'll keep it. But it looks nice!

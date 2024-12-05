@@ -2,6 +2,7 @@ local M = {}
 
 
 function M.close_all_floating_windows()
+    ---@type number[]
     local closed_windows = {}
 
     for _, win in ipairs(vim.api.nvim_list_wins()) do

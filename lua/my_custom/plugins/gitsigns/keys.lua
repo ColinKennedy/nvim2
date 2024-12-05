@@ -1,7 +1,7 @@
 return {
     {
         "<leader>gah",
-        ":Gitsigns stage_hunk<CR>",
+        "<cmd>Gitsigns stage_hunk<CR>",
         desc="[g]it [a]dd [h]unk.",
         mode = {"n", "v"},
     },
@@ -29,7 +29,7 @@ return {
     },
     {
         "ih",
-        ":<C-U>Gitsigns select_hunk<CR>",
+        "<cmd><C-U>Gitsigns select_hunk<CR>",
         desc="Select [i]nside git [h]unk.",
         mode = {"o", "x"},
     },

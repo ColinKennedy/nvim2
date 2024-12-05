@@ -1,3 +1,11 @@
+--- Automatically add equal signs for Python source code.
+---
+---@module 'my_custom.utilities.auto_space'
+---
+
+local texter = require("my_custom.utilities.texter")
+
+local _P = {}
 local M = {}
 
 local _BUILTINS = {
@@ -36,7 +44,12 @@ local _BUILTINS = {
     ["yield"] = true,
 }
 
-function _has_expected_last_character(character)
+--- Check if this "last `character` in the Python source code line" can have a = sign appended to it.
+---
+---@param character string Some text to check.
+---@return boolean # If `true` then `character` is allowed assignments with = sign.
+---
+function _P.has_expected_last_character(character)
     if character:match("[%w_]")  -- Reference: https://stackoverflow.com/a/12118024/3626104
     then
         return true
@@ -56,26 +69,31 @@ function _has_expected_last_character(character)
 end
 
 
-function _is_assignable(text)
-    _, count = string.gsub(text, "%s+", "")
+--- Check if `text` is a python source code line that supports a = sign.
+---
+---@param text string Some Python source code to check.
+---@return boolean # If `text` cannot assign with =, return `false`.
+---
+function _P.is_assignable(text)
+    local _, count = string.gsub(text, "%s+", "")
 
     if count ~= 0
     then
         return false
     end
 
-    if not _has_expected_last_character(text:sub(-1))
+    if not _P.has_expected_last_character(text:sub(-1))
     then
         return false
     end
 
-    if _is_builtin_keyword(text:gsub("%s+", ""))
+    if _P.is_builtin_keyword(text:gsub("%s+", ""))
     then
         -- Strip whitespace of `text` and check if it's a built-in keyword
         return false
     end
 
-    if _is_blacklisted_context()
+    if _P.is_blacklisted_context()
     then
         return false
     end
@@ -84,22 +102,28 @@ function _is_assignable(text)
 end
 
 
-function _is_blacklisted_context()
+---@return boolean # Check if the current cursor's okay run the "compute = sign".
+function _P.is_blacklisted_context()
     return vim.treesitter.get_node({buffer=0}):type() == "string_content"
 end
 
 
-function _is_builtin_keyword(text)
+--- Check if `text` is a Python keyword.
+---
+---@param text string Some Python source to test.
+---@return string # If `text` is owned by Python, return `true`.
+---
+function _P.is_builtin_keyword(text)
     return _BUILTINS[text] ~= nil
 end
 
 
-local _lstrip = function(text)
-    return text:match("^%s*(.*)")
-end
-
-
-function _strip_characters(text)
+--- Remove unneeded syntax markers (to compute the equal sign).
+---
+---@param text string The original Python source-code.
+---@return string # The stripped text.
+---
+local function _strip_characters(text)
     text = text:gsub("%(.+%)", "()")
     text = text:gsub("%[.+%]", "[]")
 
@@ -107,9 +131,10 @@ function _strip_characters(text)
 end
 
 
+---@return string # Append an `=` sign to the current line if it is needed.
 function M.add_equal_sign_if_needed()
-    _, cursor_row, cursor_column, _ = unpack(vim.fn.getpos("."))
-    current_line = vim.fn.getline(cursor_row)
+    local _, cursor_row, cursor_column, _ = unpack(vim.fn.getpos("."))
+    local current_line = vim.fn.getline(cursor_row)
 
     if cursor_column <= #current_line
     then
@@ -120,10 +145,10 @@ function M.add_equal_sign_if_needed()
         return " "
     end
 
-    current_line_up_until_cursor = current_line:sub(1, cursor_column)
-    stripped = _strip_characters(current_line_up_until_cursor)
+    local current_line_up_until_cursor = current_line:sub(1, cursor_column)
+    local stripped = _strip_characters(current_line_up_until_cursor)
 
-    if not _is_assignable(_lstrip(stripped))
+    if not _P.is_assignable(texter.lstrip(stripped))
     then
         return " "
     end

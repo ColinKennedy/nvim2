@@ -1,10 +1,13 @@
+--- All Python snippets to make writing Qt easier.
+---
+---@module 'my_custom.snippets._python_qt'
+---
+
 local luasnip = require("luasnip")
 
 local format = require("luasnip.extras.fmt").fmt
 local index = luasnip.i
 local is_line_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
-local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
-local luasnip = require("luasnip")
 local rep = require("luasnip.extras").rep
 local snippet = luasnip.s
 local snippet_helper = require("my_custom.utilities.snippet_helper")
@@ -30,6 +33,7 @@ return {
             trig="enable_menu_tooltips",
         },
         format(
+            -- luacheck: ignore 631
             [[
                 if hasattr({}, "setToolTipsVisible"):
                     # Important: Requires Qt 6!

@@ -59,7 +59,8 @@ end
 --- @return boolean # Check if Neovim is running from within WSL.
 function M.in_wsl()
     -- Example text:
-    --     Linux version 5.15.146.1-microsoft-standard-WSL2 (root@65c757a075e2) (gcc (GCC) 11.2.0, GNU ld (GNU Binutils) 2.37) #1 SMP Thu Jan 11 04:09:03 UTC 2024
+    --     Linux version 5.15.146.1-microsoft-standard-WSL2 (root@65c757a075e2)
+    --     (gcc (GCC) 11.2.0, GNU ld (GNU Binutils) 2.37) #1 SMP Thu Jan 11 04:09:03 UTC 2024
     --
     local text = _read_from_proc_version()
     local pattern = ".*-microsoft-.*-WSL.*"

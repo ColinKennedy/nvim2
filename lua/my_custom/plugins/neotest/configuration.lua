@@ -2,7 +2,11 @@ return function()
     local neotest = require("neotest")
 
     neotest.setup{
-        adapters = { require("neotest-plenary"), require("neotest-python") },
+        adapters = {
+            require("neotest-busted")({local_luarocks_only=false}),
+            require("neotest-plenary"),
+            require("neotest-python"),
+        },
     }
 
     -- Reference: https://github.com/nvim-neotest/neotest/discussions/204#discussioncomment-4916056

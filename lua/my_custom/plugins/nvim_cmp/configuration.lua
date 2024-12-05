@@ -77,6 +77,17 @@ cmp.setup(
                 --
                 cmp.abort()
             end,
+
+            -- Toggle open / close the documentation panel
+            ['K'] = cmp.mapping(function(fallback)
+                if cmp.visible_docs() then
+                    cmp.close_docs()
+                elseif cmp.visible() then
+                    cmp.open_docs()
+                else
+                    fallback()
+                end
+            end),
         },
 
         -- Reference: https://www.reddit.com/r/neovim/comments/1f1rxtx/share_a_tip_to_improve_your_experience_in_nvimcmp
@@ -145,3 +156,21 @@ cmp.setup.filetype(
         )
     }
 )
+
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources(
+        {
+            { name = "path" },
+        },
+        {
+            {
+                name = "cmdline",
+                option = {
+                    ignore_cmds = { "Man", "!" }
+                }
+            }
+        }
+    )
+})
+
