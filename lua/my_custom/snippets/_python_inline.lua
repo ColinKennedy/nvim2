@@ -1,3 +1,10 @@
+--- Basic snippets that only span one line / one statement.
+---
+---@module 'my_custom.snippets._python_inline'
+---
+
+local texter = require("my_custom.utilities.texter")
+
 local common_snippet = require("my_custom.snippets._common_snippet")
 local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
 
@@ -7,46 +14,51 @@ local function_ = luasnip.f
 local index = luasnip.i
 local repeat_ = require("luasnip.extras").rep
 local snippet = luasnip.s
-local text = luasnip.t
+local text_ = luasnip.t
 
 
-local is_beginning_of_exception = function(trigger)
-    return {
-        show_condition = is_source_beginning("raise " .. trigger)
-    }
+--- Check if `trigger` is actually on a "raise ..." Python statement.
+---
+---@param trigger string
+---    The snippet trigger text.
+---@return { show_condition: luasnip.f }
+---    A function that luasnip uses to check if the snippet should trigger.
+---
+local function is_beginning_of_exception(trigger)
+    return { show_condition = is_source_beginning("raise " .. trigger) }
 end
 
 
-local lstrip = function(text)
-    return text:match("^%s*(.*)")
-end
-
-
--- TODO: This snippet sucks but I cannot figure out how to get
--- `remove_leading_equal_sign` to work as a "pre-expand" snippet without it
--- breaking things.
---
--- Reference: https://github.com/L3MON4D3/LuaSnip/discussions/383
---
-local remove_leading_equal_sign = function(text)
+--- Change `foo = "bar"` line to just `"bar"`, to prep it for adding snippet text later.
+---
+--- TODO: This snippet sucks but I cannot figure out how to get
+--- `remove_leading_equal_sign` to work as a "pre-expand" snippet without it
+--- breaking things.
+---
+--- Reference: https://github.com/L3MON4D3/LuaSnip/discussions/383
+---
+---@param text string The snippet trigger text to modify.
+---@return luasnip.f # A function that luasnip uses to check if the snippet should trigger.
+---
+local function remove_leading_equal_sign(text)
     return function_(
-        function(_, _)
+        function()
             local current_row = vim.fn.line(".")  -- This is "1-or-greater"
             local current_line = vim.fn.getline(current_row)
-            local leading_indent = string.sub(current_line, 0, (#current_line - #lstrip(current_line)))
+            local leading_indent = string.sub(current_line, 0, (#current_line - #texter.lstrip(current_line)))
 
-            _, end_index = current_line:find("=")
+            local _, end_index = current_line:find("=")
 
             if end_index == nil
             then
-                return ""
+                return
             end
 
             local current_buffer = 0
 
-            line_without_equals = current_line:sub(end_index + 1, #current_line)
-            stripped = text .. lstrip(line_without_equals)
-            line = leading_indent .. stripped
+            local line_without_equals = current_line:sub(end_index + 1, #current_line)
+            local stripped = text .. texter.lstrip(line_without_equals)
+            local line = leading_indent .. stripped
 
             vim.schedule(
                 function()
@@ -94,7 +106,7 @@ return {
             docstring="return statement",
             trig="r",
         },
-        { text("return "), index(1), remove_leading_equal_sign("return ") },
+        { text_("return "), index(1), remove_leading_equal_sign("return ") },
         { show_condition = is_source_beginning("p") }
     ),
 
@@ -103,7 +115,7 @@ return {
             docstring="raise AttributeError",
             trig="A",
         },
-        { text("AttributeError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("AttributeError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("A")
     ),
 
@@ -112,7 +124,7 @@ return {
             docstring="raise EnvironmentError",
             trig="E",
         },
-        { text("EnvironmentError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("EnvironmentError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("E")
     ),
 
@@ -121,7 +133,7 @@ return {
             docstring="raise IndexError",
             trig="I",
         },
-        { text("IndexError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("IndexError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("I")
     ),
 
@@ -130,7 +142,7 @@ return {
             docstring="raise KeyError",
             trig="K",
         },
-        { text("KeyError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("KeyError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("K")
     ),
 
@@ -139,7 +151,7 @@ return {
             docstring="raise NotImplementedError",
             trig="N",
         },
-        { text("NotImplementedError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("NotImplementedError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("N")
     ),
 
@@ -148,7 +160,7 @@ return {
             docstring="raise RuntimeError",
             trig="R",
         },
-        { text("RuntimeError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("RuntimeError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("R")
     ),
 
@@ -157,7 +169,7 @@ return {
             docstring="raise TypeError",
             trig="T",
         },
-        { text("TypeError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("TypeError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("T")
     ),
 
@@ -166,7 +178,7 @@ return {
             docstring="raise ValueError",
             trig="V",
         },
-        { text("ValueError("), index(1), common_snippet.append_parentheses_onto_line() },
+        { text_("ValueError("), index(1), common_snippet.append_parentheses_onto_line() },
         is_beginning_of_exception("V")
     ),
 }
