@@ -127,7 +127,27 @@ end
 ---
 local function _get_method_parameters(node, buffer)
     local parameters_node = node:named_child(1)
+
+    if not parameters_node then
+        vim.notify(
+            string.format('Method "%s" has no parameters.', vim.treesitter.get_node_text(node, buffer)),
+            vim.log.levels.ERROR
+        )
+
+        return {}
+    end
+
     local self_or_cls = parameters_node:named_child(0)
+
+    if not self_or_cls then
+        vim.notify(
+            string.format('Method "%s" has no self / cls.', vim.treesitter.get_node_text(parameters_node, buffer)),
+            vim.log.levels.ERROR
+        )
+
+        return {}
+    end
+
     ---@type (luasnip.i | luasnip.t)[]
     local parameters = {}
 
@@ -257,7 +277,13 @@ local function _get_nearest_function(node)
             return recent_function
         end
 
-        current = current:parent()
+        local parent = current:parent()
+
+        if not parent then
+            return nil
+        end
+
+        current = parent
     end
 
     return nil
@@ -287,7 +313,7 @@ local function _get_super_contents(function_node, self_or_cls, buffer)
     local class_top_node = _get_nearest_class(function_node)
 
     if not class_top_node then
-        local text = vim.treesitter.get_node_text(class_top_node[1], buffer)
+        local text = vim.treesitter.get_node_text(function_node, buffer)
         vim.notify(
             string.format('Function node "%s" is not in a class.', text),
             vim.log.levels.WARN
@@ -336,7 +362,7 @@ local function _get_super_text(node, buffer)
 
     if not _PYTHON_3_STYLE
     then
-        super_contents = _get_super_contents(function_node, self_or_cls)
+        super_contents = _get_super_contents(function_node, self_or_cls, buffer)
     end
 
     local method_name = vim.treesitter.get_node_text(function_node:field("name")[1], buffer)
@@ -370,17 +396,30 @@ function M.get_current_function_super_text()
     local column = result[3]
 
     local node = vim.treesitter.get_node({bufnr=buffer, pos={row, column}})
-    local output = _get_super_text(node, buffer)
 
-    if output
-    then
-        return output
+    if node then
+        local output = _get_super_text(node, buffer)
+
+        if output
+        then
+            return output
+        end
     end
 
     -- Check the line above for a function definition to fill out the super text
     row = row - 1
     local first_non_empty_column = 10  -- TODO: Make this real
     node = vim.treesitter.get_node({bufnr=buffer, pos={row, first_non_empty_column}})
+
+    if not node then
+        vim.notify(
+            string.format('"super() with line / column "%s / %s" has no node.', row, first_non_empty_column),
+            vim.log.levels.ERROR
+        )
+
+        return {}
+    end
+
     output = _get_super_text(node, buffer)
 
     if output
@@ -388,8 +427,9 @@ function M.get_current_function_super_text()
         return output
     end
 
-    vim.api.nvim_err_writeln(
-        "super() was called outside of a {instance,class}method. Cannot continue"
+    vim.notify(
+        "super() was called outside of a {instance,class}method. Cannot continue",
+        vim.log.levels.ERROR
     )
 
     return {}

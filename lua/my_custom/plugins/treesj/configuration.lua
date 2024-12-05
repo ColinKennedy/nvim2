@@ -1,7 +1,10 @@
--- Set up the treesitter nodes for the Python language.
---
--- Reference: https://github.com/Wansmer/treesj/issues/108
---
+--- Set up the treesitter nodes for the Python language.
+---
+--- Reference: https://github.com/Wansmer/treesj/issues/108
+---
+---@module 'my_custom.plugins.treesj.configuration'
+---
+
 local lang_utils = require("treesj.langs.utils")
 local options = {
     join = { space_in_brackets = false },
@@ -32,7 +35,7 @@ require("treesj").setup(
 -- Reference: https://github.com/Wansmer/treesj/discussions/19
 --
 local callback = function()
-    local options = {
+    local options_ = {
         desc = "[s]plit [a]rgument list",
         buffer = true,
     }
@@ -40,10 +43,10 @@ local callback = function()
     local languages = require("treesj.langs")["presets"]
 
     if languages[vim.bo.filetype] then
-        vim.keymap.set("n", "<leader>sa", "<cmd>TSJToggle<CR>", options)
+        vim.keymap.set("n", "<leader>sa", "<cmd>TSJToggle<CR>", options_)
     else
         -- This fallback requires https://github.com/FooSoft/vim-argwrap
-        vim.keymap.set("n", "<leader>sa", "<cmd>ArgWrap<CR>", options)
+        vim.keymap.set("n", "<leader>sa", "<cmd>ArgWrap<CR>", options_)
     end
 end
 

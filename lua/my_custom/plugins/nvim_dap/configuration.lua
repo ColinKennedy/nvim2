@@ -7,6 +7,7 @@ local dap = require("dap")
 
 local command = os.getenv("HOME") .. "/sources/cpptools-linux-1.19.9/extension/debugAdapters/bin/OpenDebugAD7"
 
+-- luacheck: ignore 631
 -- Reference: https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)#ccrust-gdb-via--vscode-cpptools
 if vim.fn.has("win32") == 1
 then

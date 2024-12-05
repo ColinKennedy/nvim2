@@ -1,22 +1,28 @@
+--- Add "double underscore" snippets.
+---
+---@module 'my_custom.snippets._python_dunders'
+---
+
+local texter = require("my_custom.utilities.texter")
+
 local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 local index = luasnip.i
 local snippet = luasnip.s
-local text = luasnip.t
-
-
-local has_leading_whitespace = function(text)
-    return text:sub(1, 1) == " "
-end
 
 
 -- TODO: When treesitter is working, add a check for "if inside of a class"
-local is_dunder_prefix = function(trigger)
+--- Check if `trigger` matches the current cursor line.
+---
+---@param trigger string Some LuaSnip trigger.
+---@return fun(line_to_cursor: string): boolean # Returns `true` if the line matches.
+---
+local function is_dunder_prefix(trigger)
     local wrapper = function(line_to_cursor)
         -- If there is no indent, it can't be a Python dunder method
-        if not has_leading_whitespace(line_to_cursor)
+        if not texter.has_leading_whitespace(line_to_cursor)
         then
             return false
         end

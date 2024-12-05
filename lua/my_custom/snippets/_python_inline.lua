@@ -16,6 +16,8 @@ local repeat_ = require("luasnip.extras").rep
 local snippet = luasnip.s
 local text_ = luasnip.t
 
+---@class luasnip.f A function wrapper that creates dynamic snippets.
+
 
 --- Check if `trigger` is actually on a "raise ..." Python statement.
 ---
@@ -75,8 +77,7 @@ local function remove_leading_equal_sign(text)
     )
 end
 
-
-return {
+local output = {
     common_snippet.print_snippet,
 
     snippet(
@@ -107,78 +108,32 @@ return {
             trig="r",
         },
         { text_("return "), index(1), remove_leading_equal_sign("return ") },
-        { show_condition = is_source_beginning("p") }
-    ),
-
-    snippet(
-        {
-            docstring="raise AttributeError",
-            trig="A",
-        },
-        { text_("AttributeError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("A")
-    ),
-
-    snippet(
-        {
-            docstring="raise EnvironmentError",
-            trig="E",
-        },
-        { text_("EnvironmentError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("E")
-    ),
-
-    snippet(
-        {
-            docstring="raise IndexError",
-            trig="I",
-        },
-        { text_("IndexError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("I")
-    ),
-
-    snippet(
-        {
-            docstring="raise KeyError",
-            trig="K",
-        },
-        { text_("KeyError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("K")
-    ),
-
-    snippet(
-        {
-            docstring="raise NotImplementedError",
-            trig="N",
-        },
-        { text_("NotImplementedError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("N")
-    ),
-
-    snippet(
-        {
-            docstring="raise RuntimeError",
-            trig="R",
-        },
-        { text_("RuntimeError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("R")
-    ),
-
-    snippet(
-        {
-            docstring="raise TypeError",
-            trig="T",
-        },
-        { text_("TypeError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("T")
-    ),
-
-    snippet(
-        {
-            docstring="raise ValueError",
-            trig="V",
-        },
-        { text_("ValueError("), index(1), common_snippet.append_parentheses_onto_line() },
-        is_beginning_of_exception("V")
+        { show_condition = is_source_beginning("r") }
     ),
 }
+
+for keyword, trigger in pairs({
+    AttributeError = "A",
+    EnvironmentError = "E",
+    IndexError = "I",
+    KeyError = "K",
+    NotImplementedError = "N",
+    RuntimeError = "R",
+    TypeError = "T",
+    ValueError = "V",
+})
+do
+    table.insert(
+        output,
+        snippet(
+            {
+                docstring=string.format("raise %s", keyword),
+                trig=trigger,
+            },
+            { text_(string.format("%s(", keyword)), index(1), common_snippet.append_parentheses_onto_line() },
+            is_beginning_of_exception(trigger)
+        )
+    )
+end
+
+return output

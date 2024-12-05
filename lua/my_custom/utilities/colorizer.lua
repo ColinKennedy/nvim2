@@ -16,6 +16,7 @@ local function to_rgb(color)
   return tonumber(color:sub(2, 3), 16), tonumber(color:sub(4, 5), 16), tonumber(color:sub(6), 16)
 end
 
+-- luacheck: ignore 631
 --- Shade `color` according to `percent`.
 ---
 --- References:

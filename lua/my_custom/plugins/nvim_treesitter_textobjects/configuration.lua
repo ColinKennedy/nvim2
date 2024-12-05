@@ -28,7 +28,7 @@ require("nvim-treesitter.configs").setup {
         --
         -- Disable slow highlights for large files. Not sure if this truly needed.
         --
-        disable = function(lang, buf)
+        disable = function(_, buf)
             local max_filesize = 120 * 1024 -- 120 KB. About 3300 lines of Python. ish.
             local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 
@@ -77,6 +77,7 @@ require("nvim-treesitter.configs").setup {
         select = {
             -- Important: This option has been changed so whitespace is retrieved more sensibly
             --
+            -- luacheck: ignore 631
             -- Reference: https://github.com/ColinKennedy/nvim-treesitter-textobjects/tree/modified_include_surrounding_whitespace_behavior
             --
             include_surrounding_whitespace = true,
@@ -93,6 +94,7 @@ require("nvim-treesitter.configs").setup {
                 },
 
                 ["ad"] = {
+                    -- luacheck: ignore 631
                     -- Reference: https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/439#issuecomment-1505411083
                     desc = "Select around an entire docstring",
                     query = "@string.documentation",

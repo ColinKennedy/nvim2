@@ -5,6 +5,15 @@
 
 local M = {}
 
+--- Check if `text` starts with whitespace.
+---
+---@param text string Some text. e.g. `"    foo"`.
+---@return boolean # If there is whitespace, return `true`.
+---
+function M.has_leading_whitespace(text)
+    return text:sub(1, 1) == " "
+end
+
 --- Remove all leading whitespace from `text`.
 ---
 ---@param text string Some text that might have whitespace. e.g. `"  foo      "`.

@@ -1,3 +1,8 @@
+--- Configure the languages for the "nvim-treesitter/nvim-treesitter" plugin.
+---
+---@module 'my_custom.plugins.nvim_treesitter.configuration'
+---
+
 -- I was getting a "not a Win32 application" error on Windows so I added this workaround.
 --
 -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#troubleshooting
@@ -39,7 +44,7 @@ require("nvim-treesitter.configs").setup {
         --
         -- Disable slow highlights for large files. Not sure if this truly needed.
         --
-        disable = function(lang, buf)
+        disable = function(_, buf)
             local max_filesize = 120 * 1024 -- 120 KB. About 3300 lines of Python. ish.
             local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 

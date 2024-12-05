@@ -8,10 +8,10 @@ local M = {}
 
 --- Find the top-level git repository from `directory`.
 ---
---- @param directory str?
+--- @param directory string?
 ---     An absolute path to a directory on-disk where a git repository is expected.
 ---     If no path is given, we reuse from `:echo getcwd()`.
---- @return str?
+--- @return string?
 ---     The found absolute directory, if any.
 ---
 function M.get_git_root(directory)

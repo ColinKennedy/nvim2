@@ -3,13 +3,11 @@
 ---@module 'my_custom.utilities.par'
 ---
 
+local shell = require("my_custom.utilities.git_stash.shell")
+
 local _COMMAND_NAME = "par"
 
 local M = {}
-
----@class _ShellArguments Data to send to `vim.fn.jobstart`.
----@field cwd string? The directory on-disk where a shell command will be called from.
----@field on_stderr fun(job_id: integer, data: table<string>, event): nil An on-error callback.
 
 
 --- Create a command-line call to copy `source` to `destination`.
@@ -95,59 +93,6 @@ local _enable_par = function()
     vim.opt.formatprg = "par s0w88"
 end
 
-
---- Run `command` with shell `options` and indicate if the call succeeded.
----
----@param command string The shell command to call. No string escapes needed.
----@param options _ShellArguments Optional data to include for the shell command.
----@return boolean # If success, return `true`.
----
-local _run_shell_command = function(command, options)
-    local job = vim.fn.jobstart(command, options)
-    local result = vim.fn.jobwait({job})[1]
-
-    if result == 0
-    then
-        return true
-    end
-
-    if result == -1
-    then
-        vim.api.nvim_err_writeln('The requested command "' .. command .. '" timed out.')
-
-        return false
-    elseif result == -2
-    then
-        vim.api.nvim_err_writeln(
-            'The requested command "'
-            .. vim.inspect(command)
-            .. '" was interrupted.'
-        )
-
-        return false
-    elseif result == -3
-    then
-        vim.api.nvim_err_writeln('Job ID is invalid "' .. tostring(job) .. '"')
-
-        return false
-    -- TODO: Figure out if I need this, later
-    -- else
-    --     vim.api.nvim_err_writeln(
-    --         'Command "'
-    --         .. vim.inspect(command)
-    --         .. '" created unknown error "'
-    --         .. tostring(result)
-    --         .. '".'
-    --     )
-    --
-    --     return false
-    end
-
-    -- TODO: Possible remove this
-    return true
-end
-
-
 --- Find a valid `par` executable and load it, if able.
 function M.load_or_install()
     local executable = vim.fn.executable("par") == 1
@@ -160,7 +105,7 @@ function M.load_or_install()
         return
     end
 
-    local bin = vim.fs.joinpath(vim.g.vim_home, "bin", vim.loop.os_uname().sysname)
+    local bin = vim.fs.joinpath(vim.g.vim_home, "bin", vim.uv.os_uname().sysname)
 
     if vim.fn.filereadable(vim.fs.joinpath(bin, _COMMAND_NAME)) == 1
     then
@@ -185,7 +130,7 @@ function M.load_or_install()
         ---@type string[]
         local stderr = {}
 
-        if not _run_shell_command(
+        if not shell.run_command(
             command,
             {
                 cwd=source,

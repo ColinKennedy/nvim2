@@ -1,3 +1,8 @@
+--- Set up Hydra submodes.
+---
+---@module 'my_custom.plugins.hydra.configuration'
+---
+
 local Hydra = require("hydra")
 local actions = require("gitsigns.actions")
 local config = require("gitsigns.config")
@@ -12,34 +17,7 @@ local _S_END_SQUARE_BRACE = nil
 ---     Two values, both 1-or-more, indicating the start and end line of a text block.
 
 
---- Check if the current line is already inside of a Location List's entries.
----
---- @param window_identifier integer
----     A 0-or-more value for the window to check.
---- @param list_identifier integer
----     A 1-or-more value for the Location List that (we assume) is paired with
----     `window_identifier`.
---- @return boolean
----     If the cursor is within the Location List already, return `true`.
----
-local function _in_existing_list_entry(window_identifier, list_identifier)
-    local buffer vim.api.nvim_win_get_buf(window_identifier)
-    local line, _ = unpack(vim.api.nvim_win_get_cursor(window_identifier))
-
-    for _, entry in ipairs(
-        vim.fn.getloclist(window_identifier, {id=list_identifier, items=1}).items or {}
-    )
-    do
-        if entry.filename == buffer and entry.lnum == line
-        then
-            return true
-        end
-    end
-
-    return false
-end
-
-
+---@return boolean # Check if the user is currently visually selecting something.
 local function _in_visual_mode()
     local current_mode = vim.fn.mode()
 
@@ -59,16 +37,13 @@ local function _in_visual_mode()
 end
 
 
---- Check if the Location List tied to `window` is empty.
+--- Find all modified files from the repository on-or-above `directory`.
 ---
---- @param window integer A 0-or-more identifier for the source window to check.
---- @return boolean # If `window` has no Location List or empty, return `true`.
+---@param directory string
+---    A directory that is either on or underneath a git repository.
+---@return string[]
+---    All of the found modified files, if any.
 ---
-local function _is_location_list_empty(window)
-    return vim.tbl_isempty(vim.fn.getloclist(window))
-end
-
-
 local function _get_git_diff_paths(directory)
     -- These paths are relative to the root of the git repository
     local relative_paths = vim.fn.systemlist(
@@ -90,7 +65,7 @@ local function _get_git_diff_paths(directory)
 end
 
 
---- @return _CursorRange # Get the start/end lines of a visual selection.
+---@return _CursorRange # Get the start/end lines of a visual selection.
 local function _get_visual_lines()
     local _, start_line, _, _ = unpack(vim.fn.getpos("v"))
     local _, end_line, _, _ = unpack(vim.fn.getpos("."))
@@ -104,15 +79,25 @@ local function _get_visual_lines()
 end
 
 
+--- Find the index (or closest index) of `element` in `items`.
+---
+---@param element string
+---    An element that might be in `items` or just comparable to an element
+---    that is in `items`.
+---@param items string[]
+---    All elements to consider.
+---@return string
+---    The best next element.
+---
 local function _get_next_in_list(element, items)
     if vim.tbl_isempty(items)
     then
         return nil
     end
 
-    local previous = nil
+    local _ = nil
 
-    for index, item in ipairs(items)
+    for _, item in ipairs(items)
     do
         if element > item
         then
@@ -124,15 +109,23 @@ local function _get_next_in_list(element, items)
 end
 
 
+--- Find the index (or closest index) of `element` in `items`.
+---
+---@param element string
+---    An element that might be in `items` or just comparable to an element
+---    that is in `items`.
+---@param items string[]
+---    All elements to consider.
+---@return string
+---    The best previous element.
+---
 local function _get_previous_in_list(element, items)
     if vim.tbl_isempty(items)
     then
         return nil
     end
 
-    local previous = nil
-
-    for index, item in ipairs(items)
+    for _, item in ipairs(items)
     do
         if element < item
         then
@@ -144,6 +137,13 @@ local function _get_previous_in_list(element, items)
 end
 
 
+--- Go to the git hunk that is after this cursor / file, if any.
+---
+--- If the cursor is already at the bottom hunk of a file, we consult the `paths`
+--- to find the next best location to jump to.
+---
+---@param paths string All modified file paths that contain at least one hunk.
+---
 local function _go_to_next_hunk(paths)
     local forwards = true
 
@@ -174,6 +174,13 @@ local function _go_to_next_hunk(paths)
 end
 
 
+--- Go to the git hunk that is before this cursor / file, if any.
+---
+--- If the cursor is already at the top hunk of a file, we consult the `paths`
+--- to find the next best location to jump to.
+---
+---@param paths string All modified file paths that contain at least one hunk.
+---
 local function _go_to_previous_hunk(paths)
     local forwards = false
 

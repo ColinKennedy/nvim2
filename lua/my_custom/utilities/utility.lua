@@ -1,3 +1,12 @@
+--- A lazy.nvim extension to make lazy loading easier.
+---
+--- That said I don't know why I copied this. Doesn't lazy.nvim already have
+--- this built-in? Ask the maintainer.
+---
+---@module 'my_custom.utilities.utility'
+---
+---
+
 local module = {}
 
 module.lazy_load = function(plugin)
@@ -19,7 +28,7 @@ module.lazy_load = function(plugin)
             if plugin == "nvim-lspconfig" then
               vim.cmd "silent! do FileType"
             end
-          end, 0)
+          end)
         else
           require("lazy").load { plugins = plugin }
         end

@@ -313,6 +313,7 @@ return {
     --     config = function()
     --         require('hlargs').setup()
     --
+    --         luacheck: ignore 631
     --         -- Reference: https://github.com/m-demare/hlargs.nvim/blob/07e33afafd9d32b304a8557bfc1772516c005d75/doc/hlargs.txt#L306
     --         vim.api.nvim_create_augroup("LspAttach_hlargs", {clear = true})
     --         vim.api.nvim_create_autocmd("LspAttach", {
@@ -435,7 +436,11 @@ return {
                 "<leader>iV",
                 function()
                     -- Note: setting `expr=true` and returning the value are essential
-                    return require("debugprint").debugprint({ above = true, variable = true, ignore_treesitter = false })
+                    return require("debugprint").debugprint({
+                        above = true,
+                        variable = true,
+                        ignore_treesitter = false,
+                    })
                 end,
                 desc = "[i]nsert [V]ariable debug-print above the current line",
                 expr = true,
@@ -445,7 +450,11 @@ return {
                 "<leader>iv",
                 function()
                     -- Note: setting `expr=true` and returning the value are essential
-                    return require("debugprint").debugprint({ above = false, variable = true, ignore_treesitter = false })
+                    return require("debugprint").debugprint({
+                        above = false,
+                        variable = true,
+                        ignore_treesitter = false,
+                    })
                 end,
                 desc = "[i]nsert [v]ariable debug-print below the current line",
                 expr = true,

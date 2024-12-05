@@ -11,13 +11,13 @@ local snippetNode = require("luasnip.nodes.snippet").SN
 
 --- Create a dynamic LuaSnip snippet-node whose contents are created by Neogen.
 ---
---- @param section string The Neogen section name to create a LuaSnip snippet.
---- @return LuaSnip.DynamicNode # The created node.
+---@param section string The Neogen section name to create a LuaSnip snippet.
+---@return LuaSnip.DynamicNode # The created node.
 ---
 local function _make_section_snippet_node(section)
     return dynamicNode(
         1,
-        function(args)
+        function()
             local neogen = require("neogen")
 
             local lines = neogen.generate(
@@ -39,12 +39,12 @@ end
 
 --- Create a LuaSnip snippet for some `section`. Run it when `trigger` is found.
 ---
---- @param trigger string
----     A word that LuaSnip uses to decide when the snippet should run. e.g. `"Args:"`.
---- @param section string
----     The parts of a docstring that Neogen needs to generate.
---- @return LuaSnip.Snippet
----     The generated auto-complete snippet.
+---@param trigger string
+---    A word that LuaSnip uses to decide when the snippet should run. e.g. `"Args:"`.
+---@param section string
+---    The parts of a docstring that Neogen needs to generate.
+---@return LuaSnip.Snippet
+---    The generated auto-complete snippet.
 ---
 local function _make_section_snippet(trigger, section)
     return snippet(

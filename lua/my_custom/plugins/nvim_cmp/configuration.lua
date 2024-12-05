@@ -1,6 +1,7 @@
 -- vim-hybrid doesn't come with syntax rules for nvim-cmp's menu. So we
 -- need to add them, here.
 --
+-- luacheck: ignore 631
 -- Reference: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
 --
 vim.cmd[[
