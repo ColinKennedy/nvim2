@@ -373,3 +373,6 @@
 [submodule "bundle/smear-cursor.nvim"]
 	path = bundle/smear-cursor.nvim
 	url = git@github.com:sphamba/smear-cursor.nvim.git
+[submodule "bundle/lazydev.nvim"]
+	path = bundle/lazydev.nvim
+	url = git@github.com:folke/lazydev.nvim.git

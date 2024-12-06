@@ -3,10 +3,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function() require("my_custom.plugins.nvim_lspconfig.configuration") end,
-        dependencies = {
-            "folke/neodev.nvim",  -- Needed for Neovim LSP auto-complete
-            "williamboman/mason.nvim",
-        },
+        dependencies = { "williamboman/mason.nvim" },
         event = { "BufReadPre", "BufNewFile" },
     },
 
@@ -162,7 +159,4 @@ return {
         config = function() require("my_custom.plugins.nvim_lint.configuration") end,
         event = "VeryLazy",
     },
-
-    -- Autocomplete and other niceties for developing with Neovim
-    {"folke/neodev.nvim", opts = {}, lazy = true},
 }
