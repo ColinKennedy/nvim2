@@ -17,7 +17,7 @@ vim.keymap.set(
 local _get_window_by_type = function(type_name)
     for _, data in pairs(vim.fn.getwininfo())
     do
-        if vim.api.nvim_buf_get_option(data.bufnr, "filetype") == type_name
+        if vim.bo.filetype == type_name
         then
             return data
         end

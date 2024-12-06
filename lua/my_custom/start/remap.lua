@@ -1,3 +1,8 @@
+--- Simple keymaps to include on-start-up.
+---
+---@module 'my_custom.start.remap'
+---
+
 vim.keymap.set(
     "n",
     "<F12>",
@@ -313,14 +318,27 @@ vim.keymap.set(
 )
 
 
-local _go_to_diagnostic = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
-  return function()
-    go({ severity = severity })
+--- TODO: In later Neovim versions I think these are default mappings. If so,
+--- remove these diagnostic mappings.
+---
+---
+---@param next boolean If `true`, go down / to next diagnostic matching `severity`.
+---@param severity vim.diagnostic.Severity The issue's importance.
+---@return fun(): nil # A function that goes to the diagnostic, when called.
+---
+local function _go_to_diagnostic(next, severity)
+  local count
+
+  if next then
+    count = 1
+  else
+    count = -1
   end
+
+  return function() vim.diagnostic.jump({count=count, float=true, severity=severity}) end
 end
 
+-- TODO: In later Neovim versions I think these are all default mappings. If so, remove them.
 -- Reference: https://www.joshmedeski.com/posts/underrated-square-bracket
 --
 -- map("n", "]d", _go_to_diagnostic(true), { desc = "Next Diagnostic" })
@@ -329,25 +347,25 @@ end
 vim.keymap.set(
     "n",
     "]e",
-    _go_to_diagnostic(true, "ERROR"),
+    _go_to_diagnostic(true, vim.diagnostic.severity.ERROR),
     { desc = "Next diagnostic [e]rror." }
 )
 vim.keymap.set(
     "n",
     "[e",
-    _go_to_diagnostic(false, "ERROR"),
+    _go_to_diagnostic(false, vim.diagnostic.severity.ERROR),
     { desc = "Previous diagnostic [e]rror." }
 )
 vim.keymap.set(
     "n",
     "]w",
-    _go_to_diagnostic(true, "WARN"),
+    _go_to_diagnostic(true, vim.diagnostic.severity.WARN),
     { desc = "Next diagnostic [w]arning." }
 )
 vim.keymap.set(
     "n",
     "[w",
-    _go_to_diagnostic(false, "WARN"),
+    _go_to_diagnostic(false, vim.diagnostic.severity.WARN),
     { desc = "Previous diagnostic [w]arning." }
 )
 

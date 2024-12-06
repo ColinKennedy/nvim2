@@ -1,19 +1,23 @@
-local _suggest_a_color = function(highlight_group)
-    local data = vim.api.nvim_get_hl_by_name(highlight_group, true)
-    local foreground = data["foreground"]
+--- Enable fancy icons for various plugins.
+---
+---@module 'my_custom.plugins.nvim_web_devicons'
+---
 
-    if foreground ~= nil
+local _suggest_a_color = function(highlight_group)
+    local data = vim.api.nvim_get_hl(0, {name=highlight_group})
+
+    if data.fg
     then
-        return foreground
+        return data.fg
     end
 
-    return data["background"] or ""
+    return data.bg
 end
 
 local get_best_hex = function(highlight_group)
     local color = _suggest_a_color(highlight_group)
 
-    if color ~= ""
+    if color
     then
         return string.format("#%06x", color)
     end

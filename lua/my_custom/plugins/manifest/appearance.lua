@@ -155,15 +155,16 @@ return {
     {
         "MeanderingProgrammer/render-markdown.nvim",
         config = function()
-            local colorizer = require("my_custom.utilities.colorizer")
-            local lualine_colorizer = require("my_custom.utilities.lualine_colorizer")
+            local colormate = require("my_custom.utilities.colormate")
 
+            ---@param header number
             local function set_header_color(header)
-                local foreground = lualine_colorizer.extract_color_from_hllist(
-                  { "fg" }, { string.format("@markup.heading.%s", header) }
+                local foreground_number = colormate.get_highlight_attribute_data(
+                  "fg", { string.format("@markup.heading.%s", header) }
                 )
 
-                local darker = colorizer.shade_color(foreground, -40)
+                local foreground = colormate.get_color_from_number(foreground_number)
+                local darker = colormate.shade_color(foreground, -40)
 
                 vim.api.nvim_set_hl(
                     0,

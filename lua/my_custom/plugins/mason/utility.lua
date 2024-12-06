@@ -13,6 +13,10 @@ function M.add_bin_folder_to_path()
 
     local current_path_variable = os.getenv("PATH")
 
+    if not current_path_variable then
+        current_path_variable = ""
+    end
+
     for _, path in current_path_variable:gmatch("[^:]+")
     do
         if bin_directory == path

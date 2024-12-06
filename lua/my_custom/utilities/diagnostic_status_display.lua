@@ -37,23 +37,6 @@ local function _allow_buffer_diagnostics(buffer)
   return true
 end
 
--- Make the in-line diagnostic display to be a bit cleaner
---
--- Reference: https://github.com/neovim/nvim-lspconfig/issues/662#issuecomment-759442828
---
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        -- Enable underline, use default values
-        underline = true,
-        -- Enable virtual text only on Warning or above, override spacing to 2
-        virtual_text = {
-            spacing = 2,
-            min = { severity = vim.diagnostic.severity.WARN },
-        },
-    }
-)
-
-
 -- Show the diagnostic message in Vim's status-line
 --
 -- luacheck: ignore 631
@@ -120,7 +103,7 @@ function M.echo_diagnostic()
             _LAST_ECHO = { did_print=true, buffer=buffer, line=line }
 
             local diagnostic = diagnostics[1]
-            local width = vim.api.nvim_get_option('columns') - 15
+            local width = vim.o.columns - 15
             local lines = vim.split(diagnostic.message, "\n")
             local message = lines[1]
 

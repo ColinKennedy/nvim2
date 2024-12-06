@@ -34,11 +34,11 @@ function M.print_lsp_capabilities()
 
             vim.notify(
                 message,
-                "trace",
+                vim.log.levels.TRACE,
                 {
                     on_open = function(win)
-                        local buf = vim.api.nvim_win_get_buf(win)
-                        vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+                        local buffer = vim.api.nvim_win_get_buf(win)
+                        vim.bo[buffer].filetype = "markdown"
                     end,
                     timeout = 14000,
                 }

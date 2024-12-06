@@ -15,7 +15,7 @@
 --- @field mode "insert" | "normal"
 ---     The mode to prefer whenever the cursor moves into a `buffer` window.
 
-local colorizer = require("my_custom.utilities.colorizer")
+local colormate = require("my_custom.utilities.colormate")
 
 local M = {}
 
@@ -162,8 +162,8 @@ end
 ---
 local function _apply_highlights(window)
     local namespace = "Normal"
-    local hex = colorizer.get_hex(namespace, "bg")
-    local darker = colorizer.shade_color(hex, -20)
+    local hex = colormate.get_hex(namespace, "bg")
+    local darker = colormate.shade_color(hex, -20)
     local window_namespace = "ToggleTerminalNormal"
     vim.api.nvim_set_hl(0, window_namespace, {bg = darker})
 

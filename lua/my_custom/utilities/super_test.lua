@@ -420,7 +420,7 @@ function M.get_current_function_super_text()
         return {}
     end
 
-    output = _get_super_text(node, buffer)
+    local output = _get_super_text(node, buffer)
 
     if output
     then

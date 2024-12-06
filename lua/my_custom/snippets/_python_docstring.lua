@@ -9,6 +9,9 @@ local snippet = luasnip.s
 local dynamicNode = require("luasnip.nodes.dynamicNode").D
 local snippetNode = require("luasnip.nodes.snippet").SN
 
+---@class LuaSnip.DynamicNode
+---@class LuaSnip.Snippet
+
 --- Create a dynamic LuaSnip snippet-node whose contents are created by Neogen.
 ---
 ---@param section string The Neogen section name to create a LuaSnip snippet.

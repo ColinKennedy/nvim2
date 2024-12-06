@@ -146,9 +146,10 @@ vim.keymap.set(
     "n",
     "[d",
     function()
-        vim.diagnostic.goto_prev(
+        vim.diagnostic.jump(
             {
-                float={source="always"},
+                count=-1,
+                float={source=true},
                 severity = { min = vim.diagnostic.severity.HINT },
             }
         )
@@ -160,9 +161,10 @@ vim.keymap.set(
     "n",
     "]d",
     function()
-        vim.diagnostic.goto_next(
+        vim.diagnostic.jump(
             {
-                float={source="always"},
+                count=1,
+                float={source=true},
                 severity = { min = vim.diagnostic.severity.HINT },
             }
         )
@@ -173,7 +175,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "=d",
-    function() vim.diagnostic.open_float({source="always"}) end,
+    function() vim.diagnostic.open_float({source=true}) end,
     {desc = "Open the [d]iagnostics window for the current cursor."}
 )
 

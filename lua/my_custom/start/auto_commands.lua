@@ -328,7 +328,16 @@ vim.api.nvim_create_autocmd(
         callback = function()
             local sorter = require("my_custom.utilities.quick_fix_sort")
 
-            sorter.sort_quick_fix()
+            local context = "file_search"  -- Comes from nvim-rg
+
+            if not context then
+                -- NOTE: This happens in 2 situations 1. vim-ripgrep is not loaded 2. There is no vim-ripgrep plugin
+                return
+            end
+
+            if vim.fn.getqflist({context=true}).context == context then
+                sorter.sort_quick_fix()
+            end
         end,
     }
 )

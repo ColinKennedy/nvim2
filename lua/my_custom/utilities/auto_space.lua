@@ -111,7 +111,7 @@ end
 --- Check if `text` is a Python keyword.
 ---
 ---@param text string Some Python source to test.
----@return string # If `text` is owned by Python, return `true`.
+---@return boolean # If `text` is owned by Python, return `true`.
 ---
 function _P.is_builtin_keyword(text)
     return _BUILTINS[text] ~= nil

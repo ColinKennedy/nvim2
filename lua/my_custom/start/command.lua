@@ -34,7 +34,7 @@ vim.api.nvim_create_user_command(
         vim.api.nvim_buf_call(bufnr, function()
             vim.cmd([[put= execute('messages')]])
         end)
-        vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+        vim.bo.modifiable = false
         vim.cmd.split()
         local winnr = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_buf(winnr, bufnr)
@@ -109,7 +109,7 @@ vim.api.nvim_create_user_command(
         end
 
         local _include_newline = function(text)
-            return text .. vim.api.nvim_replace_termcodes("<CR>", 1, 1, 1)
+            return text .. vim.api.nvim_replace_termcodes("<CR>", true, true, true)
         end
 
         local tab = vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage())

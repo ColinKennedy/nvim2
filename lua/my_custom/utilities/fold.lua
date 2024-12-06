@@ -22,6 +22,20 @@ local function get_all_docstring_ranges(buffer)
     local file_type = vim.bo.filetype
 
     local parser = vim.treesitter.get_parser(buffer, file_type)
+
+    if not parser then
+        vim.notify(
+            string.format(
+                'Buffer / File type "%s / %s" has no treesitter parser.',
+                buffer,
+                file_type
+            ),
+            0
+        )
+
+        return {}
+    end
+
     local tree = parser:parse()
     local root = tree[1]:root()
 
@@ -46,9 +60,10 @@ local function get_all_docstring_ranges(buffer)
 
     for _, captures, _ in query:iter_matches(root, buffer)
     do
-        -- Reference: ``:help TSNode:range()``
-        local start_row, _, end_row, _ = captures[1]:range()
-        table.insert(output, {start_row=start_row, end_row=end_row})
+        for _, node in ipairs(captures[1]) do
+            local start_row, _, end_row, _ = node:range()
+            table.insert(output, {start_row=start_row, end_row=end_row})
+        end
     end
 
     return output

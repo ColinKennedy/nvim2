@@ -13,9 +13,8 @@ local M = {}
 local _PREVIOUS_ALLOWED_WINDOWS_BY_TAB = {}
 
 
---- Check if the cursor's current window is "okay for quick-fix to select".
----
-local _is_current_window_allowed = function()
+---@return boolean # Check if the cursor's current window is "okay for quick-fix to select".
+local function _is_current_window_allowed()
     local type_ = vim.o.filetype
 
     if (
@@ -54,6 +53,7 @@ function M.initialize()
 end
 
 
+--- NOTE: Nothing uses this function. Remove?
 --- Make sure the current tab's cursor is on a "last okay" window.
 ---
 --- - Requires `initialize()` to be called once, prior to calling this function.
@@ -82,7 +82,7 @@ end
 
 
 function M.safe_run(text)
-    local success, _ = pcall(vim.cmd, text)
+    local success, _ = pcall(function() vim.cmd[[text]] end)
 
     if not success
     then

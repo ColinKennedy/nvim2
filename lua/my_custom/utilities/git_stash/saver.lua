@@ -11,9 +11,9 @@ local M = {}
 
 --- Do a git stash, using `options`.
 ---
---- @param options any
----     Arbitrary data that controls where and how the git stash occurs. See
----     @module 'my_custom.utilities.git_stash.configuration' for details.
+---@param options any
+---    Arbitrary data that controls where and how the git stash occurs.
+---    See the 'my_custom.utilities.git_stash.configuration' module for details.
 ---
 function M.push(options)
     options = options or {}

@@ -7,7 +7,7 @@ local M = {}
 
 --- Check if `data` is meant to display source code.
 ---
----@param data vim.fn.getwininfo.ret.item The window to consider.
+---@param data vim.fn.getbufinfo.ret.item The window to consider.
 ---@return boolean # If `data` is for code, return `true`.
 ---
 local function _is_code_buffer(data)
@@ -51,7 +51,7 @@ local function get_current_quick_fix_window()
     return winner_buffer
 end
 
----@return number # Find the last buffer that is no a terminal.
+---@return number? # Find the last buffer that is no a terminal.
 local function get_latest_non_terminal_buffer()
     local winner_buffer = nil
     local winner_last_used = 0

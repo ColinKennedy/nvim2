@@ -86,8 +86,8 @@ end
 ---    that is in `items`.
 ---@param items string[]
 ---    All elements to consider.
----@return string
----    The best next element.
+---@return string?
+---    The best next element, if found.
 ---
 local function _get_next_in_list(element, items)
     if vim.tbl_isempty(items)
@@ -116,8 +116,8 @@ end
 ---    that is in `items`.
 ---@param items string[]
 ---    All elements to consider.
----@return string
----    The best previous element.
+---@return string?
+---    The best previous element, if found.
 ---
 local function _get_previous_in_list(element, items)
     if vim.tbl_isempty(items)
@@ -142,7 +142,7 @@ end
 --- If the cursor is already at the bottom hunk of a file, we consult the `paths`
 --- to find the next best location to jump to.
 ---
----@param paths string All modified file paths that contain at least one hunk.
+---@param paths string[] All modified file paths that contain at least one hunk.
 ---
 local function _go_to_next_hunk(paths)
     local forwards = true
@@ -179,7 +179,7 @@ end
 --- If the cursor is already at the top hunk of a file, we consult the `paths`
 --- to find the next best location to jump to.
 ---
----@param paths string All modified file paths that contain at least one hunk.
+---@param paths string[] All[] modified file paths that contain at least one hunk.
 ---
 local function _go_to_previous_hunk(paths)
     local forwards = false
