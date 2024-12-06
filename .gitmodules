@@ -63,7 +63,7 @@
 	url = git@github.com:hrsh7th/cmp-buffer.git
 [submodule "bundle/cmp-cmdline"]
 	path = bundle/cmp-cmdline
-	url = git@github.com:hrsh7th/cmp-cmdline.git
+	url = git@github.com:ColinKennedy/cmp-cmdline.git
 [submodule "bundle/cmp-nvim-lsp"]
 	path = bundle/cmp-nvim-lsp
 	url = git@github.com:hrsh7th/cmp-nvim-lsp.git

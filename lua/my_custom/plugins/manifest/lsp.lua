@@ -28,6 +28,12 @@ return {
         -- version = "0.*",
     },
 
+    -- Auto-complete the command-line
+    {
+        "ColinKennedy/cmp-cmdline",
+        branch = "combined_branch",
+    },
+
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
     {
         "saadparwaiz1/cmp_luasnip",
