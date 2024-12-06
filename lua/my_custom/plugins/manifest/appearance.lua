@@ -203,4 +203,41 @@ return {
         "sphamba/smear-cursor.nvim",
         opts = {},
     },
+
+    -- Radically change Neovim's appearance. The command line gets centered and
+    -- other things happen. This is experimental and may want to be removed in
+    -- the future.
+    --
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        config = function()
+            -- NOTE: we only redefine these colors because we use lualine's
+            -- "onedark" theme which prefers different colors than our theme prefers.
+            --
+            vim.api.nvim_set_hl(0, "NoiceCmdlineIconCmdline", {link="Function"})
+            vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", {link="Function"})
+
+            require("noice").setup({
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        -- NOTE: Requires hrsh7th/nvim-cmp or iguanacucumber/magazine.nvim
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                    progress = { enabled = false },
+                    signature = { enabled = false },
+                },
+                messages = { enabled = false },
+                notify = { enabled = false },
+                popupmenu = { enabled = false },
+            })
+        end,
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+        }
+    }
 }

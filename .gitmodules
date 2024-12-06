@@ -376,3 +376,9 @@
 [submodule "bundle/lazydev.nvim"]
 	path = bundle/lazydev.nvim
 	url = git@github.com:folke/lazydev.nvim.git
+[submodule "bundle/noice.nvim"]
+	path = bundle/noice.nvim
+	url = git@github.com:folke/noice.nvim.git
+[submodule "bundle/nui.nvim"]
+	path = bundle/nui.nvim
+	url = git@github.com:MunifTanjim/nui.nvim.git
