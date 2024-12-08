@@ -124,6 +124,8 @@ https://github.com/vigoux/architext.nvim
 
 - A useful color picker - https://github.com/eero-lehtinen/oklch-color-picker.nvim
 
+- Loading large files quickly - https://github.com/pteroctopus/faster.nvim?tab=readme-ov-file
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
