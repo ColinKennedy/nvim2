@@ -126,6 +126,13 @@ https://github.com/vigoux/architext.nvim
 
 - Loading large files quickly - https://github.com/pteroctopus/faster.nvim?tab=readme-ov-file
 
+- Really nice color picker
+ - https://www.reddit.com/r/neovim/comments/1h44ibi/oklchcolorpickernvim_a_new_color_picker_and/
+ - https://github.com/eero-lehtinen/oklch-color-picker.nvim
+
+- Presentation - https://github.com/Piotr1215/typeit.nvim
+ - Simulate typing
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
