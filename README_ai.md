@@ -73,6 +73,7 @@
 - https://github.com/zbirenbaum/copilot-cmp
 - https://github.com/zbirenbaum/copilot.lua
 - https://pieces.app/plugins/neovim
+- https://tabby.tabbyml.com/docs/extensions/installation/vim/
 - https://www.vim.org/scripts/script.php?script_id=6048
 
 
