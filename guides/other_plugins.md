@@ -133,6 +133,8 @@ https://github.com/vigoux/architext.nvim
 - Presentation - https://github.com/Piotr1215/typeit.nvim
  - Simulate typing
 
+- Fill inline hints into the buffer - https://github.com/davidyz/inlayhint-filler.nvim
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
