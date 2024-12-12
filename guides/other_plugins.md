@@ -139,6 +139,8 @@ https://github.com/vigoux/architext.nvim
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
 
+- Fun but not that useful - https://github.com/rthrfrd/heatscroll
+
 
 
 ## In theory useful but don't seem to work
