@@ -11,6 +11,9 @@ I couldn't do yi"^PP anymore. Fix!
 { name = "fatal", highlight = "ErrorMsg" },
 ```
 
+
+- Add quickfix title - https://github.com/neovim/neovim/pull/30868/files
+
 ]-, ]+, [-, [-, [=, ]=
 - Fix these mappings
 
