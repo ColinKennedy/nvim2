@@ -382,3 +382,6 @@
 [submodule "bundle/nui.nvim"]
 	path = bundle/nui.nvim
 	url = git@github.com:MunifTanjim/nui.nvim.git
+[submodule "bundle/treewalker.nvim"]
+	path = bundle/treewalker.nvim
+	url = git@github.com:aaronik/treewalker.nvim.git

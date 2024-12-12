@@ -121,4 +121,35 @@ return {
             },
         },
     },
+
+    --- Use ctrl + alt + {h,j,k,l} to move quickly around a buffer
+    {
+        "aaronik/treewalker.nvim",
+        keys = {
+            {
+                "<C-A-h>",
+                '<cmd>Treewalker Left<CR>',
+                noremap = true,
+                silent = true,
+            },
+            {
+                "<C-A-j>",
+                '<cmd>Treewalker Down<CR>',
+                noremap = true,
+                silent = true,
+            },
+            {
+                "<C-A-k>",
+                '<cmd>Treewalker Up<CR>',
+                noremap = true,
+                silent = true,
+            },
+            {
+                "<C-A-l>",
+                '<cmd>Treewalker Right<CR>',
+                noremap = true,
+                silent = true,
+            },
+        }
+    },
 }
