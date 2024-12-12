@@ -20,6 +20,10 @@ I couldn't do yi"^PP anymore. Fix!
 
 https://github.com/jake-stewart/force-cul.nvim
 
+https://github.com/aaronik/treewalker.nvim
+
+https://github.com/echasnovski/mini.bracketed
+ - Try this out
 
 Fix this broken case
 ```
