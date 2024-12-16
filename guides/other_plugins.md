@@ -135,6 +135,8 @@ https://github.com/vigoux/architext.nvim
 
 - Fill inline hints into the buffer - https://github.com/davidyz/inlayhint-filler.nvim
 
+- A concurrency plugin that might be useful - https://github.com/gregorias/coop.nvim
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
