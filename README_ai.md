@@ -58,6 +58,7 @@
 - https://github.com/pasky/claude.vim
 - https://github.com/piersolenski/wtf.nvim
 - https://github.com/pwnwriter/code2prompt.nvim
+- https://github.com/rakotomandimby/code-ai.nvim
 - https://github.com/skywind3000/vim-gpt-commit
 - https://github.com/solyarisoftware/prompter.vim
 - https://github.com/sourcegraph/sg.nvim

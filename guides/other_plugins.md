@@ -137,6 +137,13 @@ https://github.com/vigoux/architext.nvim
 
 - A concurrency plugin that might be useful - https://github.com/gregorias/coop.nvim
 
+- https://www.reddit.com/r/neovim/comments/1hfy3uz/dynamic_inlay_hints_with_inlayhintnvim/
+ - remove inlay hints but only for the current cursor line
+
+- Note-taking plugins
+ - https://github.com/zk-org/zk-nvim
+ - https://github.com/wsdjeg/vim-zettelkasten
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
