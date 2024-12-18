@@ -20,6 +20,9 @@ I couldn't do yi"^PP anymore. Fix!
 
 https://github.com/jake-stewart/force-cul.nvim
 
+https://github.com/neovim/neovim/commit/c830901e8cde49467d1c99c2d656a13e51979790
+ - Add complete highlight group
+
 https://github.com/aaronik/treewalker.nvim
 
 https://github.com/echasnovski/mini.bracketed
