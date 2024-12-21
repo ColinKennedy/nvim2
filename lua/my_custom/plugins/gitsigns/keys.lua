@@ -1,14 +1,20 @@
 return {
     {
         "<leader>gah",
-        "<cmd>Gitsigns stage_hunk<CR>",
+        function()
+            local selector = require("my_custom.utilities.selector")
+
+            require("gitsigns").stage_hunk(selector.get_visual_lines())
+        end,
         desc="[g]it [a]dd [h]unk.",
         mode = {"n", "v"},
     },
     {
         "<leader>gch",
         function()
-            require("gitsigns").reset_hunk()
+            local selector = require("my_custom.utilities.selector")
+
+            require("gitsigns").reset_hunk(selector.get_visual_lines())
         end,
         desc="[g]it [c]heckout [h]unk.",
         mode = {"n", "v"},

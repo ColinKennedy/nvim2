@@ -13,9 +13,6 @@ local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff_tab"
 local _S_START_SQUARE_BRACE = nil
 local _S_END_SQUARE_BRACE = nil
 
---- @alias _CursorRange table<integer, integer>
----     Two values, both 1-or-more, indicating the start and end line of a text block.
-
 
 ---@return boolean # Check if the user is currently visually selecting something.
 local function _in_visual_mode()
@@ -62,20 +59,6 @@ local function _get_git_diff_paths(directory)
     end
 
     return output
-end
-
-
----@return _CursorRange # Get the start/end lines of a visual selection.
-local function _get_visual_lines()
-    local _, start_line, _, _ = unpack(vim.fn.getpos("v"))
-    local _, end_line, _, _ = unpack(vim.fn.getpos("."))
-
-    if start_line > end_line
-    then
-        start_line, end_line = end_line, start_line
-    end
-
-    return {start_line, end_line}
 end
 
 
@@ -184,7 +167,7 @@ end
 local function _go_to_previous_hunk(paths)
     local forwards = false
 
-    if actions.has_next_hunk(forwards)
+    if actions.has_next_hunk("prev")
     then
         gitsigns.prev_hunk()
 
@@ -202,12 +185,7 @@ local function _go_to_previous_hunk(paths)
     end
 
     vim.cmd("edit " .. previous)
-    vim.cmd[[normal G]]
-
-    if not actions.in_hunk()
-    then
-        gitsigns.prev_hunk()
-    end
+    _go_to_last_hunk_in_buffer()
 end
 
 
@@ -422,14 +400,12 @@ Hydra(
             {
                 "c",
                 function()
-                    if vim.wo.diff then return "]l" end
-
                     vim.schedule(
                         function()
-                            gitsigns.reset_hunk(_get_visual_lines())
+                            gitsigns.reset_hunk(selector.get_visual_lines())
 
-                            -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            vim.cmd[[norm ]l]]
+                            -- -- Important: Requires https://github.com/tpope/vim-unimpaired
+                            -- vim.cmd[[norm ]l]]
                         end
                     )
 
@@ -442,7 +418,7 @@ Hydra(
                 function()
                     if vim.wo.diff then return "<Ignore>" end
 
-                    vim.schedule(function() gitsigns.reset_hunk(_get_visual_lines()) end)
+                    vim.schedule(function() gitsigns.reset_hunk(selector.get_visual_lines()) end)
 
                     return "<Ignore>"
                 end,
@@ -457,7 +433,7 @@ Hydra(
                     then
                         vim.schedule(
                             function()
-                                gitsigns.stage_hunk(_get_visual_lines())
+                                gitsigns.stage_hunk(selector.get_visual_lines())
 
                                 _go_to_next_hunk(paths)
                             end
@@ -476,7 +452,7 @@ Hydra(
                 function()
                     if vim.wo.diff then return "<Ignore>" end
 
-                    vim.schedule(function() gitsigns.stage_hunk(_get_visual_lines()) end)
+                    vim.schedule(function() gitsigns.stage_hunk(selector.get_visual_lines()) end)
 
                     return "<Ignore>"
                 end,
@@ -484,7 +460,7 @@ Hydra(
             },
             {
                 "r",
-                function() gitsigns.undo_stage_hunk(_get_visual_lines()) end,
+                function() gitsigns.undo_stage_hunk(selector.get_visual_lines()) end,
                 { desc = "[r]eset staged hunk" },
             },
             { "q", nil, { exit = true, nowait = true, desc = "exit" } },

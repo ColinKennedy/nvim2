@@ -144,6 +144,8 @@ https://github.com/vigoux/architext.nvim
  - https://github.com/zk-org/zk-nvim
  - https://github.com/wsdjeg/vim-zettelkasten
 
+- Display the keys that are currently being pressed - https://github.com/wsdjeg/record-key.nvim
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
