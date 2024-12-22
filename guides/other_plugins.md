@@ -147,6 +147,7 @@ https://github.com/vigoux/architext.nvim
 - Display the keys that are currently being pressed - https://github.com/wsdjeg/record-key.nvim
 
 
+https://github.com/neolooong/whichpy.nvim
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
 
