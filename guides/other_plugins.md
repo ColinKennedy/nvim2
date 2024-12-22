@@ -147,8 +147,11 @@ https://github.com/vigoux/architext.nvim
 - Display the keys that are currently being pressed - https://github.com/wsdjeg/record-key.nvim
 
 
+## Python Development
+virtual environment selector -
 https://github.com/linux-cultist/venv-selector.nvim
 https://github.com/neolooong/whichpy.nvim
+
 
 ## Probably not that useful
 https://github.com/topaxi/gh-actions.nvim
