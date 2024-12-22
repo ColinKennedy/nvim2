@@ -7,6 +7,8 @@ local Hydra = require("hydra")
 local actions = require("gitsigns.actions")
 local config = require("gitsigns.config")
 local gitsigns = require("gitsigns")
+local hunks_ = require("gitsigns.hunks")
+local selector = require("my_custom.utilities.selector")
 
 
 local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff_tab"
@@ -78,7 +80,23 @@ local function _get_next_in_list(element, items)
         return nil
     end
 
-    local _ = nil
+    local found = false
+
+    for index, item in ipairs(items)
+    do
+        if found then
+            return item
+        end
+
+        if item == element then
+            found = true
+
+            if index == #items then
+                -- NOTE: If at the last item, start from the beginning
+                return items[1]
+            end
+        end
+    end
 
     for _, item in ipairs(items)
     do
@@ -120,6 +138,49 @@ local function _get_previous_in_list(element, items)
 end
 
 
+--- Move the cursor to the first unstaged hunk in `window`.
+---
+---@param window integer A 0-or-more value pointing to a view of a Vim buffer.
+local function _go_to_first_hunk_in_buffer(window)
+    local hunks = actions.get_hunks()
+
+    if not hunks then
+        return
+    end
+
+    window = window or 0
+    local line = vim.api.nvim_win_get_cursor(window)[1]
+    local wrap = false
+    local index, _ = hunks_.find_nearest_hunk(line, hunks, "first", wrap)
+    local hunk = hunks[index]
+    local line = hunk.added.start or hunk.removed.start
+
+    vim.api.nvim_win_set_cursor(0, {line, 0})
+end
+
+
+--- Move the cursor to the last unstaged hunk in `window`.
+---
+---@param window integer A 0-or-more value pointing to a view of a Vim buffer.
+---
+local function _go_to_last_hunk_in_buffer(window)
+    window = window or 0
+    local hunks = actions.get_hunks()
+
+    if not hunks then
+        return
+    end
+
+    local line = vim.api.nvim_win_get_cursor(window)[1]
+    local wrap = false
+    local index, _ = hunks_.find_nearest_hunk(line, hunks, "last", wrap)
+    local hunk = hunks[index]
+    local line = hunk.added.start or hunk.removed.start
+
+    vim.api.nvim_win_set_cursor(0, {line, 0})
+end
+
+
 --- Go to the git hunk that is after this cursor / file, if any.
 ---
 --- If the cursor is already at the bottom hunk of a file, we consult the `paths`
@@ -130,7 +191,7 @@ end
 local function _go_to_next_hunk(paths)
     local forwards = true
 
-    if actions.has_next_hunk(forwards)
+    if actions.has_next_hunk("next")
     then
         gitsigns.next_hunk()
 
@@ -142,18 +203,13 @@ local function _go_to_next_hunk(paths)
 
     if next_ == nil
     then
-        vim.api.nvim_err_writeln("No next_ file could be found.")
+        vim.api.nvim_err_writeln("No next file could be found.")
 
         return
     end
 
     vim.cmd("edit " .. next_)
-    vim.cmd[[normal gg]]
-
-    if not actions.in_hunk()
-    then
-        gitsigns.next_hunk()
-    end
+    _go_to_first_hunk_in_buffer()
 end
 
 

@@ -4,7 +4,7 @@ return {
         function()
             local selector = require("my_custom.utilities.selector")
 
-            require("gitsigns").stage_hunk(selector.get_visual_lines())
+            require("gitsigns").stage_hunk(selector.get_current_mode_visual_lines())
         end,
         desc="[g]it [a]dd [h]unk.",
         mode = {"n", "v"},
@@ -14,7 +14,7 @@ return {
         function()
             local selector = require("my_custom.utilities.selector")
 
-            require("gitsigns").reset_hunk(selector.get_visual_lines())
+            require("gitsigns").reset_hunk(selector.get_current_mode_visual_lines())
         end,
         desc="[g]it [c]heckout [h]unk.",
         mode = {"n", "v"},
