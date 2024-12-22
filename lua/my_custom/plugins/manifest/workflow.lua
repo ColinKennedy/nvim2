@@ -358,7 +358,12 @@ return {
 
     -- Add "submodes" to Neovim. e.g. <Space>G for "git mode"
     {
-        "nvimtools/hydra.nvim",
+        -- TODO: Replace with nvimtools/hydra.nvim later, after they support Neovim nightly again.
+        --
+        -- Reference: https://github.com/nvimtools/hydra.nvim/pull/47
+        -- Reference: https://github.com/cathyprime/hydra.nvim/commits/main
+        --
+        "cathyprime/hydra.nvim",
         config = function() require("my_custom.plugins.hydra.configuration") end,
         keys = {
             { "<Space>D", desc = "[D]ebugging mode" },
