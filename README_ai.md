@@ -12,6 +12,7 @@
 - https://github.com/Exafunction/codeium.vim
 - https://github.com/GeorgesAlkhouri/nvim-aider
 - https://github.com/HPRIOR/telescope-gpt
+- https://github.com/IwasakiYuuki/ai-assistant.nvim
 - https://github.com/Kurama622/llm.nvim
 - https://github.com/Lommix/ollamachad.nvim
 - https://github.com/RayenMnif/tgpt.nvim
@@ -35,6 +36,7 @@
 - https://github.com/gsuuon/llm.nvim
 - https://github.com/gsuuon/model.nvim
 - https://github.com/huynle/ogpt.nvim
+- https://github.com/iovdin/tune.nvim
 - https://github.com/jackMort/ChatGPT.nvim
 - https://github.com/james1236/backseat.nvim
 - https://github.com/jameshiew/nvim-magic
@@ -81,6 +83,7 @@
 
 
 
+- This is an interesting one
 
 Perplexity.ai
 
