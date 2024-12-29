@@ -17,6 +17,7 @@ return {
     {
         "ColinKennedy/cmp-cmdline",
         branch = "combined_branch",
+        lazy = true,
     },
 
     -- Allows (but does not link) LuaSnip snippets to nvim-cmp
