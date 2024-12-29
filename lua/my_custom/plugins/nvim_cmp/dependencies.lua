@@ -21,7 +21,6 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-path",
-        "hrsh7th/nvim-cmp",
         "neovim/nvim-lspconfig",
     },
 
