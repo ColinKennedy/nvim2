@@ -151,7 +151,14 @@ local function _go_to_first_hunk_in_buffer(window)
     window = window or 0
     local line = vim.api.nvim_win_get_cursor(window)[1]
     local wrap = false
-    local index, _ = hunks_.find_nearest_hunk(line, hunks, "first", wrap)
+    local index = hunks_.find_nearest_hunk(line, hunks, "first", wrap)
+
+    if not index then
+        vim.notify('No next hunk index could be found', vim.log.levels.ERROR)
+
+        return
+    end
+
     local hunk = hunks[index]
     local line = hunk.added.start or hunk.removed.start
 
