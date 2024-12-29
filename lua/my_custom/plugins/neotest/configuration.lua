@@ -3,7 +3,7 @@ return function()
 
     neotest.setup{
         adapters = {
-            require("neotest-busted")({local_luarocks_only=false}),
+            require("neotest-busted"),
             require("neotest-plenary"),
             require("neotest-python"),
         },

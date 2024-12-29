@@ -553,7 +553,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
 
             -- Optional
-            "MisanthropicBit/neotest-busted",
+            "HiPhish/neotest-busted",
             "nvim-neotest/neotest-plenary",
             "nvim-neotest/neotest-python",
         },

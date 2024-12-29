@@ -385,3 +385,6 @@
 [submodule "bundle/treewalker.nvim"]
 	path = bundle/treewalker.nvim
 	url = git@github.com:aaronik/treewalker.nvim.git
+[submodule "bundle/neotest-busted"]
+	path = bundle/neotest-busted
+	url = git@gitlab.com:HiPhish/neotest-busted.git
