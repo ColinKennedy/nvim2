@@ -1,29 +1,7 @@
-- d[ii does a weird snapping for some reason
-
-using macros doesn't wo
-I couldn't do yi"^PP anymore. Fix!
-```
-{ name = "trace", highlight = "Comment" },
-{ name = "debug", highlight = "Comment" },
-{ name = "info", highlight = "None" },
-{ name = "warn", highlight = "WarningMsg" },
-{ name = "error", highlight = "ErrorMsg" },
-{ name = "fatal", highlight = "ErrorMsg" },
-```
-
-
-- Add quickfix title - https://github.com/neovim/neovim/pull/30868/files
-
-]-, ]+, [-, [-, [=, ]=
-- Fix these mappings
-
-
 https://github.com/jake-stewart/force-cul.nvim
 
 https://github.com/neovim/neovim/commit/c830901e8cde49467d1c99c2d656a13e51979790
  - Add complete highlight group
-
-https://github.com/aaronik/treewalker.nvim
 
 https://github.com/echasnovski/mini.bracketed
  - Try this out
@@ -241,8 +219,6 @@ https://github.com/ck-zhang/mistake.nvim
 
 
 
-- Try this out - https://github.com/iguanacucumber/magazine.nvim
-
 - git-signs plugin commit: 2c2463d. Roll back to this
 
 github.com/LunarVim/bigfile.nvim
@@ -258,8 +234,6 @@ https://github.com/mattn/efm-langserver
 https://www.reddit.com/r/neovim/comments/1fwxa8b/comment/lqlqlm8/
 https://github.com/alexpasmantier/pymple.nvim
 
-https://github.com/azratul/live-share.nvim?tab=readme-ov-file
-
 https://github.com/lucaSartore/nvim-dap-exception-breakpoints
 
 - Make a "recommend class/function position" function
@@ -274,7 +248,6 @@ https://www.reddit.com/r/neovim/comments/1fqdy28/introducing_my_first_plugin_her
 - does tmux-ressurect still work?
 
 - Why are my macros running so slowly?
-- Reply to - https://github.com/vim/vim/issues/14547
 
 https://github.com/ColinKennedy/telescope-session-viewer.nvim
 https://github.com/ColinKennedy/simple-session.nvim
