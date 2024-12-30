@@ -1,3 +1,11 @@
+git add -p clone
+ - On last hunk staged, auto-exit
+
+- profiler work
+ - Make a working profiler tool
+  - integrates with GitHub things, on-release
+ - Make it into a GitHub action
+
 https://github.com/jake-stewart/force-cul.nvim
 
 https://github.com/neovim/neovim/commit/c830901e8cde49467d1c99c2d656a13e51979790
