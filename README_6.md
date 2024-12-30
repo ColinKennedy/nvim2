@@ -6,6 +6,9 @@ git add -p clone
   - integrates with GitHub things, on-release
  - Make it into a GitHub action
 
+- nvim-dap-ui disassembly view
+ - extend the assembly parser so that it can be used to target registers and offsets more easily
+
 https://github.com/jake-stewart/force-cul.nvim
 
 https://github.com/neovim/neovim/commit/c830901e8cde49467d1c99c2d656a13e51979790
