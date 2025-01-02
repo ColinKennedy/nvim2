@@ -14,7 +14,8 @@ return {
     -- TODO: Make this prettier. Like how NvChad works
     -- Shows added, removed, etc git hunks
     {
-        "lewis6991/gitsigns.nvim",
+        "ColinKennedy/gitsigns.nvim",
+        branch = "add_extra_actions",
         config = function()
             local gitsigns = require("gitsigns")
 

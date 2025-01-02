@@ -1,3 +1,7 @@
+-- NOTE: This adds mason-installed binaries to the $PATH
+local mason_utility = require("my_custom.plugins.mason.utility")
+mason_utility.add_bin_folder_to_path()
+
 return {
     -- The plug-in that adds LSPs of all languages to Neovim
     {
