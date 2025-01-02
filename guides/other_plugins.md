@@ -146,6 +146,8 @@ https://github.com/vigoux/architext.nvim
 
 - Display the keys that are currently being pressed - https://github.com/wsdjeg/record-key.nvim
 
+- Environment variable auto-complete - https://github.com/philosofonusus/ecolog.nvim
+
 
 ## Python Development
 virtual environment selector -
@@ -158,6 +160,8 @@ https://github.com/topaxi/gh-actions.nvim
 
 - Fun but not that useful - https://github.com/rthrfrd/heatscroll
 
+
+- Markdown live preview LSP(?) - https://github.com/mhersson/mpls
 
 
 ## In theory useful but don't seem to work
