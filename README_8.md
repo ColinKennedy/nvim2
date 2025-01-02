@@ -36,6 +36,9 @@ https://www.reddit.com/r/neovim/comments/ug2s4s/disable_diagnostic_while_expandi
 https://yutkat.github.io/my-neovim-pluginlist/
 
 
+https://github.com/ficcdaf/ashen.nvim/tree/main
+
+
 - Go through checkhealth stuff
 - Do the rest of the TODO notes
 - Make sure to defer load as much as possible
