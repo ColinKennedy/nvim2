@@ -1,3 +1,5 @@
+https://github.com/xzbdmw/colorful-menu.nvim
+
 https://github.com/jake-stewart/force-cul.nvim
 
 https://github.com/neovim/neovim/commit/c830901e8cde49467d1c99c2d656a13e51979790
