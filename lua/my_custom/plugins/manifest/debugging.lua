@@ -26,8 +26,7 @@ return {
         --
         -- Reference: https://github.com/theHamsta/nvim-dap-virtual-text/issues/71
         --
-        "ColinKennedy/nvim-dap-virtual-text",
-        branch = "fix_missing_asm_parser",
+        "theHamsta/nvim-dap-virtual-text",
         config = true,
         dependencies = {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
         lazy = true,
