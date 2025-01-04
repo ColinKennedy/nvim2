@@ -137,6 +137,23 @@ cmp.setup(
             }
         ),
 
+        -- Reference: https://www.reddit.com/r/neovim/comments/1gussvu/how_to_prioritise_local_or_scope_tokens_over
+        -- sorting = {
+        --   priority_weight = 2,
+        --   comparators = {
+        --     compare.locality,
+        --     compare.offset,
+        --     compare.exact,
+        --     -- compare.scopes,
+        --     compare.score,
+        --     compare.recently_used,
+        --     compare.kind,
+        --     -- compare.sort_text,
+        --     compare.length,
+        --     compare.order,
+        --   },
+        -- },
+
         snippet = {
             expand = function(args)
                 require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
