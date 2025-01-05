@@ -206,8 +206,10 @@ vim.opt.equalalways = false
 -- end
 
 
-
+-- This removes all "Press ENTER or type command to continue" prompts
+--
 -- Requires Neovim 0.11+
+--
 -- Reference: https://github.com/neovim/neovim/pull/31492
 --
 if vim.o.messagesopt then
