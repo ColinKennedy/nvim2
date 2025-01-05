@@ -158,7 +158,7 @@ return {
     --
     {
         'mawkler/demicolon.nvim',
-        keys = { ';', ',' },
+        keys = { ',', ';', 'F', 'T', 'f', 't' },
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
             'nvim-treesitter/nvim-treesitter-textobjects',
@@ -175,10 +175,6 @@ return {
                         prev = '[g',
                     },
                 },
-            },
-            keymaps = {
-                -- Don't remap t/T/f/F key mappings
-                horizontal_motions = false,
             },
         },
     }
