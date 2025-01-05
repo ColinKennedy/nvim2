@@ -204,3 +204,12 @@ vim.opt.equalalways = false
 --     vim.opt.isfname:append(":")
 --     vim.opt.includeexpr = "v:lua._convert_windows_paths_to_linux(v:fname)"
 -- end
+
+
+
+-- Requires Neovim 0.11+
+-- Reference: https://github.com/neovim/neovim/pull/31492
+--
+if vim.o.messagesopt then
+    vim.o.messagesopt = "wait:200,history:500"
+end
