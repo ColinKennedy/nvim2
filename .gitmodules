@@ -388,3 +388,6 @@
 [submodule "bundle/neotest-busted"]
 	path = bundle/neotest-busted
 	url = git@gitlab.com:HiPhish/neotest-busted.git
+[submodule "bundle/demicolon.nvim"]
+	path = bundle/demicolon.nvim
+	url = git@github.com:mawkler/demicolon.nvim.git

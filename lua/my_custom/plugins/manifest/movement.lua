@@ -152,4 +152,34 @@ return {
             },
         }
     },
+
+    -- This lets you repeat motions. e.g. [q / ]q can be repeated with just
+    -- ; (forwards) or , (backwards). It's super useful!
+    --
+    {
+        'mawkler/demicolon.nvim',
+        keys = { ';', ',' },
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        opts = {
+            integrations = {
+                gitsigns = {
+                    enabled = true,
+                    keymaps = {
+                        -- NOTE: The default mappings for gitsigns.nvim is [c and ]c but
+                        -- I use [g and ]g.
+                        --
+                        next = ']g',
+                        prev = '[g',
+                    },
+                },
+            },
+            keymaps = {
+                -- Don't remap t/T/f/F key mappings
+                horizontal_motions = false,
+            },
+        },
+    }
 }

@@ -81,6 +81,7 @@
 
 
 
+- A chatbot that is aware of Neovim API documentation - https://gooey.ai/chat/vimbo-VYm/
 
 
 https://github.com/iovdin/tune.nvim

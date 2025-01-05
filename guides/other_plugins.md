@@ -148,6 +148,8 @@ https://github.com/vigoux/architext.nvim
 
 - Environment variable auto-complete - https://github.com/philosofonusus/ecolog.nvim
 
+- Javascript / JS style async promises API - https://github.com/izelnakri/async.nvim
+
 
 ## Python Development
 virtual environment selector -
