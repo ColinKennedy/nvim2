@@ -27,7 +27,7 @@ return {
         -- Reference: https://github.com/theHamsta/nvim-dap-virtual-text/issues/71
         --
         "theHamsta/nvim-dap-virtual-text",
-        config = true,
+        opts = { virt_text_pos = 'eol' },
         dependencies = {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
         lazy = true,
     },
