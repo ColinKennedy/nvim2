@@ -5,6 +5,7 @@ git add -p clone
 - profiler work
  - Make a working profiler tool
   - integrates with GitHub things, on-release
+
  - Make it into a GitHub action
 
 - nvim-dap-ui disassembly view
