@@ -150,6 +150,13 @@ https://github.com/vigoux/architext.nvim
 
 - Javascript / JS style async promises API - https://github.com/izelnakri/async.nvim
 
+- netrw + icons - https://gist.github.com/AndrewRadev/ea55ba1923da3f5074cad06144e8aed3
+
+- cmake LSP - https://github.com/regen100/cmake-language-server
+
+- Neovim documentation chatbot - https://gooey.ai/chat/vimbo-VYm/
+ - Someone must be hosting this but I'm not sure who / how this was generated.
+
 
 ## Python Development
 virtual environment selector -
@@ -165,6 +172,11 @@ https://github.com/topaxi/gh-actions.nvim
 
 - Markdown live preview LSP(?) - https://github.com/mhersson/mpls
 
+## Spelling
+https://www.reddit.com/r/neovim/comments/1fcidod/cspell_for_neovim/
+https://vim.fandom.com/wiki/Use_integrated_spell_checking
+https://www.reddit.com/r/vim/comments/bce1ug/spell_check_with_camel_case/
+https://github.com/Jason3S/cspell
 
 ## In theory useful but don't seem to work
 https://github.com/briangwaltney/paren-hint.nvim
