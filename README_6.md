@@ -1,4 +1,14 @@
 https://github.com/xzbdmw/colorful-menu.nvim
+git add -p clone
+ - On last hunk staged, auto-exit
+
+- profiler work
+ - Make a working profiler tool
+  - integrates with GitHub things, on-release
+ - Make it into a GitHub action
+
+- nvim-dap-ui disassembly view
+ - extend the assembly parser so that it can be used to target registers and offsets more easily
 
 https://github.com/jake-stewart/force-cul.nvim
 
