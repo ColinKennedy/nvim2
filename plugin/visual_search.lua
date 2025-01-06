@@ -10,7 +10,7 @@ function! VSetSearch()
   call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
   let @@ = temp
 endfunction
-]])
+]]
 
 vim.keymap.set(
     "v",
