@@ -157,6 +157,10 @@ https://github.com/vigoux/architext.nvim
 - Neovim documentation chatbot - https://gooey.ai/chat/vimbo-VYm/
  - Someone must be hosting this but I'm not sure who / how this was generated.
 
+- CSV viewer (shown as a table) - https://github.com/hat0uma/csvview.nvim
+
+
+- LSP log viewer - https://github.com/mhanberg/output-panel.nvim
 
 ## Python Development
 virtual environment selector -
