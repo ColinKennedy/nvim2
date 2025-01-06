@@ -68,7 +68,7 @@ end
 
 function M.safe_run(text)
     local success, _ = pcall(function()
-        vim.cmd [[text]]
+        vim.cmd(text)
     end)
 
     if not success then

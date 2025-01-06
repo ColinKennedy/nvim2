@@ -71,7 +71,7 @@ cmp.setup({
         end,
 
         -- Toggle open / close the documentation panel
-        ["<C-k>"] = cmp.mapping(function(fallback)
+        ["<M-k>"] = cmp.mapping(function(fallback)
             if cmp.visible_docs() then
                 cmp.close_docs()
             elseif cmp.visible() then
