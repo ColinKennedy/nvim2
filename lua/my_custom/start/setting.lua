@@ -1,4 +1,4 @@
-vim.opt.guicursor = ""  -- Keeps the "fat cursor" in INSERT Mode
+vim.opt.guicursor = "" -- Keeps the "fat cursor" in INSERT Mode
 
 -- Note: Don't need to set these because I use the tpope/vim-sleuth plug-in
 -- vim.opt.tabstop = 4
@@ -12,13 +12,10 @@ vim.opt.backup = false
 vim.opt.undofile = true
 local temporary_directory = os.getenv("HOME") or os.getenv("APPDATA")
 vim.opt.undodir = temporary_directory .. "/.vim/undodir"
-vim.api.nvim_create_autocmd(
-    "BufWritePost",
-    {
-        pattern = "*",
-        command = "execute 'wundo ' . escape(undofile(expand('%')),'% ')",
-    }
-)
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "*",
+    command = "execute 'wundo ' . escape(undofile(expand('%')),'% ')",
+})
 
 vim.opt.cmdheight = 2
 
@@ -33,7 +30,6 @@ vim.opt.colorcolumn = "88"
 -- (useful for handling the permission-denied error)
 --
 -- vim.api.nvim_add_user_command("W", "w !sudo tee % > /dev/null", { nargs = 0 })
-
 
 -- Adding these lines makes Neovim load 110ms faster!
 --

@@ -48,7 +48,9 @@ return {
     --
     {
         "echasnovski/mini.ai",
-        config = function() require("mini.ai").setup() end,
+        config = function()
+            require("mini.ai").setup()
+        end,
         event = "VeryLazy",
         version = "0.*",
     },
@@ -68,7 +70,7 @@ return {
     --
     {
         "ColinKennedy/vim-indent-object",
-        config=function()
+        config = function()
             vim.g.indent_object_no_default_key_mappings = "1"
         end,
         version = "1.*",
@@ -77,7 +79,9 @@ return {
 
     {
         "kana/vim-textobj-indent",
-        config = function() require("my_custom.plugins.vim_textobj_indent.configuration") end,
+        config = function()
+            require("my_custom.plugins.vim_textobj_indent.configuration")
+        end,
         dependencies = { "kana/vim-textobj-user" },
         event = "VeryLazy",
         version = "0.*",
@@ -152,13 +156,13 @@ return {
         "ColinKennedy/cursor-text-objects.nvim",
         config = function()
             vim.keymap.set(
-                {"o", "x"},
+                { "o", "x" },
                 "[",
                 "<Plug>(cursor-text-objects-up)",
                 { desc = "Run from your current cursor to the end of the text-object." }
             )
             vim.keymap.set(
-                {"o", "x"},
+                { "o", "x" },
                 "]",
                 "<Plug>(cursor-text-objects-down)",
                 { desc = "Run from your current cursor to the end of the text-object." }
@@ -174,23 +178,31 @@ return {
         keys = {
             {
                 "cx",
-                function() require('substitute.exchange').operator() end,
+                function()
+                    require("substitute.exchange").operator()
+                end,
                 noremap = true,
             },
             {
                 "cxx",
-                function() require('substitute.exchange').line() end,
+                function()
+                    require("substitute.exchange").line()
+                end,
                 noremap = true,
             },
             {
                 "X",
-                mode = {"x"},
-                function() require('substitute.exchange').visual() end,
+                mode = { "x" },
+                function()
+                    require("substitute.exchange").visual()
+                end,
                 noremap = true,
             },
             {
                 "cxc",
-                function() require('substitute.exchange').cancel() end,
+                function()
+                    require("substitute.exchange").cancel()
+                end,
                 noremap = true,
             },
         },

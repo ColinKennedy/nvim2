@@ -5,9 +5,7 @@
 
 local shell = require("my_custom.utilities.git_stash.shell")
 
-
 local M = {}
-
 
 --- Stash any uncommitted git changes at `directory`.
 ---
@@ -21,23 +19,19 @@ local function _create_git_stash(directory)
 
     ---@type string[]
     local stderr = {}
-    local result = shell.run_command(
-        command,
-        {
-            cwd=directory,
-            on_stderr=function(_, data, _)
-                for _, line in ipairs(data) do
-                    table.insert(stderr, line)
-                end
-            end,
-        }
-    )
+    local result = shell.run_command(command, {
+        cwd = directory,
+        on_stderr = function(_, data, _)
+            for _, line in ipairs(data) do
+                table.insert(stderr, line)
+            end
+        end,
+    })
 
     if not result then
         vim.api.nvim_err_writeln('git stash stderr: "' .. vim.inspect(stderr) .. '"')
     end
 end
-
 
 --- Stash any uncommitted git changes at `directory` under a specific `name`.
 ---
@@ -52,23 +46,19 @@ local function _push_named_git_stash(name, directory)
 
     ---@type string[]
     local stderr = {}
-    local result = shell.run_command(
-        command,
-        {
-            cwd=directory,
-            on_stderr=function(_, data, _)
-                for _, line in ipairs(data) do
-                    table.insert(stderr, line)
-                end
-            end,
-        }
-    )
+    local result = shell.run_command(command, {
+        cwd = directory,
+        on_stderr = function(_, data, _)
+            for _, line in ipairs(data) do
+                table.insert(stderr, line)
+            end
+        end,
+    })
 
     if not result then
         vim.api.nvim_err_writeln('git named stash stderr: "' .. vim.inspect(stderr) .. '"')
     end
 end
-
 
 --- Find any previously-saved git stashes at `directory`.
 ---
@@ -81,22 +71,19 @@ function M.get_stashes(directory)
     ---@type string[]
     local stdout = {}
 
-    local result = shell.run_command(
-        "git stash list --format='%gd: %gs'",
-        {
-            cwd=directory,
-            on_stderr=function(_, data, _)
-                for _, line in ipairs(data) do
-                    table.insert(stderr, line)
-                end
-            end,
-            on_stdout=function(_, data, _)
-                for _, line in ipairs(data) do
-                    table.insert(stdout, line)
-                end
-            end,
-        }
-    )
+    local result = shell.run_command("git stash list --format='%gd: %gs'", {
+        cwd = directory,
+        on_stderr = function(_, data, _)
+            for _, line in ipairs(data) do
+                table.insert(stderr, line)
+            end
+        end,
+        on_stdout = function(_, data, _)
+            for _, line in ipairs(data) do
+                table.insert(stdout, line)
+            end
+        end,
+    })
 
     if not result then
         vim.api.nvim_err_writeln('git stash stderr: "' .. vim.inspect(stderr) .. '"')
@@ -116,7 +103,6 @@ function M.get_stashes(directory)
 
     return output
 end
-
 
 --- Prompt the user for a git stash and then stash any uncommitted git changes.
 ---
@@ -139,6 +125,5 @@ function M.push_stash(directory)
         _push_named_git_stash(name, directory)
     end
 end
-
 
 return M

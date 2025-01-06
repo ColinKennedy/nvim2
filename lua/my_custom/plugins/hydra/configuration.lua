@@ -10,31 +10,27 @@ local gitsigns = require("gitsigns")
 local hunks_ = require("gitsigns.hunks")
 local selector = require("my_custom.utilities.selector")
 
-
 local _GIT_DIFF_TAB_VARIABLE = "_hydra_git_diff_tab"
 local _S_START_SQUARE_BRACE = nil
 local _S_END_SQUARE_BRACE = nil
-
 
 ---@return boolean # Check if the user is currently visually selecting something.
 local function _in_visual_mode()
     local current_mode = vim.fn.mode()
 
-    if (
+    if
         current_mode == "v"
         or current_mode == "vs"
         or current_mode == "V"
         or current_mode == "Vs"
         or current_mode == "\\<C-V>"
         or current_mode == "\\<C-Vs>"
-    )
     then
         return true
     end
 
     return false
 end
-
 
 --- Find all modified files from the repository on-or-above `directory`.
 ---
@@ -45,16 +41,12 @@ end
 ---
 local function _get_git_diff_paths(directory)
     -- These paths are relative to the root of the git repository
-    local relative_paths = vim.fn.systemlist(
-        "git diff --name-only",
-        directory
-    )
+    local relative_paths = vim.fn.systemlist("git diff --name-only", directory)
 
     ---@type string[]
     local output = {}
 
-    for _, path in ipairs(relative_paths)
-    do
+    for _, path in ipairs(relative_paths) do
         -- TODO: Account for windows \ separators
         local absolute = directory .. "/" .. path
         table.insert(output, absolute)
@@ -62,7 +54,6 @@ local function _get_git_diff_paths(directory)
 
     return output
 end
-
 
 --- Find the index (or closest index) of `element` in `items`.
 ---
@@ -75,15 +66,13 @@ end
 ---    The best next element, if found.
 ---
 local function _get_next_in_list(element, items)
-    if vim.tbl_isempty(items)
-    then
+    if vim.tbl_isempty(items) then
         return nil
     end
 
     local found = false
 
-    for index, item in ipairs(items)
-    do
+    for index, item in ipairs(items) do
         if found then
             return item
         end
@@ -98,17 +87,14 @@ local function _get_next_in_list(element, items)
         end
     end
 
-    for _, item in ipairs(items)
-    do
-        if element > item
-        then
+    for _, item in ipairs(items) do
+        if element > item then
             return item
         end
     end
 
     return items[#items]
 end
-
 
 --- Find the index (or closest index) of `element` in `items`.
 ---
@@ -121,22 +107,18 @@ end
 ---    The best previous element, if found.
 ---
 local function _get_previous_in_list(element, items)
-    if vim.tbl_isempty(items)
-    then
+    if vim.tbl_isempty(items) then
         return nil
     end
 
-    for _, item in ipairs(items)
-    do
-        if element < item
-        then
+    for _, item in ipairs(items) do
+        if element < item then
             return item
         end
     end
 
     return items[1]
 end
-
 
 --- Move the cursor to the first unstaged hunk in `window`.
 ---
@@ -154,7 +136,7 @@ local function _go_to_first_hunk_in_buffer(window)
     local index = hunks_.find_nearest_hunk(line, hunks, "first", wrap)
 
     if not index then
-        vim.notify('No next hunk index could be found', vim.log.levels.ERROR)
+        vim.notify("No next hunk index could be found", vim.log.levels.ERROR)
 
         return
     end
@@ -162,9 +144,8 @@ local function _go_to_first_hunk_in_buffer(window)
     local hunk = hunks[index]
     local line = hunk.added.start or hunk.removed.start
 
-    vim.api.nvim_win_set_cursor(0, {line, 0})
+    vim.api.nvim_win_set_cursor(0, { line, 0 })
 end
-
 
 --- Move the cursor to the last unstaged hunk in `window`.
 ---
@@ -184,9 +165,8 @@ local function _go_to_last_hunk_in_buffer(window)
     local hunk = hunks[index]
     local line = hunk.added.start or hunk.removed.start
 
-    vim.api.nvim_win_set_cursor(0, {line, 0})
+    vim.api.nvim_win_set_cursor(0, { line, 0 })
 end
-
 
 --- Go to the git hunk that is after this cursor / file, if any.
 ---
@@ -198,8 +178,7 @@ end
 local function _go_to_next_hunk(paths)
     local forwards = true
 
-    if actions.has_next_hunk("next")
-    then
+    if actions.has_next_hunk("next") then
         gitsigns.next_hunk()
 
         return
@@ -208,8 +187,7 @@ local function _go_to_next_hunk(paths)
     local current = vim.fn.expand("%:p")
     local next_ = _get_next_in_list(current, paths)
 
-    if next_ == nil
-    then
+    if next_ == nil then
         vim.api.nvim_err_writeln("No next file could be found.")
 
         return
@@ -218,7 +196,6 @@ local function _go_to_next_hunk(paths)
     vim.cmd("edit " .. next_)
     _go_to_first_hunk_in_buffer()
 end
-
 
 --- Go to the git hunk that is before this cursor / file, if any.
 ---
@@ -230,8 +207,7 @@ end
 local function _go_to_previous_hunk(paths)
     local forwards = false
 
-    if actions.has_next_hunk("prev")
-    then
+    if actions.has_next_hunk("prev") then
         gitsigns.prev_hunk()
 
         return
@@ -240,8 +216,7 @@ local function _go_to_previous_hunk(paths)
     local current = vim.fn.expand("%:p")
     local previous = _get_previous_in_list(current, paths)
 
-    if previous == nil
-    then
+    if previous == nil then
         vim.api.nvim_err_writeln("No previous file could be found.")
 
         return
@@ -251,19 +226,16 @@ local function _go_to_previous_hunk(paths)
     _go_to_last_hunk_in_buffer()
 end
 
-
 --- Keep track of all of my `s` mappings so that they can be restored later, if needed.
 local function _save_other_s_mappings()
-    if vim.fn.maparg("s[", "n") ~= ""
-    then
+    if vim.fn.maparg("s[", "n") ~= "" then
         _S_START_SQUARE_BRACE = vim.fn.maparg("s[", "n", false, true)
         vim.api.nvim_del_keymap("n", "s[")
     else
         _S_START_SQUARE_BRACE = nil
     end
 
-    if vim.fn.maparg("s]", "n") ~= ""
-    then
+    if vim.fn.maparg("s]", "n") ~= "" then
         _S_END_SQUARE_BRACE = vim.fn.maparg("s]", "n", false, true)
         vim.api.nvim_del_keymap("n", "s]")
     else
@@ -271,35 +243,26 @@ local function _save_other_s_mappings()
     end
 end
 
-
 --- Re-add my s-related mappings again.
 local function _restore_other_s_mappings()
     local function _set(mapping, data)
-        vim.keymap.set(
-            "n",
-            mapping,
-            data["callback"],
-            {
-                buffer = data.buffer == 1,
-                expr = data.expr == 1,
-                noremap = data.noremap == 1,
-                nowait = data.nowait == 1,
-                silent = data.silent == 1,
-            }
-        )
+        vim.keymap.set("n", mapping, data["callback"], {
+            buffer = data.buffer == 1,
+            expr = data.expr == 1,
+            noremap = data.noremap == 1,
+            nowait = data.nowait == 1,
+            silent = data.silent == 1,
+        })
     end
 
-    if _S_START_SQUARE_BRACE ~= nil
-    then
+    if _S_START_SQUARE_BRACE ~= nil then
         _set("s[", _S_START_SQUARE_BRACE)
     end
 
-    if _S_END_SQUARE_BRACE ~= nil
-    then
+    if _S_END_SQUARE_BRACE ~= nil then
         _set("s]", _S_END_SQUARE_BRACE)
     end
 end
-
 
 -- local git_hint = [[
 --  Movement       Control                Display             Diagnose
@@ -376,7 +339,6 @@ end
 --         }
 --     }
 -- )
-
 
 local git_diff_hint = [[
  Movement       Control
@@ -539,26 +501,24 @@ local debug_hint = [[
  _q_: Exit
 ]]
 
-Hydra(
-    {
-        name = "Debugging",
-        hint = debug_hint,
-        config = {
-            color = "pink",
-            hint = {
-                float_opts = { border = "rounded" },
-                position = "top-right",
-            },
-            invoke_on_body = true,
+Hydra({
+    name = "Debugging",
+    hint = debug_hint,
+    config = {
+        color = "pink",
+        hint = {
+            float_opts = { border = "rounded" },
+            position = "top-right",
         },
-        mode = {"n", "x"},
-        body = "<Space>D",
-        heads = {
-            { "h", "<cmd>DapStepOut<CR>", { silent = true, desc = "Move out of the current function call." } },
-            { "j", "<cmd>DapStepOver<CR>", { silent = true, desc = "Skip over the current line." } },
-            { "l", "<cmd>DapStepInto<CR>", { silent = true, desc = "Move into a function call." } },
-            { "<Space>", "<cmd>DapContinue<CR>", { silent = true, desc = "Continue to the next breakpoint." } },
-            { "q", nil, { exit = true, nowait = true, desc = "Exit." } },
-        }
-    }
-)
+        invoke_on_body = true,
+    },
+    mode = { "n", "x" },
+    body = "<Space>D",
+    heads = {
+        { "h", "<cmd>DapStepOut<CR>", { silent = true, desc = "Move out of the current function call." } },
+        { "j", "<cmd>DapStepOver<CR>", { silent = true, desc = "Skip over the current line." } },
+        { "l", "<cmd>DapStepInto<CR>", { silent = true, desc = "Move into a function call." } },
+        { "<Space>", "<cmd>DapContinue<CR>", { silent = true, desc = "Continue to the next breakpoint." } },
+        { "q", nil, { exit = true, nowait = true, desc = "Exit." } },
+    },
+})

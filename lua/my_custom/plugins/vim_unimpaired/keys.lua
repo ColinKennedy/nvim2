@@ -7,7 +7,7 @@ local function _get_quickfix_item_path(current_item)
 end
 
 local function next_quickfix_entry()
-    local index = vim.fn.getqflist({idx=0}).idx
+    local index = vim.fn.getqflist({ idx = 0 }).idx
     local items = vim.fn.getqflist()
     local next_item = items[index + 1]
 
@@ -33,9 +33,8 @@ local function next_quickfix_entry()
     end
 end
 
-
 local function previous_quickfix_entry()
-    local index = vim.fn.getqflist({idx=0}).idx
+    local index = vim.fn.getqflist({ idx = 0 }).idx
     local items = vim.fn.getqflist()
     local next_item = items[index - 1]
 
@@ -88,13 +87,13 @@ return {
     -- "[t", "]t",  tags
     {
         "[q",
-        function() previous_quickfix_entry() end,
-        desc="Move up the [q]uickfix window.",
+        previous_quickfix_entry,
+        desc = "Move up the [q]uickfix window.",
     },
     {
         "]q",
-        function() next_quickfix_entry() end,
-        desc="Move down the [q]uickfix window.",
+        next_quickfix_entry,
+        desc = "Move down the [q]uickfix window.",
     },
     {
         "[l",
@@ -102,7 +101,7 @@ return {
             local fixer = require("my_custom.utilities.quick_fix_selection_fix")
             fixer.safe_run([[LAbove]])
         end,
-        desc="Move up the [l]ocation list window.",
+        desc = "Move up the [l]ocation list window.",
     },
     {
         "]l",
@@ -110,6 +109,6 @@ return {
             local fixer = require("my_custom.utilities.quick_fix_selection_fix")
             fixer.safe_run([[LBelow]])
         end,
-        desc="Move down the [l]ocation list window.",
+        desc = "Move down the [l]ocation list window.",
     },
 }

@@ -27,7 +27,7 @@ return {
     {
         "ColinKennedy/vim-usd-crate-auto-convert",
         config = function()
-            vim.g.usdcat_command = 'rez_usdcat'
+            vim.g.usdcat_command = "rez_usdcat"
         end,
         ft = { "usda", "usd" },
         version = "1.*",

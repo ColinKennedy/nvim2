@@ -5,13 +5,10 @@
 
 local M = {}
 
-
-if vim.fn.has("win32") == 1
-then
+if vim.fn.has("win32") == 1 then
     M.command_separator = ";"
     M.path_separator = ";"
-elseif vim.fn.has("unix") == 1
-then
+elseif vim.fn.has("unix") == 1 then
     M.command_separator = ";"
     M.path_separator = ":"
 else
@@ -20,7 +17,6 @@ else
     M.command_separator = ";"
     M.path_separator = ":"
 end
-
 
 --- Get the directory of the current Lua script that called this function.
 ---
@@ -41,10 +37,8 @@ end
 function M.join_os_paths(paths)
     local output = ""
 
-    for _, path in ipairs(paths)
-    do
-        if output == ""
-        then
+    for _, path in ipairs(paths) do
+        if output == "" then
             output = path
         else
             output = output .. M.path_separator .. path
@@ -68,12 +62,10 @@ function M.get_project_root(directory)
         "searcher#get_git_root",
     }
 
-    for _, name in ipairs(search_options)
-    do
+    for _, name in ipairs(search_options) do
         local root = vim.fn[name](current)
 
-        if root ~= ""
-        then
+        if root ~= "" then
             return root
         end
     end

@@ -1,9 +1,11 @@
 return {
     {
         "ColinKennedy/hybrid2.nvim",
-        priority = 1000,  -- Load this first
-        config = function() require("my_custom.plugins.hybrid2.configuration") end,
-        version = "1.*"
+        priority = 1000, -- Load this first
+        config = function()
+            require("my_custom.plugins.hybrid2.configuration")
+        end,
+        version = "1.*",
     },
 
     {
@@ -22,7 +24,9 @@ return {
             gitsigns.setup({ signs = { changedelete = { text = "～" } } })
         end,
         ft = "gitcommit",
-        init = function() require("my_custom.plugins.gitsigns.initialization") end,
+        init = function()
+            require("my_custom.plugins.gitsigns.initialization")
+        end,
         keys = require("my_custom.plugins.gitsigns.keys"),
         -- version = "0.*"  -- This release is super old and has bugs. But ideally we'd use it
     },
@@ -36,7 +40,9 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function() require("my_custom.plugins.lualine.configuration") end,
+        config = function()
+            require("my_custom.plugins.lualine.configuration")
+        end,
     },
 
     -- Add named indices to `grapple.nvim`
@@ -59,21 +65,21 @@ return {
     {
         "rachartier/tiny-devicons-auto-colors.nvim",
         dependencies = {
-            "nvim-tree/nvim-web-devicons"
+            "nvim-tree/nvim-web-devicons",
         },
         event = "VeryLazy",
         config = function()
-            require('tiny-devicons-auto-colors').setup{
+            require("tiny-devicons-auto-colors").setup {
                 factors = {
-                    lightness = 1.75,  -- Adjust the lightness factor.
-                    chroma = 1,        -- Adjust the chroma factor.
-                    hue = 1.25,        -- Adjust the hue factor.
+                    lightness = 1.75, -- Adjust the lightness factor.
+                    chroma = 1, -- Adjust the chroma factor.
+                    hue = 1.25, -- Adjust the hue factor.
                 },
                 ignore = {
-                    "markdown"
-                }
+                    "markdown",
+                },
             }
-        end
+        end,
     },
 
     -- TODO: Do I even still need this? Remove?
@@ -106,8 +112,10 @@ return {
     --
     {
         "ColinKennedy/winbar.nvim",
-        config = function() require("my_custom.plugins.winbar.configuration") end,
-        dependencies = {"ColinKennedy/nvim-gps", "nvim-tree/nvim-web-devicons"},
+        config = function()
+            require("my_custom.plugins.winbar.configuration")
+        end,
+        dependencies = { "ColinKennedy/nvim-gps", "nvim-tree/nvim-web-devicons" },
         event = "VeryLazy",
     },
 
@@ -115,7 +123,7 @@ return {
     {
         "ColinKennedy/nvim-gps",
         config = true,
-        dependencies = {"nvim-treesitter/nvim-treesitter"},
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         lazy = true,
     },
 
@@ -127,7 +135,9 @@ return {
     --
     {
         "arnamak/stay-centered.nvim",
-        config = function() require("my_custom.plugins.stay_centered.configuration") end,
+        config = function()
+            require("my_custom.plugins.stay_centered.configuration")
+        end,
     },
 
     -- Highlight the whole line when you're in linewise selection mode.
@@ -149,7 +159,9 @@ return {
     {
         "folke/todo-comments.nvim",
         dependencies = { "ColinKennedy/plenary.nvim" },
-        config = function() require("my_custom.plugins.todo_comments.configuration") end,
+        config = function()
+            require("my_custom.plugins.todo_comments.configuration")
+        end,
     },
 
     -- Make markdown files pretty
@@ -160,37 +172,27 @@ return {
 
             ---@param header number
             local function set_header_color(header)
-                local foreground_number = colormate.get_highlight_attribute_data(
-                  "fg", { string.format("@markup.heading.%s", header) }
-                )
+                local foreground_number =
+                    colormate.get_highlight_attribute_data("fg", { string.format("@markup.heading.%s", header) })
 
                 local foreground = colormate.get_color_from_number(foreground_number)
                 local darker = colormate.shade_color(foreground, -40)
 
-                vim.api.nvim_set_hl(
-                    0,
-                    string.format("RenderMarkdownH%sBg", header),
-                    {bg=darker, fg="White"}
-                )
+                vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%sBg", header), { bg = darker, fg = "White" })
 
-                vim.api.nvim_set_hl(
-                    0,
-                    string.format("RenderMarkdownH%s", header),
-                    {fg="White"}
-                )
+                vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%s", header), { fg = "White" })
             end
 
-            for header=1,6
-            do
+            for header = 1, 6 do
                 set_header_color(header)
             end
 
-            vim.api.nvim_set_hl(0, "RenderMarkdownTableFill", {link="Normal"})
+            vim.api.nvim_set_hl(0, "RenderMarkdownTableFill", { link = "Normal" })
 
-            require('render-markdown').setup({ heading = { sign = false } })
+            require("render-markdown").setup({ heading = { sign = false } })
         end,
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        ft = {"markdown"},
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        ft = { "markdown" },
     },
 
     -- A really pretty scrollbar. Not sure if I'll keep it. But it looks nice!
@@ -216,8 +218,8 @@ return {
             -- NOTE: we only redefine these colors because we use lualine's
             -- "onedark" theme which prefers different colors than our theme prefers.
             --
-            vim.api.nvim_set_hl(0, "NoiceCmdlineIconCmdline", {link="Function"})
-            vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", {link="Function"})
+            vim.api.nvim_set_hl(0, "NoiceCmdlineIconCmdline", { link = "Function" })
+            vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "Function" })
 
             require("noice").setup({
                 lsp = {
@@ -239,6 +241,6 @@ return {
         dependencies = {
             -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
-        }
+        },
     },
 }

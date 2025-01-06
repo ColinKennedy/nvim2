@@ -7,13 +7,13 @@ return {
         "nanotee/zoxide.vim",
         dependencies = {
             -- TODO: Try to remove this fzf dependency
-            "junegunn/fzf",  -- Needed for Zi
+            "junegunn/fzf", -- Needed for Zi
         },
         cmd = { "Z", "Zi" },
     },
     {
         "junegunn/fzf",
-        build=function()
+        build = function()
             -- vim.cmd[[call fzf#install()]]
             vim.fn["fzf#install"]()
         end,
@@ -32,7 +32,9 @@ return {
             "History",
             "Keymaps",
         },
-        config = function() require("my_custom.plugins.fzf_lua.configuration") end,
+        config = function()
+            require("my_custom.plugins.fzf_lua.configuration")
+        end,
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = require("my_custom.plugins.fzf_lua.keys"),
     },
@@ -51,7 +53,9 @@ return {
     --
     {
         "bradford-smith94/quick-scope",
-        config = function() require("my_custom.plugins.quick_scope.configuration") end,
+        config = function()
+            require("my_custom.plugins.quick_scope.configuration")
+        end,
         init = function()
             require("my_custom.utilities.utility").lazy_load("quick-scope")
         end,
@@ -71,7 +75,9 @@ return {
     --         - You're done
     {
         "ggandor/leap.nvim",
-        config = function() require("my_custom.plugins.leap.configuration") end,
+        config = function()
+            require("my_custom.plugins.leap.configuration")
+        end,
         keys = {
             { "S", "<Plug>(leap-backward-to)", desc = "Leap backward to", silent = true },
             { "s", "<Plug>(leap-forward-to)", desc = "Leap forward to", silent = true },
@@ -82,29 +88,30 @@ return {
     {
         "max397574/better-escape.nvim",
         config = function()
-            require("better_escape").setup{
+            require("better_escape").setup {
                 mappings = {
                     -- NOTE: This prevents jk from leaving VISUAL mode
-                    v = {j = {k = "k"}},
+                    v = { j = { k = "k" } },
                     t = {
                         j = {
                             k = [[<C-\><C-n>]],
                             j = "j",
                         },
                     },
-                }
+                },
             }
         end,
     },
-
 
     -- Allow quick and easy navigation to common project files
     -- Files are saved in `:lua print(vim.fn.stdpath("data") .. "/grapple")`
     --
     {
         "cbochs/grapple.nvim",
-        dependencies = {"ColinKennedy/plenary.nvim"},
-        config = function() require("grapple").setup({ scope = "git_branch" }) end,
+        dependencies = { "ColinKennedy/plenary.nvim" },
+        config = function()
+            require("grapple").setup({ scope = "git_branch" })
+        end,
         keys = require("my_custom.plugins.grapple.keys"),
         version = "v0.*",
     },
@@ -112,12 +119,12 @@ return {
     {
         -- Note: This plugin needs to load on-start-up I think. You can't defer-load it.
         "troydm/zoomwintab.vim",
-        cmd = {"ZoomWinTabOut", "ZoomWinTabToggle"},
+        cmd = { "ZoomWinTabOut", "ZoomWinTabToggle" },
         keys = {
             {
                 "<C-w>o",
                 "<cmd>ZoomWinTabToggle<CR>",
-                desc="Toggle full-screen or minimize a window.",
+                desc = "Toggle full-screen or minimize a window.",
             },
         },
     },
@@ -128,40 +135,40 @@ return {
         keys = {
             {
                 "<C-A-h>",
-                '<cmd>Treewalker Left<CR>',
+                "<cmd>Treewalker Left<CR>",
                 noremap = true,
                 silent = true,
             },
             {
                 "<C-A-j>",
-                '<cmd>Treewalker Down<CR>',
+                "<cmd>Treewalker Down<CR>",
                 noremap = true,
                 silent = true,
             },
             {
                 "<C-A-k>",
-                '<cmd>Treewalker Up<CR>',
+                "<cmd>Treewalker Up<CR>",
                 noremap = true,
                 silent = true,
             },
             {
                 "<C-A-l>",
-                '<cmd>Treewalker Right<CR>',
+                "<cmd>Treewalker Right<CR>",
                 noremap = true,
                 silent = true,
             },
-        }
+        },
     },
 
     -- This lets you repeat motions. e.g. [q / ]q can be repeated with just
     -- ; (forwards) or , (backwards). It's super useful!
     --
     {
-        'mawkler/demicolon.nvim',
-        keys = { ',', ';', 'F', 'T', 'f', 't' },
+        "mawkler/demicolon.nvim",
+        keys = { ",", ";", "F", "T", "f", "t" },
         dependencies = {
-            'nvim-treesitter/nvim-treesitter',
-            'nvim-treesitter/nvim-treesitter-textobjects',
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter/nvim-treesitter-textobjects",
         },
         opts = {
             integrations = {
@@ -171,11 +178,11 @@ return {
                         -- NOTE: The default mappings for gitsigns.nvim is [c and ]c but
                         -- I use [g and ]g.
                         --
-                        next = ']g',
-                        prev = '[g',
+                        next = "]g",
+                        prev = "[g",
                     },
                 },
             },
         },
-    }
+    },
 }

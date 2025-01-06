@@ -12,17 +12,15 @@ local M = {}
 ---@type table<number, number>
 local _PREVIOUS_ALLOWED_WINDOWS_BY_TAB = {}
 
-
 ---@return boolean # Check if the cursor's current window is "okay for quick-fix to select".
 local function _is_current_window_allowed()
     local type_ = vim.o.filetype
 
-    if (
+    if
         type_ == "toggleterm" -- Reference: https://github.com/akinsho/toggleterm.nvim
         or type_ == "qf"
-        or type_ == "aerial"  -- Reference: https://github.com/stevearc/aerial.nvim
+        or type_ == "aerial" -- Reference: https://github.com/stevearc/aerial.nvim
         or vim.o.buftype == "terminal"
-    )
     then
         return false
     end
@@ -30,28 +28,20 @@ local function _is_current_window_allowed()
     return true
 end
 
-
 --- Set up auto-commands to track every "allowed" window for quick-fix to switch to.
 function M.initialize()
-    vim.api.nvim_create_autocmd(
-        "BufEnter",
-        {
-            callback = function()
-                local current_tab = vim.fn.tabpagenr()
+    vim.api.nvim_create_autocmd("BufEnter", {
+        callback = function()
+            local current_tab = vim.fn.tabpagenr()
 
-                vim.schedule(
-                    function()
-                        if _is_current_window_allowed()
-                        then
-                            _PREVIOUS_ALLOWED_WINDOWS_BY_TAB[current_tab] = vim.api.nvim_get_current_win()
-                        end
-                    end
-                )
-            end
-        }
-    )
+            vim.schedule(function()
+                if _is_current_window_allowed() then
+                    _PREVIOUS_ALLOWED_WINDOWS_BY_TAB[current_tab] = vim.api.nvim_get_current_win()
+                end
+            end)
+        end,
+    })
 end
-
 
 --- NOTE: Nothing uses this function. Remove?
 --- Make sure the current tab's cursor is on a "last okay" window.
@@ -60,19 +50,15 @@ end
 --- - Run this function before calling any quick-fix next/previous commands.
 ---
 function M.choose_last_window()
-    if _is_current_window_allowed()
-    then
+    if _is_current_window_allowed() then
         return
     end
 
     local current_tab = vim.fn.tabpagenr()
     local previous_window = _PREVIOUS_ALLOWED_WINDOWS_BY_TAB[current_tab]
 
-    if previous_window == nil
-    then
-        vim.api.nvim_err_writeln(
-            'Tab "' .. current_tab .. '" has no previous window to fall back to.'
-        )
+    if previous_window == nil then
+        vim.api.nvim_err_writeln('Tab "' .. current_tab .. '" has no previous window to fall back to.')
 
         return
     end
@@ -80,15 +66,14 @@ function M.choose_last_window()
     vim.api.nvim_set_current_win(previous_window)
 end
 
-
 function M.safe_run(text)
-    local success, _ = pcall(function() vim.cmd[[text]] end)
+    local success, _ = pcall(function()
+        vim.cmd [[text]]
+    end)
 
-    if not success
-    then
+    if not success then
         vim.api.nvim_err_writeln("No more items")
     end
 end
-
 
 return M

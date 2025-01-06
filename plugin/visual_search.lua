@@ -2,7 +2,7 @@
 --
 -- Reference: https://github.com/godlygeek/vim-files/blob/871454686a5d05f9a84999232fb874fbd7a071f9/plugin/vsearch.vim
 --
-vim.cmd[[
+vim.cmd [[
 function! VSetSearch()
   let temp = @@
   norm! gvy

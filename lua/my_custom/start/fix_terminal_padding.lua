@@ -14,31 +14,27 @@ local function _in_tmux()
     return vim.fn.exists("$TMUX") == 1
 end
 
-vim.api.nvim_create_autocmd(
-    { "UIEnter", "ColorScheme" },
-    {
-        callback = function()
-            local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-            if not normal.bg then return end
+vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
+    callback = function()
+        local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+        if not normal.bg then
+            return
+        end
 
-            if _in_tmux() then
-                io.write(string.format("\027Ptmux;\027\027]11;#%06x\007\027\\", normal.bg))
-            else
-                io.write(string.format("\027]11;#%06x\027\\", normal.bg))
-            end
-        end,
-    }
-)
+        if _in_tmux() then
+            io.write(string.format("\027Ptmux;\027\027]11;#%06x\007\027\\", normal.bg))
+        else
+            io.write(string.format("\027]11;#%06x\027\\", normal.bg))
+        end
+    end,
+})
 
-vim.api.nvim_create_autocmd(
-    "UILeave",
-    {
-        callback = function()
-            if _in_tmux() then
-                io.write("\027Ptmux;\027\027]111;\007\027\\")
-            else
-                io.write("\027]111\027\\")
-            end
-        end,
-    }
-)
+vim.api.nvim_create_autocmd("UILeave", {
+    callback = function()
+        if _in_tmux() then
+            io.write("\027Ptmux;\027\027]111;\007\027\\")
+        else
+            io.write("\027]111\027\\")
+        end
+    end,
+})

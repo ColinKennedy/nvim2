@@ -12,8 +12,8 @@ local text = luasnip.t
 return {
     snippet(
         {
-            docstring="Get the current directory",
-            trig="_CURRENT_DIRECTORY",
+            docstring = "Get the current directory",
+            trig = "_CURRENT_DIRECTORY",
         },
         text("_CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))"),
         { show_condition = is_source_beginning("_CURRENT_DIRECTORY") }
@@ -21,8 +21,8 @@ return {
 
     snippet(
         {
-            docstring="Get a vanilla Python logger.",
-            trig="_LOGGER",
+            docstring = "Get a vanilla Python logger.",
+            trig = "_LOGGER",
         },
         format("_LOGGER = logging.getLogger({})", { index(1, "__name__") }),
         { show_condition = is_source_beginning("_LOGGER") }
@@ -30,8 +30,8 @@ return {
 
     snippet(
         {
-            docstring="dirgrep the currnt selection",
-            trig="dirgrep",
+            docstring = "dirgrep the currnt selection",
+            trig = "dirgrep",
         },
         format(
             'print(sorted(item for item in dir({}) if "{}" in item.lower()))',
@@ -40,47 +40,34 @@ return {
         { show_condition = is_source_beginning("dirgrep") }
     ),
 
-    snippet(
-        {
-            docstring="Add a TODO note",
-            trig="td",
-        },
-        format('# TODO: {}', { index(1, "") }),
-        { show_condition = or_(is_source_beginning("td"), line_end) }
+    snippet({
+        docstring = "Add a TODO note",
+        trig = "td",
+    }, format("# TODO: {}", { index(1, "") }), { show_condition = or_(is_source_beginning("td"), line_end) }
+),
 
-    ),
+    snippet({
+        docstring = "Create a triple-quote docstring",
+        trig = "D",
+    }, format('"""{}."""', { index(1, "") }), { show_condition = is_source_beginning('D"') }),
 
-    snippet(
-        {
-            docstring="Create a triple-quote docstring",
-            trig="D",
-        },
-        format('"""{}."""', { index(1, "") }),
-        { show_condition = is_source_beginning('D"') }
-    ),
+    snippet({
+        docstring = "os.path.",
+        trig = "osp",
+    }, format("os.path.{}", { index(1, "") })),
 
-    snippet(
-        {
-            docstring="os.path.",
-            trig="osp",
-        },
-        format("os.path.{}", { index(1, "") })
-    ),
+    snippet({
+        docstring = "os.path.join",
+        trig = "ospj",
+    }, format("os.path.join({})", { index(1, "") })),
 
     snippet(
         {
-            docstring="os.path.join",
-            trig="ospj",
+            docstring = "def main()",
+            trig = "main",
         },
-        format("os.path.join({})", { index(1, "") })
-    ),
-
-    snippet(
-        {
-            docstring="def main()",
-            trig="main",
-        },
-        format([[
+        format(
+            [[
             def main():
                 """Run the main execution of the script."""
                 {}
@@ -93,10 +80,11 @@ return {
     snippet(
         -- TODO: This show_condition is not working. And probably neither is any of the others
         {
-            docstring="def main()",
-            trig="ifm",
+            docstring = "def main()",
+            trig = "ifm",
         },
-        format([[
+        format(
+            [[
             if __name__ == "__main__":
                 {}
             ]],
@@ -107,8 +95,8 @@ return {
 
     snippet(
         {
-            docstring="Create a basic StreamHandler Python logger",
-            trig="_LOGGER_STREAM",
+            docstring = "Create a basic StreamHandler Python logger",
+            trig = "_LOGGER_STREAM",
         },
         format(
             [[
@@ -127,8 +115,8 @@ return {
 
     snippet(
         {
-            docstring="Delete a file but only after Python exits.",
-            trig="atexit_file",
+            docstring = "Delete a file but only after Python exits.",
+            trig = "atexit_file",
         },
         format(
             [[
@@ -141,8 +129,8 @@ return {
 
     snippet(
         {
-            docstring="Delete a folder but only after Python exits.",
-            trig="atexit_folder",
+            docstring = "Delete a folder but only after Python exits.",
+            trig = "atexit_folder",
         },
         format(
             [[
@@ -155,8 +143,8 @@ return {
 
     snippet(
         {
-            docstring='Add a "profile this code and print it" Python context.',
-            trig="profile_and_print",
+            docstring = 'Add a "profile this code and print it" Python context.',
+            trig = "profile_and_print",
         },
         format(
             [[
@@ -178,5 +166,5 @@ return {
             { index(1, "pass") }
         ),
         { show_condition = is_source_beginning("profile_and_print") }
-    )
+    ),
 }

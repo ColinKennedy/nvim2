@@ -18,26 +18,20 @@ local snippetNode = require("luasnip.nodes.snippet").SN
 ---@return LuaSnip.DynamicNode # The created node.
 ---
 local function _make_section_snippet_node(section)
-    return dynamicNode(
-        1,
-        function()
-            local neogen = require("neogen")
+    return dynamicNode(1, function()
+        local neogen = require("neogen")
 
-            local lines = neogen.generate(
-                -- TODO: Provide an explicit snippet engine (once there's an
-                -- argument for it).
-                {return_snippet = true, sections = {section}, snippet_engine = "luasnip"}
-            )
+        local lines = neogen.generate(
+            -- TODO: Provide an explicit snippet engine (once there's an
+            -- argument for it).
+            { return_snippet = true, sections = { section }, snippet_engine = "luasnip" }
+        )
 
-            local nodes = luasnip.parser.parse_snippet(
-                nil,
-                table.concat(lines, "\n"),
-                { trim_empty = false, dedent = true }
-            )
+        local nodes =
+            luasnip.parser.parse_snippet(nil, table.concat(lines, "\n"), { trim_empty = false, dedent = true })
 
-            return snippetNode(nil, nodes)
-        end
-    )
+        return snippetNode(nil, nodes)
+    end)
 end
 
 --- Create a LuaSnip snippet for some `section`. Run it when `trigger` is found.
@@ -50,26 +44,16 @@ end
 ---    The generated auto-complete snippet.
 ---
 local function _make_section_snippet(trigger, section)
-    return snippet(
-        {
-            trig=trigger,
-            docstring=string.format(
-                'Auto-fill a docstring\'s "%s" section, using Neogen',
-                trigger
-            ),
-        },
-        {
-            _make_section_snippet_node(section)
-        },
-        {
-            show_condition = function()
-                return (
-                    snippet_helper.in_docstring()
-                    and snippet_helper.is_source_beginning(trigger)
-                )
-            end
-        }
-    )
+    return snippet({
+        trig = trigger,
+        docstring = string.format('Auto-fill a docstring\'s "%s" section, using Neogen', trigger),
+    }, {
+        _make_section_snippet_node(section),
+    }, {
+        show_condition = function()
+            return (snippet_helper.in_docstring() and snippet_helper.is_source_beginning(trigger))
+        end,
+    })
 end
 
 return {

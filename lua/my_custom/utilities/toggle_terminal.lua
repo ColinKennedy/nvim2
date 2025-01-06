@@ -30,7 +30,6 @@ local _Mode = {
 local _NEXT_NUMBER = 0
 local _STARTING_MODE = _Mode.insert -- NOTE: Start off in insert mode
 
-
 --- Check if `buffer` is shown to the user.
 ---
 --- @param buffer number A 0-or-more index pointing to some Vim data.
@@ -52,7 +51,7 @@ end
 --- @return boolean # If it is a `toggleterminal`, return `true`.
 ---
 local function _is_toggle_terminal(buffer)
-    if vim.api.nvim_get_option_value("buftype", {buf=buffer}) ~= "terminal" then
+    if vim.api.nvim_get_option_value("buftype", { buf = buffer }) ~= "terminal" then
         return false
     end
 
@@ -87,7 +86,7 @@ local function _get_buffer_tabs(buffer)
     ---@type number[]
     local output = {}
 
-    for tab = 1, vim.fn.tabpagenr('$') do
+    for tab = 1, vim.fn.tabpagenr("$") do
         local buffers = vim.fn.tabpagebuflist(tab)
 
         if vim.tbl_contains(buffers, buffer) then
@@ -165,7 +164,7 @@ local function _apply_highlights(window)
     local hex = colormate.get_hex(namespace, "bg")
     local darker = colormate.shade_color(hex, -20)
     local window_namespace = "ToggleTerminalNormal"
-    vim.api.nvim_set_hl(0, window_namespace, {bg = darker})
+    vim.api.nvim_set_hl(0, window_namespace, { bg = darker })
 
     vim.api.nvim_set_option_value(
         "winhighlight",
@@ -181,7 +180,7 @@ local function _create_terminal()
     local buffer = vim.fn.bufnr()
     _initialize_terminal_buffer(buffer)
 
-    return { buffer=buffer, mode=_STARTING_MODE }
+    return { buffer = buffer, mode = _STARTING_MODE }
 end
 
 --- Change `buffer` to insert or normal mode.
@@ -227,10 +226,10 @@ end
 
 --- Make a window (non-terminal) so we can assign a terminal into it later.
 local function _prepare_terminal_window()
-    vim.cmd[[set nosplitbelow]]
-    vim.cmd[[split]]
-    vim.cmd[[set splitbelow&]] -- Restore the previous split setting
-    vim.cmd.wincmd("J")  -- Move the split to the bottom of the tab
+    vim.cmd [[set nosplitbelow]]
+    vim.cmd [[split]]
+    vim.cmd [[set splitbelow&]] -- Restore the previous split setting
+    vim.cmd.wincmd("J") -- Move the split to the bottom of the tab
     vim.cmd.resize(10)
 end
 
@@ -249,10 +248,7 @@ local function _serialize_terminals()
 
         if not terminal then
             vim.notify(
-                string.format(
-                    'Something went wrong. Expected "%s" buffer to have a saved terminal.',
-                    buffer
-                ),
+                string.format('Something went wrong. Expected "%s" buffer to have a saved terminal.', buffer),
                 vim.log.levels.ERROR
             )
 
@@ -261,10 +257,7 @@ local function _serialize_terminals()
 
         table.insert(
             contents,
-            string.format(
-                "toggle_terminal.initialize_terminal_from_session(%s)",
-                vim.inspect(terminal)
-            )
+            string.format("toggle_terminal.initialize_terminal_from_session(%s)", vim.inspect(terminal))
         )
     end
 
@@ -276,10 +269,7 @@ local function _serialize_terminals()
     local output = {}
 
     table.insert(output, "lua << EOF")
-    table.insert(
-        output,
-        'local toggle_terminal = require("my_custom.utilities.toggle_terminal")'
-    )
+    table.insert(output, 'local toggle_terminal = require("my_custom.utilities.toggle_terminal")')
 
     for _, line in ipairs(contents) do
         table.insert(output, line)
@@ -293,7 +283,7 @@ end
 --- Open an existing terminal for the current tab or create one if it doesn't exist.
 local function _toggle_terminal()
     local tab = vim.fn.tabpagenr()
-    local existing_terminal =  _TAB_TERMINALS[tab]
+    local existing_terminal = _TAB_TERMINALS[tab]
 
     if not existing_terminal or vim.fn.bufexists(existing_terminal.buffer) == 0 then
         _prepare_terminal_window()
@@ -326,10 +316,7 @@ local function _write_sessionx_file()
     local data = _serialize_terminals()
 
     if not data then
-        vim.notify(
-            "Unable to get terminal data. Cannot write Session file.",
-            vim.log.levels.ERROR
-        )
+        vim.notify("Unable to get terminal data. Cannot write Session file.", vim.log.levels.ERROR)
 
         return
     end
@@ -337,10 +324,7 @@ local function _write_sessionx_file()
     local handler = io.open(sessionx, "w")
 
     if not handler then
-        vim.notify(
-            string.format('Unable to write "%s" Session file.', sessionx),
-            vim.log.levels.ERROR
-        )
+        vim.notify(string.format('Unable to write "%s" Session file.', sessionx), vim.log.levels.ERROR)
 
         return
     end
@@ -378,33 +362,29 @@ function M.setup_autocommands()
     local group = vim.api.nvim_create_augroup("ToggleTerminalCommands", { clear = true })
     local toggleterm_pattern = { "term://*::toggleterminal::*" }
 
-    vim.api.nvim_create_autocmd(
-        "BufEnter",
-        {
-            pattern = toggleterm_pattern,
-            group = group,
-            nested = true, -- This is necessary in case the buffer is the last
-            callback = function()
-                local buffer = vim.fn.bufnr()
-                vim.schedule(function() _handle_term_enter(buffer) end)
-            end,
-        }
-    )
+    vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = toggleterm_pattern,
+        group = group,
+        nested = true, -- This is necessary in case the buffer is the last
+        callback = function()
+            local buffer = vim.fn.bufnr()
+            vim.schedule(function()
+                _handle_term_enter(buffer)
+            end)
+        end,
+    })
 
-    vim.api.nvim_create_autocmd(
-        "WinLeave",
-        {
-            pattern = toggleterm_pattern,
-            group = group,
-            callback = function()
-                local buffer = vim.fn.bufnr()
+    vim.api.nvim_create_autocmd("WinLeave", {
+        pattern = toggleterm_pattern,
+        group = group,
+        callback = function()
+            local buffer = vim.fn.bufnr()
 
-                if not vim.tbl_isempty(_BUFFER_TO_TERMINAL) then
-                    _handle_term_leave(buffer)
-                end
-            end,
-        }
-    )
+            if not vim.tbl_isempty(_BUFFER_TO_TERMINAL) then
+                _handle_term_leave(buffer)
+            end
+        end,
+    })
 
     -- TODO: Maybe support this in the future
     -- vim.api.nvim_create_autocmd(
@@ -423,28 +403,23 @@ function M.setup_autocommands()
     --     }
     -- )
 
-    vim.api.nvim_create_autocmd(
-        "TermOpen",
-        {
-            group = group,
-            pattern = toggleterm_pattern,
-            callback = function()
-                local window = vim.fn.win_getid()
+    vim.api.nvim_create_autocmd("TermOpen", {
+        group = group,
+        pattern = toggleterm_pattern,
+        callback = function()
+            local window = vim.fn.win_getid()
 
-                vim.wo[window].relativenumber = false
-                vim.wo[window].number = false
-                vim.wo[window].signcolumn = "no"
+            vim.wo[window].relativenumber = false
+            vim.wo[window].number = false
+            vim.wo[window].signcolumn = "no"
 
-                vim.schedule(function() _apply_highlights(window) end)
-            end,
-        }
-    )
+            vim.schedule(function()
+                _apply_highlights(window)
+            end)
+        end,
+    })
 
-    vim.api.nvim_create_autocmd(
-        "SessionWritePost",
-        { group = group, callback = _write_sessionx_file }
-    )
-
+    vim.api.nvim_create_autocmd("SessionWritePost", { group = group, callback = _write_sessionx_file })
 end
 
 --- Add command(s) for interacting with the terminals.
@@ -452,7 +427,7 @@ function M.setup_commands()
     vim.api.nvim_create_user_command(
         "ToggleTerminal",
         _toggle_terminal,
-        {desc="Open / Close a terminal at the bottom of the tab", nargs=0}
+        { desc = "Open / Close a terminal at the bottom of the tab", nargs = 0 }
     )
 end
 

@@ -1,16 +1,14 @@
-require("neogen").setup(
-    {
-        languages = {
-            python = {
-                template = {
-                    annotation_convention = "google_docstrings"
-                }
+require("neogen").setup({
+    languages = {
+        python = {
+            template = {
+                annotation_convention = "google_docstrings",
             },
         },
-        placeholders_hl = "String",
-        snippet_engine = "luasnip",
-    }
-)
+    },
+    placeholders_hl = "String",
+    snippet_engine = "luasnip",
+})
 
 -- TODO: Not sure how useful Neogen is, in practice. Seems to break too easily.
 vim.keymap.set(
@@ -27,8 +25,7 @@ vim.keymap.set(
         local current_column = result[3]
         local first_non_empty_column = vim.fn.match(vim.fn.getline("."), "\\S")
 
-        if first_non_empty_column == -1
-        then
+        if first_non_empty_column == -1 then
             first_non_empty_column = current_column
         end
 
@@ -42,17 +39,14 @@ vim.keymap.set(
         -- definition, which we **assume** is the first non-empty
         -- character in the current line).
         --
-        vim.api.nvim_win_set_cursor(
-            current_window,
-            {current_row, first_non_empty_column}
-        )
+        vim.api.nvim_win_set_cursor(current_window, { current_row, first_non_empty_column })
         -- Make the docstring
-        vim.cmd[[:Neogen]]
+        vim.cmd [[:Neogen]]
         -- Recompute folds because (neo)vim breaks folds super often without it
-        vim.cmd[[execute "normal zx"]]
+        vim.cmd [[execute "normal zx"]]
     end,
     {
-        desc="[i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.",
+        desc = "[i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.",
         silent = true,
     }
 )

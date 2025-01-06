@@ -21,7 +21,6 @@ local function _get_dot_path(text)
     return string.format("%s.%s", parent, name)
 end
 
-
 --- Parse a Python unittest's error output into your current clipboard.
 function M.copy_current_line_unittest_to_clipboard()
     local line = vim.fn.getline(".")

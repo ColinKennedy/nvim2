@@ -3,7 +3,9 @@ return {
     -- Enable auto-completion in Neovim
     {
         "iguanacucumber/magazine.nvim",
-        config = function() require("my_custom.plugins.nvim_cmp.configuration") end,
+        config = function()
+            require("my_custom.plugins.nvim_cmp.configuration")
+        end,
         dependencies = require("my_custom.plugins.nvim_cmp.dependencies"),
         name = "nvim-cmp", -- Otherwise highlighting gets messed up
         -- TODO: Possibly re-add tags if this issue ever addresses it.

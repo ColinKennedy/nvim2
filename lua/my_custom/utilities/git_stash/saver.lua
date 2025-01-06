@@ -8,7 +8,6 @@ local giter = require("my_custom.utilities.git_stash.giter")
 
 local M = {}
 
-
 --- Do a git stash, using `options`.
 ---
 ---@param options any
@@ -22,9 +21,7 @@ function M.push(options)
     local silent = options.silent or configuration.is_saver_silent()
 
     if path == nil then
-        vim.api.nvim_err_writeln(
-            "No git path was given and could not be automatically found. Cannot continue."
-        )
+        vim.api.nvim_err_writeln("No git path was given and could not be automatically found. Cannot continue.")
 
         return
     end
@@ -35,6 +32,5 @@ function M.push(options)
         print('Stashed "' .. path .. '"')
     end
 end
-
 
 return M

@@ -31,22 +31,18 @@ local M = {}
 local function _has_staticmethod(decorated_parent, buffer)
     local current = decorated_parent:named_child(0)
 
-    while current ~= nil
-    do
+    while current ~= nil do
         local current_type = current:type()
 
-        if current_type == "decorator"
-        then
+        if current_type == "decorator" then
             local text = vim.treesitter.get_node_text(current, buffer)
 
-            if text == _PYTHON_STATICMETHOD_RESERVED_NAME
-            then
+            if text == _PYTHON_STATICMETHOD_RESERVED_NAME then
                 return true
             end
         end
 
-        if current_type == "function_definition"
-        then
+        if current_type == "function_definition" then
             return false
         end
 
@@ -56,7 +52,6 @@ local function _has_staticmethod(decorated_parent, buffer)
     return false
 end
 
-
 --- Find the parent "decorated_definition" TSNode, from `node`.
 ---
 ---@param node TSNode The child node of some Python-decorator-enhanced function.
@@ -65,10 +60,8 @@ end
 local function _get_nearest_decorated_definition(node)
     local current = node
 
-    while current ~= nil
-    do
-        if current:type() == "decorated_definition"
-        then
+    while current ~= nil do
+        if current:type() == "decorated_definition" then
             return current
         end
 
@@ -83,7 +76,6 @@ local function _get_nearest_decorated_definition(node)
 
     return nil
 end
-
 
 --- Check if `node` Python object is a staticmethod.
 ---
@@ -101,14 +93,12 @@ end
 local function _is_static(function_node, buffer)
     local decorated_parent = _get_nearest_decorated_definition(function_node)
 
-    if decorated_parent == nil
-    then
+    if decorated_parent == nil then
         return false
     end
 
     return _has_staticmethod(decorated_parent, buffer)
 end
-
 
 --- Parse parameter information from `node`.
 ---
@@ -161,8 +151,7 @@ local function _get_method_parameters(node, buffer)
         always_keyword = always_keyword or false
         local text = vim.treesitter.get_node_text(node_, buffer)
 
-        if always_keyword or keywords_required
-        then
+        if always_keyword or keywords_required then
             output_index = output_index + 1
             parameters[output_index] = luasnip.t(text .. "=")
         end
@@ -174,30 +163,24 @@ local function _get_method_parameters(node, buffer)
         parameters[output_index] = luasnip.t(", ")
     end
 
-    while current ~= nil
-    do
+    while current ~= nil do
         local current_type = current:type()
 
-        if current_type == "identifier"
-        then
+        if current_type == "identifier" then
             -- A regular parameter name should be positional
             -- unless keywords are needed / wanted.
             --
             add_indexed_line(current)
-        elseif current_type == "default_parameter" or current_type == "typed_default_parameter"
-        then
+        elseif current_type == "default_parameter" or current_type == "typed_default_parameter" then
             local identifier_node = current:field("name")[1]
             add_indexed_line(identifier_node, _PREFER_KEYWORDS)
-        elseif current_type == "list_splat_pattern" or current_type == "dictionary_splat_pattern"
-        then
+        elseif current_type == "list_splat_pattern" or current_type == "dictionary_splat_pattern" then
             add_indexed_line(current)
-        elseif current_type == "typed_parameter"
-        then
+        elseif current_type == "typed_parameter" then
             local identifier_node = current:named_child(0)
 
             add_indexed_line(identifier_node)
-        elseif current_type == "keyword_separator"
-        then
+        elseif current_type == "keyword_separator" then
             -- e.g. the `*` in `foo(foo, *, bar=8,
             -- thing=None)`. Every parameter after this point
             -- MUST be keyword-only.
@@ -209,7 +192,7 @@ local function _get_method_parameters(node, buffer)
     end
 
     local parameters_size = #parameters
-    table.remove(parameters, parameters_size)  -- Remove the last, trailing ", " node
+    table.remove(parameters, parameters_size) -- Remove the last, trailing ", " node
 
     local output = {}
 
@@ -219,7 +202,6 @@ local function _get_method_parameters(node, buffer)
     return output
 end
 
-
 --- Find a parent "class_definition" nvim-treesitter node, starting from `node` child.
 ---
 ---@param node TSNode A child node of some "class_definition" object.
@@ -228,10 +210,8 @@ end
 local function _get_nearest_class(node)
     local current = node
 
-    while current ~= nil
-    do
-        if current:type() == "class_definition"
-        then
+    while current ~= nil do
+        if current:type() == "class_definition" then
             return current
         end
 
@@ -247,7 +227,6 @@ local function _get_nearest_class(node)
     return nil
 end
 
-
 --- Find the top-most function that is still inside of a Python class.
 ---
 --- If found, that function is the target we'd need for a ``super()`` snippet.
@@ -262,18 +241,15 @@ end
 local function _get_nearest_function(node)
     local current = node
 
-    while current ~= nil
-    do
+    while current ~= nil do
         local recent_function = nil
         local name = current:type()
 
-        if name == "function_definition"
-        then
+        if name == "function_definition" then
             recent_function = current
         end
 
-        if name == "class_definition"
-        then
+        if name == "class_definition" then
             return recent_function
         end
 
@@ -288,7 +264,6 @@ local function _get_nearest_function(node)
 
     return nil
 end
-
 
 --- Get a "Python 2-style" super block of text.
 ---
@@ -314,10 +289,7 @@ local function _get_super_contents(function_node, self_or_cls, buffer)
 
     if not class_top_node then
         local text = vim.treesitter.get_node_text(function_node, buffer)
-        vim.notify(
-            string.format('Function node "%s" is not in a class.', text),
-            vim.log.levels.WARN
-        )
+        vim.notify(string.format('Function node "%s" is not in a class.', text), vim.log.levels.WARN)
 
         return ""
     end
@@ -327,7 +299,6 @@ local function _get_super_contents(function_node, self_or_cls, buffer)
 
     return class_name .. ", " .. vim.treesitter.get_node_text(self_or_cls, buffer)
 end
-
 
 --- Get snippet information for a "super()" command that will be expanded later.
 ---
@@ -345,13 +316,11 @@ end
 local function _get_super_text(node, buffer)
     local function_node = _get_nearest_function(node)
 
-    if function_node == nil
-    then
+    if function_node == nil then
         return nil
     end
 
-    if _is_static(function_node, buffer)
-    then
+    if _is_static(function_node, buffer) then
         return nil
     end
 
@@ -360,19 +329,17 @@ local function _get_super_text(node, buffer)
 
     local super_contents = ""
 
-    if not _PYTHON_3_STYLE
-    then
+    if not _PYTHON_3_STYLE then
         super_contents = _get_super_contents(function_node, self_or_cls, buffer)
     end
 
     local method_name = vim.treesitter.get_node_text(function_node:field("name")[1], buffer)
 
     local output = {
-        luasnip.t("super(" .. super_contents .. ")." .. method_name .. "(")
+        luasnip.t("super(" .. super_contents .. ")." .. method_name .. "("),
     }
 
-    for _, value in pairs(data.parameters)
-    do
+    for _, value in pairs(data.parameters) do
         table.insert(output, value)
     end
 
@@ -386,7 +353,7 @@ end
 ---@return (luasnip.i | luasnip.t)[] # All of the snippet pieces to expand, later.
 ---
 function M.get_current_function_super_text()
-    local buffer = 0  -- The current buffer
+    local buffer = 0 -- The current buffer
     local result = vim.fn.getpos(".")
 
     -- Vim returns rows as "1-or-more". The treesitter API expects "0-or-more".
@@ -395,21 +362,20 @@ function M.get_current_function_super_text()
     local row = result[2] - 1
     local column = result[3]
 
-    local node = vim.treesitter.get_node({bufnr=buffer, pos={row, column}})
+    local node = vim.treesitter.get_node({ bufnr = buffer, pos = { row, column } })
 
     if node then
         local output = _get_super_text(node, buffer)
 
-        if output
-        then
+        if output then
             return output
         end
     end
 
     -- Check the line above for a function definition to fill out the super text
     row = row - 1
-    local first_non_empty_column = 10  -- TODO: Make this real
-    node = vim.treesitter.get_node({bufnr=buffer, pos={row, first_non_empty_column}})
+    local first_non_empty_column = 10 -- TODO: Make this real
+    node = vim.treesitter.get_node({ bufnr = buffer, pos = { row, first_non_empty_column } })
 
     if not node then
         vim.notify(
@@ -422,18 +388,13 @@ function M.get_current_function_super_text()
 
     local output = _get_super_text(node, buffer)
 
-    if output
-    then
+    if output then
         return output
     end
 
-    vim.notify(
-        "super() was called outside of a {instance,class}method. Cannot continue",
-        vim.log.levels.ERROR
-    )
+    vim.notify("super() was called outside of a {instance,class}method. Cannot continue", vim.log.levels.ERROR)
 
     return {}
 end
-
 
 return M

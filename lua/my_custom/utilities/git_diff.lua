@@ -5,7 +5,6 @@
 --- @source https://github.com/git/git/tree/master/contrib/git-jump
 ---
 
-
 --- @class _DiffDetails The line or row (line number) details that were found.
 --- @field path string An absolute or relative path to a file or directory on-disk.
 --- @field row integer A 1-or-more number indicating the line of some changed text.
@@ -17,7 +16,6 @@
 
 local M = {}
 
-
 --- Check if `text` is an added / removed `git diff` line.
 ---
 --- @param text string Some raw `git diff` line to check.
@@ -27,7 +25,6 @@ local function _is_changed(text)
     return string.match(text, "^[-%+].*") ~= nil
 end
 
-
 --- Check if `text` has only whitespace.
 ---
 --- @param text string Some text which might contain just whitespace.
@@ -36,7 +33,6 @@ end
 local function _is_empty(text)
     return string.match(text, "^%s*$") ~= nil
 end
-
 
 --- Check if `text` is not actually a `git diff` line but a surrounding context line.
 ---
@@ -49,7 +45,6 @@ end
 local function _is_not_part_of_the_diff(text)
     return string.match(text, "^%s") ~= nil
 end
-
 
 --- Find a `git diff`-related file from `text`.
 ---
@@ -65,14 +60,12 @@ end
 local function _get_row(text)
     local result = string.match(text, "^@@.+%+(%d+).*@@")
 
-    if result == nil
-    then
+    if result == nil then
         return nil
     end
 
     return tonumber(result)
 end
-
 
 --- Find a `git diff`-related file from `text`.
 ---
@@ -91,7 +84,6 @@ local function _get_path(text)
     return string.match(text, "^%+%+%+ (.+)")
 end
 
-
 --- Parse `line` for any `git diff` related details.
 ---
 --- @param line string A raw `git diff` line to check for data.
@@ -100,21 +92,18 @@ end
 local function _get_details(line)
     local row = _get_row(line)
 
-    if row ~= nil
-    then
-        return {row=row}
+    if row ~= nil then
+        return { row = row }
     end
 
     local path = _get_path(line)
 
-    if path ~= nil
-    then
-        return {path=path}
+    if path ~= nil then
+        return { path = path }
     end
 
     return {}
 end
-
 
 --- Strip all `git diff` related strings from `text.
 ---
@@ -124,7 +113,6 @@ end
 local function _get_source_line(text)
     return string.match(text, ".(.*)")
 end
-
 
 --- Get the first line from `lines` that has text. Starting at `starting_index`.
 ---
@@ -150,19 +138,16 @@ end
 local function _get_first_non_empty_source_line(lines, starting_index)
     local max = #lines
 
-    for index=starting_index, max
-    do
+    for index = starting_index, max do
         local line = _get_source_line(lines[index])
 
-        if not _is_empty(line)
-        then
+        if not _is_empty(line) then
             return line
         end
     end
 
     return nil
 end
-
 
 --- Run `git diff` from `directory` and gather its results for a quickfix list.
 ---
@@ -178,27 +163,21 @@ function M.get_git_diff(directory)
 
     local lines = vim.fn.systemlist(command, directory)
 
-    for index, line in ipairs(lines)
-    do
+    for index, line in ipairs(lines) do
         local details = _get_details(line)
 
-        if details.path ~= nil
-        then
+        if details.path ~= nil then
             path = details.path
-        elseif details.row ~= nil
-        then
+        elseif details.row ~= nil then
             row = details.row
         end
 
-        if path ~= nil and row ~= nil
-        then
-            if _is_not_part_of_the_diff(line)
-            then
+        if path ~= nil and row ~= nil then
+            if _is_not_part_of_the_diff(line) then
                 row = row + 1
-            elseif _is_changed(line)
-            then
+            elseif _is_changed(line) then
                 local source = _get_first_non_empty_source_line(lines, index) or ""
-                table.insert(output, {filename=path, lnum=row, text=source})
+                table.insert(output, { filename = path, lnum = row, text = source })
 
                 -- Reset the row so that only one entry is found per "git hunk"
                 row = nil
@@ -209,7 +188,6 @@ function M.get_git_diff(directory)
     return output
 end
 
-
 --- Run `git diff` from `directory` and add set the quickfix list with the results.
 ---
 --- @param directory string An absolute or relative path to some git repository.
@@ -217,14 +195,12 @@ end
 function M.load_git_diff(directory)
     local entries = M.get_git_diff(directory)
 
-    if not vim.tbl_isempty(entries)
-    then
+    if not vim.tbl_isempty(entries) then
         vim.fn.setqflist(entries)
-        vim.cmd[[copen]]
+        vim.cmd [[copen]]
     else
         vim.api.nvim_err_writeln('Directory "' .. directory .. '" as no git diff.')
     end
 end
-
 
 return M

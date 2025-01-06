@@ -16,21 +16,19 @@ local text = luasnip.t
 return {
     snippet(
         {
-            docstring="A docstring auto-fill for a common Qt parameter",
-            trig="widgetparent",
+            docstring = "A docstring auto-fill for a common Qt parameter",
+            trig = "widgetparent",
         },
-        text(
-            {
-                "parent (Qt.QtCore.QObject, optional):",
-                "    An object which, if provided, holds a reference to this instance."
-            }
-        ),
+        text({
+            "parent (Qt.QtCore.QObject, optional):",
+            "    An object which, if provided, holds a reference to this instance.",
+        }),
         { show_condition = snippet_helper.in_docstring }
     ),
     snippet(
         {
-            docstring="Enable tool-tips for QMenus.",
-            trig="enable_menu_tooltips",
+            docstring = "Enable tool-tips for QMenus.",
+            trig = "enable_menu_tooltips",
         },
         format(
             -- luacheck: ignore 631
@@ -48,5 +46,5 @@ return {
             }
         ),
         { show_condition = is_line_beginning }
-    )
+    ),
 }

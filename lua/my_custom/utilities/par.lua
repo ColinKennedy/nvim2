@@ -9,7 +9,6 @@ local _COMMAND_NAME = "par"
 
 local M = {}
 
-
 --- Create a command-line call to copy `source` to `destination`.
 ---
 ---@param source string The absolute path to some file on-disk to copy.
@@ -17,14 +16,12 @@ local M = {}
 ---@return string[] # The command to run via the command-line
 ---
 local _get_copy_command = function(source, destination)
-    if vim.fn.has("win32") == 1
-    then
-        return {"Xcopy", source, destination}
+    if vim.fn.has("win32") == 1 then
+        return { "Xcopy", source, destination }
     end
 
-    return {"cp", source, destination}
+    return { "cp", source, destination }
 end
-
 
 --- Get the commands needed in order to compile `par` from scratch.
 ---
@@ -38,17 +35,13 @@ local _get_par_compile_commands = function(source, bin)
     ---@type string[][]
     local output = {}
 
-    if vim.fn.filereadable(vim.fs.joinpath(source, "master.tar.gz")) == 0
-    then
-        table.insert(
-            output,
-            {"wget", "https://github.com/sergi/par/archive/refs/heads/master.tar.gz"}
-        )
+    if vim.fn.filereadable(vim.fs.joinpath(source, "master.tar.gz")) == 0 then
+        table.insert(output, { "wget", "https://github.com/sergi/par/archive/refs/heads/master.tar.gz" })
     end
 
     local commands = {
-        {"tar", "-xzvf", "master.tar.gz"},  -- This creates `extraction_directory`
-        {"make", "-C", extraction_directory, "-f", "protoMakefile"},
+        { "tar", "-xzvf", "master.tar.gz" }, -- This creates `extraction_directory`
+        { "make", "-C", extraction_directory, "-f", "protoMakefile" },
     }
 
     -- TODO: Make this code simpler. Just dispatch separate jobs for tar / make
@@ -62,19 +55,16 @@ local _get_par_compile_commands = function(source, bin)
         )
     )
 
-    if vim.fn.isdirectory(bin) == 0
-    then
-        vim.fn.mkdir(bin, "p")  -- Recursively create directories
+    if vim.fn.isdirectory(bin) == 0 then
+        vim.fn.mkdir(bin, "p") -- Recursively create directories
     end
 
-    for _, command in ipairs(commands)
-    do
+    for _, command in ipairs(commands) do
         table.insert(output, command)
     end
 
     return output
 end
-
 
 --- Add `path` to the `$PATH` environment variable.
 ---
@@ -97,8 +87,7 @@ end
 function M.load_or_install()
     local executable = vim.fn.executable("par") == 1
 
-    if executable
-    then
+    if executable then
         -- If `par` is installed, add it here
         _enable_par()
 
@@ -107,8 +96,7 @@ function M.load_or_install()
 
     local bin = vim.fs.joinpath(vim.g.vim_home, "bin", vim.uv.os_uname().sysname)
 
-    if vim.fn.filereadable(vim.fs.joinpath(bin, _COMMAND_NAME)) == 1
-    then
+    if vim.fn.filereadable(vim.fs.joinpath(bin, _COMMAND_NAME)) == 1 then
         -- If `par` exists on-disk, add it to (Neo)vim
         _prepend_to_path(bin)
         _enable_par()
@@ -118,30 +106,25 @@ function M.load_or_install()
 
     local source = vim.fs.joinpath(vim.g.vim_home, "sources", "par")
 
-    if vim.fn.isdirectory(source) == 0
-    then
-        vim.fn.mkdir(source, "p")  -- Recursively create directories
+    if vim.fn.isdirectory(source) == 0 then
+        vim.fn.mkdir(source, "p") -- Recursively create directories
     end
 
     local commands = _get_par_compile_commands(source, bin)
 
-    for _, command in ipairs(commands)
-    do
+    for _, command in ipairs(commands) do
         ---@type string[]
         local stderr = {}
 
-        if not shell.run_command(
-            command,
-            {
-                cwd=source,
-                on_stderr=function(_, data, _)
-                    for line in ipairs(data)
-                    do
+        if
+            not shell.run_command(command, {
+                cwd = source,
+                on_stderr = function(_, data, _)
+                    for line in ipairs(data) do
                         table.insert(stderr, line)
                     end
                 end,
-            }
-        )
+            })
         then
             vim.api.nvim_err_writeln("Cannot install par.")
 
@@ -149,14 +132,12 @@ function M.load_or_install()
         end
     end
 
-    if vim.fn.isdirectory(bin) == 0
-    then
-        vim.fn.mkdir(bin, "p")  -- Recursively create directories
+    if vim.fn.isdirectory(bin) == 0 then
+        vim.fn.mkdir(bin, "p") -- Recursively create directories
     end
 
     _prepend_to_path(bin)
     _enable_par()
 end
-
 
 return M

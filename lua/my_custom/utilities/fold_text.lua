@@ -15,12 +15,10 @@ local function _get_indent(node)
 
     local current = node:parent()
 
-    while current ~= nil
-    do
+    while current ~= nil do
         local start_current_row, start_current_column, _, _ = current:range()
 
-        if start_current_row ~= start_row
-        then
+        if start_current_row ~= start_row then
             break
         end
 
@@ -45,7 +43,7 @@ function M.get_summary(start_line, end_line)
     local buffer = 0
     local column = 0
 
-    local node = vim.treesitter.get_node({bufnr=buffer, pos={start_line, column}})
+    local node = vim.treesitter.get_node({ bufnr = buffer, pos = { start_line, column } })
 
     if not node then
         return ""
@@ -57,8 +55,7 @@ function M.get_summary(start_line, end_line)
     local summary_line = left_stripped
 
     -- luacheck: ignore 512
-    for line in left_stripped:gmatch("([^\n]*)\n?")
-    do
+    for line in left_stripped:gmatch("([^\n]*)\n?") do
         summary_line = line
 
         break

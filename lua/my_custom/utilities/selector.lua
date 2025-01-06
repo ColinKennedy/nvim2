@@ -10,18 +10,18 @@ local M = {}
 
 ---@return _CursorRange? # Get the start/end lines of a visual selection, if in visual mode.
 function M.get_current_mode_visual_lines()
-    if not vim.tbl_contains({
-        "v",
-        "vs",
-        "V",
-        "Vs",
-        "CTRL-V",
-        "CTRL-Vs",
-        "s",
-        "S",
-        "CTRL-S",
-    }, vim.fn.mode()
-    )
+    if
+        not vim.tbl_contains({
+            "v",
+            "vs",
+            "V",
+            "Vs",
+            "CTRL-V",
+            "CTRL-Vs",
+            "s",
+            "S",
+            "CTRL-S",
+        }, vim.fn.mode())
     then
         return nil
     end
@@ -34,12 +34,11 @@ function M.get_visual_lines()
     local _, start_line, _, _ = unpack(vim.fn.getpos("v"))
     local _, end_line, _, _ = unpack(vim.fn.getpos("."))
 
-    if start_line > end_line
-    then
+    if start_line > end_line then
         start_line, end_line = end_line, start_line
     end
 
-    return {start_line, end_line}
+    return { start_line, end_line }
 end
 
 return M

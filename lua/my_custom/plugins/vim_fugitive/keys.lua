@@ -2,14 +2,14 @@ return {
     {
         "<leader>gac",
         "<cmd>Git add %<CR>",
-        desc="[g]it [a]dd [c]urrent file.",
+        desc = "[g]it [a]dd [c]urrent file.",
     },
     {
         "<leader>gap",
         function()
             local git_helper = require("my_custom.utilities.git_helper")
 
-            vim.cmd[[Git add -p]]
+            vim.cmd [[Git add -p]]
 
             -- vim-fugitive always displays paths relative to the root of the
             -- git repository. But our `getcwd()` may be a subfolder or
@@ -45,66 +45,66 @@ return {
         --     --     vim.api.nvim_feedkeys("a", mode, false)
         --     -- end)
         -- end,
-        desc="[g]it [a]dd -[p] interactive command.",
+        desc = "[g]it [a]dd -[p] interactive command.",
     },
     {
         "<leader>ga%",
         "<cmd>Git add %<CR>",
-        desc="[g]it [a]dd %-[c]urrent file.",  -- This is the same as <leader>gac
+        desc = "[g]it [a]dd %-[c]urrent file.", -- This is the same as <leader>gac
     },
     {
         "<leader>gcb",
         ":Git checkout ",
-        desc="[g]it [c]heckout [b]ranch.",
+        desc = "[g]it [c]heckout [b]ranch.",
     },
     {
         "<leader>gcm",
         ':Git commit -m ""<Left>',
-        desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
+        desc = "[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
     },
     {
         "<leader>gcM",
-        '<cmd>Git commit --template ~/.gitcommit_template.txt<CR>',
-        desc="[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
+        "<cmd>Git commit --template ~/.gitcommit_template.txt<CR>",
+        desc = "[g]it [c]ommit [m]essage (WIP, you still have to press Enter).",
     },
     {
         "<leader>gcop",
-        '<cmd>Git checkout -p<CR>',
-        desc="[g]it [c]heckout --[p]artial.",
+        "<cmd>Git checkout -p<CR>",
+        desc = "[g]it [c]heckout --[p]artial.",
     },
     {
         "<leader>gdc",
         "<cmd>Git diff --cached<CR>",
-        desc="[g]it [d]iff --[c]ached.",
+        desc = "[g]it [d]iff --[c]ached.",
     },
     {
         "<leader>gdi",
         ":Git diff ",
-        desc="[g]it [d][i] (WIP).",
+        desc = "[g]it [d][i] (WIP).",
     },
     {
         "<leader>gph",
         "<cmd>Git push<CR>",
-        desc="[g]it [p]us[h].",
+        desc = "[g]it [p]us[h].",
     },
     {
         "<leader>gpl",
         "<cmd>Git pull<CR>",
-        desc="[g]it [p]ul[l].",
+        desc = "[g]it [p]ul[l].",
     },
     {
         "<leader>grc",
         "<cmd>Git reset %<CR>",
-        desc="[g]it [r]eset [c]urrent.",
+        desc = "[g]it [r]eset [c]urrent.",
     },
     {
         "<leader>gr%",
         "<cmd>Git reset %<CR>",
-        desc="[g]it [r]eset %-[c]urrent.",
+        desc = "[g]it [r]eset %-[c]urrent.",
     },
     {
         "<leader>gss",
         "<cmd>Git status --short --branch<CR>",
-        desc="[g]it [s]hort [s]tatus.",
+        desc = "[g]it [s]hort [s]tatus.",
     },
 }

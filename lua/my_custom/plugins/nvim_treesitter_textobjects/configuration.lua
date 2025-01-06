@@ -5,7 +5,6 @@ local installation_directory = vim.g.vim_home .. "/parsers/" .. vim.loop.os_unam
 --
 vim.opt.runtimepath:append(installation_directory)
 
-
 local value = "V"
 
 require("nvim-treesitter.configs").setup {
@@ -48,30 +47,29 @@ require("nvim-treesitter.configs").setup {
         --
         -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
         --
-        disable = {"cpp"},
+        disable = { "cpp" },
     },
-
 
     textobjects = {
         move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            ["]k"] = "@class.outer",
-            ["]m"] = "@function.outer",
-          },
-          goto_next_end = {
-            ["]K"] = "@class.outer",
-            ["]M"] = "@function.outer",
-          },
-          goto_previous_start = {
-            ["[k"] = "@class.outer",
-            ["[m"] = "@function.outer",
-          },
-          goto_previous_end = {
-            ["[K"] = "@class.outer",
-            ["[M"] = "@function.outer",
-          },
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+                ["]k"] = "@class.outer",
+                ["]m"] = "@function.outer",
+            },
+            goto_next_end = {
+                ["]K"] = "@class.outer",
+                ["]M"] = "@function.outer",
+            },
+            goto_previous_start = {
+                ["[k"] = "@class.outer",
+                ["[m"] = "@function.outer",
+            },
+            goto_previous_end = {
+                ["[K"] = "@class.outer",
+                ["[M"] = "@function.outer",
+            },
         },
 
         select = {

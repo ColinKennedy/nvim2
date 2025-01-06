@@ -1,2 +1,5 @@
 indent_type = "Spaces"
-no_call_parentheses = false
+# `call_parentheses = "Input"` means "use whatever I wrote, don't try to add or
+# remove caller parentheses ever"
+#
+call_parentheses = "Input"

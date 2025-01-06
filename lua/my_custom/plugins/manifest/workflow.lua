@@ -16,7 +16,7 @@ return {
     --
     {
         "FooSoft/vim-argwrap",
-        cmd = {"ArgWrap"},
+        cmd = { "ArgWrap" },
         config = function()
             vim.g.argwrap_tail_comma = 1
         end,
@@ -32,7 +32,7 @@ return {
         keys = {
             {
                 "<leader>sa",
-                desc = "Toggle (Join or split) [s]plit [a]rguments at the cursor."
+                desc = "Toggle (Join or split) [s]plit [a]rguments at the cursor.",
             },
         },
     },
@@ -50,8 +50,8 @@ return {
             vim.g.local_vimrc = {
                 cache_file = vim.fn.expand("~/.vim_local_rc_cache"),
                 hash_fun = "LVRHashOfFile",
-                implementations = {"sha512sum", "sha256sum", "sha1sum", "md5sum", "viml"},
-                names = {".vimrc",'.vimrc.lua'},
+                implementations = { "sha512sum", "sha256sum", "sha1sum", "md5sum", "viml" },
+                names = { ".vimrc", ".vimrc.lua" },
                 resource_on_cwd_change = true,
             }
         end,
@@ -60,7 +60,9 @@ return {
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
     {
         "mrjones2014/smart-splits.nvim",
-        config = function() require("my_custom.plugins.smart_splits.configuration") end,
+        config = function()
+            require("my_custom.plugins.smart_splits.configuration")
+        end,
         dependencies = { "kwkarlwang/bufresize.nvim" },
         keys = {
             { "<A-h>", desc = "Enlarge (left) the current window." },
@@ -97,16 +99,18 @@ return {
     {
         "ColinKennedy/neogen",
         branch = "combined_branch_003",
-        config = function() require("my_custom.plugins.neogen.configuration") end,
+        config = function()
+            require("my_custom.plugins.neogen.configuration")
+        end,
         cmd = { "Neogen" },
         dependencies = {
             "L3MON4D3/LuaSnip",
-            "nvim-treesitter/nvim-treesitter"
+            "nvim-treesitter/nvim-treesitter",
         },
         keys = {
-            { "<leader>id", desc = "[i]nsert [d]ocstring at the current cursor." }
+            { "<leader>id", desc = "[i]nsert [d]ocstring at the current cursor." },
         },
-        version = "*",  -- Only follow the latest stable release
+        version = "*", -- Only follow the latest stable release
     },
 
     {
@@ -118,7 +122,9 @@ return {
         -- NOTE: Don't lazy-load nvim-treesitter or docstring folds in Python will break
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function() require("my_custom.plugins.nvim_treesitter.configuration") end,
+        config = function()
+            require("my_custom.plugins.nvim_treesitter.configuration")
+        end,
         -- TODO: Re-add this once tree-sitter-disassembly is incorporated
         -- version = "0.*",
     },
@@ -165,9 +171,11 @@ return {
     -- Kickass class / function viewer
     {
         "stevearc/aerial.nvim",
-        config = function() require("my_custom.plugins.aerial.configuration") end,
+        config = function()
+            require("my_custom.plugins.aerial.configuration")
+        end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
-        cmd = { "AerialNavToggle", "AerialToggle"},
+        cmd = { "AerialNavToggle", "AerialToggle" },
         keys = require("my_custom.plugins.aerial.keys"),
         -- version = "stable",  -- Note: The latest is probably safe. The maintainer's good
     },
@@ -181,9 +189,9 @@ return {
         end,
         config = function()
             -- Force gemini to build its mappings
-            vim.cmd[[:doautoall create_gemini_mappings BufEnter]]
+            vim.cmd [[:doautoall create_gemini_mappings BufEnter]]
         end,
-        event = "VeryLazy",  -- Or maybe InsertEnter
+        event = "VeryLazy", -- Or maybe InsertEnter
     },
 
     -- Give vim some shell-like commands that it's missing
@@ -215,7 +223,7 @@ return {
             {
                 "<space>GF",
                 "<cmd>Telescope file_history log<CR>",
-                desc="Show [G]it [F]ile History.",
+                desc = "Show [G]it [F]ile History.",
             },
         },
     },
@@ -225,24 +233,23 @@ return {
         "tpope/vim-fugitive",
         cmd = { "G", "Gcd", "Gdiffsplit", "Git", "Gvdiffsplit" },
         config = function()
-            vim.api.nvim_create_autocmd(
-                "User",
-                {
-                    callback = function()
-                        local function _is_diff_related()
-                            local line = 1  -- Vim buffer line
-                            local text = vim.fn.getline(line)
+            vim.api.nvim_create_autocmd("User", {
+                callback = function()
+                    local function _is_diff_related()
+                        local line = 1 -- Vim buffer line
+                        local text = vim.fn.getline(line)
 
-                            return text:find("^diff ")
-                        end
+                        return text:find("^diff ")
+                    end
 
-                        if _is_diff_related() then
-                            vim.schedule(function() vim.treesitter.start(0, "diff") end)
-                        end
-                    end,
-                    pattern = "FugitivePager",
-                }
-            )
+                    if _is_diff_related() then
+                        vim.schedule(function()
+                            vim.treesitter.start(0, "diff")
+                        end)
+                    end
+                end,
+                pattern = "FugitivePager",
+            })
         end,
         keys = require("my_custom.plugins.vim_fugitive.keys"),
         version = "3.*",
@@ -275,14 +282,16 @@ return {
     -- A tree file/directory viewer plug-in
     {
         "nvim-tree/nvim-tree.lua",
-        config = function() require("my_custom.plugins.nvim_tree.configuration") end,
+        config = function()
+            require("my_custom.plugins.nvim_tree.configuration")
+        end,
         -- cmd = { "PwdNvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", "NvimTreeToggle" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
             {
                 "<space>W",
                 "<cmd>PwdNvimTreeToggle<CR>",
-                desc="Open NvimTree starting from the `:pwd`.",
+                desc = "Open NvimTree starting from the `:pwd`.",
             },
         },
     },
@@ -301,7 +310,9 @@ return {
     -- A pop-up that shows you available Neovim keymaps. Only pops up if you're slow
     {
         "folke/which-key.nvim",
-        config = function() require("my_custom.plugins.which_key.configuration") end,
+        config = function()
+            require("my_custom.plugins.which_key.configuration")
+        end,
         version = "v3.*",
     },
 
@@ -339,7 +350,6 @@ return {
     --     event = { "VeryLazy" },
     -- },
 
-
     -- A plugin that quickly makes and deletes Terminal buffers.
     {
         "ColinKennedy/toggleterminal.nvim",
@@ -350,9 +360,9 @@ return {
             {
                 "<Space>T",
                 "<cmd>ToggleTerminal<CR>",
-                desc="Open / Close a terminal at the bottom of the tab",
-                silent=true,
-            }
+                desc = "Open / Close a terminal at the bottom of the tab",
+                silent = true,
+            },
         },
     },
 
@@ -364,7 +374,9 @@ return {
         -- Reference: https://github.com/cathyprime/hydra.nvim/commits/main
         --
         "cathyprime/hydra.nvim",
-        config = function() require("my_custom.plugins.hydra.configuration") end,
+        config = function()
+            require("my_custom.plugins.hydra.configuration")
+        end,
         keys = {
             { "<Space>D", desc = "[D]ebugging mode" },
             { "<Space>GD", desc = "[G]it [D]iff mode (basically a sort of git add -p mode)" },
@@ -410,7 +422,7 @@ return {
         cmd = "Rg",
         keys = {
             { "<leader>rg", "<cmd>Rg<CR>", desc = "Search :pwd with [rg] - ripgrep." },
-        }
+        },
     },
 
     -- Cool Neovim mark displays and mappings. e.g. `dmx` deletes mark x. m[ / m] to move
@@ -433,8 +445,10 @@ return {
     -- Insert debug print statements easily.
     {
         "andrewferrier/debugprint.nvim",
-        cmd = {"DeleteDebugPrints", "ToggleCommentDebugPrints"},
-        config = function() require("debugprint").setup({}) end,
+        cmd = { "DeleteDebugPrints", "ToggleCommentDebugPrints" },
+        config = function()
+            require("debugprint").setup({})
+        end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         keys = {
             {
@@ -449,7 +463,7 @@ return {
                 end,
                 desc = "[i]nsert [V]ariable debug-print above the current line",
                 expr = true,
-                mode = {"n", "v"},
+                mode = { "n", "v" },
             },
             {
                 "<leader>iv",
@@ -463,7 +477,7 @@ return {
                 end,
                 desc = "[i]nsert [v]ariable debug-print below the current line",
                 expr = true,
-                mode = {"n", "v"},
+                mode = { "n", "v" },
             },
         },
         version = "3.*",
@@ -495,7 +509,9 @@ return {
     --
     {
         "monaqa/dial.nvim",
-        config = function() require("my_custom.plugins.dial.configuration") end,
+        config = function()
+            require("my_custom.plugins.dial.configuration")
+        end,
         keys = require("my_custom.plugins.dial.keys"),
         version = "0.*",
     },
@@ -503,7 +519,7 @@ return {
     -- Use :DiffviewOpen to resolve git merge conflicts
     {
         "sindrets/diffview.nvim",
-        cmd = {"DiffviewOpen"},
+        cmd = { "DiffviewOpen" },
     },
 
     -- Allow `gf` to work in unifided diff (.diff) files.
@@ -516,8 +532,8 @@ return {
                 "gf",
                 "<Plug>(gf-user-gf)",
                 desc = "[g]o-to [f]ile.",
-            }
-        }
+            },
+        },
     },
     {
         "kana/vim-gf-user",
@@ -528,7 +544,7 @@ return {
     {
         "stsewd/sphinx.nvim",
         ft = {
-            "python",  -- I have RST injected into Python files to include it here
+            "python", -- I have RST injected into Python files to include it here
             "rst",
         },
     },
@@ -571,27 +587,35 @@ return {
         },
         keys = {
             {
-                mode = {"n", "x"},
+                mode = { "n", "x" },
                 "<leader>rif",
-                function() require("refactoring").refactor("Inline Function") end,
+                function()
+                    require("refactoring").refactor("Inline Function")
+                end,
                 desc = "[r]efactor - [i]nline the [f]unction",
             },
             {
-                mode = {"x"},
+                mode = { "x" },
                 "<leader>rxf",
-                function() require("refactoring").refactor("Extract Function") end,
+                function()
+                    require("refactoring").refactor("Extract Function")
+                end,
                 desc = "[r]efactor - e[x]tract into a [f]unction",
             },
             {
-                mode = {"n", "x"},
+                mode = { "n", "x" },
                 "<leader>riv",
-                function() require("refactoring").refactor("Inline Variable") end,
+                function()
+                    require("refactoring").refactor("Inline Variable")
+                end,
                 desc = "[r]efactor - [i]nline the [v]ariable",
             },
             {
-                mode = {"n", "x"},
+                mode = { "n", "x" },
                 "<leader>rxv",
-                function() require("refactoring").refactor("Extract Variable") end,
+                function()
+                    require("refactoring").refactor("Extract Variable")
+                end,
                 desc = "[r]efactor - e[x]tract into a [v]ariable",
             },
         },
@@ -599,53 +623,36 @@ return {
 
     {
         "ColinKennedy/spellbound.nvim",
-        cmd = {"Spellbound"},
+        cmd = { "Spellbound" },
         config = function()
             local dictionary = "en-strict"
 
-            require("spellbound").setup{
+            require("spellbound").setup {
                 profiles = {
                     strict = {
                         dictionaries = {
                             name = "en-strict",
                             input_paths = function()
-                                local pattern = vim.fs.joinpath(
-                                    vim.g.vim_home,
-                                    "spell",
-                                    "parts",
-                                    "*"
-                                )
+                                local pattern = vim.fs.joinpath(vim.g.vim_home, "spell", "parts", "*")
 
                                 return vim.fn.glob(pattern, true, false)
                             end,
-                            output_path = vim.fs.joinpath(
-                                vim.g.vim_home,
-                                "spell",
-                                "en-strict.dic"
-                            ),
+                            output_path = vim.fs.joinpath(vim.g.vim_home, "spell", "en-strict.dic"),
                         },
                         spellfile = {
                             operation = "append",
                             text = function()
-                                return "file:" .. vim.fs.joinpath(
-                                    vim.g.vim_home,
-                                    "spell",
-                                    dictionary .. ".utf-8.add"
-                                )
+                                return "file:" .. vim.fs.joinpath(vim.g.vim_home, "spell", dictionary .. ".utf-8.add")
                             end,
                         },
                         spelllang = { operation = "replace", text = dictionary .. ",cjk" },
                         spellsuggest = {
                             operation = "replace",
                             text = function()
-                                return "file:" .. vim.fs.joinpath(
-                                    vim.g.vim_home,
-                                    "spell",
-                                    "strict_thesaurus.txt"
-                                )
+                                return "file:" .. vim.fs.joinpath(vim.g.vim_home, "spell", "strict_thesaurus.txt")
                             end,
-                        }
-                    }
+                        },
+                    },
                 },
             }
         end,
@@ -665,7 +672,7 @@ return {
                 "<cmd>Spellbound toggle-profile strict<CR>",
                 desc = "[t]oggle all [s]trict [s]pelling mistakes.",
             },
-        }
+        },
     },
 
     -- View / Switch-to previously saved Vim Session.vim files
@@ -675,17 +682,16 @@ return {
             require("telescope-session-viewer").setup()
             require("telescope").load_extension("session_viewer")
         end,
-        dependencies = { "nvim-telescope/telescope.nvim"},
-        event = {"SessionWritePost"},
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        event = { "SessionWritePost" },
         keys = {
             {
                 "<Space>SV",
                 "<cmd>Telescope session_viewer view<CR>",
                 desc = "Open the Vim [S]ession [V]iewer GUI.",
-            }
+            },
         },
     },
-
 
     -- Auto-backup your code to-disk whenever you save a file. And view its contents.
     {
@@ -698,8 +704,8 @@ return {
                     extras = {
                         message = function(data)
                             return require("timeline.api.git").get_default_file_save_message(data)
-                        end
-                    }
+                        end,
+                    },
                 },
             },
         },

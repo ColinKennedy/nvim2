@@ -5,7 +5,6 @@
 
 local M = {}
 
-
 --- Find the top-level git repository from `directory`.
 ---
 --- @param directory string?
@@ -17,13 +16,10 @@ local M = {}
 function M.get_git_root(directory)
     directory = directory or vim.fn.getcwd()
 
-    local lines = vim.fn.systemlist(
-        string.format("git -C %s rev-parse --show-toplevel", directory)
-    )
+    local lines = vim.fn.systemlist(string.format("git -C %s rev-parse --show-toplevel", directory))
     local result = lines[1]
 
-    if vim.fn.isdirectory(result) == 0
-    then
+    if vim.fn.isdirectory(result) == 0 then
         return nil
     end
 

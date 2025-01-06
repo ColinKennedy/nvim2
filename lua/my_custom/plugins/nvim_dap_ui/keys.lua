@@ -2,16 +2,16 @@ return {
     {
         "<F5>",
         function()
-            require("dapui").open()  -- Requires nvim-dap-ui
+            require("dapui").open() -- Requires nvim-dap-ui
 
-            vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
+            vim.cmd [[DapContinue]] -- Important: This will lazy-load nvim-dap
         end,
-        desc="Start a debugging session.",
+        desc = "Start a debugging session.",
     },
     {
         "<leader>dd",
         function()
-            require("dapui").open()  -- Requires nvim-dap-ui
+            require("dapui").open() -- Requires nvim-dap-ui
 
             -- IMPORTANT: This does two things at once
             --
@@ -20,8 +20,10 @@ return {
             --    need that GUI to spawn after dapui.open() is 100% finished.
             --    vim.schedule will make sure of this.
             --
-            vim.schedule(function() vim.cmd[[DapContinue]] end)
+            vim.schedule(function()
+                vim.cmd [[DapContinue]]
+            end)
         end,
-        desc="[d]o [d]ebugger. Start a debugging session.",
+        desc = "[d]o [d]ebugger. Start a debugging session.",
     },
 }

@@ -1,6 +1,6 @@
 local context = require("treesitter-context")
 
-context.setup{
+context.setup {
     on_attach = function(bufnr)
         local type_ = vim.bo[bufnr].filetype
 
@@ -9,4 +9,4 @@ context.setup{
 }
 
 -- Make the context background black
-vim.api.nvim_set_hl(0, "TreesitterContext", {ctermbg=16, bg="#101010"})
+vim.api.nvim_set_hl(0, "TreesitterContext", { ctermbg = 16, bg = "#101010" })

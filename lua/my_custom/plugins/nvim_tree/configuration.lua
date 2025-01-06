@@ -13,8 +13,4 @@ end
 -- Empty setup using defaults
 require("nvim-tree").setup()
 
-vim.api.nvim_create_user_command(
-    "PwdNvimTreeToggle",
-    toggle_current_directory,
-    {nargs=0}
-)
+vim.api.nvim_create_user_command("PwdNvimTreeToggle", toggle_current_directory, { nargs = 0 })

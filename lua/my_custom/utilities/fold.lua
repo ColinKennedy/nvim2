@@ -24,14 +24,7 @@ local function get_all_docstring_ranges(buffer)
     local parser = vim.treesitter.get_parser(buffer, file_type)
 
     if not parser then
-        vim.notify(
-            string.format(
-                'Buffer / File type "%s / %s" has no treesitter parser.',
-                buffer,
-                file_type
-            ),
-            0
-        )
+        vim.notify(string.format('Buffer / File type "%s / %s" has no treesitter parser.', buffer, file_type), 0)
 
         return {}
     end
@@ -58,35 +51,29 @@ local function get_all_docstring_ranges(buffer)
     ---@type {start_row: number, end_row: number}[]
     local output = {}
 
-    for _, captures, _ in query:iter_matches(root, buffer)
-    do
+    for _, captures, _ in query:iter_matches(root, buffer) do
         for _, node in ipairs(captures[1]) do
             local start_row, _, end_row, _ = node:range()
-            table.insert(output, {start_row=start_row, end_row=end_row})
+            table.insert(output, { start_row = start_row, end_row = end_row })
         end
     end
 
     return output
 end
 
-
 --- Declare a special cached function that can track the computed docstring start / end.
-local get_cached_buffer_folds = ts_utils.memoize_by_buf_tick(
-    function(buffer)
-        ---@type table<number, number>
-        local lines = {}
+local get_cached_buffer_folds = ts_utils.memoize_by_buf_tick(function(buffer)
+    ---@type table<number, number>
+    local lines = {}
 
-        for _, range in pairs(get_all_docstring_ranges(buffer))
-        do
-            for line=range["start_row"],range["end_row"] do
-                lines[line] = 1
-            end
+    for _, range in pairs(get_all_docstring_ranges(buffer)) do
+        for line = range["start_row"], range["end_row"] do
+            lines[line] = 1
         end
-
-        return lines
     end
-)
 
+    return lines
+end)
 
 --- Check if ``line_number`` is meant to have a fold or not.
 ---
@@ -117,13 +104,12 @@ end
 ---
 function M.fold_buffer_manually(buffer)
     -- Clear folds so they can be recomputed. Allow manual folding for the code to come.
-    vim.cmd[[setlocal foldmethod=manual]]
-    vim.cmd[[normal zE]]
+    vim.cmd [[setlocal foldmethod=manual]]
+    vim.cmd [[normal zE]]
 
     buffer = buffer or vim.api.nvim_get_current_buf()
 
-    for _, range in pairs(get_all_docstring_ranges(buffer))
-    do
+    for _, range in pairs(get_all_docstring_ranges(buffer)) do
         vim.cmd((range["start_row"] + 1) .. "," .. (range["end_row"] + 1) .. "fold")
     end
 end

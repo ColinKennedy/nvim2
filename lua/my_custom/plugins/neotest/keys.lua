@@ -17,20 +17,26 @@ return {
     {
         "<leader>rtc",
         "<cmd>NeotestRunCurrent<CR>",
-        function() require("neotest").run.run() end,
+        function()
+            require("neotest").run.run()
+        end,
         desc = "[r]un [t]est under [c]ursor in Neotest.",
     },
 
     {
         "<leader>tno",
         "<cmd>Neotest output<CR>",
-        function() require("neotest").run.run() end,
+        function()
+            require("neotest").run.run()
+        end,
         desc = "[t]oggle [n]eotest [o]utput floating window.",
     },
     {
         "<leader>tns",
         "<cmd>Neotest summary<CR>",
-        function() require("neotest").run.run() end,
+        function()
+            require("neotest").run.run()
+        end,
         desc = "[t]oggle [n]eotest [s]ummary floating window.",
     },
 }

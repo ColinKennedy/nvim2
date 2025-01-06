@@ -14,15 +14,12 @@ function M.print_lsp_capabilities()
     local buffer = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients { bufnr = buffer }
 
-    for _, client in pairs(clients)
-    do
-        if client.name ~= "null-ls"
-        then
+    for _, client in pairs(clients) do
+        if client.name ~= "null-ls" then
             ---@type string[]
             local capabilities = {}
 
-            for key, value in pairs(client.server_capabilities)
-            do
+            for key, value in pairs(client.server_capabilities) do
                 if value and key:find("Provider") then
                     local capability = key:gsub("Provider$", "")
                     table.insert(capabilities, "- " .. capability)
@@ -32,22 +29,17 @@ function M.print_lsp_capabilities()
             table.sort(capabilities) -- sorts alphabetically
             local message = "# " .. client.name .. "\n" .. table.concat(capabilities, "\n")
 
-            vim.notify(
-                message,
-                vim.log.levels.TRACE,
-                {
-                    on_open = function(win)
-                        local buffer = vim.api.nvim_win_get_buf(win)
-                        vim.bo[buffer].filetype = "markdown"
-                    end,
-                    timeout = 14000,
-                }
-            )
+            vim.notify(message, vim.log.levels.TRACE, {
+                on_open = function(win)
+                    local buffer = vim.api.nvim_win_get_buf(win)
+                    vim.bo[buffer].filetype = "markdown"
+                end,
+                timeout = 14000,
+            })
             vim.fn.setreg("+", "Capabilities = " .. vim.inspect(client.server_capabilities))
         end
     end
 end
-
 
 --- Returns a string with a list of attached LSP clients, including
 --- formatters and linters from null-ls, nvim-lint and formatter.nvim
@@ -146,11 +138,9 @@ function M.get_attached_clients()
     return language_servers
 end
 
-
 --- Show all Neovim clients that are currently connected to LSPs.
 function M.print_attached_clients()
     print(M.get_attached_clients())
 end
-
 
 return M

@@ -5,12 +5,10 @@
 
 local M = {}
 
-
 --- @return string? # Get the directory of the current buffer, if any.
 function M.get_current_buffer_directory()
-  return M.get_directory(vim.fn.expand("%:p"))
+    return M.get_directory(vim.fn.expand("%:p"))
 end
-
 
 --- Find the nearest directory from `path`.
 ---
@@ -18,24 +16,22 @@ end
 --- @return string? # The directory path, if any.
 ---
 function M.get_directory(path)
-  if vim.fn.isdirectory(path) then
-    return path or nil
-  end
+    if vim.fn.isdirectory(path) then
+        return path or nil
+    end
 
-  return vim.fn.fnamemodify(path, ":h") or nil
+    return vim.fn.fnamemodify(path, ":h") or nil
 end
-
 
 --- @return string? # Neovim's current directory (not related to buffers), if any.
 function M.get_pwd()
-  local directory = vim.fn.getcwd()
+    local directory = vim.fn.getcwd()
 
-  if vim.fn.isdirectory(directory) then
-    return directory
-  end
+    if vim.fn.isdirectory(directory) then
+        return directory
+    end
 
-  return nil
+    return nil
 end
-
 
 return M

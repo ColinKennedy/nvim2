@@ -3,11 +3,7 @@ local M = {}
 function M.add_bin_folder_to_path()
     local filer = require("my_custom.utilities.filer")
 
-    local install_root = vim.fs.joinpath(
-        vim.g.vim_home,
-        "mason_packages",
-        vim.loop.os_uname().sysname
-    )
+    local install_root = vim.fs.joinpath(vim.g.vim_home, "mason_packages", vim.loop.os_uname().sysname)
 
     local bin_directory = vim.fs.joinpath(install_root, "bin")
 
@@ -17,10 +13,8 @@ function M.add_bin_folder_to_path()
         current_path_variable = ""
     end
 
-    for _, path in current_path_variable:gmatch("[^:]+")
-    do
-        if bin_directory == path
-        then
+    for _, path in current_path_variable:gmatch("[^:]+") do
+        if bin_directory == path then
             -- The `bin_directory` already exists. It would be redundant to add
             -- it to $PATH twice so we just end this function early.
             --
@@ -28,12 +22,8 @@ function M.add_bin_folder_to_path()
         end
     end
 
-
     -- Add the "bin" folder to $PATH so other plug-ins can use it
-    vim.fn.setenv(
-        "PATH",
-        filer.join_os_paths({bin_directory, current_path_variable})
-    )
+    vim.fn.setenv("PATH", filer.join_os_paths({ bin_directory, current_path_variable }))
 end
 
 return M

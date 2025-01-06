@@ -16,7 +16,7 @@ return {
     -- Quickfix auto previews and other fun features
     {
         "kevinhwang91/nvim-bqf",
-        dependencies = {"junegunn/fzf", "nvim-treesitter/nvim-treesitter"},
+        dependencies = { "junegunn/fzf", "nvim-treesitter/nvim-treesitter" },
         ft = "qf",
         -- TODO: Add back in once there are new tags that include this patch
         --
@@ -29,15 +29,17 @@ return {
     {
         "ColinKennedy/vim-qf",
         branch = "custom_edits",
-        config = function() require("my_custom.plugins.vim_qf.configuration") end,
+        config = function()
+            require("my_custom.plugins.vim_qf.configuration")
+        end,
         ft = "qf",
         keys = {
             {
                 "<leader>tq",
                 "<Plug>(qf_qf_toggle_stay)",
-                desc="[t]oggle [q]uickfix window."
+                desc = "[t]oggle [q]uickfix window.",
             },
-        }
+        },
     },
 
     -- Allow the quickfix buffer to be directly editted. Finally!

@@ -7,16 +7,11 @@
 --
 -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#troubleshooting
 --
-if vim.fn.has("win32") == 1
-then
-    require('nvim-treesitter.install').compilers = { "clang" }
+if vim.fn.has("win32") == 1 then
+    require("nvim-treesitter.install").compilers = { "clang" }
 end
 
-local install_path = vim.fs.joinpath(
-    vim.g.vim_home,
-    "parsers",
-    vim.loop.os_uname().sysname
-)
+local install_path = vim.fs.joinpath(vim.g.vim_home, "parsers", vim.loop.os_uname().sysname)
 
 -- If you need to change the installation directory of the parsers (see
 -- "Advanced Setup" in the nvim-treesitter documentation).
@@ -65,6 +60,6 @@ require("nvim-treesitter.configs").setup {
         --
         -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
         --
-        disable = {"cpp", "python"},
+        disable = { "cpp", "python" },
     },
 }

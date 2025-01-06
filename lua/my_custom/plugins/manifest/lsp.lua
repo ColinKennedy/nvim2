@@ -6,7 +6,9 @@ return {
     -- The plug-in that adds LSPs of all languages to Neovim
     {
         "neovim/nvim-lspconfig",
-        config = function() require("my_custom.plugins.nvim_lspconfig.configuration") end,
+        config = function()
+            require("my_custom.plugins.nvim_lspconfig.configuration")
+        end,
         dependencies = { "williamboman/mason.nvim" },
         event = { "BufReadPre", "BufNewFile" },
     },
@@ -20,7 +22,9 @@ return {
     -- Neovim snippet engine (which also displays in nvim-cmp)
     {
         "L3MON4D3/LuaSnip",
-        config = function() require("my_custom.plugins.luasnip.configuration") end,
+        config = function()
+            require("my_custom.plugins.luasnip.configuration")
+        end,
         event = "InsertEnter",
         version = "2.*",
     },
@@ -72,9 +76,11 @@ return {
     -- Reference: https://github.com/williamboman/mason.nvim/discussions/1024
     {
         "williamboman/mason.nvim",
-        build = ":MasonUpdate",  -- :MasonUpdate updates registry contents
-        cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUpdate"},
-        config = function() require("my_custom.plugins.mason.configuration") end,
+        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate" },
+        config = function()
+            require("my_custom.plugins.mason.configuration")
+        end,
         version = "1.*",
     },
 
@@ -120,7 +126,9 @@ return {
     -- A visual progress indicator for slow LSPs. Very useful for C++ & USD
     {
         "j-hui/fidget.nvim",
-        config = function() require("my_custom.plugins.fidget.configuration") end,
+        config = function()
+            require("my_custom.plugins.fidget.configuration")
+        end,
         event = { "LspAttach" },
     },
 
@@ -139,7 +147,9 @@ return {
     -- A simple linter that integrates with LSPs automatically
     {
         "mfussenegger/nvim-lint",
-        config = function() require("my_custom.plugins.nvim_lint.configuration") end,
+        config = function()
+            require("my_custom.plugins.nvim_lint.configuration")
+        end,
         event = "VeryLazy",
     },
 }

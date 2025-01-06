@@ -3,33 +3,29 @@
 --- @module 'my_custom.utilities.git_stash.configuration'
 ---
 
-
 local filer = require("my_custom.utilities.git_stash.filer")
 
-
 local _CONFIGURATION = {
-  git = {
-    fallbacks = {
-      filer.get_pwd,
-      filer.get_current_buffer_directory,
+    git = {
+        fallbacks = {
+            filer.get_pwd,
+            filer.get_current_buffer_directory,
+        },
     },
-  },
-  saver = {
-    silent = false,
-  }
+    saver = {
+        silent = false,
+    },
 }
 
 local M = {}
-
 
 --- Check if saving a stash should be silent or print to Neovim's command-line.
 ---
 --- @return boolean # If `true`, allow printed messages.
 ---
 function M.is_saver_silent()
-  return _CONFIGURATION.saver.silent
+    return _CONFIGURATION.saver.silent
 end
-
 
 --- Find the path on-disk where the git repository should exist.
 ---
@@ -40,16 +36,15 @@ end
 --- @return string? # The found git repository path, if any.
 ---
 function M.get_default_repository_path()
-  for _, caller in ipairs(_CONFIGURATION.git.fallbacks or {}) do
-    local directory = caller()
+    for _, caller in ipairs(_CONFIGURATION.git.fallbacks or {}) do
+        local directory = caller()
 
-    if directory ~= nil then
-      return directory
+        if directory ~= nil then
+            return directory
+        end
     end
-  end
 
-  return nil
+    return nil
 end
-
 
 return M

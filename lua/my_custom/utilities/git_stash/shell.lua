@@ -16,37 +16,28 @@ local M = {}
 --- @return boolean # If success, return `true`.
 ---
 function M.run_command(command, options)
-  local job = vim.fn.jobstart(command, options)
-  local result = vim.fn.jobwait({job})[1]
+    local job = vim.fn.jobstart(command, options)
+    local result = vim.fn.jobwait({ job })[1]
 
-  if result == 0
-  then
+    if result == 0 then
+        return true
+    end
+
+    if result == -1 then
+        vim.api.nvim_err_writeln('The requested command "' .. command .. '" timed out.')
+
+        return false
+    elseif result == -2 then
+        vim.api.nvim_err_writeln('The requested command "' .. vim.inspect(command) .. '" was interrupted.')
+
+        return false
+    elseif result == -3 then
+        vim.api.nvim_err_writeln('Job ID is invalid "' .. tostring(job) .. '"')
+
+        return false
+    end
+
     return true
-  end
-
-  if result == -1
-  then
-    vim.api.nvim_err_writeln('The requested command "' .. command .. '" timed out.')
-
-    return false
-  elseif result == -2
-  then
-    vim.api.nvim_err_writeln(
-        'The requested command "'
-        .. vim.inspect(command)
-        .. '" was interrupted.'
-    )
-
-    return false
-  elseif result == -3
-  then
-    vim.api.nvim_err_writeln('Job ID is invalid "' .. tostring(job) .. '"')
-
-    return false
-  end
-
-  return true
 end
-
 
 return M

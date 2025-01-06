@@ -4,10 +4,9 @@
 ---
 
 local _suggest_a_color = function(highlight_group)
-    local data = vim.api.nvim_get_hl(0, {name=highlight_group})
+    local data = vim.api.nvim_get_hl(0, { name = highlight_group })
 
-    if data.fg
-    then
+    if data.fg then
         return data.fg
     end
 
@@ -17,8 +16,7 @@ end
 local get_best_hex = function(highlight_group)
     local color = _suggest_a_color(highlight_group)
 
-    if color
-    then
+    if color then
         return string.format("#%06x", color)
     end
 
@@ -38,7 +36,7 @@ require("nvim-web-devicons").set_icon {
         -- cterm_color = "65",
         name = "dapui_console",
     },
-    ["dap-repl"] = {  -- By default, it is shown as bright white
+    ["dap-repl"] = { -- By default, it is shown as bright white
         icon = "󱜽",
         -- cterm_color = "65",
         name = "dap_repl",

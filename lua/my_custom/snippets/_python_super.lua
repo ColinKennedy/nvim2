@@ -9,22 +9,15 @@ local dynamicNode = require("luasnip.nodes.dynamicNode").D
 local snippetNode = require("luasnip.nodes.snippet").SN
 
 return {
-    snippet(
-        {
-            trig="super",
-            docstring="super().foo() auto-generator.",
-        },
-        {
-            dynamicNode(
-                1,
-                function()
-                    local super_test = require("my_custom.utilities.super_test")  -- TODO: Move this, later
-                    local nodes = super_test.get_current_function_super_text()
+    snippet({
+        trig = "super",
+        docstring = "super().foo() auto-generator.",
+    }, {
+        dynamicNode(1, function()
+            local super_test = require("my_custom.utilities.super_test") -- TODO: Move this, later
+            local nodes = super_test.get_current_function_super_text()
 
-                    return snippetNode(nil, nodes)
-                end
-            )
-        },
-        { show_condition = is_source_beginning("super") }
-    )
+            return snippetNode(nil, nodes)
+        end),
+    }, { show_condition = is_source_beginning("super") }),
 }

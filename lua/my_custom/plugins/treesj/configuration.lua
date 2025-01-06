@@ -11,24 +11,22 @@ local options = {
     split = { last_separator = true },
 }
 
-require("treesj").setup(
-    {
-        max_join_length = 150,
-        use_default_keymaps = false,
-        langs = {
-            python = {
-                argument_list = lang_utils.set_preset_for_args(options),
-                assignment = { target_nodes = { "list", "set", "tuple", "dictionary" } },
-                call = { target_nodes = { "argument_list" } },
-                dictionary = lang_utils.set_preset_for_dict(options),
-                list = lang_utils.set_preset_for_list(options),
-                parameters = lang_utils.set_preset_for_args(options),
-                set = lang_utils.set_preset_for_list(options),
-                tuple = lang_utils.set_preset_for_list(options),
-            }
-        }
-    }
-)
+require("treesj").setup({
+    max_join_length = 150,
+    use_default_keymaps = false,
+    langs = {
+        python = {
+            argument_list = lang_utils.set_preset_for_args(options),
+            assignment = { target_nodes = { "list", "set", "tuple", "dictionary" } },
+            call = { target_nodes = { "argument_list" } },
+            dictionary = lang_utils.set_preset_for_dict(options),
+            list = lang_utils.set_preset_for_list(options),
+            parameters = lang_utils.set_preset_for_args(options),
+            set = lang_utils.set_preset_for_list(options),
+            tuple = lang_utils.set_preset_for_list(options),
+        },
+    },
+})
 
 -- A fallback configuration in case the language is unsupported.
 --
@@ -53,7 +51,7 @@ end
 -- Redefine the <leader>sa command depending on the filetype
 -- If the filetype isn't supported by "Wansmer/treesj", this should give you a fallback.
 --
-vim.api.nvim_create_autocmd({"FileType"}, {pattern="*", callback=callback})
+vim.api.nvim_create_autocmd({ "FileType" }, { pattern = "*", callback = callback })
 
 -- We need to call this for the first time, for the current file
 callback()
