@@ -10,17 +10,17 @@ function! VSetSearch()
   call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
   let @@ = temp
 endfunction
-]]
+]])
 
 vim.keymap.set(
     "v",
     "*",
     ":<C-u>call VSetSearch()<CR>/<CR>",
-    {desc="Search down, using the current visual selection."}
+    { desc = "Search down, using the current visual selection." }
 )
 vim.keymap.set(
     "v",
     "#",
     ":<C-u>call VSetSearch()<CR>?<CR>",
-    {desc="Search up, using the current visual selection."}
+    { desc = "Search up, using the current visual selection." }
 )
