@@ -43,8 +43,7 @@ return {
     snippet({
         docstring = "Add a TODO note",
         trig = "td",
-    }, format("# TODO: {}", { index(1, "") }), { show_condition = or_(is_source_beginning("td"), line_end) }
-),
+    }, format("# TODO: {}", { index(1, "") }), { show_condition = or_(is_source_beginning("td"), line_end) }),
 
     snippet({
         docstring = "Create a triple-quote docstring",

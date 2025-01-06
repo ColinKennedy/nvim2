@@ -354,145 +354,152 @@ local previous_diff_line_highlight = nil
 local previous_diff_signs = nil
 local _GIT_DIFF_TAB_NUMBER = nil
 
-Hydra(
-    {
-        name = "Git Interactive-Diff",
-        hint = git_diff_hint,
-        config = {
-            color = "pink",
-            hint = {
-                position = "top-right",
-                float_opts = { border = "rounded" },
-            },
-            invoke_on_body = true,
-            on_enter = function()
-                if vim.api.nvim_buf_get_name(0) ~= ""
-                then
-                    local row = vim.fn.line(".")
-                    local column = vim.fn.col(".")
+Hydra({
+    name = "Git Interactive-Diff",
+    hint = git_diff_hint,
+    config = {
+        color = "pink",
+        hint = {
+            position = "top-right",
+            float_opts = { border = "rounded" },
+        },
+        invoke_on_body = true,
+        on_enter = function()
+            if vim.api.nvim_buf_get_name(0) ~= "" then
+                local row = vim.fn.line(".")
+                local column = vim.fn.col(".")
 
-                    -- If the buffer is named, open a new tab pointing to it
-                    vim.cmd[[tabnew %]]
-                    vim.api.nvim_win_set_cursor(0, {row, column})
-                else
-                    vim.cmd[[tabnew]]
+                -- If the buffer is named, open a new tab pointing to it
+                vim.cmd [[tabnew %]]
+                vim.api.nvim_win_set_cursor(0, { row, column })
+            else
+                vim.cmd [[tabnew]]
+            end
+
+            -- Open the current buffer in a new tab, Save-and-close the tab later
+            _GIT_DIFF_TAB_NUMBER = vim.fn.tabpagenr()
+            vim.api.nvim_tabpage_set_var(0, _GIT_DIFF_TAB_VARIABLE, "1")
+
+            vim.cmd "silent! %foldopen!"
+
+            previous_diff_deleted = config.config.show_deleted
+            previous_diff_line_highlight = config.config.linehl
+            previous_diff_signs = config.config.signcolumn
+
+            gitsigns.toggle_deleted(true)
+            gitsigns.toggle_signs(true)
+            gitsigns.toggle_linehl(true)
+
+            -- TODO: Maybe it should be based on the buffer instead. Probably.
+            local directory = vim.fn.getcwd()
+            vim.g._hydra_git_diff_paths = _get_git_diff_paths(directory)
+
+            _save_other_s_mappings()
+        end,
+        on_exit = function()
+            vim.cmd("tabclose " .. _GIT_DIFF_TAB_NUMBER)
+
+            gitsigns.toggle_signs(previous_diff_signs)
+            gitsigns.toggle_linehl(previous_diff_line_highlight)
+            gitsigns.toggle_deleted(previous_diff_deleted)
+
+            vim.g._hydra_git_diff_paths = nil
+
+            _restore_other_s_mappings()
+        end,
+    },
+    mode = { "n", "x" },
+    body = "<Space>GD",
+    heads = {
+        {
+            "J",
+            function()
+                _go_to_next_hunk(vim.g._hydra_git_diff_paths)
+            end,
+            { desc = "next hunk" },
+        },
+        {
+            "K",
+            function()
+                _go_to_previous_hunk(vim.g._hydra_git_diff_paths)
+            end,
+            { desc = "previous hunk" },
+        },
+        {
+            "c",
+            function()
+                vim.schedule(function()
+                    gitsigns.reset_hunk(selector.get_visual_lines())
+
+                    -- -- Important: Requires https://github.com/tpope/vim-unimpaired
+                    -- vim.cmd[[norm ]l]]
+                end)
+
+                return "<Ignore>"
+            end,
+            { silent = true, desc = "[c]heckout hunk and move to next hunk" },
+        },
+        {
+            "<M-c>",
+            function()
+                if vim.wo.diff then
+                    return "<Ignore>"
                 end
 
-                -- Open the current buffer in a new tab, Save-and-close the tab later
-                _GIT_DIFF_TAB_NUMBER = vim.fn.tabpagenr()
-                vim.api.nvim_tabpage_set_var(0, _GIT_DIFF_TAB_VARIABLE, "1")
+                vim.schedule(function()
+                    gitsigns.reset_hunk(selector.get_visual_lines())
+                end)
 
-                vim.cmd "silent! %foldopen!"
-
-                previous_diff_deleted = config.config.show_deleted
-                previous_diff_line_highlight = config.config.linehl
-                previous_diff_signs = config.config.signcolumn
-
-                gitsigns.toggle_deleted(true)
-                gitsigns.toggle_signs(true)
-                gitsigns.toggle_linehl(true)
-
-                -- TODO: Maybe it should be based on the buffer instead. Probably.
-                local directory = vim.fn.getcwd()
-                vim.g._hydra_git_diff_paths = _get_git_diff_paths(directory)
-
-                _save_other_s_mappings()
+                return "<Ignore>"
             end,
-            on_exit = function()
-                vim.cmd("tabclose " .. _GIT_DIFF_TAB_NUMBER)
-
-                gitsigns.toggle_signs(previous_diff_signs)
-                gitsigns.toggle_linehl(previous_diff_line_highlight)
-                gitsigns.toggle_deleted(previous_diff_deleted)
-
-                vim.g._hydra_git_diff_paths = nil
-
-                _restore_other_s_mappings()
-            end,
+            { silent = true, desc = "[c]heckout hunk" },
         },
-        mode = {"n","x"},
-        body = "<Space>GD",
-        heads = {
-            {
-                "J",
-                function() _go_to_next_hunk(vim.g._hydra_git_diff_paths) end,
-                { desc = "next hunk" },
-            },
-            {
-                "K",
-                function() _go_to_previous_hunk(vim.g._hydra_git_diff_paths) end,
-                { desc = "previous hunk" } },
-            {
-                "c",
-                function()
-                    vim.schedule(
-                        function()
-                            gitsigns.reset_hunk(selector.get_visual_lines())
+        {
+            "s",
+            function()
+                local paths = vim.g._hydra_git_diff_paths
 
-                            -- -- Important: Requires https://github.com/tpope/vim-unimpaired
-                            -- vim.cmd[[norm ]l]]
-                        end
-                    )
+                if _in_visual_mode() then
+                    vim.schedule(function()
+                        gitsigns.stage_hunk(selector.get_visual_lines())
 
+                        _go_to_next_hunk(paths)
+                    end)
+
+                    return
+                end
+
+                gitsigns.stage_hunk()
+                _go_to_next_hunk(paths)
+            end,
+            { silent = true, desc = "[s]tage hunk and move to next item" },
+        },
+        {
+            "<M-s>",
+            function()
+                if vim.wo.diff then
                     return "<Ignore>"
-                end,
-                { silent = true, desc = "[c]heckout hunk and move to next hunk" },
-            },
-            {
-                "<M-c>",
-                function()
-                    if vim.wo.diff then return "<Ignore>" end
+                end
 
-                    vim.schedule(function() gitsigns.reset_hunk(selector.get_visual_lines()) end)
+                vim.schedule(function()
+                    gitsigns.stage_hunk(selector.get_visual_lines())
+                end)
 
-                    return "<Ignore>"
-                end,
-                { silent = true, desc = "[c]heckout hunk" },
-            },
-            {
-                "s",
-                function()
-                    local paths = vim.g._hydra_git_diff_paths
-
-                    if _in_visual_mode()
-                    then
-                        vim.schedule(
-                            function()
-                                gitsigns.stage_hunk(selector.get_visual_lines())
-
-                                _go_to_next_hunk(paths)
-                            end
-                        )
-
-                        return
-                    end
-
-                    gitsigns.stage_hunk()
-                    _go_to_next_hunk(paths)
-                end,
-                { silent = true, desc = "[s]tage hunk and move to next item" },
-            },
-            {
-                "<M-s>",
-                function()
-                    if vim.wo.diff then return "<Ignore>" end
-
-                    vim.schedule(function() gitsigns.stage_hunk(selector.get_visual_lines()) end)
-
-                    return "<Ignore>"
-                end,
-                { silent = true, desc = "[s]tage hunk" },
-            },
-            {
-                "r",
-                function() gitsigns.undo_stage_hunk(selector.get_visual_lines()) end,
-                { desc = "[r]eset staged hunk" },
-            },
-            { "q", nil, { exit = true, nowait = true, desc = "exit" } },
-            { "Q", nil, { exit = true, nowait = true, desc = "exit and save position" } },
-        }
-    }
-)
+                return "<Ignore>"
+            end,
+            { silent = true, desc = "[s]tage hunk" },
+        },
+        {
+            "r",
+            function()
+                gitsigns.undo_stage_hunk(selector.get_visual_lines())
+            end,
+            { desc = "[r]eset staged hunk" },
+        },
+        { "q", nil, { exit = true, nowait = true, desc = "exit" } },
+        { "Q", nil, { exit = true, nowait = true, desc = "exit and save position" } },
+    },
+})
 
 local debug_hint = [[
  Movement

@@ -148,10 +148,18 @@ return {
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         keys = {
-            "[k", "]k",
-            "[m", "]m",
-            "[K", "]K",
-            "[M", "]M",
+            -- Next class
+            "[k",
+            "]k",
+            -- Next function / method
+            "[m",
+            "]m",
+            -- Next class
+            "[K",
+            "]K",
+            -- Next function / method
+            "[M",
+            "]M",
 
             "daC",
             "dad",
