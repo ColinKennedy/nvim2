@@ -1,3 +1,5 @@
+- revert gitsigns.nvim to 2c2463d, it was a better commit
+
 https://github.com/xzbdmw/colorful-menu.nvim
 git add -p clone
  - On last hunk staged, auto-exit
