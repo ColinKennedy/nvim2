@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - fifth_pass
 
 jobs:
   documentation:
