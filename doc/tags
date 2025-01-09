@@ -35,3 +35,8 @@ my_requirements_plugins	my_requirements.txt	/*my_requirements_plugins*
 my_writing_vimdoc_files.txt	my_writing_vimdoc_files.txt	/*my_writing_vimdoc_files.txt*
 my_writing_vimdoc_files_making_edits	my_writing_vimdoc_files.txt	/*my_writing_vimdoc_files_making_edits*
 my_writing_vimdoc_files_references	my_writing_vimdoc_files.txt	/*my_writing_vimdoc_files_references*
+plugin-template-mappings	plugin-template.txt	/*plugin-template-mappings*
+plugin-template-optional-requires	plugin-template.txt	/*plugin-template-optional-requires*
+plugin-template-requires	plugin-template.txt	/*plugin-template-requires*
+plugin-template-table-of-contents	plugin-template.txt	/*plugin-template-table-of-contents*
+plugin-template.txt	plugin-template.txt	/*plugin-template.txt*
