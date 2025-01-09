@@ -12,7 +12,7 @@ endif
 CONFIGURATION = .luarc.json
 
 clone_git_dependencies:
-	git clone git@github.com:Bilal2453/luvit-meta.git .dependencies/luvit-meta $(IGNORE_EXISTING)
+	git clone git@github.com:Bilal2453/luvit-meta.git .dependencies/luvit-meta
 
 llscheck: clone_git_dependencies
 	VIMRUNTIME=`nlua -e 'io.write(os.getenv("VIMRUNTIME"))'` llscheck --configpath $(CONFIGURATION) .
