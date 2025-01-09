@@ -23,7 +23,7 @@ jobs:
       # environment variable
       with:
         neovim: true
-        version: stable
+        version: nightly
 
     - uses: leafo/gh-actions-lua@v10
       with:
