@@ -43,7 +43,7 @@ local function _async_write(path, data)
     end
 
     if fd then
-        assert(vim.loop.fs_close(fd))
+        assert(vim.uv.fs_close(fd))
     end
 
     return status, message
@@ -52,7 +52,7 @@ end
 --- Create the :AsyncWrite command (for writing without blocking Neovim)
 function M.initialize()
     vim.api.nvim_create_user_command("AsyncWrite", function()
-        local work = vim.loop.new_work(_async_write, _callback)
+        local work = vim.uv.new_work(_async_write, _callback)
         local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
         work:queue(vim.api.nvim_buf_get_name(0), table.concat(lines, "\n"))
     end, {})

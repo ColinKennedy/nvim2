@@ -1,4 +1,4 @@
-local installation_directory = vim.g.vim_home .. "/parsers/" .. vim.loop.os_uname().sysname
+local installation_directory = vim.g.vim_home .. "/parsers/" .. vim.uv.os_uname().sysname
 
 -- If you need to change the installation directory of the parsers (see
 -- "Advanced Setup" in the nvim-treesitter documentation).
@@ -29,7 +29,7 @@ require("nvim-treesitter.configs").setup {
         --
         disable = function(_, buf)
             local max_filesize = 120 * 1024 -- 120 KB. About 3300 lines of Python. ish.
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
 
             if ok and stats and stats.size > max_filesize then
                 return true

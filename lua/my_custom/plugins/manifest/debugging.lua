@@ -47,7 +47,7 @@ return {
                 vim.fs.joinpath(
                     vim.g.vim_home,
                     "mason_packages",
-                    vim.loop.os_uname().sysname,
+                    vim.uv.os_uname().sysname,
                     "packages",
                     "debugpy",
                     "venv",

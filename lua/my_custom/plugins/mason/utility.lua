@@ -3,7 +3,7 @@ local M = {}
 function M.add_bin_folder_to_path()
     local filer = require("my_custom.utilities.filer")
 
-    local install_root = vim.fs.joinpath(vim.g.vim_home, "mason_packages", vim.loop.os_uname().sysname)
+    local install_root = vim.fs.joinpath(vim.g.vim_home, "mason_packages", vim.uv.os_uname().sysname)
 
     local bin_directory = vim.fs.joinpath(install_root, "bin")
 
