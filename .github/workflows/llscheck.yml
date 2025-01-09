@@ -23,7 +23,7 @@ jobs:
       # environment variable
       with:
         neovim: true
-        version: nightly
+        version: stable
 
     - uses: leafo/gh-actions-lua@v10
       with:
@@ -53,4 +53,5 @@ jobs:
 
     - name: Test
       run: |
+        ls .dependencies/luvit-meta/library
         make llscheck CONFIGURATION=.github/workflows/.luarc.json
