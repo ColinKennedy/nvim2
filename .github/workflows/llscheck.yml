@@ -45,6 +45,7 @@ jobs:
     - name: Install llscheck
       run: |
         luarocks install llscheck
+        luarocks install nlua
 
     - name: Print Version
       run: |
