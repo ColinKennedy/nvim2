@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - fifth_pass
 
 jobs:
   documentation:
@@ -22,7 +21,7 @@ jobs:
       - name: Create User Documentation
         uses: kdheepak/panvimdoc@main
         with:
-          vimdoc: plugin-template
+          vimdoc: my-neovim
           version: "Neovim >= 0.8.0"
           demojify: true
           treesitter: true
