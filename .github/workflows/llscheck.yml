@@ -53,5 +53,6 @@ jobs:
 
     - name: Test
       run: |
+        make clone_git_dependencies
         ls .dependencies/luvit-meta/library
         make llscheck CONFIGURATION=.github/workflows/.luarc.json
