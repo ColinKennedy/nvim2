@@ -51,6 +51,12 @@ jobs:
       run: |
         lua-language-server --version
 
+    - name: Clone dependencies - luavit-meta
+      uses: actions/checkout@v4
+      with:
+        repository: "Bilal2453/luvit-meta"
+        path: ".dependencies/luvit-meta"
+
     - name: Test
       run: |
         make llscheck CONFIGURATION=.github/workflows/.luarc.json
