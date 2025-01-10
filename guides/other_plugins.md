@@ -159,8 +159,14 @@ https://github.com/vigoux/architext.nvim
 
 - CSV viewer (shown as a table) - https://github.com/hat0uma/csvview.nvim
 
+- LSP diagnostic icons for oil.nvim - https://github.com/JezerM/oil-lsp-diagnostics.nvim?tab=readme-ov-file
 
 - LSP log viewer - https://github.com/mhanberg/output-panel.nvim
+
+- multi-line inline LSP diagnostics
+ - https://sr.ht/~whynothugo/lsp_lines.nvim/
+ - https://github.com/rachartier/tiny-inline-diagnostic.nvim
+
 
 ## Python Development
 virtual environment selector -
