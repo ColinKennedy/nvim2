@@ -7,6 +7,7 @@
 - https://github.com/CopilotC-Nvim/CopilotChat.nvim
 - https://github.com/Dan7h3x/chatter.nvim
 - https://github.com/David-Kunz/gen.nvim
+- https://github.com/Davidyz/VectorCode
 - https://github.com/ErikBjare/gptme/tree/master/scripts/vim
 - https://github.com/Exafunction/codeium.nvim
 - https://github.com/Exafunction/codeium.vim
