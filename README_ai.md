@@ -58,6 +58,7 @@
 - https://github.com/napisani/context-nvim
 - https://github.com/oflisback/describe-command.nvim
 - https://github.com/olimorris/codecompanion.nvim
+- https://github.com/paradoxical-dev/neollama
 - https://github.com/pasky/claude.vim
 - https://github.com/piersolenski/wtf.nvim
 - https://github.com/pwnwriter/code2prompt.nvim
