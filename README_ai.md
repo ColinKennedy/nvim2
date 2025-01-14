@@ -18,6 +18,7 @@
 - https://github.com/Lommix/ollamachad.nvim
 - https://github.com/RayenMnif/tgpt.nvim
 - https://github.com/Robitx/gp.nvim
+- https://github.com/S1M0N38/chatml.nvim
 - https://github.com/ShoofLLC/vim-openai
 - https://github.com/TamaMcGlinn/vim-termhelp
 - https://github.com/WhiteBlackGoose/gpt4all.nvim
