@@ -167,6 +167,8 @@ https://github.com/vigoux/architext.nvim
  - https://sr.ht/~whynothugo/lsp_lines.nvim/
  - https://github.com/rachartier/tiny-inline-diagnostic.nvim
 
+- email client (wraps another called "notmuch") - https://github.com/yousefakbar/notmuch.nvim?tab=readme-ov-file
+
 
 ## Python Development
 virtual environment selector -
