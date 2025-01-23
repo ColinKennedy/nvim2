@@ -34,6 +34,7 @@
 - https://github.com/efugier/smartcat - It's not exactly a Vim plugin
 - https://github.com/frankroeder/parrot.nvim
 - https://github.com/gera2ld/ai.nvim
+- https://github.com/ggml-org/llama.vim - possibly special
 - https://github.com/github/copilot.vim
 - https://github.com/gsuuon/llm.nvim
 - https://github.com/gsuuon/model.nvim
