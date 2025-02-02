@@ -143,3 +143,7 @@ vim.api.nvim_create_user_command("CloseAllFloatingWindows", function()
 end, { nargs = 0 })
 
 vim.opt.spelllang = "en_us,cjk"
+
+vim.api.nvim_create_user_command("ObsidianAliases", function()
+    require("my_custom.utilities.obsidian_utility").main()
+end, { nargs = 0, desc = "Load obsidian.nvim notes in using their alias name." })
