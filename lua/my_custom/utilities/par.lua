@@ -126,7 +126,7 @@ function M.load_or_install()
                 end,
             })
         then
-            vim.api.nvim_err_writeln("Cannot install par.")
+            vim.notify("Cannot install par.", vim.log.levels.ERROR)
 
             return
         end

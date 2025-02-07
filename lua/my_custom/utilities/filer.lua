@@ -12,7 +12,7 @@ elseif vim.fn.has("unix") == 1 then
     M.command_separator = ";"
     M.path_separator = ":"
 else
-    vim.api.nvim_err_writeln("Not sure what OS path separator to use")
+    vim.notify("Not sure what OS path separator to use", vim.log.levels.ERROR)
 
     M.command_separator = ";"
     M.path_separator = ":"

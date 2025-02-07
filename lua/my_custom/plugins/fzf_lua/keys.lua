@@ -16,7 +16,7 @@ return {
             local root = filer.get_project_root()
 
             if not root then
-                vim.api.nvim_err_writeln("No root could be found.")
+                vim.notify("No root could be found.", vim.log.levels.ERROR)
 
                 return
             end

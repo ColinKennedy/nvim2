@@ -15,7 +15,10 @@ local in_docstring = function()
         return type_name == "string_content"
     end
 
-    vim.api.nvim_err_writeln('Type name"' .. type_name .. "\" is unknown. Cannot check if we're in a docstring.")
+    vim.notify(
+        'Type name"' .. type_name .. "\" is unknown. Cannot check if we're in a docstring.",
+        vim.log.levels.ERROR
+    )
 
     return false
 end

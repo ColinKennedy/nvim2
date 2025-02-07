@@ -17,9 +17,9 @@ local function _callback(ok, message)
         if ok then
             vim.cmd.checktime()
         elseif message and message ~= "" then
-            vim.api.nvim_err_writeln(message)
+            vim.notify(message, vim.log.levels.ERROR)
         else
-            vim.api.nvim_err_writeln("Something in the async write failed, not sure what")
+            vim.notify("Something in the async write failed, not sure what", vim.log.levels.ERROR)
         end
     end)
 end

@@ -24,15 +24,21 @@ function M.run_command(command, options)
     end
 
     if result == -1 then
-        vim.api.nvim_err_writeln('The requested command "' .. command .. '" timed out.')
+        vim.notify(
+            'The requested command "' .. command .. '" timed out.',
+            vim.log.levels.ERROR
+        )
 
         return false
     elseif result == -2 then
-        vim.api.nvim_err_writeln('The requested command "' .. vim.inspect(command) .. '" was interrupted.')
+        vim.notify(
+            'The requested command "' .. vim.inspect(command) .. '" was interrupted.',
+            vim.log.levels.ERROR
+        )
 
         return false
     elseif result == -3 then
-        vim.api.nvim_err_writeln('Job ID is invalid "' .. tostring(job) .. '"')
+        vim.notify('Job ID is invalid "' .. tostring(job) .. '"', vim.log.levels.ERROR)
 
         return false
     end

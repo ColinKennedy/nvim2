@@ -30,6 +30,20 @@ local function get_all_docstring_ranges(buffer)
     end
 
     local tree = parser:parse()
+
+    if not tree then
+        vim.notify(
+            string.format(
+                'Buffer / File type "%s / %s" no treesitter parser but no tree was found.',
+                buffer,
+                file_type
+            ),
+            0
+        )
+
+        return {}
+    end
+
     local root = tree[1]:root()
 
     -- TODO: This query is Python-specific. Try to "generisize" it for other languages

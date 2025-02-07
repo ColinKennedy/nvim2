@@ -130,7 +130,7 @@ vim.schedule(function()
     if package_exists then
         par.load_or_install()
     else
-        vim.api.nvim_err_writeln('Could not load "' .. module .. '" module.')
+        vim.notify('Could not load "' .. module .. '" module.', vim.log.levels.ERROR)
     end
 end)
 
