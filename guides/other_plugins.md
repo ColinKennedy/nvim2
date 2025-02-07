@@ -169,6 +169,32 @@ https://github.com/vigoux/architext.nvim
 
 - email client (wraps another called "notmuch") - https://github.com/yousefakbar/notmuch.nvim?tab=readme-ov-file
 
+- A useful plugin that approximates the time it takes to read text - https://github.com/nick-skriabin/timeline.nvim
+
+- A grammar(?) spell check LSP - https://github.com/Automattic/harper/blob/master/harper-ls/README.md
+
+- A tool that supporedly makes it easier to copy code to a LLM - https://github.com/YounesElhjouji/nvim-copy
+
+- multi-cursor https://github.com/jake-stewart/multicursor.nvim
+
+- Pretty menus in Neovim - https://github.com/nvzone/menu
+
+- SSH connection manager? https://github.com/epheien/conn-manager.nvim
+
+- Possibly more useful "go to GitHub link" plugin - https://github.com/trevorhauter/gitportal.nvim
+
+
+- Documentation related
+https://github.com/mhausenblas/mkdocs-deploy-gh-pages
+lua-doc-extractor
+- npm lua-doc-extractor
+https://github.com/squidfunk/mkdocs-material
+https://squidfunk.github.io/mkdocs-material/creating-your-site/
+
+
+- IDA Pro (Interactive Disassembler) + Neovim - https://www.reddit.com/r/neovim/comments/1iie9ix/re_with_ida_pro_and_telescope/
+ - https://github.com/dead-null/idascope
+
 
 ## Python Development
 virtual environment selector -
