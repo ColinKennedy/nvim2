@@ -1,3 +1,6 @@
+- Selectively undo lines in a file - https://github.com/SunnyTamang/select-undo.nvim
+
+- Change =p to put inline at the current cursor
 https://github.com/wurli/contextindent.nvim
 
 

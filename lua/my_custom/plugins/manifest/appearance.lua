@@ -243,4 +243,13 @@ return {
             "MunifTanjim/nui.nvim",
         },
     },
+
+    -- A lualine status bar that tells me details about the current git window.
+    -- See `require("my_custom.plugins.lualine.configuration")` for details.
+    --
+    {
+        "abccsss/nvim-gitstatus",
+        event = "VeryLazy",
+        config = true,
+    }
 }

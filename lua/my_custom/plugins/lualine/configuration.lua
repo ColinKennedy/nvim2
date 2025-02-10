@@ -8,9 +8,30 @@ require("lualine").setup {
         component_separators = { left = "", right = "" },
     },
     sections = {
-        -- TODO: Add this later
-        -- lualine_b = { "git_extended_statusline" },
-        lualine_b = { "branch" },
+        lualine_b = {
+            {
+              "gitstatus",
+              sections = {
+                { "branch", format = " {}" },
+                { "is_dirty", format = "*" },
+              },
+              sep = "",
+            },
+            {
+              "gitstatus",
+              sections = {
+                { "ahead", format = "{}", hl="DiffAdd" },
+                { "behind", format = "{}", hl="WarningMsg" },
+                { "conflicted", format = "{} [CONFLICT]", hl="ErrorMsg" },
+                { "staged", format = "{}", hl="Title" },
+                { "modified", format = "{}", hl="Question" },
+                { "renamed", format = "{}", hl="Search" },
+                { "deleted", format = "󰮉{}", hl="Warning" },
+                { "untracked", format = "{}", hl="DiagnosticHint" },
+              },
+              sep = " ",
+            },
+        },
         lualine_c = { { require("grapple-line").status } },
         lualine_x = {},
         lualine_y = {

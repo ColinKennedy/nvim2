@@ -391,3 +391,6 @@
 [submodule "bundle/demicolon.nvim"]
 	path = bundle/demicolon.nvim
 	url = git@github.com:mawkler/demicolon.nvim.git
+[submodule "bundle/nvim-gitstatus"]
+	path = bundle/nvim-gitstatus
+	url = git@github.com:abccsss/nvim-gitstatus.git
