@@ -24,7 +24,7 @@ require("lualine").setup {
                 { "behind", format = "{}", hl="WarningMsg" },
                 { "conflicted", format = "{} [CONFLICT]", hl="ErrorMsg" },
                 { "staged", format = "{}", hl="Title" },
-                { "modified", format = "{}", hl="Question" },
+                { "modified", format = "{}", hl="Type" },
                 { "renamed", format = "{}", hl="Search" },
                 { "deleted", format = "󰮉{}", hl="Warning" },
                 { "untracked", format = "{}", hl="DiagnosticHint" },
