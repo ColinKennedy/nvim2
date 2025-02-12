@@ -4,41 +4,24 @@
 --
 -- Reference: https://github.com/neovim/neovim/pull/23608
 --
-vim.cmd[[au BufNewFile,BufRead *.cppobjdump,*.objdump setf objdump]]
-
+vim.cmd [[au BufNewFile,BufRead *.cppobjdump,*.objdump setf objdump]]
 
 -- Important: According to lazy.nvim, the leader key must be set before lazy.nvim is
 -- called or else it will break various things.
 --
 vim.g.mapleader = ","
 
--- if vim.env.PROF then
---   -- example for lazy.nvim
---   -- change this to the correct path for your plugin manager
---   local snacks = vim.fn.stdpath("data") .. "/lazy/snacks.nvim"
---   vim.opt.rtp:append(snacks)
---   require("snacks.profiler").startup({
---     startup = {
---       event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
---       -- event = "UIEnter",
---       -- event = "VeryLazy",
---     },
---   })
--- end
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system(
-        {
-            "git",
-            "clone",
-            "--filter=blob:none",
-            "https://github.com/folke/lazy.nvim.git",
-            "--branch=stable", -- latest stable release
-            lazypath,
-        }
-    )
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -63,8 +46,7 @@ extend(plugins, require("my_custom.plugins.manifest.workflow"))
 extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
-local configuration = { root = vim.g.vim_home .. "/bundle" }
-
+local configuration = { root = root }
 
 -- vim.g.plugin_template_configuration = {logging = {level = "debug", use_file = true}}
 --
