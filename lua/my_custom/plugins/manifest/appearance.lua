@@ -250,6 +250,6 @@ return {
     {
         "abccsss/nvim-gitstatus",
         event = "VeryLazy",
-        config = true,
+        opts = { auto_fetch_interval = 1000 },
     }
 }
