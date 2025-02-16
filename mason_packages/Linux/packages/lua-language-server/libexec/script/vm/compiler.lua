@@ -5,6 +5,7 @@ local rpath      = require 'workspace.require-path'
 local files      = require 'files'
 ---@class vm
 local vm         = require 'vm.vm'
+local plugin     = require 'plugin'
 
 ---@class parser.object
 ---@field _compiledNodes        boolean
@@ -100,6 +101,25 @@ local function searchFieldByLocalID(source, key, pushResult)
     if not fields then
         return
     end
+
+    --Exact classes do not allow injected fields
+    if source.type ~= 'variable' and source.bindDocs then
+        ---@cast source parser.object
+        local uri = guide.getUri(source)
+        for _, src in ipairs(fields) do
+            if src.type == "setfield" then
+                local class = vm.getDefinedClass(uri, source)
+                if class then
+                    for _, doc in ipairs(class:getSets(uri)) do
+                        if vm.docHasAttr(doc, 'exact') then
+                            return
+                        end
+                    end
+                end
+            end
+        end
+    end
+
     local hasMarkDoc = {}
     for _, src in ipairs(fields) do
         if src.bindDocs then
@@ -156,7 +176,7 @@ end
 
 local searchFieldSwitch = util.switch()
     : case 'table'
-    : call(function (suri, source, key, pushResult)
+    : call(function (_suri, source, key, pushResult)
         local hasFiled = false
         for _, field in ipairs(source) do
             if field.type == 'tablefield'
@@ -188,10 +208,45 @@ local searchFieldSwitch = util.switch()
                 end
             end
         end
+        local docs = source.bindDocs
+        if docs then
+            for _, doc in ipairs(docs) do
+                if doc.type == 'doc.enum' then
+                    if not vm.docHasAttr(doc, 'partial')  then
+                        return
+                    end
+                    for _, def in ipairs(vm.getDefs(doc)) do
+                        if def.type ~= 'doc.enum' then
+                            goto CONTINUE
+                        end
+                        local tbl = def.bindSource
+                        if not tbl then
+                            return
+                        end
+                        for _, field in ipairs(tbl) do
+                            if field.type == 'tablefield'
+                            or field.type == 'tableindex' then
+                                if not field.value then
+                                    goto CONTINUE
+                                end
+                                local fieldKey = guide.getKeyName(field)
+                                if key == vm.ANY
+                                or key == fieldKey then
+                                    hasFiled = true
+                                    pushResult(field)
+                                end
+                                ::CONTINUE::
+                            end
+                        end
+                        ::CONTINUE::
+                    end
+                end
+            end
+        end
     end)
     : case 'string'
     : case 'doc.type.string'
-    : call(function (suri, source, key, pushResult)
+    : call(function (suri, _source, key, pushResult)
         -- change to `string: stringlib` ?
         local stringlib = vm.getGlobal('type', 'stringlib')
         if stringlib then
@@ -214,7 +269,7 @@ local searchFieldSwitch = util.switch()
         end
     end)
     : case 'doc.type.table'
-    : call(function (suri, source, key, pushResult)
+    : call(function (_suri, source, key, pushResult)
         if type(key) == 'string' and key:find(vm.ID_SPLITE) then
             return
         end
@@ -248,6 +303,17 @@ local searchFieldSwitch = util.switch()
                 end
             end
         end
+    end)
+    : case 'doc.type.sign'
+    : call(function (suri, source, key, pushResult)
+        if not source.node[1] then
+            return
+        end
+        local global = vm.getGlobal('type', source.node[1])
+        if not global then
+            return
+        end
+        vm.getClassFields(suri, global, key, pushResult)
     end)
     : case 'global'
     : call(function (suri, node, key, pushResult)
@@ -549,9 +615,12 @@ local function matchCall(source)
     or call.node ~= source then
         return
     end
-    local funcs = vm.getMatchedFunctions(source, call.args)
     local myNode = vm.getNode(source)
     if not myNode then
+        return
+    end
+    local funcs = vm.getExactMatchedFunctions(source, call.args)
+    if not funcs then
         return
     end
     local needRemove
@@ -571,6 +640,24 @@ local function matchCall(source)
         newNode:removeNode(needRemove)
         newNode.originNode = myNode
         vm.setNode(source, newNode, true)
+        if call.args then
+            -- clear existing node caches of args to allow recomputation with the type narrowed call
+            for _, arg in ipairs(call.args) do
+                if vm.getNode(arg) then
+                    vm.setNode(arg, vm.createNode(), true)
+                end
+            end
+            for n in newNode:eachObject() do
+                if n.type == 'function'
+                or n.type == 'doc.type.function' then
+                    for i, arg in ipairs(call.args) do
+                        if vm.getNode(arg) and n.args[i] then
+                            vm.setNode(arg, vm.compileNode(n.args[i]))
+                        end
+                    end
+                end
+            end
+        end
     end
 end
 
@@ -869,7 +956,7 @@ local function compileCallArgNode(arg, call, callNode, fixIndex, myIndex)
     ---@type integer?, table<any, boolean>?
     local eventIndex, eventMap
     if call.args then
-        for i = 1, 2 do
+        for i = 1, 10 do
             local eventArg = call.args[i + fixIndex]
             if not eventArg then
                 break
@@ -886,6 +973,26 @@ local function compileCallArgNode(arg, call, callNode, fixIndex, myIndex)
     local function dealDocFunc(n)
         local myEvent
         if n.args[eventIndex] then
+            if eventMap and myIndex > eventIndex then
+                -- if call param has literal types, then also check if function def param has literal types
+                -- 1. has no literal values => not enough info, thus allowed by default
+                -- 2. has literal values and >= 1 matches call param's literal types => allowed
+                -- 3. has literal values but none matches call param's literal types => filtered
+                local myEventMap = vm.getLiterals(n.args[eventIndex])
+                if myEventMap then
+                    local found = false
+                    for k in pairs(eventMap) do
+                        if myEventMap[k] then
+                            -- there is a matching literal
+                            found = true
+                            break
+                        end
+                    end
+                    if not found then
+                        return
+                    end
+                end
+            end
             local argNode = vm.compileNode(n.args[eventIndex])
             myEvent = argNode:get(1)
         end
@@ -1030,6 +1137,182 @@ local function compileForVars(source, target)
     return false
 end
 
+---@param func parser.object
+---@param source parser.object
+local function compileFunctionParam(func, source)
+    local aindex
+    for index, arg in ipairs(func.args) do
+        if arg == source then
+            aindex = index
+            break
+        end
+    end
+    ---@cast aindex integer
+
+    local funcNode = vm.compileNode(func)
+    if func.parent.type == 'callargs' then
+        -- local call ---@type fun(f: fun(x: number));call(function (x) end) --> x -> number
+        for n in funcNode:eachObject() do
+            if n.type == 'doc.type.function' and n.args[aindex] then
+                local argNode = vm.compileNode(n.args[aindex])
+                for an in argNode:eachObject() do
+                    if an.type ~= 'doc.generic.name' then
+                        vm.setNode(source, an)
+                    end
+                end
+                -- NOTE: keep existing behavior for function as argument which only set type based on the 1st match
+                return true
+            end
+        end
+    else
+        -- function declaration: use info from all `fun()`, also from the base function when overriding
+        --[[
+            ---@type fun(x: string)|fun(x: number)
+            local function f1(x) end --> x -> string|number
+
+            ---@overload fun(x: string)
+            ---@overload fun(x: number)
+            local function f2(x) end --> x -> string|number
+
+            ---@class A
+            local A = {}
+            ---@param x number
+            function A:f(x) end --> x -> number
+            ---@type A
+            local a = {}
+            function a:f(x) end --> x -> number
+        ]]
+        local found = false
+        for n in funcNode:eachObject() do
+            if (n.type == 'doc.type.function' or n.type == 'function')
+            and n.args[aindex] and n.args[aindex] ~= source
+            then
+                local argNode = vm.compileNode(n.args[aindex])
+                for an in argNode:eachObject() do
+                    if an.type ~= 'doc.generic.name' then
+                        vm.setNode(source, an)
+                    end
+                end
+                found = true
+            end
+        end
+        if found then
+            return true
+        end
+    end
+
+    local derviationParam = config.get(guide.getUri(func), 'Lua.type.inferParamType')
+    if derviationParam and func.parent.type == 'local' and func.parent.ref then
+        local refs = func.parent.ref
+        local found
+        for _, ref in ipairs(refs) do
+            if ref.parent.type ~= 'call' then
+                goto continue
+            end
+            local caller = ref.parent
+            if not caller.args then
+                goto continue
+            end
+            local callerArg = caller.args[aindex]
+            if callerArg then
+                vm.setNode(source, vm.compileNode(callerArg))
+                found = true
+            end
+            ::continue::
+        end
+        if found then
+            return true
+        end
+        -- infer local callback function param type
+        --[[
+            ---@param callback fun(a: integer)
+            function register(callback) end
+
+            local function callback(a) end  --> a: integer
+            register(callback)
+        ]]
+        for _, ref in ipairs(refs) do
+            if ref.parent.type ~= 'callargs' then
+                goto continue
+            end
+            -- the parent function is a variable used as callback param, find the callback arg index first
+            local call = ref.parent.parent
+            local cbIndex
+            for i, arg in ipairs(call.args) do
+                if arg == ref then
+                    cbIndex = i
+                    break
+                end
+            end
+            ---@cast cbIndex integer
+
+            -- simulate a completion at `cbIndex` to infer this callback function type
+            ---@diagnostic disable-next-line: missing-fields
+            local node = vm.compileCallArg({ type = 'dummyarg', uri = guide.getUri(call) }, call, cbIndex)
+            if not node then
+                goto continue
+            end
+            for n in node:eachObject() do
+                -- check if the inferred function has arg at `aindex`
+                if n.type == 'doc.type.function' and n.args and n.args[aindex] then
+                    -- use type info on this `aindex` arg
+                    local argNode = vm.compileNode(n.args[aindex])
+                    for an in argNode:eachObject() do
+                        if an.type ~= 'doc.generic.name' then
+                            vm.setNode(source, an)
+                            found = true
+                        end
+                    end
+                end
+            end
+            ::continue::
+        end
+        if found then
+            return true
+        end
+    end
+
+    do
+        local parent = func.parent
+        local key = vm.getKeyName(parent)
+        local classDef = vm.getParentClass(parent)
+        local suri = guide.getUri(func)
+        if classDef and key then
+            local found
+            for _, set in ipairs(classDef:getSets(suri)) do
+                if set.type == 'doc.class' and set.extends then
+                    for _, ext in ipairs(set.extends) do
+                        if not ext[1] then
+                            goto continue
+                        end
+                        local extClass = vm.getGlobal('type', ext[1])
+                        if not extClass then
+                            goto continue
+                        end
+                        vm.getClassFields(suri, extClass, key, function (field, _isMark)
+                            for n in vm.compileNode(field):eachObject() do
+                                if n.type == 'function' and n.args[aindex] then
+                                    local argNode = vm.compileNode(n.args[aindex])
+                                    for an in argNode:eachObject() do
+                                        if an.type ~= 'doc.generic.name' then
+                                            vm.setNode(source, an)
+                                            found = true
+                                        end
+                                    end
+                                end
+                            end
+                        end)
+                        ::continue::
+                    end
+                end
+            end
+            if found then
+                return true
+            end
+        end
+    end
+end
+
 ---@param source parser.object
 local function compileLocal(source)
     local myNode = vm.setNode(source, source)
@@ -1069,28 +1352,19 @@ local function compileLocal(source)
             vm.setNode(source, vm.compileNode(setfield.node))
         end
     end
-
     if source.parent.type == 'funcargs' and not hasMarkDoc and not hasMarkParam then
         local func = source.parent.parent
-        -- local call ---@type fun(f: fun(x: number));call(function (x) end) --> x -> number
-        local funcNode = vm.compileNode(func)
-        local hasDocArg
-        for n in funcNode:eachObject() do
-            if n.type == 'doc.type.function' then
-                for index, arg in ipairs(n.args) do
-                    if func.args[index] == source then
-                        local argNode = vm.compileNode(arg)
-                        for an in argNode:eachObject() do
-                            if an.type ~= 'doc.generic.name' then
-                                vm.setNode(source, an)
-                            end
-                        end
-                        hasDocArg = true
-                    end
+        local interfaces = plugin.getPluginInterfaces(guide.getUri(source))
+        local hasDocArg = false
+        if interfaces then
+            for _, interface in ipairs(interfaces) do
+                if interface.VM then
+                    hasDocArg = interface.VM.OnCompileFunctionParam(compileFunctionParam, func, source)
+                    if hasDocArg then break end
                 end
             end
         end
-        if not hasDocArg then
+        if not hasDocArg and not compileFunctionParam(func, source) then
             vm.setNode(source, vm.declareGlobal('type', 'any'))
         end
     end
@@ -1408,7 +1682,9 @@ local compilerSwitch = util.switch()
                 vm.compileByParentNode(source.node, key, function (src)
                     if src.type == 'doc.field'
                     or src.type == 'doc.type.field'
-                    or src.type == 'doc.type.name' then
+                    or src.type == 'doc.type.name'
+                    or src.type == 'doc.type.function'
+                    then
                         hasMarkDoc = true
                         vm.setNode(source, vm.compileNode(src))
                     end
@@ -1479,7 +1755,7 @@ local compilerSwitch = util.switch()
                             end
                             local hasGeneric
                             if sign then
-                                guide.eachSourceType(rtn, 'doc.generic.name', function (src)
+                                guide.eachSourceType(rtn, 'doc.generic.name', function (_src)
                                     hasGeneric = true
                                 end)
                             end
@@ -1675,6 +1951,10 @@ local compilerSwitch = util.switch()
     end)
     : case 'call'
     : call(function (source)
+        -- ignore rawset
+        if source.node.special == 'rawset' then
+            return
+        end
         local node = getReturn(source.node, 1, source.args)
         if not node then
             return

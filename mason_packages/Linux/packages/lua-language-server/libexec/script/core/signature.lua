@@ -43,7 +43,7 @@ end
 
 ---@async
 local function makeOneSignature(source, oop, index)
-    local label = hoverLabel(source, oop)
+    local label = hoverLabel(source, oop, 0)
     if not label then
         return nil
     end
@@ -94,10 +94,7 @@ local function isEventNotMatch(call, src)
         return false
     end
     local literal, index
-    for i = 1, 2 do
-        if not call.args[i] then
-            break
-        end
+    for i = 1, #call.args do
         literal = guide.getLiteral(call.args[i])
         if literal then
             index = i
@@ -117,7 +114,13 @@ local function isEventNotMatch(call, src)
     end
     local eventLiteral = event.extends.types[1] and guide.getLiteral(event.extends.types[1])
     if eventLiteral == nil then
-        return false
+        -- extra checking when function param is not pure literal
+        -- eg: it maybe an alias type with literal values
+        local eventMap = vm.getLiterals(event.extends.types[1])
+        if not eventMap then
+            return false
+        end
+        return not eventMap[literal]
     end
     return eventLiteral ~= literal
 end

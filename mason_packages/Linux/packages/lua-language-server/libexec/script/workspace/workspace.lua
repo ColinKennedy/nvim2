@@ -44,9 +44,9 @@ function m.initRoot(uri)
 end
 
 --- 初始化工作区
-function m.create(uri)
+function m.create(uri, folderName)
     log.info('Workspace create: ', uri)
-    local scp = scope.createFolder(uri)
+    local scp = scope.createFolder(uri, folderName)
     m.folders[#m.folders+1] = scp
     if uri == furi.encode '/'
     or uri == furi.encode(os.getenv 'HOME' or '') then
@@ -188,7 +188,7 @@ function m.getNativeMatcher(scp)
 
     local matcher = glob.gitignore(pattern, {
         root       = scp.uri and furi.decode(scp.uri),
-        ignoreCase = platform.OS == 'Windows',
+        ignoreCase = platform.os == 'windows',
     }, globInteferFace)
 
     scp:set('nativeMatcher', matcher)
@@ -236,7 +236,7 @@ function m.getLibraryMatchers(scp)
             local nPath = fs.absolute(fs.path(path)):string()
             local matcher = glob.gitignore(pattern, {
                 root       = path,
-                ignoreCase = platform.OS == 'Windows',
+                ignoreCase = platform.os == 'windows',
             }, globInteferFace)
             matchers[#matchers+1] = {
                 uri     = furi.encode(nPath),

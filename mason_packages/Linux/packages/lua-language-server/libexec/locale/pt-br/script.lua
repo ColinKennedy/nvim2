@@ -646,16 +646,20 @@ CLI_CHECK_INITING =
 'Inicializando ...'
 CLI_CHECK_SUCCESS =
 'Diagnóstico completo, nenhum problema encontrado'
-CLI_CHECK_RESULTS =
+CLI_CHECK_PROGRESS = -- TODO: need translate!
+'Found {} problems in {} files'
+CLI_CHECK_RESULTS_OUTPATH =
 'Diagnóstico completo, {} problemas encontrados, veja {}'
+CLI_CHECK_RESULTS_PRETTY =
+'Diagnóstico completo, {} problemas encontrados'
+CLI_CHECK_MULTIPLE_WORKERS = -- TODO: need translate!
+'Starting {} worker tasks, progress output will be disabled. This may take a few minutes.'
 CLI_DOC_INITING   = -- TODO: need translate!
 'Loading documents ...'
-CLI_DOC_DONE      = -- TODO: need translate!
-[[
-Document exporting completed!
-Raw data: {}
-Markdown(example): {}
-]]
+CLI_DOC_DONE      =
+'Documentos exportados:'
+CLI_DOC_WORKING   =
+'Construindo docs...'
 
 TYPE_ERROR_ENUM_GLOBAL_DISMATCH = -- TODO: need translate!
 'Type `{child}` cannot match enumeration type of `{parent}`'
@@ -1163,7 +1167,7 @@ Provide type declaration for [operator metamethods](http://lua-users.org/wiki/Me
 ### Vector Add Metamethod
 ```
 ---@class Vector
----@operation add(Vector):Vector
+---@operator add(Vector):Vector
 
 vA = Vector.new(1, 2, 3)
 vB = Vector.new(10, 20, 30)
@@ -1174,7 +1178,7 @@ vC = vA + vB
 ### Unary Minus
 ```
 ---@class Passcode
----@operation unm:integer
+---@operator unm:integer
 
 pA = Passcode.new(1234)
 pB = -pA
@@ -1212,7 +1216,7 @@ setColor(colors.green)
 LUADOC_DESC_SOURCE = -- TODO: need translate!
 [=[
 Provide a reference to some source code which lives in another file. When
-searching for the defintion of an item, its `@source` will be used.
+searching for the definition of an item, its `@source` will be used.
 
 ## Syntax
 `@source <path>`
@@ -1260,7 +1264,7 @@ end
 LUADOC_DESC_PRIVATE = -- TODO: need translate!
 [=[
 Mark a function as private to a @class. Private functions can be accessed only
-from within their class and are not accessable from child classes.
+from within their class and are not accessible from child classes.
 
 ## Syntax
 `@private`

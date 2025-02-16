@@ -2,6 +2,10 @@
 
 config.addonManager.enable        =
 "Whether the addon manager is enabled or not."
+config.addonManager.repositoryBranch =
+"Specifies the git branch used by the addon manager."
+config.addonManager.repositoryPath =
+"Specifies the git path used by the addon manager."
 config.runtime.version            =
 "Lua runtime version."
 config.runtime.path               =
@@ -48,6 +52,8 @@ config.diagnostics.disable        =
 "Disabled diagnostic (Use code in hover brackets)."
 config.diagnostics.globals        =
 "Defined global variables."
+config.diagnostics.globalsRegex   =
+"Find defined global variables using regex."
 config.diagnostics.severity       =
 [[
 Modify the diagnostic severity.
@@ -250,6 +256,9 @@ config.hint.arrayIndex.Disable           =
 'Disable hints of array index.'
 config.hint.await                        =
 'If the called function is marked `---@async`, prompt `await` at the call.'
+config.hint.awaitPropagate               =
+'Enable the propagation of `await`. When a function calls a function marked `---@async`,\z
+it will be automatically marked as `---@async`.'
 config.hint.semicolon                    =
 'If there is no semicolon at the end of the statement, display a virtual semicolon.'
 config.hint.semicolon.All                =
@@ -279,6 +288,10 @@ config.misc.parameters                   =
 '[Command line parameters](https://github.com/LuaLS/lua-telemetry-server/tree/master/method) when starting the language server in VSCode.'
 config.misc.executablePath               =
 'Specify the executable path in VSCode.'
+config.language.fixIndent                =
+'(VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word "function."'
+config.language.completeAnnotation       =
+'(VSCode only) Automatically insert "---@ " after a line break following a annotation.'
 config.type.castNumberToInteger          =
 'Allowed to assign the `number` type to the `integer` type.'
 config.type.weakUnionCheck               =
@@ -292,6 +305,16 @@ config.type.weakNilCheck                 =
 When checking the type of union type, ignore the `nil` in it.
 
 When this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.
+]]
+config.type.inferParamType               =
+[[
+When a parameter type is not annotated, it is inferred from the function's call sites.
+
+When this setting is `false`, the type of the parameter is `any` when it is not annotated.
+]]
+config.type.checkTableShape              =
+[[
+Strictly check the shape of the table.
 ]]
 config.doc.privateName                   =
 'Treat specific field names as private, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are private, witch can only be accessed in the class where the definition is located.'
@@ -434,3 +457,7 @@ command.addon_manager.open =
 'Lua: Open Addon Manager ...'
 command.reloadFFIMeta =
 'Lua: Reload luajit ffi meta'
+command.startServer =
+'Lua: Restart Language Server'
+command.stopServer =
+'Lua: Stop Language Server'

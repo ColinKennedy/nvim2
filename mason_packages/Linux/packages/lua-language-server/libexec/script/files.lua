@@ -6,9 +6,7 @@ local furi     = require 'file-uri'
 local parser   = require 'parser'
 local lang     = require 'language'
 local await    = require 'await'
-local timer    = require 'timer'
 local util     = require 'utility'
-local guide    = require 'parser.guide'
 local smerger  = require 'string-merger'
 local progress = require "progress"
 local encoder  = require 'encoder'
@@ -78,7 +76,7 @@ end
 ---@param uri uri
 ---@return uri
 function m.getRealUri(uri)
-    if platform.OS ~= 'Windows' then
+    if platform.os ~= 'windows' then
         return furi.normalize(uri)
     end
     if not furi.isValid(uri) then
@@ -655,6 +653,17 @@ function m.compileStateAsync(uri, callback)
     end)
 end
 
+local function pluginOnTransformAst(uri, state)
+    local plugin   = require 'plugin'
+    ---TODO: maybe deepcopy astNode
+    local suc, result = plugin.dispatch('OnTransformAst', uri, state.ast)
+    if not suc then
+        return state
+    end
+    state.ast = result or state.ast
+    return state
+end
+
 ---@param uri uri
 ---@return parser.state?
 function m.compileState(uri)
@@ -697,6 +706,12 @@ function m.compileState(uri)
 
     if not state then
         log.error('Compile failed:', uri, err)
+        return nil
+    end
+
+    state = pluginOnTransformAst(uri, state)
+    if not state then
+        log.error('pluginOnTransformAst failed! discard the file state')
         return nil
     end
 
@@ -816,7 +831,7 @@ function m.isDll(uri)
     if not ext then
         return false
     end
-    if platform.OS == 'Windows' then
+    if platform.os == 'windows' then
         if ext == 'dll' then
             return true
         end
@@ -891,18 +906,66 @@ function m.countStates()
     return n
 end
 
+local addonsPath
+
+---Resolve path variables/placeholders like ${3rd} and ${addons}
+---@param path string
+---@return string resolvedPath
+function m.resolvePathPlaceholders(path)
+    path = path:gsub("%$%{(.-)%}", function(key)
+        if key == "3rd" then
+            return (ROOT / "meta" / "3rd"):string()
+        elseif key == "addons" then
+            if addonsPath then
+                return addonsPath
+            end
+            local client = require("client")
+            local storagePath = client.getOption("storagePath")
+            if storagePath then
+                addonsPath = (fs.path(storagePath) / "addonManager" / "addons"):string()
+            else
+                -- Common path across OSes
+                local dataPath = "User/globalStorage/sumneko.lua/addonManager/addons"
+
+                if platform.os == "windows" then
+                    addonsPath = "$APPDATA/Code/" .. dataPath
+                elseif platform.os == "linux" then
+                    local serverPath = util.expandPath(fs.path("~/.vscode-server/data"):string())
+                    if fs.exists(fs.path(serverPath)) then
+                        -- addons are installed via SSH remote
+                        addonsPath = serverPath .."/" .. dataPath
+                    else
+                        addonsPath = "~/.config/Code/" .. dataPath
+                    end
+                elseif platform.os == "macos" then
+                    addonsPath = "~/Library/Application Support/Code/" .. dataPath
+                end
+            end
+            return addonsPath
+        elseif key:sub(1, 4) == "env:" then
+            local env = os.getenv(key:sub(5))
+            return env
+        elseif key == "workspaceFolder" then
+            local ws = require 'workspace'
+            return ws.rootUri and furi.decode(ws.rootUri)
+        elseif key:match("^workspaceFolder:.+$") then
+            local folderName = key:match("^workspaceFolder:(.+)$")
+            for _, scp in ipairs(scope.folders) do
+                if scp:getFolderName() == folderName then
+                    return scp.uri and furi.decode(scp.uri)
+                end
+            end
+            log.warn(('variable ${%s} cannot be resolved when processing path: %s'):format(key, path))
+        end
+    end)
+
+    return path
+end
+
 ---@param path string
 ---@return string
 function m.normalize(path)
-    path = path:gsub('%$%{(.-)%}', function (key)
-        if key == '3rd' then
-            return (ROOT / 'meta' / '3rd'):string()
-        end
-        if key:sub(1, 4) == 'env:' then
-            local env = os.getenv(key:sub(5))
-            return env
-        end
-    end)
+    path = m.resolvePathPlaceholders(path)
     path = util.expandPath(path)
     path = path:gsub('^%.[/\\]+', '')
     for _ = 1, 1000 do
@@ -915,7 +978,7 @@ function m.normalize(path)
             break
         end
     end
-    if platform.OS == 'Windows' then
+    if platform.os == 'windows' then
         path = path:gsub('[/\\]+', '\\')
                    :gsub('[/\\]+$', '')
                    :gsub('^(%a:)$', '%1\\')
