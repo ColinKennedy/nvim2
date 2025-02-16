@@ -56,6 +56,7 @@
 - https://github.com/leocus/codeassistant.vim
 - https://github.com/madox2/vim-ai
 - https://github.com/magicalne/nvim.ai
+- https://github.com/maheshbansod/ai.nvim
 - https://github.com/marco-souza/ollero.nvim
 - https://github.com/milanglacier/minuet-ai.nvim
 - https://github.com/monkoose/neocodeium
@@ -85,6 +86,13 @@
 - https://pieces.app/plugins/neovim
 - https://tabby.tabbyml.com/docs/extensions/installation/vim/
 - https://www.vim.org/scripts/script.php?script_id=6048
+
+
+
+- Try out:
+ - codecompanion
+ - aider / aider.nvim
+ - avante.nvim
 
 
 
