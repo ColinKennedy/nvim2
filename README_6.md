@@ -1,3 +1,6 @@
+- Super annoying when number / relativenumber don't get set, sometimes
+- Also <leader>sa needs to worm more often. Annoying that it breaks sometimes
+
 - Selectively undo lines in a file - https://github.com/SunnyTamang/select-undo.nvim
 
 - Change =p to put inline at the current cursor
