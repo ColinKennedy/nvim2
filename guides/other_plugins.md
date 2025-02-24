@@ -196,6 +196,17 @@ https://squidfunk.github.io/mkdocs-material/creating-your-site/
  - https://github.com/dead-null/idascope
 
 
+
+- Code security layer to prevent sending bad / sensitive data to AIs - https://www.reddit.com/r/neovim/comments/1iwdv9s/codegatenvim_privacy_security_for_llmbased_coding/
+ - https://docs.codegate.ai/
+
+- surround text
+ - https://github.com/altermo/ultimate-autopair.nvim?tab=readme-ov-file
+ - https://www.reddit.com/r/neovim/comments/1iw5udx/claspnvim_fast_wrap_your_missing_pair_with/
+ - https://github.com/kylechui/nvim-surround
+
+
+
 ## Python Development
 virtual environment selector -
 https://github.com/linux-cultist/venv-selector.nvim
