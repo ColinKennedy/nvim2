@@ -207,6 +207,10 @@ https://squidfunk.github.io/mkdocs-material/creating-your-site/
 
 
 
+- Calculator plugin - https://github.com/Apeiros-46B/qalc.nvim
+- google calendar updater script- https://github.com/TheLeoP/nvim-config/blob/master/lua/personal/calendar.lua
+
+
 ## Python Development
 virtual environment selector -
 https://github.com/linux-cultist/venv-selector.nvim
