@@ -1,3 +1,12 @@
+https://www.reddit.com/r/neovim/comments/1j2oko7/vectorcode_v040_updates_tool_calling_experimental/
+
+Gclog navigate between commits (useful for PR reviews)
+
+
+https://github.com/caliguIa/zendiagram.nvim
+https://github.com/OXY2DEV/nvim/blob/main/lua/scripts/diagnostic.lua
+
+
 - Super annoying when number / relativenumber don't get set, sometimes
 - Also <leader>sa needs to worm more often. Annoying that it breaks sometimes
 
@@ -220,6 +229,11 @@ def _get_module_namespaces(node: tree_sitter.Node, data: bytes) -> list[bytes]:
 
     return output
 ```
+
+
+
+https://github.com/ravitemer/mcphub.nvim
+
 
 
 https://github.com/smilhey/ed-cmd.nvim
