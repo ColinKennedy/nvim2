@@ -201,11 +201,12 @@ return {
         config = true,
     },
 
-    -- Track the cursor as it moves. Very fun and kind of useful!
-    {
-        "sphamba/smear-cursor.nvim",
-        opts = {},
-    },
+    -- NOTE: I love this plugin but it's just too slow. Sad.
+    -- -- Track the cursor as it moves. Very fun and kind of useful!
+    -- {
+    --     "sphamba/smear-cursor.nvim",
+    --     opts = {},
+    -- },
 
     -- Radically change Neovim's appearance. The command line gets centered and
     -- other things happen. This is experimental and may want to be removed in

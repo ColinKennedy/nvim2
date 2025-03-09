@@ -241,7 +241,8 @@ vim.api.nvim_create_autocmd("WinNew", {
                 or type_ == "DiffviewFiles" -- https://github.com/sindrets/diffview.nvim
                 or type_ == "Outline" -- https://github.com/simrat39/symbols-outline.nvim
                 or type_ == "TelescopePrompt" -- https://github.com/nvim-telescope/telescope.nvim
-                or type_ == "fzf" -- https://github.com/ibhagwan/fzf-lua
+                -- NOTE: <C-g> (ignore .gitignore) doesn't work unless we disable this
+                -- or type_ == "fzf" -- https://github.com/ibhagwan/fzf-lua
                 or type_ == "mason" -- https://github.com/williamboman/mason.nvim
                 or type_ == "neotest-summary" -- https://github.com/nvim-neotest/neotest
                 or type_ == "qf"

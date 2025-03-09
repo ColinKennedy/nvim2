@@ -54,7 +54,7 @@ vim.cmd [[highlight LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm
 vim.cmd [[highlight LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
 vim.cmd [[highlight LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline]]
 
--- Add icons for the left-hand sign gutter
+-- NOTE: Add icons for the left-hand sign gutter
 if vim.fn.has("nvim-0.10") then
     vim.diagnostic.config({
         -- Reference: https://github.com/neovim/neovim/commit/ad191be65e2b1641c181506166b1037b548d14a8
