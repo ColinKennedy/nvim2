@@ -1,7 +1,6 @@
 {
   "name": "@mason/bash-language-server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
-    "bash-language-server": "^5.1.2"
+    "bash-language-server": "^5.4.3"
   }
 }

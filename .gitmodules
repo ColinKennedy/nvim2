@@ -72,7 +72,7 @@
 	url = git@github.com:hrsh7th/cmp-path.git
 [submodule "bundle/nvim-cmp"]
 	path = bundle/nvim-cmp
-	url = git@github.com:iguanacucumber/magazine.git
+	url = git@github.com:iguanacucumber/magazine.nvim.git
 [submodule "bundle/fidget.nvim"]
 	path = bundle/fidget.nvim
 	url = git@github.com:j-hui/fidget.nvim.git
@@ -261,7 +261,7 @@
 	url = git@github.com:chentoast/marks.nvim
 [submodule "bundle/vim-gh-line"]
 	path = bundle/vim-gh-line
-	url = git@github.com:chentoast/vim-gh-line
+	url = git@github.com:ruanyl/vim-gh-line
 [submodule "bundle/hlargs.nvim"]
 	path = bundle/hlargs.nvim
 	url = git@github.com:m-demare/hlargs.nvim.git
@@ -387,10 +387,19 @@
 	url = git@github.com:aaronik/treewalker.nvim.git
 [submodule "bundle/neotest-busted"]
 	path = bundle/neotest-busted
-	url = git@gitlab.com:HiPhish/neotest-busted.git
+	url = git@github.com:HiPhish/neotest-busted.git
 [submodule "bundle/demicolon.nvim"]
 	path = bundle/demicolon.nvim
 	url = git@github.com:mawkler/demicolon.nvim.git
 [submodule "bundle/nvim-gitstatus"]
 	path = bundle/nvim-gitstatus
 	url = git@github.com:abccsss/nvim-gitstatus.git
+[submodule "bundle/no-neck-pain.nvim"]
+	path = bundle/no-neck-pain.nvim
+	url = git@github.com:shortcuts/no-neck-pain.nvim.git
+[submodule "bundle/nvim-colorizer.lua"]
+	path = bundle/nvim-colorizer.lua
+	url = git@github.com:norcalli/nvim-colorizer.lua.git
+[submodule "bundle/obsidian.nvim"]
+	path = bundle/obsidian.nvim
+	url = git@github.com:epwalsh/obsidian.nvim.git

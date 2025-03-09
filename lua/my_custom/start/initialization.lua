@@ -195,6 +195,6 @@ vim.opt.equalalways = false
 --
 -- Reference: https://github.com/neovim/neovim/pull/31492
 --
-if vim.o.messagesopt then
+if pcall(function() return vim.o.messagesopt end) then
     vim.o.messagesopt = "wait:200,history:500"
 end
