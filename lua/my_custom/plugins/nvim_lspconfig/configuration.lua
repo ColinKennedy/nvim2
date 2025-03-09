@@ -124,7 +124,7 @@ if vim.diagnostic.jump ~= nil then
         })
     end, { desc = "Search downwards for diagnostic messages and go to it, if one is found." })
 else
-    vim.keymap.set("n", "]d", function()
+    vim.keymap.set("n", "[d", function()
         ---@diagnostic disable-next-line: deprecated
         vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.HINT})
     end, { desc = "Search downwards for diagnostic messages and go to it, if one is found." })
