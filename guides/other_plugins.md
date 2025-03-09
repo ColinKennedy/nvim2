@@ -211,6 +211,11 @@ https://squidfunk.github.io/mkdocs-material/creating-your-site/
 - google calendar updater script- https://github.com/TheLeoP/nvim-config/blob/master/lua/personal/calendar.lua
 
 
+
+https://github.com/ravitemer/mcphub.nvim
+- MCP Server installer
+
+
 ## Python Development
 virtual environment selector -
 https://github.com/linux-cultist/venv-selector.nvim
