@@ -20,10 +20,7 @@ local function _read_line_from_path(path)
     local handler = io.open(path, "r")
 
     if not handler then
-        vim.notify(
-            string.format('Path "%s" was not readable.', path),
-            vim.log.levels.ERROR
-        )
+        vim.notify(string.format('Path "%s" was not readable.', path), vim.log.levels.ERROR)
 
         return nil
     end

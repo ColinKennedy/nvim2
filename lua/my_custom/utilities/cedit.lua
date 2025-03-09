@@ -1,6 +1,5 @@
 --- The implementation for `:CEdit`.
 
-
 local M = {}
 
 --- Save `:h autochdir`, run `caller`, and then restore it.
@@ -32,7 +31,9 @@ end
 local function _get_current_buffer_directory(buffer)
     buffer = buffer or vim.api.nvim_get_current_buf()
 
-    local success, path = pcall(function() return vim.api.nvim_buf_get_name(buffer) end)
+    local success, path = pcall(function()
+        return vim.api.nvim_buf_get_name(buffer)
+    end)
 
     if not success or path == "" then
         return nil

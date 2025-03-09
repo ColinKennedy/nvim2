@@ -24,17 +24,11 @@ function M.run_command(command, options)
     end
 
     if result == -1 then
-        vim.notify(
-            'The requested command "' .. command .. '" timed out.',
-            vim.log.levels.ERROR
-        )
+        vim.notify('The requested command "' .. command .. '" timed out.', vim.log.levels.ERROR)
 
         return false
     elseif result == -2 then
-        vim.notify(
-            'The requested command "' .. vim.inspect(command) .. '" was interrupted.',
-            vim.log.levels.ERROR
-        )
+        vim.notify('The requested command "' .. vim.inspect(command) .. '" was interrupted.', vim.log.levels.ERROR)
 
         return false
     elseif result == -3 then

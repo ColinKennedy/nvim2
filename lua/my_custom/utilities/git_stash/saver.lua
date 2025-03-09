@@ -21,10 +21,7 @@ function M.push(options)
     local silent = options.silent or configuration.is_saver_silent()
 
     if path == nil then
-        vim.notify(
-            "No git path was given and could not be automatically found. Cannot continue.",
-            vim.log.levels.ERROR
-        )
+        vim.notify("No git path was given and could not be automatically found. Cannot continue.", vim.log.levels.ERROR)
 
         return
     end

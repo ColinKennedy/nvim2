@@ -58,10 +58,7 @@ function M.choose_last_window()
     local previous_window = _PREVIOUS_ALLOWED_WINDOWS_BY_TAB[current_tab]
 
     if previous_window == nil then
-        vim.notify(
-            'Tab "' .. current_tab .. '" has no previous window to fall back to.',
-            vim.log.levels.ERROR
-        )
+        vim.notify('Tab "' .. current_tab .. '" has no previous window to fall back to.', vim.log.levels.ERROR)
 
         return
     end

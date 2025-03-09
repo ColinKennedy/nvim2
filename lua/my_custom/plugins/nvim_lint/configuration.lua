@@ -1,6 +1,5 @@
 --- A configuration for [nvim-lint](https://github.com/mfussenegger/nvim-lint).
 
-
 --- Check if `executable` is findable.
 ---
 ---@param executable string The name of the runnable file. e.g. `"nvim"`.

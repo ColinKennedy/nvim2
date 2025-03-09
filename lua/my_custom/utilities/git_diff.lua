@@ -199,10 +199,7 @@ function M.load_git_diff(directory)
         vim.fn.setqflist(entries)
         vim.cmd [[copen]]
     else
-        vim.notify(
-            'Directory "' .. directory .. '" as no git diff.',
-            vim.log.levels.ERROR
-        )
+        vim.notify('Directory "' .. directory .. '" as no git diff.', vim.log.levels.ERROR)
     end
 end
 

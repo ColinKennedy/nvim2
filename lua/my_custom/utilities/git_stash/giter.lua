@@ -29,10 +29,7 @@ local function _create_git_stash(directory)
     })
 
     if not result then
-        vim.notify(
-            'git stash stderr: "' .. vim.inspect(stderr) .. '"',
-            vim.log.levels.ERROR
-        )
+        vim.notify('git stash stderr: "' .. vim.inspect(stderr) .. '"', vim.log.levels.ERROR)
     end
 end
 
@@ -59,10 +56,7 @@ local function _push_named_git_stash(name, directory)
     })
 
     if not result then
-        vim.notify(
-            'git named stash stderr: "' .. vim.inspect(stderr) .. '"',
-            vim.log.levels.ERROR
-        )
+        vim.notify('git named stash stderr: "' .. vim.inspect(stderr) .. '"', vim.log.levels.ERROR)
     end
 end
 
@@ -92,10 +86,7 @@ function M.get_stashes(directory)
     })
 
     if not result then
-        vim.notify(
-            'git stash stderr: "' .. vim.inspect(stderr) .. '"',
-            vim.log.levels.ERROR
-        )
+        vim.notify('git stash stderr: "' .. vim.inspect(stderr) .. '"', vim.log.levels.ERROR)
 
         return nil
     end

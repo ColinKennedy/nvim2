@@ -176,28 +176,28 @@ return {
             --
             -- Reference: https://github.com/mawkler/demicolon.nvim
             --
-            require('demicolon').setup({
-              integrations = {
-                  gitsigns = {
-                      enabled = true,
-                      keymaps = {
-                          -- NOTE: The default mappings for gitsigns.nvim is [c and ]c but
-                          -- I use [g and ]g.
-                          --
-                          next = "]g",
-                          prev = "[g",
-                      },
-                  },
-              },
-              keymaps = {
-                repeat_motions = false,
-              },
+            require("demicolon").setup({
+                integrations = {
+                    gitsigns = {
+                        enabled = true,
+                        keymaps = {
+                            -- NOTE: The default mappings for gitsigns.nvim is [c and ]c but
+                            -- I use [g and ]g.
+                            --
+                            next = "]g",
+                            prev = "[g",
+                        },
+                    },
+                },
+                keymaps = {
+                    repeat_motions = false,
+                },
             })
 
-            local nxo = { 'n', 'x', 'o' }
+            local nxo = { "n", "x", "o" }
 
-            vim.keymap.set(nxo, ';', require('demicolon.repeat_jump').next)
-            vim.keymap.set(nxo, ',', require('demicolon.repeat_jump').prev)
+            vim.keymap.set(nxo, ";", require("demicolon.repeat_jump").next)
+            vim.keymap.set(nxo, ",", require("demicolon.repeat_jump").prev)
         end,
     },
 }

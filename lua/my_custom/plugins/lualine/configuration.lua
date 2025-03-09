@@ -10,26 +10,26 @@ require("lualine").setup {
     sections = {
         lualine_b = {
             {
-              "gitstatus",
-              sections = {
-                { "branch", format = " {}" },
-                { "is_dirty", format = "*" },
-              },
-              sep = "",
+                "gitstatus",
+                sections = {
+                    { "branch", format = " {}" },
+                    { "is_dirty", format = "*" },
+                },
+                sep = "",
             },
             {
-              "gitstatus",
-              sections = {
-                { "ahead", format = "{}", hl="DiffAdd" },
-                { "behind", format = "{}", hl="WarningMsg" },
-                { "conflicted", format = "{} [CONFLICT]", hl="ErrorMsg" },
-                { "staged", format = "{}", hl="Title" },
-                { "modified", format = "{}", hl="Type" },
-                { "renamed", format = "{}", hl="Search" },
-                { "deleted", format = "󰮉{}", hl="WarningMsg" },
-                { "untracked", format = "{}", hl="DiagnosticHint" },
-              },
-              sep = " ",
+                "gitstatus",
+                sections = {
+                    { "ahead", format = "{}", hl = "DiffAdd" },
+                    { "behind", format = "{}", hl = "WarningMsg" },
+                    { "conflicted", format = "{} [CONFLICT]", hl = "ErrorMsg" },
+                    { "staged", format = "{}", hl = "Title" },
+                    { "modified", format = "{}", hl = "Type" },
+                    { "renamed", format = "{}", hl = "Search" },
+                    { "deleted", format = "󰮉{}", hl = "WarningMsg" },
+                    { "untracked", format = "{}", hl = "DiagnosticHint" },
+                },
+                sep = " ",
             },
         },
         lualine_c = { { require("grapple-line").status } },
