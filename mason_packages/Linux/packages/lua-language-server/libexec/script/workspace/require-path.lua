@@ -5,6 +5,7 @@ local workspace = require "workspace"
 local config    = require 'config'
 local scope     = require 'workspace.scope'
 local util      = require 'utility'
+local plugin    = require 'plugin'
 
 ---@class require-path
 local m = {}
@@ -97,33 +98,11 @@ function mt:getRequireResultByPath(path)
             end
         end
 
-        -- handle `../?.lua`
-        local parentCount = 0
-        for _ = 1, 1000 do
-            if searcher:match '^%.%.[/\\]' then
-                parentCount = parentCount + 1
-                searcher = searcher:sub(4)
-            else
-                break
-            end
-        end
-        if parentCount > 0 then
-            local parentPath = libraryPath
-                            or (self.scp.uri and furi.decode(self.scp.uri))
-            if parentPath then
-                local tail
-                for _ = 1, parentCount do
-                    parentPath, tail = parentPath:match '^(.+)[/\\]([^/\\]*)$'
-                    currentPath = tail .. '/' .. currentPath
-                end
-            end
-        end
-
         repeat
             cutedPath = currentPath:sub(pos)
             head = currentPath:sub(1, pos - 1)
             pos = currentPath:match('[/\\]+()', pos)
-            if platform.OS == 'Windows' then
+            if platform.os == 'windows' then
                 searcher = searcher :gsub('[/\\]+', '\\')
             else
                 searcher = searcher :gsub('[/\\]+', '/')
@@ -180,6 +159,11 @@ function mt:searchUrisByRequireName(name)
     local results     = {}
     local searcherMap = {}
     local excludes    = {}
+
+    local pluginSuccess, pluginResults = plugin.dispatch('ResolveRequire', self.scp.uri, name)
+    if pluginSuccess and pluginResults ~= nil then
+        return pluginResults
+    end
 
     for uri in files.eachFile(self.scp.uri) do
         if vm.isMetaFileRequireable(uri) then
@@ -312,14 +296,14 @@ function m.isMatchedUri(suri, uri, name)
     return false
 end
 
-files.watch(function (ev, uri)
+files.watch(function (_ev, _uri)
     for _, scp in ipairs(workspace.folders) do
         scp:set('requireManager', nil)
     end
     scope.fallback:set('requireManager', nil)
 end)
 
-config.watch(function (uri, key, value, oldValue)
+config.watch(function (uri, key, _value, _oldValue)
     if key == 'Lua.completion.requireSeparator'
     or key == 'Lua.runtime.path'
     or key == 'Lua.runtime.pathStrict' then

@@ -9,8 +9,8 @@ local text = luasnip.t
 return {
     snippet(
         {
-            docstring="Class definition",
-            trig="c",
+            docstring = "Class definition",
+            trig = "c",
         },
         format(
             [[
@@ -29,117 +29,71 @@ return {
         { show_condition = is_source_beginning("c") }
     ),
 
-    snippet(
-        {
-            docstring="Return True",
-            trig="rt",
-        },
-        text("return True"),
-        { show_condition = is_source_beginning("rt") }
-    ),
+    snippet({
+        docstring = "Return True",
+        trig = "rt",
+    }, text("return True"), { show_condition = is_source_beginning("rt") }),
 
-    snippet(
-        {
-            docstring="Return False",
-            trig="rf",
-        },
-        text("return False"),
-        { show_condition = is_source_beginning("rf") }
-    ),
+    snippet({
+        docstring = "Return False",
+        trig = "rf",
+    }, text("return False"), { show_condition = is_source_beginning("rf") }),
 
-    snippet(
-        {
-            docstring="Return None",
-            trig="rn",
-        },
-        text("return None"),
-        { show_condition = is_source_beginning("rn") }
-    ),
+    snippet({
+        docstring = "Return None",
+        trig = "rn",
+    }, text("return None"), { show_condition = is_source_beginning("rn") }),
 
-    snippet(
-        {
-            docstring="Make a format block",
-            trig="'.f",
-        },
-        format("'.format({})", { index(1, "") })
-    ),
+    snippet({
+        docstring = "Make a format block",
+        trig = "'.f",
+    }, format("'.format({})", { index(1, "") })),
 
-    snippet(
-        {
-            docstring="Make a format block",
-            trig='".f',
-        },
-        format('".format({})', { index(1, "") })
-    ),
+    snippet({
+        docstring = "Make a format block",
+        trig = '".f',
+    }, format('".format({})', { index(1, "") })),
 
-    snippet(
-        {
-            docstring="raise",
-            trig="ra",
-        },
-        format("raise {}", { index(1, "") }),
-        { show_condition = is_source_beginning("ra") }
-    ),
+    snippet({
+        docstring = "raise",
+        trig = "ra",
+    }, format("raise {}", { index(1, "") }), { show_condition = is_source_beginning("ra") }),
 
-    snippet(
-        {
-            docstring="yield",
-            trig="y",
-        },
-        format("yield {}", { index(1, "") }),
-        { show_condition = is_source_beginning("y") }
-    ),
+    snippet({
+        docstring = "yield",
+        trig = "y",
+    }, format("yield {}", { index(1, "") }), { show_condition = is_source_beginning("y") }),
 
-    snippet(
-        {
-            docstring="import",
-            trig="ii",
-        },
-        format("import {}", { index(1, "") }),
-        { show_condition = is_source_beginning("ii") }
-    ),
+    snippet({
+        docstring = "import",
+        trig = "ii",
+    }, format("import {}", { index(1, "") }), { show_condition = is_source_beginning("ii") }),
 
-    snippet(
-        {
-            docstring="@classmethod",
-            trig="@c",
-        },
-        text("@classmethod"),
-        { show_condition = is_source_beginning("@c") }
-    ),
+    snippet({
+        docstring = "@classmethod",
+        trig = "@c",
+    }, text("@classmethod"), { show_condition = is_source_beginning("@c") }),
 
-    snippet(
-        {
-            docstring="@staticmethod",
-            trig="@s",
-        },
-        text("@staticmethod"),
-        { show_condition = is_source_beginning("@s") }
-    ),
+    snippet({
+        docstring = "@staticmethod",
+        trig = "@s",
+    }, text("@staticmethod"), { show_condition = is_source_beginning("@s") }),
 
-    snippet(
-        {
-            docstring="@property",
-            trig="@p",
-        },
-        text("@property"),
-        { show_condition = is_source_beginning("@p") }
-    ),
+    snippet({
+        docstring = "@property",
+        trig = "@p",
+    }, text("@property"), { show_condition = is_source_beginning("@p") }),
 
-    snippet(
-        {
-            docstring="self.$1",
-            trig="s",
-        },
-        format([[self.{}]], {index(1, "blah")})
-    ),
-
+    snippet({
+        docstring = "self.$1",
+        trig = "s",
+    }, format([[self.{}]], { index(1, "blah") })),
 
     -- Blocks
     snippet(
         {
-            docstring="for item in items:",
-            trig="for",
+            docstring = "for item in items:",
+            trig = "for",
         },
         format(
             [[
@@ -156,8 +110,8 @@ return {
 
     snippet(
         {
-            docstring="with foo as handler:",
-            trig="with",
+            docstring = "with foo as handler:",
+            trig = "with",
         },
         format(
             [[

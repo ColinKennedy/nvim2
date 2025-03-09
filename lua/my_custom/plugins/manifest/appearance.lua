@@ -1,27 +1,11 @@
 return {
     {
         "ColinKennedy/hybrid2.nvim",
-        priority = 1000,  -- Load this first
+        priority = 1000, -- Load this first
         config = function()
-            vim.cmd.colorscheme("hybrid2")
-
-            -- Show namespaces as a separate color
-            -- TODO: Get this color automatically
-            vim.api.nvim_set_hl(0, "@namespace", {fg="#707880", ctermfg=243})
-
-            -- https://github.com/stsewd/tree-sitter-comment
-            --
-            -- Installed via ``:TSInstall comment``
-            --
-            vim.api.nvim_set_hl(0, "@text.danger", {link="SpellBad"})
-            vim.api.nvim_set_hl(0, "@text.question", {link="SpellLocal"})
-            vim.api.nvim_set_hl(0, "@text.note", {link="SpellCap"})
-
-            -- Show trailing whitespace as red text
-            -- TODO: Get this color automatically
-            vim.api.nvim_set_hl(0, "NonText", {bg="#5f0000", ctermbg=52})
+            require("my_custom.plugins.hybrid2.configuration")
         end,
-        version = "1.*"
+        version = "1.*",
     },
 
     {
@@ -32,40 +16,19 @@ return {
     -- TODO: Make this prettier. Like how NvChad works
     -- Shows added, removed, etc git hunks
     {
-        "lewis6991/gitsigns.nvim",
+        "ColinKennedy/gitsigns.nvim",
+        branch = "add_extra_actions",
+        config = function()
+            local gitsigns = require("gitsigns")
+
+            gitsigns.setup({ signs = { changedelete = { text = "～" } } })
+        end,
         ft = "gitcommit",
         init = function()
-            -- load gitsigns only when a git file is opened
-            vim.api.nvim_create_autocmd(
-                { "BufRead" },
-                {
-                    group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
-                    callback = function()
-                        vim.fn.system("git -C " .. vim.fn.expand "%:p:h" .. " rev-parse")
-                        if vim.v.shell_error == 0 then
-                            vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-                            vim.schedule(function()
-                                require("lazy").load { plugins = { "gitsigns.nvim" } }
-                            end)
-                        end
-                    end
-                }
-            )
-
-            -- Make deleted lines a bit easier to see
-            vim.api.nvim_set_hl(0, "GitSignsDelete", {fg="#cc6666", ctermfg=167})
+            require("my_custom.plugins.gitsigns.initialization")
         end,
-        opts = {
-            signs = {
-                add = { text = "│" },
-                change = { text = "╵" },
-                delete = { text = "_" },
-                topdelete = { text = "‾" },
-                changedelete = { text = "x" },
-                untracked = { text = "" },
-            },
-        },
-        version = "0.*"
+        keys = require("my_custom.plugins.gitsigns.keys"),
+        -- version = "0.*"  -- This release is super old and has bugs. But ideally we'd use it
     },
 
     -- TODO: Add this later
@@ -76,109 +39,50 @@ return {
     -- Add a quick status bar plugin
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            require("lualine").setup {
-              options = {
-                icons_enabled = true,
-                theme = "onedark",
-                section_separators = { left = "", right = ""},
-                component_separators = { left = '', right = ''},
-              },
-              sections = {
-                lualine_b = {"branch"},
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {
-                    {
-                        "diagnostics",
-                        symbols = {
-                            -- Reference: www.nerdfonts.com/cheat-sheet
-                            error = " ",
-                            warn = "⚠ ",
-                            info = " ",
-                            hint = " ",
-                        },
-                    },
-                    "progress",
-                },
-                lualine_z = {"location"}
-              },
-            }
+            require("my_custom.plugins.lualine.configuration")
         end,
-        event = "VeryLazy",
+    },
+
+    -- Add named indices to `grapple.nvim`
+    {
+        "ColinKennedy/grapple-line.nvim",
+        branch = "remove_padding",
+        dependencies = { "cbochs/grapple.nvim" },
+        opts = { number_of_files = 8 },
     },
 
     -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
     {
         "nvim-tree/nvim-web-devicons",
         config = function()
-            local _suggest_a_color = function(highlight_group)
-                local data = vim.api.nvim_get_hl_by_name(highlight_group, true)
-                local foreground = data["foreground"]
-
-                if foreground ~= nil
-                then
-                    return foreground
-                end
-
-                return data["background"] or ""
-            end
-
-            local get_best_hex = function(highlight_group)
-                local color = _suggest_a_color(highlight_group)
-
-                if color ~= ""
-                then
-                    return string.format("#%06x", color)
-                end
-
-                return "#428850"
-            end
-
-            require("nvim-web-devicons").set_icon {
-                dapui_breakpoints = {
-                    icon = "",
-                    color = get_best_hex("Question"),
-                    -- cterm_color = "65",
-                    name = "dapui_breakpoints"
-                },
-                dapui_console = {
-                    icon = "",
-                    color = get_best_hex("Comment"),
-                    -- cterm_color = "65",
-                    name = "dapui_console"
-                },
-                ["dap-repl"] = {  -- By default, it is shown as bright white
-                    icon = "󱜽",
-                    -- cterm_color = "65",
-                    name = "dap_repl"
-                },
-                dapui_scopes = {
-                    icon = "󰓾",
-                    color = get_best_hex("Function"),
-                    -- cterm_color = "40",
-                    name = "dapui_scopes"
-                },
-                dapui_stacks = {
-                    icon = "",
-                    color = get_best_hex("Directory"),
-                    -- cterm_color = "65",
-                    name = "dapui_stacks"
-                },
-                dapui_watches = {
-                    icon = "󰂥",
-                    color = get_best_hex("Constant"),
-                    -- cterm_color = "65",
-                    name = "dapui_watches"
-                },
-            }
+            require("my_custom.plugins.nvim_web_devicons.configuration")
         end,
         lazy = true,
     },
 
+    {
+        "rachartier/tiny-devicons-auto-colors.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        event = "VeryLazy",
+        config = function()
+            require("tiny-devicons-auto-colors").setup {
+                factors = {
+                    lightness = 1.75, -- Adjust the lightness factor.
+                    chroma = 1, -- Adjust the chroma factor.
+                    hue = 1.25, -- Adjust the hue factor.
+                },
+                ignore = {
+                    "markdown",
+                },
+            }
+        end,
+    },
+
+    -- TODO: Do I even still need this? Remove?
     -- Enhanced markdown highlighting and syntax
     {
         "tpope/vim-markdown",
@@ -209,133 +113,144 @@ return {
     {
         "ColinKennedy/winbar.nvim",
         config = function()
-            require("winbar").setup(
-                {
-                    enabled = true,
-
-                    show_file_path = true,
-                    show_symbols = true,
-
-                    colors = {
-                        path = "", -- You can customize colors like #c946fd
-                        file_name = "",
-                        symbols = "",
-                    },
-
-                    icons = {
-                        file_icon_default = "",
-                        seperator = ">",
-                        editor_state = "●",
-                        lock_icon = "",
-                    },
-
-                    exclude_filetype = {
-                        -- Built-in windows
-                        "qf",
-                        "help",
-
-                        "",  -- Neovim terminals have no filetype. Disable terminals.
-                        "NvimTree",  -- nvim-tree/nvim-tree.lua
-
-                        -- Extras
-                        "Outline",
-                        "Trouble",
-                        "alpha",
-                        "dashboard",
-                        "lir",
-                        "neogitstatus",
-                        "packer",
-                        "spectre_panel",
-                        "startify",
-                        "toggleterm",
-
-                    }
-                }
-            )
+            require("my_custom.plugins.winbar.configuration")
         end,
-        dependencies = {"Lazytangent/nvim-gps", "nvim-tree/nvim-web-devicons"},
+        dependencies = { "ColinKennedy/nvim-gps", "nvim-tree/nvim-web-devicons" },
         event = "VeryLazy",
     },
 
     -- Use treesitter to show your current cursor context (class > function > etc)
     {
-        "Lazytangent/nvim-gps",
-        config = function()
-            require("nvim-gps").setup()
-        end,
-        dependencies = {"nvim-treesitter/nvim-treesitter"},
+        "ColinKennedy/nvim-gps",
+        config = true,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         lazy = true,
     },
 
-    -- TODO: Figure out how to lazy-load this plug-in
+    -- Keep the Vim cursor in the center of the screen, even at the bottom of the buffer.
     --
-    -- Overrides Vim's default Command mode and provides "wild card" results
-    -- + icons. Mostly cosmetic and isn't "necessary", but it is a fun little
-    -- plug-in as long as it's harmless.
+    -- Maybe in the future this will change and Vim will have native support for this.
+    --
+    -- Reference: https://github.com/vim/vim/issues/13428
     --
     {
-        "gelguy/wilder.nvim",
+        "arnamak/stay-centered.nvim",
         config = function()
-            local wilder = require("wilder")
+            require("my_custom.plugins.stay_centered.configuration")
+        end,
+    },
 
-            wilder.setup({modes = {":", "/", "?"}})
+    -- Highlight the whole line when you're in linewise selection mode.
+    --
+    -- Why is this not Vim's default behavior??
+    --
+    {
+        "ColinKennedy/full_visual_line.nvim",
+        -- TODO: Remove this fork + branch once the PR is merged
+        --
+        -- Reference: https://github.com/0xAdk/full_visual_line.nvim/pull/3
+        --
+        branch = "fix_visual_line_with_vim_ninja_feet",
+        keys = "V",
+        opts = {},
+    },
 
-            -- Disable Python remote plugin
-            wilder.set_option("use_python_remote_plugin", 0)
+    -- Highlight todo notes and other comments in the current buffer. Very pretty!
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "ColinKennedy/plenary.nvim" },
+        config = function()
+            require("my_custom.plugins.todo_comments.configuration")
+        end,
+    },
 
-            wilder.set_option(
-                "pipeline",
-                {
-                    wilder.branch(
-                        wilder.cmdline_pipeline(
-                            {
-                                fuzzy = 1,
-                                fuzzy_filter = wilder.lua_fzy_filter(),
-                            }
-                        ),
-                        wilder.vim_search_pipeline()
-                    )
-                }
-            )
+    -- Make markdown files pretty
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        config = function()
+            local colormate = require("my_custom.utilities.colormate")
 
-            local gradient = {
-              "#f4468f", "#fd4a85", "#ff507a", "#ff566f", "#ff5e63",
-              "#ff6658", "#ff704e", "#ff7a45", "#ff843d", "#ff9036",
-              "#f89b31", "#efa72f", "#e6b32e", "#dcbe30", "#d2c934",
-              "#c8d43a", "#bfde43", "#b6e84e", "#aff05b"
-            }
+            ---@param header number
+            local function set_header_color(header)
+                local foreground_number =
+                    colormate.get_highlight_attribute_data("fg", { string.format("@markup.heading.%s", header) })
 
-            for i, fg in ipairs(gradient) do
-              gradient[i] = wilder.make_hl("WilderGradient" .. i, "Pmenu", {{a = 1}, {a = 1}, {foreground = fg}})
+                local foreground = colormate.get_color_from_number(foreground_number)
+                local darker = colormate.shade_color(foreground, -40)
+
+                vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%sBg", header), { bg = darker, fg = "White" })
+
+                vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%s", header), { fg = "White" })
             end
 
-            wilder.set_option(
-                "renderer",
-                wilder.renderer_mux(
-                    {
-                        [":"] = wilder.popupmenu_renderer(
-                            wilder.popupmenu_border_theme(
-                                {
-                                    border = "rounded",
-                                    highlights = {
-                                        default = wilder.make_hl("WilderPmenu", "Normal"),
-                                        border = "Normal", -- highlight to use for the border
-                                        gradient = gradient,
-                                    },
-                                    highlighter = wilder.highlighter_with_gradient(
-                                        { wilder.lua_fzy_highlighter() }
-                                    ),
-                                    left = { " ", wilder.popupmenu_devicons() },
-                                    right = { " ", wilder.popupmenu_scrollbar() },
-                                }
-                            )
-                        ),
-                    }
-                )
-            )
+            for header = 1, 6 do
+                set_header_color(header)
+            end
+
+            vim.api.nvim_set_hl(0, "RenderMarkdownTableFill", { link = "Normal" })
+
+            require("render-markdown").setup({ heading = { sign = false } })
         end,
-        dependencies = {"romgrk/fzy-lua-native"},
-        -- Reference: https://github.com/gelguy/wilder.nvim#faster-startup-time
-        event = "CmdlineEnter",
-    }
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        ft = { "markdown" },
+    },
+
+    -- A really pretty scrollbar. Not sure if I'll keep it. But it looks nice!
+    {
+        "petertriho/nvim-scrollbar",
+        config = true,
+    },
+
+    -- NOTE: I love this plugin but it's just too slow. Sad.
+    -- -- Track the cursor as it moves. Very fun and kind of useful!
+    -- {
+    --     "sphamba/smear-cursor.nvim",
+    --     opts = {},
+    -- },
+
+    -- Radically change Neovim's appearance. The command line gets centered and
+    -- other things happen. This is experimental and may want to be removed in
+    -- the future.
+    --
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        config = function()
+            -- NOTE: we only redefine these colors because we use lualine's
+            -- "onedark" theme which prefers different colors than our theme prefers.
+            --
+            vim.api.nvim_set_hl(0, "NoiceCmdlineIconCmdline", { link = "Function" })
+            vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "Function" })
+
+            require("noice").setup({
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        -- NOTE: Requires hrsh7th/nvim-cmp or iguanacucumber/magazine.nvim
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                    progress = { enabled = false },
+                    signature = { enabled = false },
+                },
+                messages = { enabled = false },
+                notify = { enabled = false },
+                popupmenu = { enabled = false },
+            })
+        end,
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+        },
+    },
+
+    -- A lualine status bar that tells me details about the current git window.
+    -- See `require("my_custom.plugins.lualine.configuration")` for details.
+    --
+    {
+        "abccsss/nvim-gitstatus",
+        event = "VeryLazy",
+        opts = { auto_fetch_interval = 1000 },
+    },
 }

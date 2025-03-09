@@ -54,12 +54,13 @@ EChar               <-  'a' -> ea
                     /   ([0-9] [0-9]? [0-9]?) -> Char10
                     /   ('u{' {X16*} '}')    -> CharUtf8
 Symbol              <-  ({} {
-                            [:|,;<>()?+#{}]
+                            [:|,;<>()?+#{}*]
                         /   '[]'
                         /   '...'
                         /   '['
                         /   ']'
                         /   '-' !'-'
+                        /   '.' !'..'
                         } {})
                     ->  Symbol
 ]], {
@@ -71,7 +72,7 @@ Symbol              <-  ({} {
     er = '\r',
     et = '\t',
     ev = '\v',
-    name = (m.R('az', 'AZ', '09', '\x80\xff') + m.S('_')) * (m.R('az', 'AZ', '__', '09', '\x80\xff') + m.S('_.*-'))^0,
+    name = (m.R('az', 'AZ', '09', '\x80\xff') + m.S('_')) * (m.R('az', 'AZ', '09', '\x80\xff') + m.S('_.*-'))^0,
     Char10 = function (char)
         ---@type integer?
         char = tonumber(char)
@@ -157,6 +158,7 @@ Symbol              <-  ({} {
 ---@field generics?         parser.object[]
 ---@field generic?          parser.object
 ---@field docAttr?          parser.object
+---@field pattern?          string
 
 local function parseTokens(text, offset)
     Ci = 0
@@ -297,6 +299,30 @@ local function parseIndexField(parent)
     return field
 end
 
+local function slideToNextLine()
+    if peekToken() then
+        return
+    end
+    local nextComment = NextComment(0, true)
+    if not nextComment then
+        return
+    end
+    local currentComment = NextComment(-1, true)
+    local currentLine = guide.rowColOf(currentComment.start)
+    local nextLine = guide.rowColOf(nextComment.start)
+    if currentLine + 1 ~= nextLine then
+        return
+    end
+    if nextComment.text:sub(1, 1) ~= '-' then
+        return
+    end
+    if nextComment.text:match '^%-%s*%@' then
+        return
+    end
+    NextComment()
+    parseTokens(nextComment.text:sub(2), nextComment.start + 2)
+end
+
 local function parseTable(parent)
     if not checkToken('symbol', '{', 1) then
         return nil
@@ -310,6 +336,7 @@ local function parseTable(parent)
     }
 
     while true do
+        slideToNextLine()
         if checkToken('symbol', '}', 1) then
             nextToken()
             break
@@ -362,6 +389,79 @@ local function parseTable(parent)
             nextToken()
         else
             nextSymbolOrError('}')
+            break
+        end
+    end
+    typeUnit.finish = getFinish()
+    return typeUnit
+end
+
+local function parseTuple(parent)
+    if not checkToken('symbol', '[', 1) then
+        return nil
+    end
+    nextToken()
+    local typeUnit = {
+        type    = 'doc.type.table',
+        start   = getStart(),
+        parent  = parent,
+        fields  = {},
+        isTuple = true,
+    }
+
+    local index = 1
+    while true do
+        slideToNextLine()
+        if checkToken('symbol', ']', 1) then
+            nextToken()
+            break
+        end
+        local field = {
+            type   = 'doc.type.field',
+            parent = typeUnit,
+        }
+
+        do
+            local needCloseParen
+            if checkToken('symbol', '(', 1) then
+                nextToken()
+                needCloseParen = true
+            end
+            field.name = {
+                type        = 'doc.type',
+                start       = getFinish(),
+                firstFinish = getFinish(),
+                finish      = getFinish(),
+                parent      = field,
+            }
+            field.name.types = {
+                [1] = {
+                    type   = 'doc.type.integer',
+                    start  = getFinish(),
+                    finish = getFinish(),
+                    parent = field.name,
+                    [1]    = index,
+                }
+            }
+            index          = index + 1
+            field.extends  = parseType(field)
+            if not field.extends then
+                break
+            end
+            field.optional = field.extends.optional
+            field.start    = field.extends.start
+            field.finish   = field.extends.finish
+            if needCloseParen then
+                nextSymbolOrError ')'
+            end
+        end
+
+        typeUnit.fields[#typeUnit.fields+1] = field
+        if checkToken('symbol', ',', 1)
+        or checkToken('symbol', ';', 1) then
+            nextToken()
+        else
+            nextSymbolOrError(']')
             break
         end
     end
@@ -427,6 +527,7 @@ local function  parseTypeUnitFunction(parent)
         return nil
     end
     while true do
+        slideToNextLine()
         if checkToken('symbol', ')', 1) then
             nextToken()
             break
@@ -466,14 +567,17 @@ local function  parseTypeUnitFunction(parent)
             break
         end
     end
+    slideToNextLine()
     if checkToken('symbol', ':', 1) then
         nextToken()
+        slideToNextLine()
         local needCloseParen
         if checkToken('symbol', '(', 1) then
             nextToken()
             needCloseParen = true
         end
         while true do
+            slideToNextLine()
             local name
             try(function ()
                 local returnName = parseName('doc.return.name', typeUnit)
@@ -601,7 +705,7 @@ local function parseString(parent)
     -- compatibility
     if content:sub(1, 1) == '"'
     or content:sub(1, 1) == "'" then
-        if content:sub(1, 1) == content:sub(-1, -1) then
+        if #content > 1 and content:sub(1, 1) == content:sub(-1, -1) then
             mark = content:sub(1, 1)
             content = content:sub(2, -2)
         end
@@ -617,17 +721,69 @@ local function parseString(parent)
     return str
 end
 
-local function parseCode(parent)
-    local tp, content = peekToken()
-    if not tp or tp ~= 'code' then
+local function parseCodePattern(parent)
+    local tp, pattern = peekToken()
+    if not tp or (tp ~= 'name' and tp ~= 'code') then
+        return nil
+    end
+    local codeOffset
+    local content
+    local i = 1
+    if tp == 'code' then
+        codeOffset = i
+        content = pattern
+        pattern = '%s'
+    end
+    while true do
+        i = i+1
+        local nextTp, nextContent = peekToken(i)
+        if not nextTp or TokenFinishs[Ci+i-1] + 1 ~= TokenStarts[Ci+i] then
+            ---不连续的name，无效的
+            break
+        end
+        if nextTp == 'name' then
+            pattern = pattern .. nextContent
+        elseif nextTp == 'code' then
+            if codeOffset then
+                -- 暂时不支持多generic
+                break
+            end
+            codeOffset = i
+            pattern = pattern .. '%s'
+            content = nextContent
+        elseif codeOffset then
+            -- should be match with Parser "name" mask
+            if nextTp == 'integer' then
+                pattern = pattern .. nextContent
+            elseif nextTp == 'symbol' and (nextContent == '.' or nextContent == '*' or nextContent == '-') then
+                pattern = pattern .. nextContent
+            else
+                break
+            end
+        else
+            break
+        end
+    end
+    if not codeOffset then
         return nil
     end
     nextToken()
+    local start = getStart()
+    local finishOffset = i-1
+    if finishOffset == 1 then
+        -- code only, no pattern
+        pattern = nil
+    else
+        for _ = 2, finishOffset do
+            nextToken()
+        end
+    end
     local code = {
         type   = 'doc.type.code',
-        start  = getStart(),
+        start  = start,
         finish = getFinish(),
         parent = parent,
+        pattern = pattern,
         [1]    = content,
     }
     return code
@@ -682,11 +838,12 @@ end
 function parseTypeUnit(parent)
     local result = parseFunction(parent)
                 or parseTable(parent)
+                or parseTuple(parent)
                 or parseString(parent)
-                or parseCode(parent)
                 or parseInteger(parent)
                 or parseBoolean(parent)
                 or parseParen(parent)
+                or parseCodePattern(parent)
     if not result then
         result = parseName('doc.type.name', parent)
               or parseDots('doc.type.name', parent)
@@ -774,7 +931,7 @@ function parseType(parent)
     local function pushResume()
         local comments
         for i = 0, 100 do
-            local nextComm = NextComment(i,'peek')
+            local nextComm = NextComment(i, true)
             if not nextComm then
                 return false
             end
@@ -864,6 +1021,7 @@ local docSwitch = util.switch()
         while true do
             local extend = parseName('doc.extends.name', result)
                         or parseTable(result)
+                        or parseTuple(result)
             if not extend then
                 pushWarning {
                     type   = 'LUADOC_MISS_CLASS_EXTENDS_NAME',
@@ -903,6 +1061,7 @@ local docSwitch = util.switch()
         local result = {
             type   = 'doc.alias',
         }
+        result.docAttr = parseDocAttr(result)
         result.alias = parseName('doc.alias.name', result)
         if not result.alias then
             pushWarning {
@@ -1546,17 +1705,16 @@ local function trimTailComment(text)
     and comment:find '[\'"%]]%s*$' then
         local state = compile(comment:gsub('^%s+', ''), 'String')
         if state and state.ast then
-            comment = state.ast[1]
+            comment = state.ast[1] --[[@as string]]
         end
     end
     return util.trim(comment)
 end
 
 local function buildLuaDoc(comment)
-    local text = comment.text
-    local startPos = (comment.type == 'comment.short' and text:match '^%-%s*@()')
-                  or (comment.type == 'comment.long'  and text:match '^@()')
-    if not startPos then
+    local headPos = (comment.type == 'comment.short' and comment.text:match '^%-%s*@()')
+                 or (comment.type == 'comment.long'  and comment.text:match '^%s*@()')
+    if not headPos then
         return {
             type    = 'doc.comment',
             start   = comment.start,
@@ -1565,32 +1723,39 @@ local function buildLuaDoc(comment)
             comment = comment,
         }
     end
-    local startOffset = comment.start
+    -- absolute position of `@` symbol
+    local startOffset = comment.start + headPos
     if comment.type == 'comment.long' then
-        startOffset = startOffset + #comment.mark - 2
+        startOffset = comment.start + headPos + #comment.mark - 2
     end
 
-    local doc = text:sub(startPos)
+    local doc = comment.text:sub(headPos)
 
-    parseTokens(doc, startOffset + startPos)
+    parseTokens(doc, startOffset)
     local result, rests = convertTokens(doc)
     if result then
         result.range = math.max(comment.finish, result.finish)
         local finish = result.firstFinish or result.finish
         if rests then
             for _, rest in ipairs(rests) do
-                rest.range = comment.finish
-                finish = rest.firstFinish or result.finish
+                rest.range = math.max(comment.finish, rest.finish)
+                finish = rest.firstFinish or rest.finish
             end
         end
-        local cstart = text:find('%S', finish - comment.start)
-        if cstart and cstart < comment.finish then
+
+        -- `result` can be a multiline annotation or an alias, while `doc` is the first line, so we can't parse comment
+        if finish >= comment.finish then
+            return result, rests
+        end
+
+        local cstart = doc:find('%S', finish - startOffset)
+        if cstart then
             result.comment = {
                 type   = 'doc.tailcomment',
-                start  = cstart + comment.start,
+                start  = startOffset + cstart,
                 finish = comment.finish,
                 parent = result,
-                text   = trimTailComment(text:sub(cstart)),
+                text   = trimTailComment(doc:sub(cstart)),
             }
             if rests then
                 for _, rest in ipairs(rests) do
@@ -1598,9 +1763,7 @@ local function buildLuaDoc(comment)
                 end
             end
         end
-    end
 
-    if result then
         return result, rests
     end
 
@@ -1864,7 +2027,9 @@ local function bindDocsBetween(sources, binded, start, finish)
                 or src.type == 'setmethod'
                 or src.type == 'function'
                 or src.type == 'return'
-                or src.type == '...' then
+                or src.type == '...'
+                or src.type == 'call'   -- for `rawset`
+                then
                     if bindDoc(src, binded) then
                         ok = true
                     end
@@ -1964,6 +2129,14 @@ local function bindDocWithSources(sources, binded)
     bindGeneric(binded)
     bindCommentsAndFields(binded)
     bindReturnIndex(binded)
+
+    -- doc is special node
+    if lastDoc.special then
+        if bindDoc(lastDoc.special, binded) then
+            return
+        end
+    end
+
     local row = guide.rowColOf(lastDoc.finish)
     local suc = bindDocsBetween(sources, binded, guide.positionOf(row, 0), lastDoc.start)
     if not suc then
@@ -1976,12 +2149,23 @@ local bindDocAccept = {
     'setfield'  , 'setmethod' , 'setindex' ,
     'tablefield', 'tableindex', 'self'     ,
     'function'  , 'return'     , '...'      ,
+    'call',
 }
 
 local function bindDocs(state)
     local text = state.lua
     local sources = {}
     guide.eachSourceTypes(state.ast, bindDocAccept, function (src)
+        -- allow binding docs with rawset(_G, "key", value)
+        if src.type == 'call' then
+            if src.node.special ~= 'rawset' or not src.args then
+                return
+            end
+            local g, key = src.args[1], src.args[2]
+            if not g or not key or g.special ~= '_G' then
+                return
+            end
+        end
         sources[#sources+1] = src
     end)
     table.sort(sources, function (a, b)
@@ -1994,12 +2178,16 @@ local function bindDocs(state)
             state.ast.docs.groups[#state.ast.docs.groups+1] = binded
         end
         binded[#binded+1] = doc
-        if isTailComment(text, doc) then
+        if doc.specialBindGroup then
+            bindDocWithSources(sources, doc.specialBindGroup)
+            binded = nil
+        elseif isTailComment(text, doc) and doc.type ~= "doc.field" then
             bindDocWithSources(sources, binded)
             binded = nil
         else
             local nextDoc = state.ast.docs[i+1]
-            if not isNextLine(doc, nextDoc) then
+            if nextDoc and nextDoc.special
+            or not isNextLine(doc, nextDoc) then
                 bindDocWithSources(sources, binded)
                 binded = nil
             end
@@ -2028,7 +2216,7 @@ local function findTouch(state, doc)
     end
 end
 
-return function (state)
+local function luadoc(state)
     local ast = state.ast
     local comments = state.comms
     table.sort(comments, function (a, b)
@@ -2098,6 +2286,18 @@ return function (state)
         end
     end
 
+    if ast.state.pluginDocs then
+        for _, doc in ipairs(ast.state.pluginDocs) do
+            insertDoc(doc, doc.originalComment)
+        end
+        ---@param a unknown
+        ---@param b unknown
+        table.sort(ast.docs, function (a, b)
+            return a.start < b.start
+        end)
+        ast.state.pluginDocs = nil
+    end
+
     ast.docs.start  = ast.start
     ast.docs.finish = ast.finish
 
@@ -2107,3 +2307,21 @@ return function (state)
 
     bindDocs(state)
 end
+
+return {
+    buildAndBindDoc = function (ast, src, comment, group)
+        local doc = buildLuaDoc(comment)
+        if doc then
+            local pluginDocs = ast.state.pluginDocs or {}
+            pluginDocs[#pluginDocs+1] = doc
+            doc.special = src
+            doc.originalComment = comment
+            doc.virtual = true
+            doc.specialBindGroup = group
+            ast.state.pluginDocs = pluginDocs
+            return doc
+        end
+        return nil
+    end,
+    luadoc = luadoc
+}

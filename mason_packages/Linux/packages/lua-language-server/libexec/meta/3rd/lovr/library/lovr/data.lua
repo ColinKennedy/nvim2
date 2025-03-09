@@ -150,10 +150,8 @@ function Blob:getSize() end
 ---
 ---Returns a binary string containing the Blob's data.
 ---
----@param offset? number # A byte offset into the Blob where the string will start.
----@param size? number # The number of bytes the string will contain.  If nil, the rest of the data in the Blob will be used, based on the `offset` parameter.
 ---@return string data # The Blob's data.
-function Blob:getString(offset, size) end
+function Blob:getString() end
 
 ---
 ---An Image stores raw 2D pixel info for `Texture`s.
@@ -343,7 +341,7 @@ function ModelData:getAnimationNode(index, channel) end
 ---@overload fun(self: lovr.ModelData, name: string, channel: number):lovr.AnimationProperty
 ---@param index number # The index of an animation.
 ---@param channel number # The index of a channel in the animation.
----@return lovr.AnimationProperty property # The property (translation, rotation, scale, weights) affected by the keyframes.
+---@return lovr.AnimationProperty property # The property (translation, rotation, scale) affected by the keyframes.
 function ModelData:getAnimationProperty(index, channel) end
 
 ---
@@ -354,23 +352,6 @@ function ModelData:getAnimationProperty(index, channel) end
 ---@param channel number # The index of a channel in the animation.
 ---@return lovr.SmoothMode smooth # The smooth mode of the keyframes.
 function ModelData:getAnimationSmoothMode(index, channel) end
-
----
----Returns the number of blend shapes in the model.
----
----@return number count # The number of blend shapes in the model.
-function ModelData:getBlendShapeCount() end
-
----
----Returns the name of a blend shape in the model.
----
----
----### NOTE:
----This function will throw an error if the blend shape index is invalid.
----
----@param index number # The index of a blend shape.
----@return string name # The name of the blend shape.
-function ModelData:getBlendShapeName(index) end
 
 ---
 ---Returns one of the Blobs in the model, by index.
@@ -1072,9 +1053,8 @@ function Sound:getFrameCount() end
 ---@overload fun(self: lovr.Sound, sound: lovr.Sound, count?: number, srcOffset?: number, dstOffset?: number):number
 ---@param count? number # The number of frames to read.  If nil, reads as many frames as possible.
 
-Compressed sounds will automatically be decoded.
-
-Reading from a stream will ignore the source offset and read the oldest frames.
+--Compressed sounds will automatically be decoded.
+--Reading from a stream will ignore the source offset and read the oldest frames.
 ---@param srcOffset? number # A frame offset to apply to the sound when reading frames.
 ---@return table t # A table containing audio frames.
 ---@return number count # The number of frames read.
@@ -1131,7 +1111,7 @@ function Sound:isStream() end
 function Sound:setFrames(t, count, dstOffset, srcOffset) end
 
 ---
----This indicates the different node properties that can be animated.
+---This indicates the different transform properties that can be animated.
 ---
 ---@alias lovr.AnimationProperty
 ---
@@ -1146,10 +1126,6 @@ function Sound:setFrames(t, count, dstOffset, srcOffset) end
 ---Node scale.
 ---
 ---| "scale"
----
----Node blend shape weights.
----
----| "weights"
 
 ---
 ---These are the data types that can be used by vertex data in meshes.

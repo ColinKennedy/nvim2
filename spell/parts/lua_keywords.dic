@@ -1,0 +1,7 @@
+# NOTE: You may see /S or other modifications to the base keyword. This is because,
+# though C has specific keywords, we tend to pluralize the words, for example
+#
+boolean/S
+false/PRYT
+nil
+true/MTGDRS

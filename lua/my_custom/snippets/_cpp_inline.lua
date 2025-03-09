@@ -9,48 +9,28 @@ local snippet = luasnip.s
 local text = luasnip.t
 
 return {
-    snippet(
-        {
-            docstring="TODO comment",
-            trig="td",
-        },
-        format([[// TODO: {}]], { index(1, "") }),
-        { show_condition = or_(is_source_beginning("td"), line_end) }
-    ),
+    snippet({
+        docstring = "TODO comment",
+        trig = "td",
+    }, format([[// TODO: {}]], { index(1, "") }), { show_condition = or_(is_source_beginning("td"), line_end) }),
 
-    snippet(
-        {
-            docstring="return",
-            trig="r",
-        },
-        format([[return {}]], { index(1, "") }),
-        { show_condition = is_source_beginning("r") }
-    ),
+    snippet({
+        docstring = "return",
+        trig = "r",
+    }, format([[return {}]], { index(1, "") }), { show_condition = is_source_beginning("r") }),
 
-    snippet(
-        {
-            docstring="return true",
-            trig="rt",
-        },
-        text("return true"),
-        { show_condition = is_source_beginning("rt") }
-    ),
+    snippet({
+        docstring = "return true",
+        trig = "rt",
+    }, text("return true"), { show_condition = is_source_beginning("rt") }),
 
-    snippet(
-        {
-            docstring="return false",
-            trig="rf",
-        },
-        text("return false"),
-        { show_condition = is_source_beginning("rf") }
-    ),
+    snippet({
+        docstring = "return false",
+        trig = "rf",
+    }, text("return false"), { show_condition = is_source_beginning("rf") }),
 
-    snippet(
-        {
-            docstring="Print the line to std::cout",
-            trig="cout",
-        },
-        format([[std::cout << {} << '\n']], { index(1, "") }),
-        { show_condition = is_source_beginning("cout") }
-    ),
+    snippet({
+        docstring = "Print the line to std::cout",
+        trig = "cout",
+    }, format([[std::cout << {} << '\n']], { index(1, "") }), { show_condition = is_source_beginning("cout") }),
 }

@@ -1,0 +1,15 @@
+bash/GMDS
+cmake
+html
+html/M
+json
+lua
+nvim/M
+python/SM
+txt
+vim/M
+
+# C++ related
+c++
+cpp
+hpp

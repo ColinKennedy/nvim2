@@ -1,56 +1,55 @@
 local socket = require "bee.socket"
+local select = require "bee.select"
+local fs = require "bee.filesystem"
 
-local readfds = {}
-local writefds = {}
-local map = {}
+local selector = select.create()
+local SELECT_READ <const> = select.SELECT_READ
+local SELECT_WRITE <const> = select.SELECT_WRITE
 
-local function FD_SET(set, fd)
-    for i = 1, #set do
-        if fd == set[i] then
-            return
-        end
+local function fd_set_read(s)
+    if s._flags & SELECT_READ ~= 0 then
+        return
     end
-    set[#set+1] = fd
+    s._flags = s._flags | SELECT_READ
+    selector:event_mod(s._fd, s._flags)
 end
 
-local function FD_CLR(set, fd)
-    for i = 1, #set do
-        if fd == set[i] then
-            set[i] = set[#set]
-            set[#set] = nil
-            return
-        end
+local function fd_clr_read(s)
+    if s._flags & SELECT_READ == 0 then
+        return
     end
+    s._flags = s._flags & (~SELECT_READ)
+    selector:event_mod(s._fd, s._flags)
 end
 
-local function fd_set_read(fd)
-    FD_SET(readfds, fd)
+local function fd_set_write(s)
+    if s._flags & SELECT_WRITE ~= 0 then
+        return
+    end
+    s._flags = s._flags | SELECT_WRITE
+    selector:event_mod(s._fd, s._flags)
 end
 
-local function fd_clr_read(fd)
-    FD_CLR(readfds, fd)
-end
-
-local function fd_set_write(fd)
-    FD_SET(writefds, fd)
-end
-
-local function fd_clr_write(fd)
-    FD_CLR(writefds, fd)
+local function fd_clr_write(s)
+    if s._flags & SELECT_WRITE == 0 then
+        return
+    end
+    s._flags = s._flags & (~SELECT_WRITE)
+    selector:event_mod(s._fd, s._flags)
 end
 
 local function on_event(self, name, ...)
     local f = self._event[name]
     if f then
-        f(self, ...)
+        return f(self, ...)
     end
 end
 
 local function close(self)
     local fd = self._fd
     on_event(self, "close")
+    selector:event_del(fd)
     fd:close()
-    map[fd] = nil
 end
 
 local stream_mt = {}
@@ -69,7 +68,7 @@ function stream:write(data)
         return
     end
     if self._writebuf == "" then
-        fd_set_write(self._fd)
+        fd_set_write(self)
     end
     self._writebuf = self._writebuf .. data
 end
@@ -79,82 +78,44 @@ end
 function stream:close()
     if not self.shutdown_r then
         self.shutdown_r = true
-        fd_clr_read(self._fd)
+        fd_clr_read(self)
     end
     if self.shutdown_w or self._writebuf == ""  then
         self.shutdown_w = true
-        fd_clr_write(self._fd)
+        fd_clr_write(self)
         close(self)
-    end
-end
-function stream:update(timeout)
-    local fd = self._fd
-    local r = {fd}
-    local w = r
-    if self._writebuf == "" then
-        w = nil
-    end
-    local rd, wr = socket.select(r, w, timeout or 0)
-    if rd then
-        if #rd > 0 then
-            self:select_r()
-        end
-        if #wr > 0 then
-            self:select_w()
-        end
     end
 end
 local function close_write(self)
-    fd_clr_write(self._fd)
+    fd_clr_write(self)
     if self.shutdown_r then
-        fd_clr_read(self._fd)
         close(self)
     end
 end
-function stream:select_r()
-    local data = self._fd:recv()
-    if data == nil then
-        self:close()
-    elseif data == false then
-    else
-        on_event(self, "data", data)
+local function update_stream(s, event)
+    if event & SELECT_READ ~= 0 then
+        local data = s._fd:recv()
+        if data == nil then
+            s:close()
+        elseif data == false then
+        else
+            on_event(s, "data", data)
+        end
     end
-end
-function stream:select_w()
-    local n = self._fd:send(self._writebuf)
-    if n == nil then
-        self.shutdown_w = true
-        close_write(self)
-    else
-        self._writebuf = self._writebuf:sub(n + 1)
-        if self._writebuf == "" then
-            close_write(self)
+    if event & SELECT_WRITE ~= 0 then
+        local n = s._fd:send(s._writebuf)
+        if n == nil then
+            s.shutdown_w = true
+            close_write(s)
+        elseif n == false then
+        else
+            s._writebuf = s._writebuf:sub(n + 1)
+            if s._writebuf == "" then
+                close_write(s)
+            end
         end
     end
 end
-
-local function accept_stream(fd)
-    local self = setmetatable({
-        _fd = fd,
-        _event = {},
-        _writebuf = "",
-        shutdown_r = false,
-        shutdown_w = false,
-    }, stream_mt)
-    map[fd] = self
-    fd_set_read(fd)
-    return self
-end
-local function connect_stream(self)
-    setmetatable(self, stream_mt)
-    fd_set_read(self._fd)
-    if self._writebuf ~= "" then
-        self:select_w()
-    else
-        fd_clr_write(self._fd)
-    end
-end
-
 
 local listen_mt = {}
 local listen = {}
@@ -169,36 +130,7 @@ function listen:is_closed()
 end
 function listen:close()
     self.shutdown_r = true
-    fd_clr_read(self._fd)
     close(self)
-end
-function listen:update(timeout)
-    local fd = self._fd
-    local r = {fd}
-    local rd = socket.select(r, nil, timeout or 0)
-    if rd then
-        if #rd > 0 then
-            self:select_r()
-        end
-    end
-end
-function listen:select_r()
-    local newfd = self._fd:accept()
-    if newfd:status() then
-        local news = accept_stream(newfd)
-        on_event(self, "accept", news)
-    end
-end
-local function new_listen(fd)
-    local s = {
-        _fd = fd,
-        _event = {},
-        shutdown_r = false,
-        shutdown_w = true,
-    }
-    map[fd] = s
-    fd_set_read(fd)
-    return setmetatable(s, listen_mt)
 end
 
 local connect_mt = {}
@@ -220,90 +152,123 @@ function connect:is_closed()
 end
 function connect:close()
     self.shutdown_w = true
-    fd_clr_write(self._fd)
     close(self)
 end
-function connect:update(timeout)
-    local fd = self._fd
-    local w = {fd}
-    local rd, wr = socket.select(nil, w, timeout or 0)
-    if rd then
-        if #wr > 0 then
-            self:select_w()
+
+local m = {}
+
+function m.listen(protocol, address, port)
+    local fd; do
+        local err
+        fd, err = socket.create(protocol)
+        if not fd then
+            return nil, err
+        end
+        if protocol == "unix" then
+            fs.remove(address)
         end
     end
-end
-function connect:select_w()
-    local ok, err = self._fd:status()
-    if ok then
-        connect_stream(self)
-        on_event(self, "connect")
-    else
-        on_event(self, "error", err)
-        self:close()
+    do
+        local ok, err = fd:bind(address, port)
+        if not ok then
+            fd:close()
+            return nil, err
+        end
     end
-end
-local function new_connect(fd)
+    do
+        local ok, err = fd:listen()
+        if not ok then
+            fd:close()
+            return nil, err
+        end
+    end
     local s = {
         _fd = fd,
+        _flags = SELECT_READ,
+        _event = {},
+        shutdown_r = false,
+        shutdown_w = true,
+    }
+    selector:event_add(fd, SELECT_READ, function ()
+        local new_fd, err = fd:accept()
+        if new_fd == nil then
+            fd:close()
+            on_event(s, "error", err)
+            return
+        elseif new_fd == false then
+        else
+            local new_s = setmetatable({
+                _fd = new_fd,
+                _flags = SELECT_READ,
+                _event = {},
+                _writebuf = "",
+                shutdown_r = false,
+                shutdown_w = false,
+            }, stream_mt)
+            if on_event(s, "accepted", new_s) then
+                selector:event_add(new_fd, new_s._flags, function (event)
+                    update_stream(new_s, event)
+                end)
+            else
+                new_fd:close()
+            end
+        end
+    end)
+    return setmetatable(s, listen_mt)
+end
+
+function m.connect(protocol, address, port)
+    local fd; do
+        local err
+        fd, err = socket.create(protocol)
+        if not fd then
+            return nil, err
+        end
+    end
+    do
+        local ok, err = fd:connect(address, port)
+        if ok == nil then
+            fd:close()
+            return nil, err
+        end
+    end
+    local s = {
+        _fd = fd,
+        _flags = SELECT_WRITE,
         _event = {},
         _writebuf = "",
         shutdown_r = false,
         shutdown_w = false,
     }
-    map[fd] = s
-    fd_set_write(fd)
+    selector:event_add(fd, SELECT_WRITE, function ()
+        local ok, err = fd:status()
+        if ok then
+            on_event(s, "connected")
+            setmetatable(s, stream_mt)
+            if s._writebuf ~= "" then
+                update_stream(s, SELECT_WRITE)
+                if s._writebuf ~= "" then
+                    s._flags = SELECT_READ | SELECT_WRITE
+                else
+                    s._flags = SELECT_READ
+                end
+            else
+                s._flags = SELECT_READ
+            end
+            selector:event_add(s._fd, s._flags, function (event)
+                update_stream(s, event)
+            end)
+        else
+            s:close()
+            on_event(s, "error", err)
+        end
+    end)
     return setmetatable(s, connect_mt)
 end
 
-local m = {}
-
-function m.listen(protocol, ...)
-    local fd, err = socket(protocol)
-    if not fd then
-        return nil, err
-    end
-    local ok
-    ok, err = fd:bind(...)
-    if not ok then
-        fd:close()
-        return nil, err
-    end
-    ok, err = fd:listen()
-    if not ok then
-        fd:close()
-        return nil, err
-    end
-    return new_listen(fd)
-end
-
-function m.connect(protocol, ...)
-    local fd, err = socket(protocol)
-    if not fd then
-        return nil, err
-    end
-    local ok
-    ok, err = fd:connect(...)
-    if ok == nil then
-        fd:close()
-        return nil, err
-    end
-    return new_connect(fd)
-end
-
 function m.update(timeout)
-    local rd, wr = socket.select(readfds, writefds, timeout or 0)
-    if rd then
-        for i = 1, #rd do
-            local fd = rd[i]
-            local s = map[fd]
-            s:select_r()
-        end
-        for i = 1, #wr do
-            local fd = wr[i]
-            local s = map[fd]
-            s:select_w()
-        end
+    for func, event in selector:wait(timeout or 0) do
+        func(event)
     end
 end
 

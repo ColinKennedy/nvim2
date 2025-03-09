@@ -44,19 +44,19 @@
 ---| '"unknown"'
 
 local m = {
-    ---@type bee.platform.os
-    os = "unknown",
-    ---@type bee.platform.OS
-    OS = "unknown",
-    ---@type bee.platform.compiler
-    Compiler = "clang",
-    CompilerVersion = "",
-    CRTVersion = "",
-    ---@type bee.platform.crt
-    CRT = "msvc",
-    ---@type bee.platform.arch
-    Arch = "x86",
-    DEBUG = false,
+	---@type bee.platform.os
+	os = "unknown",
+	---@type bee.platform.OS
+	OS = "unknown",
+	---@type bee.platform.compiler
+	Compiler = "clang",
+	CompilerVersion = "",
+	CRTVersion = "",
+	---@type bee.platform.crt
+	CRT = "msvc",
+	---@type bee.platform.arch
+	Arch = "x86",
+	DEBUG = false,
 }
 
 return m

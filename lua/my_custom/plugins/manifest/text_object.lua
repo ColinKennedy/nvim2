@@ -13,7 +13,11 @@ return {
     -- Surround plugin. Lets you change stuff would words really easily
     {
         "tpope/vim-surround",
-        keys = { "cs", "ds", "ys" },
+        keys = {
+            { "cs", desc = "[c]hange [s]urrounding characters." },
+            { "ds", desc = "[d]elete [s]urrounding characters." },
+            { "ys", desc = "add [s]urrounding characters." },
+        },
         version = "2.*",
     },
 
@@ -21,8 +25,8 @@ return {
     {
         "kana/vim-operator-replace",
         dependencies = { "kana/vim-operator-user" },
-        event = "VeryLazy",
         version = "0.*",
+        keys = require("my_custom.plugins.vim_operator_replace.keys"),
     },
     {
         "kana/vim-operator-user",
@@ -38,29 +42,24 @@ return {
         version = "0.*",
     },
 
-    -- XXX: Removed due to this issue: https://github.com/wellle/targets.vim/issues/268
-    -- Targets - A great companion to vim-surround
+    -- `vin(` to select around parentheses. etc etc.
+    --
+    -- A replacement for target.nvim
+    --
     {
-        "wellle/targets.vim",
-        config=function()
-            -- TODO: Add this, later
-            -- " Add `@` as a text object. di@ will delete between two @s. Useful for authoring USD!
-            -- autocmd User targets#mappings#user call targets#mappings#extend({
-            --     \ '@': {'quote': [{'d': '@'}]},
-            --     \ })
+        "echasnovski/mini.ai",
+        config = function()
+            require("mini.ai").setup()
         end,
         event = "VeryLazy",
         version = "0.*",
     },
 
-
     -- TODO: Can I defer load this? Figure out how
     -- Comment / uncomment with ``gcc`` and other ``gc`` text motion commands
     {
         "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
+        config = true,
         event = "VeryLazy",
         version = "0.*",
     },
@@ -71,80 +70,17 @@ return {
     --
     {
         "ColinKennedy/vim-indent-object",
-        config=function()
+        config = function()
             vim.g.indent_object_no_default_key_mappings = "1"
-
-            vim.keymap.set(
-                "o",
-                "aI",
-                ':<C-u>cal HandleTextObjectMapping(0, 0, 0, [line("."), line("."), col("."), col(".")])<CR>',
-                {
-                    desc="Select [a]round lines of same + outer [I]ndentation, spanning whitespace.",
-                    silent=true,
-                }
-            )
-            vim.keymap.set(
-                "o",
-                "iI",
-                ':<C-u>cal HandleTextObjectMapping(1, 0, 0, [line("."), line("."), col("."), col(".")])<CR>',
-                {
-                    desc="Select [i]nside lines of same [I]ndentation, spanning whitespace.",
-                    silent=true,
-                }
-            )
-
-            vim.keymap.set(
-                "v",
-                "aI",
-                ':<C-u>cal HandleTextObjectMapping(0, 0, 1, [line("\'<"), line("\'>"), col("\'<"), col("\'>")])<CR><Esc>gv',
-                {
-                    desc="Select [a]round lines of same + outer [I]ndentation, spanning whitespace.",
-                    silent=true,
-                }
-            )
-            vim.keymap.set(
-                "v",
-                "iI",
-                ':<C-u>cal HandleTextObjectMapping(1, 0, 1, [line("\'<"), line("\'>"), col("\'<"), col("\'>")])<CR><Esc>gv',
-                {
-                    desc="Select [i]nside lines of same [I]ndentation, spanning whitespace.",
-                    silent=true,
-                }
-            )
         end,
-        event = "VeryLazy",
         version = "1.*",
+        keys = require("my_custom.plugins.vim_indent_object.keys"),
     },
 
     {
         "kana/vim-textobj-indent",
-        config=function()
-            vim.g.textobj_indent_no_default_key_mappings = "1"
-
-            vim.keymap.set(
-                "o",
-                "ai",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [a]round [i]ndent + outer indent. Stop at whitespace."}
-            )
-            vim.keymap.set(
-                "x",
-                "ai",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [a]round [i]ndent + outer indent. Stop at whitespace."}
-            )
-            vim.keymap.set(
-                "o",
-                "ii",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [i]nside all [i]ndent lines. Stop at whitespace."}
-            )
-            vim.keymap.set(
-                "x",
-                "ii",
-                "<Plug>(textobj-indent-i)",
-                {desc="Select [i]nside all [i]ndent lines. Stop at whitespace."}
-            )
+        config = function()
+            require("my_custom.plugins.vim_textobj_indent.configuration")
         end,
         dependencies = { "kana/vim-textobj-user" },
         event = "VeryLazy",
@@ -154,7 +90,16 @@ return {
     -- Gives vim a few tools to navigate through indented blocks more easily
     {
         "jeetsukumaran/vim-indentwise",
-        keys = { "[%", "[+", "[-", "[=", "[_", "]%", "]+", "]-", "]=", "]_" },
+        keys = {
+            { "[+", desc = "Go to the previous line of greater indent." },
+            { "[-", desc = "Go to the previous line of lesser indent." },
+            { "[=", desc = "Go to the previous line of equal indent." },
+            -- "[_",
+            { "]+", desc = "Go to the next line of greater indent." },
+            { "]-", desc = "Go to the next line of lesser indent." },
+            { "]=", desc = "Go to the next line of equal indent." },
+            -- "]_",
+        },
         version = "1.*",
     },
 
@@ -166,7 +111,10 @@ return {
         config = function()
             vim.g.ip_skipfold = 1
         end,
-        keys = {"{", "}"},
+        keys = {
+            { "{", desc = "Go to the previous paragraph including whitespace." },
+            { "}", desc = "Go to the next paragraph including whitespace." },
+        },
         -- version = "1.*",  TODO There is a tag but it's broken so we get the latest commits
     },
 
@@ -184,23 +132,7 @@ return {
     -- Adds pair mappings (like ]l [l) to Vim
     {
         "tpope/vim-unimpaired",
-        keys = {
-            "<P", ">P",
-            "<p", ">p",
-            -- "=P", "=p",
-            "[<Space>", "]<Space>",  -- Add newlines above / below the cursor
-            "[A", "]A",
-            "[B", "]B",
-            "[L", "]L",
-            "[Q", "]Q",
-            "[T", "]T",
-            "[a", "]a",
-            "[b", "]b",
-            "[l", "]l",
-            "[p", "]p",
-            "[q", "]q",
-            "[t", "]t",
-        },
+        keys = require("my_custom.plugins.vim_unimpaired.keys"),
         version = "2.*",
     },
 
@@ -215,32 +147,83 @@ return {
         event = "VeryLazy",
     },
 
-    -- Life-changing text object extension. It's hard to explain but ...
+    -- A life-changing text object extension. [ and ] now become directional pending operators.
     --
-    -- Use z[i} to move to the insert from the beginning of a paragraph.
-    -- Use z]i} to move to the insert from the end of a paragraph.
-    -- But you can do the do this with __any__ text object
-    -- Also, you can use d]/d[ and c]/c[ to delete / change from other text objects
+    -- d]ip deletes from the cursor down. d[ip deletes from the top to the cursor.
+    -- Works with any text operator / text object. e.g. gc]ii works, etc etc.
     --
-    -- {"ColinKennedy/vim-ninja-feet", keys = {"d[", "d]"}},
     {
-        "ColinKennedy/vim-ninja-feet",
-        keys = {
-            "c[", "c]",
-            "d[", "d]",
-            "p[", "p]",
-            "s[", "s]",
-            "z[", "z]",
-        },
+        "ColinKennedy/cursor-text-objects.nvim",
+        config = function()
+            vim.keymap.set(
+                { "o", "x" },
+                "[",
+                "<Plug>(cursor-text-objects-up)",
+                { desc = "Run from your current cursor to the end of the text-object." }
+            )
+            vim.keymap.set(
+                { "o", "x" },
+                "]",
+                "<Plug>(cursor-text-objects-down)",
+                { desc = "Run from your current cursor to the end of the text-object." }
+            )
+        end,
+        version = "v1.*",
     },
 
     -- Exchange any two text objects with a new text-motion, `cx`
-    {"tommcdo/vim-exchange", keys = {"cx"}},
+    {
+        "gbprod/substitute.nvim",
+        config = true,
+        keys = {
+            {
+                "cx",
+                function()
+                    require("substitute.exchange").operator()
+                end,
+                noremap = true,
+            },
+            {
+                "cxx",
+                function()
+                    require("substitute.exchange").line()
+                end,
+                noremap = true,
+            },
+            {
+                "X",
+                mode = { "x" },
+                function()
+                    require("substitute.exchange").visual()
+                end,
+                noremap = true,
+            },
+            {
+                "cxc",
+                function()
+                    require("substitute.exchange").cancel()
+                end,
+                noremap = true,
+            },
+        },
+    },
 
-    -- Add comment text objects ``ac`` / ``ic``. e.g. ``dac`` (delete comment) or  ``gcac`` (requires ``numToStr/Comment.nvim``)
+    -- Add comment text objects ``ac`` / ``ic``.
+    -- e.g. ``dac`` (delete comment) or ``gcac`` (requires ``numToStr/Comment.nvim``)
+    --
     {
         "glts/vim-textobj-comment",
         dependencies = { "kana/vim-textobj-user" },
         version = "1.*",
+    },
+
+    -- Use gs to sort stuff
+    --
+    -- Normal mode: gsip sorts a paragraph
+    -- Visual mode: gs
+    --
+    {
+        "ralismark/opsort.vim",
+        keys = { { "gs", desc = "A [s]orting operator.", mode = { "n", "o", "v" } } },
     },
 }

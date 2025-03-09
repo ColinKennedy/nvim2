@@ -5,31 +5,22 @@ local index = luasnip.i
 local snippet = luasnip.s
 local text = luasnip.t
 
-
 return {
-    snippet(
-        {
-            docstring="#pragma once",
-            trig="#prag",
-        },
-        text("#pragma once"),
-        { show_condition = is_source_beginning("#prag") }
-    ),
+    snippet({
+        docstring = "#pragma once",
+        trig = "#prag",
+    }, text("#pragma once"), { show_condition = is_source_beginning("#prag") }),
 
-    snippet(
-        {
-            docstring="#include",
-            trig="ii",
-        },
-        format("#include <{}>", { index(1, "") }),
-        { show_condition = is_source_beginning("ii") }
-    ),
+    snippet({
+        docstring = "#include",
+        trig = "ii",
+    }, format("#include <{}>", { index(1, "") }), { show_condition = is_source_beginning("ii") }),
 
     -- TODO: Add auto-expand and add beginning
     snippet(
         {
-            docstring="#ifndef pre-processor",
-            trig="#ifndef",
+            docstring = "#ifndef pre-processor",
+            trig = "#ifndef",
         },
         format(
             [[
@@ -44,8 +35,8 @@ return {
 
     snippet(
         {
-            docstring="Do a 'for (auto foo: bar)-style loop",
-            trig="for_each",
+            docstring = "Do a 'for (auto foo: bar)-style loop",
+            trig = "for_each",
         },
         format(
             [[

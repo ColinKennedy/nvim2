@@ -1,106 +1,119 @@
-local lclient  = require 'lclient'
-local furi     = require 'file-uri'
-local ws       = require 'workspace'
-local files    = require 'files'
-local diag     = require 'provider.diagnostic'
-local util     = require 'utility'
-local jsonb    = require 'json-beautify'
-local lang     = require 'language'
-local define   = require 'proto.define'
-local config   = require 'config.config'
-local fs       = require 'bee.filesystem'
-local provider = require 'provider'
+local lang       = require 'language'
+local platform   = require 'bee.platform'
+local subprocess = require 'bee.subprocess'
+local json       = require 'json'
+local jsonb      = require 'json-beautify'
+local util       = require 'utility'
 
-require 'vm'
+local export = {}
 
-lang(LOCALE)
-
-if type(CHECK) ~= 'string' then
-    print(lang.script('CLI_CHECK_ERROR_TYPE', type(CHECK)))
-    return
+local function logFileForThread(threadId)
+    return LOGPATH .. '/check-partial-' .. threadId .. '.json'
 end
 
-local rootPath = fs.absolute(fs.path(CHECK)):string()
-local rootUri = furi.encode(rootPath)
-if not rootUri then
-    print(lang.script('CLI_CHECK_ERROR_URI', rootPath))
-    return
-end
-
-if CHECKLEVEL then
-    if not define.DiagnosticSeverity[CHECKLEVEL] then
-        print(lang.script('CLI_CHECK_ERROR_LEVEL', 'Error, Warning, Information, Hint'))
-        return
-    end
-end
-local checkLevel = define.DiagnosticSeverity[CHECKLEVEL] or define.DiagnosticSeverity.Warning
-
-util.enableCloseFunction()
-
-local lastClock   = os.clock()
-local results = {}
----@async
-lclient():start(function (client)
-    client:registerFakers()
-
-    client:initialize {
-        rootUri = rootUri,
-    }
-
-    client:register('textDocument/publishDiagnostics', function (params)
-        results[params.uri] = params.diagnostics
-    end)
-
-    io.write(lang.script('CLI_CHECK_INITING'))
-
-    provider.updateConfig(rootUri)
-
-    ws.awaitReady(rootUri)
-
-    local disables = util.arrayToHash(config.get(rootUri, 'Lua.diagnostics.disable'))
-    for name, serverity in pairs(define.DiagnosticDefaultSeverity) do
-        serverity = config.get(rootUri, 'Lua.diagnostics.severity')[name] or 'Warning'
-        if serverity:sub(-1) == '!' then
-            serverity = serverity:sub(1, -2)
-        end
-        if define.DiagnosticSeverity[serverity] > checkLevel then
-            disables[name] = true
+local function buildArgs(exe, numThreads, threadId, format, quiet)
+    local args = {exe}
+    local skipNext = false
+    for i = 1, #arg do
+        local arg = arg[i]
+        -- --check needs to be transformed into --check_worker
+        if arg:lower():match('^%-%-check$') or arg:lower():match('^%-%-check=') then
+            args[#args + 1] = arg:gsub('%-%-%w*', '--check_worker')
+        -- --check_out_path needs to be removed if we have more than one thread
+        elseif arg:lower():match('%-%-check_out_path') and numThreads > 1 then
+            if not arg:match('%-%-%w*=') then
+                skipNext = true
+            end
+        else
+            if skipNext then
+                skipNext = false
+            else
+                args[#args + 1] = arg
+            end
         end
     end
-    config.set(rootUri, 'Lua.diagnostics.disable', util.getTableKeys(disables, true))
+    args[#args + 1] = '--thread_id'
+    args[#args + 1] = tostring(threadId)
+    if numThreads > 1 then
+        if quiet then
+            args[#args + 1] = '--quiet'
+        end
+        if format then
+            args[#args + 1] = '--check_format=' .. format
+        end
+        args[#args + 1] = '--check_out_path'
+        args[#args + 1] = logFileForThread(threadId)
+    end
+    return args
+end
 
-    local uris = files.getAllUris(rootUri)
-    local max  = #uris
-    for i, uri in ipairs(uris) do
-        files.open(uri)
-        diag.doDiagnostic(uri, true)
-        if os.clock() - lastClock > 0.2 then
-            lastClock = os.clock()
-            local output = '\x0D'
-                        .. ('>'):rep(math.ceil(i / max * 20))
-                        .. ('='):rep(20 - math.ceil(i / max * 20))
-                        .. ' '
-                        .. ('0'):rep(#tostring(max) - #tostring(i))
-                        .. tostring(i) .. '/' .. tostring(max)
-            io.write(output)
+function export.runCLI()
+    local numThreads = tonumber(NUM_THREADS or 1)
+
+    local exe
+    local minIndex = -1
+    while arg[minIndex] do
+        exe = arg[minIndex]
+        minIndex = minIndex - 1
+    end
+    -- TODO: is this necessary? got it from the shell.lua helper in bee.lua tests
+    if platform.os == 'windows' and not exe:match('%.[eE][xX][eE]$') then
+        exe = exe..'.exe'
+    end
+
+    if not QUIET and numThreads > 1 then
+        print(lang.script('CLI_CHECK_MULTIPLE_WORKERS', numThreads))
+    end
+
+    local procs = {}
+    for i = 1, numThreads do
+        local process, err = subprocess.spawn({buildArgs(exe, numThreads, i, CHECK_FORMAT, QUIET)})
+        if err then
+            print(err)
+        end
+        if process then
+            procs[#procs + 1] = process
         end
     end
-    io.write('\x0D')
-end)
 
-local count = 0
-for uri, result in pairs(results) do
-    count = count + #result
-    if #result == 0 then
-        results[uri] = nil
+    local checkPassed = true
+    for _, process in ipairs(procs) do
+        checkPassed = process:wait() == 0 and checkPassed
     end
+
+    if numThreads > 1 then
+        local mergedResults = {}
+        local count = 0
+        for i = 1, numThreads do
+            local result = json.decode(util.loadFile(logFileForThread(i)) or '[]')
+            for k, v in pairs(result) do
+                local entries = mergedResults[k] or {}
+                mergedResults[k] = entries
+                for _, entry in ipairs(v) do
+                    entries[#entries + 1] = entry
+                    count = count + 1
+                end
+            end
+        end
+
+        local outpath = nil
+
+        if CHECK_FORMAT == 'json' or CHECK_OUT_PATH then
+            outpath = CHECK_OUT_PATH or LOGPATH .. '/check.json'
+            util.saveFile(outpath, jsonb.beautify(mergedResults))
+        end
+
+        if not QUIET then
+            if count == 0 then
+                print(lang.script('CLI_CHECK_SUCCESS'))
+            elseif outpath then
+                print(lang.script('CLI_CHECK_RESULTS_OUTPATH', count, outpath))
+            else
+                print(lang.script('CLI_CHECK_RESULTS_PRETTY', count))
+            end
+        end
+    end
+    return checkPassed and 0 or 1
 end
 
-if count == 0 then
-    print(lang.script('CLI_CHECK_SUCCESS'))
-else
-    local outpath = LOGPATH .. '/check.json'
-    util.saveFile(outpath, jsonb.beautify(results))
-
-    print(lang.script('CLI_CHECK_RESULTS', count, outpath))
-end
+return export

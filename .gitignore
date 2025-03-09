@@ -1,3 +1,20 @@
 lazy-lock.json
 undo/
 sources/
+
+mason_packages/Linux/packages/lua-language-server/libexec/meta/
+mason_packages/Linux/packages/lua-language-server/libexec/log/
+
+# clangd and basedpyright are too large to fit for GitHub so we need to exclude it
+mason_packages/Linux/bin/basedpyright
+mason_packages/Linux/bin/basedpyright-langserver
+mason_packages/Linux/bin/clangd
+mason_packages/Linux/packages/basedpyright/
+mason_packages/Linux/packages/clangd/
+mason_packages/Linux/share/mason-schemas/lsp/basedpyright.json
+mason_packages/Linux/share/mason-schemas/lsp/clangd.json
+
+# The `Makefile` does a git clone of luvit-meta for the `make llsckec` command
+# but we don't want to actually commit the repository by accident.
+#
+.dependencies/

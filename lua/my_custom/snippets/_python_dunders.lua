@@ -1,23 +1,27 @@
+--- Add "double underscore" snippets.
+---
+---@module 'my_custom.snippets._python_dunders'
+---
+
+local texter = require("my_custom.utilities.texter")
+
 local is_source_beginning = require("my_custom.utilities.snippet_helper").is_source_beginning
 local luasnip = require("luasnip")
 local format = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 local index = luasnip.i
 local snippet = luasnip.s
-local text = luasnip.t
-
-
-local has_leading_whitespace = function(text)
-    return text:sub(1, 1) == " "
-end
-
 
 -- TODO: When treesitter is working, add a check for "if inside of a class"
-local is_dunder_prefix = function(trigger)
+--- Check if `trigger` matches the current cursor line.
+---
+---@param trigger string Some LuaSnip trigger.
+---@return fun(line_to_cursor: string): boolean # Returns `true` if the line matches.
+---
+local function is_dunder_prefix(trigger)
     local wrapper = function(line_to_cursor)
         -- If there is no indent, it can't be a Python dunder method
-        if not has_leading_whitespace(line_to_cursor)
-        then
+        if not texter.has_leading_whitespace(line_to_cursor) then
             return false
         end
 
@@ -27,12 +31,11 @@ local is_dunder_prefix = function(trigger)
     return wrapper
 end
 
-
 return {
     snippet(
         {
-            docstring="Create a __abs__ method for a class",
-            trig="abs",
+            docstring = "Create a __abs__ method for a class",
+            trig = "abs",
         },
         format(
             [[
@@ -46,8 +49,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __add__ method for a class",
-            trig="add",
+            docstring = "Create a __add__ method for a class",
+            trig = "add",
         },
         format(
             [[
@@ -61,8 +64,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __call__ method for a class",
-            trig="call",
+            docstring = "Create a __call__ method for a class",
+            trig = "call",
         },
         format(
             [[
@@ -76,8 +79,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __cmp__ method for a class",
-            trig="cmp",
+            docstring = "Create a __cmp__ method for a class",
+            trig = "cmp",
         },
         format(
             [[
@@ -91,8 +94,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __complex__ method for a class",
-            trig="complex",
+            docstring = "Create a __complex__ method for a class",
+            trig = "complex",
         },
         format(
             [[
@@ -106,8 +109,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __contains__ method for a class",
-            trig="contains",
+            docstring = "Create a __contains__ method for a class",
+            trig = "contains",
         },
         format(
             [[
@@ -121,8 +124,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __del__ method for a class",
-            trig="del",
+            docstring = "Create a __del__ method for a class",
+            trig = "del",
         },
         format(
             [[
@@ -136,8 +139,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __delattr__ method for a class",
-            trig="delattr",
+            docstring = "Create a __delattr__ method for a class",
+            trig = "delattr",
         },
         format(
             [[
@@ -151,8 +154,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __delete__ method for a class",
-            trig="delete",
+            docstring = "Create a __delete__ method for a class",
+            trig = "delete",
         },
         format(
             [[
@@ -166,8 +169,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __delitem__ method for a class",
-            trig="delitem",
+            docstring = "Create a __delitem__ method for a class",
+            trig = "delitem",
         },
         format(
             [[
@@ -181,8 +184,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __div__ method for a class",
-            trig="div",
+            docstring = "Create a __div__ method for a class",
+            trig = "div",
         },
         format(
             [[
@@ -196,8 +199,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __enter__ method for a class",
-            trig="enter",
+            docstring = "Create a __enter__ method for a class",
+            trig = "enter",
         },
         format(
             [[
@@ -212,8 +215,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __eq__ method for a class",
-            trig="eq",
+            docstring = "Create a __eq__ method for a class",
+            trig = "eq",
         },
         format(
             [[
@@ -227,8 +230,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __exit__ method for a class",
-            trig="exit",
+            docstring = "Create a __exit__ method for a class",
+            trig = "exit",
         },
         format(
             [[
@@ -242,8 +245,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __float__ method for a class",
-            trig="float",
+            docstring = "Create a __float__ method for a class",
+            trig = "float",
         },
         format(
             [[
@@ -257,8 +260,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __floordiv__ method for a class",
-            trig="floordiv",
+            docstring = "Create a __floordiv__ method for a class",
+            trig = "floordiv",
         },
         format(
             [[
@@ -272,8 +275,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ge__ method for a class",
-            trig="ge",
+            docstring = "Create a __ge__ method for a class",
+            trig = "ge",
         },
         format(
             [[
@@ -287,8 +290,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __get__ method for a class",
-            trig="get",
+            docstring = "Create a __get__ method for a class",
+            trig = "get",
         },
         format(
             [[
@@ -302,8 +305,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __getattr__ method for a class",
-            trig="getattr",
+            docstring = "Create a __getattr__ method for a class",
+            trig = "getattr",
         },
         format(
             [[
@@ -317,8 +320,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __getattribute__ method for a class",
-            trig="getattribute",
+            docstring = "Create a __getattribute__ method for a class",
+            trig = "getattribute",
         },
         format(
             [[
@@ -332,8 +335,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __getitem__ method for a class",
-            trig="getitem",
+            docstring = "Create a __getitem__ method for a class",
+            trig = "getitem",
         },
         format(
             [[
@@ -347,8 +350,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __gt__ method for a class",
-            trig="gt",
+            docstring = "Create a __gt__ method for a class",
+            trig = "gt",
         },
         format(
             [[
@@ -362,8 +365,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __hash__ method for a class",
-            trig="hash",
+            docstring = "Create a __hash__ method for a class",
+            trig = "hash",
         },
         format(
             [[
@@ -377,8 +380,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __hex__ method for a class",
-            trig="hex",
+            docstring = "Create a __hex__ method for a class",
+            trig = "hex",
         },
         format(
             [[
@@ -392,8 +395,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __iadd__ method for a class",
-            trig="iadd",
+            docstring = "Create a __iadd__ method for a class",
+            trig = "iadd",
         },
         format(
             [[
@@ -408,8 +411,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __iand__ method for a class",
-            trig="iand",
+            docstring = "Create a __iand__ method for a class",
+            trig = "iand",
         },
         format(
             [[
@@ -423,8 +426,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __idiv__ method for a class",
-            trig="idiv",
+            docstring = "Create a __idiv__ method for a class",
+            trig = "idiv",
         },
         format(
             [[
@@ -438,8 +441,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ifloordiv__ method for a class",
-            trig="ifloordiv",
+            docstring = "Create a __ifloordiv__ method for a class",
+            trig = "ifloordiv",
         },
         format(
             [[
@@ -453,8 +456,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ilshift__ method for a class",
-            trig="ilshift",
+            docstring = "Create a __ilshift__ method for a class",
+            trig = "ilshift",
         },
         format(
             [[
@@ -468,8 +471,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __imod__ method for a class",
-            trig="imod",
+            docstring = "Create a __imod__ method for a class",
+            trig = "imod",
         },
         format(
             [[
@@ -483,8 +486,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __imul__ method for a class",
-            trig="imul",
+            docstring = "Create a __imul__ method for a class",
+            trig = "imul",
         },
         format(
             [[
@@ -498,8 +501,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __index__ method for a class",
-            trig="index",
+            docstring = "Create a __index__ method for a class",
+            trig = "index",
         },
         format(
             [[
@@ -513,8 +516,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __init__ method for a class",
-            trig="init",
+            docstring = "Create a __init__ method for a class",
+            trig = "init",
         },
         format(
             [[
@@ -528,8 +531,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __int__ method for a class",
-            trig="int",
+            docstring = "Create a __int__ method for a class",
+            trig = "int",
         },
         format(
             [[
@@ -543,8 +546,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __invert__ method for a class",
-            trig="invert",
+            docstring = "Create a __invert__ method for a class",
+            trig = "invert",
         },
         format(
             [[
@@ -558,8 +561,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ior__ method for a class",
-            trig="ior",
+            docstring = "Create a __ior__ method for a class",
+            trig = "ior",
         },
         format(
             [[
@@ -573,8 +576,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ipow__ method for a class",
-            trig="ipow",
+            docstring = "Create a __ipow__ method for a class",
+            trig = "ipow",
         },
         format(
             [[
@@ -588,8 +591,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __irshift__ method for a class",
-            trig="irshift",
+            docstring = "Create a __irshift__ method for a class",
+            trig = "irshift",
         },
         format(
             [[
@@ -603,8 +606,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __isub__ method for a class",
-            trig="isub",
+            docstring = "Create a __isub__ method for a class",
+            trig = "isub",
         },
         format(
             [[
@@ -618,8 +621,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __iter__ method for a class",
-            trig="iter",
+            docstring = "Create a __iter__ method for a class",
+            trig = "iter",
         },
         format(
             [[
@@ -633,8 +636,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __itruediv__ method for a class",
-            trig="itruediv",
+            docstring = "Create a __itruediv__ method for a class",
+            trig = "itruediv",
         },
         format(
             [[
@@ -648,8 +651,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ixor__ method for a class",
-            trig="ixor",
+            docstring = "Create a __ixor__ method for a class",
+            trig = "ixor",
         },
         format(
             [[
@@ -663,8 +666,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __le__ method for a class",
-            trig="le",
+            docstring = "Create a __le__ method for a class",
+            trig = "le",
         },
         format(
             [[
@@ -678,8 +681,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __len__ method for a class",
-            trig="len",
+            docstring = "Create a __len__ method for a class",
+            trig = "len",
         },
         format(
             [[
@@ -693,8 +696,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __long__ method for a class",
-            trig="long",
+            docstring = "Create a __long__ method for a class",
+            trig = "long",
         },
         format(
             [[
@@ -708,8 +711,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __lshift__ method for a class",
-            trig="lshift",
+            docstring = "Create a __lshift__ method for a class",
+            trig = "lshift",
         },
         format(
             [[
@@ -723,8 +726,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __lt__ method for a class",
-            trig="lt",
+            docstring = "Create a __lt__ method for a class",
+            trig = "lt",
         },
         format(
             [[
@@ -738,8 +741,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __missing__ method for a class",
-            trig="missing",
+            docstring = "Create a __missing__ method for a class",
+            trig = "missing",
         },
         format(
             [[
@@ -753,8 +756,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __mod__ method for a class",
-            trig="mod",
+            docstring = "Create a __mod__ method for a class",
+            trig = "mod",
         },
         format(
             [[
@@ -768,8 +771,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __mul__ method for a class",
-            trig="mul",
+            docstring = "Create a __mul__ method for a class",
+            trig = "mul",
         },
         format(
             [[
@@ -783,8 +786,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ne__ method for a class",
-            trig="ne",
+            docstring = "Create a __ne__ method for a class",
+            trig = "ne",
         },
         format(
             [[
@@ -798,8 +801,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __neg__ method for a class",
-            trig="neg",
+            docstring = "Create a __neg__ method for a class",
+            trig = "neg",
         },
         format(
             [[
@@ -813,8 +816,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __new__ method for a class",
-            trig="new",
+            docstring = "Create a __new__ method for a class",
+            trig = "new",
         },
         format(
             [[
@@ -828,8 +831,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __nonzero__ method for a class",
-            trig="nonzero",
+            docstring = "Create a __nonzero__ method for a class",
+            trig = "nonzero",
         },
         format(
             [[
@@ -843,8 +846,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __oct__ method for a class",
-            trig="oct",
+            docstring = "Create a __oct__ method for a class",
+            trig = "oct",
         },
         format(
             [[
@@ -858,8 +861,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __pos__ method for a class",
-            trig="pos",
+            docstring = "Create a __pos__ method for a class",
+            trig = "pos",
         },
         format(
             [[
@@ -873,8 +876,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __radd__ method for a class",
-            trig="radd",
+            docstring = "Create a __radd__ method for a class",
+            trig = "radd",
         },
         format(
             [[
@@ -888,8 +891,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rcmp__ method for a class",
-            trig="rcmp",
+            docstring = "Create a __rcmp__ method for a class",
+            trig = "rcmp",
         },
         format(
             [[
@@ -903,8 +906,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rdiv__ method for a class",
-            trig="rdiv",
+            docstring = "Create a __rdiv__ method for a class",
+            trig = "rdiv",
         },
         format(
             [[
@@ -918,8 +921,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rdivmod__ method for a class",
-            trig="rdivmod",
+            docstring = "Create a __rdivmod__ method for a class",
+            trig = "rdivmod",
         },
         format(
             [[
@@ -933,8 +936,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __repr__ method for a class",
-            trig="repr",
+            docstring = "Create a __repr__ method for a class",
+            trig = "repr",
         },
         format(
             [[
@@ -948,8 +951,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __reversed__ method for a class",
-            trig="reversed",
+            docstring = "Create a __reversed__ method for a class",
+            trig = "reversed",
         },
         format(
             [[
@@ -964,8 +967,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rfloordiv__ method for a class",
-            trig="rfloordiv",
+            docstring = "Create a __rfloordiv__ method for a class",
+            trig = "rfloordiv",
         },
         format(
             [[
@@ -979,8 +982,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rlshift__ method for a class",
-            trig="rlshift",
+            docstring = "Create a __rlshift__ method for a class",
+            trig = "rlshift",
         },
         format(
             [[
@@ -994,8 +997,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rmod__ method for a class",
-            trig="rmod",
+            docstring = "Create a __rmod__ method for a class",
+            trig = "rmod",
         },
         format(
             [[
@@ -1009,8 +1012,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rmul__ method for a class",
-            trig="rmul",
+            docstring = "Create a __rmul__ method for a class",
+            trig = "rmul",
         },
         format(
             [[
@@ -1024,8 +1027,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __ror__ method for a class",
-            trig="ror",
+            docstring = "Create a __ror__ method for a class",
+            trig = "ror",
         },
         format(
             [[
@@ -1039,8 +1042,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rpow__ method for a class",
-            trig="rpow",
+            docstring = "Create a __rpow__ method for a class",
+            trig = "rpow",
         },
         format(
             [[
@@ -1054,8 +1057,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rrshift__ method for a class",
-            trig="rrshift",
+            docstring = "Create a __rrshift__ method for a class",
+            trig = "rrshift",
         },
         format(
             [[
@@ -1069,8 +1072,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rshift__ method for a class",
-            trig="rshift",
+            docstring = "Create a __rshift__ method for a class",
+            trig = "rshift",
         },
         format(
             [[
@@ -1084,8 +1087,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rsub__ method for a class",
-            trig="rsub",
+            docstring = "Create a __rsub__ method for a class",
+            trig = "rsub",
         },
         format(
             [[
@@ -1099,8 +1102,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rtruediv__ method for a class",
-            trig="rtruediv",
+            docstring = "Create a __rtruediv__ method for a class",
+            trig = "rtruediv",
         },
         format(
             [[
@@ -1114,8 +1117,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __rxor__ method for a class",
-            trig="rxor",
+            docstring = "Create a __rxor__ method for a class",
+            trig = "rxor",
         },
         format(
             [[
@@ -1129,8 +1132,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __set__ method for a class",
-            trig="set",
+            docstring = "Create a __set__ method for a class",
+            trig = "set",
         },
         format(
             [[
@@ -1144,8 +1147,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __setattr__ method for a class",
-            trig="setattr",
+            docstring = "Create a __setattr__ method for a class",
+            trig = "setattr",
         },
         format(
             [[
@@ -1159,8 +1162,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __setitem__ method for a class",
-            trig="setitem",
+            docstring = "Create a __setitem__ method for a class",
+            trig = "setitem",
         },
         format(
             [[
@@ -1174,8 +1177,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __str__ method for a class",
-            trig="str",
+            docstring = "Create a __str__ method for a class",
+            trig = "str",
         },
         format(
             [[
@@ -1189,8 +1192,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __sub__ method for a class",
-            trig="sub",
+            docstring = "Create a __sub__ method for a class",
+            trig = "sub",
         },
         format(
             [[
@@ -1204,8 +1207,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __truediv__ method for a class",
-            trig="truediv",
+            docstring = "Create a __truediv__ method for a class",
+            trig = "truediv",
         },
         format(
             [[
@@ -1219,8 +1222,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __unicode__ method for a class",
-            trig="unicode",
+            docstring = "Create a __unicode__ method for a class",
+            trig = "unicode",
         },
         format(
             [[
@@ -1234,8 +1237,8 @@ return {
 
     snippet(
         {
-            docstring="Create a __xor__ method for a class",
-            trig="xor",
+            docstring = "Create a __xor__ method for a class",
+            trig = "xor",
         },
         format(
             [[
@@ -1245,5 +1248,5 @@ return {
             { index(1, "") }
         ),
         { show_condition = is_dunder_prefix("xor") }
-    )
+    ),
 }

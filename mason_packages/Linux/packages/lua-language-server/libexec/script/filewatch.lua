@@ -13,11 +13,11 @@ local function isExists(filename)
     if not suc or not exists then
         return false
     end
-    if plat.OS ~= 'Windows' then
+    if plat.os ~= 'windows' then
         return true
     end
-    local suc, res = pcall(fs.fullpath, path)
-    if not suc then
+    local res = fs.fullpath(path)
+    if not res then
         return false
     end
     if res :string():gsub('^%w+:', string.lower)

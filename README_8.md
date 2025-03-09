@@ -21,8 +21,22 @@ https://www.youtube.com/watch?v=HR1dKKrOmDs&t=29s
 - For some reason when I leave dap, the <F5> mapping gets unset. Why? Fix.
 
 
+https://github.com/will-lynas/tmux-finder
+
+
+https://www.reddit.com/r/neovim/comments/1f2wkey/is_it_currently_possible_to_change_line_number/
+
+https://www.reddit.com/r/neovim/comments/1f439w8/psa_for_color_scheme_authors_you_might_want_to/
+
+
 
 https://www.reddit.com/r/neovim/comments/ug2s4s/disable_diagnostic_while_expanding_luasnip/
+
+
+https://yutkat.github.io/my-neovim-pluginlist/
+
+
+https://github.com/ficcdaf/ashen.nvim/tree/main
 
 
 - Go through checkhealth stuff

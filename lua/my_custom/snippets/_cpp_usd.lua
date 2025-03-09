@@ -6,8 +6,8 @@ local snippet = luasnip.s
 return {
     snippet(
         {
-            docstring="Print the current stage",
-            trig="ExportToString",
+            docstring = "Print the current stage",
+            trig = "ExportToString",
         },
         format(
             [[
@@ -21,5 +21,5 @@ return {
             ]],
             { index(1, "stage") }
         )
-    )
+    ),
 }

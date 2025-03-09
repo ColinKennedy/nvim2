@@ -1,0 +1,21 @@
+*my_plugins.txt*	Notes on specific plugins and how to use them.
+
+================================================================================
+Sections
+================================================================================
+
+Neotest ................................................. |my_plugins_neotest|
+
+
+================================================================================
+Neotest                                                   *my_plugins_neotest*
+
+
+--------------------------------------------------------------------------------
+The Neotest Summary Window
+
+Mappings
+
+| <CR> | Expand / Collapse the current row's children (if any)                 |
+|  w   | [W]atch / Un[w]atch the currently selected row.                           |
+|  o   | Show the [o]utput window for the current selected row.                |

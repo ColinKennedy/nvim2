@@ -4,12 +4,11 @@ local format = require("luasnip.extras.fmt").fmt
 local index = luasnip.i
 local snippet = luasnip.s
 
-
 return {
     snippet(
         {
-            trig="ExportToString_usd",
-            docstring="Get a string that represents the USD.Stage",
+            trig = "ExportToString_usd",
+            docstring = "Get a string that represents the USD.Stage",
         },
         format(
             [[
@@ -18,5 +17,5 @@ return {
             { index(1, "stage") }
         ),
         { show_condition = is_source_beginning("ExportToString_usd") }
-    )
+    ),
 }

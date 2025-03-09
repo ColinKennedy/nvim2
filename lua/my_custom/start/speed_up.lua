@@ -5,21 +5,20 @@ local plugins_to_disable = {
     "man",
     "matchit",
     -- "matchparen",  -- I like being able to see matching parentheses
+    "netrw",
     "netrwPlugin",
-    "remote_plugins",  -- This is a name for the runtime/plugin/rplugin.vim file
+    "remote_plugins", -- This is a name for the runtime/plugin/rplugin.vim file
     "shada_plugin",
     "spellfile_plugin",
     "tarPlugin",
-    "2html_plugin",  -- This is a name for the runtime/plugin/tohtml.vim file
-    "tutor_mode_plugin",  -- This is a name for the runtime/plugin/tutor.vim file
+    "2html_plugin", -- This is a name for the runtime/plugin/tohtml.vim file
+    "tutor_mode_plugin", -- This is a name for the runtime/plugin/tutor.vim file
     "zipPlugin",
 }
 
-for _, name in pairs(plugins_to_disable)
-do
+for _, name in pairs(plugins_to_disable) do
     vim.g["loaded_" .. name] = 1
 end
-
 
 -- Disable some default providers
 --
@@ -31,6 +30,6 @@ end
 --     is quite slow.
 --
 for _, provider in ipairs { "node", "perl", "ruby" } do
--- for _, provider in ipairs { "node", "perl", "ruby" } do
+    -- for _, provider in ipairs { "node", "perl", "ruby" } do
     vim.g["loaded_" .. provider .. "_provider"] = 0
 end

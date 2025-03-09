@@ -1,7 +1,7 @@
 DIAG_LINE_ONLY_SPACE    =
 'Line with spaces only.'
 DIAG_LINE_POST_SPACE    =
-'Line with postspace.'
+'Line with trailing space.'
 DIAG_UNUSED_LOCAL       =
 'Unused local `{}`.'
 DIAG_UNDEF_GLOBAL       =
@@ -174,8 +174,8 @@ DIAG_INJECT_FIELD                     =
 'Fields cannot be injected into the reference of `{class}` for `{field}`. {fix}'
 DIAG_INJECT_FIELD_FIX_CLASS           =
 'To do so, use `---@class` for `{node}`.'
-DIAG_INJECT_FIELD_FIX_TABLE           = -- TODO: need translate!
-'如要允许注入，请在定义中添加 `{fix}` 。'
+DIAG_INJECT_FIELD_FIX_TABLE           =
+'To allow injection, add `{fix}` to the definition.'
 
 MWS_NOT_SUPPORT         =
 '{} does not support multi workspace for now, I may need to restart to support the new workspace ...'
@@ -301,9 +301,9 @@ PARSER_INDEX_IN_FUNC_NAME =
 'The `[name]` form cannot be used in the name of a named function.'
 PARSER_UNKNOWN_ATTRIBUTE  =
 'Local attribute should be `const` or `close`'
-PARSER_AMBIGUOUS_SYNTAX   = -- TODO: need translate!
+PARSER_AMBIGUOUS_SYNTAX   =
 'In Lua 5.1, the left brackets called by the function must be in the same line as the function.'
-PARSER_NEED_PAREN         = -- TODO: need translate!
+PARSER_NEED_PAREN         =
 'Need to add a pair of parentheses.'
 PARSER_NESTING_LONG_MARK  =
 'Nesting of `[[...]]` is not allowed in Lua 5.1 .'
@@ -454,9 +454,9 @@ ACTION_MARK_ASYNC       =
 'Mark current function as async.'
 ACTION_ADD_DICT         =
 'Add \'{}\' to workspace dict'
-ACTION_FIX_ADD_PAREN    = -- TODO: need translate!
+ACTION_FIX_ADD_PAREN    =
 'Add parentheses.'
-ACTION_AUTOREQUIRE      = -- TODO: need translate!
+ACTION_AUTOREQUIRE      =
 "Import '{}' as {}"
 
 COMMAND_DISABLE_DIAG       =
@@ -646,16 +646,22 @@ CLI_CHECK_INITING =
 'Initializing ...'
 CLI_CHECK_SUCCESS =
 'Diagnosis completed, no problems found'
-CLI_CHECK_RESULTS =
+CLI_CHECK_PROGRESS =
+'Found {} problems in {} files'
+CLI_CHECK_RESULTS_OUTPATH =
 'Diagnosis complete, {} problems found, see {}'
+CLI_CHECK_RESULTS_PRETTY =
+'Diagnosis complete, {} problems found'
+CLI_CHECK_MULTIPLE_WORKERS =
+'Starting {} worker tasks, progress output will be disabled. This may take a few minutes.'
 CLI_DOC_INITING   =
 'Loading documents ...'
 CLI_DOC_DONE      =
 [[
-Document exporting completed!
-Raw data: {}
-Markdown(example): {}
+Documentation exported:
 ]]
+CLI_DOC_WORKING   =
+'Building docs...'
 
 TYPE_ERROR_ENUM_GLOBAL_DISMATCH =
 'Type `{child}` cannot match enumeration type of `{parent}`'
@@ -1163,7 +1169,7 @@ Provide type declaration for [operator metamethods](http://lua-users.org/wiki/Me
 ### Vector Add Metamethod
 ```
 ---@class Vector
----@operation add(Vector):Vector
+---@operator add(Vector):Vector
 
 vA = Vector.new(1, 2, 3)
 vB = Vector.new(10, 20, 30)
@@ -1174,7 +1180,7 @@ vC = vA + vB
 ### Unary Minus
 ```
 ---@class Passcode
----@operation unm:integer
+---@operator unm:integer
 
 pA = Passcode.new(1234)
 pB = -pA
@@ -1212,7 +1218,7 @@ setColor(colors.green)
 LUADOC_DESC_SOURCE =
 [=[
 Provide a reference to some source code which lives in another file. When
-searching for the defintion of an item, its `@source` will be used.
+searching for the definition of an item, its `@source` will be used.
 
 ## Syntax
 `@source <path>`
@@ -1260,7 +1266,7 @@ end
 LUADOC_DESC_PRIVATE =
 [=[
 Mark a function as private to a @class. Private functions can be accessed only
-from within their class and are not accessable from child classes.
+from within their class and are not accessible from child classes.
 
 ## Syntax
 `@private`

@@ -19,16 +19,16 @@ local function collectRequire(mode, literal, uri)
     end
     if result and #result > 0 then
         local shows = {}
-        for i, uri in ipairs(result) do
-            local searcher = searchers and searchers[uri]
-            local path = ws.getRelativePath(uri)
-            if vm.isMetaFile(uri) then
-                shows[i] = ('* [[meta]](%s)'):format(uri)
+        for i, uri0 in ipairs(result) do
+            local searcher = searchers and searchers[uri0]
+            local path = ws.getRelativePath(uri0)
+            if vm.isMetaFile(uri0) then
+                shows[i] = ('* [[meta]](%s)'):format(uri0)
             elseif searcher then
                 searcher = searcher:gsub('^[/\\]+', '')
-                shows[i] = ('* [%s](%s) %s'):format(path, uri, lang.script('HOVER_USE_LUA_PATH', searcher))
+                shows[i] = ('* [%s](%s) %s'):format(path, uri0, lang.script('HOVER_USE_LUA_PATH', searcher))
             else
-                shows[i] = ('* [%s](%s)'):format(path, uri)
+                shows[i] = ('* [%s](%s)'):format(path, uri0)
             end
         end
         table.sort(shows)
@@ -336,7 +336,7 @@ local function tryDocFieldComment(source)
     end
 end
 
-local function getFunctionComment(source)
+local function getFunctionCommentMarkdown(source, raw)
     local docGroup = source.bindDocs
     if not docGroup then
         return
@@ -356,14 +356,14 @@ local function getFunctionComment(source)
         if     doc.type == 'doc.comment' then
             local comment = normalizeComment(doc.comment.text, uri)
             md:add('md', comment)
-        elseif doc.type == 'doc.param' then
+        elseif doc.type == 'doc.param' and not raw then
             if doc.comment then
                 md:add('md', ('@*param* `%s` — %s'):format(
                     doc.param[1],
                     doc.comment.text
                 ))
             end
-        elseif doc.type == 'doc.return' then
+        elseif doc.type == 'doc.return' and not raw then
             if hasReturnComment then
                 local name = {}
                 for _, rtn in ipairs(doc.returns) do
@@ -393,22 +393,17 @@ local function getFunctionComment(source)
     local enums = getBindEnums(source, docGroup)
     md:add('lua', enums)
 
-    local comment = md:string()
-    if comment == '' then
-        return nil
-    end
-    return comment
+    return md
 end
 
 ---@async
-local function tryDocComment(source)
+local function tryDocComment(source, raw)
     local md = markdown()
     if source.value and source.value.type == 'function' then
         source = source.value
     end
     if source.type == 'function' then
-        local comment = getFunctionComment(source)
-        md:add('md', comment)
+        md:add('md', getFunctionCommentMarkdown(source, raw))
         source = source.parent
     end
     local comment = lookUpDocComments(source)
@@ -429,7 +424,7 @@ local function tryDocComment(source)
 end
 
 ---@async
-local function tryDocOverloadToComment(source)
+local function tryDocOverloadToComment(source, raw)
     if source.type ~= 'doc.type.function' then
         return
     end
@@ -438,7 +433,7 @@ local function tryDocOverloadToComment(source)
     or not doc.bindSource then
         return
     end
-    local md = tryDocComment(doc.bindSource)
+    local md = tryDocComment(doc.bindSource, raw)
     if md then
         return md
     end
@@ -449,7 +444,8 @@ local function tyrDocParamComment(source)
     or source.type == 'getlocal' then
         source = source.node
     end
-    if source.type ~= 'local' then
+    if source.type ~= 'local'
+    and source.type ~= '...' then
         return
     end
     if source.parent.type ~= 'funcargs' then
@@ -529,7 +525,7 @@ local function tryDocEnum(source)
 end
 
 ---@async
-return function (source)
+return function (source, raw)
     if source.type == 'string' then
         return asString(source)
     end
@@ -539,10 +535,10 @@ return function (source)
     if source.type == 'field' then
         source = source.parent
     end
-    return tryDocOverloadToComment(source)
+    return tryDocOverloadToComment(source, raw)
         or tryDocFieldComment(source)
         or tyrDocParamComment(source)
-        or tryDocComment(source)
+        or tryDocComment(source, raw)
         or tryDocClassComment(source)
         or tryDocModule(source)
         or tryDocEnum(source)

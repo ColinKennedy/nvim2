@@ -4,6 +4,12 @@
     - Install on CentOS 7 with: https://computingforgeeks.com/install-git-2-on-centos-7/
 - Requires jedi-language-server to be installed (for null-ls)
 - For debugging [debugpy](https://pypi.org/project/debugpy)
+- Requires [fd](https://github.com/sharkdp/fd), for searching folder with :FzfCd / <leader>cD
+
+## Optional Requires
+- Anything that `:checkhealth` recommends
+- [fswatch](https://github.com/emcrisostomo/fswatch), for better LSP file change performance
+    - Reference: https://github.com/neovim/neovim/pull/27347
 
 
 ## Mappings
@@ -17,7 +23,9 @@
 | n | `<space>`A  | Select a new [A]rgs file from the `:args` list.                                           |
 | n | `<space>`B  | Search existing [B]uffers and select + view it.                                           |
 | n | `<space>`E  | [E]dit a new file, searching first from the project's root directory.                     |
-| n | `<space>`G  | Enter [G]it mode for committing to repositories.                                          |
+| n | `<space>`GD | Enter [G]it [D]iff mode for committing to repositories. Basically git add -p, but better. |
+| n | `<space>`GF | Show [G]it [F]ile History                                                                 |
+| n | `<space>`GG | Enter [G]it mode for committing to repositories.                                          |
 | n | `<space>`L  | Search [l]ines in the current window for text.                                            |
 | n | `<space>`SN | [S]witch [N]avigation inside / outside of classes and functions.                          |
 | n | `<space>`SO | Open [S]ymbols [O]utliner                                                                 |
@@ -33,7 +41,7 @@
 2. mapping
 3. description
 
-| 1 |     2        |                                         3                                                     |
+| 1 |      2       |                                         3                                                     |
 | - | ------------ | --------------------------------------------------------------------------------------------- |
 | n | `<leader>`cc | [c]opy the [c]urrent file in the current window to the system clipboard. Assuming +clipboard. |
 | n | `<leader>`cd | [c]hange the [d]irectory (`:pwd`) to the directory of the current open window.                |
@@ -43,14 +51,18 @@
 | n | [-           | Go to the previous line of lesser indentation.                                                |
 | n | [=           | Go to the previous line of equal indentation.                                                 |
 | n | [d           | Search upwards for diagnostic messages and go to it, if one is found.                         |
+| n | [e           | Previous diagnostic [e]rror.                                                                  |
 | n | [p           | [p]ut text on the line above, at the same level of indentation.                               |
 | n | [q           | Move up the QuickFix window.                                                                  |
+| n | [w           | Previous diagnostic [w]arning.                                                                |
 | n | ]+           | Go to the next line of greater indentation.                                                   |
 | n | ]-           | Go to the next line of lesser indentation.                                                    |
 | n | ]=           | Go to the next line of equal indentation.                                                     |
 | n | ]d           | Search downwards for diagnostic messages and go to it, if one is found.                       |
+| n | ]e           | Next diagnostic [e]rror.                                                                      |
 | n | ]p           | [p]ut text on the line below, at the same level of indentation.                               |
 | n | ]q           | Move down the QuickFix window.                                                                |
+| n | ]w           | Next diagnostic [w]arning.                                                                    |
 
 
 ### Terminal / Tmux Communication
@@ -58,7 +70,7 @@
 2. mapping
 3. description
 
-| 1 |     2        |                                         3                               |
+| 1 |      2       |                                         3                               |
 | - | ------------ | ----------------------------------------------------------------------- |
 | n | `<leader>`rr | [r]e-[r]un the last terminal command (The !! syntax is UNIX-specific)   |
 | n | `<leader>`st | [s]end to the nearest [t]erminal your system clipboard text.            |
@@ -69,11 +81,13 @@
 2. mapping
 3. description
 
-| 1 |     2         |                                         3                                          |
+| 1 |       2       |                                         3                                          |
 | - | ------------- | ---------------------------------------------------------------------------------- |
 | n | J             | Keep the cursor in the same position while pressing ``J``.                         |
 | n | `<leader>`dil | [d]elete [i]nside the current [l]ine, without the ending newline character.        |
+| n | `<leader>`iV  | [i]nsert [V]ariable debug-print above the current line                             |
 | n | `<leader>`id  | [i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.      |
+| n | `<leader>`iv  | [i]nsert auto-[d]ocstring. Uses plug-ins to auto fill the docstring contents.      |
 | n | `<leader>`j   | [j]oin the line below without adding an extra space                                |
 | n | `<leader>`sa  | [s]plit [a]rgs - Split a line with arguments into multiple lines.                  |
 | n | `<leader>`ss  | [s]ubstitute [s]election (in-file search/replace) for the word under your cursor.  |
@@ -84,8 +98,8 @@
 2. mapping
 3. description
 
-| 1 |      2        |                                 3                                  |
-| - | -----------   | ------------------------------------------------------------------ |
+| 1 |       2       |                                 3                                  |
+| - | ------------- | ------------------------------------------------------------------ |
 | n | `<F1>`        | Move out of the current function call.                             |
 | n | `<F2>`        | Skip over the current line.                                        |
 | n | `<F3>`        | Move into a function call.                                         |
@@ -105,8 +119,12 @@
 
 
 ### LSP
+1. mode
+2. mapping
+3. description
+
 | 1 |      2       |                           3                                |
-| - | -----------  | ---------------------------------------------------------- |
+| - | ------------ | ---------------------------------------------------------- |
 | n | K            | Show documentation.                                        |
 | n | gD           | [g]o to [d]eclarations.                                    |
 | n | gd           | [g]o to [d]efinition.                                      |
@@ -115,23 +133,36 @@
 | n | <leader>gca  | [c]ode [a]ction - Show available commands under the cursor.|
 
 
-### Miscellaneous
+### Quickfix
 1. mode
 2. mapping
 3. description
 
 | 1 |      2       |                           3                               |
-| - | -----------  | --------------------------------------------------------- |
-| c | %s/          | Make Vim's search more "magic", by default.               |
-| c | >s/          | Make Vim's search more "magic", by default.               |
-| n | /            | Make Vim's search more "magic", by default.               |
-| n | `<C-w><C-o>` | Toggle full-screen or minimize a window.                  |
-| n | `<C-w>`o     | Toggle full-screen or minimize a window.                  |
-| n | `<F12>`      | Totally useless ROT13 encyption (for fun!)                |
-| n | QQ           | Exit Vim without saving.                                  |
-| v | /            | Make Vim's search more "magic", by default.               |
-| v | `<leader>`pe | Load the selected [p]ython [e]rror as a quickfix window.  |
-| v | `<leader>`tx | [t]oggle [x]-marks display.                               |
+| - | ------------ | --------------------------------------------------------- |
+| n | `<leader>`ct | Change the title of the Quickfix buffer                   |
+
+
+### Miscellaneous
+1. mode
+2. mapping
+3. description
+
+| 1 |       2       |                           3                               |
+| - | ------------- | --------------------------------------------------------- |
+| c | %s/           | Make Vim's search more "magic", by default.               |
+| c | >s/           | Make Vim's search more "magic", by default.               |
+| n | /             | Make Vim's search more "magic", by default.               |
+| n | QQ            | Exit Vim without saving.                                  |
+| n | `<C-w><C-o>`  | Toggle full-screen or minimize a window.                  |
+| n | `<C-w>`o      | Toggle full-screen or minimize a window.                  |
+| n | `<F12>`       | Totally useless ROT13 encyption (for fun!)                |
+| v | /             | Make Vim's search more "magic", by default.               |
+| v | `<leader>`gsa | [g]it [s]tash [a]pply onto the current repository.        |
+| v | `<leader>`gsp | [g]it [s]tash [p]ush the current repository.              |
+| v | `<leader>`pe  | Load the selected [p]ython [e]rror as a quickfix window.  |
+| v | `<leader>`tx  | [t]oggle [x]-marks display.                               |
+| v | `<leader>`j   | [j]oin this line with the line below, without whitespace. |
 
 
 ### Text-Object / Text-Object-like
@@ -181,12 +212,29 @@ Super quickly register "important" files in a project and swap between them. So 
 
 This plug-in is basically https://github.com/ThePrimeagen/harpoon but actually good.
 
+1. mode
+2. mapping
+3. description
+
 | 1 |      2       |                                  3                                 |
 | - | ------------ | ------------------------------------------------------------------ |
 | n | `<M-S-j>`    | Change buffer to the next saved file.                              |
 | n | `<M-S-k>`    | Change buffer to the previous saved file.                          |
 | n | `<M-S-h>`    | Add/Remove the current buffer to the saved files.                  |
 | n | `<M-S-l>`    | [l]ist all saved files.                                            |
+
+
+#### telescope.nvim
+Various mappings that leverage telescope.nvim.
+
+1. mode
+2. mapping
+3. description
+
+| 1 |        2         |                                  3                                 |
+| - | ---------------- | ------------------------------------------------------------------ |
+| n | `<leader>`gsa    | [g]it [s]tash [a]pply onto the current repository.                 |
+| n | `<leader>`gsp    | [g]it [s]tash [p]ush the current repository.                       |
 
 
 #### vim-bqf
