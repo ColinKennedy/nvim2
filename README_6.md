@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-=======
-=======
-=======
-=======
 https://www.reddit.com/r/neovim/comments/1j2oko7/vectorcode_v040_updates_tool_calling_experimental/
 
 Gclog navigate between commits (useful for PR reviews)
@@ -19,22 +7,17 @@ https://github.com/caliguIa/zendiagram.nvim
 https://github.com/OXY2DEV/nvim/blob/main/lua/scripts/diagnostic.lua
 
 
->>>>>>> 41364b3b (Updated README_6.md)
 - Super annoying when number / relativenumber don't get set, sometimes
 - Also <leader>sa needs to worm more often. Annoying that it breaks sometimes
 
->>>>>>> fd6bbaac (Added TODO notes)
 - Selectively undo lines in a file - https://github.com/SunnyTamang/select-undo.nvim
 
 - Change =p to put inline at the current cursor
->>>>>>> 400f695a (Added nvim-gitstatus)
 https://github.com/wurli/contextindent.nvim
 
 
->>>>>>> aa4d2e9a (Added plugin idea)
 - revert gitsigns.nvim to 2c2463d, it was a better commit
 
->>>>>>> 13a16e5a (Added TODO note)
 https://github.com/xzbdmw/colorful-menu.nvim
 git add -p clone
  - On last hunk staged, auto-exit
@@ -274,7 +257,6 @@ https://github.com/ck-zhang/mistake.nvim
 
 
 
->>>>>>> d17ddb3c (Added more ideas)
 - git-signs plugin commit: 2c2463d. Roll back to this
 
 github.com/LunarVim/bigfile.nvim
@@ -298,6 +280,8 @@ https://github.com/lucaSartore/nvim-dap-exception-breakpoints
  - search all functions
   - Finds the first place alphabetically where the class/function should go
    - Moves the cursor to it
+
+https://www.reddit.com/r/neovim/comments/1fqdy28/introducing_my_first_plugin_hereterm_toggle/
 
 - does tmux-ressurect still work?
 
