@@ -127,7 +127,10 @@ vim.schedule(function()
     local module = "my_custom.utilities.par"
     local package_exists, par = pcall(require, module)
 
-    if package_exists then
+    if package_exists and vim.fn.has("unix") == 1 then
+        -- NOTE: This code requires UNIX-related executables like wget so we
+        -- don't support Windows yet.
+        --
         par.load_or_install()
     else
         vim.notify('Could not load "' .. module .. '" module.', vim.log.levels.ERROR)
@@ -195,8 +198,4 @@ vim.opt.equalalways = false
 --
 -- Reference: https://github.com/neovim/neovim/pull/31492
 --
-if pcall(function()
-    return vim.o.messagesopt
-end) then
-    vim.o.messagesopt = "wait:200,history:500"
-end
+-- pcall(function() vim.o.messagesopt = "wait:500,history:500" end)

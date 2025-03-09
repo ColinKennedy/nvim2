@@ -96,7 +96,10 @@ lspconfig.basedpyright.setup {
     on_attach = on_attach,
     settings = {
         basedpyright = {
-            analysis = { diagnosticMode = "off", typeCheckingMode = "off" },
+            analysis = {
+                diagnosticMode = "openFilesOnly",
+                typeCheckingMode = "off",
+            },
         },
     },
 }
@@ -106,21 +109,39 @@ lspconfig.clangd.setup { capabilities = capabilities, on_attach = on_attach }
 lspconfig.lua_ls.setup { capabilities = capabilities, on_attach = on_attach }
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "[d", function()
-    vim.diagnostic.jump({
-        count = -1,
-        float = { source = true },
-        severity = { min = vim.diagnostic.severity.HINT },
-    })
-end, { desc = "Search upwards for diagnostic messages and go to it, if one is found." })
+local _go_to_diagnostic = function(next, severity)
+    severity = severity and vim.diagnostic.severity[severity] or nil
 
-vim.keymap.set("n", "]d", function()
-    vim.diagnostic.jump({
-        count = 1,
-        float = { source = true },
-        severity = { min = vim.diagnostic.severity.HINT },
-    })
-end, { desc = "Search downwards for diagnostic messages and go to it, if one is found." })
+    if vim.diagnostic.jump then
+        local count
+
+        if next then
+            count = 1
+        else
+            count = -1
+        end
+
+        return function()
+            vim.diagnostic.jump({ count = count, float = true, severity = severity })
+        end
+    end
+
+    ---@diagnostic disable-next-line: deprecated
+    local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+
+    return function()
+        go({ severity = severity })
+    end
+end
+
+-- Reference: https://www.joshmedeski.com/posts/underrated-square-bracket
+vim.keymap.set("n", "]e", _go_to_diagnostic(true, "ERROR"), { desc = "Next diagnostic [e]rror." })
+vim.keymap.set("n", "[e", _go_to_diagnostic(false, "ERROR"), { desc = "Previous diagnostic [e]rror." })
+vim.keymap.set("n", "]w", _go_to_diagnostic(true, "WARN"), { desc = "Next diagnostic [w]arning." })
+vim.keymap.set("n", "[w", _go_to_diagnostic(false, "WARN"), { desc = "Previous diagnostic [w]arning." })
+
+vim.keymap.set("n", "[d", _go_to_diagnostic(false, nil), { desc = "Previous diagnostic issue." })
+vim.keymap.set("n", "]d", _go_to_diagnostic(true, nil), { desc = "Previous diagnostic issue." })
 
 vim.keymap.set("n", "=d", function()
     vim.diagnostic.open_float({ source = true })

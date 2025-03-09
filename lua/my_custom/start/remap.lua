@@ -201,33 +201,57 @@ vim.keymap.set(
     { desc = "Repeat the last recorded register on all selected lines." }
 )
 
---- TODO: In later Neovim versions I think these are default mappings. If so,
---- remove these diagnostic mappings.
----
----
----@param next boolean If `true`, go down / to next diagnostic matching `severity`.
----@param severity vim.diagnostic.Severity The issue's importance.
----@return fun(): nil # A function that goes to the diagnostic, when called.
----
-local function _go_to_diagnostic(next, severity)
-    local count
+local _go_to_diagnostic
 
-    if next then
-        count = 1
-    else
-        count = -1
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+if vim.diagnostic.jump ~= nil then
+    --- TODO: In later Neovim versions I think these are default mappings. If so,
+    --- remove these diagnostic mappings.
+    ---
+    ---@param next boolean If `true`, go down / to next diagnostic matching `severity`.
+    ---@param severity vim.diagnostic.Severity The issue's importance.
+    ---@return fun(): nil # A function that goes to the diagnostic, when called.
+    ---
+    _go_to_diagnostic = function(next, severity)
+        local count
+
+        if next then
+            count = 1
+        else
+            count = -1
+        end
+
+        return function()
+            vim.diagnostic.jump({ count = count, float = true, severity = severity })
+        end
     end
+else
+    --- TODO: In later Neovim versions I think these are default mappings. If so,
+    --- remove these diagnostic mappings.
+    ---
+    ---@param next boolean If `true`, go down / to next diagnostic matching `severity`.
+    ---@param severity vim.diagnostic.Severity The issue's importance.
+    ---@return fun(): nil # A function that goes to the diagnostic, when called.
+    ---
+    _go_to_diagnostic = function(next, severity)
+        local caller
 
-    return function()
-        vim.diagnostic.jump({ count = count, float = true, severity = severity })
+        if next then
+            ---@diagnostic disable-next-line deprecated
+            caller = vim.diagnostic.goto_next
+        else
+            ---@diagnostic disable-next-line deprecated
+            caller = vim.diagnostic.goto_prev
+        end
+
+        return function()
+            caller({ severity = severity })
+        end
     end
 end
 
 -- TODO: In later Neovim versions I think these are all default mappings. If so, remove them.
 -- Reference: https://www.joshmedeski.com/posts/underrated-square-bracket
---
--- map("n", "]d", _go_to_diagnostic(true), { desc = "Next Diagnostic" })
--- map("n", "[d", _go_to_diagnostic(false), { desc = "Prev Diagnostic" })
 --
 vim.keymap.set("n", "]e", _go_to_diagnostic(true, vim.diagnostic.severity.ERROR), { desc = "Next diagnostic [e]rror." })
 vim.keymap.set(

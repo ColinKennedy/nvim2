@@ -1,3 +1,4 @@
+- https://github.com/0xrusowsky/nvim-ctx-ingest - Summarize the project for LLM ingestion
 - https://github.com/3v0k4/exit.nvim
 - https://github.com/Aaronik/GPTModels.nvim
 - https://github.com/AdiY00/copy-tree.nvim - Technically an AI prompting plugin
@@ -20,14 +21,19 @@
 - https://github.com/RayenMnif/tgpt.nvim
 - https://github.com/Robitx/gp.nvim
 - https://github.com/S1M0N38/chatml.nvim
+- https://github.com/S1M0N38/ctx.nvim - Converting quickfix -> markdown for LLM ingestion
+- https://github.com/S1M0N38/dante.nvim
 - https://github.com/ShoofLLC/vim-openai
 - https://github.com/TamaMcGlinn/vim-termhelp
 - https://github.com/WhiteBlackGoose/gpt4all.nvim
+- https://github.com/Xuyuanp/nes.nvim
 - https://github.com/aduros/ai.vim
 - https://github.com/agusnt/askGemini.nvim
 - https://github.com/aweis89/aider.nvim
+- https://github.com/azorng/goose.nvim
 - https://github.com/bakks/butterfish.nvim
 - https://github.com/codota/tabnine-nvim
+- https://github.com/copilotlsp-nvim/copilot-lsp - Next Edit Suggestion support
 - https://github.com/deifyed/naVi
 - https://github.com/dense-analysis/neural
 - https://github.com/dpayne/CodeGPT.nvim
@@ -48,6 +54,7 @@
 - https://github.com/jcdickinson/codeium.nvim
 - https://github.com/jellydn/CopilotChat.nvim
 - https://github.com/jkitching/awesome-vim-llm-plugins
+- https://github.com/johnseth97/codex.nvim
 - https://github.com/joshuavial/aider.nvim
 - https://github.com/jpmcb/nvim-llama
 - https://github.com/k2589/LLuMinate.nvim
@@ -69,6 +76,7 @@
 - https://github.com/pwnwriter/code2prompt.nvim
 - https://github.com/rakotomandimby/code-ai.nvim
 - https://github.com/rakotomandimby/deepseek-complete
+- https://github.com/reachingforthejack/cursortab.nvim
 - https://github.com/skywind3000/vim-gpt-commit
 - https://github.com/solyarisoftware/prompter.vim
 - https://github.com/sourcegraph/sg.nvim
@@ -85,6 +93,7 @@
 - https://github.com/zbirenbaum/copilot.lua
 - https://pieces.app/plugins/neovim
 - https://tabby.tabbyml.com/docs/extensions/installation/vim/
+- https://www.reddit.com/r/neovim/comments/1jw7pmm/use_lsp_as_context_provider_in_codecompanion/ - https://github.com/lazymaniac/nvim-ide/blob/master/lua/plugins/ai.lua - https://github.com/lazymaniac/nvim-ide/blob/master/lua/plugins/ai.lua#L371-L584
 - https://www.vim.org/scripts/script.php?script_id=6048
 
 
@@ -94,6 +103,9 @@
  - aider / aider.nvim
  - avante.nvim
 
+
+
+- LLM ingestion plugin - https://github.com/cyclotruc/gitingest
 
 
 - A chatbot that is aware of Neovim API documentation - https://gooey.ai/chat/vimbo-VYm/

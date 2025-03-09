@@ -30,7 +30,7 @@ return {
 
     snippet(
         {
-            docstring = "dirgrep the currnt selection",
+            docstring = "dirgrep the current selection",
             trig = "dirgrep",
         },
         format(

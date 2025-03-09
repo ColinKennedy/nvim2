@@ -1,15 +1,123 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-=======
-=======
-=======
-=======
+- reomace Pcd with the new Neovim command
+
+
+
+
+- Fix this later
+```
+E5108: Error executing lua: ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:143: attempt to index field 'fields' (a nil value)
+stack traceback:
+        ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:143: in function 'key_func'
+        ...ig/nvim/bundle/telescope.nvim/lua/telescope/mappings.lua:293: in function <...ig/nvim/bundle/telescope.nvim/lua/telescope/mapping
+s.lua:292>
+Error executing Lua callback: File "/home/selecaoone/vaults/politics/1738624340-fbi-offered-christopher-steele-1-million-to-prove-dossier-cl
+aims.md" could not be opened.
+stack traceback:
+        [C]: in function 'error'
+        ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:55: in function '_get_aliases'
+        ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:164: in function 'main'
+        ...es/personal/.config/nvim/lua/my_custom/start/command.lua:148: in function <...es/personal/.config/nvim/lua/my_custom/start/comman
+d.lua:147>
+```
+
+https://www.reddit.com/r/neovim/comments/1jmqd7t/sorry_ufo_these_7_lines_replaced_you/
+```
+Error executing vim.schedule lua callback: ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: Invalid window id: 1782
+stack traceback:
+    [C]: in function 'nvim_win_get_cursor'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:151: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:315: in function ''
+    vim/_editor.lua: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+Error executing vim.schedule lua callback: ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: Invalid window id: 1782
+stack traceback:
+    [C]: in function 'nvim_win_get_cursor'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:151: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:315: in function ''
+    vim/_editor.lua: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+Error executing vim.schedule lua callback: ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: Invalid window id: 1782
+stack traceback:
+    [C]: in function 'nvim_win_get_cursor'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:151: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:315: in function ''
+    vim/_editor.lua: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+```
+
+```
+".github/workflows/stylua.yml" 32L, 630B written
+4 fewer lines
+4 more lines; before #1  1 second ago
+Command "git rev-parse --show-toplevel" failed to run.
+Error executing vim.schedule lua callback: ...ine.nvim/lua/timeline/_core/git_utilities/git_parser.lua:332: Invalid 'str': Expected Lua string
+stack traceback:
+    [C]: in function 'nvim_err_writeln'
+    ...ine.nvim/lua/timeline/_core/git_utilities/git_parser.lua:332: in function 'get_repository_root'
+    ...onfig/nvim/bundle/timeline.nvim/lua/timeline/api/git.lua:38: in function 'get_summary'
+    ...onfig/nvim/bundle/timeline.nvim/lua/timeline/api/git.lua:17: in function '_get_message'
+    ...imeline.nvim/lua/timeline/_core/git_utilities/backup.lua:189: in function 'backup_file'
+    ...line.nvim/lua/timeline/_core/components/undo_manager.lua:26: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+3 fewer lines
+```
+
+
+https://www.reddit.com/r/neovim/comments/1jrblt2/this_is_how_i_use_multiple_llm_with_neovim_with/
+https://www.youtube.com/watch?time_continue=1835&v=UfkaYJh5-FY&embeds_referring_euri=https%3A%2F%2Fwww.reddit.com%2F
+
+https://github.com/ColinKennedy/nvim2/actions/runs/14165985048/job/39679192607
+- Fix the plugin loaders
+ - WHat is lazy's search path, in the GitHub action?
+
+
+https://www.reddit.com/r/neovim/comments/1jm5wqn/new_plugin_pythonnvim_one_stop_shop_for_python/
+
+
+https://www.reddit.com/r/neovim/comments/1jjpk7g/10_blinkcmp_performant_batteriesincluded/
+
+
+https://github.com/chrisgrieser/nvim-puppeteer
+> Master of strings. Automatically convert strings to f-strings or template strings and back.
+
+
+```
+Runtime ~
+- $VIMRUNTIME: /usr/local/share/nvim/runtime
+- ERROR Found old files in $VIMRUNTIME (this can cause weird behavior):
+  /usr/local/share/nvim/runtime/lua/provider/ruby/health.lua
+  /usr/local/share/nvim/runtime/lua/provider/python/health.lua
+  /usr/local/share/nvim/runtime/lua/provider/perl/health.lua
+  /usr/local/share/nvim/runtime/lua/provider/node/health.lua
+
+  - ADVICE:
+    - Delete the $VIMRUNTIME directory, then reinstall Nvim.
+```
+/usr/local/share/nvim/runtime
+
+
+
+https://github.com/neovim/neovim/commit/62d9fab9af21323e42828748e6761c02020a7aa5
+- Add border
+ - to both configurations (old and new)
+
+https://github.com/igorlfs/nvim-dap-view
+- Try this out again
+
+
+
+https://github.com/bloznelis/before.nvim
+
+
+
+https://www.reddit.com/r/neovim/comments/1jfci7i/minuetainvim_v04_update_now_with_inprocess_lsp/
+
+
+https://www.reddit.com/r/neovim/comments/1j9ypsl/git_difftool_dirdiff_integration/
+
 https://www.reddit.com/r/neovim/comments/1j2oko7/vectorcode_v040_updates_tool_calling_experimental/
 
 Gclog navigate between commits (useful for PR reviews)
@@ -19,22 +127,17 @@ https://github.com/caliguIa/zendiagram.nvim
 https://github.com/OXY2DEV/nvim/blob/main/lua/scripts/diagnostic.lua
 
 
->>>>>>> 41364b3b (Updated README_6.md)
 - Super annoying when number / relativenumber don't get set, sometimes
 - Also <leader>sa needs to worm more often. Annoying that it breaks sometimes
 
->>>>>>> fd6bbaac (Added TODO notes)
 - Selectively undo lines in a file - https://github.com/SunnyTamang/select-undo.nvim
 
 - Change =p to put inline at the current cursor
->>>>>>> 400f695a (Added nvim-gitstatus)
 https://github.com/wurli/contextindent.nvim
 
 
->>>>>>> aa4d2e9a (Added plugin idea)
 - revert gitsigns.nvim to 2c2463d, it was a better commit
 
->>>>>>> 13a16e5a (Added TODO note)
 https://github.com/xzbdmw/colorful-menu.nvim
 git add -p clone
  - On last hunk staged, auto-exit
@@ -274,7 +377,6 @@ https://github.com/ck-zhang/mistake.nvim
 
 
 
->>>>>>> d17ddb3c (Added more ideas)
 - git-signs plugin commit: 2c2463d. Roll back to this
 
 github.com/LunarVim/bigfile.nvim
@@ -298,6 +400,8 @@ https://github.com/lucaSartore/nvim-dap-exception-breakpoints
  - search all functions
   - Finds the first place alphabetically where the class/function should go
    - Moves the cursor to it
+
+https://www.reddit.com/r/neovim/comments/1fqdy28/introducing_my_first_plugin_hereterm_toggle/
 
 - does tmux-ressurect still work?
 
@@ -717,3 +821,5 @@ Often when debugging it's useful to step quickly through the code until some are
 
 
 https://github.com/dharmx/nvim/blob/e79ac39e3c9aff7e4e99ce889caea45c5fc65bc4/lua/scratch/node.lua
+
+nvim --clean --headless --cmd "checkhealth" --cmd "lua print(table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n'))" --cmd "qa"
