@@ -106,21 +106,33 @@ lspconfig.clangd.setup { capabilities = capabilities, on_attach = on_attach }
 lspconfig.lua_ls.setup { capabilities = capabilities, on_attach = on_attach }
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "[d", function()
-    vim.diagnostic.jump({
-        count = -1,
-        float = { source = true },
-        severity = { min = vim.diagnostic.severity.HINT },
-    })
-end, { desc = "Search upwards for diagnostic messages and go to it, if one is found." })
+if vim.diagnostic.jump ~= nil then
+    -- NOTE: vim.diagnostic.jump is a Neovim 0.11+ feature
+    vim.keymap.set("n", "[d", function()
+        vim.diagnostic.jump({
+            count = -1,
+            float = { source = true },
+            severity = { min = vim.diagnostic.severity.HINT },
+        })
+    end, { desc = "Search upwards for diagnostic messages and go to it, if one is found." })
 
-vim.keymap.set("n", "]d", function()
-    vim.diagnostic.jump({
-        count = 1,
-        float = { source = true },
-        severity = { min = vim.diagnostic.severity.HINT },
-    })
-end, { desc = "Search downwards for diagnostic messages and go to it, if one is found." })
+    vim.keymap.set("n", "]d", function()
+        vim.diagnostic.jump({
+            count = 1,
+            float = { source = true },
+            severity = { min = vim.diagnostic.severity.HINT },
+        })
+    end, { desc = "Search downwards for diagnostic messages and go to it, if one is found." })
+else
+    vim.keymap.set("n", "]d", function()
+        ---@diagnostic disable-next-line: deprecated
+        vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.HINT})
+    end, { desc = "Search downwards for diagnostic messages and go to it, if one is found." })
+    vim.keymap.set("n", "]d", function()
+        ---@diagnostic disable-next-line: deprecated
+        vim.diagnostic.goto_next({severity = vim.diagnostic.severity.HINT})
+    end, { desc = "Search downwards for diagnostic messages and go to it, if one is found." })
+end
 
 vim.keymap.set("n", "=d", function()
     vim.diagnostic.open_float({ source = true })
