@@ -151,8 +151,8 @@ end, { nargs = 0, desc = "Load obsidian.nvim notes in using their alias name." }
 vim.api.nvim_create_user_command("CEdit", function(opts)
     require("my_custom.utilities.cedit").open_relative(opts.args)
 end, {
-    complete = function(opts)
-        return require("my_custom.utilities.cedit").complete_relative(opts.args)
+    complete = function(text)
+        return require("my_custom.utilities.cedit").complete_relative(text)
     end,
     nargs = 1,
     desc = "Open a file using a relative file path.",
@@ -161,8 +161,8 @@ end, {
 vim.api.nvim_create_user_command("Cedit", function(opts)
     require("my_custom.utilities.cedit").open_relative(opts.args)
 end, {
-    complete = function(opts)
-        return require("my_custom.utilities.cedit").complete_relative(opts.args)
+    complete = function(text)
+        return require("my_custom.utilities.cedit").complete_relative(text)
     end,
     nargs = 1,
     desc = "Open a file using a relative file path.",

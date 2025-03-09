@@ -15,7 +15,7 @@ clone_git_dependencies:
 	git clone git@github.com:Bilal2453/luvit-meta.git .dependencies/luvit-meta $(IGNORE_EXISTING)
 
 llscheck: clone_git_dependencies
-	VIMRUNTIME=`nlua -e 'io.write(os.getenv("VIMRUNTIME"))'` llscheck --configpath $(CONFIGURATION) .
+	VIMRUNTIME="`nvim --clean --headless --cmd 'lua io.write(os.getenv("VIMRUNTIME"))' --cmd 'quit'`" llscheck --configpath $(CONFIGURATION) .
 
 luacheck:
 	luacheck lua plugin
@@ -25,6 +25,3 @@ check-stylua:
 
 stylua:
 	stylua lua plugin
-
-test:
-	busted .
