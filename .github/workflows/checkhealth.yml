@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          path: nvim
 
       - name: Install Neovim
         uses: rhysd/action-setup-vim@v1
@@ -29,4 +31,6 @@ jobs:
           version: ${{ matrix.neovim }}
 
       - name: Run :checkhealth
-        uses: ColinKennedy/nvim-checkhealth-gh-action@v1.0.0
+        env:
+          XDG_CONFIG_HOME: ${{ github.workspace }}
+        uses: ColinKennedy/nvim-checkhealth-gh-action@v1.1.1
