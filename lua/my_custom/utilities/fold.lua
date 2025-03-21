@@ -34,6 +34,7 @@ local function get_all_docstring_ranges(buffer)
     if not tree then
         vim.notify(
             string.format(
+                -- The tree-sitter parser is not installed / attached or or never existed
                 'Buffer / File type "%s / %s" no treesitter parser but no tree was found.',
                 buffer,
                 file_type

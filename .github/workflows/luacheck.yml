@@ -4,18 +4,21 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     branches:
-    - main
+    - master
   push:
     branches:
-      - main
+      - master
 
 jobs:
   luacheck:
     name: Luacheck
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: leafo/gh-actions-luarocks@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install luarocks
+        uses: leafo/gh-actions-luarocks@v5
 
       - name: Install luacheck
         run: |
