@@ -20,8 +20,10 @@ jobs:
     name: Release
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
+      with:
+        path: nvim
 
     - name: Install Neovim
       uses: rhysd/action-setup-vim@v1
@@ -32,6 +34,8 @@ jobs:
         version: ${{ matrix.neovim }}
 
     - name: Install Treesitter Parsers (Using nvim-treesitter)
+      env:
+        XDG_CONFIG_HOME: ${{ github.workspace }}
       run: |
         # NOTE: Run my Neovim configuration first, then call the luafile
         nvim +"luafile scripts/nvim_treesitter_ensure_installed.lua" +"qall"
@@ -40,14 +44,14 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         name="output-Linux-${{ matrix.neovim }}.tar.gz"
-        tar -cvf $name $PWD
+        tar -cvf $name . -C nvim
         echo "output_file=$name" >> $GITHUB_ENV
 
     - name: Archive Output (Windows)
       if: runner.os == 'Windows'
       run: |
         $name = "output-Windows-${{ matrix.neovim }}.tar.gz"
-        tar -cvf $name .
+        tar -cvf $name . -C nvim
         echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
     - name: Upload Release Asset
