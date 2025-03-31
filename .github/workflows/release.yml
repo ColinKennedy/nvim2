@@ -1,0 +1,39 @@
+name: llscheck
+
+on:
+  push:
+    tags
+      - "*"
+
+jobs:
+  release_windows:
+    runs-on: windows-latest
+    name: release-windows
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Neovim
+      uses: rhysd/action-setup-vim@v1
+      # NOTE: We need Neovim installed in order to expose the $VIMRUNTIME
+      # environment variable
+      with:
+        neovim: true
+        version: stable
+
+    - name: Install Treesitter Parsers
+      run: |
+        nvim -l scripts/nvim_treesitter_ensure_installed.lua
+
+    - name: Archive output
+      run: zip -r windows.zip $PWD/
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: windows.zip
+        body: "Automated release for tag ${{ github.ref_name }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
