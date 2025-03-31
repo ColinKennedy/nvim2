@@ -49,8 +49,8 @@ return {
     {
         "ColinKennedy/grapple-line.nvim",
         branch = "remove_padding",
+        config = function() require("grapple-line").setup({ number_of_files = 8 }) end,
         dependencies = { "cbochs/grapple.nvim" },
-        opts = { number_of_files = 8 },
     },
 
     -- Extra, optional icons for ``ColinKennedy/nvim-dap-ui``
