@@ -245,12 +245,12 @@ return {
         },
     },
 
-    -- A lualine status bar that tells me details about the current git window.
-    -- See `require("my_custom.plugins.lualine.configuration")` for details.
-    --
-    {
-        "abccsss/nvim-gitstatus",
-        event = "VeryLazy",
-        opts = { auto_fetch_interval = 1000 },
-    },
+    -- -- A lualine status bar that tells me details about the current git window.
+    -- -- See `require("my_custom.plugins.lualine.configuration")` for details.
+    -- --
+    -- {
+    --     "abccsss/nvim-gitstatus",
+    --     event = "VeryLazy",
+    --     opts = { auto_fetch_interval = 1000 },
+    -- },
 }
