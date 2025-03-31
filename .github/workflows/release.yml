@@ -36,8 +36,8 @@ jobs:
     - name: Install Treesitter Parsers (Using nvim-treesitter)
       env:
         XDG_CONFIG_HOME: ${{ github.workspace }}
+      # NOTE: We use + so the configuration runs first. Then the luafile is called
       run: |
-        # NOTE: Run my Neovim configuration first, then call the luafile
         nvim +"luafile scripts/nvim_treesitter_ensure_installed.lua" +"qall"
 
     - name: Archive Output (Linux)
