@@ -198,7 +198,7 @@ return {
     -- A really pretty scrollbar. Not sure if I'll keep it. But it looks nice!
     {
         "petertriho/nvim-scrollbar",
-        config = true,
+        config = function() require("scrollbar").setup() end,
     },
 
     -- NOTE: I love this plugin but it's just too slow. Sad.
