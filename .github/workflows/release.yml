@@ -2,13 +2,13 @@ name: llscheck
 
 on:
   push:
-    tags
+    tags:
       - "*"
 
 jobs:
-  release_windows:
-    runs-on: windows-latest
-    name: release-windows
+  release_linux:
+    runs-on: ubuntu-latest
+    name: Release - Linux
 
     steps:
     - name: Checkout repository
@@ -22,12 +22,45 @@ jobs:
         neovim: true
         version: stable
 
-    - name: Install Treesitter Parsers
+    - name: Install Treesitter Parsers (Using nvim-treesitter)
       run: |
-        nvim -l scripts/nvim_treesitter_ensure_installed.lua
+        # NOTE: Run my Neovim configuration first, then call the luafile
+        nvim +"luafile scripts/nvim_treesitter_ensure_installed.lua" +"qall"
 
     - name: Archive output
-      run: zip -r windows.zip $PWD/
+      run: tar -cvf linux.tar.gz $PWD
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: linux.tar.gz
+        body: "Automated release for tag ${{ github.ref_name }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  release_windows:
+    runs-on: windows-latest
+    name: Release - Windows
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Neovim
+      uses: rhysd/action-setup-vim@v1
+      # NOTE: We need Neovim installed in order to expose the $VIMRUNTIME
+      # environment variable
+      with:
+        neovim: true
+        version: stable
+
+    - name: Install Treesitter Parsers (Using nvim-treesitter)
+      run: |
+        # NOTE: Run my Neovim configuration first, then call the luafile
+        nvim +"luafile scripts/nvim_treesitter_ensure_installed.lua" +"qall"
+
+    - name: Archive output
+      run: zip -r windows.zip $PWD
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
