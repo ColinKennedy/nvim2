@@ -38,7 +38,7 @@ jobs:
         XDG_CONFIG_HOME: ${{ github.workspace }}
       # NOTE: We use + so the configuration runs first. Then the luafile is called
       run: |
-        nvim +"luafile nvim/scripts/nvim_treesitter_ensure_installed.lua" +"qall"
+        nvim --headless +"luafile nvim/scripts/nvim_treesitter_ensure_installed.lua" +"qall"
 
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
