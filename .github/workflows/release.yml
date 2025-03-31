@@ -2,8 +2,10 @@ name: llscheck
 
 on:
   push:
-    tags:
-      - "*"
+    # TODO: Replace this code later
+    branch: sixth_pass
+    # tags:
+    #   - "*"
 
 jobs:
   release_linux:
