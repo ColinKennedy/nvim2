@@ -1,4 +1,4 @@
-name: llscheck
+name: Release
 
 on:
   push:
