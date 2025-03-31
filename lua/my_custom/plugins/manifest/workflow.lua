@@ -702,18 +702,21 @@ return {
     {
         "ColinKennedy/timeline.nvim",
         branch = "first_pass",
-        config = true,
-        opts = {
-            records = {
-                file_save = {
-                    extras = {
-                        message = function(data)
-                            return require("timeline.api.git").get_default_file_save_message(data)
-                        end,
+        config = function()
+            require("timeline").setup(
+                {
+                    records = {
+                        file_save = {
+                            extras = {
+                                message = function(data)
+                                    return require("timeline.api.git").get_default_file_save_message(data)
+                                end,
+                            },
+                        },
                     },
-                },
-            },
-        },
+                }
+            )
+        end,
         -- cmd = {"TimelineOpenCurrent", "TimelineOpenWindow"}
     },
 
