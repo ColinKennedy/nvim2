@@ -8,9 +8,14 @@ on:
     #   - "*"
 
 jobs:
-  release_linux:
-    runs-on: ubuntu-latest
-    name: Release - Linux
+  release:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        neovim: [v0.11.0]
+
+    runs-on: ${{ matrix.os }}
+    name: Release
 
     steps:
     - name: Checkout repository
@@ -22,21 +27,32 @@ jobs:
       # environment variable
       with:
         neovim: true
-        version: stable
+        version: ${{ matrix.neovim }}
 
     - name: Install Treesitter Parsers (Using nvim-treesitter)
       run: |
         # NOTE: Run my Neovim configuration first, then call the luafile
         nvim +"luafile scripts/nvim_treesitter_ensure_installed.lua" +"qall"
 
-    - name: Archive output
-      run: tar -cvf linux.tar.gz $PWD
+    - name: Archive Output (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        name="output-Linux-${{ matrix.neovim }}.tar.gz"
+        tar -cvf $name $PWD
+        echo "output_file=$name" >> $GITHUB_ENV
 
-    - name: Create GitHub Release
+    - name: Archive Output (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        $name = "output-Windows-${{ matrix.neovim }}.zip"
+        Compress-Archive -Path . -DestinationPath $name
+        echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+
+    - name: Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ github.ref_name }}
-        files: linux.tar.gz
+        files: ${{ env.output_file }}
         body: "Automated release for tag ${{ github.ref_name }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
