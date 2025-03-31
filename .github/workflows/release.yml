@@ -11,7 +11,9 @@ jobs:
   release:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        # TODO: Replace this code later
+        # os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
         neovim: [v0.11.0]
 
     runs-on: ${{ matrix.os }}
@@ -44,9 +46,8 @@ jobs:
     - name: Archive Output (Windows)
       if: runner.os == 'Windows'
       run: |
-        New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWord -Force
-        $name = "output-Windows-${{ matrix.neovim }}.zip"
-        Compress-Archive -Path . -DestinationPath $name
+        $name = "output-Windows-${{ matrix.neovim }}.tar.gz"
+        tar -cvf $name .
         echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
     - name: Upload Release Asset
