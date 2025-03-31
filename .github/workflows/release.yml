@@ -44,6 +44,7 @@ jobs:
     - name: Archive Output (Windows)
       if: runner.os == 'Windows'
       run: |
+        New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWord -Force
         $name = "output-Windows-${{ matrix.neovim }}.zip"
         Compress-Archive -Path . -DestinationPath $name
         echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
