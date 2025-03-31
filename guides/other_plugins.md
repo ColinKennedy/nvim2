@@ -216,6 +216,20 @@ https://github.com/ravitemer/mcphub.nvim
 - MCP Server installer
 
 
+- Unittest visualizer - https://github.com/Davidyz/coredumpy.nvim
+
+
+- Useful for copying snippets of files (outside of git / GitHub) - https://www.reddit.com/r/neovim/comments/1je33gm/new_vim_plugin_copy_with_context_share_code/
+
+
+- git worktrees (still no idea why someone would want worktrees) - https://github.com/afonsofrancof/worktrees.nvim
+
+
+- Useful for annotating files (but does not save them to disk). Good for presentations - https://github.com/jake-stewart/vmark.nvim
+ - https://github.com/LintaoAmons/bookmarks.nvim
+ - https://github.com/kristijanhusak/line-notes.nvim
+
+
 ## Python Development
 virtual environment selector -
 https://github.com/linux-cultist/venv-selector.nvim

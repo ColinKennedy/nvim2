@@ -1,3 +1,47 @@
+https://www.reddit.com/r/neovim/comments/1jm5wqn/new_plugin_pythonnvim_one_stop_shop_for_python/
+
+
+https://www.reddit.com/r/neovim/comments/1jjpk7g/10_blinkcmp_performant_batteriesincluded/
+
+
+https://github.com/chrisgrieser/nvim-puppeteer
+> Master of strings. Automatically convert strings to f-strings or template strings and back.
+
+
+```
+Runtime ~
+- $VIMRUNTIME: /usr/local/share/nvim/runtime
+- ERROR Found old files in $VIMRUNTIME (this can cause weird behavior):
+  /usr/local/share/nvim/runtime/lua/provider/ruby/health.lua
+  /usr/local/share/nvim/runtime/lua/provider/python/health.lua
+  /usr/local/share/nvim/runtime/lua/provider/perl/health.lua
+  /usr/local/share/nvim/runtime/lua/provider/node/health.lua
+
+  - ADVICE:
+    - Delete the $VIMRUNTIME directory, then reinstall Nvim.
+```
+/usr/local/share/nvim/runtime
+
+
+
+https://github.com/neovim/neovim/commit/62d9fab9af21323e42828748e6761c02020a7aa5
+- Add border
+ - to both configurations (old and new)
+
+https://github.com/igorlfs/nvim-dap-view
+- Try this out again
+
+
+
+https://github.com/bloznelis/before.nvim
+
+
+
+https://www.reddit.com/r/neovim/comments/1jfci7i/minuetainvim_v04_update_now_with_inprocess_lsp/
+
+
+https://www.reddit.com/r/neovim/comments/1j9ypsl/git_difftool_dirdiff_integration/
+
 https://www.reddit.com/r/neovim/comments/1j2oko7/vectorcode_v040_updates_tool_calling_experimental/
 
 Gclog navigate between commits (useful for PR reviews)
@@ -701,3 +745,5 @@ Often when debugging it's useful to step quickly through the code until some are
 
 
 https://github.com/dharmx/nvim/blob/e79ac39e3c9aff7e4e99ce889caea45c5fc65bc4/lua/scratch/node.lua
+
+nvim --clean --headless --cmd "checkhealth" --cmd "lua print(table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n'))" --cmd "qa"
