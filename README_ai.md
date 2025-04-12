@@ -29,6 +29,7 @@
 - https://github.com/aduros/ai.vim
 - https://github.com/agusnt/askGemini.nvim
 - https://github.com/aweis89/aider.nvim
+- https://github.com/azorng/goose.nvim
 - https://github.com/bakks/butterfish.nvim
 - https://github.com/codota/tabnine-nvim
 - https://github.com/deifyed/naVi
@@ -88,6 +89,7 @@
 - https://github.com/zbirenbaum/copilot.lua
 - https://pieces.app/plugins/neovim
 - https://tabby.tabbyml.com/docs/extensions/installation/vim/
+- https://www.reddit.com/r/neovim/comments/1jw7pmm/use_lsp_as_context_provider_in_codecompanion/ - https://github.com/lazymaniac/nvim-ide/blob/master/lua/plugins/ai.lua - https://github.com/lazymaniac/nvim-ide/blob/master/lua/plugins/ai.lua#L371-L584
 - https://www.vim.org/scripts/script.php?script_id=6048
 
 
