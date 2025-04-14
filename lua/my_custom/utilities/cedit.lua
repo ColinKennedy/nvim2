@@ -86,6 +86,9 @@ function M.open_relative(text)
     local directory = _get_current_buffer_directory()
 
     if not directory then
+        -- NOTE: If the current buffer has no directory, just treat `text` like
+        -- a regular buffer-open.
+        --
         vim.cmd.edit(text)
 
         return
