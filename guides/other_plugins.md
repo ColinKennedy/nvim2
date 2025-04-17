@@ -230,6 +230,10 @@ https://github.com/ravitemer/mcphub.nvim
  - https://github.com/kristijanhusak/line-notes.nvim
 
 
+
+- REST client interface - https://github.com/mistweaverco/kulala.nvim
+
+
 ## Python Development
 virtual environment selector -
 https://github.com/linux-cultist/venv-selector.nvim
