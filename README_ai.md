@@ -53,6 +53,7 @@
 - https://github.com/jcdickinson/codeium.nvim
 - https://github.com/jellydn/CopilotChat.nvim
 - https://github.com/jkitching/awesome-vim-llm-plugins
+- https://github.com/johnseth97/codex.nvim
 - https://github.com/joshuavial/aider.nvim
 - https://github.com/jpmcb/nvim-llama
 - https://github.com/k2589/LLuMinate.nvim
