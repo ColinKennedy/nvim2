@@ -76,6 +76,7 @@
 - https://github.com/pwnwriter/code2prompt.nvim
 - https://github.com/rakotomandimby/code-ai.nvim
 - https://github.com/rakotomandimby/deepseek-complete
+- https://github.com/reachingforthejack/cursortab.nvim
 - https://github.com/skywind3000/vim-gpt-commit
 - https://github.com/solyarisoftware/prompter.vim
 - https://github.com/sourcegraph/sg.nvim
