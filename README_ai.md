@@ -33,6 +33,7 @@
 - https://github.com/azorng/goose.nvim
 - https://github.com/bakks/butterfish.nvim
 - https://github.com/codota/tabnine-nvim
+- https://github.com/copilotlsp-nvim/copilot-lsp - Next Edit Suggestion support
 - https://github.com/deifyed/naVi
 - https://github.com/dense-analysis/neural
 - https://github.com/dpayne/CodeGPT.nvim
