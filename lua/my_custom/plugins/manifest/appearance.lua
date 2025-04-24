@@ -49,7 +49,9 @@ return {
     {
         "ColinKennedy/grapple-line.nvim",
         branch = "remove_padding",
-        config = function() require("grapple-line").setup({ number_of_files = 8 }) end,
+        config = function()
+            require("grapple-line").setup({ number_of_files = 8 })
+        end,
         dependencies = { "cbochs/grapple.nvim" },
     },
 
@@ -164,41 +166,43 @@ return {
         end,
     },
 
-    -- Make markdown files pretty
-    {
-        "MeanderingProgrammer/render-markdown.nvim",
-        config = function()
-            local colormate = require("my_custom.utilities.colormate")
-
-            ---@param header number
-            local function set_header_color(header)
-                local foreground_number =
-                    colormate.get_highlight_attribute_data("fg", { string.format("@markup.heading.%s", header) })
-
-                local foreground = colormate.get_color_from_number(foreground_number)
-                local darker = colormate.shade_color(foreground, -40)
-
-                vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%sBg", header), { bg = darker, fg = "White" })
-
-                vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%s", header), { fg = "White" })
-            end
-
-            for header = 1, 6 do
-                set_header_color(header)
-            end
-
-            vim.api.nvim_set_hl(0, "RenderMarkdownTableFill", { link = "Normal" })
-
-            require("render-markdown").setup({ heading = { sign = false } })
-        end,
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        ft = { "markdown" },
-    },
+    -- -- Make markdown files pretty
+    -- {
+    --     "MeanderingProgrammer/render-markdown.nvim",
+    --     config = function()
+    --         local colormate = require("my_custom.utilities.colormate")
+    --
+    --         ---@param header number
+    --         local function set_header_color(header)
+    --             local foreground_number =
+    --                 colormate.get_highlight_attribute_data("fg", { string.format("@markup.heading.%s", header) })
+    --
+    --             local foreground = colormate.get_color_from_number(foreground_number)
+    --             local darker = colormate.shade_color(foreground, -40)
+    --
+    --             vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%sBg", header), { bg = darker, fg = "White" })
+    --
+    --             vim.api.nvim_set_hl(0, string.format("RenderMarkdownH%s", header), { fg = "White" })
+    --         end
+    --
+    --         for header = 1, 6 do
+    --             set_header_color(header)
+    --         end
+    --
+    --         vim.api.nvim_set_hl(0, "RenderMarkdownTableFill", { link = "Normal" })
+    --
+    --         require("render-markdown").setup({ heading = { sign = false } })
+    --     end,
+    --     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    --     ft = { "markdown" },
+    -- },
 
     -- A really pretty scrollbar. Not sure if I'll keep it. But it looks nice!
     {
         "petertriho/nvim-scrollbar",
-        config = function() require("scrollbar").setup() end,
+        config = function()
+            require("scrollbar").setup()
+        end,
     },
 
     -- NOTE: I love this plugin but it's just too slow. Sad.

@@ -706,19 +706,17 @@ return {
         "ColinKennedy/timeline.nvim",
         branch = "first_pass",
         config = function()
-            require("timeline").setup(
-                {
-                    records = {
-                        file_save = {
-                            extras = {
-                                message = function(data)
-                                    return require("timeline.api.git").get_default_file_save_message(data)
-                                end,
-                            },
+            require("timeline").setup({
+                records = {
+                    file_save = {
+                        extras = {
+                            message = function(data)
+                                return require("timeline.api.git").get_default_file_save_message(data)
+                            end,
                         },
                     },
-                }
-            )
+                },
+            })
         end,
         -- cmd = {"TimelineOpenCurrent", "TimelineOpenWindow"}
     },
@@ -731,41 +729,39 @@ return {
             "nvim-lua/plenary.nvim",
         },
         config = function()
-            require("obsidian").setup(
-                {
-                    ui = { enable = false },
-                    note_id_func = function(title)
-                        -- Create note IDs in a Zettelkasten format with a timestamp and
-                        -- a suffix. In this case a note with the title 'My new note' will
-                        -- be given an ID that looks like '1657296016-my-new-note', and
-                        -- therefore the file name '1657296016-my-new-note.md'
-                        --
-                        local suffix = ""
+            require("obsidian").setup({
+                ui = { enable = false },
+                note_id_func = function(title)
+                    -- Create note IDs in a Zettelkasten format with a timestamp and
+                    -- a suffix. In this case a note with the title 'My new note' will
+                    -- be given an ID that looks like '1657296016-my-new-note', and
+                    -- therefore the file name '1657296016-my-new-note.md'
+                    --
+                    local suffix = ""
 
-                        if title ~= nil then
-                            -- If title is given, transform it into valid file name.
-                            suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-                        else
-                            -- If title is nil, just add 4 random uppercase letters to the suffix.
-                            for _ = 1, 4 do
-                                suffix = suffix .. string.char(math.random(65, 90))
-                            end
+                    if title ~= nil then
+                        -- If title is given, transform it into valid file name.
+                        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+                    else
+                        -- If title is nil, just add 4 random uppercase letters to the suffix.
+                        for _ = 1, 4 do
+                            suffix = suffix .. string.char(math.random(65, 90))
                         end
+                    end
 
-                        return tostring(os.time()) .. "-" .. suffix
-                    end,
-                    workspaces = {
-                        {
-                            name = "politics",
-                            path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "politics"),
-                        },
-                        {
-                            name = "personal",
-                            path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "personal"),
-                        },
+                    return tostring(os.time()) .. "-" .. suffix
+                end,
+                workspaces = {
+                    {
+                        name = "politics",
+                        path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "politics"),
                     },
-                }
-            )
+                    {
+                        name = "personal",
+                        path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "personal"),
+                    },
+                },
+            })
         end,
     },
 }

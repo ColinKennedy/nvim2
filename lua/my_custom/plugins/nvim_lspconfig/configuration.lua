@@ -122,14 +122,16 @@ local _go_to_diagnostic = function(next, severity)
         end
 
         return function()
-            vim.diagnostic.jump({ count=count, float=true, severity=severity })
+            vim.diagnostic.jump({ count = count, float = true, severity = severity })
         end
     end
 
     ---@diagnostic disable-next-line: deprecated
     local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
 
-    return function() go({ severity = severity }) end
+    return function()
+        go({ severity = severity })
+    end
 end
 
 -- Reference: https://www.joshmedeski.com/posts/underrated-square-bracket

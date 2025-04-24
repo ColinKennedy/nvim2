@@ -244,7 +244,9 @@ else
             caller = vim.diagnostic.goto_prev
         end
 
-        return function() caller({severity=severity}) end
+        return function()
+            caller({ severity = severity })
+        end
     end
 end
 
