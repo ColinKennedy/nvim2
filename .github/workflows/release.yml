@@ -4,8 +4,8 @@ on:
   push:
     # TODO: Remove this later
     branch: seventh_pass
-    tags:
-      - "v*"
+    # tags:
+    #   - "v*"
 
 jobs:
   release:
