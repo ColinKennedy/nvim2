@@ -96,7 +96,10 @@ lspconfig.basedpyright.setup {
     on_attach = on_attach,
     settings = {
         basedpyright = {
-            analysis = { diagnosticMode = "off", typeCheckingMode = "off" },
+            analysis = {
+                diagnosticMode = "openFilesOnly",
+                typeCheckingMode = "off",
+            },
         },
     },
 }
