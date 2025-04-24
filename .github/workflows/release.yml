@@ -56,7 +56,8 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         $name = "output-Windows-${{ matrix.neovim }}.zip"
-        Compress-Archive -Path nvim\* -DestinationPath $name
+        $files = Get-ChildItem -Path nvim -Recurse -File -Attributes !ReparsePoint
+        Compress-Archive -Path $files -DestinationPath $name -CompressionLevel Optimal
         echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
     - name: Upload Release Asset
