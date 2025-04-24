@@ -45,11 +45,18 @@ jobs:
         tar -cvf $name -C nvim .
         echo "output_file=$name" >> $GITHUB_ENV
 
-    - name: Archive Output (Windows)
+    - name: Archive Output (Windows) Tar Gzip
       if: runner.os == 'Windows'
       run: |
         $name = "output-Windows-${{ matrix.neovim }}.tar.gz"
         tar -cvf $name -C nvim .
+        echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+
+    - name: Archive Output (Windows) Zip
+      if: runner.os == 'Windows'
+      run: |
+        $name = "output-Windows-${{ matrix.neovim }}.zip"
+        Compress-Archive -Path nvim\* -DestinationPath $name
         echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
     - name: Upload Release Asset
