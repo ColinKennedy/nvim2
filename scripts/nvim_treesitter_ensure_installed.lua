@@ -30,12 +30,16 @@ local function _main()
                 config = function()
                     require("nvim-treesitter.configs").setup {
                         parser_install_dir = directory,
-                        ensure_installed = parsers,
-                        auto_install = true,
                         highlight = {
                             enable = false, -- disable highlight in headless mode
                         },
                     }
+
+                    vim.schedule(function()
+                        for _, name in ipairs(parsers) do
+                            vim.cmd(string.format("TSInstallSync %s", name))
+                        end
+                    end)
                 end,
                 version = "*",
             },
@@ -44,3 +48,4 @@ local function _main()
 end
 
 _main()
+vim.cmd [[qall]]

@@ -1,4 +1,8 @@
-- reomace Pcd with the new Neovim command
+- Fix the issue where release.yml doesn't install the plugins correctly
+ - https://github.com/ColinKennedy/nvim2/actions/runs/14634803302/job/41063612275
+
+
+- replace Pcd with the new Neovim command
 
 
 
