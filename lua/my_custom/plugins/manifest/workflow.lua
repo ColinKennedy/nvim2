@@ -244,6 +244,9 @@ return {
             vim.api.nvim_create_autocmd("User", {
                 callback = function()
                     local function _is_diff_related()
+                        -- TODO: Update this logic to consider commands like
+                        -- `git log -L :func:path/to/file.py`
+                        --
                         local line = 1 -- Vim buffer line
                         local text = vim.fn.getline(line)
 
