@@ -126,6 +126,7 @@ local _go_to_diagnostic = function(next, severity)
         end
     end
 
+    ---@diagnostic disable-next-line: deprecated
     local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
 
     return function() go({ severity = severity }) end
