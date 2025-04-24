@@ -1,3 +1,79 @@
+- reomace Pcd with the new Neovim command
+
+
+
+
+- Fix this later
+```
+E5108: Error executing lua: ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:143: attempt to index field 'fields' (a nil value)
+stack traceback:
+        ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:143: in function 'key_func'
+        ...ig/nvim/bundle/telescope.nvim/lua/telescope/mappings.lua:293: in function <...ig/nvim/bundle/telescope.nvim/lua/telescope/mapping
+s.lua:292>
+Error executing Lua callback: File "/home/selecaoone/vaults/politics/1738624340-fbi-offered-christopher-steele-1-million-to-prove-dossier-cl
+aims.md" could not be opened.
+stack traceback:
+        [C]: in function 'error'
+        ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:55: in function '_get_aliases'
+        ...config/nvim/lua/my_custom/utilities/obsidian_utility.lua:164: in function 'main'
+        ...es/personal/.config/nvim/lua/my_custom/start/command.lua:148: in function <...es/personal/.config/nvim/lua/my_custom/start/comman
+d.lua:147>
+```
+
+https://www.reddit.com/r/neovim/comments/1jmqd7t/sorry_ufo_these_7_lines_replaced_you/
+```
+Error executing vim.schedule lua callback: ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: Invalid window id: 1782
+stack traceback:
+    [C]: in function 'nvim_win_get_cursor'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:151: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:315: in function ''
+    vim/_editor.lua: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+Error executing vim.schedule lua callback: ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: Invalid window id: 1782
+stack traceback:
+    [C]: in function 'nvim_win_get_cursor'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:151: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:315: in function ''
+    vim/_editor.lua: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+Error executing vim.schedule lua callback: ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: Invalid window id: 1782
+stack traceback:
+    [C]: in function 'nvim_win_get_cursor'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/session.lua:115: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:151: in function 'showCountLabel'
+    ....config/nvim/bundle/nvim-bqf/lua/bqf/preview/handler.lua:315: in function ''
+    vim/_editor.lua: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+```
+
+```
+".github/workflows/stylua.yml" 32L, 630B written
+4 fewer lines
+4 more lines; before #1  1 second ago
+Command "git rev-parse --show-toplevel" failed to run.
+Error executing vim.schedule lua callback: ...ine.nvim/lua/timeline/_core/git_utilities/git_parser.lua:332: Invalid 'str': Expected Lua string
+stack traceback:
+    [C]: in function 'nvim_err_writeln'
+    ...ine.nvim/lua/timeline/_core/git_utilities/git_parser.lua:332: in function 'get_repository_root'
+    ...onfig/nvim/bundle/timeline.nvim/lua/timeline/api/git.lua:38: in function 'get_summary'
+    ...onfig/nvim/bundle/timeline.nvim/lua/timeline/api/git.lua:17: in function '_get_message'
+    ...imeline.nvim/lua/timeline/_core/git_utilities/backup.lua:189: in function 'backup_file'
+    ...line.nvim/lua/timeline/_core/components/undo_manager.lua:26: in function ''
+    vim/_editor.lua: in function <vim/_editor.lua:0>
+3 fewer lines
+```
+
+
+https://www.reddit.com/r/neovim/comments/1jrblt2/this_is_how_i_use_multiple_llm_with_neovim_with/
+https://www.youtube.com/watch?time_continue=1835&v=UfkaYJh5-FY&embeds_referring_euri=https%3A%2F%2Fwww.reddit.com%2F
+
+https://github.com/ColinKennedy/nvim2/actions/runs/14165985048/job/39679192607
+- Fix the plugin loaders
+ - WHat is lazy's search path, in the GitHub action?
+
+
 https://www.reddit.com/r/neovim/comments/1jm5wqn/new_plugin_pythonnvim_one_stop_shop_for_python/
 
 

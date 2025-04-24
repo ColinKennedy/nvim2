@@ -1,3 +1,34 @@
+````
+https://www.reddit.com/r/neovim/comments/1jm5wqn/new_plugin_pythonnvim_one_stop_shop_for_python/
+```
+Along with the current features that I created for my daily work:
+
+    Switch between virtual envs interactively
+
+    Interactively create virtual envs and install dependencies
+
+        Reload all the common python LSP servers if found to be running
+
+        Lot of commands to control venvs
+
+    Keep track of envs/pythons per project in state
+
+    Easier setup of python debugging
+
+        Automatically install debugpy into venv
+
+        Interactively create a DAP config for a program, saving configuration.
+
+    Utility features
+
+        Function to swap type checking mode for pyright, basedpyright
+
+        Function to launch test method, class, etc. in DAP
+
+    Optional Python Snippets through luasnip
+```
+````
+
 https://github.com/malbertzard/inline-fold.nvim
  - Try to see if this works with a big USD file
 
