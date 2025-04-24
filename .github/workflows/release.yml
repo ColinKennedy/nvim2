@@ -43,14 +43,14 @@ jobs:
       run: |
         name="output-Linux-${{ matrix.neovim }}.tar.gz"
         tar -cvf $name -C nvim .
-        echo "output_file=$name" >> $GITHUB_ENV
+        echo "output_file_tar_gz=$name" >> $GITHUB_ENV
 
     - name: Archive Output (Windows) Tar Gzip
       if: runner.os == 'Windows'
       run: |
         $name = "output-Windows-${{ matrix.neovim }}.tar.gz"
         tar -cvf $name -C nvim .
-        echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+        echo "output_file_tar_gz=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
     - name: Archive Output (Windows) Zip
       if: runner.os == 'Windows'
@@ -58,13 +58,23 @@ jobs:
         $name = "output-Windows-${{ matrix.neovim }}.zip"
         $files = Get-ChildItem -Path nvim -Recurse -File -Attributes !ReparsePoint
         Compress-Archive -Path $files -DestinationPath $name -CompressionLevel Optimal
-        echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+        echo "output_file_zip=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
-    - name: Upload Release Asset
+    - name: Upload Release Asset - Tar Gzip
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ github.ref_name }}
-        files: ${{ env.output_file }}
+        files: ${{ env.output_file_tar_gz }}
+        body: "Automated release for tag ${{ github.ref_name }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Release Asset - Zip
+      if: env.output_file_zip != ''
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: ${{ env.output_file_zip }}
         body: "Automated release for tag ${{ github.ref_name }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
