@@ -31,6 +31,14 @@ jobs:
         neovim: true
         version: ${{ matrix.neovim }}
 
+    # NOTE: We need to embed lazy.nvim in the final output or stuff will break. So we
+    # checkout the submodule at the `lazy/lazy.nvim` subdirectory
+    #
+    - name: Update Git Submodules
+      run: |
+        git submodule update --init --recursive lazy/lazy.nvim
+      working-directory: nvim
+
     - name: Install Treesitter Parsers (Using nvim-treesitter)
       env:
         XDG_CONFIG_HOME: ${{ github.workspace }}
