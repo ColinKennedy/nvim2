@@ -36,7 +36,7 @@ jobs:
     #
     - name: Update Git Submodules
       env:
-        GIT_CONFIG: ~/.gitconfig
+        GIT_CONFIG: .gitconfig
       run: |
         # NOTE: We use SSH in the `Makefile` but GitHub actions don't allow that. So
         # we force git to clone using HTTP instead.
