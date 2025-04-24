@@ -35,8 +35,10 @@ jobs:
     # checkout the submodule at the `lazy/lazy.nvim` subdirectory
     #
     - name: Update Git Submodules
+      env:
+        GIT_CONFIG: ~/.gitconfig
       run: |
-        # We use SSH in the `Makefile` but GitHub actions don't allow that. So
+        # NOTE: We use SSH in the `Makefile` but GitHub actions don't allow that. So
         # we force git to clone using HTTP instead.
         #
         git config url."https://github.com/".insteadOf git@github.com:
