@@ -3,8 +3,7 @@ name: Release
 on:
   push:
     # TODO: Remove this later
-    branch:
-      - seventh_pass
+    branch: seventh_pass
     tags:
       - "v*"
 
