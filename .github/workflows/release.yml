@@ -2,18 +2,14 @@ name: Release
 
 on:
   push:
-    # TODO: Replace this code later
-    branch: sixth_pass
-    # tags:
-    #   - "*"
+    tags:
+      - "v*"
 
 jobs:
   release:
     strategy:
       matrix:
-        # TODO: Replace this code later
-        # os: [ubuntu-latest, windows-latest]
-        os: [windows-latest]
+        os: [ubuntu-latest, windows-latest]
         neovim: [v0.11.0]
 
     runs-on: ${{ matrix.os }}
