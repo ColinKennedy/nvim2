@@ -56,7 +56,15 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         $name = "output-Windows-${{ matrix.neovim }}.zip"
-        7z a $name nvim
+        # NOTE: Powershell does not like UNIX symlinks. They need to be removed before
+        # we can .zip Show the files that will be removed
+        #
+        Get-ChildItem -Path "nvim" -Recurse -Force -Attributes ReparsePoint | Where-Object { $_.LinkType -eq 'SymbolicLink' } | Select-Object FullName
+        # NOTE: Now remove the symlink files
+        Get-ChildItem -Path "nvim" -Recurse -Force -Attributes ReparsePoint | Where-Object { $_.LinkType -eq 'SymbolicLink' } | Remove-Item -Force
+
+        # NOTE: Now create the .zip and export it
+        Compress-Archive -Path nvim\* -DestinationPath $name
         echo "output_file_zip=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
     - name: Upload Release Asset - Tar Gzip
