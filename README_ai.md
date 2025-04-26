@@ -12,6 +12,7 @@
 - https://github.com/ErikBjare/gptme/tree/master/scripts/vim
 - https://github.com/Exafunction/codeium.nvim
 - https://github.com/Exafunction/codeium.vim
+- https://github.com/Exafunction/windsurf.nvim
 - https://github.com/FLYDonkey123/deepseek.nvim
 - https://github.com/GeorgesAlkhouri/nvim-aider
 - https://github.com/HPRIOR/telescope-gpt
