@@ -99,6 +99,11 @@
 
 
 
+
+https://github.com/sigoden/aichat
+https://github.com/ai-christianson/RA.Aid - automated agents - https://www.ra-aid.ai/
+
+
 - Try out:
  - codecompanion
  - aider / aider.nvim
