@@ -18,6 +18,11 @@ jobs:
     name: Release
 
     steps:
+    - name: Set up Git to use HTTPS instead of SSH
+      run: |
+        git config --global url."https://github.com/".insteadOf "git@github.com:"
+        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
