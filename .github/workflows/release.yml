@@ -41,12 +41,12 @@ jobs:
         neovim: true
         version: ${{ matrix.neovim }}
 
-    # NOTE: We need to embed lazy.nvim in the final output or stuff will break. So we
-    # checkout the submodule at the `lazy/lazy.nvim` subdirectory
-    #
-    - name: Embed lazy.nvim
-      run: |
-        git clone https://github.com/folke/lazy.nvim.git nvim/lazy/lazy.nvim
+    # # NOTE: We need to embed lazy.nvim in the final output or stuff will break. So we
+    # # checkout the submodule at the `lazy/lazy.nvim` subdirectory
+    # #
+    # - name: Embed lazy.nvim
+    #   run: |
+    #     git clone https://github.com/folke/lazy.nvim.git nvim/lazy/lazy.nvim
 
     - name: Install Treesitter Parsers (Using nvim-treesitter)
       env:
