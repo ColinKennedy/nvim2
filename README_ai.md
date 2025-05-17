@@ -38,6 +38,7 @@
 - https://github.com/copilotlsp-nvim/copilot-lsp - Next Edit Suggestion support
 - https://github.com/deifyed/naVi
 - https://github.com/dense-analysis/neural
+- https://github.com/dlants/magenta.nvim
 - https://github.com/dpayne/CodeGPT.nvim
 - https://github.com/dustinblackman/oatmeal.nvim
 - https://github.com/efugier/smartcat - It's not exactly a Vim plugin
