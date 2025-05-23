@@ -761,6 +761,10 @@ return {
                         name = "personal",
                         path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "personal"),
                     },
+                    {
+                        name = "workout",
+                        path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "workout"),
+                    },
                 },
             })
         end,
