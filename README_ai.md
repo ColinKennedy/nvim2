@@ -63,14 +63,20 @@
 - https://github.com/k2589/LLuMinate.nvim
 - https://github.com/kamou/gpt-vim
 - https://github.com/kiteco/vim-plugin
+- https://github.com/lambdalisue/vim-butler
 - https://github.com/leocus/codeassistant.vim
+- https://github.com/macrat/askgpt.vim
 - https://github.com/madox2/vim-ai
 - https://github.com/magicalne/nvim.ai
 - https://github.com/maheshbansod/ai.nvim
 - https://github.com/marco-souza/ollero.nvim
+- https://github.com/martineausimon/nvim-bard
+- https://github.com/micheam/ai-assistant-console
 - https://github.com/milanglacier/minuet-ai.nvim
 - https://github.com/monkoose/neocodeium
+- https://github.com/mthbernardes/codeexplain.nvim
 - https://github.com/napisani/context-nvim
+- https://github.com/oelmekki/make-my-code-better.vim
 - https://github.com/oflisback/describe-command.nvim
 - https://github.com/olimorris/codecompanion.nvim
 - https://github.com/paradoxical-dev/neollama
@@ -84,6 +90,7 @@
 - https://github.com/solyarisoftware/prompter.vim
 - https://github.com/sourcegraph/sg.nvim
 - https://github.com/supermaven-inc/supermaven-nvim
+- https://github.com/svermeulen/text-to-colorscheme
 - https://github.com/tdfacer/explain-it.nvim
 - https://github.com/terror/chatgpt.nvim
 - https://github.com/tom-doerr/vim_codex
@@ -92,6 +99,7 @@
 - https://github.com/yacineMTB/dingllm.nvim
 - https://github.com/yetone/avante.nvim
 - https://github.com/you-n-g/simplegpt.nvim
+- https://github.com/yuki-yano/ai-review.vim
 - https://github.com/zbirenbaum/copilot-cmp
 - https://github.com/zbirenbaum/copilot.lua
 - https://pieces.app/plugins/neovim

@@ -6,6 +6,8 @@
 --- @module 'my_custom.utilities.toggle_terminal'
 ---
 
+-- TODO: Do this module actually get used? Maybe remove?
+
 -- TODO: Add Background shade color
 
 --- @class ToggleTerminal
@@ -16,6 +18,17 @@
 ---     The mode to prefer whenever the cursor moves into a `buffer` window.
 
 local colormate = require("my_custom.utilities.colormate")
+
+local _COMMAND = os.getenv("NEOVIM_PREFERRED_TERMINAL_COMMAND")
+
+if not _COMMAND then
+    if vim.fn.has("win32") then
+        _COMMAND = "pwsh"
+    else
+        _COMMAND = "bash"
+    end
+end
+_COMMAND = "pwsh"
 
 local M = {}
 

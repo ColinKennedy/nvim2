@@ -1,8 +1,28 @@
+- grapple lualine doesn't work well in windows. Fix
+- neovim portable (.zip) doesn't work in UNC paths. Make issue about that
+
+- CEdit not working on Windows (navigating into subfolders does not work). Double-check this
+
+https://github.com/obsidian-nvim/obsidian.nvim
+
+
+https://www.reddit.com/r/neovim/comments/1kcz8un/great_improvements_to_the_cmdline_in_nightly/
+- If you use vim.o.cmdheight = 0 messages will be shown in the bottom-right area a-la fidget.
+- require('vim._extui').enable({})
+
+
+https://www.reddit.com/r/neovim/comments/1kbjpbh/bloatnvim_analyze_and_visualize_code_size_of/
+
+
 - Fix the issue where release.yml doesn't install the plugins correctly
  - https://github.com/ColinKennedy/nvim2/actions/runs/14634803302/job/41063612275
 
+- buffer / edit selection does not go to the right window
 
 - replace Pcd with the new Neovim command
+
+
+- Try it - https://github.com/kyza0d/vocal.nvim
 
 
 

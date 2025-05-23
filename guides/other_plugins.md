@@ -61,7 +61,8 @@ https://github.com/rcarriga/cmp-dap
 
 https://github.com/davidsierradz/cmp-conventionalcommits
 
-https://github.com/cvusmo/LinuxUnrealBuildTool.nvim
+- https://github.com/cvusmo/LinuxUnrealBuildTool.nvim
+- https://github.com/mbwilding/UnrealEngine.nvim
 
 https://www.reddit.com/r/neovim/comments/1dpzlfr/kulalanvim_a_minimal_httpclient_interface_for/
 
