@@ -14,7 +14,10 @@ vim.cmd [[au BufNewFile,BufRead *.cppobjdump,*.objdump setf objdump]]
 --
 vim.g.mapleader = ","
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local filer = require("my_custom.utilities.filer")
+vim.g.vim_home = filer.get_current_directory()
+
+local lazypath = vim.fs.joinpath(vim.g.vim_home, "lazy", "lazy.nvim")
 
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -29,12 +32,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local filer = require("my_custom.utilities.filer")
 local tabler = require("my_custom.utilities.tabler")
 local extend = tabler.extend
 local plugins = {}
-
-vim.g.vim_home = filer.get_current_directory()
 
 require("my_custom.start.fix_terminal_padding")
 
