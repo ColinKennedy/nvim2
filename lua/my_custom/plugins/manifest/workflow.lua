@@ -727,7 +727,7 @@ return {
         "epwalsh/obsidian.nvim",
         version = "v3.*",
         dependencies = {
-            "nvim-lua/plenary.nvim",
+            "ColinKennedy/plenary.nvim",
         },
         config = function()
             require("obsidian").setup({
