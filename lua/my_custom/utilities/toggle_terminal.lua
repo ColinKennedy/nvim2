@@ -135,15 +135,14 @@ end
 
 --- Suggest a new terminal name, starting with `name`, that is unique.
 ---
---- @param name string
----     Some terminal prefix. i.e. `"term://bash"`.
 --- @return string
 ---     The full buffer path that doesn't already exist. i.e.
 ---     `"term://bash;::toggleterminal::1"`. It's important though to remember
 ---     - This won't be the final, real terminal path name because this name
 ---     doesn't contain a $PWD.
 ---
-local function _suggest_name(name)
+local function _suggest_name()
+    local name = string.format("term://%s", _COMMAND)
     local current = name .. ";::toggleterminal::" .. _NEXT_NUMBER
 
     while vim.fn.bufexists(current) == 1 do
@@ -188,7 +187,7 @@ end
 
 --- @return ToggleTerminal # Create a buffer from scratch.
 local function _create_terminal()
-    vim.cmd("edit! " .. _suggest_name("term://bash"))
+    vim.cmd("edit! " .. _suggest_name())
 
     local buffer = vim.fn.bufnr()
     _initialize_terminal_buffer(buffer)
@@ -361,7 +360,7 @@ function M.initialize_terminal_from_session(terminal)
 
     if vim.fn.bufexists(terminal.buffer) == 0 then
         -- TODO: Not sure if this code makes sense. Keep it in mind for a future update
-        vim.cmd("edit! " .. _suggest_name("term://bash"))
+        vim.cmd("edit! " .. _suggest_name())
         terminal.buffer = vim.fn.bufnr()
         terminal.mode = _STARTING_MODE
     end
