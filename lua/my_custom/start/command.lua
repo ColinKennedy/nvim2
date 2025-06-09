@@ -168,22 +168,19 @@ end, {
     desc = "Open a file using a relative file path.",
 })
 
-vim.api.nvim_create_user_command("LogWorkoutToday",
-    function()
-        local obsidian = require("obsidian")
+vim.api.nvim_create_user_command("LogWorkoutToday", function()
+    local obsidian = require("obsidian")
 
-        local workspace = obsidian.get_client().current_workspace
+    local workspace = obsidian.get_client().current_workspace
 
-        vim.cmd[[ObsidianWorkspace workout]]
-        vim.cmd[[ObsidianToday]]
+    vim.cmd [[ObsidianWorkspace workout]]
+    vim.cmd [[ObsidianToday]]
 
-        -- TODO: For some reason Obsidian is bugged. Upgrade obsidian later
-        -- if workspace then
-        --     vim.cmd(string.format("ObsidianWorkspace %s", workspace))
-        -- end
-    end,
-    {
-        desc = "Write about today's workout",
-        nargs = 0,
-    }
-)
+    -- TODO: For some reason Obsidian is bugged. Upgrade obsidian later
+    -- if workspace then
+    --     vim.cmd(string.format("ObsidianWorkspace %s", workspace))
+    -- end
+end, {
+    desc = "Write about today's workout",
+    nargs = 0,
+})
