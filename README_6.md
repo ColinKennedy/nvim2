@@ -1,3 +1,5 @@
+https://github.com/CameronDixon0/hex-reader.nvim?tab=readme-ov-file
+
 - grapple lualine doesn't work well in windows. Fix
 - neovim portable (.zip) doesn't work in UNC paths. Make issue about that
 

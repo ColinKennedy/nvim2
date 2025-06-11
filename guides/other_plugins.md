@@ -234,6 +234,8 @@ https://github.com/ravitemer/mcphub.nvim
 
 - REST client interface - https://github.com/mistweaverco/kulala.nvim
 
+- Hex viewer - https://github.com/CameronDixon0/hex-reader.nvim?tab=readme-ov-file
+
 
 ## Python Development
 virtual environment selector -
