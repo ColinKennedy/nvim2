@@ -234,6 +234,9 @@ https://github.com/ravitemer/mcphub.nvim
 
 - REST client interface - https://github.com/mistweaverco/kulala.nvim
 
+- NVIM DAP Docker, amazing - https://github.com/docker/nvim-dap-docker
+
+
 
 ## Python Development
 virtual environment selector -
