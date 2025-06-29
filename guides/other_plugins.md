@@ -236,6 +236,7 @@ https://github.com/ravitemer/mcphub.nvim
 
 - NVIM DAP Docker, amazing - https://github.com/docker/nvim-dap-docker
 
+- Hex viewer - https://github.com/CameronDixon0/hex-reader.nvim?tab=readme-ov-file
 
 
 ## Python Development
