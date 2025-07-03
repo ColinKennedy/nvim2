@@ -1,3 +1,6 @@
+- Change my filetype-related settings to not be on-buf-load (so I don't sometimes lose
+  line numbers in files. Like during lazy-load install. Annoying)
+
 https://github.com/CameronDixon0/hex-reader.nvim?tab=readme-ov-file
 
 - grapple lualine doesn't work well in windows. Fix
