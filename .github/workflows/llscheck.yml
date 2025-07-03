@@ -43,23 +43,26 @@ jobs:
         tool_versions: |
           lua-language-server latest
 
-    - name: Install luarocks
-      uses: leafo/gh-actions-luarocks@v4
+    - name: Install LuaRocks
+      # TODO: Replace with https://github.com/luarocks/gh-actions-luarocks after v6+
+      uses: ColinKennedy/gh-actions-luarocks@v1.0.0
+
+    - name: Print Versions
+      run: |
+        luarocks --version
+        lua-language-server --version
 
     - name: Install llscheck
       run: |
-        luarocks install llscheck
-
-    - name: Print Version
-      run: |
-        lua-language-server --version
-
-    - name: Clone dependencies - luavit-meta
-      uses: actions/checkout@v4
-      with:
-        repository: "Bilal2453/luvit-meta"
-        path: ".dependencies/luvit-meta"
+        luarocks install llscheck --verbose
 
     - name: Test
       run: |
+        # We use SSH in the `Makefile` but GitHub actions don't allow that. So
+        # we force git to clone using HTTP instead.
+        #
+        export GIT_CONFIG=~/.gitconfig
+        git config url."https://github.com/".insteadOf git@github.com:
+
+        # Now do the llscheck (and any git clones, as needed)
         make llscheck CONFIGURATION=.github/workflows/.luarc.json
