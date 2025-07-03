@@ -28,7 +28,6 @@ if not _COMMAND then
         _COMMAND = "bash"
     end
 end
-_COMMAND = "pwsh"
 
 local M = {}
 

@@ -169,9 +169,9 @@ end, {
 })
 
 vim.api.nvim_create_user_command("LogWorkoutToday", function()
-    local obsidian = require("obsidian")
-
-    local workspace = obsidian.get_client().current_workspace
+    -- local obsidian = require("obsidian")
+    --
+    -- local workspace = obsidian.get_client().current_workspace
 
     vim.cmd [[ObsidianWorkspace workout]]
     vim.cmd [[ObsidianToday]]
