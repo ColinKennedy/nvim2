@@ -35,3 +35,5 @@ jobs:
         env:
           XDG_CONFIG_HOME: ${{ github.workspace }}
         uses: ColinKennedy/nvim-checkhealth-gh-action@v1.1.1
+        with:
+          minimum_severity: warn
