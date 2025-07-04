@@ -6,7 +6,8 @@ on:
     - master
   push:
     branches:
-      - master
+      # TODO: Remove this later
+      - eighth_pass
 
 jobs:
   checkhealth:
