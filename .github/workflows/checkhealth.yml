@@ -6,8 +6,7 @@ on:
     - master
   push:
     branches:
-      # TODO: Remove this later
-      - eighth_pass
+      - master
 
 jobs:
   checkhealth:
@@ -34,8 +33,4 @@ jobs:
       - name: Run :checkhealth
         env:
           XDG_CONFIG_HOME: ${{ github.workspace }}
-        # TODO: Revert this later
-        uses: ./.github/actions/nvim-checkhealth-gh-action
-        # uses: ColinKennedy/nvim-checkhealth-gh-action@v1.1.1
-        with:
-          minimum_severity: warn
+        uses: ColinKennedy/nvim-checkhealth-gh-action@v1.1.1
