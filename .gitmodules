@@ -337,9 +337,6 @@
 [submodule "bundle/nvim-nio"]
 	path = bundle/nvim-nio
 	url = git@github.com:nvim-neotest/nvim-nio.git
-[submodule "bundle/telescope-session-viewer"]
-	path = bundle/telescope-session-viewer
-	url = git@github.com:ColinKennedy/telescope-session-viewer.git
 [submodule "bundle/toggleterminal.nvim"]
 	path = bundle/toggleterminal.nvim
 	url = git@github.com:ColinKennedy/toggleterminal.nvim.git
@@ -403,3 +400,6 @@
 [submodule "bundle/obsidian.nvim"]
 	path = bundle/obsidian.nvim
 	url = git@github.com:epwalsh/obsidian.nvim.git
+[submodule "lazy/lazy.nvim"]
+	path = lazy/lazy.nvim
+	url = git@github.com:folke/lazy.nvim.git

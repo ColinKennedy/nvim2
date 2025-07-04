@@ -314,3 +314,7 @@ end, {
     desc = "[p]arse the [d]ot separated path from a unittest read-out from the current line.",
     silent = true,
 })
+
+vim.keymap.set("n", "<leader>td", function()
+    vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+end, { desc = "[t]oggle [d]iagnostic as virtual_lines." })

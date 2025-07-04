@@ -61,7 +61,8 @@ https://github.com/rcarriga/cmp-dap
 
 https://github.com/davidsierradz/cmp-conventionalcommits
 
-https://github.com/cvusmo/LinuxUnrealBuildTool.nvim
+- https://github.com/cvusmo/LinuxUnrealBuildTool.nvim
+- https://github.com/mbwilding/UnrealEngine.nvim
 
 https://www.reddit.com/r/neovim/comments/1dpzlfr/kulalanvim_a_minimal_httpclient_interface_for/
 
@@ -159,7 +160,10 @@ https://github.com/vigoux/architext.nvim
 
 - CSV viewer (shown as a table) - https://github.com/hat0uma/csvview.nvim
 
-- LSP diagnostic icons for oil.nvim - https://github.com/JezerM/oil-lsp-diagnostics.nvim?tab=readme-ov-file
+- oil.nvim
+ - LSP diagnostic icons for oil.nvim - https://github.com/JezerM/oil-lsp-diagnostics.nvim?tab=readme-ov-file
+ - Git symbols for oil.nvim - https://github.com/benomahony/oil-git.nvim
+ - Git symbols for oil.nvim - https://github.com/refractalize/oil-git-status.nvim
 
 - LSP log viewer - https://github.com/mhanberg/output-panel.nvim
 
@@ -232,6 +236,12 @@ https://github.com/ravitemer/mcphub.nvim
 
 
 - REST client interface - https://github.com/mistweaverco/kulala.nvim
+
+- NVIM DAP Docker, amazing - https://github.com/docker/nvim-dap-docker
+
+- Hex viewer - https://github.com/CameronDixon0/hex-reader.nvim?tab=readme-ov-file
+
+- Record from Neovim - https://github.com/ekiim/vim-recording-studio
 
 
 ## Python Development

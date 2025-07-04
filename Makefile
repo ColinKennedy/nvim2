@@ -18,10 +18,10 @@ llscheck: clone_git_dependencies
 	VIMRUNTIME="`nvim --clean --headless --cmd 'lua io.write(os.getenv("VIMRUNTIME"))' --cmd 'quit'`" llscheck --configpath $(CONFIGURATION) .
 
 luacheck:
-	luacheck lua plugin
+	luacheck lua plugin scripts
 
 check-stylua:
-	stylua lua plugin --color always --check
+	stylua lua plugin scripts --color always --check
 
 stylua:
-	stylua lua plugin
+	stylua lua plugin scripts

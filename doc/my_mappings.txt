@@ -256,6 +256,7 @@ Legend
 | n | <C-w>o        | Toggle full-screen or minimize a window.                  |
 | n | <C-x>         | Increment the semver, date, etc. Or toggle True/False.    |
 | n | <F12>         | Totally useless ROT13 encyption (for fun!)                |
+| n | <leader>td    | [t]oggle [d]iagnostic as virtual_lines.                   |
 | n | QQ            | Exit Vim without saving.                                  |
 | n | gf            | [g]o-to [f]ile.                                           |
 | v | /             | Make Vim's search more "magic", by default.               |

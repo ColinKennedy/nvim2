@@ -13,9 +13,9 @@ end
 local existing = os.getenv("PYTHONPATH")
 
 if existing then
-    vim.cmd('let $PYTHONPATH = "' .. vim.g.vim_home .. "/python_stubs" .. separator .. existing .. '"')
+    vim.env.PYTHONPATH = vim.fs.joinpath(vim.g.vim_home, "python_stubs") .. separator .. vim.env.PYTHONPATH
 else
-    vim.cmd('let $PYTHONPATH = "' .. vim.g.vim_home .. "/python_stubs" .. '"')
+    vim.env.PYTHONPATH = vim.fs.joinpath(vim.g.vim_home, "python_stubs")
 end
 
 vim.api.nvim_create_user_command("LspCapabilities", function()

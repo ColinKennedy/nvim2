@@ -683,23 +683,24 @@ return {
         },
     },
 
-    -- View / Switch-to previously saved Vim Session.vim files
-    {
-        "ColinKennedy/telescope-session-viewer",
-        config = function()
-            require("telescope-session-viewer").setup()
-            require("telescope").load_extension("session_viewer")
-        end,
-        dependencies = { "nvim-telescope/telescope.nvim" },
-        event = { "SessionWritePost" },
-        keys = {
-            {
-                "<Space>SV",
-                "<cmd>Telescope session_viewer view<CR>",
-                desc = "Open the Vim [S]ession [V]iewer GUI.",
-            },
-        },
-    },
+    -- NOTE: Consider removing later
+    -- -- View / Switch-to previously saved Vim Session.vim files
+    -- {
+    --     "ColinKennedy/telescope-session-viewer",
+    --     config = function()
+    --         require("telescope-session-viewer").setup()
+    --         require("telescope").load_extension("session_viewer")
+    --     end,
+    --     dependencies = { "nvim-telescope/telescope.nvim" },
+    --     event = { "SessionWritePost" },
+    --     keys = {
+    --         {
+    --             "<Space>SV",
+    --             "<cmd>Telescope session_viewer view<CR>",
+    --             desc = "Open the Vim [S]ession [V]iewer GUI.",
+    --         },
+    --     },
+    -- },
 
     -- Auto-backup your code to-disk whenever you save a file. And view its contents.
     {
@@ -726,7 +727,7 @@ return {
         "epwalsh/obsidian.nvim",
         version = "v3.*",
         dependencies = {
-            "nvim-lua/plenary.nvim",
+            "ColinKennedy/plenary.nvim",
         },
         config = function()
             require("obsidian").setup({
@@ -759,6 +760,10 @@ return {
                     {
                         name = "personal",
                         path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "personal"),
+                    },
+                    {
+                        name = "workout",
+                        path = vim.fs.joinpath(vim.fn.expand("~"), "vaults", "workout"),
                     },
                 },
             })

@@ -20,6 +20,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         path: nvim
+        submodules: recursive  # Initialize all bundle/* plugin submodules, recursively
 
     - name: Install Neovim
       uses: rhysd/action-setup-vim@v1
@@ -29,32 +30,64 @@ jobs:
         neovim: true
         version: ${{ matrix.neovim }}
 
+    # # NOTE: We need to embed lazy.nvim in the final output or stuff will break. So we
+    # # checkout the submodule at the `lazy/lazy.nvim` subdirectory
+    # #
+    # - name: Embed lazy.nvim
+    #   run: |
+    #     git clone https://github.com/folke/lazy.nvim.git nvim/lazy/lazy.nvim
+
     - name: Install Treesitter Parsers (Using nvim-treesitter)
       env:
         XDG_CONFIG_HOME: ${{ github.workspace }}
       # NOTE: We use + so the configuration runs first. Then the luafile is called
       run: |
-        nvim --headless +"luafile nvim/scripts/nvim_treesitter_ensure_installed.lua"
+        nvim --headless -u nvim/scripts/nvim_treesitter_ensure_installed.lua
 
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
       run: |
         name="output-Linux-${{ matrix.neovim }}.tar.gz"
-        tar -cvf $name . -C nvim
-        echo "output_file=$name" >> $GITHUB_ENV
+        tar -cvf $name -C nvim .
+        echo "output_file_tar_gz=$name" >> $GITHUB_ENV
 
-    - name: Archive Output (Windows)
+    - name: Archive Output (Windows) Tar Gzip
       if: runner.os == 'Windows'
       run: |
         $name = "output-Windows-${{ matrix.neovim }}.tar.gz"
-        tar -cvf $name . -C nvim
-        echo "output_file=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+        tar -cvf $name -C nvim .
+        echo "output_file_tar_gz=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
 
-    - name: Upload Release Asset
+    - name: Archive Output (Windows) Zip
+      if: runner.os == 'Windows'
+      run: |
+        $name = "output-Windows-${{ matrix.neovim }}.zip"
+        # NOTE: Powershell does not like UNIX symlinks. They need to be removed before
+        # we can .zip Show the files that will be removed
+        #
+        Get-ChildItem -Path "nvim" -Recurse -Force -Attributes ReparsePoint | Where-Object { $_.LinkType -eq 'SymbolicLink' } | Select-Object FullName
+        # NOTE: Now remove the symlink files
+        Get-ChildItem -Path "nvim" -Recurse -Force -Attributes ReparsePoint | Where-Object { $_.LinkType -eq 'SymbolicLink' } | Remove-Item -Force
+
+        # NOTE: Now create the .zip and export it
+        Compress-Archive -Path nvim\* -DestinationPath $name
+        echo "output_file_zip=$name" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+
+    - name: Upload Release Asset - Tar Gzip
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ github.ref_name }}
-        files: ${{ env.output_file }}
+        files: ${{ env.output_file_tar_gz }}
+        body: "Automated release for tag ${{ github.ref_name }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Release Asset - Zip
+      if: env.output_file_zip != ''
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: ${{ env.output_file_zip }}
         body: "Automated release for tag ${{ github.ref_name }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
