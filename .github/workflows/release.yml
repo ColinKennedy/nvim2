@@ -2,10 +2,8 @@ name: Release
 
 on:
   push:
-    # TODO: Remove this later
-    branch: seventh_pass
-    # tags:
-    #   - "v*"
+    tags:
+      - "v*"
 
 jobs:
   release:
@@ -18,15 +16,6 @@ jobs:
     name: Release
 
     steps:
-    # TODO: Remove this later if unused
-    # # NOTE: This is needed because this repository's submodules are all
-    # # SSH-based and GitHub actions aren't set up for that.
-    # #
-    # - name: Set up Git to use HTTPS instead of SSH
-    #   run: |
-    #     git config --global url."https://github.com/".insteadOf "git@github.com:"
-    #     git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-    #
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
