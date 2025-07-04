@@ -160,7 +160,10 @@ https://github.com/vigoux/architext.nvim
 
 - CSV viewer (shown as a table) - https://github.com/hat0uma/csvview.nvim
 
-- LSP diagnostic icons for oil.nvim - https://github.com/JezerM/oil-lsp-diagnostics.nvim?tab=readme-ov-file
+- oil.nvim
+ - LSP diagnostic icons for oil.nvim - https://github.com/JezerM/oil-lsp-diagnostics.nvim?tab=readme-ov-file
+ - Git symbols for oil.nvim - https://github.com/benomahony/oil-git.nvim
+ - Git symbols for oil.nvim - https://github.com/refractalize/oil-git-status.nvim
 
 - LSP log viewer - https://github.com/mhanberg/output-panel.nvim
 
