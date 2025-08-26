@@ -243,6 +243,9 @@ https://github.com/ravitemer/mcphub.nvim
 
 - Record from Neovim - https://github.com/ekiim/vim-recording-studio
 
+- A CPP Insights integrator - There might be better ones out there - https://github.com/Freed-Wu/cppinsights.vim
+
+
 
 ## Python Development
 virtual environment selector -
