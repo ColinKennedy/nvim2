@@ -55,6 +55,8 @@ https://github.com/emmanueltouzery/decisive.nvim?tab=readme-ov-file
 
 https://github.com/Fildo7525/reloader.nvim
 
+- Python integration, worth looking into - https://github.com/joshzcold/python.nvim
+
 https://github.com/paopaol/cmp-doxygen
 
 https://github.com/rcarriga/cmp-dap
