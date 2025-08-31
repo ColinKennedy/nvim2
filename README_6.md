@@ -1,6 +1,24 @@
+https://github.com/copilotlsp-nvim/copilot-lsp
+- Apparently this has next-edit-suggestion support
+
+https://www.reddit.com/r/neovim/comments/1mzfb7g/neovim_now_natively_supports_llmbased_completion/
+- Where can I try this?
+
+- https://www.reddit.com/r/neovim/comments/1n1txun/support_for_agent_client_protocol_in/
+ - Try this out
+ - Claude Code + codecompanion - https://github.com/olimorris/codecompanion.nvim/discussions/2036
+
+- Looks nice to try out - https://github.com/oribarilan/lensline.nvim
+
 Try out codecompanion configuration
 https://github.com/jellydn/my-nvim-ide/blob/main/lua/plugins/extras/codecompanion.lua
  - From https://www.youtube.com/watch?v=KbWI4ilHKv4
+
+- Try out the AI plugins mentioned here - https://www.reddit.com/r/neovim/comments/1n1ve5e/swapping_to_neovim_for_work_agent_support/
+ - https://github.com/zbirenbaum/copilot.lua
+ - codecompanion.nvim + mcp-hub
+ - aider in Neovim
+ - opencode
 
 
 - Change my filetype-related settings to not be on-buf-load (so I don't sometimes lose
