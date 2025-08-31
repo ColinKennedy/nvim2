@@ -16,6 +16,7 @@ local telescope_config = require("telescope.config").values
 local _METADATA_MARKER = "---"
 -- NOTE: obsidian.nvim uses YAML and aliases is a string[] that starts with "aliases:"
 local _ALIASES_START_MARKER = "aliases:"
+local _P = {}
 local M = {}
 
 ---@class obsidian._types.FoundAlias
@@ -25,7 +26,7 @@ local M = {}
 ---@field aliases string[]
 ---    All of the found aliases.
 
-local function _is_alias_line(line)
+function _P.is_alias_line(line)
     local character = line[1]
 
     return character and character ~= " "
@@ -36,7 +37,7 @@ end
 ---@param text string The line to query. e.g. ` - some_tag/here`.
 ---@return string? # The found match, if any.
 ---
-local function _get_alias_text(text)
+function _P.get_alias_text(text)
     return (string.match(text, "%s*-%s*(.*)"))
 end
 
@@ -48,7 +49,7 @@ end
 ---@param path string An absolute path on-disk to some obsidian note to query from.
 ---@return string[]  # All found aliases, if any.
 ---
-local function _get_aliases(path)
+function _P.get_aliases(path)
     local handler = io.open(path)
 
     if not handler then
@@ -70,11 +71,11 @@ local function _get_aliases(path)
         elseif line == _ALIASES_START_MARKER then
             aliases_started = true
         elseif aliases_started then
-            local alias = _get_alias_text(line)
+            local alias = _P.get_alias_text(line)
 
             if alias then
                 table.insert(output, alias)
-            elseif not _is_alias_line(line) then
+            elseif not _P.is_alias_line(line) then
                 break
             end
         end
@@ -88,7 +89,7 @@ end
 ---@param aliases obsidian._types.FoundAlias[]
 ---    All of the aliases / paths to display.
 ---
-local function _make_picker(aliases)
+function _P.make_picker(aliases)
     local options = {}
 
     ---@type string[]
@@ -161,14 +162,14 @@ function M.main()
     local found = {}
 
     for _, path in ipairs(vim.fn.glob(template, true, true)) do
-        local aliases = _get_aliases(path)
+        local aliases = _P.get_aliases(path)
 
         if aliases then
             table.insert(found, { path = path, aliases = aliases })
         end
     end
 
-    local picker = _make_picker(found)
+    local picker = _P.make_picker(found)
     picker:find()
 end
 

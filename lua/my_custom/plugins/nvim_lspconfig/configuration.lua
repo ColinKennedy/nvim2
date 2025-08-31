@@ -89,9 +89,8 @@ vim.api.nvim_create_autocmd("CursorMoved", {
     pattern = "*",
 })
 
-local lspconfig = require("lspconfig")
-
-lspconfig.basedpyright.setup {
+vim.lsp.enable({
+    "basedpyright",
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
@@ -102,11 +101,15 @@ lspconfig.basedpyright.setup {
             },
         },
     },
-}
+})
 
-lspconfig.clangd.setup { capabilities = capabilities, on_attach = on_attach }
-
-lspconfig.lua_ls.setup { capabilities = capabilities, on_attach = on_attach }
+for _, parser in ipairs({ "clangd", "lua_ls" }) do
+    vim.lsp.enable({
+        name = parser,
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
+end
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local _go_to_diagnostic = function(next, severity)

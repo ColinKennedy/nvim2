@@ -23,7 +23,13 @@ local _COMMAND = os.getenv("NEOVIM_PREFERRED_TERMINAL_COMMAND")
 
 if not _COMMAND then
     if vim.fn.has("win32") then
-        _COMMAND = "pwsh"
+        if vim.fn.executable("pwsh") == "1" then
+            _COMMAND = "pwsh"
+        elseif vim.fn.executable("cmd") == "1" then
+            _COMMAND = "cmd"
+        else
+            error("No valid terminal application was found.")
+        end
     else
         _COMMAND = "bash"
     end
