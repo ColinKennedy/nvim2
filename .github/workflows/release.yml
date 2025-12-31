@@ -47,7 +47,9 @@ jobs:
     # We load Neovim once just so any first-time-build Plugin code can run
     - name: Warm Up Neovim
       run: |
-        nvim --headless +'autocmd VimEnter * lua vim.defer_fn(function() vim.cmd("qa") end, 300)'
+        nvim --headless \
+          +'autocmd VimEnter * echo "VimEnter fired, TESTOUT"' \
+          +'autocmd VimEnter * qa'
 
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
