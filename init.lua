@@ -51,6 +51,24 @@ extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
 local configuration = { root = vim.fs.joinpath(vim.g.vim_home, "bundle") }
 
+table.insert(
+    plugins,
+    {
+      "esmuellert/vscode-diff.nvim",
+      dependencies = { "MunifTanjim/nui.nvim" },
+      cmd = "CodeDiff",
+        config = function()
+            require("vscode-diff").setup(
+                {
+                    highlights = {
+                        char_brightness = 1.2
+                    }
+                }
+            )
+        end,
+    }
+)
+
 -- vim.g.plugin_template_configuration = {logging = {level = "debug", use_file = true}}
 --
 -- table.insert(
