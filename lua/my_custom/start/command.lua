@@ -148,6 +148,33 @@ vim.api.nvim_create_user_command("ObsidianAliases", function()
     require("my_custom.utilities.obsidian_utility").main()
 end, { nargs = 0, desc = "Load obsidian.nvim notes in using their alias name." })
 
+vim.api.nvim_create_user_command("Note", function(opts)
+    local api = require("obsidian.api")
+    local log = require("obsidian.log")
+    local new_from_template = require("obsidian.commands.new_from_template")
+
+    ---@type string[]
+    local title
+
+    if opts.args == "" then
+        local text = api.input("Enter A Title", " ")
+
+        if not text or text == "" then
+            log.warn("Aborted")
+
+            return
+        end
+
+        title = vim.split(text, " ")
+    else
+        title = vim.deepcopy(opts.fargs)
+    end
+
+    local arguments = vim.tbl_deep_extend("force", {}, title)
+    table.insert(arguments, "my_default_template.md")
+    new_from_template({ fargs = arguments })
+end, { nargs = "?", desc = "Make a new Obsidian note." })
+
 vim.api.nvim_create_user_command("CEdit", function(opts)
     require("my_custom.utilities.cedit").open_relative(opts.args)
 end, {
@@ -169,10 +196,6 @@ end, {
 })
 
 vim.api.nvim_create_user_command("LogWorkoutToday", function()
-    -- local obsidian = require("obsidian")
-    --
-    -- local workspace = obsidian.get_client().current_workspace
-
     vim.cmd [[ObsidianWorkspace workout]]
     vim.cmd [[ObsidianToday]]
 

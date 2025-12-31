@@ -1,7 +1,72 @@
+https://github.com/esmuellert/vscode-diff.nvim
+
+https://www.reddit.com/r/neovim/comments/1pr097p/remove_treesitter_delays_when_opening_files/
+
+- Breaking nvim-treesitter changes
+ - https://www.reddit.com/r/neovim/comments/1pmo9ik/so_its_finally_here/
+ - https://github.com/MeanderingProgrammer/treesitter-modules.nvim
+
+```
+https://github.com/unblevable/quick-scope
+https://github.com/gukz/ftFt.nvim
+https://github.com/rhysd/clever-f.vim
+```
+
+https://www.reddit.com/r/neovim/comments/1p75daj/laziernvim_v2_released/
+https://github.com/jake-stewart/lazier.nvim
+https://www.youtube.com/watch?v=Nq2T28_ILxc&t=4244s
+
+https://www.reddit.com/r/neovim/comments/1p5t0x0/i_built_vscodediffnvim_a_cpowered_plugin_to_bring/
+https://github.com/esmuellert/vscode-diff.nvim
+
+
+https://github.com/folke/sidekick.nvim
+
+https://www.reddit.com/r/neovim/comments/1p4ja7l/fylernvim_v200_release_time_for_a_better_version/
+
+https://www.reddit.com/r/neovim/comments/1orgdx5/pickletermnvim_reuse_terminalbuffers/
+
+https://www.reddit.com/r/neovim/comments/1nbkso6/comment/nd6gv9p/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+- Consider replacing my LSP setup or other things
+
+https://github.com/santhosh-tekuri/dotfiles/blob/master/.config/nvim/lua/picker.lua
+
+https://github.com/A7Lavinraj/fyler.nvim
+
+https://github.com/copilotlsp-nvim/copilot-lsp
+- Apparently this has next-edit-suggestion support
+
+https://github.com/Kaikacy/Lemons.nvim?tab=readme-ov-file
+https://camo.githubusercontent.com/6728c8542aed2566b125a1b280c6f29dc8dc575e89f146b0940d85ad7e6dee93/68747470733a2f2f677573746166727964686f6c6d2e78797a2f696d616765732f6e6f2d636c6f776e2d6669657374612e706e67
+
+https://www.reddit.com/r/neovim/comments/1mzfb7g/neovim_now_natively_supports_llmbased_completion/
+- Where can I try this?
+
+- https://www.reddit.com/r/neovim/comments/1n1txun/support_for_agent_client_protocol_in/
+ - Try this out
+ - Claude Code + codecompanion - https://github.com/olimorris/codecompanion.nvim/discussions/2036
+
+- Looks nice to try out - https://github.com/oribarilan/lensline.nvim
+
 Try out codecompanion configuration
 https://github.com/jellydn/my-nvim-ide/blob/main/lua/plugins/extras/codecompanion.lua
  - From https://www.youtube.com/watch?v=KbWI4ilHKv4
 
+https://github.com/MeanderingProgrammer/treesitter-modules.nvim
+https://www.reddit.com/r/neovim/comments/1ou68ds/nvimtreesitter_main_rewrite_did_i_do_this_right/
+
+- Try out the AI plugins mentioned here - https://www.reddit.com/r/neovim/comments/1n1ve5e/swapping_to_neovim_for_work_agent_support/
+ - https://github.com/zbirenbaum/copilot.lua
+ - codecompanion.nvim + mcp-hub
+ - aider in Neovim
+ - opencode
+
+https://github.com/gruvw/strudel.nvim
+https://www.reddit.com/r/neovim/comments/1p13n5q/strudelnvim_algorithmic_music_and_visuals/
+https://www.reddit.com/r/neovim/comments/1p1myfp/a_random_story_about_strudeltidalneovim_for_you/
+https://github.com/neo451/modal?tab=readme-ov-file
+
+https://www.reddit.com/r/neovim/comments/1pyo9a5/neovim_terminal_tips_and_tricks/
 
 - Change my filetype-related settings to not be on-buf-load (so I don't sometimes lose
   line numbers in files. Like during lazy-load install. Annoying)
@@ -24,6 +89,10 @@ https://github.com/wurli/urlpreview.nvim
 
 https://github.com/samiulsami/fFtT-highlights.nvim/caliguIa/zendiagram.nvim
 https://github.com/OXY2DEV/nvim/blob/main/lua/scripts/diagnostic.lua
+
+https://github.com/mrquantumcodes/retrospect.nvim
+
+https://github.com/paradoxical-dev/restoration.nvim
 
 
 - Super annoying when number / relativenumber don't get set, sometimes

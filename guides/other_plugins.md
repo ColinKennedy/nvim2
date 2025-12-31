@@ -55,6 +55,8 @@ https://github.com/emmanueltouzery/decisive.nvim?tab=readme-ov-file
 
 https://github.com/Fildo7525/reloader.nvim
 
+- Python integration, worth looking into - https://github.com/joshzcold/python.nvim
+
 https://github.com/paopaol/cmp-doxygen
 
 https://github.com/rcarriga/cmp-dap
@@ -120,6 +122,8 @@ https://github.com/vigoux/architext.nvim
 - RSS Feed Reader - https://github.com/neo451/feed.nvim
 
 - Neovim Remote Helper - https://github.com/mikew/nvrh. Works with a remote Neovim instance
+
+- Fun JSON viewer - https://github.com/Owen-Dechow/videre.nvim
 
 - Profiler plugin, uses perf to show profile statistics in-line - https://github.com/t-troebst/perfanno.nvim
 
@@ -245,6 +249,27 @@ https://github.com/ravitemer/mcphub.nvim
 
 - A CPP Insights integrator - There might be better ones out there - https://github.com/Freed-Wu/cppinsights.vim
 
+- SQL in Vim with no plugins? - https://www.youtube.com/watch?time_continue=142&v=-TADlLgCQL4&embeds_referring_euri=https%3A%2F%2Fwww.reddit.com%2F
+
+- Presentation in the terminal - https://github.com/Piotr1215/presenterm.nvim
+
+- uv support, in Neovim
+ - https://github.com/benomahony/uv.nvim
+ - https://www.reddit.com/r/neovim/comments/1o6g7ep/uvneovimpython_lsps/
+ - https://kuator.github.io/neovim/uv/basedpyright/pyrefly/ty/2025/10/14/uv-python-lsps-neovim.html
+
+- A file explorer - https://github.com/A7Lavinraj/fyler.nvim
+
+- A quick harpoon replacement - https://www.reddit.com/r/neovim/comments/1og2pg9/mom_can_i_have_harpoon_we_have_harpoon_at_home/
+
+- Inspect HTML elements live, in Neovim, using svelte
+ - https://jovianmoon.io/posts/svelte-inspector-with-neovim
+ - https://www.reddit.com/r/neovim/comments/1pk1rkd/svelte_neovim_psa_connect_the_svelte_inspector_to/
+
+
+- A SSH + filesystem plugin that has no dependencies. It could be useful! - https://github.com/uhs-robert/sshfs.nvim
+
+- Local text-to-speech, for Neovim...? - https://github.com/Avi-D-coder/whisper.nvim
 
 
 ## Python Development

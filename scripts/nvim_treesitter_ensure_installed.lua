@@ -20,7 +20,7 @@ local function _main()
     _initialize_plugin_manager()
 
     local directory = _get_parser_directory()
-    local parsers = { "cpp", "diff", "python" }
+    local parsers = { "cpp", "diff", "markdown", "python" }
 
     require("lazy.minit").repro({
         spec = {
