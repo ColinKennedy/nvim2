@@ -24,11 +24,17 @@ jobs:
 
     - name: Install Neovim
       uses: rhysd/action-setup-vim@v1
-      # NOTE: We need Neovim installed in order to expose the $VIMRUNTIME
-      # environment variable
       with:
         neovim: true
         version: ${{ matrix.neovim }}
+
+    # The `Install Neovim` command above doesn't point to our Neovim
+    # configuration, our Lua files, etc. This command fixes that.
+    #
+    - name: Set Neovim Configuration To This Clone
+      shell: bash
+      run: |
+        echo "XDG_CONFIG_HOME=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
     # # NOTE: We need to embed lazy.nvim in the final output or stuff will break. So we
     # # checkout the submodule at the `lazy/lazy.nvim` subdirectory
@@ -44,12 +50,13 @@ jobs:
       run: |
         nvim --headless -u nvim/scripts/nvim_treesitter_ensure_installed.lua
 
-    # We load Neovim once just so any first-time-build Plugin code can run
-    - name: Warm Up Neovim
-      run: |
-        nvim --headless \
-          +'autocmd VimEnter * echo "VimEnter fired, TESTOUT"' \
-          +'autocmd VimEnter * qa'
+    # # TODO: This code doesn't work currently. Fix for later.
+    # #
+    # # We load Neovim once just so any first-time-build Plugin code can run
+    # #
+    # - name: Warm Up Neovim
+    #   run: |
+    #     nvim -l nvim/.github/scripts/load_plugins.lua -u nvim/init.lua
 
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
