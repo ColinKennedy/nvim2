@@ -399,7 +399,7 @@
 	url = git@github.com:norcalli/nvim-colorizer.lua.git
 [submodule "bundle/obsidian.nvim"]
 	path = bundle/obsidian.nvim
-	url = git@github.com:epwalsh/obsidian.nvim.git
+	url = git@github.com:obsidian-nvim/obsidian.nvim.git
 [submodule "lazy/lazy.nvim"]
 	path = lazy/lazy.nvim
 	url = git@github.com:folke/lazy.nvim.git

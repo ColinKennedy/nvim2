@@ -724,13 +724,14 @@ return {
 
     -- Useful note-taking tool.
     {
-        "epwalsh/obsidian.nvim",
+        "obsidian-nvim/obsidian.nvim",
         version = "v3.*",
         dependencies = {
             "ColinKennedy/plenary.nvim",
         },
         config = function()
             require("obsidian").setup({
+                legacy_commands = false,
                 ui = { enable = false },
                 note_id_func = function(title)
                     -- Create note IDs in a Zettelkasten format with a timestamp and
