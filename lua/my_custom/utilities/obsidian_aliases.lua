@@ -156,7 +156,7 @@ end
 
 --- Open the picker
 function M.main()
-    local vault_root = "~/vaults" -- TODO: Get this more dynamically later
+    local vault_root = require("my_custom.utilities.obsidian_state").get_vaults_root_path()
     local template = vim.fs.joinpath(vault_root, "**", "*.md")
     ---@type obsidian._types.FoundAlias[]
     local found = {}

@@ -1,3 +1,6 @@
+https://github.com/juniorsundar/cling.nvim
+ - This can read the completio nfile somehow
+
 https://github.com/esmuellert/vscode-diff.nvim
 
 https://www.reddit.com/r/neovim/comments/1pr097p/remove_treesitter_delays_when_opening_files/
