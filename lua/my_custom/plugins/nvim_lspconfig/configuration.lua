@@ -1,78 +1,66 @@
-local on_attach = function(_, buffer)
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {
-        buffer = buffer,
-        desc = "[g]o to all [D]eclarations of the current function, class, whatever.",
-    })
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
-        buffer = buffer,
-        desc = "[g]o to [d]efinition of the function / class.",
-    })
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {
-        buffer = buffer,
-        desc = "Open the documentation for the word under the cursor, if any.",
-    })
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {
-        buffer = buffer,
-        desc = "Find and [g]o to the [i]mplementation of some header / declaration.",
-    })
-    -- vim.keymap.set(
-    --     "n",
-    --     "<space>wa",
-    --     vim.lsp.buf.add_workspace_folder,
-    --     {
-    --         buffer=buffer,
-    --         desc="[w]orkspace LSP [a]dd - Include a folder for your session.",
-    --     }
-    -- )
-    -- vim.keymap.set(
-    --     "n",
-    --     "<space>wr",
-    --     vim.lsp.buf.remove_workspace_folder,
-    --     {
-    --         buffer=buffer,
-    --         desc="[w]orkspace [r]emove - Remove a folder from your session.",
-    --     }
-    -- )
-    -- vim.keymap.set(
-    --     "n",
-    --     "<space>wl",
-    --     function()
-    --         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    --     end,
-    --     {
-    --         buffer=buffer,
-    --         desc="[w]orkspace [l]ist - Show the folders for your current session.",
-    --     }
-    -- )
-    -- vim.keymap.set(
-    --     "n",
-    --     "<space>D",
-    --     vim.lsp.buf.type_definition,
-    --     {
-    --         buffer=buffer,
-    --         desc="Show the [D]efinition of some function / instance.",
-    --     }
-    -- )
-    vim.keymap.set("n", "<leader>oca", vim.lsp.buf.code_action, {
-        buffer = buffer,
-        desc = "[o]pen [c]ode [a]ction - Show commands under the cursor.",
-    })
-    vim.keymap.set("n", "grr", function()
-        local word = vim.fn.expand("<cword>")
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {
+    desc = "[g]o to all [D]eclarations of the current function, class, whatever.",
+})
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+    desc = "[g]o to [d]efinition of the function / class.",
+})
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {
+    desc = "Open the documentation for the word under the cursor, if any.",
+})
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {
+    desc = "Find and [g]o to the [i]mplementation of some header / declaration.",
+})
+-- vim.keymap.set(
+--     "n",
+--     "<space>wa",
+--     vim.lsp.buf.add_workspace_folder,
+--     {
+--         desc="[w]orkspace LSP [a]dd - Include a folder for your session.",
+--     }
+-- )
+-- vim.keymap.set(
+--     "n",
+--     "<space>wr",
+--     vim.lsp.buf.remove_workspace_folder,
+--     {
+--         desc="[w]orkspace [r]emove - Remove a folder from your session.",
+--     }
+-- )
+-- vim.keymap.set(
+--     "n",
+--     "<space>wl",
+--     function()
+--         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+--     end,
+--     {
+--         desc="[w]orkspace [l]ist - Show the folders for your current session.",
+--     }
+-- )
+-- vim.keymap.set(
+--     "n",
+--     "<space>D",
+--     vim.lsp.buf.type_definition,
+--     {
+--         desc="Show the [D]efinition of some function / instance.",
+--     }
+-- )
+vim.keymap.set("n", "<leader>oca", vim.lsp.buf.code_action, {
+    desc = "[o]pen [c]ode [a]ction - Show commands under the cursor.",
+})
+vim.keymap.set("n", "grr", function()
+    local word = vim.fn.expand("<cword>")
 
-        local function on_list(options)
-            options.title = "Reference: " .. word
-            vim.fn.setqflist({}, " ", options)
-            vim.cmd.cfirst()
-        end
+    local function on_list(options)
+        options.title = "Reference: " .. word
+        vim.fn.setqflist({}, " ", options)
+        vim.cmd.cfirst()
+    end
 
-        vim.lsp.buf.references(nil, { on_list = on_list })
-    end, {
-        buffer = buffer,
-        desc = "[g]o to [r]eferences - Show all locations where a variable is used.",
-    })
-end
+    vim.lsp.buf.references(nil, { on_list = on_list })
+end, {
+    desc = "[g]o to [r]eferences - Show all locations where a variable is used.",
+})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -92,7 +80,6 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 vim.lsp.enable({
     "basedpyright",
     capabilities = capabilities,
-    on_attach = on_attach,
     settings = {
         basedpyright = {
             analysis = {
@@ -107,7 +94,6 @@ for _, parser in ipairs({ "clangd", "lua_ls" }) do
     vim.lsp.enable({
         name = parser,
         capabilities = capabilities,
-        on_attach = on_attach,
     })
 end
 
