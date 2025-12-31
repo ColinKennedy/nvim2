@@ -403,3 +403,6 @@
 [submodule "lazy/lazy.nvim"]
 	path = lazy/lazy.nvim
 	url = git@github.com:folke/lazy.nvim.git
+[submodule "bundle/vscode-diff.nvim"]
+	path = bundle/vscode-diff.nvim
+	url = git@github.com:esmuellert/vscode-diff.nvim.git
