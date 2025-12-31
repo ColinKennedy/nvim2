@@ -51,33 +51,6 @@ extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
 local configuration = { root = vim.fs.joinpath(vim.g.vim_home, "bundle") }
 
--- vim.g.plugin_template_configuration = {logging = {level = "debug", use_file = true}}
---
--- table.insert(
---     plugins,
---     {
---         'ColinKennedy/nvim-best-practices-plugin-template',
---         -- cmd = "PluginTemplate",
---         directory = "/home/selecaoone/repositories/personal/.config/nvim/bundle/nvim-best-practices-plugin-template",
---     }
--- )
---
--- table.insert(
---     plugins,
---     {
---       "rbong/vim-flog",
---       lazy = true,
---       cmd = { "Flog", "Flogsplit", "Floggit" },
---       dependencies = {
---         "tpope/vim-fugitive",
---       },
---     }
--- )
-
--- table.insert(plugins, { 'stevearc/profile.nvim' })
-
-
-
 require("lazy").setup(plugins, configuration)
 
 require("my_custom.start.auto_commands")

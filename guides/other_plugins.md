@@ -271,6 +271,16 @@ https://github.com/ravitemer/mcphub.nvim
 
 - Local text-to-speech, for Neovim...? - https://github.com/Avi-D-coder/whisper.nvim
 
+- A live-reload HTTP server, written in Lua - https://github.com/hyperstown/nvim-live-server
+
+- Nicer-looking LSP typescript error messags - https://github.com/enochchau/nvim-pretty-ts-errors/tree/main
+
+- Shows compression statistics of the current file. e.g. "if this was compressed, what would its size be" - https://github.com/CrestNiraj12/compress-size.nvim
+
+- It shows references on functions and stuff, inline. Useful! - https://github.com/oribarilan/lensline.nvim
+
+- A multi-TUI wrapper - https://github.com/jrop/tuis.nvim
+
 
 ## Python Development
 virtual environment selector -

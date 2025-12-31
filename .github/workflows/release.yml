@@ -44,6 +44,11 @@ jobs:
       run: |
         nvim --headless -u nvim/scripts/nvim_treesitter_ensure_installed.lua
 
+    # We load Neovim once just so any first-time-build Plugin code can run
+    - name: Warm Up Neovim
+      run: |
+        nvim --headless +'autocmd VimEnter * echo "VimEnter fired, TESTOUT"' +'autocmd VimEnter * qa'
+
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
       run: |
