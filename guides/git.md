@@ -18,3 +18,9 @@ https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
 ## Extra Plugins
 A plugin that can open up github repo + branch + commit + lines directly in Neovim
 https://github.com/trevorhauter/gitportal.nvim
+
+
+## Neovim As A Git Pager
+In short, Neovim is not really ready to be a pager for git. There's some
+partial support, which this page goes over - https://lemmy.world/post/1563173
+- but really, we need support for `nvim --remote-wait` which doesn't exist yet.

@@ -753,6 +753,7 @@ return {
 
                     return tostring(os.time()) .. "-" .. suffix
                 end,
+                templates = { folder = "templates" },
                 workspaces = {
                     {
                         name = "politics",
