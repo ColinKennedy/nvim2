@@ -44,6 +44,11 @@ jobs:
       run: |
         nvim --headless -u nvim/scripts/nvim_treesitter_ensure_installed.lua
 
+    # We load Neovim once just so any first-time-build Plugin code can run
+    - name: Warm Up Neovim
+      run: |
+        nvim --headless -c "Lazy! load all" -c "qall"
+
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
       run: |
