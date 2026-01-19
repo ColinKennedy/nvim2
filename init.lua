@@ -1,3 +1,4 @@
+print("SOURCING THE PLUGINS AND STUFF")
 -- require("my_custom.start.speed_up")
 
 
