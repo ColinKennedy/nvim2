@@ -7,10 +7,11 @@
 --- 3. Fail CI if something went wrong
 ---
 
-local caller_frame = debug.getinfo(2)
-local current_file = caller_frame.source:match("@?(.*)")
-local configuration = vim.fs.joinpath(vim.fs.dirname(vim.fs.dirname(current_file)), "init.lua")
-print('DEBUGPRINT[1]: load_plugins.lua:12: configuration=' .. vim.inspect(configuration))
+-- local caller_frame = debug.getinfo(2)
+-- local current_file = caller_frame.source:match("@?(.*)")
+-- local configuration = vim.fs.joinpath(vim.fs.dirname(vim.fs.dirname(current_file)), "init.lua")
+-- TODO: get this path dynamically
+local configuration = vim.fs.joinpath("nvim", "init.lua")
 
 vim.cmd.source(configuration)
 -- TODO: Remove this later
