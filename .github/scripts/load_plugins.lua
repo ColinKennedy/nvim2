@@ -20,4 +20,5 @@ vim.cmd.scriptnames()
 print("ALL RUNTIME PATHS")
 print(table.concat(vim.opt.runtimepath:get(), "\n"))
 
-vim.cmd("Lazy load all")
+require("lazy").load()
+-- vim.cmd("Lazy load all")
