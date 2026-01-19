@@ -52,6 +52,8 @@ extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
 local configuration = { root = vim.fs.joinpath(vim.g.vim_home, "bundle") }
 
+print("loading plugins")
+print(#plugins)
 require("lazy").setup(plugins, configuration)
 
 require("my_custom.start.auto_commands")

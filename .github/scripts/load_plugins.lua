@@ -23,4 +23,4 @@ print("ALL RUNTIME PATHS")
 print(table.concat(vim.opt.runtimepath:get(), "\n"))
 
 -- require("lazy").setup()
--- require("lazy").load()
+require("lazy").load()
