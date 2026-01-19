@@ -49,7 +49,7 @@ jobs:
     - name: Warm Up Neovim
       run: |
         ls -al nvim/lazy/lazy.nvim
-        nvim -l nvim/.github/scripts/load_plugins.lua
+        nvim -l nvim/.github/scripts/load_plugins.lua -u nvim/init.lua
 
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
