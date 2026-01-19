@@ -12,13 +12,15 @@
 -- local configuration = vim.fs.joinpath(vim.fs.dirname(vim.fs.dirname(current_file)), "init.lua")
 -- TODO: get this path dynamically
 local configuration = vim.fs.joinpath("nvim", "init.lua")
+print('DEBUGPRINT[2]: load_plugins.lua:14: configuration=' .. vim.inspect(configuration))
 
 vim.cmd.source(configuration)
+print("SCRIPT NAMES")
 -- TODO: Remove this later
 vim.cmd.scriptnames()
 
 print("ALL RUNTIME PATHS")
 print(table.concat(vim.opt.runtimepath:get(), "\n"))
 
-require("lazy").load()
--- vim.cmd("Lazy load all")
+-- require("lazy").setup()
+-- require("lazy").load()
