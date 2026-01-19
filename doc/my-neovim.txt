@@ -1,4 +1,4 @@
-*my-neovim.txt*        For Neovim >= 0.8.0        Last change: 2026 January 18
+*my-neovim.txt*        For Neovim >= 0.8.0        Last change: 2026 January 19
 
 ==============================================================================
 Table of Contents                                *my-neovim-table-of-contents*
