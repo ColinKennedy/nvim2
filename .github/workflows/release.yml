@@ -47,7 +47,7 @@ jobs:
     # We load Neovim once just so any first-time-build Plugin code can run
     - name: Warm Up Neovim
       run: |
-        nvim --headless -c "lua require('lazy').load({ plugins = 'all' })" -c "qa"
+        nvim -l nvim/.github/scripts/load_plugins.lua
 
     - name: Archive Output (Linux)
       if: runner.os == 'Linux'
