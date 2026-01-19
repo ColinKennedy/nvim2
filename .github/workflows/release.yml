@@ -24,11 +24,14 @@ jobs:
 
     - name: Install Neovim
       uses: rhysd/action-setup-vim@v1
-      # NOTE: We need Neovim installed in order to expose the $VIMRUNTIME
-      # environment variable
       with:
         neovim: true
         version: ${{ matrix.neovim }}
+
+    - name: Set Neovim Configuration To This Clone
+      shell: bash
+      run: |
+        echo "XDG_CONFIG_HOME=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
     # # NOTE: We need to embed lazy.nvim in the final output or stuff will break. So we
     # # checkout the submodule at the `lazy/lazy.nvim` subdirectory
