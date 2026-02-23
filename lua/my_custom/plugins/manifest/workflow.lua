@@ -365,7 +365,7 @@ return {
     {
         "ColinKennedy/toggleterminal.nvim",
         branch = "first_pass",
-        cmd = "ToggleTerm",
+        cmd = "ToggleTerminal",
         config = true,
         keys = {
             {
