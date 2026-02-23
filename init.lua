@@ -47,6 +47,7 @@ extend(plugins, require("my_custom.plugins.manifest.quick_fix"))
 extend(plugins, require("my_custom.plugins.manifest.text_object"))
 extend(plugins, require("my_custom.plugins.manifest.workflow"))
 extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
+extend(plugins, require("my_custom.plugins.manifest.ai"))
 
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
 local configuration = { root = vim.fs.joinpath(vim.g.vim_home, "bundle") }

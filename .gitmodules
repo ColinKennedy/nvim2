@@ -403,3 +403,6 @@
 [submodule "lazy/lazy.nvim"]
 	path = lazy/lazy.nvim
 	url = git@github.com:folke/lazy.nvim.git
+[submodule "bundle/claudecode.nvim"]
+	path = bundle/claudecode.nvim
+	url = git@github.com:coder/claudecode.nvim.git
