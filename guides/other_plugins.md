@@ -283,6 +283,8 @@ https://github.com/ravitemer/mcphub.nvim
 
 https://github.com/stasfilin/nvim-sandman
 
+- Hex viewer. Looks like is has no dependencies - https://github.com/Punity122333/hexinspector.nvim/tree/main
+
 - https://www.reddit.com/r/neovim/comments/1qswj2z/sqlitnvim_a_lazygit_style_inspired_sql_neovim/
 
 https://github.com/evilsocket/opensnitch
