@@ -189,7 +189,11 @@ https://github.com/vigoux/architext.nvim
 
 - SSH connection manager? https://github.com/epheien/conn-manager.nvim
 
+- A really fast way to annotate code as markdown (to send to LLMs) - https://www.reddit.com/r/neovim/comments/1rj3wez/molenvim_3_new_features_in_code_annotation_plugin/
+
 - Possibly more useful "go to GitHub link" plugin - https://github.com/trevorhauter/gitportal.nvim
+
+- Not actually a Neovim plugin but lets you present using the terminal - https://github.com/mfontanini/presenterm
 
 
 - Documentation related

@@ -1,3 +1,18 @@
+- https://github.com/nullromo/go-up.nvim
+- https://github.com/aidancz/go-up.nvim
+
+Clean paste
+- removes ^M characters
+- substitutes – for -
+
+:'<,'>!tr -cd '\11\12\15\40-\176'
+
+- Replace whatever toggle terminal thing I use with my one from onefile.nvim, it's much better
+
+https://www.reddit.com/r/neovim/comments/1qllcj0/pickernvim_v170_released_a_lightweight_fuzzy/
+https://github.com/wsdjeg/picker.nvim
+
+
 https://github.com/juniorsundar/cling.nvim
  - This can read the completio nfile somehow
 
