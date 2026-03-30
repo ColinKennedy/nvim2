@@ -77,18 +77,7 @@ vim.api.nvim_create_autocmd("CursorMoved", {
     pattern = "*",
 })
 
-vim.lsp.enable({
-    "basedpyright",
-    capabilities = capabilities,
-    settings = {
-        basedpyright = {
-            analysis = {
-                diagnosticMode = "openFilesOnly",
-                typeCheckingMode = "off",
-            },
-        },
-    },
-})
+vim.lsp.enable({ "ty", capabilities = capabilities })
 
 for _, parser in ipairs({ "clangd", "lua_ls" }) do
     vim.lsp.enable({

@@ -1,0 +1,1 @@
+{"secondary_sources":[],"schema_version":"1.1","primary_source":{"type":"registry+v1","id":"pkg:pypi/ty@0.0.26"},"name":"ty","links":{"share":{},"bin":{"ty":"venv/bin/ty"},"opt":{}},"metrics":{"start_time":1774851397082,"completion_time":1774851403907}}
