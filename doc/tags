@@ -24,7 +24,6 @@ my_mappings_grapple.nvim	my_mappings.txt	/*my_mappings_grapple.nvim*
 my_mappings_lsp	my_mappings.txt	/*my_mappings_lsp*
 my_mappings_miscellaneous	my_mappings.txt	/*my_mappings_miscellaneous*
 my_mappings_quickfix	my_mappings.txt	/*my_mappings_quickfix*
-my_mappings_spelling	my_mappings.txt	/*my_mappings_spelling*
 my_mappings_telescope.nvim	my_mappings.txt	/*my_mappings_telescope.nvim*
 my_mappings_terminal_tmux_communication	my_mappings.txt	/*my_mappings_terminal_tmux_communication*
 my_mappings_text_objects	my_mappings.txt	/*my_mappings_text_objects*
