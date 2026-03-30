@@ -3,6 +3,8 @@
 --- Just press `s` + two characters near where you want to jump to and then you're there.
 ---
 
+---@alias _my.easymotion.ExtmarksData table<string, {line: integer, column: integer, id: integer}>
+
 -- Reference: https://antonk52.github.io/webdevandstuff/post/2025-11-30-diy-easymotion.html
 local _NAMESPACE = vim.api.nvim_create_namespace("my.easymotion")
 local _CHARACTERS = vim.split("fjdkslgha;rueiwotyqpvbcnxmzFJDKSLGHARUEIWOTYQPVBCNXMZ", "")

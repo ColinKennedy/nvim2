@@ -38,7 +38,7 @@ end
 ---@return string?
 ---    An error message, if any. (If the file copied, this is empty).
 ---
-function _P.copy_file(source, destination_path)
+function _P.copy_file(source, destination)
     local source_handle = io.open(source, "r")
 
     if not source_handle then
@@ -48,16 +48,16 @@ function _P.copy_file(source, destination_path)
     local content = source_handle:read("*a")
     source_handle:close()
 
-    local destination_directory = vim.fs.dirname(destination_path)
+    local destination_directory = vim.fs.dirname(destination)
 
     if vim.fn.isdirectory(destination_directory) == 0 then
         vim.fn.mkdir(destination_directory, "p")
     end
 
-    local destination_handle = io.open(destination_path, "w")
+    local destination_handle = io.open(destination, "w")
 
     if not destination_handle then
-        return false, "Failed to open destination file: " .. destination_path
+        return false, "Failed to open destination file: " .. destination
     end
 
     destination_handle:write(content)
@@ -97,7 +97,7 @@ function _P.setup_session_details()
 
     if not success then
         vim.schedule(function()
-            vim.api.nvim_err_writeln("claudecode.nvim is not installed or loaded.")
+            vim.notify("claudecode.nvim is not installed or loaded.", vim.log.levels.ERROR)
         end)
 
         return
@@ -109,7 +109,7 @@ function _P.setup_session_details()
 
     if not success then
         vim.schedule(function()
-            vim.api.nvim_err_writeln("Calling claudecode /continue failed.")
+            vim.notify("Calling claudecode /continue failed.", vim.log.levels.ERROR)
         end)
 
         return
@@ -125,7 +125,7 @@ function M.create_worktree_tab(branch_name)
     local git_root = _P.get_bare_git_root(current_directory)
 
     if not git_root then
-        vim.api.nvim_err_writeln(string.format('Directory "%s" is not in a git repository.', current_directory))
+        vim.notify(string.format('Directory "%s" is not in a git repository.', current_directory), vim.log.levels.ERROR)
 
         return
     end
@@ -139,8 +139,9 @@ function M.create_worktree_tab(branch_name)
     }, function(result)
         if result.code ~= 0 then
             vim.schedule(function()
-                vim.api.nvim_err_writeln(
-                    string.format('Git worktree command "%s" failed: %s', command, (result.stderr or "<Unknown error>"))
+                vim.notify(
+                    string.format('Git worktree command "%s" failed: %s', command, (result.stderr or "<Unknown error>")),
+                    vim.log.levels.ERROR
                 )
             end)
 

@@ -286,7 +286,7 @@ vim.api.nvim_create_user_command("WorktreeTab", function(opts)
     local branch = opts.args
 
     if not branch or branch == "" then
-        vim.api.nvim_err_writeln("Usage: :WorktreeTab {branch-name}")
+        vim.notify("Usage: :WorktreeTab {branch-name}", vim.log.levels.ERROR)
 
         return
     end
