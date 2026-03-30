@@ -286,10 +286,10 @@ vim.api.nvim_create_user_command("WorktreeTab", function(opts)
     local branch = opts.args
 
     if not branch or branch == "" then
-        vim.api.nvim_err_writeln('Usage: :WorktreeTab {branch-name}')
+        vim.api.nvim_err_writeln("Usage: :WorktreeTab {branch-name}")
 
         return
     end
 
     worktree.create_worktree_tab(branch)
-end, { nargs = 1, desc = 'Create a new git worktree in a new tab with session setup.' })
+end, { nargs = 1, desc = "Create a new git worktree in a new tab with session setup." })

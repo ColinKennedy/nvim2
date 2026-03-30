@@ -3,8 +3,6 @@
 local _P = {}
 local M = {}
 
-unpack = unpack or table.unpack -- NOTE: This is for compatibility with newer Lua versions.
-
 --- Find the top-most bare git repository.
 ---
 --- If you have git repository within a git repository, find the top-most one.
@@ -27,7 +25,6 @@ function _P.get_bare_git_root(directory)
 
     return nil
 end
-
 
 --- Copy `source` file to `destination`.
 ---
@@ -92,16 +89,28 @@ function _P.setup_session_details()
     vim.api.nvim_set_current_win(window)
 
     -- NOTE: Requires: https://github.com/coder/claudecode.nvim
-    local success, error_ = pcall(function() vim.cmd.ClaudeCode("/continue") end)
+    local success, _ = pcall(function()
+        if not vim.cmd.ClaudeCode then
+            error("claudecode.nvim is not installed", 2)
+        end
+    end)
 
     if not success then
-        vim.schedule(
-            function()
-                vim.api.nvim_err_writeln(
-                    'claudecode.nvim is not installed. Cannot call --continue.'
-                )
-            end
-        )
+        vim.schedule(function()
+            vim.api.nvim_err_writeln("claudecode.nvim is not installed or loaded.")
+        end)
+
+        return
+    end
+
+    success, _ = pcall(function()
+        vim.cmd.ClaudeCode("/continue")
+    end)
+
+    if not success then
+        vim.schedule(function()
+            vim.api.nvim_err_writeln("Calling claudecode /continue failed.")
+        end)
 
         return
     end

@@ -5,7 +5,10 @@ return {
         cmd = { "ClaudeCode" },
         config = function()
             require("claudecode").setup({
-                terminal_cmd = 'ANTHROPIC_BASE_URL="http://localhost:11434" ANTHROPIC_AUTH_TOKEN="token" claude --model gpt-oss:20b',
+                terminal_cmd = vim.fn.join({
+                    'ANTHROPIC_BASE_URL="http://localhost:11434"',
+                    'ANTHROPIC_AUTH_TOKEN="token" claude --model gpt-oss:20b',
+                }, " "),
             })
         end,
         keys = {
