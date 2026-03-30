@@ -122,6 +122,7 @@ return {
         -- NOTE: Don't lazy-load nvim-treesitter or docstring folds in Python will break
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        branch = "master",  -- TODO: Update to the latest, `main` branch, later
         config = function()
             require("my_custom.plugins.nvim_treesitter.configuration")
         end,
