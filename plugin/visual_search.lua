@@ -16,11 +16,11 @@ vim.keymap.set(
     "v",
     "*",
     ":<C-u>call VSetSearch()<CR>/<CR>",
-    { desc = "Search down, using the current visual selection." }
+    { desc = "Search down, using the current visual selection.", silent = true }
 )
 vim.keymap.set(
     "v",
     "#",
     ":<C-u>call VSetSearch()<CR>?<CR>",
-    { desc = "Search up, using the current visual selection." }
+    { desc = "Search up, using the current visual selection.", silent = true }
 )

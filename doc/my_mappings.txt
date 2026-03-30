@@ -12,7 +12,6 @@ Git ........................................................ |my_mappings_git|
 Debugging ............................................ |my_mappings_debugging|
 LSP ........................................................ |my_mappings_lsp|
 Quickfix .............................................. |my_mappings_quickfix|
-Spelling .............................................. |my_mappings_spelling|
 Miscellaneous .................................... |my_mappings_miscellaneous|
 Text-Objects ...................................... |my_mappings_text_objects|
 LuaSnip ................................................ |my_mappings_luasnip|
@@ -219,22 +218,6 @@ Legend
 | - | ------------ | --------------------------------------------------------- |
 | n | <leader>ct   | [c]hange the [t]itle of the Quickfix buffer               |
 | n | <leader>tq   | [t]oggle [q]uickfix window (requires vim-qf).             |
-
-
-================================================================================
-Spelling                                                *my_mappings_spelling*
-
-Legend
-
-- 1 == mode
-- 2 == mapping
-- 3 == description
-
-| 1 |       2       |                           3                               |
-| - | ------------- | --------------------------------------------------------- |
-| n | <leader>tss   | [t]oggle all [s]trict [s]pelling mistakes.                |
-| n | <leader>rs    | [r]eplace word with [s]uggestion.                         |
-| n | z?            | Add the current word to the rare words list.              |
 
 
 ================================================================================

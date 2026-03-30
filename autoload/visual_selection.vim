@@ -31,10 +31,3 @@ function! visual_selection#get_lines()
 
     return lines  "use this return if you want an array of text lines
 endfunction
-
-
-function! visual_selection#get_text()
-    let l:lines = visual_selection#get_lines()
-
-    return join(l:lines, "\n") "use this return instead if you need a text block
-endfunction

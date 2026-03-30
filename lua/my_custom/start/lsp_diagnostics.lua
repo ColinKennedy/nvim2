@@ -1,22 +1,23 @@
--- Add Qt.py auto-completion stubs to Vim
+-- -- Add Qt.py auto-completion stubs to Vim
+-- --
+-- -- Reference: https://peps.python.org/pep-0561/
+-- --
+-- local separator
 --
--- Reference: https://peps.python.org/pep-0561/
+-- if vim.fn.has("win32") == 1 then
+--     separator = ";"
+-- else
+--     separator = ":"
+-- end
 --
-local separator
-
-if vim.fn.has("win32") == 1 then
-    separator = ";"
-else
-    separator = ":"
-end
-
-local existing = os.getenv("PYTHONPATH")
-
-if existing then
-    vim.env.PYTHONPATH = vim.fs.joinpath(vim.g.vim_home, "python_stubs") .. separator .. vim.env.PYTHONPATH
-else
-    vim.env.PYTHONPATH = vim.fs.joinpath(vim.g.vim_home, "python_stubs")
-end
+-- NOTE: Not needed most of the time. Only enable if-needed
+-- local existing = os.getenv("PYTHONPATH")
+--
+-- if existing then
+--     vim.env.PYTHONPATH = vim.fs.joinpath(vim.g.vim_home, "python_stubs") .. separator .. vim.env.PYTHONPATH
+-- else
+--     vim.env.PYTHONPATH = vim.fs.joinpath(vim.g.vim_home, "python_stubs")
+-- end
 
 vim.api.nvim_create_user_command("LspCapabilities", function()
     require("my_custom.utilities.lsp_helper").print_lsp_capabilities()

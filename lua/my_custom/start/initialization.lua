@@ -121,22 +121,6 @@ if vim.v.version > 703 then
     vim.opt.formatoptions:append { "j" }
 end
 
--- TODO: Make the I/O in this async, later? Then we can remove vim.schedule
-vim.schedule(function()
-    -- Enable (or download `par`)
-    local module = "my_custom.utilities.par"
-    local package_exists, par = pcall(require, module)
-
-    if package_exists and vim.fn.has("unix") == 1 then
-        -- NOTE: This code requires UNIX-related executables like wget so we
-        -- don't support Windows yet.
-        --
-        par.load_or_install()
-    else
-        vim.notify('Could not load "' .. module .. '" module.', vim.log.levels.ERROR)
-    end
-end)
-
 -- Disable tag completion (TAB)
 --
 -- Reference: https://stackoverflow.com/a/13232327/3626104
