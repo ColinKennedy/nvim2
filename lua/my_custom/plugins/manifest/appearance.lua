@@ -124,6 +124,7 @@ return {
     -- Use treesitter to show your current cursor context (class > function > etc)
     {
         "ColinKennedy/nvim-gps",
+        branch = "neovim_0.12.0_migration",
         config = true,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         lazy = true,
@@ -249,12 +250,12 @@ return {
         },
     },
 
-    -- -- A lualine status bar that tells me details about the current git window.
-    -- -- See `require("my_custom.plugins.lualine.configuration")` for details.
-    -- --
-    -- {
-    --     "abccsss/nvim-gitstatus",
-    --     event = "VeryLazy",
-    --     opts = { auto_fetch_interval = 1000 },
-    -- },
+    -- A lualine status bar that tells me details about the current git window.
+    -- See `require("my_custom.plugins.lualine.configuration")` for details.
+    --
+    {
+        "abccsss/nvim-gitstatus",
+        event = "VeryLazy",
+        opts = { auto_fetch_interval = 1000 },
+    },
 }

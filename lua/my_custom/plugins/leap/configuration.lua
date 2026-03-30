@@ -1,5 +1,3 @@
-require("leap").init_highlight()
-
 require("leap").opts.safe_labels = {
     -- Home row keys
     "a",

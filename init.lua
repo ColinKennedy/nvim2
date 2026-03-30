@@ -55,6 +55,7 @@ require("lazy").setup(plugins, configuration)
 
 require("my_custom.start.auto_commands")
 require("my_custom.start.command")
+require("my_custom.start.easymotion")
 require("my_custom.start.global_confirm")
 require("my_custom.start.initialization")
 require("my_custom.start.remap")

@@ -1,10 +1,4 @@
-require("smart-splits").setup({
-    resize_mode = {
-        hooks = {
-            on_leave = require("bufresize").register,
-        },
-    },
-})
+require("smart-splits").setup({})
 
 -- Reference: https://www.reddit.com/r/neovim/comments/ohdptb/how_do_you_switch_terminal_buffers_but_keep_the/
 -- Reference: https://github.com/mrjones2014/smart-splits.nvim

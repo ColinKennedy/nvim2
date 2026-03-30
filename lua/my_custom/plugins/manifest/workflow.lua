@@ -1,3 +1,5 @@
+local _GIT_OR_PYTHON_ROOT = {".git", "pyproject.toml"}
+
 return {
     -- A cool plugin that makes it easier to search/replace variations of words
     -- Example: Subvert/child{,ren}/adult{,s}/g
@@ -63,7 +65,6 @@ return {
         config = function()
             require("my_custom.plugins.smart_splits.configuration")
         end,
-        dependencies = { "kwkarlwang/bufresize.nvim" },
         keys = {
             { "<A-h>", desc = "Enlarge (left) the current window." },
             { "<A-j>", desc = "Enlarge (down) the current window." },
@@ -74,16 +75,7 @@ return {
             { "<C-k>", desc = "Move cursor to the above window (or tmux)." },
             { "<C-l>", desc = "Move cursor to the right window (or tmux)." },
         },
-        version = "1.*",
-    },
-
-    -- When resizing your terminal, this plug-in keeps all buffer width/height
-    -- proportionally the same.
-    --
-    {
-        "kwkarlwang/bufresize.nvim",
-        config = true,
-        event = { "VeryLazy" },
+        version = "2.*",
     },
 
     -- TODO: If I lazy-load this plug-in, it forces the cursor to the top of
@@ -122,7 +114,6 @@ return {
         -- NOTE: Don't lazy-load nvim-treesitter or docstring folds in Python will break
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        branch = "master", -- TODO: Update to the latest, `main` branch, later
         config = function()
             require("my_custom.plugins.nvim_treesitter.configuration")
         end,
@@ -143,7 +134,10 @@ return {
 
     {
         "ColinKennedy/nvim-treesitter-textobjects",
-        branch = "modified_include_surrounding_whitespace_behavior",
+        branch = "main",
+        init = function()
+            vim.g.no_plugin_maps = true
+        end,
         config = function()
             require("my_custom.plugins.nvim_treesitter_textobjects.configuration")
         end,
@@ -431,7 +425,29 @@ return {
     --
     {
         "duane9/nvim-rg",
-        cmd = "Rg",
+        cmd = {"Prg", "Rg"},
+        config = function()
+            vim.api.nvim_create_user_command("Prg", function(options)
+                local directory = vim.fs.root(0, _GIT_OR_PYTHON_ROOT) or vim.fs.root(vim.fn.getcwd(), _GIT_OR_PYTHON_ROOT)
+
+                if not directory then
+                    vim.notify(
+                        string.format('No git/Python root could be found from this buffer or from "%s" directory.', vim.fn.getcwd()),
+                        vim.log.levels.ERROR
+                    )
+
+                    directory = vim.fn.getcwd()
+                end
+
+                local command = { "Rg" }
+                vim.list_extend(command, options.fargs)
+                table.insert(command, directory)
+                vim.cmd(vim.fn.join(command, " "))
+            end, {
+                desc = "From the [p]resent file, search with [r]ip[g]rep.",
+                nargs = "*",
+            })
+        end,
         keys = {
             { "<leader>rg", "<cmd>Rg<CR>", desc = "Search :pwd with [rg] - ripgrep." },
         },

@@ -1,7 +1,7 @@
 return {
     {
         -- Async Make + awesome quick-fix window error reporting
-        "ColinKennedy/vim-dispatch",
+        "tpope/vim-dispatch",
         -- If `Dispatch ...` auto-complete is slow in WSL, remember to remove Windows paths.
         --
         -- Reference: https://stackoverflow.com/questions/51336147/how-to-remove-the-win10s-path-from-wsl
@@ -10,7 +10,6 @@ return {
         config = function()
             vim.g.dispatch_no_maps = 1
         end,
-        version = "1.*",
     },
 
     -- Quickfix auto previews and other fun features

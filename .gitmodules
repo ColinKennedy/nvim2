@@ -100,9 +100,6 @@
 [submodule "bundle/vim-textobj-user"]
 	path = bundle/vim-textobj-user
 	url = git@github.com:kana/vim-textobj-user.git
-[submodule "bundle/bufresize.nvim"]
-	path = bundle/bufresize.nvim
-	url = git@github.com:kwkarlwang/bufresize.nvim.git
 [submodule "bundle/gitsigns.nvim"]
 	path = bundle/gitsigns.nvim
 	url = git@github.com:ColinKennedy/gitsigns.nvim.git
@@ -246,7 +243,7 @@
 	url = git@github.com:nvimtools/hydra.nvim.git
 [submodule "bundle/leap.nvim"]
 	path = bundle/leap.nvim
-	url = git@github.com:ggandor/leap.nvim.git
+	url = git@codeberg.org/andyg/leap.nvim.git
 [submodule "bundle/symbols-outline.nvim"]
 	path = bundle/symbols-outline.nvim
 	url = git@github.com:simrat39/symbols-outline.nvim.git
