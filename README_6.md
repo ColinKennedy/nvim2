@@ -1,3 +1,15 @@
+````
+○ vim-dispatch  Dispatch  Make
+- Remind myself how to run this silently
+
+● python-lsp-server 0.5ms  nvim-cmp
+● jedi-language-server 0.37ms  nvim-cmp
+- Replace with ty?
+
+○ vim-gh-line  GH  GHInteractive  GB  GBInteractive
+- Replace with something that can ahndle gitlab?
+````
+
 https://github.com/juniorsundar/cling.nvim
  - This can read the completio nfile somehow
 
