@@ -1,4 +1,4 @@
-local _GIT_OR_PYTHON_ROOT = {".git", "pyproject.toml"}
+local _GIT_OR_PYTHON_ROOT = { ".git", "pyproject.toml" }
 
 return {
     -- A cool plugin that makes it easier to search/replace variations of words
@@ -425,14 +425,18 @@ return {
     --
     {
         "duane9/nvim-rg",
-        cmd = {"Prg", "Rg"},
+        cmd = { "Prg", "Rg" },
         config = function()
             vim.api.nvim_create_user_command("Prg", function(options)
-                local directory = vim.fs.root(0, _GIT_OR_PYTHON_ROOT) or vim.fs.root(vim.fn.getcwd(), _GIT_OR_PYTHON_ROOT)
+                local directory = vim.fs.root(0, _GIT_OR_PYTHON_ROOT)
+                    or vim.fs.root(vim.fn.getcwd(), _GIT_OR_PYTHON_ROOT)
 
                 if not directory then
                     vim.notify(
-                        string.format('No git/Python root could be found from this buffer or from "%s" directory.', vim.fn.getcwd()),
+                        string.format(
+                            'No git/Python root could be found from this buffer or from "%s" directory.',
+                            vim.fn.getcwd()
+                        ),
                         vim.log.levels.ERROR
                     )
 
