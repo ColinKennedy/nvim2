@@ -19,7 +19,7 @@ return {
         "hrsh7th/cmp-buffer",
         "ColinKennedy/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
-        { "ColinKennedy/cmp-nvim-lsp-signature-help", branch = "" },
+        "ColinKennedy/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-path",
         "neovim/nvim-lspconfig",
     },
