@@ -1,0 +1,1 @@
+{"name":"ty","metrics":{"start_time":1775281977935,"completion_time":1775282002567},"secondary_sources":[],"schema_version":"1.1","primary_source":{"id":"pkg:pypi/ty@0.0.28","type":"registry+v1"},"links":{"share":{},"bin":{"ty.cmd":"venv\\Scripts\\ty.exe"},"opt":{}}}
