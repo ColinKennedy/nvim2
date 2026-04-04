@@ -32,21 +32,17 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local tabler = require("my_custom.utilities.tabler")
-local extend = tabler.extend
 local plugins = {}
 
-require("my_custom.start.fix_terminal_padding")
-
-extend(plugins, require("my_custom.plugins.manifest.appearance"))
-extend(plugins, require("my_custom.plugins.manifest.debugging"))
-extend(plugins, require("my_custom.plugins.manifest.lsp"))
-extend(plugins, require("my_custom.plugins.manifest.completion"))
-extend(plugins, require("my_custom.plugins.manifest.movement"))
-extend(plugins, require("my_custom.plugins.manifest.quick_fix"))
-extend(plugins, require("my_custom.plugins.manifest.text_object"))
-extend(plugins, require("my_custom.plugins.manifest.workflow"))
-extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.appearance"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.debugging"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.lsp"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.completion"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.movement"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.quick_fix"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.text_object"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.workflow"))
+vim.list_extend(plugins, require("my_custom.plugins.manifest.workflow_usd"))
 
 -- ``root`` e.g. ~/personal/.config/nvim/bundle"
 local configuration = { root = vim.fs.joinpath(vim.g.vim_home, "bundle") }
@@ -56,6 +52,7 @@ require("lazy").setup(plugins, configuration)
 require("my_custom.start.auto_commands")
 require("my_custom.start.command")
 require("my_custom.start.easymotion")
+require("my_custom.start.fix_terminal_padding")
 require("my_custom.start.global_confirm")
 require("my_custom.start.initialization")
 require("my_custom.start.remap")
