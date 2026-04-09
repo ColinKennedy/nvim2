@@ -425,8 +425,29 @@ return {
     --
     {
         "duane9/nvim-rg",
-        cmd = { "Prg", "Rg" },
+        cmd = { "Crg", "Prg", "Rg" },
         config = function()
+            local function _run_rg(directory, options)
+                local command = { "Rg" }
+                vim.list_extend(command, options.fargs)
+                table.insert(command, directory)
+                vim.cmd(vim.fn.join(command, " "))
+            end
+
+            vim.api.nvim_create_user_command("Crg", function(options)
+                local path = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+                local directory = vim.fs.dirname(path)
+
+                if directory == "" then
+                    directory = vim.fn.getcwd()
+                end
+
+                _run_rg(directory, options)
+            end, {
+                desc = "From the [C]urrent file, search with [r]ip[g]rep.",
+                nargs = "*",
+            })
+
             vim.api.nvim_create_user_command("Prg", function(options)
                 local directory = vim.fs.root(0, _GIT_OR_PYTHON_ROOT)
                     or vim.fs.root(vim.fn.getcwd(), _GIT_OR_PYTHON_ROOT)
@@ -443,12 +464,9 @@ return {
                     directory = vim.fn.getcwd()
                 end
 
-                local command = { "Rg" }
-                vim.list_extend(command, options.fargs)
-                table.insert(command, directory)
-                vim.cmd(vim.fn.join(command, " "))
+                _run_rg(directory, options)
             end, {
-                desc = "From the [p]resent file, search with [r]ip[g]rep.",
+                desc = "From the [P]roject directory, search with [r]ip[g]rep.",
                 nargs = "*",
             })
         end,
