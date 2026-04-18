@@ -1,3 +1,14 @@
+- https://github.com/chaneyzorn/spellwand.nvim
+
+- https://github.com/crate-ci/typos
+
+- https://github.com/igorlfs/nvim-dap-view
+
+- https://github.com/jeangiraldoo/codedocs.nvim
+
+- https://www.reddit.com/r/neovim/comments/1si6vnt/getting_file_creation_time_via_api/
+- Get lua auto-completion working again
+
 ````
 ○ vim-dispatch  Dispatch  Make
 - Remind myself how to run this silently
