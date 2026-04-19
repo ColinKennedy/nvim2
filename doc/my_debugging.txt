@@ -101,3 +101,5 @@ Debugging References                                 *my_debugging_references*
     - https://marioyepes.com/setup-debug-php-docker-visual-studio-code/#start-a-debugging-session
     - https://github.com/mfussenegger/nvim-dap/wiki/Local-and-Remote-Debugging-with-Docker#Python
     - https://alpha2phi.medium.com/neovim-for-beginners-python-remote-debugging-7dac13e2a469
+
+vim:tw=78:ts=8:noet:ft=help:norl:

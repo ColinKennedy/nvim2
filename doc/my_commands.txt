@@ -1,4 +1,20 @@
-*my_commands.txt*	Interesting :Commands to remembers
+*my_commands.txt*	Interesting :Commands to remember
+
+================================================================================
+Sections
+================================================================================
+
+Searching ............................................ |my_commands_searching|
+Terminals ............................................ |my_commands_terminals|
+
+================================================================================
+Searching                                              *my_commands_searching*
+
+:Rg - Searches for text using ripgrep from the current work directory
+:Crg - Searches for text from the current buffer's directory
+:Prg - Searches for text from the top-level project
+:Rrg - Searches for text from the top-level repository
+
 
 ================================================================================
 Terminals                                              *my_commands_terminals*
@@ -12,3 +28,5 @@ Telescope                                              *my_commands_telescope*
 
 
 `:Telescope resume` - opens the previous Telescope call
+
+vim:tw=78:ts=8:noet:ft=help:norl:
