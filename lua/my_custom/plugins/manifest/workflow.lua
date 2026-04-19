@@ -1,4 +1,6 @@
-local _GIT_OR_PYTHON_ROOT = { ".git", "pyproject.toml" }
+local _REPOSITORY_ROOT = { ".git" }
+local _REPOSITORY_OR_PROJECT_ROOT = vim.deepcopy(_REPOSITORY_ROOT)
+table.insert(_REPOSITORY_OR_PROJECT_ROOT, "pyproject.toml")
 
 return {
     -- A cool plugin that makes it easier to search/replace variations of words
@@ -425,8 +427,26 @@ return {
     --
     {
         "duane9/nvim-rg",
-        cmd = { "Crg", "Prg", "Rg" },
+        cmd = { "Crg", "Prg", "Rg", "Rrg" },
         config = function()
+
+            local function _get_directory(pattern)
+                local directory = vim.fs.root(0, _REPOSITORY_ROOT)
+                    or vim.fs.root(vim.fn.getcwd(), _REPOSITORY_ROOT)
+
+                if not directory then
+                    vim.notify(
+                        string.format(
+                            'No "%s" root could be found from this buffer or from "%s" directory.',
+                            vim.fn.getcwd()
+                        ),
+                        vim.log.levels.ERROR
+                    )
+
+                    return
+                end
+            end
+
             local function _run_rg(directory, options)
                 local command = { "Rg" }
                 vim.list_extend(command, options.fargs)
@@ -436,10 +456,12 @@ return {
 
             vim.api.nvim_create_user_command("Crg", function(options)
                 local path = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-                local directory = vim.fs.dirname(path)
+                local directory
 
-                if directory == "" then
+                if path == "" then
                     directory = vim.fn.getcwd()
+                else
+                    directory = vim.fs.dirname(path)
                 end
 
                 _run_rg(directory, options)
@@ -448,20 +470,24 @@ return {
                 nargs = "*",
             })
 
-            vim.api.nvim_create_user_command("Prg", function(options)
-                local directory = vim.fs.root(0, _GIT_OR_PYTHON_ROOT)
-                    or vim.fs.root(vim.fn.getcwd(), _GIT_OR_PYTHON_ROOT)
+            vim.api.nvim_create_user_command("Rrg", function(options)
+                directory = _get_directory(_REPOSITORY_ROOT)
 
                 if not directory then
-                    vim.notify(
-                        string.format(
-                            'No git/Python root could be found from this buffer or from "%s" directory.',
-                            vim.fn.getcwd()
-                        ),
-                        vim.log.levels.ERROR
-                    )
+                    return
+                end
 
-                    directory = vim.fn.getcwd()
+                _run_rg(directory, options)
+            end, {
+                desc = "From the [R]repository, search with [r]ip[g]rep.",
+                nargs = "*",
+            })
+
+            vim.api.nvim_create_user_command("Prg", function(options)
+                local directory = _get_directory(_REPOSITORY_OR_PROJECT_ROOT)
+
+                if not directory then
+                    return
                 end
 
                 _run_rg(directory, options)
