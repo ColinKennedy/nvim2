@@ -9,8 +9,19 @@ return {
         config = function()
             require("my_custom.plugins.nvim_lspconfig.configuration")
         end,
-        dependencies = { "williamboman/mason.nvim" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "hrsh7th/cmp-nvim-lsp",
+        },
         event = { "BufReadPre", "BufNewFile" },
+    },
+
+    -- The plugin that adds LSP sources to nvim-cmp
+    {
+        "hrsh7th/cmp-nvim-lsp",
+        dependencies = {
+            "hrsh7th/nvim-cmp",
+        }
     },
 
     {
