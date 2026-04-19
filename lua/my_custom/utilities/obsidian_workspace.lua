@@ -6,6 +6,13 @@ local M = {}
 
 --- Show a picker for changing the Obsidian vault workspace and select the workspace.
 function M.set_workspace()
+
+    ---@param text string
+    ---@return boolean
+    local function _is_hidden(text)
+        return vim.startswith(text, ".")
+    end
+
     local vault_root = obsidian_state.get_vaults_root_path()
 
     -- NOTE: The annotation is broken right now. See https://github.com/neovim/neovim/pull/37458
@@ -13,6 +20,10 @@ function M.set_workspace()
     ---@diagnostic disable-next-line: param-type-mismatch
     local entries = vim.fn.readdir(vault_root, function(name)
         local full = vim.fs.joinpath(vault_root, name)
+
+        if _is_hidden(name) then
+            return 0
+        end
 
         if vim.fn.isdirectory(full) == 1 then
             return 1
@@ -30,7 +41,7 @@ function M.set_workspace()
     table.sort(entries)
 
     vim.ui.select(entries, {
-        prompt = "Select Obsidian workspace:",
+        prompt = "Select Obsidian Workspace:",
     }, function(choice)
         if not choice then
             return
