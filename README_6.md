@@ -1,3 +1,5 @@
+- https://jacobnscott.com/posts/nvim-statusline/
+
 - https://github.com/chaneyzorn/spellwand.nvim
 
 - https://github.com/crate-ci/typos
