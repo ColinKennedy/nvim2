@@ -429,22 +429,20 @@ return {
         "duane9/nvim-rg",
         cmd = { "Crg", "Prg", "Rg", "Rrg" },
         config = function()
-
             local function _get_directory(pattern)
-                local directory = vim.fs.root(0, _REPOSITORY_ROOT)
-                    or vim.fs.root(vim.fn.getcwd(), _REPOSITORY_ROOT)
+                local directory = vim.fs.root(0, _REPOSITORY_ROOT) or vim.fs.root(vim.fn.getcwd(), _REPOSITORY_ROOT)
 
-                if not directory then
-                    vim.notify(
-                        string.format(
-                            'No "%s" root could be found from this buffer or from "%s" directory.',
-                            vim.fn.getcwd()
-                        ),
-                        vim.log.levels.ERROR
-                    )
-
-                    return
+                if directory then
+                    return directory
                 end
+
+                vim.notify(
+                    string.format(
+                        'No "%s" root could be found from this buffer or from "%s" directory.',
+                        vim.fn.getcwd()
+                    ),
+                    vim.log.levels.ERROR
+                )
             end
 
             local function _run_rg(directory, options)

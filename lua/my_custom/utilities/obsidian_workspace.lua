@@ -6,7 +6,6 @@ local M = {}
 
 --- Show a picker for changing the Obsidian vault workspace and select the workspace.
 function M.set_workspace()
-
     ---@param text string
     ---@return boolean
     local function _is_hidden(text)

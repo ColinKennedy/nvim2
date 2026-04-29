@@ -116,7 +116,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 -- See the ``vim-addon-local-vimrc`` plug-in for details.
 --
 vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = ".vimrc",
+    pattern = { ".nvim.lua", ".vimrc", ".vimrc.lua" },
     callback = function()
         local current_vimrc_path = vim.api.nvim_buf_get_name(0)
 

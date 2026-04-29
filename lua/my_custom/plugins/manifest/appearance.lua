@@ -130,19 +130,6 @@ return {
         lazy = true,
     },
 
-    -- Keep the Vim cursor in the center of the screen, even at the bottom of the buffer.
-    --
-    -- Maybe in the future this will change and Vim will have native support for this.
-    --
-    -- Reference: https://github.com/vim/vim/issues/13428
-    --
-    {
-        "arnamak/stay-centered.nvim",
-        config = function()
-            require("my_custom.plugins.stay_centered.configuration")
-        end,
-    },
-
     -- Highlight the whole line when you're in linewise selection mode.
     --
     -- Why is this not Vim's default behavior??

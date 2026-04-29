@@ -1,6 +1,12 @@
+https://github.com/pirey/fqf.nvim
+
+https://github.com/aidancz/go-up.nvim
+
 - https://jacobnscott.com/posts/nvim-statusline/
 
 - https://github.com/chaneyzorn/spellwand.nvim
+
+https://github.com/5long/dotfiles/blob/trunk/nvim/lua/config/prioritized_diagnostic.lua
 
 - https://github.com/crate-ci/typos
 

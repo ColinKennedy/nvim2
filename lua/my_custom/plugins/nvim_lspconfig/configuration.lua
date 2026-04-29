@@ -45,6 +45,7 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {
 --         desc="Show the [D]efinition of some function / instance.",
 --     }
 -- )
+
 vim.keymap.set("n", "<leader>oca", vim.lsp.buf.code_action, {
     desc = "[o]pen [c]ode [a]ction - Show commands under the cursor.",
 })
@@ -62,9 +63,7 @@ end, {
     desc = "[g]o to [r]eferences - Show all locations where a variable is used.",
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Whenever you move the cursor, the status-line shows LSP warnings / errors
 local group = vim.api.nvim_create_augroup("lsp_extensions", { clear = true })
