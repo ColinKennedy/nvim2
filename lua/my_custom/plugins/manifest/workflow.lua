@@ -41,26 +41,6 @@ return {
         },
     },
 
-    -- A plugin that is able to load project-specific .vimrc files
-    -- It's like [krisajenkins/vim-projectlocal](http://github.com/krisajenkins/vim-projectlocal) but it's not broken(!)
-    --
-    -- It can even differentiate between .vimrc files you've authored and others
-    -- which may contain malicious code
-    --
-    {
-        "ColinKennedy/vim-addon-local-vimrc",
-        branch = "my_edits",
-        config = function()
-            vim.g.local_vimrc = {
-                cache_file = vim.fn.expand("~/.vim_local_rc_cache"),
-                hash_fun = "LVRHashOfFile",
-                implementations = { "sha512sum", "sha256sum", "sha1sum", "md5sum", "viml" },
-                names = { ".vimrc", ".vimrc.lua" },
-                resource_on_cwd_change = true,
-            }
-        end,
-    },
-
     -- Swap windows using <C-h>, <C-j>, <C-k>, <C-l> keys and to/from tmux
     {
         "mrjones2014/smart-splits.nvim",

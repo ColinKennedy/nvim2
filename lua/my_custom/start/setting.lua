@@ -51,3 +51,33 @@ vim.opt.laststatus = 3
 -- Reference: https://youtu.be/3TRouzuWOuQ?t=107
 --
 vim.g.editorconfig = false
+
+
+-- Enable syntax-highlighting inside of fence-blocks, in markdown
+-- e.g.
+--
+-- ```python
+-- print("Hello, Sailor!")
+-- ```
+--
+-- Will highlight using Python's language highlighter
+--
+vim.g.markdown_fenced_languages = {
+    "cpp",
+    "json",
+    "lua",
+    "python",
+    "ts=typescript",
+}
+
+
+-- Enable local Neovim files calling on-start-up (e.g. `.nvim.lua`).
+-- Reference: https://github.com/neovim/neovim/commit/23bf4c0531acef4e8252f4db13fcd90ad5aa91bf
+--
+vim.o.exrc = true
+
+
+-- Force the cursor to stay centered, vertically. See `:help 'scrolloffpad'`
+vim.o.secure = true
+vim.o.scrolloff = 99
+vim.o.scrolloffpad = 1
